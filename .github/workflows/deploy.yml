@@ -32,9 +32,11 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             
-            # Load Ruby environment (rbenv)
+            # Load Ruby environment (rbenv) and set correct version
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
+            rbenv install 3.2.2 --skip-existing
+            rbenv local 3.2.2
             
             # Load environment variables from .env.production
             # (Already configured on server - no need to pass secrets)

@@ -1,0 +1,68 @@
+======CMD======
+set -e
+echo "🚀 Starting deployment to ***..."
+
+# Navigate to application directory
+cd /var/www/chatwoot
+
+# Pull latest code from GitHub
+echo "📥 Pulling latest code from GitHub main branch..."
+git fetch origin main
+git reset --hard origin/main
+
+# Load Ruby environment (rbenv)
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Load environment variables from .env.production
+# (Already configured on server - no need to pass secrets)
+source /var/www/chatwoot/.env.production || true
+
+# Install Ruby dependencies
+echo "📦 Installing Ruby gems (bundle install)..."
+bundle install --deployment --without development test
+
+# Install Node dependencies
+echo "📦 Installing Node packages (pnpm install)..."
+pnpm install --frozen-lockfile
+
+# Precompile assets for production
+echo "🎨 Precompiling Vite and Rails assets..."
+RAILS_ENV=production BUILD_MODE=library bin/vite build
+RAILS_ENV=production bin/vite build
+RAILS_ENV=production bundle exec rails assets:precompile
+
+# Run database migrations
+echo "🗄️ Running database migrations..."
+RAILS_ENV=production bundle exec rails db:migrate
+
+# Restart Chatwoot services
+echo "🔄 Restarting Chatwoot web and worker services..."
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# Wait for services to start
+sleep 3
+
+# Check service status
+echo "✅ Checking service status..."
+sudo systemctl status chatwoot-web --no-pager || true
+sudo systemctl status chatwoot-worker --no-pager || true
+
+echo "✅ Deployment completed successfully!"
+echo "🌐 Application is now live at https://***"
+
+======END======
+out: 🚀 Starting deployment to ***...
+out: 📥 Pulling latest code from GitHub main branch...
+err: From github-aisaturncwrepl:hketai/aisaturncwrepl
+err:  * branch                main       -> FETCH_HEAD
+err:    7ce2d0df5..6d29c007f  main       -> origin/main
+out: HEAD is now at 6d29c007f Add Ruby environment setup for automated deployment
+out: 📦 Installing Ruby gems (bundle install)...
+err: [DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+err: [DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+err: Don't run Bundler as ***. Installing your bundle as *** will break this
+err: application for all non-*** users on this machine.
+err: Your Ruby version is 3.4.4, but your Gemfile specified 3.2.2
+2025/10/06 02:45:23 Process exited with status 18
