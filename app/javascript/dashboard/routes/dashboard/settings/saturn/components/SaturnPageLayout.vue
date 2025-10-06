@@ -54,52 +54,65 @@ const handleBack = () => {
 </script>
 
 <template>
-  <div class="flex flex-col h-full">
-    <div class="flex items-center justify-between p-4 border-b border-n-weak">
-      <div class="flex items-center gap-3">
-        <Button
-          v-if="backUrl"
-          icon="i-lucide-arrow-left"
-          color="slate"
-          size="sm"
-          @click="handleBack"
-        />
-        <h1 class="text-xl font-semibold text-n-slate-12">
-          {{ headerTitle }}
-        </h1>
-      </div>
+  <section class="flex flex-col w-full h-full overflow-hidden bg-n-background">
+    <header class="sticky top-0 z-10 px-6">
+      <div class="w-full max-w-[60rem] mx-auto">
+        <div
+          class="flex items-start lg:items-center justify-between w-full py-6 lg:py-0 lg:h-20 gap-4 lg:gap-2 flex-col lg:flex-row"
+        >
+          <div class="flex gap-4 items-center">
+            <Button
+              v-if="backUrl"
+              icon="i-lucide-arrow-left"
+              color="slate"
+              size="sm"
+              @click="handleBack"
+            />
+            <slot name="headerTitle">
+              <span class="text-xl font-medium text-n-slate-12">
+                {{ headerTitle }}
+              </span>
+            </slot>
+          </div>
 
-      <div v-if="showHeaderActions" class="flex items-center gap-2">
-        <slot name="header-actions">
-          <Button
-            v-if="buttonLabel"
-            icon="i-lucide-plus"
-            @click="handleClick"
-          >
-            {{ buttonLabel }}
-          </Button>
-        </slot>
+          <div v-if="showHeaderActions" class="flex items-center gap-2">
+            <slot name="header-actions">
+              <Button
+                v-if="buttonLabel"
+                :label="buttonLabel"
+                icon="i-lucide-plus"
+                size="sm"
+                @click="handleClick"
+              />
+            </slot>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
 
-    <div class="flex-1 overflow-auto p-4">
-      <div v-if="isFetching" class="flex items-center justify-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+    <main class="flex-1 px-6 overflow-y-auto">
+      <div class="w-full max-w-[60rem] h-full mx-auto py-4">
+        <div
+          v-if="isFetching"
+          class="flex items-center justify-center py-10 text-n-slate-11"
+        >
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        </div>
+        
+        <div v-else-if="isEmpty">
+          <slot name="emptyState" />
+        </div>
+        
+        <div v-else>
+          <slot name="body">
+            <slot />
+          </slot>
+        </div>
       </div>
+    </main>
 
-      <div v-else-if="isEmpty">
-        <slot name="emptyState" />
-      </div>
-
-      <div v-else>
-        <slot name="body">
-          <slot />
-        </slot>
-      </div>
-    </div>
-
-    <div v-if="showPaginationFooter" class="border-t border-n-weak p-4">
+    <footer v-if="showPaginationFooter" class="sticky bottom-0 z-10 px-4 pb-4">
       <slot name="pagination" />
-    </div>
-  </div>
+    </footer>
+  </section>
 </template>
