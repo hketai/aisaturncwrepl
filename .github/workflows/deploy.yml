@@ -1,4 +1,4 @@
-name: Deploy to Digital Ocean
+name: Deploy to Digital Ocean Production
 
 on:
   push:
@@ -10,37 +10,62 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Deploy to Digital Ocean
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.DO_HOST }}
-        username: ${{ secrets.DO_USERNAME }}
-        key: ${{ secrets.DO_SSH_KEY }}
-        port: ${{ secrets.DO_PORT }}
-        script: |
-          cd /var/www/chatwoot
-          git pull origin main
-          
-          export POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
-          export POSTGRES_USERNAME=${{ secrets.POSTGRES_USERNAME }}
-          export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
-          export POSTGRES_DATABASE=${{ secrets.POSTGRES_DATABASE }}
-          export POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
-          export REDIS_URL=${{ secrets.REDIS_URL }}
-          export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
-          export RAILS_ENV=production
-          export FRONTEND_URL=${{ secrets.FRONTEND_URL }}
-          
-          bundle install --deployment --without development test
-          pnpm install --frozen-lockfile
-          
-          bundle exec rails db:migrate
-          bundle exec rails assets:precompile
-          
-          sudo systemctl restart chatwoot-web
-          sudo systemctl restart chatwoot-worker
-          
-          echo "✅ Deployment completed successfully!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Deploy to Production Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            set -e
+            echo "🚀 Starting deployment to app.aisaturn.co..."
+            
+            # Navigate to application directory
+            cd /var/www/chatwoot
+            
+            # Pull latest code from GitHub
+            echo "📥 Pulling latest code from GitHub main branch..."
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Load environment variables from .env.production
+            # (Already configured on server - no need to pass secrets)
+            source /var/www/chatwoot/.env.production || true
+            
+            # Install Ruby dependencies
+            echo "📦 Installing Ruby gems (bundle install)..."
+            bundle install --deployment --without development test
+            
+            # Install Node dependencies
+            echo "📦 Installing Node packages (pnpm install)..."
+            pnpm install --frozen-lockfile
+            
+            # Precompile assets for production
+            echo "🎨 Precompiling Vite and Rails assets..."
+            RAILS_ENV=production BUILD_MODE=library bin/vite build
+            RAILS_ENV=production bin/vite build
+            RAILS_ENV=production bundle exec rails assets:precompile
+            
+            # Run database migrations
+            echo "🗄️ Running database migrations..."
+            RAILS_ENV=production bundle exec rails db:migrate
+            
+            # Restart Chatwoot services
+            echo "🔄 Restarting Chatwoot web and worker services..."
+            sudo systemctl restart chatwoot-web
+            sudo systemctl restart chatwoot-worker
+            
+            # Wait for services to start
+            sleep 3
+            
+            # Check service status
+            echo "✅ Checking service status..."
+            sudo systemctl status chatwoot-web --no-pager || true
+            sudo systemctl status chatwoot-worker --no-pager || true
+            
+            echo "✅ Deployment completed successfully!"
+            echo "🌐 Application is now live at https://app.aisaturn.co"
