@@ -4,14 +4,18 @@ class SaturnAgentProfilePolicy < ApplicationPolicy
   end
   
   def create?
-    @user.administrator?
+    true
   end
   
   def update?
-    @user.administrator?
+    true
   end
   
   def destroy?
-    @user.administrator?
+    true
+  end
+  
+  def chat?
+    true
   end
 end
