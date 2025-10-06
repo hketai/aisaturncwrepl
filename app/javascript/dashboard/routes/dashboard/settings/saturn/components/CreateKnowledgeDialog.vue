@@ -4,8 +4,8 @@ import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
-import Input from 'dashboard/components-next/form-elements/Input.vue';
-import Textarea from 'dashboard/components-next/form-elements/Textarea.vue';
+import Input from 'dashboard/components-next/input/Input.vue';
+import Textarea from 'dashboard/components-next/textarea/TextArea.vue';
 
 const props = defineProps({
   agentId: {
