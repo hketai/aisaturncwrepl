@@ -69,6 +69,16 @@ Rails.application.routes.draw do
             end
             resources :documents, only: [:index, :show, :create, :destroy]
           end
+          namespace :saturn do
+            resources :agents do
+              member do
+                post :chat
+              end
+              resources :inbox_connections, only: [:index, :create, :destroy], param: :inbox_id
+            end
+            resources :knowledge_sources
+            resources :auto_replies, only: [:index, :show, :destroy]
+          end
           resource :saml_settings, only: [:show, :create, :update, :destroy]
           resources :agent_bots, only: [:index, :create, :show, :update, :destroy] do
             delete :avatar, on: :member

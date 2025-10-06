@@ -1,0 +1,8 @@
+json.id @knowledge_source.id
+json.title @knowledge_source.title
+json.source_url @knowledge_source.source_url
+json.content_text @knowledge_source.content_text
+json.source_type @knowledge_source.source_type
+json.agent_profile_id @knowledge_source.agent_profile_id
+json.metadata @knowledge_source.metadata
+json.updated_at @knowledge_source.updated_at
