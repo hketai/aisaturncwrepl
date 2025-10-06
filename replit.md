@@ -35,6 +35,32 @@ Users can create accounts through the signup flow or via super admin console.
 
 ## Recent Changes (October 6, 2025)
 
+### Saturn AI - MIT-Licensed Auto-Response System (NEW!)
+**Status:** ✅ **Backend + Frontend Complete**
+
+Saturn AI is a new MIT-licensed automatic response system built as an alternative to Captain AI (enterprise feature). It provides AI-powered automatic responses using OpenAI integration.
+
+**Architecture:**
+- **Database:** 4 new tables (saturn_agent_profiles, saturn_knowledge_sources, saturn_auto_replies, saturn_inbox_connections)
+- **Backend Models:** Saturn::AgentProfile, Saturn::KnowledgeSource, Saturn::AutoReply, Saturn::InboxConnection
+- **Services:** Saturn::Orchestrator (multi-turn conversation handler), Saturn::LlmService (OpenAI integration)
+- **API Endpoints:** Full CRUD for agents, knowledge sources, auto-replies, inbox connections
+- **Frontend:** Sidebar menu "Saturn AI" (Settings > Saturn AI), Vue routes, i18n translations
+
+**MIT Compliance:**
+- Distinct table names (saturn_* vs captain_*)
+- Different class structure (AgentProfile vs Assistant, KnowledgeSource vs Document)
+- Separate namespacing and tool system
+- No enterprise folder dependencies
+
+**Requirements:**
+- `OPENAI_API_KEY` environment secret (required for AI responses)
+- PostgreSQL with pgvector extension (for embeddings)
+
+**Location:**
+- API: `/api/v1/accounts/:account_id/saturn/`
+- Frontend: Settings > Saturn AI (sparkles icon)
+
 ### CI/CD Pipeline Setup
 1. **GitHub Actions deployment:** Automated deployment pipeline configured for main branch pushes
 2. **Digital Ocean integration:** SSH deployment to production server (app.aisaturn.co)
