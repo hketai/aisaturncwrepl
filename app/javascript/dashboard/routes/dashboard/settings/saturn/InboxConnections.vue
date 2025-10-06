@@ -118,17 +118,17 @@ onMounted(() => {
     <template #body>
       <div class="space-y-6">
         <div v-if="connectedInboxes.length > 0">
-          <h3 class="text-sm font-medium text-n-strong mb-3">Connected Inboxes</h3>
+          <h3 class="text-base font-semibold text-n-slate-12 mb-4">Connected Inboxes</h3>
           <div class="flex flex-col gap-3">
             <CardLayout
               v-for="connection in connectedInboxes"
               :key="connection.inbox.id"
-              class="!p-4"
+              class="!p-5"
             >
               <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <h4 class="text-base font-semibold text-n-strong truncate">
+                  <div class="flex items-center gap-2 mb-2">
+                    <h4 class="text-lg font-semibold text-n-slate-12 truncate">
                       {{ connection.inbox.name }}
                     </h4>
                     <span
@@ -138,7 +138,7 @@ onMounted(() => {
                       Connecting...
                     </span>
                   </div>
-                  <p class="text-sm text-n-weak mb-2">
+                  <p class="text-sm text-n-slate-11 mb-3">
                     Channel: {{ connection.inbox.channel_type || 'Unknown' }}
                   </p>
                   <div class="flex items-center gap-2">
@@ -150,47 +150,54 @@ onMounted(() => {
                         class="rounded border-n-weak"
                         @change="toggleAutoRespond(connection)"
                       />
-                      <span class="text-n-strong">Auto-respond to messages</span>
+                      <span class="text-n-slate-12 font-medium">Auto-respond to messages</span>
                     </label>
                   </div>
                 </div>
                 <Button
-                  icon="i-lucide-unlink"
                   color="slate"
-                  size="xs"
+                  size="sm"
                   :disabled="connection._optimistic"
-                  class="rounded-md hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20"
+                  class="hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20"
                   @click="handleDisconnect(connection)"
-                />
+                >
+                  <template #prefixIcon>
+                    <i class="i-lucide-unlink"></i>
+                  </template>
+                  Disconnect
+                </Button>
               </div>
             </CardLayout>
           </div>
         </div>
 
         <div v-if="availableInboxes.length > 0">
-          <h3 class="text-sm font-medium text-n-strong mb-3">Available Inboxes</h3>
+          <h3 class="text-base font-semibold text-n-slate-12 mb-4">Available Inboxes</h3>
           <div class="flex flex-col gap-3">
             <CardLayout
               v-for="inbox in availableInboxes"
               :key="inbox.id"
-              class="!p-4"
+              class="!p-5"
             >
               <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                  <h4 class="text-base font-semibold text-n-strong truncate mb-1">
+                  <h4 class="text-lg font-semibold text-n-slate-12 truncate mb-2">
                     {{ inbox.name }}
                   </h4>
-                  <p class="text-sm text-n-weak">
+                  <p class="text-sm text-n-slate-11">
                     Channel: {{ inbox.channel_type || 'Unknown' }}
                   </p>
                 </div>
                 <Button
-                  icon="i-lucide-link"
                   color="blue"
-                  size="xs"
-                  class="rounded-md"
+                  size="sm"
                   @click="handleConnect(inbox)"
-                />
+                >
+                  <template #prefixIcon>
+                    <i class="i-lucide-link"></i>
+                  </template>
+                  Connect
+                </Button>
               </div>
             </CardLayout>
           </div>
