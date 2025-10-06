@@ -42,6 +42,10 @@ externalPort = 3000
 localPort = 7433
 externalPort = 3002
 
+[[ports]]
+localPort = 45017
+externalPort = 3001
+
 [deployment]
 deploymentTarget = "vm"
 run = ["bash", "-c", "bundle exec puma -C config/puma.rb -p 5000 & bundle exec sidekiq -C config/sidekiq.yml"]

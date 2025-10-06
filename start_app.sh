@@ -38,9 +38,6 @@ echo "Database: $POSTGRES_DATABASE"
 echo "Redis: $REDIS_URL"
 echo "Frontend URL: $FRONTEND_URL"
 echo ""
-echo "Running database migrations..."
-bundle exec rails db:create db:migrate || echo "Database migration failed or already exists"
-echo ""
 echo "Starting Sidekiq background worker..."
 bundle exec sidekiq -C config/sidekiq.yml > log/sidekiq.log 2>&1 &
 SIDEKIQ_PID=$!
