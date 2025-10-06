@@ -6,6 +6,12 @@ module Saturn
       message = Message.find_by(id: message_id)
       return unless message
       
+      # Prevent duplicate responses
+      if already_responded?(message, agent_profile_id)
+        Rails.logger.info("Saturn: Skipping duplicate response for message #{message_id}")
+        return
+      end
+      
       agent_profile = Saturn::AgentProfile.find_by(id: agent_profile_id)
       return unless agent_profile&.active?
       
@@ -14,7 +20,10 @@ module Saturn
       
       # Get OpenAI API key from account
       api_key = account.custom_attributes['openai_api_key']
-      return if api_key.blank?
+      if api_key.blank?
+        Rails.logger.warn("Saturn: No OpenAI API key for account #{account_id}, skipping auto-response")
+        return
+      end
       
       # Build conversation context
       context = build_context(message)
@@ -71,18 +80,41 @@ module Saturn
         end
     end
     
+    def already_responded?(message, agent_profile_id)
+      conversation = message.conversation
+      
+      # Check if Saturn already responded to this message
+      conversation.messages
+        .where(message_type: :outgoing)
+        .where("content_attributes->>'saturn_agent_id' = ?", agent_profile_id.to_s)
+        .where('created_at > ?', message.created_at)
+        .exists?
+    end
+    
     def create_response_message(original_message, response_content, agent_profile)
       conversation = original_message.conversation
+      inbox = conversation.inbox
+      
+      # Find a sender: prefer assigned agent, fallback to first inbox member, then bot user
+      sender = conversation.assignee || 
+               inbox.members.first || 
+               inbox.account.users.where(account_users: { role: :administrator }).first
+      
+      unless sender
+        Rails.logger.error("Saturn: No suitable sender found for conversation #{conversation.id}")
+        return
+      end
       
       # Create outgoing message from agent
       Messages::MessageBuilder.new(
-        user: conversation.inbox.members.first, # Use first inbox member as sender
+        user: sender,
         conversation: conversation,
         message_type: :outgoing,
         content: response_content,
         private: false,
         content_attributes: {
-          automation_rule_id: "saturn_agent_#{agent_profile.id}"
+          saturn_agent_id: agent_profile.id.to_s,
+          automated_response: true
         }
       ).perform
     end
