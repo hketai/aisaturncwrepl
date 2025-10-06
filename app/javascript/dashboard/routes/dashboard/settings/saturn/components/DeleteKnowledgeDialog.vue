@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
+import Button from 'dashboard/components-next/button/Button.vue';
 
 const props = defineProps({
   agentId: {
@@ -42,9 +43,32 @@ defineExpose({ dialogRef });
     ref="dialogRef"
     type="alert"
     :title="`Delete ${knowledge.title}?`"
-    description="This knowledge source will be permanently removed from the agent's knowledge base."
-    confirm-button-label="Delete Knowledge Source"
+    :show-cancel-button="true"
+    :show-confirm-button="false"
     @close="handleClose"
-    @confirm="handleConfirm"
-  />
+  >
+    <template #description>
+      <p class="mb-0 text-sm text-n-slate-11">
+        This knowledge source will be permanently removed from the agent's knowledge base.
+      </p>
+    </template>
+    
+    <template #footer>
+      <div class="flex items-center justify-between w-full gap-3">
+        <Button
+          variant="faded"
+          color="slate"
+          label="Cancel"
+          class="w-full"
+          @click="handleClose"
+        />
+        <Button
+          color="ruby"
+          label="Delete Knowledge Source"
+          class="w-full"
+          @click="handleConfirm"
+        />
+      </div>
+    </template>
+  </Dialog>
 </template>
