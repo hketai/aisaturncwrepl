@@ -1,4 +1,4 @@
-modules = ["ruby-3.2", "web", "nodejs-23"]
+modules = ["ruby-3.2", "web", "nodejs-23", "postgresql-16"]
 [agent]
 expertMode = true
 
@@ -45,10 +45,6 @@ externalPort = 3002
 [[ports]]
 localPort = 33345
 externalPort = 3001
-
-[[ports]]
-localPort = 45041
-externalPort = 3003
 
 [deployment]
 deploymentTarget = "vm"
