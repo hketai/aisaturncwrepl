@@ -47,7 +47,7 @@ const handleConnect = async (inbox) => {
   const optimisticConnection = {
     id: `temp-${Date.now()}`,
     inbox: inbox,
-    auto_respond: false,
+    auto_respond: true,
     connection_settings: {},
     _optimistic: true,
   };
@@ -57,7 +57,7 @@ const handleConnect = async (inbox) => {
   try {
     const response = await SaturnInboxConnectionsAPI.create(agentId.value, {
       inbox_id: inbox.id,
-      auto_respond: false,
+      auto_respond: true,
     });
     
     const index = connectedInboxes.value.findIndex(c => c._optimistic);
@@ -82,23 +82,6 @@ const handleDisconnect = async (connection) => {
   } catch (error) {
     connectedInboxes.value.push(connectionData);
     useAlert('Failed to disconnect inbox');
-  }
-};
-
-const toggleAutoRespond = async (connection) => {
-  const originalValue = connection.auto_respond;
-  connection.auto_respond = !connection.auto_respond;
-  
-  try {
-    await SaturnInboxConnectionsAPI.delete(agentId.value, connection.inbox.id);
-    await SaturnInboxConnectionsAPI.create(agentId.value, {
-      inbox_id: connection.inbox.id,
-      auto_respond: connection.auto_respond,
-    });
-    useAlert('Auto-respond setting updated');
-  } catch (error) {
-    connection.auto_respond = originalValue;
-    useAlert('Failed to update auto-respond setting');
   }
 };
 
@@ -139,21 +122,9 @@ onMounted(() => {
                       Connecting...
                     </span>
                   </div>
-                  <p class="text-sm text-n-slate-11 mb-3">
+                  <p class="text-sm text-n-slate-11">
                     Channel: {{ connection.inbox.channel_type || 'Unknown' }}
                   </p>
-                  <div class="flex items-center gap-2">
-                    <label class="flex items-center gap-2 text-sm cursor-pointer">
-                      <input
-                        type="checkbox"
-                        :checked="connection.auto_respond"
-                        :disabled="connection._optimistic"
-                        class="rounded border-n-weak"
-                        @change="toggleAutoRespond(connection)"
-                      />
-                      <span class="text-n-slate-12 font-medium">Auto-respond to messages</span>
-                    </label>
-                  </div>
                 </div>
                 <Button
                   color="slate"

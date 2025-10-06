@@ -55,48 +55,41 @@ const handleAction = (action) => {
         </span>
       </div>
       
-      <div class="flex items-center gap-2 pt-2 border-t border-n-weak">
+      <div class="flex items-center gap-1.5 pt-2 border-t border-n-weak">
         <Button
-          color="slate"
+          icon="i-lucide-book-open"
+          color="blue"
           size="xs"
-          class="flex-1"
+          class="flex-1 text-xs"
           @click="handleAction('viewKnowledge')"
         >
-          <template #prefixIcon>
-            <i class="i-lucide-book-open"></i>
-          </template>
           Knowledge
         </Button>
         
         <Button
-          color="slate"
+          icon="i-lucide-link"
+          color="teal"
           size="xs"
-          class="flex-1"
+          class="flex-1 text-xs"
           @click="handleAction('inboxConnections')"
         >
-          <template #prefixIcon>
-            <i class="i-lucide-link"></i>
-          </template>
           Inboxes
         </Button>
         
         <Button
+          icon="i-lucide-pencil-line"
           color="slate"
           size="xs"
-          class="flex-1"
+          class="flex-1 text-xs"
           @click="handleAction('edit')"
         >
-          <template #prefixIcon>
-            <i class="i-lucide-pencil-line"></i>
-          </template>
           Edit
         </Button>
         
         <Button
           icon="i-lucide-trash"
-          color="slate"
+          color="ruby"
           size="xs"
-          class="hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20"
           @click="handleAction('delete')"
         />
       </div>
