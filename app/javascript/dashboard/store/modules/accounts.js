@@ -145,7 +145,8 @@ export const actions = {
       const response = await EnterpriseAccountAPI.getLimits();
       commit(types.default.SET_ACCOUNT_LIMITS, response.data);
     } catch (error) {
-      // silent error
+      // Set empty limits object to prevent undefined errors in MIT version
+      commit(types.default.SET_ACCOUNT_LIMITS, {});
     }
   },
 
