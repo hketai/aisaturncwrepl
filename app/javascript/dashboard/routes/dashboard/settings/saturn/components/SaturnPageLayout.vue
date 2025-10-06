@@ -1,6 +1,9 @@
 <script setup>
 import { computed, useSlots } from 'vue';
+import { useRouter } from 'vue-router';
 import Button from 'dashboard/components-next/button/Button.vue';
+
+const router = useRouter();
 
 const props = defineProps({
   headerTitle: {
@@ -8,7 +11,7 @@ const props = defineProps({
     required: true,
   },
   backUrl: {
-    type: String,
+    type: [String, Object],
     default: null,
   },
   buttonLabel: {
@@ -38,6 +41,16 @@ const showHeaderActions = computed(() => {
 const handleClick = () => {
   emit('click');
 };
+
+const handleBack = () => {
+  if (props.backUrl) {
+    if (typeof props.backUrl === 'string') {
+      router.push(props.backUrl);
+    } else {
+      router.push(props.backUrl);
+    }
+  }
+};
 </script>
 
 <template>
@@ -49,7 +62,7 @@ const handleClick = () => {
           icon="i-lucide-arrow-left"
           color="slate"
           size="sm"
-          :to="backUrl"
+          @click="handleBack"
         />
         <h1 class="text-xl font-semibold text-n-slate-12">
           {{ headerTitle }}

@@ -55,12 +55,12 @@ const handleAction = (action) => {
         </span>
       </div>
       
-      <div class="flex items-center gap-1.5 pt-2 border-t border-n-weak">
+      <div class="flex items-center gap-2 pt-4 mt-2 border-t border-n-weak">
         <Button
           icon="i-lucide-book-open"
           color="blue"
-          size="xs"
-          class="flex-1 text-xs"
+          size="sm"
+          class="flex-1"
           @click="handleAction('viewKnowledge')"
         >
           Knowledge
@@ -69,8 +69,8 @@ const handleAction = (action) => {
         <Button
           icon="i-lucide-link"
           color="teal"
-          size="xs"
-          class="flex-1 text-xs"
+          size="sm"
+          class="flex-1"
           @click="handleAction('inboxConnections')"
         >
           Inboxes
@@ -79,8 +79,8 @@ const handleAction = (action) => {
         <Button
           icon="i-lucide-message-square"
           color="purple"
-          size="xs"
-          class="flex-1 text-xs"
+          size="sm"
+          class="flex-1"
           @click="handleAction('autoReplies')"
         >
           Auto Replies
@@ -89,8 +89,8 @@ const handleAction = (action) => {
         <Button
           icon="i-lucide-pencil-line"
           color="slate"
-          size="xs"
-          class="flex-1 text-xs"
+          size="sm"
+          class="flex-1"
           @click="handleAction('edit')"
         >
           Edit
@@ -99,7 +99,7 @@ const handleAction = (action) => {
         <Button
           icon="i-lucide-trash"
           color="ruby"
-          size="xs"
+          size="sm"
           @click="handleAction('delete')"
         />
       </div>
