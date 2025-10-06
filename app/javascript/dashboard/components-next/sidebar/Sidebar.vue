@@ -459,6 +459,12 @@ const menuItems = computed(() => {
           to: accountScopedRoute('agent_bots'),
         },
         {
+          name: 'Settings Saturn',
+          label: t('SIDEBAR.SATURN'),
+          icon: 'i-lucide-sparkles',
+          to: accountScopedRoute('saturn_agents'),
+        },
+        {
           name: 'Settings Macros',
           label: t('SIDEBAR.MACROS'),
           icon: 'i-lucide-toy-brick',

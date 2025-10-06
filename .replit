@@ -46,6 +46,10 @@ externalPort = 3002
 localPort = 33345
 externalPort = 3001
 
+[[ports]]
+localPort = 35395
+externalPort = 3003
+
 [deployment]
 deploymentTarget = "vm"
 run = ["bash", "start_production.sh"]
