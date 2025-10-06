@@ -1,0 +1,90 @@
+module Saturn
+  class AutoRespondJob < ApplicationJob
+    queue_as :default
+    
+    def perform(message_id:, agent_profile_id:, account_id:)
+      message = Message.find_by(id: message_id)
+      return unless message
+      
+      agent_profile = Saturn::AgentProfile.find_by(id: agent_profile_id)
+      return unless agent_profile&.active?
+      
+      account = Account.find_by(id: account_id)
+      return unless account
+      
+      # Get OpenAI API key from account
+      api_key = account.custom_attributes['openai_api_key']
+      return if api_key.blank?
+      
+      # Build conversation context
+      context = build_context(message)
+      
+      # Generate response using Orchestrator
+      orchestrator = Saturn::Orchestrator.new(
+        agent_profile: agent_profile,
+        api_key: api_key
+      )
+      
+      result = orchestrator.process(message.content, context: context)
+      
+      # Create response message if successful
+      if result[:success] && result[:response].present?
+        create_response_message(message, result[:response], agent_profile)
+      else
+        Rails.logger.error("Saturn auto-respond failed: #{result[:error]}")
+      end
+    rescue StandardError => e
+      Rails.logger.error("Saturn::AutoRespondJob error: #{e.message}")
+      Rails.logger.error(e.backtrace.join("\n"))
+    end
+    
+    private
+    
+    def build_context(message)
+      conversation = message.conversation
+      contact = conversation.contact
+      inbox = conversation.inbox
+      
+      {
+        conversation_id: conversation.display_id,
+        contact_name: contact.name,
+        contact_email: contact.email,
+        inbox_name: inbox.name,
+        inbox_type: inbox.channel_type,
+        previous_messages: fetch_recent_messages(conversation)
+      }
+    end
+    
+    def fetch_recent_messages(conversation)
+      conversation.messages
+        .where.not(message_type: :activity)
+        .where(private: false)
+        .order(created_at: :desc)
+        .limit(5)
+        .reverse
+        .map do |msg|
+          {
+            role: msg.outgoing? ? 'assistant' : 'user',
+            content: msg.content,
+            created_at: msg.created_at.iso8601
+          }
+        end
+    end
+    
+    def create_response_message(original_message, response_content, agent_profile)
+      conversation = original_message.conversation
+      
+      # Create outgoing message from agent
+      Messages::MessageBuilder.new(
+        user: conversation.inbox.members.first, # Use first inbox member as sender
+        conversation: conversation,
+        message_type: :outgoing,
+        content: response_content,
+        private: false,
+        content_attributes: {
+          automation_rule_id: "saturn_agent_#{agent_profile.id}"
+        }
+      ).perform
+    end
+  end
+end
