@@ -54,7 +54,10 @@ const handleAction = ({ action, id }) => {
 };
 
 const handleAgentCreated = (agent) => {
+  console.log('🔍 handleAgentCreated called with:', agent);
+  console.log('📋 Current agents before push:', agents.value);
   agents.value.push(agent);
+  console.log('📋 Current agents after push:', agents.value);
 };
 
 const handleAgentUpdated = (updatedAgent) => {
