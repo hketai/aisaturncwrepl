@@ -50,19 +50,15 @@ const handleSubmit = async () => {
   try {
     if (isEdit.value) {
       const response = await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
-      console.log('✅ Update response:', response);
       useAlert('Agent updated successfully');
       emit('updated', response.data);
     } else {
       const response = await SaturnAPI.create({ agent: form.value });
-      console.log('✅ Create response:', response);
-      console.log('✅ Response data:', response.data);
       useAlert('Agent created successfully');
       emit('created', response.data);
     }
     dialogRef.value.close();
   } catch (error) {
-    console.error('❌ Error:', error);
     const errorMsg = error.response?.data?.error || 'Operation failed';
     useAlert(errorMsg);
   }
