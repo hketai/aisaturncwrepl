@@ -217,8 +217,9 @@ const createAgent = async () => {
     newAgent.value = { name: '', description: '', product_context: '', active: true };
     await fetchAgents();
   } catch (error) {
-    useAlert('Failed to create agent');
-    console.error('Error creating agent:', error);
+    const errorMsg = error.response?.data?.error || 'Failed to create agent';
+    useAlert(errorMsg);
+    console.error('Error creating agent:', error.response?.data || error);
   }
 };
 

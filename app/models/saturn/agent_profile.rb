@@ -20,7 +20,6 @@ class Saturn::AgentProfile < ApplicationRecord
   has_many :messages, as: :sender, dependent: :nullify
   
   validates :name, presence: true
-  validates :description, presence: true
   validates :account_id, presence: true
   validates :name, uniqueness: { scope: :account_id }
   validates :ai_temperature, 
