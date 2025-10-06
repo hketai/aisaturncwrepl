@@ -64,11 +64,18 @@ const handleAgentUpdated = (updatedAgent) => {
   }
 };
 
+const deletedAgent = ref(null);
+
 const handleAgentDeleted = (agentId) => {
-  console.log('🎯 handleAgentDeleted called with ID:', agentId);
-  console.log('📋 Agents before filter:', agents.value.map(a => a.id));
+  deletedAgent.value = agents.value.find(a => a.id === agentId);
   agents.value = agents.value.filter(a => a.id !== agentId);
-  console.log('📋 Agents after filter:', agents.value.map(a => a.id));
+};
+
+const handleAgentRestore = (agentId) => {
+  if (deletedAgent.value && deletedAgent.value.id === agentId) {
+    agents.value.push(deletedAgent.value);
+    deletedAgent.value = null;
+  }
 };
 
 const handleDialogClose = () => {
@@ -120,6 +127,7 @@ onMounted(() => {
     ref="deleteDialogRef"
     :agent="selectedAgent"
     @deleted="handleAgentDeleted"
+    @restore="handleAgentRestore"
     @close="handleDialogClose"
   />
 </template>

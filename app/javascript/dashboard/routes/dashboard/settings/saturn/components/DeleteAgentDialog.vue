@@ -12,7 +12,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close', 'deleted']);
+const emit = defineEmits(['close', 'deleted', 'restore']);
 
 const dialogRef = ref(null);
 const agentToDelete = ref(null);
@@ -29,19 +29,19 @@ const handleConfirm = async () => {
     return;
   }
   
+  const agentId = agentToDelete.value.id;
+  
+  emit('deleted', agentId);
+  emit('close');
+  agentToDelete.value = null;
+  
   try {
-    console.log('🗑️ Starting delete for agent:', agentToDelete.value.id);
-    await SaturnAPI.delete(agentToDelete.value.id);
-    console.log('✅ Delete API success, emitting deleted event');
+    await SaturnAPI.delete(agentId);
     useAlert('Agent deleted successfully');
-    emit('deleted', agentToDelete.value.id);
-    console.log('📤 Deleted event emitted');
-    emit('close');
-    console.log('🚪 Close event emitted');
-    agentToDelete.value = null;
   } catch (error) {
     console.error('❌ Delete error:', error);
     useAlert('Failed to delete agent');
+    emit('restore', agentId);
   }
 };
 
