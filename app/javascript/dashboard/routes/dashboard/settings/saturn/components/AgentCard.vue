@@ -38,6 +38,12 @@ const menuItems = [
     icon: 'i-lucide-book-open',
   },
   {
+    label: 'Inbox Connections',
+    value: 'inboxConnections',
+    action: 'inboxConnections',
+    icon: 'i-lucide-link',
+  },
+  {
     label: 'Edit Agent',
     value: 'edit',
     action: 'edit',

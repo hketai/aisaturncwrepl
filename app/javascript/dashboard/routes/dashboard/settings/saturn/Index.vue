@@ -49,6 +49,11 @@ const handleAction = ({ action, id }) => {
         name: 'saturn_knowledge_sources',
         params: { agentId: id },
       });
+    } else if (action === 'inboxConnections') {
+      router.push({
+        name: 'saturn_inbox_connections',
+        params: { agentId: id },
+      });
     }
   });
 };
