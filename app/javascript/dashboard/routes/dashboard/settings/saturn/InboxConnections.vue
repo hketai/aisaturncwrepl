@@ -13,7 +13,7 @@ import Button from 'dashboard/components-next/button/Button.vue';
 const route = useRoute();
 const agentId = computed(() => route.params.agentId);
 
-const agent = ref(null);
+const agent = ref({ name: 'Agent' });
 const allInboxes = ref([]);
 const connectedInboxes = ref([]);
 const loading = ref(true);
@@ -26,15 +26,16 @@ const availableInboxes = computed(() => {
 const fetchData = async () => {
   loading.value = true;
   try {
-    const [agentResponse, inboxesResponse, connectionsResponse] = await Promise.all([
-      SaturnAPI.show(agentId.value),
+    const [inboxesResponse, connectionsResponse] = await Promise.all([
       InboxesAPI.get(),
       SaturnInboxConnectionsAPI.getForAgent(agentId.value),
     ]);
     
-    agent.value = agentResponse.data;
     allInboxes.value = inboxesResponse.data.payload || [];
     connectedInboxes.value = connectionsResponse.data.payload || [];
+    
+    const agentResponse = await SaturnAPI.show(agentId.value);
+    agent.value = agentResponse.data;
   } catch (error) {
     useAlert('Failed to load data');
   } finally {
