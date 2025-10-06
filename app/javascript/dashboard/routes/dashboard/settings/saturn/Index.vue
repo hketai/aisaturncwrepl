@@ -54,11 +54,6 @@ const handleAction = ({ action, id }) => {
         name: 'saturn_inbox_connections',
         params: { agentId: id },
       });
-    } else if (action === 'autoReplies') {
-      router.push({
-        name: 'saturn_auto_replies',
-        params: { agentId: id },
-      });
     }
   });
 };
