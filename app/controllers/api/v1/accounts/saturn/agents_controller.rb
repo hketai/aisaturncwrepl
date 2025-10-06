@@ -8,10 +8,15 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
   def show; end
   
   def create
-    @agent = Current.account.saturn_agent_profiles.new(agent_params)
-    @agent.save!
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
+    @agent_profile = Current.account.saturn_agent_profiles.new(agent_params)
+    
+    if @agent_profile.save
+      render :show, status: :created
+    else
+      render json: { 
+        error: @agent_profile.errors.full_messages.join(', ') 
+      }, status: :unprocessable_entity
+    end
   end
   
   def update
