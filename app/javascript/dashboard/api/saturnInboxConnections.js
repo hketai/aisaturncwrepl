@@ -19,8 +19,7 @@ class SaturnInboxConnectionsAPI extends ApiClient {
 
   delete(agentId, inboxId) {
     return axios.delete(
-      `/api/v1/accounts/${this.accountIdFromRoute}/saturn/agents/${agentId}/inbox_connections`,
-      { data: { inbox_id: inboxId } }
+      `/api/v1/accounts/${this.accountIdFromRoute}/saturn/agents/${agentId}/inbox_connections/${inboxId}`
     );
   }
 
