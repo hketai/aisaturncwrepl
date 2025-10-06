@@ -25,7 +25,19 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
     user_message = params[:message]
     context = params[:context] || {}
     
-    orchestrator = Saturn::Orchestrator.new(agent_profile: @agent_profile)
+    api_key = Current.account.openai_api_key
+    
+    if api_key.blank?
+      return render json: { 
+        success: false, 
+        error: 'OpenAI API key not configured. Please add it in Super Admin > Accounts.' 
+      }, status: :unprocessable_entity
+    end
+    
+    orchestrator = Saturn::Orchestrator.new(
+      agent_profile: @agent_profile,
+      api_key: api_key
+    )
     result = orchestrator.process(user_message, context: context)
     
     render json: result
