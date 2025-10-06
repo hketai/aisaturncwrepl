@@ -3,6 +3,10 @@ class SaturnAgentProfilePolicy < ApplicationPolicy
     true
   end
   
+  def show?
+    true
+  end
+  
   def create?
     true
   end
