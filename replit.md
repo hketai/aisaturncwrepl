@@ -75,8 +75,16 @@ Saturn AI is a new MIT-licensed automatic response system built as an alternativ
   - `/accounts/:accountId/settings/saturn-agents/:agentId/knowledge-sources` - Knowledge sources
   - `/accounts/:accountId/settings/saturn-agents/:agentId/inbox-connections` - Inbox connections
 
+**Auto-Response System:**
+- **Automatic Message Handling:** When a message arrives in a connected inbox, Saturn automatically generates and sends AI-powered responses
+- **Event-Driven Architecture:** Uses SaturnListener to detect incoming messages and trigger Saturn::AutoRespondJob
+- **Duplicate Prevention:** Idempotency checks prevent multiple responses to the same message
+- **Robust Sender Selection:** Fallback hierarchy (assignee → inbox member → admin) ensures messages are always sent
+- **Knowledge Integration:** Uses search_knowledge_base tool to fetch relevant information from FAQ/documents
+
 **Recent Updates:**
 - **October 6, 2025:** Removed Auto Replies feature (redundant with Knowledge Sources FAQ system) - simplified to focus on AI-powered responses via knowledge base
+- **October 6, 2025:** Implemented automatic response system with SaturnListener and AutoRespondJob for real-time AI-powered customer support
 
 ### CI/CD Pipeline Setup
 1. **GitHub Actions deployment:** Automated deployment pipeline configured for main branch pushes
