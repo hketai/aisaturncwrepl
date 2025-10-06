@@ -63,6 +63,11 @@ Rails.application.configure do
   # Disable host check during development
   config.hosts = nil
   
+  # Allow Replit webview iframe
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
+  
   # GitHub Codespaces configuration
   if ENV['CODESPACES']
     # Allow web console access from any IP
