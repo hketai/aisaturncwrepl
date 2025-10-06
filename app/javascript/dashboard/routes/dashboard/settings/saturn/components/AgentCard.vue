@@ -51,7 +51,12 @@ const menuItems = [
   },
 ];
 
-const lastUpdatedAt = computed(() => dynamicTime(props.updatedAt));
+const lastUpdatedAt = computed(() => {
+  const timestamp = typeof props.updatedAt === 'string' 
+    ? Math.floor(new Date(props.updatedAt).getTime() / 1000)
+    : props.updatedAt;
+  return dynamicTime(timestamp);
+});
 
 const handleAction = ({ action, value }) => {
   toggleDropdown(false);
