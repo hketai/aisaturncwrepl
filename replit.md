@@ -31,9 +31,14 @@ Use the super admin console to manage the platform, view system information, and
 
 Users can create accounts through the signup flow or via super admin console.
 
-## Recent Changes (October 5, 2025)
+## Recent Changes (October 6, 2025)
 
 ### Critical Issues Resolved
+1. **Database migration SIGHUP error:** Removed `db:migrate` from `start_app.sh` startup script to prevent SignalException during workflow restart
+2. **Workflow startup optimization:** Streamlined startup to only start Redis, Sidekiq, and Puma (migrations managed separately)
+3. **Vite on-demand compilation:** Confirmed Vite assets compile successfully on first request (7-10 second initial load time is expected)
+
+### Previous Setup (October 5, 2025)
 1. **Port binding conflict:** Fixed duplicate `bind` directive in `config/puma.rb` that caused "Address already in use" error
 2. **Rack::File error:** Updated `rack-mini-profiler` from 3.2.0 to 4.0.1 for Rack 3 compatibility
 3. **Native gem installation:** Successfully configured bundle with PostgreSQL library paths from Nix store
@@ -44,12 +49,13 @@ Users can create accounts through the signup flow or via super admin console.
 - Configured Puma to bind only once on port 5000
 - Installed system dependencies: postgresql_16, openssl, pkg-config, gcc, gnumake, autoconf, redis
 - Created `.env` file with proper database and Redis configuration
-- Set up `start_app.sh` script with port cleanup and proper environment variables
+- Optimized `start_app.sh` script: removed db:migrate (prevents SIGHUP), added port cleanup
 
 ### Database Setup
 - Created PostgreSQL database via Replit's Neon service
-- Ran all migrations successfully (25+ migrations completed)
+- Ran all migrations successfully (67 migrations completed - synced with production)
 - Database schema loaded and ready for use
+- Development database separate from production (Digital Ocean)
 
 ## Project Architecture
 
