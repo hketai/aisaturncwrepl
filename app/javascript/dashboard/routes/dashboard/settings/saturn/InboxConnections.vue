@@ -34,7 +34,7 @@ const fetchData = async () => {
     
     agent.value = agentResponse.data;
     allInboxes.value = inboxesResponse.data.payload || [];
-    connectedInboxes.value = connectionsResponse.data || [];
+    connectedInboxes.value = connectionsResponse.data.payload || [];
   } catch (error) {
     useAlert('Failed to load data');
   } finally {
