@@ -200,7 +200,23 @@ onMounted(() => {
           v-if="!loading && connectedInboxes.length === 0 && availableInboxes.length === 0"
           class="text-center py-12"
         >
-          <p class="text-n-weak">No inboxes available. Create an inbox first.</p>
+          <div class="flex flex-col items-center gap-4">
+            <div class="text-6xl text-n-weak">📥</div>
+            <p class="text-lg font-medium text-n-strong">No Inboxes Found</p>
+            <p class="text-sm text-n-weak max-w-md">
+              You need to create at least one inbox before connecting it to this agent.
+            </p>
+            <Button
+              color="blue"
+              size="md"
+              @click="$router.push({ name: 'settings_inbox_new' })"
+            >
+              <template #prefixIcon>
+                <i class="i-lucide-plus"></i>
+              </template>
+              Create Inbox
+            </Button>
+          </div>
         </div>
       </div>
     </template>
