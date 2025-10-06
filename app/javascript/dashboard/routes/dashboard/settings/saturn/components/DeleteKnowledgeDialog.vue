@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
@@ -16,27 +16,42 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close', 'deleted']);
+const emit = defineEmits(['close', 'deleted', 'restore']);
 
 const dialogRef = ref(null);
 const knowledgeToDelete = ref(null);
 
+watch(() => props.knowledge, (newKnowledge) => {
+  if (newKnowledge) {
+    knowledgeToDelete.value = { 
+      id: newKnowledge.id, 
+      title: newKnowledge.title,
+      ...newKnowledge 
+    };
+  }
+}, { immediate: true });
+
 const handleConfirm = async () => {
-  knowledgeToDelete.value = { ...props.knowledge };
+  if (!knowledgeToDelete.value) return;
   
-  emit('deleted', props.knowledge.id);
+  const knowledgeId = knowledgeToDelete.value.id;
+  const knowledgeData = { ...knowledgeToDelete.value };
+  
+  emit('deleted', knowledgeId);
   emit('close');
+  knowledgeToDelete.value = null;
   
   try {
-    await SaturnKnowledgeAPI.deleteForAgent(props.agentId, props.knowledge.id);
+    await SaturnKnowledgeAPI.deleteForAgent(props.agentId, knowledgeId);
     useAlert('Knowledge source deleted successfully');
   } catch (error) {
     useAlert('Failed to delete knowledge source');
-    emit('restore', knowledgeToDelete.value);
+    emit('restore', knowledgeData);
   }
 };
 
 const handleClose = () => {
+  knowledgeToDelete.value = null;
   emit('close');
 };
 
@@ -45,9 +60,10 @@ defineExpose({ dialogRef });
 
 <template>
   <Dialog
+    v-if="knowledgeToDelete"
     ref="dialogRef"
     type="alert"
-    :title="`Delete ${knowledge.title}?`"
+    :title="`Delete ${knowledgeToDelete.title}?`"
     :show-cancel-button="true"
     :show-confirm-button="false"
     @close="handleClose"
