@@ -75,6 +75,16 @@ const handleAction = (action) => {
         >
           Inboxes
         </Button>
+
+        <Button
+          icon="i-lucide-message-square"
+          color="purple"
+          size="xs"
+          class="flex-1 text-xs"
+          @click="handleAction('autoReplies')"
+        >
+          Auto Replies
+        </Button>
         
         <Button
           icon="i-lucide-pencil-line"
