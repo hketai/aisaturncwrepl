@@ -177,11 +177,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useStore } from 'vuex';
 import { useAlert } from 'dashboard/composables';
-import axios from 'axios';
+import SaturnAPI from 'dashboard/api/saturn';
 
-const store = useStore();
 const agents = ref([]);
 const loading = ref(true);
 const showCreateModal = ref(false);
@@ -192,12 +190,10 @@ const newAgent = ref({
   active: true,
 });
 
-const accountId = store.getters.getCurrentAccountId;
-
 const fetchAgents = async () => {
   try {
     loading.value = true;
-    const response = await axios.get(`/api/v1/accounts/${accountId}/saturn/agents`);
+    const response = await SaturnAPI.get();
     agents.value = response.data.payload || [];
   } catch (error) {
     useAlert('Failed to load agents');
@@ -209,9 +205,7 @@ const fetchAgents = async () => {
 
 const createAgent = async () => {
   try {
-    await axios.post(`/api/v1/accounts/${accountId}/saturn/agents`, {
-      agent: newAgent.value,
-    });
+    await SaturnAPI.create({ agent: newAgent.value });
     useAlert('Agent created successfully');
     showCreateModal.value = false;
     newAgent.value = { name: '', description: '', product_context: '', active: true };
@@ -231,7 +225,7 @@ const deleteAgent = async (agent) => {
   if (!confirm(`Are you sure you want to delete "${agent.name}"?`)) return;
   
   try {
-    await axios.delete(`/api/v1/accounts/${accountId}/saturn/agents/${agent.id}`);
+    await SaturnAPI.delete(agent.id);
     useAlert('Agent deleted successfully');
     await fetchAgents();
   } catch (error) {
