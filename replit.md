@@ -35,6 +35,11 @@ Users can create accounts through the signup flow or via super admin console.
 
 ## Recent Changes (October 6, 2025)
 
+### CI/CD Pipeline Setup
+1. **GitHub Actions deployment:** Automated deployment pipeline configured for main branch pushes
+2. **Digital Ocean integration:** SSH deployment to production server (app.aisaturn.co)
+3. **SSH key authentication:** Production server SSH key passphrase removed for automated deployments
+
 ### Critical Issues Resolved
 1. **Database migration SIGHUP error:** Removed `db:migrate` from `start_app.sh` startup script to prevent SignalException during workflow restart
 2. **Workflow startup optimization:** Streamlined startup to only start Redis, Sidekiq, and Puma (migrations managed separately)
