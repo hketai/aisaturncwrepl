@@ -71,7 +71,7 @@ const handleAction = ({ action, value }) => {
 </script>
 
 <template>
-  <CardLayout>
+  <CardLayout class="overflow-visible">
     <div class="flex justify-between w-full gap-1">
       <div class="flex-1 min-w-0">
         <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium">
