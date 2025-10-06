@@ -59,9 +59,23 @@ const handleDelete = (knowledge) => {
   nextTick(() => deleteDialogRef.value?.dialogRef?.open());
 };
 
+const handleKnowledgeCreated = (knowledge) => {
+  knowledgeSources.value.push(knowledge);
+};
+
+const handleKnowledgeUpdated = (updatedKnowledge) => {
+  const index = knowledgeSources.value.findIndex(k => k.id === updatedKnowledge.id);
+  if (index !== -1) {
+    knowledgeSources.value[index] = updatedKnowledge;
+  }
+};
+
+const handleKnowledgeDeleted = (knowledgeId) => {
+  knowledgeSources.value = knowledgeSources.value.filter(k => k.id !== knowledgeId);
+};
+
 const handleDialogClose = () => {
   selectedKnowledge.value = null;
-  fetchKnowledgeSources();
 };
 
 const getSourceTypeIcon = (type) => {
@@ -169,6 +183,8 @@ onMounted(async () => {
     ref="createDialogRef"
     :agent-id="agentId"
     :selected-knowledge="selectedKnowledge"
+    @created="handleKnowledgeCreated"
+    @updated="handleKnowledgeUpdated"
     @close="handleDialogClose"
   />
 
@@ -177,6 +193,7 @@ onMounted(async () => {
     ref="deleteDialogRef"
     :agent-id="agentId"
     :knowledge="selectedKnowledge"
+    @deleted="handleKnowledgeDeleted"
     @close="handleDialogClose"
   />
 </template>

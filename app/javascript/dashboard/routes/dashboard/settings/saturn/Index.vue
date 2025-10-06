@@ -53,9 +53,23 @@ const handleAction = ({ action, id }) => {
   });
 };
 
+const handleAgentCreated = (agent) => {
+  agents.value.push(agent);
+};
+
+const handleAgentUpdated = (updatedAgent) => {
+  const index = agents.value.findIndex(a => a.id === updatedAgent.id);
+  if (index !== -1) {
+    agents.value[index] = updatedAgent;
+  }
+};
+
+const handleAgentDeleted = (agentId) => {
+  agents.value = agents.value.filter(a => a.id !== agentId);
+};
+
 const handleDialogClose = () => {
   selectedAgent.value = null;
-  fetchAgents();
 };
 
 onMounted(() => {
@@ -94,6 +108,8 @@ onMounted(() => {
   <CreateAgentDialog
     ref="createDialogRef"
     :selected-agent="selectedAgent"
+    @created="handleAgentCreated"
+    @updated="handleAgentUpdated"
     @close="handleDialogClose"
   />
 
@@ -101,6 +117,7 @@ onMounted(() => {
     v-if="selectedAgent"
     ref="deleteDialogRef"
     :agent="selectedAgent"
+    @deleted="handleAgentDeleted"
     @close="handleDialogClose"
   />
 </template>

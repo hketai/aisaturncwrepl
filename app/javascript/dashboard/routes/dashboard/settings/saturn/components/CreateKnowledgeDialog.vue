@@ -18,7 +18,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'created', 'updated']);
 
 const dialogRef = ref(null);
 const form = ref({
@@ -59,15 +59,17 @@ watch(() => props.selectedKnowledge, (knowledge) => {
 const handleSubmit = async () => {
   try {
     if (isEdit.value) {
-      await SaturnKnowledgeAPI.updateForAgent(props.agentId, props.selectedKnowledge.id, {
+      const response = await SaturnKnowledgeAPI.updateForAgent(props.agentId, props.selectedKnowledge.id, {
         knowledge_source: form.value,
       });
       useAlert('Knowledge source updated successfully');
+      emit('updated', response.data);
     } else {
-      await SaturnKnowledgeAPI.createForAgent(props.agentId, {
+      const response = await SaturnKnowledgeAPI.createForAgent(props.agentId, {
         knowledge_source: form.value,
       });
       useAlert('Knowledge source added successfully');
+      emit('created', response.data);
     }
     dialogRef.value.close();
   } catch (error) {

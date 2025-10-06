@@ -14,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'created', 'updated']);
 
 const dialogRef = ref(null);
 const form = ref({
@@ -49,11 +49,13 @@ watch(() => props.selectedAgent, (agent) => {
 const handleSubmit = async () => {
   try {
     if (isEdit.value) {
-      await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
+      const response = await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
       useAlert('Agent updated successfully');
+      emit('updated', response.data);
     } else {
-      await SaturnAPI.create({ agent: form.value });
+      const response = await SaturnAPI.create({ agent: form.value });
       useAlert('Agent created successfully');
+      emit('created', response.data);
     }
     dialogRef.value.close();
   } catch (error) {

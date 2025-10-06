@@ -11,7 +11,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'deleted']);
 
 const dialogRef = ref(null);
 
@@ -19,6 +19,7 @@ const handleConfirm = async () => {
   try {
     await SaturnAPI.delete(props.agent.id);
     useAlert('Agent deleted successfully');
+    emit('deleted', props.agent.id);
     dialogRef.value.close();
   } catch (error) {
     useAlert('Failed to delete agent');

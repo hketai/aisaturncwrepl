@@ -8,5 +8,6 @@ json.payload do
     json.product_context agent.product_context
     json.avatar_url agent.avatar_url.presence || agent.send(:default_avatar_url)
     json.created_at agent.created_at
+    json.updated_at agent.updated_at
   end
 end
