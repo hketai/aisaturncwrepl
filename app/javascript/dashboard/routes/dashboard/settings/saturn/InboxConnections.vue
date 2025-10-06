@@ -6,7 +6,7 @@ import SaturnInboxConnectionsAPI from 'dashboard/api/saturnInboxConnections';
 import InboxesAPI from 'dashboard/api/inboxes';
 import SaturnAPI from 'dashboard/api/saturn';
 
-import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
+import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import CardLayout from 'dashboard/components-next/CardLayout.vue';
 import Button from 'dashboard/components-next/button/Button.vue';
 
@@ -91,7 +91,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout
+  <SaturnPageLayout
     :header-title="`${agent?.name || 'Agent'} - Inbox Connections`"
     :back-url="{ name: 'saturn_agents_index' }"
     button-label=""
@@ -199,5 +199,5 @@ onMounted(() => {
         </div>
       </div>
     </template>
-  </PageLayout>
+  </SaturnPageLayout>
 </template>

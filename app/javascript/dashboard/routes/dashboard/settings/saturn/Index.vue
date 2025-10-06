@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
 import SaturnAPI from 'dashboard/api/saturn';
 
-import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
+import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import AgentCard from './components/AgentCard.vue';
 import CreateAgentDialog from './components/CreateAgentDialog.vue';
 import DeleteAgentDialog from './components/DeleteAgentDialog.vue';
@@ -107,7 +107,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout
+  <SaturnPageLayout
     header-title="Saturn AI Agents"
     button-label="Create Agent"
     :is-fetching="loading"
@@ -132,7 +132,7 @@ onMounted(() => {
         />
       </div>
     </template>
-  </PageLayout>
+  </SaturnPageLayout>
 
   <CreateAgentDialog
     ref="createDialogRef"

@@ -5,7 +5,7 @@ import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import SaturnAPI from 'dashboard/api/saturn';
 
-import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
+import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import CardLayout from 'dashboard/components-next/CardLayout.vue';
 import Button from 'dashboard/components-next/button/Button.vue';
 import CreateKnowledgeDialog from './components/CreateKnowledgeDialog.vue';
@@ -114,7 +114,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <PageLayout
+  <SaturnPageLayout
     :header-title="`${agent?.name || 'Agent'} - Knowledge Sources`"
     :back-url="{ name: 'saturn_agents_index' }"
     button-label="Add Knowledge Source"
@@ -196,7 +196,7 @@ onMounted(async () => {
         </CardLayout>
       </div>
     </template>
-  </PageLayout>
+  </SaturnPageLayout>
 
   <CreateKnowledgeDialog
     ref="createDialogRef"

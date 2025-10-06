@@ -2,12 +2,12 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
-import PageLayout from 'dashboard/components-next/PageLayout.vue';
+import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import CardLayout from 'dashboard/components-next/CardLayout.vue';
-import Button from 'dashboard/components-next/Button.vue';
-import Dialog from 'dashboard/components-next/Dialog.vue';
-import Input from 'dashboard/components-next/Input.vue';
-import Textarea from 'dashboard/components-next/Textarea.vue';
+import Button from 'dashboard/components-next/button/Button.vue';
+import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
+import Input from 'dashboard/components-next/input/Input.vue';
+import Textarea from 'dashboard/components-next/textarea/TextArea.vue';
 import SaturnAutoRepliesAPI from 'dashboard/api/saturnAutoReplies';
 
 const route = useRoute();
@@ -104,7 +104,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout
+  <SaturnPageLayout
     :header-title="`Auto Replies`"
     :back-url="`/accounts/${accountId}/settings/saturn-agents`"
     :is-fetching="loading"
@@ -245,5 +245,5 @@ onMounted(() => {
         </div>
       </template>
     </Dialog>
-  </PageLayout>
+  </SaturnPageLayout>
 </template>
