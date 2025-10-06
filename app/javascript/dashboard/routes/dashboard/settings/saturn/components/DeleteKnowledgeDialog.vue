@@ -12,7 +12,7 @@ const props = defineProps({
   },
   knowledge: {
     type: Object,
-    required: true,
+    default: null,
   },
 });
 

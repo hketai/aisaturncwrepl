@@ -204,7 +204,6 @@ onMounted(async () => {
   />
 
   <DeleteKnowledgeDialog
-    v-if="selectedKnowledge"
     ref="deleteDialogRef"
     :agent-id="agentId"
     :knowledge="selectedKnowledge"
