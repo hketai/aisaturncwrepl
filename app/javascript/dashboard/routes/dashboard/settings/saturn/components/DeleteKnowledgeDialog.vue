@@ -25,7 +25,7 @@ const handleConfirm = async () => {
     await SaturnKnowledgeAPI.deleteForAgent(props.agentId, props.knowledge.id);
     useAlert('Knowledge source deleted successfully');
     emit('deleted', props.knowledge.id);
-    dialogRef.value.close();
+    emit('close');
   } catch (error) {
     useAlert('Failed to delete knowledge source');
   }
