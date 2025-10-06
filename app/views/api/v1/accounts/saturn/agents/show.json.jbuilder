@@ -7,6 +7,6 @@ json.product_context @agent_profile.product_context
 json.behavior_rules @agent_profile.behavior_rules
 json.safety_guidelines @agent_profile.safety_guidelines
 json.configuration @agent_profile.configuration
-json.avatar_url @agent_profile.avatar_url.presence || @agent_profile.send(:default_avatar_url)
+json.avatar_url @agent_profile.push_event_data[:avatar_url]
 json.created_at @agent_profile.created_at
 json.updated_at @agent_profile.updated_at
