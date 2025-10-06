@@ -78,7 +78,7 @@ const handleAction = (action) => {
 
         <Button
           icon="i-lucide-message-square"
-          color="purple"
+          color="amber"
           size="sm"
           class="flex-1"
           @click="handleAction('autoReplies')"
