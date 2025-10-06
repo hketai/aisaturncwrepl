@@ -24,10 +24,7 @@ watch(() => props.agent, (newAgent) => {
 }, { immediate: true });
 
 const handleConfirm = async () => {
-  if (!agentToDelete.value) {
-    console.error('❌ No agent to delete');
-    return;
-  }
+  if (!agentToDelete.value) return;
   
   const agentId = agentToDelete.value.id;
   
@@ -39,7 +36,6 @@ const handleConfirm = async () => {
     await SaturnAPI.delete(agentId);
     useAlert('Agent deleted successfully');
   } catch (error) {
-    console.error('❌ Delete error:', error);
     useAlert('Failed to delete agent');
     emit('restore', agentId);
   }
