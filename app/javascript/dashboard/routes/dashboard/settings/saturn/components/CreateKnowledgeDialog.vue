@@ -18,7 +18,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close', 'created', 'updated']);
+const emit = defineEmits(['close', 'created', 'updated', 'createFailed']);
 
 const dialogRef = ref(null);
 const form = ref({
@@ -64,17 +64,35 @@ const handleSubmit = async () => {
       });
       useAlert('Knowledge source updated successfully');
       emit('updated', response.data);
+      dialogRef.value.close();
     } else {
+      const optimisticKnowledge = {
+        id: `temp-${Date.now()}`,
+        title: form.value.title,
+        content_text: form.value.content_text,
+        source_type: form.value.source_type,
+        source_url: form.value.source_url,
+        agent_profile_id: props.agentId,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        _optimistic: true,
+      };
+      
+      emit('created', optimisticKnowledge);
+      dialogRef.value.close();
+      
       const response = await SaturnKnowledgeAPI.createForAgent(props.agentId, {
         knowledge_source: form.value,
       });
       useAlert('Knowledge source added successfully');
-      emit('created', response.data);
+      emit('updated', response.data);
     }
-    dialogRef.value.close();
   } catch (error) {
     const errorMsg = error.response?.data?.error || 'Operation failed';
     useAlert(errorMsg);
+    if (!isEdit.value) {
+      emit('createFailed', form.value.title);
+    }
   }
 };
 
