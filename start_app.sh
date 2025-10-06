@@ -32,6 +32,7 @@ if [ ! -f .secret_key_base ]; then
     openssl rand -hex 64 > .secret_key_base
 fi
 export SECRET_KEY_BASE=$(cat .secret_key_base)
+export DISABLE_MINI_PROFILER=true
 
 echo "Rails environment: $RAILS_ENV"
 echo "Database: $POSTGRES_DATABASE"  
