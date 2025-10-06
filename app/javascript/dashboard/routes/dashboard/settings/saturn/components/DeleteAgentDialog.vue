@@ -8,7 +8,7 @@ import Button from 'dashboard/components-next/button/Button.vue';
 const props = defineProps({
   agent: {
     type: Object,
-    required: true,
+    default: null,
   },
 });
 
@@ -41,6 +41,7 @@ defineExpose({ dialogRef });
 
 <template>
   <Dialog
+    v-if="agent"
     ref="dialogRef"
     type="alert"
     :title="`Delete ${agent.name}?`"

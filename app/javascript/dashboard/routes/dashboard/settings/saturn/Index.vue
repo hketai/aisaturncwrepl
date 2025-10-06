@@ -117,7 +117,6 @@ onMounted(() => {
   />
 
   <DeleteAgentDialog
-    v-if="selectedAgent"
     ref="deleteDialogRef"
     :agent="selectedAgent"
     @deleted="handleAgentDeleted"

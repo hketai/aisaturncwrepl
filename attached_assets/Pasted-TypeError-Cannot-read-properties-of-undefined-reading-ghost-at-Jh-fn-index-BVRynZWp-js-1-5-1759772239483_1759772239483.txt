@@ -1,0 +1,128 @@
+TypeError: Cannot read properties of undefined (reading 'ghost')
+    at Jh.fn (index-BVRynZWp.js:1:5514)
+    at wc (_plugin-vue_export-helper-NRUrV_ae.js:9:3166)
+    at get value (_plugin-vue_export-helper-NRUrV_ae.js:9:15033)
+    at Jh.fn (index-BVRynZWp.js:1:5807)
+    at wc (_plugin-vue_export-helper-NRUrV_ae.js:9:3166)
+    at get value (_plugin-vue_export-helper-NRUrV_ae.js:9:15033)
+    at Proxy.<anonymous> (index-BVRynZWp.js:1:6026)
+    at qn (_plugin-vue_export-helper-NRUrV_ae.js:14:33326)
+    at Ns.F [as fn] (_plugin-vue_export-helper-NRUrV_ae.js:14:25016)
+    at Ns.run (_plugin-vue_export-helper-NRUrV_ae.js:9:1741)
+ed @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Gt @ _plugin-vue_export-helper-NRUrV_ae.js:13
+qn @ _plugin-vue_export-helper-NRUrV_ae.js:14
+F @ _plugin-vue_export-helper-NRUrV_ae.js:14
+run @ _plugin-vue_export-helper-NRUrV_ae.js:9
+U @ _plugin-vue_export-helper-NRUrV_ae.js:14
+W @ _plugin-vue_export-helper-NRUrV_ae.js:14
+D @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+O @ _plugin-vue_export-helper-NRUrV_ae.js:14
+x @ _plugin-vue_export-helper-NRUrV_ae.js:14
+v @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+O @ _plugin-vue_export-helper-NRUrV_ae.js:14
+x @ _plugin-vue_export-helper-NRUrV_ae.js:14
+v @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+F @ _plugin-vue_export-helper-NRUrV_ae.js:14
+run @ _plugin-vue_export-helper-NRUrV_ae.js:9
+U @ _plugin-vue_export-helper-NRUrV_ae.js:14
+W @ _plugin-vue_export-helper-NRUrV_ae.js:14
+D @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+O @ _plugin-vue_export-helper-NRUrV_ae.js:14
+C @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+O @ _plugin-vue_export-helper-NRUrV_ae.js:14
+x @ _plugin-vue_export-helper-NRUrV_ae.js:14
+v @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+T @ _plugin-vue_export-helper-NRUrV_ae.js:14
+S @ _plugin-vue_export-helper-NRUrV_ae.js:14
+v @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+F @ _plugin-vue_export-helper-NRUrV_ae.js:14
+run @ _plugin-vue_export-helper-NRUrV_ae.js:9
+J @ _plugin-vue_export-helper-NRUrV_ae.js:14
+D @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+T @ _plugin-vue_export-helper-NRUrV_ae.js:14
+C @ _plugin-vue_export-helper-NRUrV_ae.js:14
+_ @ _plugin-vue_export-helper-NRUrV_ae.js:14
+F @ _plugin-vue_export-helper-NRUrV_ae.js:14
+run @ _plugin-vue_export-helper-NRUrV_ae.js:9
+runIfDirty @ _plugin-vue_export-helper-NRUrV_ae.js:9
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+ta @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Promise.then
+ea @ _plugin-vue_export-helper-NRUrV_ae.js:13
+eo @ _plugin-vue_export-helper-NRUrV_ae.js:13
+U.L.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:14
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Gr @ _plugin-vue_export-helper-NRUrV_ae.js:9
+notify @ _plugin-vue_export-helper-NRUrV_ae.js:9
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+set value @ _plugin-vue_export-helper-NRUrV_ae.js:9
+l @ dashboard-CAjOdutT.js:20
+await in l
+(anonymous) @ dashboard-CAjOdutT.js:20
+(anonymous) @ _plugin-vue_export-helper-NRUrV_ae.js:14
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Xe @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Bi.t.__weh.t.__weh @ _plugin-vue_export-helper-NRUrV_ae.js:14
+ii @ _plugin-vue_export-helper-NRUrV_ae.js:13
+ta @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Promise.then
+ea @ _plugin-vue_export-helper-NRUrV_ae.js:13
+eo @ _plugin-vue_export-helper-NRUrV_ae.js:13
+U.L.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:14
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Gr @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Et @ _plugin-vue_export-helper-NRUrV_ae.js:9
+set @ _plugin-vue_export-helper-NRUrV_ae.js:9
+SET_ACCOUNT_UI_FLAG @ DashboardIcon-DugJLvEx.js:1
+(anonymous) @ useBranding-DVTQja6F.js:23
+(anonymous) @ useBranding-DVTQja6F.js:23
+(anonymous) @ useBranding-DVTQja6F.js:23
+ne._withCommit @ useBranding-DVTQja6F.js:23
+ne.commit @ useBranding-DVTQja6F.js:23
+commit @ useBranding-DVTQja6F.js:23
+s.commit @ useBranding-DVTQja6F.js:23
+get @ DashboardIcon-DugJLvEx.js:1
+await in get
+(anonymous) @ useBranding-DVTQja6F.js:23
+ne.dispatch @ useBranding-DVTQja6F.js:23
+dispatch @ useBranding-DVTQja6F.js:23
+initializeAccount @ dashboard-CAjOdutT.js:15
+handler @ dashboard-CAjOdutT.js:15
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Xe @ _plugin-vue_export-helper-NRUrV_ae.js:13
+An.l.call @ _plugin-vue_export-helper-NRUrV_ae.js:14
+m @ _plugin-vue_export-helper-NRUrV_ae.js:9
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+ta @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Promise.then
+ea @ _plugin-vue_export-helper-NRUrV_ae.js:13
+eo @ _plugin-vue_export-helper-NRUrV_ae.js:13
+An.l.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:14
+Xh.f.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:9
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Gr @ _plugin-vue_export-helper-NRUrV_ae.js:9
+notify @ _plugin-vue_export-helper-NRUrV_ae.js:9
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+set value @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Pt @ Validators-D2QEUXtv.js:5
+(anonymous) @ Validators-D2QEUXtv.js:5
+Promise.then
+k @ Validators-D2QEUXtv.js:5
+W @ Validators-D2QEUXtv.js:5
+install @ Validators-D2QEUXtv.js:5
+use @ _plugin-vue_export-helper-NRUrV_ae.js:14
+(anonymous) @ dashboard-CAjOdutT.js:173Understand this error
+dashboard-CAjOdutT.js:20 🗑️ Starting delete for agent: 9
+saturn-agents:1 Form submission canceled because the form is not connectedUnderstand this warning
+dashboard-CAjOdutT.js:20 ✅ Delete API success, emitting deleted event
+dashboard-CAjOdutT.js:20 📤 Deleted event emitted
+dashboard-CAjOdutT.js:20 🚪 Close event emitted
