@@ -108,11 +108,11 @@ onMounted(() => {
 
 <template>
   <PageLayout
-    :title="`Inbox Connections - ${agent?.name || 'Loading...'}`"
-    description="Connect this agent to inboxes to automatically respond to customer messages"
-    :is-loading="loading"
-    :show-back-button="true"
-    :show-new-button="false"
+    :header-title="`${agent?.name || 'Agent'} - Inbox Connections`"
+    :back-url="{ name: 'saturn_agents_index' }"
+    button-label=""
+    :is-fetching="loading"
+    :is-empty="false"
     :show-pagination-footer="false"
   >
     <template #body>
