@@ -238,7 +238,7 @@ const menuItems = computed(() => {
       name: 'Saturn',
       label: t('SIDEBAR.SATURN'),
       icon: 'i-lucide-sparkles',
-      to: accountScopedRoute('saturn_agents'),
+      to: accountScopedRoute('saturn_agents_index'),
     },
     {
       name: 'Contacts',
