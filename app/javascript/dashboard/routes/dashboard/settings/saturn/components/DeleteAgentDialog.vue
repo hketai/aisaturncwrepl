@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useAlert } from 'dashboard/composables';
 import SaturnAPI from 'dashboard/api/saturn';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
@@ -15,22 +15,30 @@ const props = defineProps({
 const emit = defineEmits(['close', 'deleted']);
 
 const dialogRef = ref(null);
+const agentToDelete = ref(null);
+
+watch(() => props.agent, (newAgent) => {
+  if (newAgent) {
+    agentToDelete.value = { id: newAgent.id, name: newAgent.name };
+  }
+}, { immediate: true });
 
 const handleConfirm = async () => {
-  if (!props.agent) {
+  if (!agentToDelete.value) {
     console.error('❌ No agent to delete');
     return;
   }
   
   try {
-    console.log('🗑️ Starting delete for agent:', props.agent.id);
-    await SaturnAPI.delete(props.agent.id);
+    console.log('🗑️ Starting delete for agent:', agentToDelete.value.id);
+    await SaturnAPI.delete(agentToDelete.value.id);
     console.log('✅ Delete API success, emitting deleted event');
     useAlert('Agent deleted successfully');
-    emit('deleted', props.agent.id);
+    emit('deleted', agentToDelete.value.id);
     console.log('📤 Deleted event emitted');
     emit('close');
     console.log('🚪 Close event emitted');
+    agentToDelete.value = null;
   } catch (error) {
     console.error('❌ Delete error:', error);
     useAlert('Failed to delete agent');
@@ -38,6 +46,7 @@ const handleConfirm = async () => {
 };
 
 const handleClose = () => {
+  agentToDelete.value = null;
   emit('close');
 };
 
@@ -46,10 +55,10 @@ defineExpose({ dialogRef });
 
 <template>
   <Dialog
-    v-if="agent"
+    v-if="agentToDelete"
     ref="dialogRef"
     type="alert"
-    :title="`Delete ${agent.name}?`"
+    :title="`Delete ${agentToDelete.name}?`"
     :show-cancel-button="true"
     :show-confirm-button="false"
     @close="handleClose"
