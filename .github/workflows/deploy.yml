@@ -32,6 +32,10 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             
+            # Load Ruby environment (rbenv)
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            
             # Load environment variables from .env.production
             # (Already configured on server - no need to pass secrets)
             source /var/www/chatwoot/.env.production || true
