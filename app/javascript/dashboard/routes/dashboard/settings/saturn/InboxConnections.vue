@@ -6,9 +6,9 @@ import SaturnInboxConnectionsAPI from 'dashboard/api/saturnInboxConnections';
 import InboxesAPI from 'dashboard/api/inboxes';
 import SaturnAPI from 'dashboard/api/saturn';
 
-import PageLayout from 'dashboard/components-next/PageLayout.vue';
+import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
 import CardLayout from 'dashboard/components-next/CardLayout.vue';
-import Button from 'dashboard/components-next/Button.vue';
+import Button from 'dashboard/components-next/button/Button.vue';
 
 const route = useRoute();
 const agentId = computed(() => route.params.agentId);
