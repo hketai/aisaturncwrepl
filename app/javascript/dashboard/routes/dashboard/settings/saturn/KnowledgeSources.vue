@@ -119,8 +119,8 @@ onMounted(async () => {
           </p>
           
           <Button
-            color="primary"
-            size="large"
+            color="blue"
+            size="lg"
             @click="handleCreate"
           >
             <span class="i-lucide-plus mr-2"></span>
