@@ -65,7 +65,10 @@ const handleAgentUpdated = (updatedAgent) => {
 };
 
 const handleAgentDeleted = (agentId) => {
+  console.log('🎯 handleAgentDeleted called with ID:', agentId);
+  console.log('📋 Agents before filter:', agents.value.map(a => a.id));
   agents.value = agents.value.filter(a => a.id !== agentId);
+  console.log('📋 Agents after filter:', agents.value.map(a => a.id));
 };
 
 const handleDialogClose = () => {
