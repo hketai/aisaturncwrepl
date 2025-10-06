@@ -57,10 +57,19 @@ const handleAgentCreated = (agent) => {
   agents.value.push(agent);
 };
 
+const handleCreateFailed = (agentName) => {
+  agents.value = agents.value.filter(a => !a._optimistic || a.name !== agentName);
+};
+
 const handleAgentUpdated = (updatedAgent) => {
   const index = agents.value.findIndex(a => a.id === updatedAgent.id);
   if (index !== -1) {
     agents.value[index] = updatedAgent;
+  } else {
+    const optimisticIndex = agents.value.findIndex(a => a._optimistic);
+    if (optimisticIndex !== -1) {
+      agents.value[optimisticIndex] = updatedAgent;
+    }
   }
 };
 
@@ -120,6 +129,7 @@ onMounted(() => {
     :selected-agent="selectedAgent"
     @created="handleAgentCreated"
     @updated="handleAgentUpdated"
+    @createFailed="handleCreateFailed"
     @close="handleDialogClose"
   />
 

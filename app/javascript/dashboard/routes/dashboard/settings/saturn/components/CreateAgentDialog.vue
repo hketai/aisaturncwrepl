@@ -14,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close', 'created', 'updated']);
+const emit = defineEmits(['close', 'created', 'updated', 'createFailed']);
 
 const dialogRef = ref(null);
 const form = ref({
@@ -52,15 +52,32 @@ const handleSubmit = async () => {
       const response = await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
       useAlert('Agent updated successfully');
       emit('updated', response.data);
+      dialogRef.value.close();
     } else {
+      const optimisticAgent = {
+        id: `temp-${Date.now()}`,
+        name: form.value.name,
+        description: form.value.description,
+        product_context: form.value.product_context,
+        active: form.value.active,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        _optimistic: true,
+      };
+      
+      emit('created', optimisticAgent);
+      dialogRef.value.close();
+      
       const response = await SaturnAPI.create({ agent: form.value });
       useAlert('Agent created successfully');
-      emit('created', response.data);
+      emit('updated', response.data);
     }
-    dialogRef.value.close();
   } catch (error) {
     const errorMsg = error.response?.data?.error || 'Operation failed';
     useAlert(errorMsg);
+    if (!isEdit.value) {
+      emit('createFailed', form.value.name);
+    }
   }
 };
 
