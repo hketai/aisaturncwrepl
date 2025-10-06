@@ -8,7 +8,20 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
   def show; end
   
   def create
-    @agent_profile = Current.account.saturn_agent_profiles.new(agent_params)
+    params_with_template = agent_params
+    
+    if params_with_template[:industry_type].present? && 
+       params_with_template[:description].blank? &&
+       Saturn::IndustryTemplates.exists?(params_with_template[:industry_type])
+      
+      template = Saturn::IndustryTemplates.get(params_with_template[:industry_type])
+      params_with_template[:description] = template[:description]
+      params_with_template[:product_context] = template[:product_context]
+      params_with_template[:behavior_rules] = template[:behavior_rules]
+      params_with_template[:safety_guidelines] = template[:safety_guidelines]
+    end
+    
+    @agent_profile = Current.account.saturn_agent_profiles.new(params_with_template)
     
     if @agent_profile.save
       render :show, status: :created
