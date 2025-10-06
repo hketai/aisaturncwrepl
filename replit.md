@@ -35,8 +35,8 @@ Users can create accounts through the signup flow or via super admin console.
 
 ## Recent Changes (October 6, 2025)
 
-### Saturn AI - MIT-Licensed Auto-Response System (NEW!)
-**Status:** ✅ **Backend + Frontend Complete**
+### Saturn AI - MIT-Licensed Auto-Response System
+**Status:** ✅ **COMPLETE - Backend + Frontend + UI**
 
 Saturn AI is a new MIT-licensed automatic response system built as an alternative to Captain AI (enterprise feature). It provides AI-powered automatic responses using OpenAI integration.
 
@@ -45,7 +45,16 @@ Saturn AI is a new MIT-licensed automatic response system built as an alternativ
 - **Backend Models:** Saturn::AgentProfile, Saturn::KnowledgeSource, Saturn::AutoReply, Saturn::InboxConnection
 - **Services:** Saturn::Orchestrator (multi-turn conversation handler), Saturn::LlmService (OpenAI integration)
 - **API Endpoints:** Full CRUD for agents, knowledge sources, auto-replies, inbox connections
-- **Frontend:** Sidebar menu "Saturn AI" (Settings > Saturn AI), Vue routes, i18n translations
+- **Frontend:** Main sidebar menu "Saturn" (✨ sparkles icon, above Contacts)
+
+**UI Features (Captain AI Style):**
+- **Agent Management:** PageLayout with card-based agent list, dialog-based create/edit/delete
+- **Knowledge Sources:** Full CRUD for documents/FAQs with agent filtering
+  - Text/Document, URL/Website, FAQ source types
+  - Edit and delete actions on each knowledge card
+  - Agent-specific knowledge base pages
+- **Custom Components:** AgentCard, CreateAgentDialog, DeleteAgentDialog, EmptyState
+- **API Client:** Uses Chatwoot ApiClient pattern for proper authentication
 
 **MIT Compliance:**
 - Distinct table names (saturn_* vs captain_*)
@@ -54,12 +63,15 @@ Saturn AI is a new MIT-licensed automatic response system built as an alternativ
 - No enterprise folder dependencies
 
 **Requirements:**
-- `OPENAI_API_KEY` environment secret (required for AI responses)
+- OpenAI API key configured via Super Admin > Accounts > Edit Account
 - PostgreSQL with pgvector extension (for embeddings)
 
 **Location:**
 - API: `/api/v1/accounts/:account_id/saturn/`
-- Frontend: Settings > Saturn AI (sparkles icon)
+- Frontend: Main sidebar > Saturn (✨ icon)
+- Routes: 
+  - `/accounts/:accountId/settings/saturn-agents` - Agent list
+  - `/accounts/:accountId/settings/saturn-agents/:agentId/knowledge-sources` - Knowledge sources
 
 ### CI/CD Pipeline Setup
 1. **GitHub Actions deployment:** Automated deployment pipeline configured for main branch pushes
