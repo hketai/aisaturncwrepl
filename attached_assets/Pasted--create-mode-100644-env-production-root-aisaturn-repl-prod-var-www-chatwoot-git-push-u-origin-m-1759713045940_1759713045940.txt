@@ -1,0 +1,117 @@
+ create mode 100644 .env.production
+root@aisaturn-repl-prod:/var/www/chatwoot# git push -u origin main
+ERROR: Permission to hketai/aisaturncwrepl.git denied to deploy key
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+root@aisaturn-repl-prod:/var/www/chatwoot# ssh -T git@github.com
+Hi hketai/aisaturncw2! You've successfully authenticated, but GitHub does not provide shell access.
+root@aisaturn-repl-prod:/var/www/chatwoot# cat ~/.ssh/id_rsa.pub
+cat: /root/.ssh/id_rsa.pub: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# cat ~/.ssh/id_ed25519.pub
+cat: /root/.ssh/id_ed25519.pub: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -la ~/.ssh/
+total 28
+drwx------ 2 root root 4096 Oct  5 21:19 .
+drwx------ 8 root root 4096 Oct  6 01:03 ..
+-rw------- 1 root root    0 Oct  5 20:42 authorized_keys
+-rw------- 1 root root  411 Oct  5 21:12 chatwoot_deploy
+-rw-r--r-- 1 root root   97 Oct  5 21:12 chatwoot_deploy.pub
+-rw------- 1 root root  244 Oct  5 21:14 config
+-rw------- 1 root root  978 Oct  5 21:19 known_hosts
+-rw-r--r-- 1 root root  142 Oct  5 21:15 known_hosts.old
+root@aisaturn-repl-prod:/var/www/chatwoot# find / -name "*.pub" -path "*/ssh/*" 2>/dev/null
+/etc/ssh/ssh_host_ed25519_key.pub
+/etc/ssh/ssh_host_ecdsa_key.pub
+/etc/ssh/ssh_host_rsa_key.pub
+root@aisaturn-repl-prod:/var/www/chatwoot# cat ~/.ssh/chatwoot_deploy.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILKPzOF8l7IOEcCrvzRLiZmfb13F2XUWdgHJhFQkS2e/ deploy@chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot# ssh-keygen -t ed25519 -C "hketai-aisaturncwrepl" -f ~/.ssh/aisaturncwrepl_deploy
+Generating public/private ed25519 key pair.
+Enter passphrase for "/root/.ssh/aisaturncwrepl_deploy" (empty for no passphrase):
+Enter same passphrase again:
+Passphrases do not match.  Try again.
+Enter passphrase for "/root/.ssh/aisaturncwrepl_deploy" (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/aisaturncwrepl_deploy
+Your public key has been saved in /root/.ssh/aisaturncwrepl_deploy.pub
+The key fingerprint is:
+SHA256:lxvIH9d5uedDKFCqKZ0CLa8s8k0JzTteyBs5XJldfrg hketai-aisaturncwrepl
+The key's randomart image is:
++--[ED25519 256]--+
+|                 |
+|           .     |
+|    .     +      |
+|   = . = * o . ..|
+|  . * = S O o +..|
+|   + X = o O . o.|
+|  . & +   E . ...|
+|.. * *         o.|
+|..o +           o|
++----[SHA256]-----+
+root@aisaturn-repl-prod:/var/www/chatwoot# cat ~/.ssh/aisaturncwrepl_deploy.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPu8nX6FwyaAhaKiisaXc+l1tTIDr2XzGsvjFBGYooR hketai-aisaturncwrepl
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "
+Host github-aisaturncwrepl
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/aisaturncwrepl_deploy
+  IdentitiesOnly yes" >> ~/.ssh/config
+
+# Remote URL'yi güncelle
+git remote set-url origin git@github-aisaturncwrepl:hketai/aisaturncwrepl.git
+
+# Push yap
+git push -u origin main
+Enter passphrase for key '/root/.ssh/aisaturncwrepl_deploy':
+Enter passphrase for key '/root/.ssh/aisaturncwrepl_deploy':
+Enumerating objects: 130776, done.
+Counting objects: 100% (130776/130776), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (31861/31861), done.
+Writing objects: 100% (130776/130776), 154.94 MiB | 10.78 MiB/s, done.
+Total 130776 (delta 96133), reused 130747 (delta 96109), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (96133/96133), done.
+remote: warning: See https://gh.io/lfs for more information.
+remote: warning: File vendor/db/sentiment-analysis.onnx is 65.78 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To github-aisaturncwrepl:hketai/aisaturncwrepl.git
+ * [new branch]          main -> main
+branch 'main' set up to track 'origin/main'.
+root@aisaturn-repl-prod:/var/www/chatwoot# git add .
+git commit -m "Değişiklik açıklaması"
+git push
+→ No staged files found.
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Enter passphrase for key '/root/.ssh/aisaturncwrepl_deploy':
+
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "# Chatwoot Repository" >> README.md
+root@aisaturn-repl-prod:/var/www/chatwoot# git add .
+git commit -m "README eklendi"
+git push
+⚠ Some of your tasks use `git add` command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.
+
+→ No staged files match any configured task.
+[main 2171ec0b1] README eklendi
+ 1 file changed, 1 insertion(+)
+Enter passphrase for key '/root/.ssh/aisaturncwrepl_deploy':
+Enter passphrase for key '/root/.ssh/aisaturncwrepl_deploy':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 321 bytes | 321.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github-aisaturncwrepl:hketai/aisaturncwrepl.git
+   4bbeaecd6..2171ec0b1  main -> main
+root@aisaturn-repl-prod:/var/www/chatwoot# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+root@aisaturn-repl-prod:/var/www/chatwoot#

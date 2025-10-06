@@ -1,0 +1,14 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -f --no-pager
+Oct 05 22:59:24 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:24.691536 #65027]  INFO -- : [05cfca33-d6a4-4a14-ae9c-d18d15da2ccf] Processing by DashboardController#index as HTML
+Oct 05 22:59:24 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:24.691598 #65027]  INFO -- : [05cfca33-d6a4-4a14-ae9c-d18d15da2ccf]   Parameters: {"params" => "login"}
+Oct 05 22:59:24 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:24.754630 #65027]  INFO -- : [05cfca33-d6a4-4a14-ae9c-d18d15da2ccf]   Rendered layout layouts/vueapp.html.erb (Duration: 3.3ms | Allocations: 2101)
+Oct 05 22:59:24 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:24.754884 #65027]  INFO -- : [05cfca33-d6a4-4a14-ae9c-d18d15da2ccf] Completed 200 OK in 63ms (Views: 3.7ms | ActiveRecord: 5.2ms | Allocations: 29592)
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:42.824642 #65027]  INFO -- : [78633b43-08d3-479c-a8ec-402557768857] Started GET "/app/login" for 81.215.232.40 at 2025-10-05 22:59:42 +0000
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:42.827448 #65027]  INFO -- : [78633b43-08d3-479c-a8ec-402557768857] Processing by DashboardController#index as HTML
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:42.827492 #65027]  INFO -- : [78633b43-08d3-479c-a8ec-402557768857]   Parameters: {"params" => "login"}
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:42.971788 #65027]  INFO -- : [78633b43-08d3-479c-a8ec-402557768857]   Rendered layout layouts/vueapp.html.erb (Duration: 5.3ms | Allocations: 2105)
+Oct 05 22:59:42 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:59:42.972218 #65027]  INFO -- : [78633b43-08d3-479c-a8ec-402557768857] Completed 200 OK in 145ms (Views: 5.9ms | ActiveRecord: 6.1ms | Allocations: 29540)
+sudo journalctl -u chatwoot-web -n 100 --no-pager | tail -50
+
+

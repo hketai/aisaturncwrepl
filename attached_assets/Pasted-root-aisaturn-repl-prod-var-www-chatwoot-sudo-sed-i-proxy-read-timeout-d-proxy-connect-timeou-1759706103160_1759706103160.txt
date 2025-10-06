@@ -1,0 +1,22 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo sed -i '/proxy_read_timeout/d; /proxy_connect_timeout/d; /proxy_send_timeout/d' /etc/nginx/sites-enabled/chatwoot
+sudo sed -i '/proxy_set_header Connection/a\        proxy_read_timeout 300;\n        proxy_connect_timeout 300;\n        proxy_send_timeout 300;' /etc/nginx/sites-enabled/chatwoot
+sudo nginx -t && sudo systemctl reload nginx
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@aisaturn-repl-prod:/var/www/chatwoot# grep -E "workers|threads|timeout" /var/www/chatwoot/config/puma.rb
+# The `threads` method setting takes two numbers: a minimum and maximum.
+# the maximum value specified for Puma. Default is set to 5 threads for minimum
+max_threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
+min_threads_count = ENV.fetch('RAILS_MIN_THREADS') { max_threads_count }
+threads min_threads_count, max_threads_count
+# Specifies the number of `workers` to boot in clustered mode.
+# Workers are forked web server processes. If using threads and workers together
+# the concurrency of the application would be max `threads` * `workers`.
+workers ENV.fetch('WEB_CONCURRENCY', 0)
+# Use the `preload_app!` method when specifying a `workers` number.
+# process behavior so workers use less memory.
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -f --no-pager | grep -E "validate_token|timeout"
+Oct 05 23:13:30 aisaturn-repl-prod bundle[65570]: I, [2025-10-05T23:13:30.920987 #65570]  INFO -- : [7527753a-3c96-400d-b5ae-2bc34aad94dd] Started GET "/auth/validate_token" for 81.215.232.40 at 2025-10-05 23:13:30 +0000
+Oct 05 23:13:30 aisaturn-repl-prod bundle[65570]: I, [2025-10-05T23:13:30.923752 #65570]  INFO -- : [7527753a-3c96-400d-b5ae-2bc34aad94dd] Processing by DeviseOverrides::TokenValidationsController#validate_token as HTML
+Oct 05 23:14:29 aisaturn-repl-prod bundle[65570]: I, [2025-10-05T23:14:29.242715 #65570]  INFO -- : [5df9bed5-5012-4e94-b5fe-46d7680830d8] Started GET "/auth/validate_token" for 81.215.232.40 at 2025-10-05 23:14:29 +0000
+Oct 05 23:14:29 aisaturn-repl-prod bundle[65570]: I, [2025-10-05T23:14:29.244948 #65570]  INFO -- : [5df9bed5-5012-4e94-b5fe-46d7680830d8] Processing by DeviseOverrides::TokenValidationsController#validate_token as HTML

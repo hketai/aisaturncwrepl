@@ -1,0 +1,70 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 30 --no-pager | tail -20
+Oct 05 22:33:04 aisaturn-repl-prod bundle[64070]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:33:04 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:04.443808 #64070]  INFO -- : [17def6d7-b0d1-4168-917a-9d16fa36dd44] Processing by DeviseOverrides::TokenValidationsController#validate_token as HTML
+Oct 05 22:33:04 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:04.525898 #64070]  INFO -- : [17def6d7-b0d1-4168-917a-9d16fa36dd44] Completed 200 OK in 82ms (Views: 13.4ms | ActiveRecord: 2.6ms | Allocations: 7362)
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:11.610308 #64070]  INFO -- : [054f5f56-e218-4d28-b83d-af04ebd46ac5] Started GET "/super_admin/accounts" for 81.215.232.40 at 2025-10-05 22:33:11 +0000
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:11.613505 #64070]  INFO -- : [054f5f56-e218-4d28-b83d-af04ebd46ac5] Processing by SuperAdmin::AccountsController#index as HTML
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:11.654177 #64070]  INFO -- : [054f5f56-e218-4d28-b83d-af04ebd46ac5]   Rendered layout layouts/super_admin/application.html.erb (Duration: 36.3ms | Allocations: 20017)
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:11.654459 #64070]  INFO -- : [054f5f56-e218-4d28-b83d-af04ebd46ac5] Completed 200 OK in 41ms (Views: 32.0ms | ActiveRecord: 5.1ms | Allocations: 21447)
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:11.954471 #64070]  INFO -- : [40683d1c-1476-4392-bb70-ed6a34a6649d] Started GET "/widget?website_token=" for 81.215.232.40 at 2025-10-05 22:33:11 +0000
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:33:11 aisaturn-repl-prod bundle[64070]: W, [2025-10-05T22:33:11.957347 #64070]  WARN -- : [40683d1c-1476-4392-bb70-ed6a34a6649d] [Rack::Attack][Blocked] remote_ip: "81.215.232.40", path: "/widget", user_identifier: "unknown_user", account_id: "unknown_account", method: "GET", user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+Oct 05 22:33:57 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:57.418938 #64070]  INFO -- : [88780918-8681-413e-83cb-8af6d81295b8] Started GET "/" for 195.178.110.15 at 2025-10-05 22:33:57 +0000
+Oct 05 22:33:57 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:57.421369 #64070]  INFO -- : [88780918-8681-413e-83cb-8af6d81295b8] Processing by DashboardController#index as HTML
+Oct 05 22:33:57 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:57.505832 #64070]  INFO -- : [88780918-8681-413e-83cb-8af6d81295b8]   Rendered layout layouts/vueapp.html.erb (Duration: 3.5ms | Allocations: 2363)
+Oct 05 22:33:57 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:33:57.506090 #64070]  INFO -- : [88780918-8681-413e-83cb-8af6d81295b8] Completed 200 OK in 85ms (Views: 3.9ms | ActiveRecord: 7.0ms | Allocations: 30668)
+Oct 05 22:34:15 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:34:15.417578 #64070]  INFO -- : [7afac25c-1d86-442f-a0e7-cbfe858c4764] Started GET "/app" for 81.215.232.40 at 2025-10-05 22:34:15 +0000
+Oct 05 22:34:15 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:34:15.421173 #64070]  INFO -- : [7afac25c-1d86-442f-a0e7-cbfe858c4764] Processing by DashboardController#index as HTML
+Oct 05 22:34:15 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:34:15.486026 #64070]  INFO -- : [7afac25c-1d86-442f-a0e7-cbfe858c4764]   Rendered layout layouts/vueapp.html.erb (Duration: 4.0ms | Allocations: 2299)
+Oct 05 22:34:15 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:34:15.486330 #64070]  INFO -- : [7afac25c-1d86-442f-a0e7-cbfe858c4764] Completed 200 OK in 65ms (Views: 4.4ms | ActiveRecord: 4.6ms | Allocations: 30148)
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -la /var/www/chatwoot/public/packs
+total 260
+drwxr-xr-x  9 root root  4096 Oct  5 21:36 .
+drwxr-xr-x 10 root root  4096 Oct  5 21:38 ..
+-rw-r--r--  1 root root  1564 Oct  5 21:36 404.html
+-rw-r--r--  1 root root  1547 Oct  5 21:36 422.html
+-rw-r--r--  1 root root  1477 Oct  5 21:36 500.html
+-rw-r--r--  1 root root  6501 Oct  5 21:36 android-icon-144x144.png
+-rw-r--r--  1 root root  7549 Oct  5 21:36 android-icon-192x192.png
+-rw-r--r--  1 root root  1516 Oct  5 21:36 android-icon-36x36.png
+-rw-r--r--  1 root root  2180 Oct  5 21:36 android-icon-48x48.png
+-rw-r--r--  1 root root  2305 Oct  5 21:36 android-icon-72x72.png
+-rw-r--r--  1 root root  4020 Oct  5 21:36 android-icon-96x96.png
+-rw-r--r--  1 root root  4863 Oct  5 21:36 apple-icon-114x114.png
+-rw-r--r--  1 root root  5156 Oct  5 21:36 apple-icon-120x120.png
+-rw-r--r--  1 root root  6501 Oct  5 21:36 apple-icon-144x144.png
+-rw-r--r--  1 root root  6842 Oct  5 21:36 apple-icon-152x152.png
+-rw-r--r--  1 root root  8173 Oct  5 21:36 apple-icon-180x180.png
+-rw-r--r--  1 root root  1946 Oct  5 21:36 apple-icon-57x57.png
+-rw-r--r--  1 root root  2043 Oct  5 21:36 apple-icon-60x60.png
+-rw-r--r--  1 root root  2305 Oct  5 21:36 apple-icon-72x72.png
+-rw-r--r--  1 root root  2368 Oct  5 21:36 apple-icon-76x76.png
+-rw-r--r--  1 root root  8123 Oct  5 21:36 apple-icon-precomposed.png
+-rw-r--r--  1 root root  8123 Oct  5 21:36 apple-icon.png
+-rw-r--r--  1 root root     0 Oct  5 21:36 apple-touch-icon-precomposed.png
+-rw-r--r--  1 root root     0 Oct  5 21:36 apple-touch-icon.png
+drwxr-xr-x  4 root root  4096 Oct  5 21:36 assets
+drwxr-xr-x  4 root root  4096 Oct  5 21:36 audio
+drwxr-xr-x  2 root root  4096 Oct  5 21:36 brand-assets
+-rw-r--r--  1 root root   281 Oct  5 21:36 browserconfig.xml
+drwxr-xr-x  3 root root  4096 Oct  5 21:36 dashboard
+drwxr-xr-x  2 root root  4096 Oct  5 21:36 downloads
+-rw-r--r--  1 root root  1020 Oct  5 21:36 favicon-16x16.png
+-rw-r--r--  1 root root  1637 Oct  5 21:36 favicon-32x32.png
+-rw-r--r--  1 root root 22661 Oct  5 21:36 favicon-512x512.png
+-rw-r--r--  1 root root  4020 Oct  5 21:36 favicon-96x96.png
+-rw-r--r--  1 root root   900 Oct  5 21:36 favicon-badge-16x16.png
+-rw-r--r--  1 root root  1619 Oct  5 21:36 favicon-badge-32x32.png
+-rw-r--r--  1 root root  5400 Oct  5 21:36 favicon-badge-96x96.png
+drwxr-xr-x  4 root root  4096 Oct  5 21:36 integrations
+drwxr-xr-x  2 root root  4096 Oct  5 21:36 js
+-rw-r--r--  1 root root   894 Oct  5 21:36 manifest.json
+-rw-r--r--  1 root root  6501 Oct  5 21:36 ms-icon-144x144.png
+-rw-r--r--  1 root root  6730 Oct  5 21:36 ms-icon-150x150.png
+-rw-r--r--  1 root root 17834 Oct  5 21:36 ms-icon-310x310.png
+-rw-r--r--  1 root root  2282 Oct  5 21:36 ms-icon-70x70.png
+-rw-r--r--  1 root root   134 Oct  5 21:36 robots.txt
+-rw-r--r--  1 root root   975 Oct  5 21:36 sw.js
+root@aisaturn-repl-prod:/var/www/chatwoot#

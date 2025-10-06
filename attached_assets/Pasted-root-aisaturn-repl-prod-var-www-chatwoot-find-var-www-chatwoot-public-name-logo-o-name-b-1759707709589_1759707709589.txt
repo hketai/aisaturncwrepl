@@ -1,0 +1,45 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# find /var/www/chatwoot/public -name "*logo*" -o -name "*brand*" | head -20
+/var/www/chatwoot/public/assets/images/dashboard/captain/logo.svg
+/var/www/chatwoot/public/brand-assets
+/var/www/chatwoot/public/brand-assets/logo_thumbnail.svg
+/var/www/chatwoot/public/brand-assets/logo.svg
+/var/www/chatwoot/public/brand-assets/logo_dark.svg
+/var/www/chatwoot/public/packs/assets/images/dashboard/captain/logo.svg
+/var/www/chatwoot/public/packs/brand-assets
+/var/www/chatwoot/public/packs/brand-assets/logo_thumbnail.svg
+/var/www/chatwoot/public/packs/brand-assets/logo.svg
+/var/www/chatwoot/public/packs/brand-assets/logo_dark.svg
+root@aisaturn-repl-prod:/var/www/chatwoot# find /var/www/chatwoot/app -name "*logo*" -o -name "*brand*" | grep -E "\.(png|svg|jpg)" | head -20
+/var/www/chatwoot/app/javascript/dashboard/assets/images/bubble-logo.svg
+/var/www/chatwoot/app/javascript/widget/assets/images/logo.svg
+/var/www/chatwoot/app/javascript/design-system/images/logo-thumbnail.svg
+/var/www/chatwoot/app/javascript/design-system/images/logo.png
+/var/www/chatwoot/app/javascript/design-system/images/logo-dark.png
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -I https://app.aisaturn.co/brand-assets/logo.svg
+HTTP/1.1 200 OK
+Server: nginx/1.26.3 (Ubuntu)
+Date: Sun, 05 Oct 2025 23:41:08 GMT
+Content-Type: image/svg+xml
+Content-Length: 12469
+Connection: keep-alive
+last-modified: Sun, 05 Oct 2025 21:19:29 GMT
+Cache-Control: public, max-age=31556952
+
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -I https://app.aisaturn.co/assets/images/dashboard/captain/logo.svg
+HTTP/1.1 200 OK
+Server: nginx/1.26.3 (Ubuntu)
+Date: Sun, 05 Oct 2025 23:41:11 GMT
+Content-Type: image/svg+xml
+Content-Length: 2706
+Connection: keep-alive
+last-modified: Sun, 05 Oct 2025 21:19:29 GMT
+Cache-Control: public, max-age=31556952
+
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -la /var/www/chatwoot/public/brand-assets/
+total 44
+drwxr-xr-x  2 root root  4096 Oct  5 21:19 .
+drwxr-xr-x 10 root root  4096 Oct  5 21:38 ..
+-rw-r--r--  1 root root 12469 Oct  5 21:19 logo.svg
+-rw-r--r--  1 root root 12366 Oct  5 21:19 logo_dark.svg
+-rw-r--r--  1 root root   709 Oct  5 21:19 logo_thumbnail.svg
+root@aisaturn-repl-prod:/var/www/chatwoot#

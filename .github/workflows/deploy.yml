@@ -1,0 +1,46 @@
+name: Deploy to Digital Ocean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to Digital Ocean
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.DO_HOST }}
+        username: ${{ secrets.DO_USERNAME }}
+        key: ${{ secrets.DO_SSH_KEY }}
+        port: ${{ secrets.DO_PORT }}
+        script: |
+          cd /var/www/chatwoot
+          git pull origin main
+          
+          export POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
+          export POSTGRES_USERNAME=${{ secrets.POSTGRES_USERNAME }}
+          export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+          export POSTGRES_DATABASE=${{ secrets.POSTGRES_DATABASE }}
+          export POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
+          export REDIS_URL=${{ secrets.REDIS_URL }}
+          export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+          export RAILS_ENV=production
+          export FRONTEND_URL=${{ secrets.FRONTEND_URL }}
+          
+          bundle install --deployment --without development test
+          pnpm install --frozen-lockfile
+          
+          bundle exec rails db:migrate
+          bundle exec rails assets:precompile
+          
+          sudo systemctl restart chatwoot-web
+          sudo systemctl restart chatwoot-worker
+          
+          echo "✅ Deployment completed successfully!"

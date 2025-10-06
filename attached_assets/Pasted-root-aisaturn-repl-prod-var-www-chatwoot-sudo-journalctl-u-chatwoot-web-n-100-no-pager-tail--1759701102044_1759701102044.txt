@@ -1,0 +1,52 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 100 --no-pager | tail -50
+Oct 05 21:51:12 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 46.
+Oct 05 21:51:12 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot Web Server.
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: Puma starting in single mode...
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: * Puma version: 6.4.3 (ruby 3.4.4-p34) ("The Eagle of Durango")
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: *  Min threads: 5
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: *  Max threads: 5
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: *  Environment: production
+Oct 05 21:51:13 aisaturn-repl-prod bundle[61669]: *          PID: 61669
+Oct 05 21:51:14 aisaturn-repl-prod bundle[61669]: I, [2025-10-05T21:51:14.741179 #61669]  INFO -- : [dotenv] Loaded .env.production
+Oct 05 21:51:14 aisaturn-repl-prod bundle[61669]: I, [2025-10-05T21:51:14.741239 #61669]  INFO -- : [dotenv] Loaded .env.production
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]: I, [2025-10-05T21:51:16.987352 #61669]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]: * Listening on http://0.0.0.0:3000
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]: bundler: failed to load command: puma (/var/www/chatwoot/vendor/bundle/ruby/3.4.0/bin/puma)
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/launcher.rb:312:in 'IO.write': No such file or directory @ rb_sysopen - tmp/pids/server.pid (Errno::ENOENT)
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/launcher.rb:312:in 'Puma::Launcher#write_pid'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/launcher.rb:121:in 'Puma::Launcher#write_state'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/single.rb:48:in 'Puma::Single#run'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/launcher.rb:194:in 'Puma::Launcher#run'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/lib/puma/cli.rb:75:in 'Puma::CLI#run'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/puma-6.4.3/bin/puma:10:in '<top (required)>'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/bin/puma:25:in 'Kernel#load'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/bin/puma:25:in '<top (required)>'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in 'Kernel.load'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in 'Bundler::CLI::Exec#kernel_load'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in 'Bundler::CLI::Exec#run'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in 'Bundler::CLI#exec'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in 'Bundler::Thor::Command#run'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in 'Bundler::Thor::Invocation#invoke_command'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in 'Bundler::Thor.dispatch'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in 'Bundler::CLI.dispatch'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in 'Bundler::Thor::Base::ClassMethods#start'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in 'Bundler::CLI.start'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/exe/bundle:28:in 'block in <top (required)>'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/exe/bundle:20:in '<top (required)>'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/bin/bundle:25:in 'Kernel#load'
+Oct 05 21:51:17 aisaturn-repl-prod bundle[61669]:         from /root/.rbenv/versions/3.4.4/bin/bundle:25:in '<main>'
+Oct 05 21:51:17 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 05 21:51:17 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 05 21:51:17 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Consumed 4.869s CPU time, 231.3M memory peak.
+Oct 05 21:51:27 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 47.
+Oct 05 21:51:27 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot Web Server.
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: Puma starting in single mode...
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: * Puma version: 6.4.3 (ruby 3.4.4-p34) ("The Eagle of Durango")
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: *  Min threads: 5
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: *  Max threads: 5
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: *  Environment: production
+Oct 05 21:51:28 aisaturn-repl-prod bundle[61702]: *          PID: 61702
+Oct 05 21:51:29 aisaturn-repl-prod bundle[61702]: I, [2025-10-05T21:51:29.770631 #61702]  INFO -- : [dotenv] Loaded .env.production
+Oct 05 21:51:29 aisaturn-repl-prod bundle[61702]: I, [2025-10-05T21:51:29.770703 #61702]  INFO -- : [dotenv] Loaded .env.production
+root@aisaturn-repl-prod:/var/www/chatwoot#

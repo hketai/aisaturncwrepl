@@ -1,0 +1,49 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production NODE_ENV=production bundle exec rake assets:precompile
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-05T22:39:19.711141 #64488]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:39:19.711241 #64488]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:39:19.905864 #64488]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+ WARN  Unsupported engine: wanted: {"node":"23.x"} (current: {"node":"v18.20.8","pnpm":"10.2.0"})
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.3s
+-------------- Bulding SDK for Production --------------
+ WARN  Unsupported engine: wanted: {"node":"23.x"} (current: {"node":"v18.20.8","pnpm":"10.2.0"})
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 815ms
+-------------- Bulding App for Production --------------
+ WARN  Unsupported engine: wanted: {"node":"23.x"} (current: {"node":"v18.20.8","pnpm":"10.2.0"})
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.3s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-05 21:38:10
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -lh /var/www/chatwoot/public/packs/js/
+total 32K
+-rw-r--r-- 1 root root 29K Oct  5 22:39 sdk.js
+root@aisaturn-repl-prod:/var/www/chatwoot#

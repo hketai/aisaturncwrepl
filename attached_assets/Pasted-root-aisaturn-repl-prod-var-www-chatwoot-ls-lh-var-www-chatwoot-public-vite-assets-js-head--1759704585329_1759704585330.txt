@@ -1,0 +1,73 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -lh /var/www/chatwoot/public/vite/assets/*.js | head -20
+-rw-r--r-- 1 root root  17K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/ArticleEditor-ApqjW5h0.js
+-rw-r--r-- 1 root root  17K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/ArticleEditor-aHL5O8Ox.js
+-rw-r--r-- 1 root root  509 Oct  5 22:42 /var/www/chatwoot/public/vite/assets/ArticleViewer-QXjATolH.js
+-rw-r--r-- 1 root root  509 Oct  5 21:38 /var/www/chatwoot/public/vite/assets/ArticleViewer-RZ-Au_-r.js
+-rw-r--r-- 1 root root 143K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/BarChart-Bvnh9yRP.js
+-rw-r--r-- 1 root root 143K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/BarChart-D3fiEtN6.js
+-rw-r--r-- 1 root root 1.6K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/Branding-BC5W_hB2.js
+-rw-r--r-- 1 root root 1.6K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/Branding-DJTCXOiv.js
+-rw-r--r-- 1 root root 1010 Oct  5 22:42 /var/www/chatwoot/public/vite/assets/Button-BwPL9bkf.js
+-rw-r--r-- 1 root root 1010 Oct  5 21:38 /var/www/chatwoot/public/vite/assets/Button-CvHtRSzg.js
+-rw-r--r-- 1 root root 1.3K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/Campaigns-B2usnI8Y.js
+-rw-r--r-- 1 root root 1.3K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/Campaigns-DlKjCsF_.js
+-rw-r--r-- 1 root root  12K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/CategoryHeaderControls-CxCaHJoZ.js
+-rw-r--r-- 1 root root  12K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/CategoryHeaderControls-djQq0aQw.js
+-rw-r--r-- 1 root root 9.3M Oct  5 22:42 /var/www/chatwoot/public/vite/assets/DashboardIcon-MYHFvuWM.js
+-rw-r--r-- 1 root root 9.3M Oct  5 21:38 /var/www/chatwoot/public/vite/assets/DashboardIcon-tn1ZgeKO.js
+-rw-r--r-- 1 root root 4.6K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/EmojiInput-CAvpOLir.js
+-rw-r--r-- 1 root root 4.6K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/EmojiInput-D_-hDkMV.js
+-rw-r--r-- 1 root root 5.3K Oct  5 21:38 /var/www/chatwoot/public/vite/assets/HelpCenterLayout-BGf921Du.js
+-rw-r--r-- 1 root root 5.3K Oct  5 22:42 /var/www/chatwoot/public/vite/assets/HelpCenterLayout-BrxWu9I8.js
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /var/www/chatwoot/public/vite/.vite/manifest.json | head -50
+{
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/ad.svg": {
+    "file": "assets/ad-CDtWnnSA.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/ad.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/af.svg": {
+    "file": "assets/af-Cc32fsDB.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/af.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/arab.svg": {
+    "file": "assets/arab-PzQTPYwO.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/arab.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/as.svg": {
+    "file": "assets/as-_t1IQUdv.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/as.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/aw.svg": {
+    "file": "assets/aw-CLCX8uk5.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/aw.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bm.svg": {
+    "file": "assets/bm-D2j4bkLD.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bm.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bn.svg": {
+    "file": "assets/bn-UGyQANfK.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bn.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bo.svg": {
+    "file": "assets/bo-CP9m75_5.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bo.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/br.svg": {
+    "file": "assets/br-Yf30zEjB.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/br.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bt.svg": {
+    "file": "assets/bt-Cm0R6rAQ.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bt.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bz.svg": {
+    "file": "assets/bz-CqiVUvof.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/bz.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/cy.svg": {
+    "file": "assets/cy-Bgo0XIP0.svg",
+    "src": "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/cy.svg"
+  },
+  "../../node_modules/.pnpm/flag-icons@7.2.3/node_modules/flag-icons/flags/1x1/dg.svg": {
+root@aisaturn-repl-prod:/var/www/chatwoot#

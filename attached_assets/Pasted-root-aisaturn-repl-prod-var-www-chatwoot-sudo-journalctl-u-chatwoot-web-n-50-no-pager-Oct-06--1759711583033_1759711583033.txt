@@ -1,0 +1,52 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 50 --no-pager
+Oct 06 00:40:30 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:40:33 aisaturn-repl-prod bundle[74386]: => Booting Puma
+Oct 06 00:40:33 aisaturn-repl-prod bundle[74386]: => Rails 7.1.5.2 application starting in production
+Oct 06 00:40:33 aisaturn-repl-prod bundle[74386]: => Run `bin/rails server --help` for more startup options
+Oct 06 00:40:33 aisaturn-repl-prod bundle[74386]: I, [2025-10-06T00:40:33.237878 #74386]  INFO -- : [dotenv] Loaded .env.production
+Oct 06 00:40:33 aisaturn-repl-prod bundle[74386]: I, [2025-10-06T00:40:33.237953 #74386]  INFO -- : [dotenv] Loaded .env.production
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: I, [2025-10-06T00:40:37.044200 #74386]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: Puma starting in single mode...
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: * Puma version: 6.4.3 (ruby 3.4.4-p34) ("The Eagle of Durango")
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: *  Min threads: 5
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: *  Max threads: 5
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: *  Environment: production
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: *          PID: 74386
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: * Listening on http://0.0.0.0:3000
+Oct 06 00:40:37 aisaturn-repl-prod bundle[74386]: Use Ctrl-C to stop
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: Stopping chatwoot-web.service - Chatwoot web server...
+Oct 06 00:45:27 aisaturn-repl-prod bundle[74386]: - Gracefully stopping, waiting for requests to finish
+Oct 06 00:45:27 aisaturn-repl-prod bundle[74386]: Exiting
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Deactivated successfully.
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: Stopped chatwoot-web.service - Chatwoot web server.
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Consumed 7.396s CPU time, 254M memory peak.
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:45:27 aisaturn-repl-prod (bundle)[74717]: chatwoot-web.service: Failed to execute /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:27 aisaturn-repl-prod (bundle)[74717]: chatwoot-web.service: Failed at step EXEC spawning /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=203/EXEC
+Oct 06 00:45:27 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 06 00:45:37 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 1.
+Oct 06 00:45:37 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:45:37 aisaturn-repl-prod (bundle)[74728]: chatwoot-web.service: Failed to execute /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:37 aisaturn-repl-prod (bundle)[74728]: chatwoot-web.service: Failed at step EXEC spawning /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:37 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=203/EXEC
+Oct 06 00:45:37 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 06 00:45:47 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 2.
+Oct 06 00:45:47 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:45:47 aisaturn-repl-prod (bundle)[74732]: chatwoot-web.service: Failed to execute /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:47 aisaturn-repl-prod (bundle)[74732]: chatwoot-web.service: Failed at step EXEC spawning /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:47 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=203/EXEC
+Oct 06 00:45:47 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 06 00:45:57 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 3.
+Oct 06 00:45:57 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:45:57 aisaturn-repl-prod (bundle)[74738]: chatwoot-web.service: Failed to execute /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:57 aisaturn-repl-prod (bundle)[74738]: chatwoot-web.service: Failed at step EXEC spawning /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:45:57 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=203/EXEC
+Oct 06 00:45:57 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 06 00:46:08 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 4.
+Oct 06 00:46:08 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 06 00:46:08 aisaturn-repl-prod (bundle)[74742]: chatwoot-web.service: Failed to execute /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:46:08 aisaturn-repl-prod (bundle)[74742]: chatwoot-web.service: Failed at step EXEC spawning /root/.rbenv/shims/bundle: Permission denied
+Oct 06 00:46:08 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=203/EXEC
+Oct 06 00:46:08 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+root@aisaturn-repl-prod:/var/www/chatwoot#

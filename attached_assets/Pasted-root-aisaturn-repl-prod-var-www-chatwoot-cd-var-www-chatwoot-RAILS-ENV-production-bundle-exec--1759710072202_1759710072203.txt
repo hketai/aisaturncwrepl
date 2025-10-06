@@ -1,0 +1,319 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot && RAILS_ENV=production bundle exec rails db:migrate
+/root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-06T00:21:01.342599 #73406]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:21:01.342701 #73406]  INFO -- : [dotenv] Loaded .env.production
+E, [2025-10-06T00:21:01.648664 #73406] ERROR -- : Failed to configure AI Agents SDK: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+
+I, [2025-10-06T00:21:01.649140 #73406]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2025-10-06T00:21:01.955173 #73406]  INFO -- : Migrating to InitSchema (20230426130150)
+== 20230426130150 InitSchema: migrating =======================================
+-- enable_extension("pg_stat_statements")
+   -> 0.0041s
+-- enable_extension("pg_trgm")
+   -> 0.0031s
+-- enable_extension("pgcrypto")
+   -> 0.0030s
+-- enable_extension("plpgsql")
+   -> 0.0031s
+-- create_table("access_tokens")
+   -> 0.0060s
+-- create_table("account_users")
+   -> 0.0052s
+-- create_table("accounts", {id: :serial})
+   -> 0.0045s
+-- create_table("action_mailbox_inbound_emails")
+   -> 0.0030s
+-- create_table("active_storage_attachments")
+   -> 0.0030s
+-- create_table("active_storage_blobs")
+   -> 0.0034s
+-- create_table("active_storage_variant_records")
+   -> 0.0032s
+-- create_table("agent_bot_inboxes")
+   -> 0.0025s
+-- create_table("agent_bots")
+   -> 0.0044s
+-- create_table("articles")
+   -> 0.0049s
+-- create_table("attachments", {id: :serial})
+   -> 0.0049s
+-- create_table("audits")
+   -> 0.0058s
+-- create_table("automation_rules")
+   -> 0.0039s
+-- create_table("campaigns")
+   -> 0.0064s
+-- create_table("canned_responses", {id: :serial})
+   -> 0.0018s
+-- create_table("categories")
+   -> 0.0052s
+-- create_table("channel_api")
+   -> 0.0036s
+-- create_table("channel_email")
+   -> 0.0069s
+-- create_table("channel_facebook_pages", {id: :serial})
+   -> 0.0037s
+-- create_table("channel_line")
+   -> 0.0029s
+-- create_table("channel_sms")
+   -> 0.0033s
+-- create_table("channel_telegram")
+   -> 0.0031s
+-- create_table("channel_twilio_sms")
+   -> 0.0048s
+-- create_table("channel_twitter_profiles")
+   -> 0.0036s
+-- create_table("channel_web_widgets", {id: :serial})
+   -> 0.0059s
+-- create_table("channel_whatsapp")
+   -> 0.0042s
+-- create_table("contact_inboxes")
+   -> 0.0064s
+-- create_table("contacts", {id: :serial})
+   -> 0.0072s
+-- create_table("conversation_participants")
+   -> 0.0040s
+-- create_table("conversations", {id: :serial})
+   -> 0.0135s
+-- create_table("csat_survey_responses")
+   -> 0.0057s
+-- create_table("custom_attribute_definitions")
+   -> 0.0047s
+-- create_table("custom_filters")
+   -> 0.0048s
+-- create_table("dashboard_apps")
+   -> 0.0039s
+-- create_table("data_imports")
+   -> 0.0028s
+-- create_table("email_templates")
+   -> 0.0040s
+-- create_table("folders")
+   -> 0.0022s
+-- create_table("inbox_members", {id: :serial})
+   -> 0.0028s
+-- create_table("inboxes", {id: :serial})
+   -> 0.0065s
+-- create_table("installation_configs")
+   -> 0.0033s
+-- create_table("integrations_hooks")
+   -> 0.0027s
+-- create_table("labels")
+   -> 0.0047s
+-- create_table("macros")
+   -> 0.0043s
+-- create_table("mentions")
+   -> 0.0036s
+-- create_table("messages", {id: :serial})
+   -> 0.0086s
+-- create_table("notes")
+   -> 0.0037s
+-- create_table("notification_settings")
+   -> 0.0030s
+-- create_table("notification_subscriptions")
+   -> 0.0035s
+-- create_table("notifications")
+   -> 0.0048s
+-- create_table("platform_app_permissibles")
+   -> 0.0039s
+-- create_table("platform_apps")
+   -> 0.0021s
+-- create_table("portal_members")
+   -> 0.0030s
+-- create_table("portals")
+   -> 0.0042s
+-- create_table("portals_members", {id: false})
+   -> 0.0023s
+-- create_table("related_categories")
+   -> 0.0026s
+-- create_table("reporting_events")
+   -> 0.0053s
+-- create_table("taggings", {id: :serial})
+   -> 0.0073s
+-- create_table("tags", {id: :serial})
+   -> 0.0036s
+-- create_table("team_members")
+   -> 0.0031s
+-- create_table("teams")
+   -> 0.0035s
+-- create_table("telegram_bots", {id: :serial})
+   -> 0.0021s
+-- create_table("users", {id: :serial})
+   -> 0.0069s
+-- create_table("webhooks")
+   -> 0.0033s
+-- create_table("working_hours")
+   -> 0.0033s
+-- add_foreign_key("active_storage_attachments", "active_storage_blobs", {column: "blob_id"})
+   -> 0.0016s
+-- add_foreign_key("active_storage_variant_records", "active_storage_blobs", {column: "blob_id"})
+   -> 0.0008s
+-- add_foreign_key("inboxes", "portals")
+   -> 0.0012s
+-- create_trigger("accounts_after_insert_row_tr", {generated: true, compatibility: 1})
+   -> 0.0077s
+-- create_trigger("conversations_before_insert_row_tr", {generated: true, compatibility: 1})
+   -> 0.0001s
+-- create_trigger("camp_dpid_before_insert", {generated: true, compatibility: 1})
+   -> 0.0001s
+-- create_trigger("campaigns_before_insert_row_tr", {generated: true, compatibility: 1})
+   -> 0.0000s
+== 20230426130150 InitSchema: migrated (0.3141s) ==============================
+
+I, [2025-10-06T00:21:02.278259 #73406]  INFO -- : Migrating to CreateSlaPolicies (20230503101201)
+== 20230503101201 CreateSlaPolicies: migrating ================================
+-- create_table(:sla_policies)
+   -> 0.0059s
+== 20230503101201 CreateSlaPolicies: migrated (0.0060s) =======================
+
+I, [2025-10-06T00:21:02.286956 #73406]  INFO -- : Migrating to AddIndexToMessagesCreatedAt (20230509101256)
+== 20230509101256 AddIndexToMessagesCreatedAt: migrating ======================
+-- add_index(:messages, [:created_at], {name: "index_messages_on_created_at", algorithm: :concurrently})
+   -> 0.0029s
+== 20230509101256 AddIndexToMessagesCreatedAt: migrated (0.0031s) =============
+
+I, [2025-10-06T00:21:02.291781 #73406]  INFO -- : Migrating to AddIndexToMessagesForReportings (20230510060828)
+== 20230510060828 AddIndexToMessagesForReportings: migrating ==================
+-- add_index(:messages, [:conversation_id, :account_id, :message_type, :created_at], {name: "index_messages_on_conversation_account_type_created", algorithm: :concurrently})
+   -> 0.0027s
+== 20230510060828 AddIndexToMessagesForReportings: migrated (0.0029s) =========
+
+I, [2025-10-06T00:21:02.296437 #73406]  INFO -- : Migrating to SetDefaultEmptyStringForContactName (20230510113208)
+== 20230510113208 SetDefaultEmptyStringForContactName: migrating ==============
+-- change_column_default(:contacts, :name, {from: nil, to: ""})
+   -> 0.0039s
+== 20230510113208 SetDefaultEmptyStringForContactName: migrated (0.0040s) =====
+
+I, [2025-10-06T00:21:02.302675 #73406]  INFO -- : Migrating to UpdateArticleImageKeys (20230515051424)
+== 20230515051424 UpdateArticleImageKeys: migrating ===========================
+== 20230515051424 UpdateArticleImageKeys: migrated (0.0173s) ==================
+
+I, [2025-10-06T00:21:02.322441 #73406]  INFO -- : Migrating to AddPartialIndexForResolvedContacts (20230523104139)
+== 20230523104139 AddPartialIndexForResolvedContacts: migrating ===============
+-- add_index(:contacts, [:account_id, :email, :phone_number, :identifier], {where: "(email <> '' OR phone_number <> '' OR identifier <> '')", name: "index_contacts_on_nonempty_fields", algorithm: :concurrently})
+   -> 0.0046s
+== 20230523104139 AddPartialIndexForResolvedContacts: migrated (0.0047s) ======
+
+I, [2025-10-06T00:21:02.328937 #73406]  INFO -- : Migrating to AddCustomSenderNameToggle (20230525085402)
+== 20230525085402 AddCustomSenderNameToggle: migrating ========================
+-- add_column(:inboxes, :sender_name_type, :integer, {default: 0, null: false})
+   -> 0.0013s
+== 20230525085402 AddCustomSenderNameToggle: migrated (0.0014s) ===============
+
+I, [2025-10-06T00:21:02.332086 #73406]  INFO -- : Migrating to AddProcessedMessageContentToMessages (20230608040738)
+== 20230608040738 AddProcessedMessageContentToMessages: migrating =============
+-- add_column(:messages, :processed_message_content, :text, {null: true})
+   -> 0.0006s
+== 20230608040738 AddProcessedMessageContentToMessages: migrated (0.0006s) ====
+
+I, [2025-10-06T00:21:02.334415 #73406]  INFO -- : Migrating to AddIndexToReportingEvents (20230612103936)
+== 20230612103936 AddIndexToReportingEvents: migrating ========================
+-- add_index(:reporting_events, [:account_id, :name, :created_at], {name: "reporting_events__account_id__name__created_at", algorithm: :concurrently})
+   -> 0.0027s
+== 20230612103936 AddIndexToReportingEvents: migrated (0.0029s) ===============
+
+I, [2025-10-06T00:21:02.339111 #73406]  INFO -- : Migrating to AddSenderNameToIn (20230614044633)
+== 20230614044633 AddSenderNameToIn: migrating ================================
+-- add_column(:inboxes, :business_name, :string, {null: true})
+   -> 0.0007s
+== 20230614044633 AddSenderNameToIn: migrated (0.0008s) =======================
+
+I, [2025-10-06T00:21:02.341689 #73406]  INFO -- : Migrating to AddSlaPolicyToConversations (20230620132319)
+== 20230620132319 AddSlaPolicyToConversations: migrating ======================
+-- add_column(:conversations, :sla_policy_id, :bigint)
+   -> 0.0006s
+== 20230620132319 AddSlaPolicyToConversations: migrated (0.0007s) =============
+
+I, [2025-10-06T00:21:02.343862 #73406]  INFO -- : Migrating to AddWaitingSinceToConversations (20230620212340)
+== 20230620212340 AddWaitingSinceToConversations: migrating ===================
+-- add_column(:conversations, :waiting_since, :datetime)
+   -> 0.0009s
+-- add_index(:conversations, :waiting_since, {name: "index_conversations_on_waiting_since"})
+   -> 0.0008s
+== 20230620212340 AddWaitingSinceToConversations: migrated (0.0019s) ==========
+
+I, [2025-10-06T00:21:02.347662 #73406]  INFO -- : Migrating to SentimentColumnToMessages (20230706090122)
+== 20230706090122 SentimentColumnToMessages: migrating ========================
+-- add_column(:messages, :sentiment, :jsonb, {default: {}})
+   -> 0.0012s
+== 20230706090122 SentimentColumnToMessages: migrated (0.0014s) ===============
+
+I, [2025-10-06T00:21:02.350864 #73406]  INFO -- : Migrating to AddApiKeySidToTwilioSms (20230714054138)
+== 20230714054138 AddApiKeySidToTwilioSms: migrating ==========================
+-- add_column(:channel_twilio_sms, :api_key_sid, :string)
+   -> 0.0007s
+== 20230714054138 AddApiKeySidToTwilioSms: migrated (0.0008s) =================
+
+I, [2025-10-06T00:21:02.353506 #73406]  INFO -- : Migrating to AddPartialIndexContactAccountId (20230727065605)
+== 20230727065605 AddPartialIndexContactAccountId: migrating ==================
+-- add_index(:contacts, [:account_id], {where: "(email <> '' OR phone_number <> '' OR identifier <> '')", name: "index_resolved_contact_account_id", algorithm: :concurrently})
+   -> 0.0042s
+== 20230727065605 AddPartialIndexContactAccountId: migrated (0.0044s) =========
+
+I, [2025-10-06T00:21:02.359696 #73406]  INFO -- : Migrating to UpdateDefaultStatusInHooks (20230801180936)
+== 20230801180936 UpdateDefaultStatusInHooks: migrating =======================
+-- change_column_default(:integrations_hooks, :status, 1)
+   -> 0.0029s
+== 20230801180936 UpdateDefaultStatusInHooks: migrated (0.0120s) ==============
+
+I, [2025-10-06T00:21:02.374785 #73406]  INFO -- : Migrating to AddRegexToCustomAttributeDefinition (20230905060223)
+== 20230905060223 AddRegexToCustomAttributeDefinition: migrating ==============
+-- add_column(:custom_attribute_definitions, :regex_pattern, :string)
+   -> 0.0010s
+-- add_column(:custom_attribute_definitions, :regex_cue, :string)
+   -> 0.0008s
+== 20230905060223 AddRegexToCustomAttributeDefinition: migrated (0.0020s) =====
+
+I, [2025-10-06T00:21:02.379214 #73406]  INFO -- : Migrating to EnsureMessagePrivateNotNull (20231011041615)
+== 20231011041615 EnsureMessagePrivateNotNull: migrating ======================
+-- change_column_null(:messages, :private, false, false)
+   -> 0.0045s
+== 20231011041615 EnsureMessagePrivateNotNull: migrated (0.0046s) =============
+
+I, [2025-10-06T00:21:02.386086 #73406]  INFO -- : Migrating to AddIconToCategories (20231013072802)
+== 20231013072802 AddIconToCategories: migrating ==============================
+-- add_column(:categories, :icon, :string, {default: ""})
+   -> 0.0012s
+== 20231013072802 AddIconToCategories: migrated (0.0013s) =====================
+
+I, [2025-10-06T00:21:02.389707 #73406]  INFO -- : Migrating to ChangeFeatureFlagsToBigintInAccounts (20231114111614)
+== 20231114111614 ChangeFeatureFlagsToBigintInAccounts: migrating =============
+-- change_column(:accounts, :feature_flags, :bigint)
+   -> 0.0035s
+== 20231114111614 ChangeFeatureFlagsToBigintInAccounts: migrated (0.0036s) ====
+
+I, [2025-10-06T00:21:02.396834 #73406]  INFO -- : Migrating to AddSnoozedUntilToNotifications (20231129091149)
+== 20231129091149 AddSnoozedUntilToNotifications: migrating ===================
+-- add_column(:notifications, :snoozed_until, :datetime)
+   -> 0.0010s
+== 20231129091149 AddSnoozedUntilToNotifications: migrated (0.0011s) ==========
+
+I, [2025-10-06T00:21:02.400340 #73406]  INFO -- : Migrating to RemoveNotificationsWithMessagePrimaryActor (20231201014644)
+== 20231201014644 RemoveNotificationsWithMessagePrimaryActor: migrating =======
+2025-10-06T00:21:02.403Z pid=73406 tid=1hr2 INFO: Sidekiq 7.3.1 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379", password: nil, reconnect_attempts: 2, timeout: 1}
+I, [2025-10-06T00:21:02.407106 #73406]  INFO -- : [ActiveJob] Enqueued Migration::RemoveMessageNotifications (Job ID: 9ee86a94-9151-4336-856b-52f109547c51) to Sidekiq(scheduled_jobs)
+== 20231201014644 RemoveNotificationsWithMessagePrimaryActor: migrated (0.0062s)
+
+I, [2025-10-06T00:21:02.409324 #73406]  INFO -- : Migrating to AddCachedLabelsList (20231211010807)
+== 20231211010807 AddCachedLabelsList: migrating ==============================
+-- add_column(:conversations, :cached_label_list, :string)
+   -> 0.0010s
+bin/rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled: (StandardError)
+
+uninitialized constant ActsAsTaggableOn::Taggable::Cache
+/var/www/chatwoot/db/migrate/20231211010807_add_cached_labels_list.rb:5:in 'AddCachedLabelsList#change'
+
+Caused by:
+NameError: uninitialized constant ActsAsTaggableOn::Taggable::Cache (NameError)
+
+    ActsAsTaggableOn::Taggable::Cache.included(Conversation)
+                              ^^^^^^^
+Did you mean?  CacheKeys
+/var/www/chatwoot/db/migrate/20231211010807_add_cached_labels_list.rb:5:in 'AddCachedLabelsList#change'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+root@aisaturn-repl-prod:/var/www/chatwoot#

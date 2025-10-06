@@ -1,0 +1,625 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# bundle install --deployment --without development test
+[DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+[DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+Don't run Bundler as root. Installing your bundle as root will break this application for all non-root users on this
+machine.
+Bundler 2.7.2 is running, but your lockfile was generated with 2.5.16. Installing Bundler 2.5.16 and restarting using that version.
+Fetching gem metadata from https://rubygems.org/.
+Fetching bundler 2.5.16
+Installing bundler 2.5.16
+[DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+[DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+Don't run Bundler as root. Installing your bundle as root will break this application for all non-root users on this
+machine.
+Fetching gem metadata from https://rubygems.org/........
+Fetching https://github.com/chatwoot/azure-storage-ruby
+Fetching https://github.com/chatwoot/devise-secure_password
+Updating files: 100% (31316/31316), done.
+Fetching rake 13.2.1
+Installing rake 13.2.1
+Fetching base64 0.3.0
+Fetching benchmark 0.4.1
+Fetching bigdecimal 3.2.2
+Fetching concurrent-ruby 1.3.5
+Installing base64 0.3.0
+Fetching connection_pool 2.5.3
+Installing benchmark 0.4.1
+Fetching drb 2.2.3
+Installing bigdecimal 3.2.2 with native extensions
+Installing concurrent-ruby 1.3.5
+Installing connection_pool 2.5.3
+Fetching logger 1.7.0
+Installing drb 2.2.3
+Installing logger 1.7.0
+Fetching minitest 5.25.5
+Fetching mutex_m 0.3.0
+Installing minitest 5.25.5
+Installing mutex_m 0.3.0
+Fetching securerandom 0.4.1
+Installing securerandom 0.4.1
+Fetching builder 3.3.0
+Fetching erubi 1.13.0
+Fetching racc 1.8.1
+Installing builder 3.3.0
+Fetching crass 1.0.6
+Installing erubi 1.13.0
+Fetching rack 3.2.0
+Installing racc 1.8.1 with native extensions
+Installing crass 1.0.6
+Fetching nio4r 2.7.3
+Installing rack 3.2.0
+Installing nio4r 2.7.3 with native extensions
+Fetching websocket-extensions 0.1.5
+Installing websocket-extensions 0.1.5
+Fetching zeitwerk 2.6.17
+Installing zeitwerk 2.6.17
+Fetching timeout 0.4.3
+Installing timeout 0.4.3
+Fetching marcel 1.0.4
+Installing marcel 1.0.4
+Fetching mini_mime 1.1.5
+Installing mini_mime 1.1.5
+Fetching date 3.4.1
+Installing date 3.4.1 with native extensions
+Fetching public_suffix 6.0.2
+Installing public_suffix 6.0.2
+Fetching io-console 0.6.0
+Installing io-console 0.6.0 with native extensions
+Fetching thor 1.4.0
+Installing thor 1.4.0
+Fetching kaminari-core 1.2.2
+Installing kaminari-core 1.2.2
+Fetching ffi 1.17.2 (x86_64-linux-gnu)
+Installing ffi 1.17.2 (x86_64-linux-gnu)
+Fetching tilt 2.3.0
+Installing tilt 2.3.0
+Fetching selectize-rails 0.12.6
+Installing selectize-rails 0.12.6
+Fetching event_stream_parser 1.0.0
+Installing event_stream_parser 1.0.0
+Fetching uri 1.0.3
+Installing uri 1.0.3
+Fetching json 2.13.2
+Installing json 2.13.2 with native extensions
+Fetching multipart-post 2.3.0
+Installing multipart-post 2.3.0
+Fetching ast 2.4.3
+Installing ast 2.4.3
+Fetching attr_extras 7.1.0
+Installing attr_extras 7.1.0
+Fetching aws-eventstream 1.2.0
+Installing aws-eventstream 1.2.0
+Fetching aws-partitions 1.760.0
+Installing aws-partitions 1.760.0
+Fetching jmespath 1.6.2
+Installing jmespath 1.6.2
+Fetching multi_json 1.15.0
+Installing multi_json 1.15.0
+Fetching statsd-ruby 1.5.0
+Installing statsd-ruby 1.5.0
+Fetching bcrypt 3.1.20
+Installing bcrypt 3.1.20 with native extensions
+Fetching msgpack 1.8.0
+Installing msgpack 1.8.0 with native extensions
+Fetching browser 5.3.1
+Installing browser 5.3.1
+Fetching commonmarker 0.23.10
+Installing commonmarker 0.23.10 with native extensions
+Fetching csv 3.3.0
+Installing csv 3.3.0
+Fetching datadog-ruby_core_source 3.4.1
+Installing datadog-ruby_core_source 3.4.1
+Fetching libdatadog 18.1.0.1.0 (x86_64-linux)
+Installing libdatadog 18.1.0.1.0 (x86_64-linux)
+Fetching declarative 0.0.20
+Installing declarative 0.0.20
+Fetching orm_adapter 0.5.0
+Installing orm_adapter 0.5.0
+Fetching rotp 6.3.0
+Installing rotp 6.3.0
+Fetching digest-crc 0.6.5
+Installing digest-crc 0.6.5 with native extensions
+Fetching unf_ext 0.0.8.2
+Installing unf_ext 0.0.8.2 with native extensions
+Fetching dotenv 3.1.2
+Installing dotenv 3.1.2
+Fetching dry-cli 1.1.0
+Installing dry-cli 1.1.0
+Fetching regexp_parser 2.10.0
+Installing regexp_parser 2.10.0
+Fetching http-form_data 2.3.0
+Installing http-form_data 2.3.0
+Fetching ruby2_keywords 0.0.5
+Installing ruby2_keywords 0.0.5
+Fetching email_reply_trimmer 0.1.13
+Installing email_reply_trimmer 0.1.13
+Fetching execjs 2.8.1
+Installing execjs 2.8.1
+Fetching multi_xml 0.6.0
+Installing multi_xml 0.6.0
+Fetching hashie 5.0.0
+Installing hashie 5.0.0
+Fetching os 1.1.4
+Installing os 1.1.4
+Fetching flag_shih_tzu 0.3.23
+Installing flag_shih_tzu 0.3.23
+Fetching foreman 0.87.2
+Installing foreman 0.87.2
+Fetching raabro 1.4.0
+Installing raabro 1.4.0
+Fetching google-protobuf 3.25.7
+Installing google-protobuf 3.25.7 with native extensions
+Fetching geocoder 1.8.1
+Installing geocoder 1.8.1
+Fetching ostruct 0.6.1
+Installing ostruct 0.6.1
+Fetching version_gem 1.1.4
+Installing version_gem 1.1.4
+Fetching httpclient 2.8.3
+Installing httpclient 2.8.3
+Fetching trailblazer-option 0.1.2
+Installing trailblazer-option 0.1.2
+Fetching uber 0.1.0
+Installing uber 0.1.0
+Fetching retriable 3.1.2
+Installing retriable 3.1.2
+Fetching google-cloud-errors 1.3.1
+Installing google-cloud-errors 1.3.1
+Fetching gserver 0.0.1
+Installing gserver 0.0.1
+Fetching haikunator 1.1.1
+Installing haikunator 1.1.1
+Fetching sexp_processor 4.17.0
+Installing sexp_processor 4.17.0
+Fetching hana 1.3.7
+Installing hana 1.3.7
+Fetching hash_diff 1.1.1
+Installing hash_diff 1.1.1
+Fetching http-accept 1.7.0
+Installing http-accept 1.7.0
+Fetching mini_magick 4.12.0
+Installing mini_magick 4.12.0
+Fetching uri_template 0.7.0
+Installing uri_template 0.7.0
+Fetching judoscale-ruby 1.8.2
+Installing judoscale-ruby 1.8.2
+Fetching rexml 3.4.4
+Installing rexml 3.4.4
+Fetching line-bot-api 1.28.0
+Installing line-bot-api 1.28.0
+Fetching liquid 5.4.0
+Installing liquid 5.4.0
+Fetching maxminddb 0.1.22
+Installing maxminddb 0.1.22
+Fetching mime-types-data 3.2023.0218.1
+Installing mime-types-data 3.2023.0218.1
+Fetching netrc 0.11.0
+Installing netrc 0.11.0
+Fetching openssl 3.2.0
+Installing openssl 3.2.0 with native extensions
+Fetching pg 1.5.3
+Installing pg 1.5.3 with native extensions
+Fetching pgvector 0.1.1
+Installing pgvector 0.1.1
+Fetching rack-timeout 0.6.3
+Installing rack-timeout 0.6.3
+Fetching ruby_llm-schema 0.1.0
+Installing ruby_llm-schema 0.1.0
+Fetching sorbet-runtime 0.5.11934
+Installing sorbet-runtime 0.5.11934
+Fetching stripe 8.5.0
+Installing stripe 8.5.0
+Fetching telephone_number 1.4.20
+Installing telephone_number 1.4.20
+Fetching wisper 2.0.0
+Installing wisper 2.0.0
+Fetching jwt 2.10.1
+Installing jwt 2.10.1
+Fetching newrelic_rpm 9.6.0
+Installing newrelic_rpm 9.6.0
+Fetching net-http-persistent 4.0.2
+Installing net-http-persistent 4.0.2
+Fetching redis-client 0.22.2
+Installing redis-client 0.22.2
+Fetching i18n 1.14.7
+Installing i18n 1.14.7
+Fetching tzinfo 2.0.6
+Installing tzinfo 2.0.6
+Fetching rack-session 2.1.1
+Installing rack-session 2.1.1
+Fetching rack-test 2.1.0
+Installing rack-test 2.1.0
+Fetching rackup 2.2.1
+Installing rackup 2.2.1
+Fetching sprockets 4.2.1
+Installing sprockets 4.2.1
+Fetching warden 1.2.9
+Installing warden 1.2.9
+Fetching request_store 1.5.1
+Installing request_store 1.5.1
+Fetching rack-protection 4.1.1
+Installing rack-protection 4.1.1
+Fetching rack-attack 6.7.0
+Installing rack-attack 6.7.0
+Fetching rack-cors 2.0.0
+Installing rack-cors 2.0.0
+Fetching rack-proxy 0.7.7
+Installing rack-proxy 0.7.7
+Fetching websocket-driver 0.7.7
+Installing websocket-driver 0.7.7 with native extensions
+Fetching net-protocol 0.2.2
+Installing net-protocol 0.2.2
+Fetching nokogiri 1.18.9 (x86_64-linux-gnu)
+Installing nokogiri 1.18.9 (x86_64-linux-gnu)
+Fetching addressable 2.8.7
+Installing addressable 2.8.7
+Fetching reline 0.3.6
+Installing reline 0.3.6
+Fetching sassc 2.4.0
+Installing sassc 2.4.0 with native extensions
+Fetching libddwaf 1.24.1.0.3 (x86_64-linux)
+Fetching ffi-compiler 1.0.1
+Installing ffi-compiler 1.0.1
+Fetching ruby-vips 2.1.4
+Installing libddwaf 1.24.1.0.3 (x86_64-linux)
+Installing ruby-vips 2.1.4
+Fetching net-http 0.6.0
+Fetching puma 6.4.3
+Installing net-http 0.6.0
+Fetching faraday-multipart 1.0.4
+Installing puma 6.4.3 with native extensions
+Installing faraday-multipart 1.0.4
+Fetching parser 3.3.8.0
+Installing parser 3.3.8.0
+Fetching aws-sigv4 1.5.2
+Installing aws-sigv4 1.5.2
+Fetching barnes 0.0.9
+Installing barnes 0.0.9
+Fetching csv-safe 3.3.1
+Installing csv-safe 3.3.1
+Fetching iso-639 0.3.8
+Installing iso-639 0.3.8
+Fetching sentry-ruby 5.19.0
+Installing sentry-ruby 5.19.0
+Fetching bootsnap 1.16.0
+Installing bootsnap 1.16.0 with native extensions
+Fetching ecma-re-validator 0.4.0
+Installing ecma-re-validator 0.4.0
+Fetching uglifier 4.2.0
+Installing uglifier 4.2.0
+Fetching httparty 0.21.0
+Installing httparty 0.21.0
+Fetching unf 0.1.4
+Installing unf 0.1.4
+Fetching gli 2.22.2
+Installing gli 2.22.2
+Fetching oj 3.16.10
+Installing oj 3.16.10 with native extensions
+Fetching oauth-tty 1.0.5
+Installing oauth-tty 1.0.5
+Fetching snaky_hash 2.0.1
+Installing snaky_hash 2.0.1
+Fetching representable 3.2.0
+Installing representable 3.2.0
+Fetching ruby_parser 3.20.0
+Installing ruby_parser 3.20.0
+Fetching json_refs 0.1.8
+Installing json_refs 0.1.8
+Fetching mime-types 3.4.1
+Installing mime-types 3.4.1
+Fetching googleapis-common-protos-types 1.20.0
+Installing googleapis-common-protos-types 1.20.0
+Fetching sidekiq 7.3.1
+Installing sidekiq 7.3.1
+Fetching redis 5.0.6
+Installing redis 5.0.6
+Fetching faker 3.2.0
+Installing faker 3.2.0
+Fetching activesupport 7.1.5.2
+Installing activesupport 7.1.5.2
+Fetching et-orbi 1.2.11
+Installing et-orbi 1.2.11
+Fetching tzinfo-data 1.2023.3
+Installing tzinfo-data 1.2023.3
+Fetching omniauth 2.1.3
+Installing omniauth 2.1.3
+Fetching vite_ruby 3.8.0
+Installing vite_ruby 3.8.0
+Fetching net-imap 0.4.20
+Installing net-imap 0.4.20
+Fetching net-pop 0.1.2
+Installing net-pop 0.1.2
+Fetching net-smtp 0.3.4
+Installing net-smtp 0.3.4
+Fetching loofah 2.23.1
+Installing loofah 2.23.1
+Fetching html2text 0.4.0
+Installing html2text 0.4.0
+Fetching ruby-saml 1.18.1
+Installing ruby-saml 1.18.1
+Fetching reverse_markdown 2.1.1
+Installing reverse_markdown 2.1.1
+Fetching down 5.4.0
+Installing down 5.4.0
+Fetching irb 1.7.2
+Installing irb 1.7.2
+Fetching llhttp-ffi 0.4.0
+Installing llhttp-ffi 0.4.0 with native extensions
+Fetching image_processing 1.12.2
+Installing image_processing 1.12.2
+Fetching datadog 2.19.0
+Installing datadog 2.19.0 with native extensions
+Fetching faraday-net_http 3.4.0
+Installing faraday-net_http 3.4.0
+Fetching scout_apm 5.3.3
+Installing scout_apm 5.3.3 with native extensions
+Fetching aws-sdk-core 3.171.1
+Installing aws-sdk-core 3.171.1
+Fetching json_schemer 0.2.24
+Installing json_schemer 0.2.24
+Fetching facebook-messenger 2.0.1
+Installing facebook-messenger 2.0.1
+Fetching domain_name 0.5.20190701
+Installing domain_name 0.5.20190701
+Fetching oauth 1.1.0
+Installing oauth 1.1.0
+Fetching ruby2ruby 2.5.0
+Installing ruby2ruby 2.5.0
+Fetching grpc 1.72.0 (x86_64-linux)
+Installing grpc 1.72.0 (x86_64-linux)
+Fetching judoscale-sidekiq 1.8.2
+Installing judoscale-sidekiq 1.8.2
+Fetching newrelic-sidekiq-metrics 1.6.2
+Installing newrelic-sidekiq-metrics 1.6.2
+Fetching sentry-sidekiq 5.19.0
+Installing sentry-sidekiq 5.19.0
+Fetching sidekiq_alive 2.5.0
+Installing sidekiq_alive 2.5.0
+Fetching redis-namespace 1.10.0
+Installing redis-namespace 1.10.0
+Fetching rails-dom-testing 2.2.0
+Installing rails-dom-testing 2.2.0
+Fetching globalid 1.2.1
+Installing globalid 1.2.1
+Fetching activemodel 7.1.5.2
+Installing activemodel 7.1.5.2
+Fetching groupdate 6.2.1
+Installing groupdate 6.2.1
+Fetching pundit 2.3.0
+Installing pundit 2.3.0
+Fetching time_diff 0.3.0
+Installing time_diff 0.3.0
+Fetching working_hours 1.4.1
+Installing working_hours 1.4.1
+Fetching fugit 1.11.1
+Installing fugit 1.11.1
+Fetching mail 2.8.1
+Installing mail 2.8.1
+Fetching rails-html-sanitizer 1.6.1
+Installing rails-html-sanitizer 1.6.1
+Fetching omniauth-saml 2.2.4
+Installing omniauth-saml 2.2.4
+Fetching faraday 2.13.1
+Installing faraday 2.13.1
+Fetching aws-sdk-kms 1.64.0
+Installing aws-sdk-kms 1.64.0
+Fetching http-cookie 1.0.5
+Installing http-cookie 1.0.5
+Fetching gmail_xoauth 0.4.3
+Installing gmail_xoauth 0.4.3
+Fetching twitty 0.1.5
+Installing twitty 0.1.5
+Fetching googleapis-common-protos 1.6.0
+Installing googleapis-common-protos 1.6.0
+Fetching activejob 7.1.5.2
+Installing activejob 7.1.5.2
+Fetching activerecord 7.1.5.2
+Installing activerecord 7.1.5.2
+Fetching searchkick 5.5.2
+Installing searchkick 5.5.2
+Fetching sidekiq-cron 1.12.0
+Installing sidekiq-cron 1.12.0
+Fetching valid_email2 5.2.6
+Installing valid_email2 5.2.6
+Fetching actionview 7.1.5.2
+Installing actionview 7.1.5.2
+Fetching faraday-retry 2.2.1
+Installing faraday-retry 2.2.1
+Fetching faraday-follow_redirects 0.3.0
+Installing faraday-follow_redirects 0.3.0
+Fetching faraday-net_http_persistent 2.1.0
+Installing faraday-net_http_persistent 2.1.0
+Fetching faraday-mashify 1.0.0
+Installing faraday-mashify 1.0.0
+Fetching faraday_middleware-aws-sigv4 1.0.1
+Installing faraday_middleware-aws-sigv4 1.0.1
+Fetching google-cloud-env 2.2.1
+Installing google-cloud-env 2.2.1
+Fetching signet 0.17.0
+Installing signet 0.17.0
+Fetching koala 3.4.0
+Installing koala 3.4.0
+Fetching oauth2 2.0.9
+Installing oauth2 2.0.9
+Fetching opensearch-ruby 3.4.0
+Installing opensearch-ruby 3.4.0
+Fetching ruby-openai 7.3.1
+Installing ruby-openai 7.3.1
+Fetching twilio-ruby 7.6.0
+Installing twilio-ruby 7.6.0
+Fetching aws-sdk-s3 1.122.0
+Installing aws-sdk-s3 1.122.0
+Fetching http 5.1.1
+Installing http 5.1.1
+Fetching rest-client 2.1.0
+Installing rest-client 2.1.0
+Fetching activerecord-import 2.1.0
+Installing activerecord-import 2.1.0
+Fetching acts-as-taggable-on 12.0.0
+Installing acts-as-taggable-on 12.0.0
+Fetching kaminari-activerecord 1.2.2
+Installing kaminari-activerecord 1.2.2
+Fetching audited 5.4.1
+Installing audited 5.4.1
+Fetching hairtrigger 1.0.0
+Installing hairtrigger 1.0.0
+Fetching neighbor 0.2.3
+Installing neighbor 0.2.3
+Fetching pg_search 2.3.6
+Installing pg_search 2.3.6
+Fetching procore-sift 1.0.0
+Installing procore-sift 1.0.0
+Fetching actionpack 7.1.5.2
+Installing actionpack 7.1.5.2
+Fetching kaminari-actionview 1.2.2
+Installing kaminari-actionview 1.2.2
+Fetching jbuilder 2.11.5
+Installing jbuilder 2.11.5
+Fetching ruby_llm 1.5.1
+Installing ruby_llm 1.5.1
+Fetching slack-ruby-client 2.7.0
+Installing slack-ruby-client 2.7.0
+Fetching google-cloud-core 1.7.1
+Installing google-cloud-core 1.7.1
+Fetching googleauth 1.11.2
+Installing googleauth 1.11.2
+Fetching omniauth-oauth2 1.8.0
+Installing omniauth-oauth2 1.8.0
+Fetching elastic-apm 4.6.2
+Fetching actioncable 7.1.5.2
+Installing actioncable 7.1.5.2
+Installing elastic-apm 4.6.2
+Fetching activestorage 7.1.5.2
+Installing activestorage 7.1.5.2
+Fetching actionmailer 7.1.5.2
+Fetching railties 7.1.5.2
+Installing actionmailer 7.1.5.2
+Installing railties 7.1.5.2
+Fetching sprockets-rails 3.4.2
+Installing sprockets-rails 3.4.2
+Fetching omniauth-rails_csrf_protection 1.0.2
+Installing omniauth-rails_csrf_protection 1.0.2
+Fetching kaminari 1.2.2
+Installing kaminari 1.2.2
+Fetching ai-agents 0.4.3
+Installing ai-agents 0.4.3
+Fetching fcm 1.0.8
+Installing fcm 1.0.8
+Fetching gapic-common 0.20.0
+Installing gapic-common 0.20.0
+Fetching google-apis-core 0.15.1
+Fetching omniauth-google-oauth2 1.1.3
+Installing google-apis-core 0.15.1
+Installing omniauth-google-oauth2 1.1.3
+Fetching actionmailbox 7.1.5.2
+Fetching actiontext 7.1.5.2
+Installing actionmailbox 7.1.5.2
+Installing actiontext 7.1.5.2
+Fetching jquery-rails 4.6.0
+Fetching responders 3.1.1
+Installing responders 3.1.1
+Fetching dotenv-rails 3.1.2
+Installing dotenv-rails 3.1.2
+Installing jquery-rails 4.6.0
+Fetching judoscale-rails 1.8.2
+Installing judoscale-rails 1.8.2
+Fetching lograge 0.14.0
+Installing lograge 0.14.0
+Fetching sentry-rails 5.19.0
+Installing sentry-rails 5.19.0
+Fetching vite_rails 3.0.17
+Installing vite_rails 3.0.17
+Fetching google-cloud-location 0.6.0
+Fetching google-cloud-translate-v3 0.10.0
+Installing google-cloud-location 0.6.0
+Installing google-cloud-translate-v3 0.10.0
+Fetching google-apis-iamcredentials_v1 0.22.0
+Installing google-apis-iamcredentials_v1 0.22.0
+Fetching google-apis-storage_v1 0.47.0
+Fetching rails 7.1.5.2
+Installing google-apis-storage_v1 0.47.0
+Installing rails 7.1.5.2
+Fetching devise 4.9.4
+Fetching google-cloud-dialogflow-v2 0.31.0
+Installing devise 4.9.4
+Installing google-cloud-dialogflow-v2 0.31.0
+Fetching google-cloud-storage 1.52.0
+Installing google-cloud-storage 1.52.0
+Fetching devise-two-factor 6.1.0
+Installing devise-two-factor 6.1.0
+Fetching devise_token_auth 1.2.5
+Installing devise_token_auth 1.2.5
+Fetching shopify_api 14.8.0
+Fetching web-push 3.0.1
+Installing web-push 3.0.1
+Installing shopify_api 14.8.0
+Fetching sassc-rails 2.1.2
+Installing sassc-rails 2.1.2
+Fetching administrate 0.20.1
+Installing administrate 0.20.1
+Fetching administrate-field-active_storage 1.0.3
+Fetching administrate-field-belongs_to_search 0.9.0
+Installing administrate-field-active_storage 1.0.3
+Installing administrate-field-belongs_to_search 0.9.0
+Bundle complete! 140 Gemfile dependencies, 277 gems now installed.
+Gems in the groups 'development' and 'test' were not installed.
+Bundled gems are installed into `./vendor/bundle`
+Post-install message from devise:
+
+[DEVISE] Please review the [changelog] and [upgrade guide] for more info on Hotwire / Turbo integration.
+
+  [changelog] https://github.com/heartcombo/devise/blob/main/CHANGELOG.md
+  [upgrade guide] https://github.com/heartcombo/devise/wiki/How-To:-Upgrade-to-Devise-4.9.0-%5BHotwire-Turbo-integration%5D
+  Post-install message from httparty:
+When you HTTParty, you must party hard!
+Post-install message from oauth:
+
+You have installed oauth version 1.1.0, congratulations!
+
+Non-commercial support for the 1.x series will end by April, 2025. Please make a plan to upgrade to the next version prior to that date.
+The only breaking change will be dropped support for Ruby 2.7 and any other versions which will also have reached EOL by then.
+
+Please see:
+• https://github.com/oauth-xx/oauth-ruby/blob/main/SECURITY.md
+
+Note also that I am, and this project is, in the process of leaving Github.
+I wrote about some of the reasons here:
+• https://dev.to/galtzo/im-leaving-github-50ba
+
+If you are a human, please consider a donation as I move toward supporting myself with Open Source work:
+• https://liberapay.com/pboling
+• https://ko-fi.com/pboling
+• https://patreon.com/galtzo
+
+If you are a corporation, please consider supporting this project, and open source work generally, with a TideLift subscription.
+• https://tidelift.com/funding/github/rubygems/oauth
+• Or hire me. I am looking for a job!
+
+Please report issues, and support the project!
+
+Thanks, |7eter l-|. l3oling
+Post-install message from oauth2:
+
+You have installed oauth2 version 2.0.9, congratulations!
+
+There are BREAKING changes if you are upgrading from < v2, but most will not encounter them, and updating your code should be easy!
+
+We have made two other major migrations:
+1. master branch renamed to main
+2. Github has been replaced with Gitlab
+
+Please see:
+• https://gitlab.com/oauth-xx/oauth2#what-is-new-for-v20
+• https://gitlab.com/oauth-xx/oauth2/-/blob/main/CHANGELOG.md
+• https://groups.google.com/g/oauth-ruby/c/QA_dtrXWXaE
+
+Please report issues, and support the project! Thanks, |7eter l-|. l3oling
+
+Post-install message from vite_ruby:
+Thanks for installing Vite Ruby!
+
+If you upgraded the gem manually, please run:
+        bundle exec vite upgrade
+1 installed gem you directly depend on is looking for funding.
+  Run `bundle fund` for details
+root@aisaturn-repl-prod:/var/www/chatwoot#

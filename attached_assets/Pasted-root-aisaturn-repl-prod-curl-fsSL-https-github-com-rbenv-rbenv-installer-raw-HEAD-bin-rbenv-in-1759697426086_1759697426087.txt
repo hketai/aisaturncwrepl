@@ -1,0 +1,90 @@
+root@aisaturn-repl-prod:~# curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+Installing rbenv with git...
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /root/.rbenv/.git/
+Updating origin
+remote: Enumerating objects: 3399, done.
+remote: Counting objects: 100% (292/292), done.
+remote: Compressing objects: 100% (129/129), done.
+remote: Total 3399 (delta 230), reused 163 (delta 163), pack-reused 3107 (from 5)
+Receiving objects: 100% (3399/3399), 724.16 KiB | 30.17 MiB/s, done.
+Resolving deltas: 100% (2083/2083), done.
+From https://github.com/rbenv/rbenv
+ * [new branch]      master     -> origin/master
+ * [new tag]         v0.1.0     -> v0.1.0
+ * [new tag]         v0.1.1     -> v0.1.1
+ * [new tag]         v0.1.2     -> v0.1.2
+ * [new tag]         v0.2.0     -> v0.2.0
+ * [new tag]         v0.2.1     -> v0.2.1
+ * [new tag]         v0.3.0     -> v0.3.0
+ * [new tag]         v0.4.0     -> v0.4.0
+ * [new tag]         v1.0.0     -> v1.0.0
+ * [new tag]         v1.1.0     -> v1.1.0
+ * [new tag]         v1.1.1     -> v1.1.1
+ * [new tag]         v1.1.2     -> v1.1.2
+ * [new tag]         v1.2.0     -> v1.2.0
+ * [new tag]         v1.3.0     -> v1.3.0
+ * [new tag]         v1.3.1     -> v1.3.1
+ * [new tag]         v1.3.2     -> v1.3.2
+branch 'master' set up to track 'origin/master'.
+Already on 'master'
+
+Installing ruby-build with git...
+Cloning into '/root/.rbenv/plugins/ruby-build'...
+remote: Enumerating objects: 17256, done.
+remote: Counting objects: 100% (4615/4615), done.
+remote: Compressing objects: 100% (407/407), done.
+remote: Total 17256 (delta 4499), reused 4211 (delta 4207), pack-reused 12641 (from 5)
+Receiving objects: 100% (17256/17256), 3.43 MiB | 28.52 MiB/s, done.
+Resolving deltas: 100% (12139/12139), done.
+
+Setting up your shell with `rbenv init bash' ...
+writing ~/.bashrc: now configured for rbenv.
+
+All done! After reloading your terminal window, rbenv should be good to go.
+root@aisaturn-repl-prod:~# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+root@aisaturn-repl-prod:~# ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+-bash: /root/.bashrc: Permission denied
+root@aisaturn-repl-prod:~# ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+-bash: /root/.bashrc: Permission denied
+root@aisaturn-repl-prod:~#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

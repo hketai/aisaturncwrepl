@@ -1,0 +1,40 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 50 --no-pager | grep -E "GET|POST|ERROR" | tail -30
+Oct 05 22:47:36 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:47:36.585604 #64070]  INFO -- : [a5793fa2-e83f-491c-808c-b8bc06611046] Started GET "/auth/validate_token" for 81.215.232.40 at 2025-10-05 22:47:36 +0000
+Oct 05 22:49:52 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:49:52.452384 #64070]  INFO -- : [da21dd21-0bbf-420f-b02e-8f03e3918361] Started GET "/" for 81.215.232.40 at 2025-10-05 22:49:52 +0000
+Oct 05 22:49:53 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:49:53.005950 #64070]  INFO -- : [631f1ef0-81e8-43f3-be4b-45e61849a25d] Started GET "/auth/validate_token" for 81.215.232.40 at 2025-10-05 22:49:53 +0000
+Oct 05 22:50:03 aisaturn-repl-prod bundle[64070]: I, [2025-10-05T22:50:03.320223 #64070]  INFO -- : [acb5e91c-a6d8-4a07-8208-bfa497bd93d0] Started GET "/" for 81.215.232.40 at 2025-10-05 22:50:03 +0000
+Oct 05 22:50:22 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:50:22.574461 #65027]  INFO -- : [eb0bff49-9dbe-4305-ad73-530b45e72de0] Started GET "/app/login" for 81.215.232.40 at 2025-10-05 22:50:22 +0000
+Oct 05 22:50:50 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:50:50.468695 #65027]  INFO -- : [e06cb4a0-61a4-4b4e-acd7-d4233589e421] Started GET "/" for 81.215.232.40 at 2025-10-05 22:50:50 +0000
+Oct 05 22:50:59 aisaturn-repl-prod bundle[65027]: I, [2025-10-05T22:50:59.662743 #65027]  INFO -- : [1581fd86-b05c-4140-9b7e-eb668eded683] Started GET "/auth/validate_token" for 81.215.232.40 at 2025-10-05 22:50:59 +0000
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /var/www/chatwoot/public/vite/.vite/manifest.json | grep -E "application|dashboard" | head -20
+      "entrypoints/dashboard.js",
+      "entrypoints/dashboard.js",
+      "entrypoints/dashboard.js",
+  "dashboard/assets/images/auth/auth--bg.svg": {
+    "src": "dashboard/assets/images/auth/auth--bg.svg"
+  "dashboard/assets/images/channels/facebook_login.png": {
+    "src": "dashboard/assets/images/channels/facebook_login.png"
+  "dashboard/assets/images/no-chat-dark.svg": {
+    "src": "dashboard/assets/images/no-chat-dark.svg"
+  "dashboard/assets/images/no-chat.svg": {
+    "src": "dashboard/assets/images/no-chat.svg"
+  "dashboard/assets/images/typing.gif": {
+  "dashboard/routes/dashboard/commands/commandbar.vue": {
+    "src": "dashboard/routes/dashboard/commands/commandbar.vue",
+      "entrypoints/dashboard.js",
+  "dashboard/routes/dashboard/helpcenter/pages/PortalsArticlesEditPage.vue": {
+    "src": "dashboard/routes/dashboard/helpcenter/pages/PortalsArticlesEditPage.vue",
+      "entrypoints/dashboard.js",
+  "dashboard/routes/dashboard/helpcenter/pages/PortalsArticlesIndexPage.vue": {
+    "src": "dashboard/routes/dashboard/helpcenter/pages/PortalsArticlesIndexPage.vue",
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -I https://app.aisaturn.co/vite/assets/DashboardIcon-MYHFvuWM.js
+HTTP/1.1 200 OK
+Server: nginx/1.26.3 (Ubuntu)
+Date: Sun, 05 Oct 2025 22:51:53 GMT
+Content-Type: text/javascript
+Content-Length: 9710187
+Connection: keep-alive
+last-modified: Sun, 05 Oct 2025 22:42:34 GMT
+Cache-Control: public, max-age=31556952
+
+root@aisaturn-repl-prod:/var/www/chatwoot#

@@ -1,0 +1,18 @@
+curl ^"https://app.aisaturn.co/auth/validate_token^" ^
+  -H ^"Accept: application/json, text/plain, */*^" ^
+  -H ^"Accept-Language: tr-TR,tr;q=0.9^" ^
+  -H ^"Connection: keep-alive^" ^
+  -b ^"user.id=eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik13PT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS51c2VyLmlkIn19--85e9af2f02b809dcf7e4e23d461f60b04924a437; user.expires_at=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqSXdNalV0TVRBdE1EVlVNak02TlRjNk5EQXVORFk0V2lJPSIsImV4cCI6bnVsbCwicHVyIjoiY29va2llLnVzZXIuZXhwaXJlc19hdCJ9fQ^%^3D^%^3D--f75196f8f73007aab9744106e04479d2d82cbed4; cw_d_session_info=^{^%^22access-token^%^22:^%^22vPvoE4M0bq2rvWYuwX5SBA^%^22^%^2C^%^22authorization^%^22:^%^22Bearer^%^20eyJhY2Nlc3MtdG9rZW4iOiJ2UHZvRTRNMGJxMnJ2V1l1d1g1U0JBIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6InplaHl5QTRNcm9na3VyWml3T0xTUGciLCJleHBpcnkiOiIxNzY0OTc3MjYwIiwidWlkIjoiaGFydW5rZXRlbmNAZ21haWwuY29tIn0=^%^22^%^2C^%^22cache-control^%^22:^%^22max-age=0^%^2C^%^20private^%^2C^%^20must-revalidate^%^22^%^2C^%^22client^%^22:^%^22zehyyA4MrogkurZiwOLSPg^%^22^%^2C^%^22connection^%^22:^%^22keep-alive^%^22^%^2C^%^22content-length^%^22:^%^22394^%^22^%^2C^%^22content-type^%^22:^%^22application/json^%^3B^%^20charset=utf-8^%^22^%^2C^%^22date^%^22:^%^22Sun^%^2C^%^2005^%^20Oct^%^202025^%^2023:27:40^%^20GMT^%^22^%^2C^%^22etag^%^22:^%^22W/^%^5C^%^22e8e1f48aede11bb2d50e84f49107ef7f^%^5C^%^22^%^22^%^2C^%^22expiry^%^22:^%^221764977260^%^22^%^2C^%^22referrer-policy^%^22:^%^22strict-origin-when-cross-origin^%^22^%^2C^%^22server^%^22:^%^22nginx/1.26.3^%^20(Ubuntu)^%^22^%^2C^%^22token-type^%^22:^%^22Bearer^%^22^%^2C^%^22uid^%^22:^%^22harunketenc^@gmail.com^%^22^%^2C^%^22x-content-type-options^%^22:^%^22nosniff^%^22^%^2C^%^22x-download-options^%^22:^%^22noopen^%^22^%^2C^%^22x-frame-options^%^22:^%^22SAMEORIGIN^%^22^%^2C^%^22x-permitted-cross-domain-policies^%^22:^%^22none^%^22^%^2C^%^22x-request-id^%^22:^%^22bbe94919-2792-41b8-b445-69d478513c83^%^22^%^2C^%^22x-runtime^%^22:^%^220.327198^%^22^%^2C^%^22x-xss-protection^%^22:^%^220^%^22^}; _chatwoot_session=hF2QUhKIu08VdxEqeBZyxdgyinn^%^2BAnUT17oPpoR5X2PeC97Srxf9^%^2BgEwTeoY^%^2BiUQ0QOJtJRbGPQLkDH0pI15bALF4W0vPAqgGAXuFzZyGI1YPBeak9WD4Ts7QhcIvMWZ6XNXriznbNU4KGflhTpvtpqwamgXxXJ86d9N4g4MNjr2gQcoEiKI3vksBlQkfPYjcGoJIeR0BCsKdy8kMGRGX9aAKg09R^%^2F3cmiSrV0zpWilS7x4rnXhgqqVzzBX7uEHlr^%^2FX^%^2FEYWaVcFkAcIuq41i7Owu0ruyMMShbg^%^3D^%^3D--B0un^%^2Fuj45SAp7FxK--0vEC5x3pxKK7UpTb7O35nw^%^3D^%^3D^" ^
+  -H ^"Referer: https://app.aisaturn.co/app/^" ^
+  -H ^"Sec-Fetch-Dest: empty^" ^
+  -H ^"Sec-Fetch-Mode: cors^" ^
+  -H ^"Sec-Fetch-Site: same-origin^" ^
+  -H ^"User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0^" ^
+  -H ^"access-token: vPvoE4M0bq2rvWYuwX5SBA^" ^
+  -H ^"client: zehyyA4MrogkurZiwOLSPg^" ^
+  -H ^"expiry: 1764977260^" ^
+  -H ^"sec-ch-ua: ^\^"Opera^\^";v=^\^"120^\^", ^\^"Not-A.Brand^\^";v=^\^"8^\^", ^\^"Chromium^\^";v=^\^"135^\^"^" ^
+  -H ^"sec-ch-ua-mobile: ?0^" ^
+  -H ^"sec-ch-ua-platform: ^\^"Windows^\^"^" ^
+  -H ^"token-type: Bearer^" ^
+  -H ^"uid: harunketenc^@gmail.com^"

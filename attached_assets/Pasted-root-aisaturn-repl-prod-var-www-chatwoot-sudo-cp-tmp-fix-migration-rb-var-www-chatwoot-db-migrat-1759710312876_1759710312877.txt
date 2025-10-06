@@ -1,0 +1,191 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo cp /tmp/fix_migration.rb /var/www/chatwoot/db/migrate/20231211010807_add_cached_labels_list.rb
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot && RAILS_ENV=production bundle exec rails db:migrate
+/root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-06T00:23:52.553228 #73502]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:23:52.553310 #73502]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:23:52.890972 #73502]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2025-10-06T00:23:53.190836 #73502]  INFO -- : Migrating to AddCachedLabelsList (20231211010807)
+== 20231211010807 AddCachedLabelsList: migrating ==============================
+-- add_column(:conversations, :cached_label_list, :string)
+   -> 0.0018s
+== 20231211010807 AddCachedLabelsList: migrated (0.0278s) =====================
+
+I, [2025-10-06T00:23:53.223549 #73502]  INFO -- : Migrating to ReRunCacheLabelJob (20231219000743)
+== 20231219000743 ReRunCacheLabelJob: migrating ===============================
+== 20231219000743 ReRunCacheLabelJob: migrated (0.5920s) ======================
+
+I, [2025-10-06T00:23:53.817436 #73502]  INFO -- : Migrating to AddLastActivityAtToNotifications (20231219073832)
+== 20231219073832 AddLastActivityAtToNotifications: migrating =================
+-- add_column(:notifications, :last_activity_at, :datetime, {default: #<Proc:0x000072d8ff590470 /var/www/chatwoot/db/migrate/20231219073832_add_last_activity_at_to_notifications.rb:3 (lambda)>})
+   -> 0.0027s
+-- add_index(:notifications, :last_activity_at, {name: "index_notifications_on_last_activity_at"})
+   -> 0.0010s
+== 20231219073832 AddLastActivityAtToNotifications: migrated (0.0038s) ========
+
+I, [2025-10-06T00:23:53.823312 #73502]  INFO -- : Migrating to RefactorSlaPolicyColumns (20231223033019)
+== 20231223033019 RefactorSlaPolicyColumns: migrating =========================
+-- rename_column(:sla_policies, :rt_threshold, :next_response_time_threshold)
+   -> 0.0027s
+-- rename_column(:sla_policies, :frt_threshold, :first_response_time_threshold)
+   -> 0.0012s
+-- add_column(:sla_policies, :description, :string)
+   -> 0.0003s
+-- add_column(:sla_policies, :resolution_time_threshold, :float)
+   -> 0.0003s
+== 20231223033019 RefactorSlaPolicyColumns: migrated (0.0048s) ================
+
+I, [2025-10-06T00:23:53.830096 #73502]  INFO -- : Migrating to CreateAppliedSlas (20231223040257)
+== 20231223040257 CreateAppliedSlas: migrating ================================
+-- create_table(:applied_slas)
+   -> 0.0059s
+== 20231223040257 CreateAppliedSlas: migrated (0.0060s) =======================
+
+I, [2025-10-06T00:23:53.839013 #73502]  INFO -- : Migrating to AddContactTypeToContacts (20240124054340)
+== 20240124054340 AddContactTypeToContacts: migrating =========================
+-- add_column(:contacts, :contact_type, :integer, {default: 0})
+   -> 0.0012s
+== 20240124054340 AddContactTypeToContacts: migrated (0.0013s) ================
+
+I, [2025-10-06T00:23:53.842165 #73502]  INFO -- : Migrating to AddMiddleNameAndLastNameToContacts (20240124084032)
+== 20240124084032 AddMiddleNameAndLastNameToContacts: migrating ===============
+-- add_column(:contacts, :middle_name, :string, {default: ""})
+   -> 0.0007s
+-- add_column(:contacts, :last_name, :string, {default: ""})
+   -> 0.0005s
+== 20240124084032 AddMiddleNameAndLastNameToContacts: migrated (0.0013s) ======
+
+I, [2025-10-06T00:23:53.844818 #73502]  INFO -- : Migrating to AddLocationAndCountryCodeToContacts (20240129080827)
+== 20240129080827 AddLocationAndCountryCodeToContacts: migrating ==============
+-- add_column(:contacts, :location, :string, {default: ""})
+   -> 0.0007s
+-- add_column(:contacts, :country_code, :string, {default: ""})
+   -> 0.0005s
+== 20240129080827 AddLocationAndCountryCodeToContacts: migrated (0.0013s) =====
+
+I, [2025-10-06T00:23:53.847389 #73502]  INFO -- : Migrating to RemoveImapInboxSynedAtFromChannelEmail (20240131040316)
+== 20240131040316 RemoveImapInboxSynedAtFromChannelEmail: migrating ===========
+-- remove_column(:channel_email, :imap_inbox_synced_at, :datetime)
+   -> 0.0006s
+== 20240131040316 RemoveImapInboxSynedAtFromChannelEmail: migrated (0.0006s) ==
+
+I, [2025-10-06T00:23:53.849489 #73502]  INFO -- : Migrating to ChangeAppliedSlaSlaStatusToEnum (20240207103014)
+== 20240207103014 ChangeAppliedSlaSlaStatusToEnum: migrating ==================
+-- remove_column(:applied_slas, :sla_status, :string)
+   -> 0.0005s
+-- add_column(:applied_slas, :sla_status, :integer, {default: 0})
+   -> 0.0006s
+== 20240207103014 ChangeAppliedSlaSlaStatusToEnum: migrated (0.0011s) =========
+
+I, [2025-10-06T00:23:53.852189 #73502]  INFO -- : Migrating to AddBlockedToContacts (20240213131252)
+== 20240213131252 AddBlockedToContacts: migrating =============================
+-- add_column(:contacts, :blocked, :boolean, {default: false, null: false})
+   -> 0.0010s
+-- add_index(:contacts, :blocked, {name: "index_contacts_on_blocked"})
+   -> 0.0007s
+== 20240213131252 AddBlockedToContacts: migrated (0.0019s) ====================
+
+I, [2025-10-06T00:23:53.855583 #73502]  INFO -- : Migrating to AddMetaToNotifications (20240215065844)
+== 20240215065844 AddMetaToNotifications: migrating ===========================
+-- add_column(:notifications, :meta, :jsonb, {default: {}})
+   -> 0.0009s
+== 20240215065844 AddMetaToNotifications: migrated (0.0010s) ==================
+
+I, [2025-10-06T00:23:53.857778 #73502]  INFO -- : Migrating to AddUniqueIndexToAppliedSlas (20240216055809)
+== 20240216055809 AddUniqueIndexToAppliedSlas: migrating ======================
+-- add_index(:applied_slas, [:account_id, :sla_policy_id, :conversation_id], {unique: true, name: "index_applied_slas_on_account_sla_policy_conversation"})
+   -> 0.0008s
+== 20240216055809 AddUniqueIndexToAppliedSlas: migrated (0.0009s) =============
+
+I, [2025-10-06T00:23:53.859921 #73502]  INFO -- : Migrating to ChangeIdentifierTypeInNotificationsSubscriptions (20240306201954)
+== 20240306201954 ChangeIdentifierTypeInNotificationsSubscriptions: migrating =
+-- change_column(:notification_subscriptions, :identifier, :text)
+   -> 0.0016s
+== 20240306201954 ChangeIdentifierTypeInNotificationsSubscriptions: migrated (0.0017s)
+
+I, [2025-10-06T00:23:53.863523 #73502]  INFO -- : Migrating to CreateSlaEvents (20240319062553)
+== 20240319062553 CreateSlaEvents: migrating ==================================
+-- create_table(:sla_events)
+   -> 0.0047s
+== 20240319062553 CreateSlaEvents: migrated (0.0047s) =========================
+
+I, [2025-10-06T00:23:53.870246 #73502]  INFO -- : Migrating to ConvertCachedLabelListToText (20240322071629)
+== 20240322071629 ConvertCachedLabelListToText: migrating =====================
+-- change_column(:conversations, :cached_label_list, :text)
+   -> 0.0006s
+== 20240322071629 ConvertCachedLabelListToText: migrated (0.0006s) ============
+
+I, [2025-10-06T00:23:53.872377 #73502]  INFO -- : Migrating to AddChannelWebWidgetToPortals (20240415210313)
+== 20240415210313 AddChannelWebWidgetToPortals: migrating =====================
+-- add_column(:portals, :channel_web_widget_id, :bigint)
+   -> 0.0005s
+-- add_index(:portals, :channel_web_widget_id, {name: "index_portals_on_channel_web_widget_id"})
+   -> 0.0006s
+== 20240415210313 AddChannelWebWidgetToPortals: migrated (0.0011s) ============
+
+I, [2025-10-06T00:23:53.874812 #73502]  INFO -- : Migrating to IndexImprovementsConversationsContacts (20240515201632)
+== 20240515201632 IndexImprovementsConversationsContacts: migrating ===========
+-- remove_index(:conversations, :last_activity_at)
+   -> 0.0079s
+-- add_index(:contacts, [:account_id, :last_activity_at], {order: {last_activity_at: "DESC NULLS LAST"}, algorithm: :concurrently, name: "index_contacts_on_account_id_and_last_activity_at"})
+   -> 0.0016s
+== 20240515201632 IndexImprovementsConversationsContacts: migrated (0.0097s) ==
+
+I, [2025-10-06T00:23:53.885906 #73502]  INFO -- : Migrating to AddIndexForMessageTypeAccountDate (20240516003531)
+== 20240516003531 AddIndexForMessageTypeAccountDate: migrating ================
+-- add_index(:messages, [:account_id, :created_at, :message_type], {name: "index_messages_on_account_created_type", algorithm: :concurrently})
+   -> 0.0023s
+== 20240516003531 AddIndexForMessageTypeAccountDate: migrated (0.0024s) =======
+
+I, [2025-10-06T00:23:53.889784 #73502]  INFO -- : Migrating to AddCustomRoles (20240726220747)
+== 20240726220747 AddCustomRoles: migrating ===================================
+-- create_table(:custom_roles)
+   -> 0.0033s
+-- add_reference(:account_users, :custom_role, {optional: true})
+   -> 0.0019s
+== 20240726220747 AddCustomRoles: migrated (0.0054s) ==========================
+
+I, [2025-10-06T00:23:53.897631 #73502]  INFO -- : Migrating to AddLocaleToArticle (20240923215335)
+== 20240923215335 AddLocaleToArticle: migrating ===============================
+-- add_column(:articles, :locale, :string, {default: "en", null: false})
+   -> 0.0012s
+== 20240923215335 AddLocaleToArticle: migrated (0.0168s) ======================
+
+I, [2025-10-06T00:23:53.916798 #73502]  INFO -- : Migrating to FixOldAudioAlertData (20241217041352)
+== 20241217041352 FixOldAudioAlertData: migrating =============================
+== 20241217041352 FixOldAudioAlertData: migrated (0.0053s) ====================
+
+I, [2025-10-06T00:23:53.923944 #73502]  INFO -- : Migrating to CreateCaptainTables (20250104200055)
+== 20250104200055 CreateCaptainTables: migrating ==============================
+-- extension_enabled?("vector")
+   -> 0.0019s
+-- enable_extension("vector")
+bin/rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled: (StandardError)
+
+Failed to enable 'vector' extension. Read more at https://chwt.app/v4/migration
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:30:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+StandardError: Failed to enable 'vector' extension. Read more at https://chwt.app/v4/migration (StandardError)
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:30:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+ActiveRecord::StatementInvalid: PG::FeatureNotSupported: ERROR:  extension "vector" is not available (ActiveRecord::StatementInvalid)
+DETAIL:  Could not open extension control file "/usr/share/postgresql/17/extension/vector.control": No such file or directory.
+HINT:  The extension must first be installed on the system where PostgreSQL is running.
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:28:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+PG::FeatureNotSupported: ERROR:  extension "vector" is not available (PG::FeatureNotSupported)
+DETAIL:  Could not open extension control file "/usr/share/postgresql/17/extension/vector.control": No such file or directory.
+HINT:  The extension must first be installed on the system where PostgreSQL is running.
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:28:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+root@aisaturn-repl-prod:/var/www/chatwoot#

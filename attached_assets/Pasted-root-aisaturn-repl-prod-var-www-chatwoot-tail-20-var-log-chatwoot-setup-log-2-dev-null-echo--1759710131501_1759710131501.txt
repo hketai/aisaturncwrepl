@@ -1,0 +1,98 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -20 /var/log/chatwoot-setup.log 2>/dev/null || echo "Log file not found, migrations should be complete"
+Reading state information...
+Calculating upgrade...
+Calculating upgrade...
+The following upgrades have been deferred due to phasing:
+  fwupd libfwupd3
+The following packages have been kept back:
+  linux-headers-generic linux-headers-virtual linux-image-virtual
+  linux-virtual
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.12.1-3ubuntu1).
+Solving dependencies...
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb plucky main
+deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_23.x nodistro main
+sudo: apt-key: command not found
+
+Some error has occured. Check '/var/log/chatwoot-setup.log' for details.
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot && RAILS_ENV=production bundle exec rails db:seed
+/root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-06T00:21:47.625647 #73440]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:21:47.625753 #73440]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:21:47.919251 #73440]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+You have 67 pending migrations:
+  20231211010807 AddCachedLabelsList
+  20231219000743 ReRunCacheLabelJob
+  20231219073832 AddLastActivityAtToNotifications
+  20231223033019 RefactorSlaPolicyColumns
+  20231223040257 CreateAppliedSlas
+  20240124054340 AddContactTypeToContacts
+  20240124084032 AddMiddleNameAndLastNameToContacts
+  20240129080827 AddLocationAndCountryCodeToContacts
+  20240131040316 RemoveImapInboxSynedAtFromChannelEmail
+  20240207103014 ChangeAppliedSlaSlaStatusToEnum
+  20240213131252 AddBlockedToContacts
+  20240215065844 AddMetaToNotifications
+  20240216055809 AddUniqueIndexToAppliedSlas
+  20240306201954 ChangeIdentifierTypeInNotificationsSubscriptions
+  20240319062553 CreateSlaEvents
+  20240322071629 ConvertCachedLabelListToText
+  20240415210313 AddChannelWebWidgetToPortals
+  20240515201632 IndexImprovementsConversationsContacts
+  20240516003531 AddIndexForMessageTypeAccountDate
+  20240726220747 AddCustomRoles
+  20240923215335 AddLocaleToArticle
+  20241217041352 FixOldAudioAlertData
+  20250104200055 CreateCaptainTables
+  20250104210328 RemoveRobinTables
+  20250105001414 AddStatusToCaptainDocuments
+  20250105005821 RemoveNotNullFromCaptainDocuments
+  20250107030743 AddConfigToCaptainAssistant
+  20250108031358 CreateCaptainInbox
+  20250108211541 RemoveIndexFromCaptainAssistants
+  20250116000103 AddStatusToCaptainAssistantResponses
+  20250116061033 ConvertDocumentToPolymorphicAssociation
+  20250207040150 AddMetaToAttachment
+  20250228185548 AddInternalAttributesToAccounts
+  20250315202035 AddIndexToArticles
+  20250326034635 AddInstagramChannel
+  20250402233933 RemovePortalMembers
+  20250410061725 ConvertCsmlBotsToWebhookBots
+  20250416182131 FlipChatwootV4DefaultFeatureFlagInstallationConfig
+  20250421082927 AddSettingsColumnToAccount
+  20250421085134 UpdateAutoResolveToMminutes
+  20250512231036 CreateCopilotThreads
+  20250512231037 CreateCopilotMessages
+  20250514045638 AddCsatConfigToInboxes
+  20250523024825 RemoveUuidFromCopilotThreads
+  20250523024826 RemoveUserIdFromCopilotMessages
+  20250523031839 ChangeMessageTypeToIntegerInCopilotMessages
+  20250620120000 CreateChannelVoice
+  20250627195529 AddIndexToMessages
+  20250709102213 AddTemplateParamsToCampaigns
+  20250710145708 CreateCaptainScenarios
+  20250714104358 AddResponseGuidelinesAndGuardrailsToCaptainAssistants
+  20250722083820 AddSslSettingsToPortals
+  20250722152516 AddIndexOnContactTypeAndAccountIdToContacts
+  20250805082345 AddMetadataToCaptainDocuments
+  20250805160307 AddNotificationsPerformanceIndex
+  20250806140000 CreateAssignmentPolicies
+  20250806140001 CreateInboxAssignmentPolicies
+  20250806140002 CreateAgentCapacityPolicies
+  20250806140003 CreateInboxCapacityLimits
+  20250806140004 AddAgentCapacityPolicyToAccountUsers
+  20250806140005 CreateLeaves
+  20250808123008 AddFeatureCitationToAssistantConfig
+  20250820130619 AddTwoFactorToUsers
+  20250822061042 AddContentTemplatesToTwilioSms
+  20250825070005 CreateAccountSamlSettings
+  20250826000000 DropTelegramBots
+  20250916024703 AddAllowedDomainsToChannelWidgets
+Run `bin/rails db:migrate` to update your database then try again.
+root@aisaturn-repl-prod:/var/www/chatwoot#

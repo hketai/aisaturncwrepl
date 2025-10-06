@@ -1,0 +1,21 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 50 --no-pager | grep -A 10 "ERROR\|FATAL"
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: F, [2025-10-05T22:15:46.188430 #63095] FATAL -- : [3e4f99bc-526b-40aa-9206-100c87c33ba6]
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6] NoMethodError (undefined method 'otp_required_for_login?' for an instance of User):
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6]
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6] app/models/user.rb:186:in 'User#mfa_enabled?'
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6] app/controllers/devise_overrides/sessions_controller.rb:16:in 'DeviseOverrides::SessionsController#create'
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6] app/controllers/concerns/switch_locale.rb:56:in 'SwitchLocale#set_locale'
+Oct 05 22:15:46 aisaturn-repl-prod bundle[63095]: [3e4f99bc-526b-40aa-9206-100c87c33ba6] app/controllers/concerns/switch_locale.rb:19:in 'SwitchLocale#switch_locale'
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: I, [2025-10-05T22:17:13.709119 #63095]  INFO -- : [04fa1277-1cad-4b26-b894-ea681fc35aa8] Started POST "/auth/sign_in" for 81.215.232.40 at 2025-10-05 22:17:13 +0000
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: I, [2025-10-05T22:17:13.713789 #63095]  INFO -- : [04fa1277-1cad-4b26-b894-ea681fc35aa8] Processing by DeviseOverrides::SessionsController#create as HTML
+--
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: F, [2025-10-05T22:17:13.837941 #63095] FATAL -- : [04fa1277-1cad-4b26-b894-ea681fc35aa8]
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8] NoMethodError (undefined method 'otp_required_for_login?' for an instance of User):
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8]
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8] app/models/user.rb:186:in 'User#mfa_enabled?'
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8] app/controllers/devise_overrides/sessions_controller.rb:16:in 'DeviseOverrides::SessionsController#create'
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8] app/controllers/concerns/switch_locale.rb:56:in 'SwitchLocale#set_locale'
+Oct 05 22:17:13 aisaturn-repl-prod bundle[63095]: [04fa1277-1cad-4b26-b894-ea681fc35aa8] app/controllers/concerns/switch_locale.rb:19:in 'SwitchLocale#switch_locale'
+root@aisaturn-repl-prod:/var/www/chatwoot#

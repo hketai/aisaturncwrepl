@@ -1,0 +1,79 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -v "https://app.aisaturn.co/auth/validate_token" \
+  -H "Accept: application/json" \
+  -H "access-token: vPvoE4M0bq2rvWYuwX5SBA" \
+  -H "client: zehyyA4MrogkurZiwOLSPg" \
+  -H "uid: harunketenc@gmail.com" \
+  -H "expiry: 1764977260" \
+  -H "token-type: Bearer" 2>&1 | tail -30
+{ [57 bytes data]
+< HTTP/1.1 200 OK
+< Server: nginx/1.26.3 (Ubuntu)
+< Date: Sun, 05 Oct 2025 23:32:30 GMT
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 461
+< Connection: keep-alive
+< x-frame-options: SAMEORIGIN
+< x-xss-protection: 0
+< x-content-type-options: nosniff
+< x-download-options: noopen
+< x-permitted-cross-domain-policies: none
+< referrer-policy: strict-origin-when-cross-origin
+< vary: Accept
+< access-token: vPvoE4M0bq2rvWYuwX5SBA
+< token-type: Bearer
+< client: zehyyA4MrogkurZiwOLSPg
+< expiry: 1764977260
+< uid: harunketenc@gmail.com
+< authorization: Bearer eyJhY2Nlc3MtdG9rZW4iOiJ2UHZvRTRNMGJxMnJ2V1l1d1g1U0JBIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6InplaHl5QTRNcm9na3VyWml3T0xTUGciLCJleHBpcnkiOiIxNzY0OTc3MjYwIiwidWlkIjoiaGFydW5rZXRlbmNAZ21haWwuY29tIn0=
+< etag: W/"82b8399d2f8ccd322a8586493d0bfa49"
+< cache-control: max-age=0, private, must-revalidate
+< set-cookie: _chatwoot_session=8fQONehHzsLz348ZiPlfvUUhUJrJaZ2NmAnu75GQIPjoVADJQ2r7U6MSiOGoz3M52pG2b%2FP1FqJbKMZipjRhFjEjxH4eOIpPHmQooLakD%2BqiF6zsP7YmmEQJC5sUOymmRqE4zrd6Wl6KKsnxd2jwyIGIM563TyZqYs8YFKC1Rm47FNd2tJUwveFLevf8J0N2oaz13fliDBlCrUbuVwB0O6CwchLCfM14NciiyjNZOTGNuCVo%2BvhwnF1JoFYwOgrkugHVVnXsU6FVVSwQT3AQUbQmp%2BfdQkzNoQ%3D%3D--RgvCDlknbw1K2rFU--IQwLY16RiSf9D6ou0NgAcQ%3D%3D; path=/; httponly; samesite=lax
+< x-request-id: 3dfacc2f-a4e5-4ad9-abe7-88746e22708d
+< x-runtime: 0.017414
+<
+{ [461 bytes data]
+100   461  100   461    0     0  13355      0 --:--:-- --:--:-- --:--:-- 13558
+* Connection #0 to host app.aisaturn.co left intact
+{"payload":{"success":true,"data":{"access_token":"3cTjojCgV6pkaAKhpsNaWTJJ","account_id":null,"available_name":"Harun","avatar_url":"","confirmed":true,"display_name":"Harun","message_signature":null,"email":"harunketenc@gmail.com","id":3,"inviter_id":null,"name":"Harun","provider":"email","pubsub_token":"VE6onA5WG6v3QQuDMC1qMUHH","role":null,"ui_settings":{},"uid":"harunketenc@gmail.com","type":null,"accounts":[],"created_at":"2025-10-05T22:32:54.548Z"}}}root@aisaturn-repl-prod:/var/www/chatwoot# sudo tail -f /var/log/nginx/access.log &
+[1] 66705
+root@aisaturn-repl-prod:/var/www/chatwoot# 81.215.232.40 - - [05/Oct/2025:23:29:09 +0000] "GET /vite/assets/js.cookie-Cz0CWeBA.js HTTP/1.1" 200 1460 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:12 +0000] "GET /vite/assets/DashboardIcon-MYHFvuWM.js HTTP/1.1" 200 9710187 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:13 +0000] "GET /app/login HTTP/1.1" 200 2802 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:13 +0000] "GET /vite/assets/v3app-aQLQFlNo.js HTTP/1.1" 200 266817 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:13 +0000] "GET /vite/assets/v3app-BJ5vgX9Y.css HTTP/1.1" 200 692895 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:17 +0000] "POST /auth/sign_in HTTP/1.1" 200 394 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:17 +0000] "GET /app/ HTTP/1.1" 200 2959 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:29:17 +0000] "GET /auth/validate_token HTTP/1.1" 200 461 "https://app.aisaturn.co/app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+167.71.54.139 - - [05/Oct/2025:23:31:06 +0000] "GET /auth/validate_token HTTP/1.1" 200 461 "-" "curl/8.12.1"
+167.71.54.139 - - [05/Oct/2025:23:32:30 +0000] "GET /auth/validate_token HTTP/1.1" 200 461 "-" "curl/8.12.1"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET / HTTP/1.1" 200 2960 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/useBranding-aTKfDg_G.css HTTP/1.1" 200 1413 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/DashboardIcon-Q9LE-ZWn.css HTTP/1.1" 200 1149 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/_plugin-vue_export-helper-GYQDEAHg.js HTTP/1.1" 200 172126 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/useBranding-DgbM_N-H.js HTTP/1.1" 200 83167 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/_commonjsHelpers-BosuxZz1.js HTTP/1.1" 200 745 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/utils.esm-Ddl7zTf7.js HTTP/1.1" 200 83755 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:10 +0000] "GET /vite/assets/index-DXPUzeDj.js HTTP/1.1" 200 324296 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:11 +0000] "GET /vite/assets/dashboard-CIZjPl3D.js HTTP/1.1" 200 2598613 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:11 +0000] "GET /vite/assets/Validators-DfRYn1iQ.js HTTP/1.1" 200 90630 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:11 +0000] "GET /vite/assets/index-YlNXyY02.js HTTP/1.1" 200 22810 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:11 +0000] "GET /vite/assets/index-CQ1-_SZt.js HTTP/1.1" 200 173679 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:12 +0000] "GET /vite/assets/dashboard-DeNzGPjH.css HTTP/1.1" 200 2224547 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:12 +0000] "GET /vite/assets/typing-BAUKjliK.js HTTP/1.1" 200 542127 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:12 +0000] "GET /vite/assets/useKeyboardNavigableList-ruBzH2YB.js HTTP/1.1" 200 3656 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:12 +0000] "GET /vite/assets/helper-3hXvXhuq.js HTTP/1.1" 200 59490 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/index-Td5zk3i8.js HTTP/1.1" 200 886 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/Icon-PuabXc9G.js HTTP/1.1" 200 5900 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/vue-dompurify-html-DI5RuQCa.js HTTP/1.1" 200 133850 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/module-CG_NZona.js HTTP/1.1" 200 8550 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/BarChart-D3fiEtN6.js HTTP/1.1" 200 146237 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/constants-lVAyZKq6.js HTTP/1.1" 200 157 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/IframeLoader-tRX7OID_.js HTTP/1.1" 200 2544 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:13 +0000] "GET /vite/assets/js.cookie-Cz0CWeBA.js HTTP/1.1" 200 1460 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:17 +0000] "GET /vite/assets/DashboardIcon-MYHFvuWM.js HTTP/1.1" 200 9710187 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:18 +0000] "GET /app/login HTTP/1.1" 200 2803 "https://app.aisaturn.co/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:18 +0000] "GET /vite/assets/v3app-aQLQFlNo.js HTTP/1.1" 200 266817 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:19 +0000] "GET /vite/assets/v3app-BJ5vgX9Y.css HTTP/1.1" 200 692895 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:23 +0000] "POST /auth/sign_in HTTP/1.1" 200 394 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:23 +0000] "GET /app/ HTTP/1.1" 200 2958 "https://app.aisaturn.co/app/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"
+81.215.232.40 - - [05/Oct/2025:23:33:23 +0000] "GET /auth/validate_token HTTP/1.1" 200 461 "https://app.aisaturn.co/app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0"

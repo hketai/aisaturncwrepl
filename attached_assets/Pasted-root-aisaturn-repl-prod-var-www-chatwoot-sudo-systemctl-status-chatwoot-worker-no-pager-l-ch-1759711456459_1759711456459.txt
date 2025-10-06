@@ -1,0 +1,24 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-worker --no-pager -l
+● chatwoot-worker.service - Chatwoot worker
+     Loaded: loaded (/etc/systemd/system/chatwoot-worker.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2025-10-06 00:40:30 UTC; 3min 42s ago
+ Invocation: 536e6780032846338d545eb0579f2143
+   Main PID: 74387 (bundle)
+      Tasks: 21 (limit: 19140)
+     Memory: 281.3M (peak: 282M)
+        CPU: 8.524s
+     CGroup: /system.slice/chatwoot-worker.service
+             ├─74387 "sidekiq 7.3.1 chatwoot [0 of 12 busy]"
+             └─74483 "/root/.rbenv/versions/3.4.4/bin/sidekiq -C config/sidekiq.yml"
+
+Oct 06 00:40:51 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:40:51.437229 #74387]  INFO -- : [ActiveJob] [Account::ConversationsResolutionSchedulerJob] [f9cb156b-8507-4c0c-958a-3bd2deacde92] Performed Account::ConversationsResolutionSchedulerJob (Job ID: f9cb156b-8507-4c0c-958a-3bd2deacde92) from Sidekiq(scheduled_jobs) in 3.52ms
+Oct 06 00:41:05 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:41:05.614773 #74387]  INFO -- : [ActiveJob] Enqueued Inboxes::FetchImapEmailInboxesJob (Job ID: b6993069-8dcb-482b-b21d-fc33f4fece30) to Sidekiq(scheduled_jobs)
+Oct 06 00:41:05 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:41:05.615465 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [b6993069-8dcb-482b-b21d-fc33f4fece30] Performing Inboxes::FetchImapEmailInboxesJob (Job ID: b6993069-8dcb-482b-b21d-fc33f4fece30) from Sidekiq(scheduled_jobs) enqueued at 2025-10-06T00:41:05.614337220Z
+Oct 06 00:41:05 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:41:05.620070 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [b6993069-8dcb-482b-b21d-fc33f4fece30] Performed Inboxes::FetchImapEmailInboxesJob (Job ID: b6993069-8dcb-482b-b21d-fc33f4fece30) from Sidekiq(scheduled_jobs) in 4.63ms
+Oct 06 00:42:07 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:42:07.266519 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [13201a00-7a54-410d-95e7-023a90879add] Performing Inboxes::FetchImapEmailInboxesJob (Job ID: 13201a00-7a54-410d-95e7-023a90879add) from Sidekiq(scheduled_jobs) enqueued at 2025-10-06T00:42:07.265584958Z
+Oct 06 00:42:07 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:42:07.266676 #74387]  INFO -- : [ActiveJob] Enqueued Inboxes::FetchImapEmailInboxesJob (Job ID: 13201a00-7a54-410d-95e7-023a90879add) to Sidekiq(scheduled_jobs)
+Oct 06 00:42:07 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:42:07.270573 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [13201a00-7a54-410d-95e7-023a90879add] Performed Inboxes::FetchImapEmailInboxesJob (Job ID: 13201a00-7a54-410d-95e7-023a90879add) from Sidekiq(scheduled_jobs) in 4.04ms
+Oct 06 00:43:13 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:43:13.769589 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [3bbe3581-8650-4350-978b-211607899e83] Performing Inboxes::FetchImapEmailInboxesJob (Job ID: 3bbe3581-8650-4350-978b-211607899e83) from Sidekiq(scheduled_jobs) enqueued at 2025-10-06T00:43:13.768683602Z
+Oct 06 00:43:13 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:43:13.769742 #74387]  INFO -- : [ActiveJob] Enqueued Inboxes::FetchImapEmailInboxesJob (Job ID: 3bbe3581-8650-4350-978b-211607899e83) to Sidekiq(scheduled_jobs)
+Oct 06 00:43:13 aisaturn-repl-prod bundle[74387]: I, [2025-10-06T00:43:13.773345 #74387]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [3bbe3581-8650-4350-978b-211607899e83] Performed Inboxes::FetchImapEmailInboxesJob (Job ID: 3bbe3581-8650-4350-978b-211607899e83) from Sidekiq(scheduled_jobs) in 3.83ms
+root@aisaturn-repl-prod:/var/www/chatwoot#

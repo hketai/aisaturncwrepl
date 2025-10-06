@@ -1,0 +1,39 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart postgresql
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot && RAILS_ENV=production bundle exec rails db:migrate
+/root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-06T00:26:04.943084 #73772]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:26:04.943169 #73772]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:26:05.295503 #73772]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2025-10-06T00:26:05.570257 #73772]  INFO -- : Migrating to CreateCaptainTables (20250104200055)
+== 20250104200055 CreateCaptainTables: migrating ==============================
+-- extension_enabled?("vector")
+   -> 0.0016s
+-- enable_extension("vector")
+bin/rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled: (StandardError)
+
+Failed to enable 'vector' extension. Read more at https://chwt.app/v4/migration
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:30:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+StandardError: Failed to enable 'vector' extension. Read more at https://chwt.app/v4/migration (StandardError)
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:30:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+ActiveRecord::StatementInvalid: PG::InsufficientPrivilege: ERROR:  permission denied to create extension "vector" (ActiveRecord::StatementInvalid)
+HINT:  Must be superuser to create this extension.
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:28:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+
+Caused by:
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "vector" (PG::InsufficientPrivilege)
+HINT:  Must be superuser to create this extension.
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:28:in 'CreateCaptainTables#setup_vector_extension'
+/var/www/chatwoot/db/migrate/20250104200055_create_captain_tables.rb:5:in 'CreateCaptainTables#up'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+root@aisaturn-repl-prod:/var/www/chatwoot#

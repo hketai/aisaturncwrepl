@@ -1,0 +1,40 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails db:migrate:status | tail -20
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+  down    20250710145708  Create captain scenarios
+  down    20250714104358  Add response guidelines and guardrails to captain assistants
+  down    20250722083820  Add ssl settings to portals
+  down    20250722152516  Add index on contact type and account id to contacts
+  down    20250805082345  Add metadata to captain documents
+  down    20250805160307  Add notifications performance index
+  down    20250806140000  Create assignment policies
+  down    20250806140001  Create inbox assignment policies
+  down    20250806140002  Create agent capacity policies
+  down    20250806140003  Create inbox capacity limits
+  down    20250806140004  Add agent capacity policy to account users
+  down    20250806140005  Create leaves
+  down    20250808123008  Add feature citation to assistant config
+  down    20250820130619  Add two factor to users
+  down    20250822061042  Add content templates to twilio sms
+  down    20250825070005  Create account saml settings
+  down    20250826000000  Drop telegram bots
+  down    20250916024703  Add allowed domains to channel widgets
+  down    20250917012759  Add verified to channel email
+
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "sa = SuperAdmin.find_by(email: 'admin@example.com'); puts 'Email: ' + sa.email; puts 'Confirmed: ' + sa.confirmed_at.to_s"
+I, [2025-10-05T22:09:40.925373 #62957]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:09:40.925468 #62957]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:09:43.122808 #62957]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Email: admin@example.com
+Confirmed: 2025-10-05 22:08:25 UTC
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "Account.create!(name: 'Test Account')"
+I, [2025-10-05T22:09:48.009120 #62988]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:09:48.009210 #62988]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:09:50.280422 #62988]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Please specify a valid ruby command or the path of a script to run.
+Run 'bin/rails runner -h' for help.
+
+undefined method 'settings' for an instance of Account
+root@aisaturn-repl-prod:/var/www/chatwoot#

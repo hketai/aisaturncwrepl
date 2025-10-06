@@ -1,0 +1,37 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo -u postgres psql -c "ALTER USER chatwoot WITH PASSWORD 'chatwoot_password_2025';"
+ALTER ROLE
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE chatwoot_production TO chatwoot;"
+GRANT
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot && RAILS_ENV=production bundle exec rails db:migrate
+/root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-06T00:20:20.444970 #73368]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-06T00:20:20.445060 #73368]  INFO -- : [dotenv] Loaded .env.production
+E, [2025-10-06T00:20:20.745245 #73368] ERROR -- : Failed to configure AI Agents SDK: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+
+I, [2025-10-06T00:20:20.745919 #73368]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2025-10-06T00:20:21.049659 #73368]  INFO -- : Migrating to InitSchema (20230426130150)
+== 20230426130150 InitSchema: migrating =======================================
+-- enable_extension("pg_stat_statements")
+bin/rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled: (StandardError)
+
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pg_stat_statements"
+HINT:  Must be superuser to create this extension.
+/var/www/chatwoot/db/migrate/20230426130150_init_schema.rb:4:in 'InitSchema#up'
+
+Caused by:
+ActiveRecord::StatementInvalid: PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pg_stat_statements" (ActiveRecord::StatementInvalid)
+HINT:  Must be superuser to create this extension.
+/var/www/chatwoot/db/migrate/20230426130150_init_schema.rb:4:in 'InitSchema#up'
+
+Caused by:
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pg_stat_statements" (PG::InsufficientPrivilege)
+HINT:  Must be superuser to create this extension.
+/var/www/chatwoot/db/migrate/20230426130150_init_schema.rb:4:in 'InitSchema#up'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+root@aisaturn-repl-prod:/var/www/chatwoot#

@@ -1,0 +1,28 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl daemon-reload
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl enable chatwoot-web chatwoot-worker
+Created symlink '/etc/systemd/system/multi-user.target.wants/chatwoot-web.service' → '/etc/systemd/system/chatwoot-web.service'.
+Created symlink '/etc/systemd/system/multi-user.target.wants/chatwoot-worker.service' → '/etc/systemd/system/chatwoot-worker.service'.
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl start chatwoot-web chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-web --no-pager
+● chatwoot-web.service - Chatwoot Web Server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2025-10-05 21:40:18 UTC; 3s ago
+ Invocation: bdd03c0a2c1a4bce921ff0a570a20260
+   Main PID: 58738 (ruby)
+      Tasks: 3 (limit: 19140)
+     Memory: 170.3M (peak: 170.3M)
+        CPU: 3.537s
+     CGroup: /system.slice/chatwoot-web.service
+             └─58738 "puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]"
+
+Oct 05 21:40:18 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot Web Server.
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: Puma starting in single mode...
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: * Puma version: 6.4.3 (ruby 3.4.4-p34) ("The Eagle of Durango")
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: *  Min threads: 5
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: *  Max threads: 5
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: *  Environment: production
+Oct 05 21:40:18 aisaturn-repl-prod bundle[58738]: *          PID: 58738
+Oct 05 21:40:20 aisaturn-repl-prod bundle[58738]: I, [2025-10-05T21:40:20.739731 #58738]  INFO -- : [dotenv] Loa…duction
+Oct 05 21:40:20 aisaturn-repl-prod bundle[58738]: I, [2025-10-05T21:40:20.739809 #58738]  INFO -- : [dotenv] Loa…duction
+Hint: Some lines were ellipsized, use -l to show in full.
+root@aisaturn-repl-prod:/var/www/chatwoot#

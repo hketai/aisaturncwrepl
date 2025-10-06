@@ -1,0 +1,85 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+account = Account.create!(
+  name: 'Kadriye Baştürk',
+  locale: 0,
+  status: 0,
+  settings: {}
+)
+
+user = User.create!(
+  email: 'kadriye@aisaturn.co',
+  password: 'Chatwoot123!',
+  name: 'Kadriye Baştürk',
+  account_id: account.id,
+  confirmed_at: Time.now,
+  role: 1,
+  otp_required_for_login: false
+)
+
+AccountUser.create!(account_id: account.id, user_id: user.id, role: 1)
+
+puts 'Account ID: ' + account.id.to_s
+puts 'User Email: ' + user.email
+"
+-bash: !: event not found
+-bash: !: event not found
+I, [2025-10-05T22:21:51.087959 #63848]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:21:51.088049 #63848]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:21:53.332446 #63848]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Please specify a valid ruby command or the path of a script to run.
+Run 'bin/rails runner -h' for help.
+
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:47: syntax errors found
+  46 |
+> 47 |   name: 'Kadriye Baştürk',
+     |       ^ unexpected ':', ignoring it
+     |       ^ unexpected ':', expecting end-of-input
+     |                          ^ unexpected ',', ignoring it
+     |                          ^ unexpected ',', expecting end-of-input
+> 48 |   locale: 0,
+     |   ^~~~~~~ unexpected label, ignoring it
+     |            ^ unexpected ',', ignoring it
+     |            ^ unexpected ',', expecting end-of-input
+> 49 |   status: 0,
+     |   ^~~~~~~ unexpected label, ignoring it
+     |            ^ unexpected ',', ignoring it
+     |            ^ unexpected ',', expecting end-of-input
+> 50 |   settings: {}
+     |   ^~~~~~~~~ unexpected label, ignoring it
+> 51 | )
+     | ^ unexpected ')', ignoring it
+  52 |
+> 53 |   email: 'kadriye@aisaturn.co',
+     |        ^ unexpected ':', ignoring it
+     |        ^ unexpected ':', expecting end-of-input
+     |                               ^ unexpected ',', ignoring it
+     |                               ^ unexpected ',', expecting end-of-input
+> 54 |   password: 'Chatwoot123!',
+     |   ^~~~~~~~~ unexpected label, ignoring it
+     |                           ^ unexpected ',', ignoring it
+     |                           ^ unexpected ',', expecting end-of-input
+> 55 |   name: 'Kadriye Baştürk',
+     |   ^~~~~ unexpected label, ignoring it
+     |                          ^ unexpected ',', ignoring it
+     |                          ^ unexpected ',', expecting end-of-input
+> 56 |   account_id: account.id,
+     |   ^~~~~~~~~~~ unexpected label, ignoring it
+     |               ^~~~~~~~~~~ unexpected write target
+     |                         ^ expected an expression after `,`
+> 57 |   confirmed_at: Time.now,
+     |   ^~~~~~~~~~~~~ unexpected label, ignoring it
+     |   ^~~~~~~~~~~~~ unexpected label, expecting end-of-input
+     |                 ^~~~~~~~~ unexpected write target
+     |                         ^ expected an expression after `,`
+> 58 |   role: 1,
+     |   ^~~~~ unexpected label, ignoring it
+     |   ^~~~~ unexpected label, expecting end-of-input
+     |          ^ unexpected ',', ignoring it
+     |          ^ unexpected ',', expecting end-of-input
+> 59 |   otp_required_for_login: false
+     |   ^~~~~~~~~~~~~~~~~~~~~~~ unexpected label, ignoring it
+> 60 | )
+     | ^ unexpected ')', ignoring it
+  61 |
+  62 | AccountUser.create!(account_id: account.id, user_id: user.id, role: 1)
+root@aisaturn-repl-prod:/var/www/chatwoot#

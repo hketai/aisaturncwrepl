@@ -1,0 +1,127 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails db:migrate
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/reline-0.3.6/lib/reline/terminfo.rb:2: warning: /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/fiddle.rb was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.3.6 to request adding fiddle into its gemspec.
+I, [2025-10-05T22:10:43.302078 #63063]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:10:43.302176 #63063]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:10:43.590149 #63063]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2025-10-05T22:10:43.858969 #63063]  INFO -- : Migrating to AddCachedLabelsList (20231211010807)
+== 20231211010807 AddCachedLabelsList: migrating ==============================
+-- add_column(:conversations, :cached_label_list, :string)
+   -> 0.0015s
+bin/rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled: (StandardError)
+
+uninitialized constant ActsAsTaggableOn::Taggable::Cache
+/var/www/chatwoot/db/migrate/20231211010807_add_cached_labels_list.rb:5:in 'AddCachedLabelsList#change'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:986:in 'ActiveRecord::Migration#exec_migration'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:970:in 'block (2 levels) in ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/benchmark-0.4.1/lib/benchmark.rb:305:in 'Benchmark.measure'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:969:in 'block in ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:227:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:968:in 'ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1178:in 'ActiveRecord::MigrationProxy#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1529:in 'block in ActiveRecord::Migrator#execute_migration_in_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/transaction.rb:535:in 'block in ActiveRecord::ConnectionAdapters::TransactionManager#within_new_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/transaction.rb:532:in 'ActiveRecord::ConnectionAdapters::TransactionManager#within_new_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/database_statements.rb:344:in 'ActiveRecord::ConnectionAdapters::DatabaseStatements#transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1580:in 'ActiveRecord::Migrator#ddl_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1528:in 'ActiveRecord::Migrator#execute_migration_in_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1503:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1503:in 'ActiveRecord::Migrator#migrate_without_lock'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1448:in 'block in ActiveRecord::Migrator#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1600:in 'ActiveRecord::Migrator#with_advisory_lock'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1448:in 'ActiveRecord::Migrator#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1274:in 'ActiveRecord::MigrationContext#up'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1249:in 'ActiveRecord::MigrationContext#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/tasks/database_tasks.rb:262:in 'ActiveRecord::Tasks::DatabaseTasks#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/railties/databases.rake:93:in 'block (2 levels) in <main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'block in Rake::Task#execute'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'Rake::Task#execute'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:219:in 'block in Rake::Task#invoke_with_call_chain'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:199:in 'Monitor#synchronize'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:199:in 'Rake::Task#invoke_with_call_chain'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:188:in 'Rake::Task#invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:188:in 'Rake::Application#invoke_task'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'block (2 levels) in Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'block in Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:147:in 'Rake::Application#run_with_threads'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:132:in 'Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in 'block (2 levels) in Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:214:in 'Rake::Application#standard_exception_handling'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in 'block in Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:44:in 'block in Rails::Command::RakeCommand.with_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/rake_module.rb:59:in 'Rake.with_application'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:41:in 'Rails::Command::RakeCommand.with_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:20:in 'Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:156:in 'Rails::Command.invoke_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:73:in 'block in Rails::Command.invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in 'Rails::Command.with_argv'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in 'Rails::Command.invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in '<main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in 'Kernel#require'
+
+Caused by:
+NameError: uninitialized constant ActsAsTaggableOn::Taggable::Cache (NameError)
+
+    ActsAsTaggableOn::Taggable::Cache.included(Conversation)
+                              ^^^^^^^
+Did you mean?  CacheKeys
+/var/www/chatwoot/db/migrate/20231211010807_add_cached_labels_list.rb:5:in 'AddCachedLabelsList#change'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:986:in 'ActiveRecord::Migration#exec_migration'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:970:in 'block (2 levels) in ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/benchmark-0.4.1/lib/benchmark.rb:305:in 'Benchmark.measure'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:969:in 'block in ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:227:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:968:in 'ActiveRecord::Migration#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1178:in 'ActiveRecord::MigrationProxy#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1529:in 'block in ActiveRecord::Migrator#execute_migration_in_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/transaction.rb:535:in 'block in ActiveRecord::ConnectionAdapters::TransactionManager#within_new_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/transaction.rb:532:in 'ActiveRecord::ConnectionAdapters::TransactionManager#within_new_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/database_statements.rb:344:in 'ActiveRecord::ConnectionAdapters::DatabaseStatements#transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1580:in 'ActiveRecord::Migrator#ddl_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1528:in 'ActiveRecord::Migrator#execute_migration_in_transaction'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1503:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1503:in 'ActiveRecord::Migrator#migrate_without_lock'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1448:in 'block in ActiveRecord::Migrator#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1600:in 'ActiveRecord::Migrator#with_advisory_lock'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1448:in 'ActiveRecord::Migrator#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1274:in 'ActiveRecord::MigrationContext#up'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/migration.rb:1249:in 'ActiveRecord::MigrationContext#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/tasks/database_tasks.rb:262:in 'ActiveRecord::Tasks::DatabaseTasks#migrate'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/railties/databases.rake:93:in 'block (2 levels) in <main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'block in Rake::Task#execute'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:281:in 'Rake::Task#execute'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:219:in 'block in Rake::Task#invoke_with_call_chain'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:199:in 'Monitor#synchronize'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:199:in 'Rake::Task#invoke_with_call_chain'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/task.rb:188:in 'Rake::Task#invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:188:in 'Rake::Application#invoke_task'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'block (2 levels) in Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'Array#each'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:138:in 'block in Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:147:in 'Rake::Application#run_with_threads'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:132:in 'Rake::Application#top_level'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in 'block (2 levels) in Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/application.rb:214:in 'Rake::Application#standard_exception_handling'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in 'block in Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:44:in 'block in Rails::Command::RakeCommand.with_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/rake-13.2.1/lib/rake/rake_module.rb:59:in 'Rake.with_application'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:41:in 'Rails::Command::RakeCommand.with_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:20:in 'Rails::Command::RakeCommand.perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:156:in 'Rails::Command.invoke_rake'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:73:in 'block in Rails::Command.invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in 'Rails::Command.with_argv'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in 'Rails::Command.invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in '<main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in 'Kernel#require'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot#

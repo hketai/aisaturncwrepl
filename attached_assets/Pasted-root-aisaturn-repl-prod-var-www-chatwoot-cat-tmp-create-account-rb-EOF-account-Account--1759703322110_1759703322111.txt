@@ -1,0 +1,61 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cat > /tmp/create_account.rb << 'EOF'
+account = Account.create!(
+  name: 'Kadriye Baştürk',
+  locale: 0,
+  status: 0,
+  settings: {}
+)
+
+user = User.create!(
+  email: 'kadriye@aisaturn.co',
+  password: 'Chatwoot123!',
+  name: 'Kadriye Baştürk',
+  account_id: account.id,
+  confirmed_at: Time.now,
+  role: 1,
+  otp_required_for_login: false
+)
+
+AccountUser.create!(account_id: account.id, user_id: user.id, role: 1)
+
+puts "Account ID: #{account.id}"
+puts "User Email: #{user.email}"
+puts "Başarılı!"
+EOF
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner /tmp/create_account.rb
+I, [2025-10-05T22:28:31.990643 #63986]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:28:31.990733 #63986]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-05T22:28:34.190499 #63986]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+/var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activemodel-7.1.5.2/lib/active_model/attribute_assignment.rb:51:in 'ActiveModel::AttributeAssignment#_assign_attribute': unknown attribute 'settings' for Account. (ActiveModel::UnknownAttributeError)
+
+          raise UnknownAttributeError.new(self, k.to_s)
+          ^^^^^
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_assignment.rb:29:in 'block in ActiveRecord::AttributeAssignment#assign_nested_parameter_attributes'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_assignment.rb:29:in 'Hash#each'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_assignment.rb:29:in 'ActiveRecord::AttributeAssignment#assign_nested_parameter_attributes'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_assignment.rb:23:in 'ActiveRecord::AttributeAssignment#_assign_attributes'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activemodel-7.1.5.2/lib/active_model/attribute_assignment.rb:34:in 'ActiveModel::AttributeAssignment#assign_attributes'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/core.rb:453:in 'ActiveRecord::Core#initialize'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/inheritance.rb:76:in 'Class#new'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/inheritance.rb:76:in 'ActiveRecord::Inheritance::ClassMethods#new'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/persistence.rb:54:in 'ActiveRecord::Persistence::ClassMethods#create!'
+        from /tmp/create_account.rb:1:in '<main>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:41:in 'Kernel.load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:41:in 'block in Rails::Command::RunnerCommand#perform'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activesupport-7.1.5.2/lib/active_support/execution_wrapper.rb:92:in 'ActiveSupport::ExecutionWrapper.wrap'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:40:in 'Rails::Command::RunnerCommand#perform'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/thor-1.4.0/lib/thor/command.rb:28:in 'Thor::Command#run'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in 'Thor::Invocation#invoke_command'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in 'Rails::Command::Base#invoke_command'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/thor-1.4.0/lib/thor.rb:538:in 'Thor.dispatch'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in 'Rails::Command::Base.perform'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in 'block in Rails::Command.invoke'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in 'Rails::Command.with_argv'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in 'Rails::Command.invoke'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in '<main>'
+        from /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/bundled_gems.rb:82:in 'Kernel.require'
+        from /root/.rbenv/versions/3.4.4/lib/ruby/3.4.0/bundled_gems.rb:82:in 'block (2 levels) in Kernel#replace_require'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in 'Kernel#require'
+        from bin/rails:4:in '<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot#
