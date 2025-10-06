@@ -19,15 +19,20 @@ const props = defineProps({
 const emit = defineEmits(['close', 'deleted']);
 
 const dialogRef = ref(null);
+const knowledgeToDelete = ref(null);
 
 const handleConfirm = async () => {
+  knowledgeToDelete.value = { ...props.knowledge };
+  
+  emit('deleted', props.knowledge.id);
+  emit('close');
+  
   try {
     await SaturnKnowledgeAPI.deleteForAgent(props.agentId, props.knowledge.id);
     useAlert('Knowledge source deleted successfully');
-    emit('deleted', props.knowledge.id);
-    emit('close');
   } catch (error) {
     useAlert('Failed to delete knowledge source');
+    emit('restore', knowledgeToDelete.value);
   }
 };
 

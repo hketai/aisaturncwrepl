@@ -70,8 +70,18 @@ const handleKnowledgeUpdated = (updatedKnowledge) => {
   }
 };
 
+const deletedKnowledge = ref(null);
+
 const handleKnowledgeDeleted = (knowledgeId) => {
+  deletedKnowledge.value = knowledgeSources.value.find(k => k.id === knowledgeId);
   knowledgeSources.value = knowledgeSources.value.filter(k => k.id !== knowledgeId);
+};
+
+const handleKnowledgeRestore = (knowledge) => {
+  if (knowledge) {
+    knowledgeSources.value.push(knowledge);
+    deletedKnowledge.value = null;
+  }
 };
 
 const handleDialogClose = () => {
@@ -194,6 +204,7 @@ onMounted(async () => {
     :agent-id="agentId"
     :knowledge="selectedKnowledge"
     @deleted="handleKnowledgeDeleted"
+    @restore="handleKnowledgeRestore"
     @close="handleDialogClose"
   />
 </template>
