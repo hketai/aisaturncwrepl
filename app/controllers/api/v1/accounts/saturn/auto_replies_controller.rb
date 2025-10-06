@@ -16,6 +16,17 @@ class Api::V1::Accounts::Saturn::AutoRepliesController < Api::V1::Accounts::Satu
   
   def show; end
   
+  def create
+    agent_profile = Current.account.saturn_agent_profiles.find(params[:agent_id])
+    @auto_reply = Current.account.saturn_auto_replies.create!(
+      agent_profile: agent_profile,
+      user_query: params[:user_query],
+      agent_response: params[:agent_response],
+      knowledge_source_id: params[:knowledge_source_id],
+      confidence_score: params[:confidence_score]
+    )
+  end
+  
   def destroy
     @auto_reply.destroy!
     head :no_content
