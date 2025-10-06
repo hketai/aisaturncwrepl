@@ -41,10 +41,10 @@ Users can create accounts through the signup flow or via super admin console.
 Saturn AI is a new MIT-licensed automatic response system built as an alternative to Captain AI (enterprise feature). It provides AI-powered automatic responses using OpenAI integration.
 
 **Architecture:**
-- **Database:** 4 new tables (saturn_agent_profiles, saturn_knowledge_sources, saturn_auto_replies, saturn_inbox_connections)
-- **Backend Models:** Saturn::AgentProfile, Saturn::KnowledgeSource, Saturn::AutoReply, Saturn::InboxConnection
+- **Database:** 3 core tables (saturn_agent_profiles, saturn_knowledge_sources, saturn_inbox_connections)
+- **Backend Models:** Saturn::AgentProfile, Saturn::KnowledgeSource, Saturn::InboxConnection
 - **Services:** Saturn::Orchestrator (multi-turn conversation handler), Saturn::LlmService (OpenAI integration)
-- **API Endpoints:** Full CRUD for agents, knowledge sources, auto-replies, inbox connections
+- **API Endpoints:** Full CRUD for agents, knowledge sources, inbox connections
 - **Frontend:** Main sidebar menu "Saturn" (✨ sparkles icon, above Contacts)
 
 **UI Features (Captain AI Style):**
@@ -53,6 +53,7 @@ Saturn AI is a new MIT-licensed automatic response system built as an alternativ
   - Text/Document, URL/Website, FAQ source types
   - Edit and delete actions on each knowledge card
   - Agent-specific knowledge base pages
+- **Inbox Connections:** Connect agents to specific inboxes for auto-response
 - **Custom Components:** AgentCard, CreateAgentDialog, DeleteAgentDialog, EmptyState
 - **API Client:** Uses Chatwoot ApiClient pattern for proper authentication
 
@@ -72,6 +73,10 @@ Saturn AI is a new MIT-licensed automatic response system built as an alternativ
 - Routes: 
   - `/accounts/:accountId/settings/saturn-agents` - Agent list
   - `/accounts/:accountId/settings/saturn-agents/:agentId/knowledge-sources` - Knowledge sources
+  - `/accounts/:accountId/settings/saturn-agents/:agentId/inbox-connections` - Inbox connections
+
+**Recent Updates:**
+- **October 6, 2025:** Removed Auto Replies feature (redundant with Knowledge Sources FAQ system) - simplified to focus on AI-powered responses via knowledge base
 
 ### CI/CD Pipeline Setup
 1. **GitHub Actions deployment:** Automated deployment pipeline configured for main branch pushes
