@@ -1,11 +1,12 @@
-json.id @agent.id
-json.name @agent.name
-json.description @agent.description
-json.active @agent.active
-json.ai_temperature @agent.ai_temperature
-json.product_context @agent.product_context
-json.behavior_rules @agent.behavior_rules
-json.safety_guidelines @agent.safety_guidelines
-json.configuration @agent.configuration
-json.avatar_url @agent.avatar_url.presence || @agent.send(:default_avatar_url)
-json.created_at @agent.created_at
+json.id @agent_profile.id
+json.name @agent_profile.name
+json.description @agent_profile.description
+json.active @agent_profile.active
+json.ai_temperature @agent_profile.ai_temperature
+json.product_context @agent_profile.product_context
+json.industry_type @agent_profile.industry_type
+json.behavior_rules @agent_profile.behavior_rules
+json.safety_guidelines @agent_profile.safety_guidelines
+json.configuration @agent_profile.configuration
+json.avatar_url @agent_profile.avatar_url.presence || @agent_profile.send(:default_avatar_url)
+json.created_at @agent_profile.created_at

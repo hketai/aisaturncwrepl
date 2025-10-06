@@ -8,10 +8,6 @@ class Saturn::AgentProfile < ApplicationRecord
            class_name: 'Saturn::KnowledgeSource', 
            foreign_key: :agent_profile_id, 
            dependent: :destroy_async
-  has_many :auto_replies, 
-           class_name: 'Saturn::AutoReply', 
-           foreign_key: :agent_profile_id, 
-           dependent: :destroy_async
   has_many :inbox_connections, 
            class_name: 'Saturn::InboxConnection', 
            foreign_key: :agent_profile_id, 

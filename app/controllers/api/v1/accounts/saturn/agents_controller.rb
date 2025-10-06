@@ -63,6 +63,7 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       :name,
       :description,
       :product_context,
+      :industry_type,
       :ai_temperature,
       :active,
       :model_name,

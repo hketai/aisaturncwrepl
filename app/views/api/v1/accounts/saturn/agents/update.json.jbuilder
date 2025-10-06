@@ -4,6 +4,7 @@ json.description @agent_profile.description
 json.active @agent_profile.active
 json.ai_temperature @agent_profile.ai_temperature
 json.product_context @agent_profile.product_context
+json.industry_type @agent_profile.industry_type
 json.behavior_rules @agent_profile.behavior_rules
 json.safety_guidelines @agent_profile.safety_guidelines
 json.configuration @agent_profile.configuration
