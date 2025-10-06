@@ -73,14 +73,19 @@ const handleKnowledgeUpdated = (updatedKnowledge) => {
 const deletedKnowledge = ref(null);
 
 const handleKnowledgeDeleted = (knowledgeId) => {
+  console.log('[PARENT] handleKnowledgeDeleted called with ID:', knowledgeId);
+  console.log('[PARENT] Current knowledge sources:', knowledgeSources.value.map(k => k.id));
   deletedKnowledge.value = knowledgeSources.value.find(k => k.id === knowledgeId);
   knowledgeSources.value = knowledgeSources.value.filter(k => k.id !== knowledgeId);
+  console.log('[PARENT] After delete, knowledge sources:', knowledgeSources.value.map(k => k.id));
 };
 
 const handleKnowledgeRestore = (knowledge) => {
+  console.log('[PARENT] handleKnowledgeRestore called with:', knowledge);
   if (knowledge) {
     knowledgeSources.value.push(knowledge);
     deletedKnowledge.value = null;
+    console.log('[PARENT] After restore, knowledge sources:', knowledgeSources.value.map(k => k.id));
   }
 };
 

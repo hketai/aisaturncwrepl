@@ -32,19 +32,26 @@ watch(() => props.knowledge, (newKnowledge) => {
 }, { immediate: true });
 
 const handleConfirm = async () => {
-  if (!knowledgeToDelete.value) return;
+  if (!knowledgeToDelete.value) {
+    console.log('[DELETE] No knowledge to delete');
+    return;
+  }
   
   const knowledgeId = knowledgeToDelete.value.id;
   const knowledgeData = { ...knowledgeToDelete.value };
   
+  console.log('[DELETE] Emitting deleted event for ID:', knowledgeId);
   emit('deleted', knowledgeId);
   emit('close');
   knowledgeToDelete.value = null;
   
   try {
+    console.log('[DELETE] Calling API to delete knowledge ID:', knowledgeId);
     await SaturnKnowledgeAPI.deleteForAgent(props.agentId, knowledgeId);
+    console.log('[DELETE] API call successful');
     useAlert('Knowledge source deleted successfully');
   } catch (error) {
+    console.log('[DELETE] API call failed, restoring:', error);
     useAlert('Failed to delete knowledge source');
     emit('restore', knowledgeData);
   }
