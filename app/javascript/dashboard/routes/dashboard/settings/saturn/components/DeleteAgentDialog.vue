@@ -39,7 +39,7 @@ defineExpose({ dialogRef });
 <template>
   <Dialog
     ref="dialogRef"
-    type="delete"
+    type="alert"
     :title="`Delete ${agent.name}?`"
     description="This action cannot be undone. All associated knowledge sources and configurations will be permanently deleted."
     confirm-button-label="Delete Agent"

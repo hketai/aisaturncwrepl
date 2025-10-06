@@ -1,0 +1,69 @@
+index-BtuGy7By.js:3  GET https://22844140-fb0a-4ee4-9bd2-f24a5ff3c7f3-00-3vgh7ou61e4yp.sisko.replit.dev/enterprise/api/v1/accounts/1/limits 404 (Not Found)
+(anonymous) @ index-BtuGy7By.js:3
+xhr @ index-BtuGy7By.js:3
+Oe @ index-BtuGy7By.js:5
+_request @ index-BtuGy7By.js:6
+request @ index-BtuGy7By.js:5
+L.<computed> @ index-BtuGy7By.js:6
+(anonymous) @ index-BtuGy7By.js:1
+getLimits @ DashboardIcon-DugJLvEx.js:1
+limits @ DashboardIcon-DugJLvEx.js:1
+(anonymous) @ useBranding-DVTQja6F.js:23
+ne.dispatch @ useBranding-DVTQja6F.js:23
+dispatch @ useBranding-DVTQja6F.js:23
+A @ dashboard-DNR4mIqP.js:173
+(anonymous) @ dashboard-DNR4mIqP.js:173
+(anonymous) @ _plugin-vue_export-helper-NRUrV_ae.js:14
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Xe @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Bi.t.__weh.t.__weh @ _plugin-vue_export-helper-NRUrV_ae.js:14
+ii @ _plugin-vue_export-helper-NRUrV_ae.js:13
+ta @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Promise.then
+ea @ _plugin-vue_export-helper-NRUrV_ae.js:13
+eo @ _plugin-vue_export-helper-NRUrV_ae.js:13
+U.L.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:14
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Gr @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Et @ _plugin-vue_export-helper-NRUrV_ae.js:9
+set @ _plugin-vue_export-helper-NRUrV_ae.js:9
+SET_ACCOUNT_UI_FLAG @ DashboardIcon-DugJLvEx.js:1
+(anonymous) @ useBranding-DVTQja6F.js:23
+(anonymous) @ useBranding-DVTQja6F.js:23
+(anonymous) @ useBranding-DVTQja6F.js:23
+ne._withCommit @ useBranding-DVTQja6F.js:23
+ne.commit @ useBranding-DVTQja6F.js:23
+commit @ useBranding-DVTQja6F.js:23
+s.commit @ useBranding-DVTQja6F.js:23
+get @ DashboardIcon-DugJLvEx.js:1
+await in get
+(anonymous) @ useBranding-DVTQja6F.js:23
+ne.dispatch @ useBranding-DVTQja6F.js:23
+dispatch @ useBranding-DVTQja6F.js:23
+initializeAccount @ dashboard-DNR4mIqP.js:15
+handler @ dashboard-DNR4mIqP.js:15
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Xe @ _plugin-vue_export-helper-NRUrV_ae.js:13
+An.l.call @ _plugin-vue_export-helper-NRUrV_ae.js:14
+m @ _plugin-vue_export-helper-NRUrV_ae.js:9
+fs @ _plugin-vue_export-helper-NRUrV_ae.js:13
+ta @ _plugin-vue_export-helper-NRUrV_ae.js:13
+Promise.then
+ea @ _plugin-vue_export-helper-NRUrV_ae.js:13
+eo @ _plugin-vue_export-helper-NRUrV_ae.js:13
+An.l.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:14
+Xh.f.scheduler @ _plugin-vue_export-helper-NRUrV_ae.js:9
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Gr @ _plugin-vue_export-helper-NRUrV_ae.js:9
+notify @ _plugin-vue_export-helper-NRUrV_ae.js:9
+trigger @ _plugin-vue_export-helper-NRUrV_ae.js:9
+set value @ _plugin-vue_export-helper-NRUrV_ae.js:9
+Pt @ Validators-D2QEUXtv.js:5
+(anonymous) @ Validators-D2QEUXtv.js:5
+Promise.then
+k @ Validators-D2QEUXtv.js:5
+W @ Validators-D2QEUXtv.js:5
+install @ Validators-D2QEUXtv.js:5
+use @ _plugin-vue_export-helper-NRUrV_ae.js:14
+(anonymous) @ dashboard-DNR4mIqP.js:173Understand this error
+saturn-agents:1 Form submission canceled because the form is not connected

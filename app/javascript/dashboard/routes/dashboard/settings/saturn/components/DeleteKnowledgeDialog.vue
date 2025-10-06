@@ -40,7 +40,7 @@ defineExpose({ dialogRef });
 <template>
   <Dialog
     ref="dialogRef"
-    type="delete"
+    type="alert"
     :title="`Delete ${knowledge.title}?`"
     description="This knowledge source will be permanently removed from the agent's knowledge base."
     confirm-button-label="Delete Knowledge Source"
