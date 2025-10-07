@@ -1,0 +1,147 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cat app/jobs/saturn/auto_respond_job.rb | nl
+     1	module Saturn
+     2	  class AutoRespondJob < ApplicationJob
+     3	    queue_as :default
+     4	    
+     5	    def perform(message_id:, agent_profile_id:, account_id:)
+     6	      message = Message.find_by(id: message_id)
+     7	      return unless message
+     8	      
+     9	      # Prevent duplicate responses
+    10	      if already_responded?(message, agent_profile_id)
+    11	        Rails.logger.info("Saturn: Skipping duplicate response for message #{message_id}")
+    12	        return
+    13	      end
+    14	      
+    15	      agent_profile = Saturn::AgentProfile.find_by(id: agent_profile_id)
+    16	      return unless agent_profile&.active?
+    17	      
+    18	      account = Account.find_by(id: account_id)
+    19	      return unless account
+    20	      
+    21	      # Get OpenAI API key from account
+    22	      api_key = account.openai_api_key
+    23	      if api_key.blank?
+    24	        Rails.logger.warn("Saturn: No OpenAI API key for account #{account_id}, skipping auto-response")
+    25	        return
+    26	      end
+    27	      
+    28	      # Build conversation context
+    29	      context = build_context(message)
+    30	      
+    31	      # Generate response using Orchestrator
+    32	      orchestrator = Saturn::Orchestrator.new(
+    33	        agent_profile: agent_profile,
+    34	        api_key: api_key
+    35	      )
+    36	      
+    37	      result = orchestrator.process(message.content, context: context)
+    38	      
+    39	      # Create response message if successful
+    40	      if result[:success] && result[:response].present?
+    41	        create_response_message(message, result[:response], agent_profile)
+    42	      else
+    43	        Rails.logger.error("Saturn auto-respond failed: #{result[:error]}")
+    44	      end
+    45	    rescue StandardError => e
+    46	      Rails.logger.error("Saturn::AutoRespondJob error: #{e.message}")
+    47	      Rails.logger.error(e.backtrace.join("\n"))
+    48	    end
+    49	    
+    50	    private
+    51	    
+    52	    def build_context(message)
+    53	      conversation = message.conversation
+    54	      contact = conversation.contact
+    55	      inbox = conversation.inbox
+    56	      
+    57	      {
+    58	        conversation_id: conversation.display_id,
+    59	        contact_name: contact.name,
+    60	        contact_email: contact.email,
+    61	        inbox_name: inbox.name,
+    62	        inbox_type: inbox.channel_type,
+    63	        previous_messages: fetch_recent_messages(conversation)
+    64	      }
+    65	    end
+    66	    
+    67	    def fetch_recent_messages(conversation)
+    68	      conversation.messages
+    69	        .where.not(message_type: :activity)
+    70	        .where(private: false)
+    71	        .order(created_at: :desc)
+    72	        .limit(5)
+    73	        .reverse
+    74	        .map do |msg|
+    75	          {
+    76	            role: msg.outgoing? ? 'assistant' : 'user',
+    77	            content: msg.content,
+    78	            created_at: msg.created_at.iso8601
+    79	          }
+    80	        end
+    81	    end
+    82	    
+    83	    def already_responded?(message, agent_profile_id)
+    84	      conversation = message.conversation
+    85	      
+    86	      # Check if Saturn already responded to this message
+    87	      conversation.messages
+    88	        .where(message_type: :outgoing)
+    89	        .where("content_attributes->>'saturn_agent_id' = ?", agent_profile_id.to_s)
+    90	        .where('created_at > ?', message.created_at)
+    91	        .exists?
+    92	    end
+    93	    
+    94	        def create_response_message(original_message, response_content, agent_profile)
+    95	      conversation = original_message.conversation
+    96	      inbox = conversation.inbox
+    97	      
+    98	      # Find a sender: prefer assigned agent, fallback to first inbox member, then admin
+    99	      sender = conversation.assignee || 
+   100	               inbox.members.first || 
+   101	               inbox.account.users.where(account_users: { role: :administrator }).first
+   102	      
+   103	      unless sender
+   104	        Rails.logger.error("Saturn: No suitable sender found for conversation #{conversation.id}")
+   105	        return
+   106	      end
+   107	      
+   108	      # Create message directly (MessageBuilder strips content_attributes)
+   109	      message = Message.create!(
+   110	        account_id: conversation.account_id,
+   111	        inbox_id: conversation.inbox_id,
+   112	        conversation_id: conversation.id,
+   113	        message_type: :outgoing,
+   114	        content: response_content,
+   115	        sender: sender,
+   116	        private: false,
+   117	        content_attributes: {
+   118	          saturn_agent_id: agent_profile.id.to_s,
+   119	          saturn_agent_name: agent_profile.name,
+   120	          automated_response: true
+   121	        }
+   122	      )
+   123	      
+   124	      Rails.logger.info("Saturn: Created auto-response message #{message.id} for conversation #{conversation.id}")
+   125	      message
+   126	    end
+   127	      
+   128	      # Create outgoing message from agent
+   129	      Messages::MessageBuilder.new(
+   130	        sender,
+   131	        conversation,
+   132	        {
+   133	          message_type: :outgoing,
+   134	          content: response_content,
+   135	          private: false,
+   136	          content_attributes: {
+   137	            saturn_agent_id: agent_profile.id.to_s,
+   138	            saturn_agent_name: agent_profile.name,
+   139	            automated_response: true
+   140	          }
+   141	        }
+   142	      ).perform
+   143	    end
+   144	  end
+   145	end
+root@aisaturn-repl-prod:/var/www/chatwoot# 
