@@ -58,9 +58,11 @@ const populateForm = () => {
   }
 };
 
-// Watch only to trigger populate when dialog opens
-watch(() => props.selectedKnowledge, () => {
-  populateForm();
+// Watch only ID changes, not the whole object to avoid re-triggering on every input
+watch(() => props.selectedKnowledge?.id, (newId, oldId) => {
+  if (newId !== oldId) {
+    populateForm();
+  }
 });
 
 const handleSubmit = async () => {
