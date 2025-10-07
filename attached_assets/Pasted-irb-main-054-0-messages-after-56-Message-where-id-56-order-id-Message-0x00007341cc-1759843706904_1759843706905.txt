@@ -1,0 +1,71 @@
+irb(main):054:0> messages_after_56 = Message.where('id > 56').order(:id)
+=> 
+[#<Message:0x00007341ccbb6058
+...
+irb(main):055:0> puts "Mesaj 56'dan sonra oluşan mesajlar:"
+Mesaj 56'dan sonra oluşan mesajlar:
+=> nil
+irb(main):056:1* messages_after_56.each do |m|
+irb(main):057:1*   puts "\n📨 Mesaj #{m.id}:"
+irb(main):058:1*   puts "  Type: #{m.message_type}"
+irb(main):059:1*   puts "  Sender: #{m.sender&.name} (#{m.sender&.class})"
+irb(main):060:1*   puts "  Content: #{m.content[0..50]}..."
+irb(main):061:1*   puts "  Content Attributes: #{m.content_attributes.inspect}"
+irb(main):062:1*   puts "  Created: #{m.created_at}"
+irb(main):063:0> end
+
+📨 Mesaj 57:
+  Type: outgoing
+  Sender: sada (Contact)
+  Content: Merhaba! Size nasıl yardımcı olabilirim?...
+  Content Attributes: {}
+  Created: 2025-10-07 13:21:42 UTC
+
+📨 Mesaj 58:
+  Type: outgoing
+  Sender: sada (Contact)
+  Content: Merhaba! Size nasıl yardımcı olabilirim?...
+  Content Attributes: {}
+  Created: 2025-10-07 13:23:59 UTC
+=> 
+[#<Message:0x00007341cccfb698
+  id: 57,
+  content: "Merhaba! Size nasıl yardımcı olabilirim?",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 3,
+  message_type: "outgoing",
+  created_at: Tue, 07 Oct 2025 13:21:42.521711000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 13:21:42.732723000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {},
+  sender_type: "Contact",
+  sender_id: 3,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Merhaba! Size nasıl yardımcı olabilirim?",
+  sentiment: {}>,
+ #<Message:0x00007341cccfb558
+  id: 58,
+  content: "Merhaba! Size nasıl yardımcı olabilirim?",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 3,
+  message_type: "outgoing",
+  created_at: Tue, 07 Oct 2025 13:23:59.265379000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 13:23:59.611248000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {},
+  sender_type: "Contact",
+  sender_id: 3,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Merhaba! Size nasıl yardımcı olabilirim?",
+  sentiment: {}>]
+irb(main):064:0> 
