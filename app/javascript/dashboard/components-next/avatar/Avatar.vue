@@ -228,8 +228,17 @@ watch(
       :style="avatarStyles"
     >
       <!-- Avatar Content -->
+      <!-- If src is an emoji (single char), display it as text instead of image -->
+      <span
+        v-if="src && src.length <= 2 && /\p{Emoji}/u.test(src)"
+        :style="initialsStyles"
+        class="select-none"
+      >
+        {{ src }}
+      </span>
+      
       <img
-        v-if="src && isImageValid"
+        v-else-if="src && isImageValid"
         :src="src"
         :alt="name"
         @error="invalidateCurrentImage"
