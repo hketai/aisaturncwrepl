@@ -1,0 +1,45 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep puma | grep -v grep
+root      105721  2.2  1.9 1190932 317676 ?      Ssl  01:55   0:06 puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]
+root@aisaturn-repl-prod:/var/www/chatwoot# kill -9 <PID>
+-bash: syntax error near unexpected token `newline'
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec puma -C config/puma.rb &
+[1] 105865
+root@aisaturn-repl-prod:/var/www/chatwoot# Puma starting in single mode...
+* Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: production
+*          PID: 105865
+I, [2025-10-07T02:00:59.082143 #105865]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:00:59.082240 #105865]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:01:01.777454 #105865]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+bundler: failed to load command: puma (/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `initialize': Address already in use - bind(2) for "0.0.0.0" port 3000 (Errno::EADDRINUSE)
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `new'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `add_tcp_listener'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:163:in `block in parse'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:146:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:146:in `parse'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/runner.rb:168:in `load_and_bind'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/single.rb:44:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/launcher.rb:194:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:75:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:10:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+
