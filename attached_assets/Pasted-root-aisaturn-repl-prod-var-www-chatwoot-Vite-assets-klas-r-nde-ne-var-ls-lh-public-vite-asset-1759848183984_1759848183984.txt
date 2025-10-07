@@ -1,0 +1,57 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# # Vite assets klasöründe ne var?
+ls -lh public/vite/assets/ | grep -i message
+
+# Veya tüm assets'i listele
+ls -lh public/vite/assets/ | head -20
+
+# Vite manifest var mı?
+cat public/vite/.vite/manifest.json | grep -i message
+-rw-r--r-- 1 root root  47K Oct  7 14:34 Messages-uzlXwKgh.js
+-rw-r--r-- 1 root root 114K Oct  7 14:34 Messages-uzlXwKgh.js.map
+-rw-r--r-- 1 root root  15K Oct  7 14:34 Messages-ygpkYUrV.css
+-rw-r--r-- 1 root root 4.1K Oct  7 14:34 UnreadMessageList--jcvaGuA.js
+-rw-r--r-- 1 root root  12K Oct  7 14:34 UnreadMessageList--jcvaGuA.js.map
+-rw-r--r-- 1 root root 3.3K Oct  7 14:34 UnreadMessageList-C80tQpqe.css
+-rw-r--r-- 1 root root 1.1K Oct  7 14:34 UnreadMessages-C756fAEf.js
+-rw-r--r-- 1 root root 1.2K Oct  7 14:34 UnreadMessages-C756fAEf.js.map
+total 54M
+-rw-r--r-- 1 root root  17K Oct  7 14:34 ArticleEditor-DyLP94GN.js
+-rw-r--r-- 1 root root  47K Oct  7 14:34 ArticleEditor-DyLP94GN.js.map
+-rw-r--r-- 1 root root  17K Oct  7 13:49 ArticleEditor-HTcpThtk.js
+-rw-r--r-- 1 root root  47K Oct  7 13:49 ArticleEditor-HTcpThtk.js.map
+-rw-r--r-- 1 root root  13K Oct  7 14:34 ArticleEditor-QP3vQWC_.css
+-rw-r--r-- 1 root root  477 Oct  7 14:34 ArticleViewer-CacazmeP.js
+-rw-r--r-- 1 root root  745 Oct  7 14:34 ArticleViewer-CacazmeP.js.map
+-rw-r--r-- 1 root root 143K Oct  7 14:34 BarChart-DmyK_5oR.js
+-rw-r--r-- 1 root root 758K Oct  7 14:34 BarChart-DmyK_5oR.js.map
+-rw-r--r-- 1 root root 1.6K Oct  7 14:34 Branding-BL69nIBj.js
+-rw-r--r-- 1 root root 3.5K Oct  7 14:34 Branding-BL69nIBj.js.map
+-rw-r--r-- 1 root root 1010 Oct  7 14:34 Button-Bd8BuYYc.js
+-rw-r--r-- 1 root root 2.3K Oct  7 14:34 Button-Bd8BuYYc.js.map
+-rw-r--r-- 1 root root 1.2K Oct  7 14:34 Campaigns-C2naKpxM.js
+-rw-r--r-- 1 root root 1.7K Oct  7 14:34 Campaigns-C2naKpxM.js.map
+-rw-r--r-- 1 root root  12K Oct  7 13:49 CategoryHeaderControls-B2LINXN1.js
+-rw-r--r-- 1 root root  23K Oct  7 13:49 CategoryHeaderControls-B2LINXN1.js.map
+-rw-r--r-- 1 root root  12K Oct  7 14:34 CategoryHeaderControls-CJGr4u-q.js
+-rw-r--r-- 1 root root  23K Oct  7 14:34 CategoryHeaderControls-CJGr4u-q.js.map
+  "_UnreadMessageList-!~{00Q}~.js": {
+    "file": "assets/UnreadMessageList-C80tQpqe.css",
+    "src": "_UnreadMessageList-!~{00Q}~.js"
+  "_UnreadMessageList--jcvaGuA.js": {
+    "file": "assets/UnreadMessageList--jcvaGuA.js",
+    "name": "UnreadMessageList",
+      "assets/UnreadMessageList-C80tQpqe.css"
+      "widget/views/UnreadMessages.vue",
+      "widget/views/Messages.vue",
+      "_UnreadMessageList--jcvaGuA.js",
+  "widget/views/Messages.vue": {
+    "file": "assets/Messages-uzlXwKgh.js",
+    "name": "Messages",
+    "src": "widget/views/Messages.vue",
+      "assets/Messages-ygpkYUrV.css"
+  "widget/views/UnreadMessages.vue": {
+    "file": "assets/UnreadMessages-C756fAEf.js",
+    "name": "UnreadMessages",
+    "src": "widget/views/UnreadMessages.vue",
+      "_UnreadMessageList--jcvaGuA.js",
+root@aisaturn-repl-prod:/var/www/chatwoot# 
