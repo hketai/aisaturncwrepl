@@ -1,0 +1,168 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails console
+I, [2025-10-07T02:57:22.256385 #108314]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:57:22.256477 #108314]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:57:24.495450 #108314]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> msg = Message.find(37)
+=> 
+#<Message:0x000078df8c4dfd48
+...
+irb(main):002:0> agent = Saturn::AgentProfile.first
+=> 
+#<Saturn::AgentProfile:0x000078df87fd2548
+...
+irb(main):003:0> account = Account.first
+=> 
+#<Account:0x000078df87ba4ef8
+...
+irb(main):004:0> puts "=== Manuel Job Test ==="
+=== Manuel Job Test ===
+=> nil
+irb(main):005:0> puts "Message: #{msg.content}"
+Message: selma
+=> nil
+irb(main):006:0> puts "Agent: #{agent.name}"
+irb(main):007:0> puts "API Key: #{account.openai_api_key.present? ? 'VAR ✅' : 'YOK ❌'}"
+Agent: Ayşe
+API Key: VAR ✅
+=> nil
+irb(main):008:1* Saturn::AutoRespondJob.perform_now(
+irb(main):009:1*   message_id: msg.id,
+irb(main):010:1*   agent_profile_id: agent.id,
+irb(main):011:1*   account_id: account.id
+irb(main):012:0> )
+I, [2025-10-07T02:57:42.909234 #108314]  INFO -- : [ActiveJob] [Saturn::AutoRespondJob] [93509eea-e471-4f17-90bc-96739b074e21] Performing Saturn::AutoRespondJob (Job ID: 93509eea-e471-4f17-90bc-96739b074e21) from Sidekiq(default) with arguments: {:message_id=>37, :agent_profile_id=>1, :account_id=>1}
+E, [2025-10-07T02:57:43.890739 #108314] ERROR -- : [ActiveJob] [Saturn::AutoRespondJob] [93509eea-e471-4f17-90bc-96739b074e21] Saturn::AutoRespondJob error: wrong number of arguments (given 1, expected 3)
+E, [2025-10-07T02:57:43.890836 #108314] ERROR -- : [ActiveJob] [Saturn::AutoRespondJob] [93509eea-e471-4f17-90bc-96739b074e21] /var/www/chatwoot/app/builders/messages/message_builder.rb:5:in `initialize'
+/var/www/chatwoot/app/jobs/saturn/auto_respond_job.rb:109:in `new'
+/var/www/chatwoot/app/jobs/saturn/auto_respond_job.rb:109:in `create_response_message'
+/var/www/chatwoot/app/jobs/saturn/auto_respond_job.rb:41:in `perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/execution.rb:68:in `block in _perform_job'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/i18n-1.14.7/lib/i18n.rb:348:in `with_locale'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `instance_exec'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/core_ext/time/zones.rb:65:in `use_zone'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `instance_exec'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:141:in `run_callbacks'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/execution.rb:67:in `_perform_job'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/instrumentation.rb:32:in `_perform_job'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/execution.rb:51:in `perform_now'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/instrumentation.rb:26:in `block in perform_now'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/railties/job_runtime.rb:13:in `block in instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/instrumentation.rb:40:in `block in instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/notifications.rb:206:in `block in instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/notifications.rb:206:in `instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/instrumentation.rb:39:in `instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/railties/job_runtime.rb:11:in `instrument'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/instrumentation.rb:26:in `perform_now'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/logging.rb:18:in `block in perform_now'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/tagged_logging.rb:139:in `block in tagged'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/tagged_logging.rb:39:in `tagged'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/tagged_logging.rb:139:in `tagged'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/broadcast_logger.rb:241:in `method_missing'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/logging.rb:25:in `tag_logger'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/logging.rb:18:in `perform_now'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/execution.rb:23:in `perform_now'
+(irb):8:in `<main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/workspace.rb:113:in `eval'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/workspace.rb:113:in `evaluate'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/context.rb:519:in `evaluate'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:598:in `evaluate_line'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:563:in `block (2 levels) in eval_input'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:764:in `signal_status'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:559:in `block in eval_input'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/ruby-lex.rb:251:in `block in each_top_level_statement'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/ruby-lex.rb:245:in `loop'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb/ruby-lex.rb:245:in `each_top_level_statement'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:558:in `eval_input'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:494:in `block in run'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:493:in `catch'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:493:in `run'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/irb-1.7.2/lib/irb.rb:416:in `start'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/console/console_command.rb:78:in `start'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/console/console_command.rb:16:in `start'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/console/console_command.rb:106:in `perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/command.rb:28:in `run'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in `invoke_command'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in `invoke_command'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor.rb:538:in `dispatch'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in `perform'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in `block in invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+<internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+<internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+bin/rails:4:in `<main>'
+I, [2025-10-07T02:57:43.891101 #108314]  INFO -- : [ActiveJob] [Saturn::AutoRespondJob] [93509eea-e471-4f17-90bc-96739b074e21] Performed Saturn::AutoRespondJob (Job ID: 93509eea-e471-4f17-90bc-96739b074e21) from Sidekiq(default) in 981.97ms
+=> true
+irb(main):013:0> Message.last(3)
+=> 
+[#<Message:0x000078df85805c90
+  id: 35,
+  content: "Konuşma Harun tarafından çözümlendi olarak işaretlendi",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 3,
+  message_type: "activity",
+  created_at: Tue, 07 Oct 2025 02:50:30.509994000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:52:38.148813000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {},
+  sender_type: nil,
+  sender_id: nil,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Konuşma Harun tarafından çözümlendi olarak işaretlendi",
+  sentiment: {}>,
+ #<Message:0x000078df85805dd0
+  id: 36,
+  content: "merhaba",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 3,
+  message_type: "incoming",
+  created_at: Tue, 07 Oct 2025 02:52:37.791253000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:52:37.791253000 UTC +00:00,
+  private: false,
+  status: "sent",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {"in_reply_to"=>nil},
+  sender_type: "Contact",
+  sender_id: 3,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "merhaba",
+  sentiment: {}>,
+ #<Message:0x000078df85805f10
+  id: 37,
+  content: "selma",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 3,
+  message_type: "incoming",
+  created_at: Tue, 07 Oct 2025 02:54:03.376989000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:54:03.376989000 UTC +00:00,
+  private: false,
+  status: "sent",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {"in_reply_to"=>nil},
+  sender_type: "Contact",
+  sender_id: 3,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "selma",
+  sentiment: {}>]
+irb(main):014:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot# 

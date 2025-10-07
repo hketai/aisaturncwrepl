@@ -107,14 +107,16 @@ module Saturn
       
       # Create outgoing message from agent
       Messages::MessageBuilder.new(
-        user: sender,
-        conversation: conversation,
-        message_type: :outgoing,
-        content: response_content,
-        private: false,
-        content_attributes: {
-          saturn_agent_id: agent_profile.id.to_s,
-          automated_response: true
+        sender,
+        conversation,
+        {
+          message_type: :outgoing,
+          content: response_content,
+          private: false,
+          content_attributes: {
+            saturn_agent_id: agent_profile.id.to_s,
+            automated_response: true
+          }
         }
       ).perform
     end
