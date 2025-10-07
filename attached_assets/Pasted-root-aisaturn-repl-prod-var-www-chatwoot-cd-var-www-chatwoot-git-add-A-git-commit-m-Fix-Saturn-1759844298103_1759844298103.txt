@@ -1,0 +1,95 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+git add -A
+git commit -m "Fix Saturn content_attributes: Add accessor support to Message model"
+git push origin main
+warning: adding embedded git repository: vendor/bundle/ruby/3.2.0/bundler/gems/azure-storage-ruby-9957cf899d33
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint: 	git submodule add <url> vendor/bundle/ruby/3.2.0/bundler/gems/azure-storage-ruby-9957cf899d33
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint: 	git rm --cached vendor/bundle/ruby/3.2.0/bundler/gems/azure-storage-ruby-9957cf899d33
+hint:
+hint: See "git help submodule" for more information.
+hint: Disable this message with "git config set advice.addEmbeddedRepo false"
+warning: adding embedded git repository: vendor/bundle/ruby/3.2.0/bundler/gems/devise-secure_password-adcc85fe1bab
+
+⚠ Some of your tasks use `git add` command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.
+
+✔ Preparing lint-staged...
+✔ Hiding unstaged changes to partially staged files...
+⚠ Running tasks for staged files...
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ❯ package.json — 620 files (chunk 4/31)...
+    ↓ app/**/*.{js,vue} — no files
+    ❯ *.scss — 25 files
+      ✖ scss-lint [FAILED]
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ❯ package.json — 620 files (chunk 23/31)...
+    ↓ app/**/*.{js,vue} — no files
+    ❯ *.scss — 20 files
+      ✖ scss-lint [FAILED]
+  ❯ package.json — 620 files (chunk 24/31)...
+    ↓ app/**/*.{js,vue} — no files
+    ❯ *.scss — 5 files
+      ✖ scss-lint [FAILED]
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+  ↓ package.json — no tasks to run
+↓ Skipped because of errors from tasks.
+↓ Skipped because of errors from tasks.
+✔ Reverting to original state because of errors...
+✔ Cleaning up temporary files...
+
+✖ scss-lint:
+rbenv: scss-lint: command not found
+
+The `scss-lint' command exists in these Ruby versions:
+  3.4.4
+
+
+✖ scss-lint:
+rbenv: scss-lint: command not found
+
+The `scss-lint' command exists in these Ruby versions:
+  3.4.4
+
+
+✖ scss-lint:
+rbenv: scss-lint: command not found
+
+The `scss-lint' command exists in these Ruby versions:
+  3.4.4
+
+husky - pre-commit hook exited with code 1 (error)
+Everything up-to-date
+root@aisaturn-repl-prod:/var/www/chatwoot# 
+root@aisaturn-repl-prod:/var/www/chatwoot# 
