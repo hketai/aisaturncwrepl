@@ -1,0 +1,48 @@
+irb(main):064:0> job = Saturn::AutoRespondJob.new
+=> 
+#<Saturn::AutoRespondJob:0x00007341ccdd7260
+...
+irb(main):065:1* result = job.perform(
+irb(main):066:1*   message_id: 56,
+irb(main):067:1*   agent_profile_id: 1,
+irb(main):068:1*   account_id: 1
+irb(main):069:0> )
+irb(main):070:0> puts "\n✅ Job çalıştırıldı"
+I, [2025-10-07T13:31:44.963226 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 914b0ec4-2012-42fa-a214-0aab5e2d0bed) to Sidekiq(critical) with arguments: ["fczMguXy3vk2hCE5g9CunVNd", "en7C2BdcpPBbiqLZpHs3Bpeu"], "message.created", {:id=>59, :content=>"Merhaba! Size nasıl yardımcı olabilirim?", :account_id=>1, :inbox_id=>1, :conversation_id=>3, :message_type=>1, :created_at=>1759843904, :updated_at=>Tue, 07 Oct 2025 13:31:44.902341699 UTC +00:00, :private=>false, :status=>"sent", :source_id=>nil, :content_type=>"text", :content_attributes=>{}, :sender_type=>"Contact", :sender_id=>3, :external_source_ids=>{}, :additional_attributes=>{}, :processed_message_content=>"Merhaba! Size nasıl yardımcı olabilirim?", :sentiment=>{}, :conversation=>{:assignee_id=>1, :unread_count=>0, :last_activity_at=>1759843904, :contact_inbox=>{:source_id=>"7e71a265-1d2d-4f1a-a15e-2f53e267741f"}}, :sender=>{:additional_attributes=>{"created_at_ip"=>"81.215.232.40", "avatar_url_hash"=>"5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639", "last_avatar_sync_at"=>"2025-10-07T02:47:13Z"}, :custom_attributes=>{}, :email=>"sada@asda.com", :id=>3, :identifier=>nil, :name=>"sada", :phone_number=>nil, :thumbnail=>"", :blocked=>false, :type=>"contact"}}
+I, [2025-10-07T13:31:44.973628 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 0473d91c-863b-40d0-af8e-b4649e951e6b) to Sidekiq(critical) with arguments: "message.created", Tue, 07 Oct 2025 13:31:44.914185742 UTC +00:00, {:message=>#<GlobalID:0x00007341cf378960 @uri=#<URI::GID gid://chatwoot/Message/59>>, :performed_by=>nil}
+I, [2025-10-07T13:31:44.974718 #119393]  INFO -- : [ActiveJob] Enqueued SendReplyJob (Job ID: 6210629c-c488-4cc3-8364-1983937a14e5) to Sidekiq(high) with arguments: 59
+I, [2025-10-07T13:31:45.008837 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 894fe00d-000e-47da-a90a-e28e24b0772e) to Sidekiq(critical) with arguments: ["account_1"], "contact.updated", {:additional_attributes=>{"created_at_ip"=>"81.215.232.40", "avatar_url_hash"=>"5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639", "last_avatar_sync_at"=>"2025-10-07T02:47:13Z"}, :custom_attributes=>{}, :email=>"sada@asda.com", :id=>3, :identifier=>nil, :name=>"sada", :phone_number=>nil, :thumbnail=>"", :blocked=>false, :type=>"contact", :account_id=>1}
+I, [2025-10-07T13:31:45.010828 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 73b0a25b-348b-4f6f-8573-d4a976e45531) to Sidekiq(critical) with arguments: "contact.updated", Tue, 07 Oct 2025 13:31:45.007073147 UTC +00:00, {:contact=>#<GlobalID:0x00007341cf31f568 @uri=#<URI::GID gid://chatwoot/Contact/3>>, :changed_attributes=>{"updated_at"=>[Tue, 07 Oct 2025 13:23:59.330265000 UTC +00:00, Tue, 07 Oct 2025 13:31:44.992219363 UTC +00:00], "last_activity_at"=>[Tue, 07 Oct 2025 13:23:59.318751000 UTC +00:00, Tue, 07 Oct 2025 13:31:44.984018155 UTC +00:00]}}
+
+✅ Job çalıştırıldı
+=> nil
+irb(main):071:0> newest = Message.last
+=> 
+#<Message:0x00007341ccf34888
+...
+irb(main):072:0> puts "\n📨 En son mesaj:"
+
+📨 En son mesaj:
+=> nil
+irb(main):073:0> puts "  ID: #{newest.id}"
+  ID: 59
+=> nil
+irb(main):074:0> puts "  Type: #{newest.message_type}"
+  Type: outgoing
+=> nil
+irb(main):075:0> puts "  Sender: #{newest.sender&.name} (#{newest.sender&.class})"
+  Sender: sada (Contact)
+=> nil
+irb(main):076:0> puts "  Content: #{newest.content[0..50]}..."
+  Content: Merhaba! Size nasıl yardımcı olabilirim?...
+=> nil
+irb(main):077:0> puts "  Content Attributes: #{newest.content_attributes.inspect}"
+  Content Attributes: {}
+=> nil
+irb(main):078:0> puts "  Saturn Agent ID: #{newest.content_attributes['saturn_agent_id']}"
+irb(main):079:0> puts "  Saturn Agent Name: #{newest.content_attributes['saturn_agent_name'
+]}"
+  Saturn Agent ID: 
+  Saturn Agent Name: 
+=> nil
+irb(main):080:0> 
