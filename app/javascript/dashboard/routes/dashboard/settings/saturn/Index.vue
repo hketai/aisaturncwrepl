@@ -1,9 +1,12 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
+
+const { t } = useI18n();
 import SaturnAPI from 'dashboard/api/saturn';
 
 import SaturnPageLayout from './components/SaturnPageLayout.vue';
@@ -133,8 +136,8 @@ onBeforeUnmount(() => {
 
 <template>
   <SaturnPageLayout
-    header-title="Saturn AI Agents"
-    button-label="Create Agent"
+    :header-title="t('SETTINGS.SATURN.AGENTS.TITLE')"
+    :button-label="t('SETTINGS.SATURN.AGENTS.CREATE_BUTTON')"
     :is-fetching="loading"
     :is-empty="!agents.length"
     :show-pagination-footer="false"
@@ -151,7 +154,7 @@ onBeforeUnmount(() => {
           :id="agent.id"
           :key="agent.id"
           :name="agent.name"
-          :description="agent.description || 'No description'"
+          :description="agent.description || t('SETTINGS.SATURN.AGENTS.NO_DESCRIPTION')"
           :updated-at="agent.updated_at || agent.created_at"
           @action="handleAction"
         />

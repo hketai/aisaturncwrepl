@@ -1,7 +1,10 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
+
+const { t } = useI18n();
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
@@ -158,9 +161,9 @@ onBeforeUnmount(() => {
 
 <template>
   <SaturnPageLayout
-    :header-title="`${agent?.name || 'Agent'} - Knowledge Sources`"
+    :header-title="`${agent?.name || t('SETTINGS.SATURN.AGENTS.TITLE')} - ${t('SETTINGS.SATURN.KNOWLEDGE.TITLE')}`"
     :back-url="{ name: 'saturn_agents_index' }"
-    button-label="Add Knowledge Source"
+    :button-label="t('SETTINGS.SATURN.KNOWLEDGE.CREATE_BUTTON')"
     :is-fetching="loading"
     :is-empty="!knowledgeSources.length"
     :show-pagination-footer="false"

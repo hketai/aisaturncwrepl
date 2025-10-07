@@ -677,5 +677,29 @@
       "CONFIRM_BUTTON_LABEL": "Sil",
       "CANCEL_BUTTON_LABEL": "İptal Et"
     }
+  },
+  "SATURN": {
+    "AGENTS": {
+      "TITLE": "Saturn AI Ajanları",
+      "CREATE_BUTTON": "Ajan Oluştur",
+      "EDIT_AGENT": "Ajanı Düzenle",
+      "CREATE_AGENT": "Yeni Ajan Oluştur",
+      "DELETE_AGENT": "Ajanı Sil",
+      "NO_DESCRIPTION": "Açıklama yok",
+      "UPDATE_BUTTON": "Güncelle",
+      "ADD_BUTTON": "Ekle"
+    },
+    "KNOWLEDGE": {
+      "TITLE": "Bilgi Kaynakları",
+      "CREATE_BUTTON": "Bilgi Kaynağı Ekle",
+      "EDIT": "Bilgi Kaynağını Düzenle",
+      "ADD": "Bilgi Kaynağı Ekle",
+      "DELETE": "Bilgi Kaynağını Sil",
+      "UPDATE_BUTTON": "Bilgi Kaynağını Güncelle",
+      "ADD_BUTTON": "Bilgi Kaynağı Ekle"
+    },
+    "INBOX_CONNECTIONS": {
+      "TITLE": "Gelen Kutusu Bağlantıları"
+    }
   }
 }

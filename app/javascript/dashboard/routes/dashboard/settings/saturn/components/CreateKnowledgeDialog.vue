@@ -1,7 +1,10 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
+
+const { t } = useI18n();
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 
@@ -121,7 +124,7 @@ defineExpose({ dialogRef });
   <Dialog
     ref="dialogRef"
     type="edit"
-    :title="isEdit ? 'Edit Knowledge Source' : 'Add Knowledge Source'"
+    :title="isEdit ? t('SETTINGS.SATURN.KNOWLEDGE.EDIT') : t('SETTINGS.SATURN.KNOWLEDGE.ADD')"
     description="Add information that your AI agent can use to answer customer questions"
     :show-cancel-button="false"
     :show-confirm-button="false"
@@ -184,7 +187,7 @@ defineExpose({ dialogRef });
           type="submit"
           class="flex-1 px-4 py-2 bg-woot-500 hover:bg-woot-600 text-white rounded-lg font-medium"
         >
-          {{ isEdit ? 'Update' : 'Add' }} Knowledge Source
+          {{ isEdit ? t('SETTINGS.SATURN.KNOWLEDGE.UPDATE_BUTTON') : t('SETTINGS.SATURN.KNOWLEDGE.ADD_BUTTON') }}
         </button>
       </div>
     </form>

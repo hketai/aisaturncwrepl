@@ -754,5 +754,29 @@
       "CONFIRM_BUTTON_LABEL": "Delete",
       "CANCEL_BUTTON_LABEL": "Cancel"
     }
+  },
+  "SATURN": {
+    "AGENTS": {
+      "TITLE": "Saturn AI Agents",
+      "CREATE_BUTTON": "Create Agent",
+      "EDIT_AGENT": "Edit Agent",
+      "CREATE_AGENT": "Create New Agent",
+      "DELETE_AGENT": "Delete Agent",
+      "NO_DESCRIPTION": "No description",
+      "UPDATE_BUTTON": "Update",
+      "ADD_BUTTON": "Add"
+    },
+    "KNOWLEDGE": {
+      "TITLE": "Knowledge Sources",
+      "CREATE_BUTTON": "Add Knowledge Source",
+      "EDIT": "Edit Knowledge Source",
+      "ADD": "Add Knowledge Source",
+      "DELETE": "Delete Knowledge Source",
+      "UPDATE_BUTTON": "Update Knowledge Source",
+      "ADD_BUTTON": "Add Knowledge Source"
+    },
+    "INBOX_CONNECTIONS": {
+      "TITLE": "Inbox Connections"
+    }
   }
 }
