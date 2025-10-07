@@ -29,9 +29,9 @@ const form = ref({
 });
 
 const sourceTypes = computed(() => [
-  { value: 'text', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_TEXT') },
-  { value: 'url', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_URL') },
-  { value: 'faq', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_FAQ') },
+  { value: 'text', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_TEXT'), icon: 'i-lucide-file-text' },
+  { value: 'url', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_URL'), icon: 'i-lucide-link' },
+  { value: 'faq', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_FAQ'), icon: 'i-lucide-message-circle-question' },
 ]);
 
 const isEdit = ref(false);
@@ -131,15 +131,24 @@ defineExpose({ dialogRef });
   >
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
-        <label class="block text-sm font-medium mb-1">{{ $t('SATURN.KNOWLEDGE.SOURCE_TYPE_LABEL') }}</label>
-        <select
-          v-model="form.source_type"
-          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500"
-        >
-          <option v-for="type in sourceTypes" :key="type.value" :value="type.value">
-            {{ type.label }}
-          </option>
-        </select>
+        <label class="block text-sm font-medium mb-2">{{ $t('SATURN.KNOWLEDGE.SOURCE_TYPE_LABEL') }}</label>
+        <div class="grid grid-cols-3 gap-2">
+          <button
+            v-for="type in sourceTypes.value"
+            :key="type.value"
+            type="button"
+            @click="form.source_type = type.value"
+            :class="[
+              'flex flex-col items-center gap-2 p-3 border-2 rounded-lg transition-all',
+              form.source_type === type.value
+                ? 'border-woot-500 bg-woot-50 dark:bg-woot-900/20'
+                : 'border-n-weak hover:border-n-strong hover:bg-n-solid-2'
+            ]"
+          >
+            <i :class="type.icon" class="text-2xl"></i>
+            <span class="text-xs font-medium text-center">{{ type.label }}</span>
+          </button>
+        </div>
       </div>
 
       <div>
