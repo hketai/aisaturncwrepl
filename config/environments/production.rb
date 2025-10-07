@@ -103,4 +103,12 @@ Rails.application.configure do
   config.action_mailbox.ingress = ENV.fetch('RAILS_INBOUND_EMAIL_SERVICE', 'relay').to_sym
 
   Rails.application.routes.default_url_options = { host: ENV['FRONTEND_URL'] }
+
+  # ActionCable configuration for WebSocket connections
+  config.action_cable.url = "wss://#{ENV.fetch('FRONTEND_URL', 'localhost:5000').gsub(%r{https?://}, '')}/cable"
+  config.action_cable.allowed_request_origins = [
+    ENV['FRONTEND_URL'],
+    /https?:\/\/#{ENV.fetch('FRONTEND_URL', 'localhost:5000').gsub(%r{https?://}, '')}.*/
+  ].compact
+  config.action_cable.disable_request_forgery_protection = false
 end

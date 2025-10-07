@@ -1,0 +1,77 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cat config/cable.yml
+default: &default
+  adapter: redis
+  url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379') %>
+  password: <%= ENV.fetch('REDIS_PASSWORD', nil).presence %>
+  ssl_params: 
+    verify_mode: <%= Chatwoot.redis_ssl_verify_mode %>
+  channel_prefix: <%= "chatwoot_#{Rails.env}_action_cable"  %>
+
+development:
+  <<: *default
+
+test:
+  adapter: test
+  channel_prefix: <%= "chatwoot_#{Rails.env}_action_cable"  %>
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
+root@aisaturn-repl-prod:/var/www/chatwoot# grep -A 5 "action_cable" config/environments/production.rb
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /etc/nginx/sites-enabled/chatwoot
+upstream chatwoot_server {
+  server 127.0.0.1:3000 fail_timeout=0;
+}
+
+server {
+  server_name app.aisaturn.co;
+
+  client_max_body_size 50M;
+  
+  location / {
+    proxy_pass http://chatwoot_server;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+  
+  location /cable {
+    proxy_pass http://chatwoot_server/cable;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+  }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/app.aisaturn.co/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/app.aisaturn.co/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+
+server {
+    if ($host = app.aisaturn.co) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  listen 80;
+  listen [::]:80;
+  server_name app.aisaturn.co;
+    return 404; # managed by Certbot
+
+
+}root@aisaturn-repl-prod:/var/www/chatwoot# redis-cli ping
+PONG
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -100 log/production.log | grep -i "cable\|websocket\|redis"
+tail: cannot open 'log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# 
