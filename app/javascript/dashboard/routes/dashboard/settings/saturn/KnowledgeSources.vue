@@ -1,7 +1,9 @@
 <script setup>
-import { computed, onMounted, ref, nextTick } from 'vue';
+import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
+import { emitter } from 'shared/helpers/mitt';
+import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import SaturnAPI from 'dashboard/api/saturn';
 
@@ -107,9 +109,43 @@ const getSourceTypeIcon = (type) => {
   return icons[type] || 'i-lucide-file';
 };
 
+const handleWebSocketKnowledgeCreated = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    const exists = knowledgeSources.value.find(k => k.id === data.id);
+    if (!exists) {
+      knowledgeSources.value.push(data);
+    }
+  }
+};
+
+const handleWebSocketKnowledgeUpdated = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    const index = knowledgeSources.value.findIndex(k => k.id === data.id);
+    if (index !== -1) {
+      knowledgeSources.value[index] = data;
+    }
+  }
+};
+
+const handleWebSocketKnowledgeDeleted = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    knowledgeSources.value = knowledgeSources.value.filter(k => k.id !== data.id);
+  }
+};
+
 onMounted(async () => {
   await fetchAgent();
   await fetchKnowledgeSources();
+  
+  emitter.on(BUS_EVENTS.SATURN_KNOWLEDGE_CREATED, handleWebSocketKnowledgeCreated);
+  emitter.on(BUS_EVENTS.SATURN_KNOWLEDGE_UPDATED, handleWebSocketKnowledgeUpdated);
+  emitter.on(BUS_EVENTS.SATURN_KNOWLEDGE_DELETED, handleWebSocketKnowledgeDeleted);
+});
+
+onBeforeUnmount(() => {
+  emitter.off(BUS_EVENTS.SATURN_KNOWLEDGE_CREATED, handleWebSocketKnowledgeCreated);
+  emitter.off(BUS_EVENTS.SATURN_KNOWLEDGE_UPDATED, handleWebSocketKnowledgeUpdated);
+  emitter.off(BUS_EVENTS.SATURN_KNOWLEDGE_DELETED, handleWebSocketKnowledgeDeleted);
 });
 </script>
 

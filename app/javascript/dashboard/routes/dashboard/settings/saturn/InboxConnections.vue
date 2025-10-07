@@ -1,7 +1,9 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
+import { emitter } from 'shared/helpers/mitt';
+import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnInboxConnectionsAPI from 'dashboard/api/saturnInboxConnections';
 import InboxesAPI from 'dashboard/api/inboxes';
 import SaturnAPI from 'dashboard/api/saturn';
@@ -85,8 +87,42 @@ const handleDisconnect = async (connection) => {
   }
 };
 
+const handleWebSocketConnectionCreated = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    const exists = connectedInboxes.value.find(c => c.inbox.id === data.inbox.id);
+    if (!exists) {
+      connectedInboxes.value.push(data);
+    }
+  }
+};
+
+const handleWebSocketConnectionUpdated = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    const index = connectedInboxes.value.findIndex(c => c.id === data.id);
+    if (index !== -1) {
+      connectedInboxes.value[index] = data;
+    }
+  }
+};
+
+const handleWebSocketConnectionDeleted = (data) => {
+  if (data.agent_profile_id === parseInt(agentId.value)) {
+    connectedInboxes.value = connectedInboxes.value.filter(c => c.inbox_id !== data.inbox_id);
+  }
+};
+
 onMounted(() => {
   fetchData();
+  
+  emitter.on(BUS_EVENTS.SATURN_INBOX_CONNECTION_CREATED, handleWebSocketConnectionCreated);
+  emitter.on(BUS_EVENTS.SATURN_INBOX_CONNECTION_UPDATED, handleWebSocketConnectionUpdated);
+  emitter.on(BUS_EVENTS.SATURN_INBOX_CONNECTION_DELETED, handleWebSocketConnectionDeleted);
+});
+
+onBeforeUnmount(() => {
+  emitter.off(BUS_EVENTS.SATURN_INBOX_CONNECTION_CREATED, handleWebSocketConnectionCreated);
+  emitter.off(BUS_EVENTS.SATURN_INBOX_CONNECTION_UPDATED, handleWebSocketConnectionUpdated);
+  emitter.off(BUS_EVENTS.SATURN_INBOX_CONNECTION_DELETED, handleWebSocketConnectionDeleted);
 });
 </script>
 

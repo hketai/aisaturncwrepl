@@ -34,6 +34,15 @@ class ActionCableConnector extends BaseActionCableConnector {
       'conversation.updated': this.onConversationUpdated,
       'account.cache_invalidated': this.onCacheInvalidate,
       'copilot.message.created': this.onCopilotMessageCreated,
+      'saturn_agent.created': this.onSaturnAgentCreated,
+      'saturn_agent.updated': this.onSaturnAgentUpdated,
+      'saturn_agent.deleted': this.onSaturnAgentDeleted,
+      'saturn_knowledge.created': this.onSaturnKnowledgeCreated,
+      'saturn_knowledge.updated': this.onSaturnKnowledgeUpdated,
+      'saturn_knowledge.deleted': this.onSaturnKnowledgeDeleted,
+      'saturn_inbox_connection.created': this.onSaturnInboxConnectionCreated,
+      'saturn_inbox_connection.updated': this.onSaturnInboxConnectionUpdated,
+      'saturn_inbox_connection.deleted': this.onSaturnInboxConnectionDeleted,
     };
   }
 
@@ -199,6 +208,42 @@ class ActionCableConnector extends BaseActionCableConnector {
     this.app.$store.dispatch('labels/revalidate', { newKey: keys.label });
     this.app.$store.dispatch('inboxes/revalidate', { newKey: keys.inbox });
     this.app.$store.dispatch('teams/revalidate', { newKey: keys.team });
+  };
+
+  onSaturnAgentCreated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_AGENT_CREATED, data);
+  };
+
+  onSaturnAgentUpdated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_AGENT_UPDATED, data);
+  };
+
+  onSaturnAgentDeleted = data => {
+    emitter.emit(BUS_EVENTS.SATURN_AGENT_DELETED, data);
+  };
+
+  onSaturnKnowledgeCreated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_KNOWLEDGE_CREATED, data);
+  };
+
+  onSaturnKnowledgeUpdated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_KNOWLEDGE_UPDATED, data);
+  };
+
+  onSaturnKnowledgeDeleted = data => {
+    emitter.emit(BUS_EVENTS.SATURN_KNOWLEDGE_DELETED, data);
+  };
+
+  onSaturnInboxConnectionCreated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_INBOX_CONNECTION_CREATED, data);
+  };
+
+  onSaturnInboxConnectionUpdated = data => {
+    emitter.emit(BUS_EVENTS.SATURN_INBOX_CONNECTION_UPDATED, data);
+  };
+
+  onSaturnInboxConnectionDeleted = data => {
+    emitter.emit(BUS_EVENTS.SATURN_INBOX_CONNECTION_DELETED, data);
   };
 }
 

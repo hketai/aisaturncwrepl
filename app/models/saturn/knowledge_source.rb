@@ -20,9 +20,45 @@ class Saturn::KnowledgeSource < ApplicationRecord
   
   before_validation :set_account_from_agent
   
+  after_create_commit :broadcast_create
+  after_update_commit :broadcast_update
+  after_destroy_commit :broadcast_destroy
+  
+  def push_event_data
+    {
+      id: id,
+      agent_profile_id: agent_profile_id,
+      title: title,
+      content_text: content_text,
+      source_type: source_type,
+      source_url: source_url,
+      created_at: created_at,
+      updated_at: updated_at
+    }
+  end
+  
   private
   
   def set_account_from_agent
     self.account_id ||= agent_profile&.account_id
+  end
+  
+  def broadcast_create
+    broadcast_to_account('saturn_knowledge.created', push_event_data)
+  end
+  
+  def broadcast_update
+    broadcast_to_account('saturn_knowledge.updated', push_event_data)
+  end
+  
+  def broadcast_destroy
+    broadcast_to_account('saturn_knowledge.deleted', { id: id, agent_profile_id: agent_profile_id })
+  end
+  
+  def broadcast_to_account(event, data)
+    ActionCable.server.broadcast(
+      "account_#{account_id}",
+      { event: event, data: data }
+    )
   end
 end

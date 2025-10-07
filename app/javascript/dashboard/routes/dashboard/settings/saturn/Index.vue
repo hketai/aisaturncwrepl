@@ -1,7 +1,9 @@
 <script setup>
-import { computed, onMounted, ref, nextTick } from 'vue';
+import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
+import { emitter } from 'shared/helpers/mitt';
+import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnAPI from 'dashboard/api/saturn';
 
 import SaturnPageLayout from './components/SaturnPageLayout.vue';
@@ -96,8 +98,36 @@ const handleDialogClose = () => {
   selectedAgent.value = null;
 };
 
+const handleWebSocketAgentCreated = (data) => {
+  const exists = agents.value.find(a => a.id === data.id);
+  if (!exists) {
+    agents.value.push(data);
+  }
+};
+
+const handleWebSocketAgentUpdated = (data) => {
+  const index = agents.value.findIndex(a => a.id === data.id);
+  if (index !== -1) {
+    agents.value[index] = data;
+  }
+};
+
+const handleWebSocketAgentDeleted = (data) => {
+  agents.value = agents.value.filter(a => a.id !== data.id);
+};
+
 onMounted(() => {
   fetchAgents();
+  
+  emitter.on(BUS_EVENTS.SATURN_AGENT_CREATED, handleWebSocketAgentCreated);
+  emitter.on(BUS_EVENTS.SATURN_AGENT_UPDATED, handleWebSocketAgentUpdated);
+  emitter.on(BUS_EVENTS.SATURN_AGENT_DELETED, handleWebSocketAgentDeleted);
+});
+
+onBeforeUnmount(() => {
+  emitter.off(BUS_EVENTS.SATURN_AGENT_CREATED, handleWebSocketAgentCreated);
+  emitter.off(BUS_EVENTS.SATURN_AGENT_UPDATED, handleWebSocketAgentUpdated);
+  emitter.off(BUS_EVENTS.SATURN_AGENT_DELETED, handleWebSocketAgentDeleted);
 });
 </script>
 

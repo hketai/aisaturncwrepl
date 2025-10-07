@@ -28,6 +28,10 @@ class Saturn::AgentProfile < ApplicationRecord
   
   store_accessor :configuration, :model_provider, :model_name, :max_tokens
   
+  after_create_commit :broadcast_create
+  after_update_commit :broadcast_update
+  after_destroy_commit :broadcast_destroy
+  
   def available_name
     name
   end
@@ -52,5 +56,24 @@ class Saturn::AgentProfile < ApplicationRecord
   
   def default_avatar_url
     "#{ENV.fetch('FRONTEND_URL', nil)}/assets/images/dashboard/saturn/logo.svg"
+  end
+  
+  def broadcast_create
+    broadcast_to_account('saturn_agent.created', push_event_data)
+  end
+  
+  def broadcast_update
+    broadcast_to_account('saturn_agent.updated', push_event_data)
+  end
+  
+  def broadcast_destroy
+    broadcast_to_account('saturn_agent.deleted', { id: id })
+  end
+  
+  def broadcast_to_account(event, data)
+    ActionCable.server.broadcast(
+      "account_#{account_id}",
+      { event: event, data: data }
+    )
   end
 end
