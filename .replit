@@ -53,4 +53,4 @@ externalPort = 3003
 [deployment]
 deploymentTarget = "vm"
 run = ["bash", "start_production.sh"]
-build = ["bash", "-c", "bundle install && HUSKY=0 pnpm install && BUILD_MODE=library bin/vite build && bin/vite build"]
+build = ["bash", "-c", "bundle install && pnpm install --ignore-scripts && BUILD_MODE=library bin/vite build && bin/vite build"]
