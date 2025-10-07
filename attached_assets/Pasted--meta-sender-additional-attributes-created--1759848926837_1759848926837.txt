@@ -1,0 +1,159 @@
+{
+    "meta": {
+        "sender": {
+            "additional_attributes": {
+                "created_at_ip": "81.215.232.40",
+                "avatar_url_hash": "5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639",
+                "last_avatar_sync_at": "2025-10-07T02:47:13Z"
+            },
+            "availability_status": "online",
+            "email": "sada@asda.com",
+            "id": 3,
+            "name": "sada",
+            "phone_number": null,
+            "blocked": false,
+            "identifier": null,
+            "thumbnail": "",
+            "custom_attributes": {},
+            "last_activity_at": 1759848362,
+            "created_at": 1759805176
+        },
+        "channel": "Channel::WebWidget",
+        "assignee": {
+            "id": 1,
+            "account_id": 1,
+            "availability_status": "online",
+            "auto_offline": true,
+            "confirmed": true,
+            "email": "harunketenc@gmail.com",
+            "available_name": "Harun",
+            "name": "Harun",
+            "role": "administrator",
+            "thumbnail": "",
+            "custom_role_id": null
+        },
+        "hmac_verified": false
+    },
+    "id": 3,
+    "messages": [
+        {
+            "id": 83,
+            "content": "Merhaba! Size nasıl yardımcı olabilirim?",
+            "account_id": 1,
+            "inbox_id": 1,
+            "conversation_id": 3,
+            "message_type": 1,
+            "created_at": 1759848365,
+            "updated_at": "2025-10-07T14:46:05.392Z",
+            "private": false,
+            "status": "read",
+            "source_id": null,
+            "content_type": "text",
+            "content_attributes": {
+                "saturn_agent_id": "1",
+                "saturn_agent_name": "Ayşe",
+                "automated_response": true
+            },
+            "sender_type": "User",
+            "sender_id": 1,
+            "external_source_ids": {},
+            "additional_attributes": {},
+            "processed_message_content": "Merhaba! Size nasıl yardımcı olabilirim?",
+            "sentiment": {},
+            "conversation": {
+                "assignee_id": 1,
+                "unread_count": 0,
+                "last_activity_at": 1759848365,
+                "contact_inbox": {
+                    "source_id": "7e71a265-1d2d-4f1a-a15e-2f53e267741f"
+                }
+            },
+            "sender": {
+                "id": 1,
+                "name": "Harun",
+                "available_name": "Harun",
+                "avatar_url": "",
+                "type": "user",
+                "availability_status": "online",
+                "thumbnail": ""
+            }
+        }
+    ],
+    "account_id": 1,
+    "uuid": "802d7b82-e0cf-493e-9406-b3b9c75b445c",
+    "additional_attributes": {
+        "browser": {
+            "device_name": "Unknown",
+            "browser_name": "Safari",
+            "platform_name": "macOS",
+            "browser_version": "18.0",
+            "platform_version": "10.15.7"
+        },
+        "referer": "https://www.kadriyebasturk.com/pages/chat-test",
+        "initiated_at": {
+            "timestamp": "Tue Oct 07 2025 05:46:35 GMT+0300 (GMT+03:00)"
+        },
+        "browser_language": "tr"
+    },
+    "agent_last_seen_at": 1759848365,
+    "assignee_last_seen_at": 1759848365,
+    "can_reply": true,
+    "contact_last_seen_at": 1759848365,
+    "custom_attributes": {},
+    "inbox_id": 1,
+    "labels": [],
+    "muted": false,
+    "snoozed_until": null,
+    "status": "open",
+    "created_at": 1759805196,
+    "updated_at": 1759848365.3950038,
+    "timestamp": 1759848365,
+    "first_reply_created_at": 1759805228,
+    "unread_count": 0,
+    "last_non_activity_message": {
+        "id": 83,
+        "content": "Merhaba! Size nasıl yardımcı olabilirim?",
+        "account_id": 1,
+        "inbox_id": 1,
+        "conversation_id": 3,
+        "message_type": 1,
+        "created_at": 1759848365,
+        "updated_at": "2025-10-07T14:46:05.392Z",
+        "private": false,
+        "status": "read",
+        "source_id": null,
+        "content_type": "text",
+        "content_attributes": {
+            "saturn_agent_id": "1",
+            "saturn_agent_name": "Ayşe",
+            "automated_response": true
+        },
+        "sender_type": "User",
+        "sender_id": 1,
+        "external_source_ids": {},
+        "additional_attributes": {},
+        "processed_message_content": "Merhaba! Size nasıl yardımcı olabilirim?",
+        "sentiment": {},
+        "conversation": {
+            "assignee_id": 1,
+            "unread_count": 0,
+            "last_activity_at": 1759848365,
+            "contact_inbox": {
+                "source_id": "7e71a265-1d2d-4f1a-a15e-2f53e267741f"
+            }
+        },
+        "sender": {
+            "id": 1,
+            "name": "Harun",
+            "available_name": "Harun",
+            "avatar_url": "",
+            "type": "user",
+            "availability_status": "online",
+            "thumbnail": ""
+        }
+    },
+    "last_activity_at": 1759848365,
+    "priority": null,
+    "waiting_since": 0,
+    "sla_policy_id": null
+}
