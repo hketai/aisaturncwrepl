@@ -36,25 +36,30 @@ const sourceTypes = [
 
 const isEdit = ref(false);
 
+const resetForm = () => {
+  form.value = {
+    title: '',
+    content_text: '',
+    source_type: 'text',
+    source_url: '',
+  };
+};
+
 watch(() => props.selectedKnowledge, (knowledge) => {
   if (knowledge) {
     isEdit.value = true;
+    // Create new object to avoid reactivity issues
     form.value = {
-      title: knowledge.title,
+      title: knowledge.title || '',
       content_text: knowledge.content_text || '',
-      source_type: knowledge.source_type,
+      source_type: knowledge.source_type || 'text',
       source_url: knowledge.source_url || '',
     };
   } else {
     isEdit.value = false;
-    form.value = {
-      title: '',
-      content_text: '',
-      source_type: 'text',
-      source_url: '',
-    };
+    resetForm();
   }
-}, { immediate: true });
+});
 
 const handleSubmit = async () => {
   try {
@@ -99,6 +104,7 @@ const handleSubmit = async () => {
 };
 
 const handleClose = () => {
+  resetForm();
   emit('close');
 };
 

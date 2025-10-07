@@ -199,7 +199,7 @@ onBeforeUnmount(() => {
                   {{ knowledge.title || 'Untitled' }}
                 </h3>
                 <p class="text-sm text-n-slate-11 line-clamp-2 mt-1">
-                  {{ knowledge.content_text?.substring(0, 150) }}{{ knowledge.content_text?.length > 150 ? '...' : '' }}
+                  {{ knowledge.content_preview || knowledge.content_text || '' }}
                 </p>
                 <div class="flex items-center gap-2 mt-2">
                   <span class="text-xs px-2 py-0.5 rounded-full bg-n-alpha-2 text-n-slate-11">
