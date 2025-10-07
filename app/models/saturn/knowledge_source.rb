@@ -3,10 +3,6 @@ class Saturn::KnowledgeSource < ApplicationRecord
   
   belongs_to :agent_profile, class_name: 'Saturn::AgentProfile'
   belongs_to :account
-  has_many :auto_replies, 
-           class_name: 'Saturn::AutoReply', 
-           foreign_key: :knowledge_source_id, 
-           dependent: :destroy
   
   validates :title, presence: true
   validates :agent_profile_id, presence: true
