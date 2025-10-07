@@ -176,7 +176,7 @@ onBeforeUnmount(() => {
             <div class="i-lucide-book-open text-6xl text-n-weak" />
           </div>
           
-          <h2 class="text-2xl font-semibold mb-3">No Knowledge Sources Yet</h2>
+          <h2 class="text-2xl font-semibold mb-3">{{ $t('SATURN.KNOWLEDGE.EMPTY_TITLE') }}</h2>
           
           <p class="text-n-weak mb-8">
             {{ $t('SATURN.KNOWLEDGE.EMPTY_STATE') }}
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
             @click="handleCreate"
           >
             <span class="i-lucide-plus mr-2"></span>
-            Add Knowledge Source
+            {{ $t('SATURN.KNOWLEDGE.CREATE_BUTTON') }}
           </Button>
         </div>
       </div>

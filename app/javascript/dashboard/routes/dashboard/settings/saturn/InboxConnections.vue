@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
 
 <template>
   <SaturnPageLayout
-    :header-title="`${agent?.name || 'Agent'} - Inbox Connections`"
+    :header-title="`${agent?.name || $t('SATURN.AGENTS.TITLE')} - ${$t('SATURN.INBOX_CONNECTIONS.TITLE')}`"
     :back-url="{ name: 'saturn_agents_index' }"
     button-label=""
     :is-fetching="loading"
@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
     <template #body>
       <div class="space-y-6">
         <div v-if="connectedInboxes.length > 0">
-          <h3 class="text-base font-semibold text-n-slate-12 mb-4">Connected Inboxes</h3>
+          <h3 class="text-base font-semibold text-n-slate-12 mb-4">{{ $t('SATURN.INBOX_CONNECTIONS.CONNECTED_TITLE') }}</h3>
           <div class="flex flex-col gap-3">
             <CardLayout
               v-for="connection in connectedInboxes"
@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
                   <template #prefixIcon>
                     <i class="i-lucide-unlink"></i>
                   </template>
-                  Disconnect
+                  {{ $t('SATURN.INBOX_CONNECTIONS.DISCONNECT_BUTTON') }}
                 </Button>
               </div>
             </CardLayout>

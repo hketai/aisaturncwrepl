@@ -344,7 +344,7 @@ defineExpose({ dialogRef });
   <Dialog
     ref="dialogRef"
     type="edit"
-    :title="isEdit ? 'Edit Agent' : 'Create New Agent'"
+    :title="isEdit ? $t('SATURN.AGENTS.EDIT_AGENT') : $t('SATURN.AGENTS.CREATE_AGENT')"
     :description="$t('SATURN.AGENTS.CREATE_DESCRIPTION')"
     :show-cancel-button="false"
     :show-confirm-button="false"
@@ -353,14 +353,14 @@ defineExpose({ dialogRef });
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <Input
         v-model="form.name"
-        label="Agent Name"
+        :label="$t('SATURN.AGENTS.AGENT_NAME_LABEL')"
         placeholder="e.g., Customer Support Agent"
         required
       />
       
       <div class="space-y-2">
         <label class="block text-sm font-medium text-n-slate-12">
-          Industry Type
+          {{ $t('SATURN.AGENTS.INDUSTRY_TYPE_LABEL') }}
         </label>
         <select
           v-model="form.industry_type"
@@ -384,14 +384,14 @@ defineExpose({ dialogRef });
       
       <Textarea
         v-model="form.description"
-        label="Description"
+        :label="$t('SATURN.AGENTS.DESCRIPTION_LABEL')"
         :placeholder="$t('SATURN.AGENTS.DESCRIPTION_PLACEHOLDER')"
         rows="3"
       />
       
       <Input
         v-model="form.product_context"
-        label="Product Context"
+        :label="$t('SATURN.AGENTS.PRODUCT_CONTEXT_LABEL')"
         placeholder="e.g., SaaS product support, E-commerce store"
       />
       
@@ -411,13 +411,13 @@ defineExpose({ dialogRef });
           @click="dialogRef.close()"
           class="flex-1 px-4 py-2 border border-n-weak rounded-lg hover:bg-n-solid-2"
         >
-          Cancel
+          {{ $t('SATURN.AGENTS.CANCEL_BUTTON') }}
         </button>
         <button
           type="submit"
           class="flex-1 px-4 py-2 bg-woot-500 hover:bg-woot-600 text-white rounded-lg font-medium"
         >
-          {{ isEdit ? 'Update' : 'Create' }} Agent
+          {{ isEdit ? $t('SATURN.AGENTS.UPDATE_BUTTON') : $t('SATURN.AGENTS.CREATE_BUTTON') }}
         </button>
       </div>
     </form>
