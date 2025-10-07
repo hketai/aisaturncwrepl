@@ -18,8 +18,7 @@ const handleCreate = () => {
       <h2 class="text-2xl font-semibold mb-3">Create Your First AI Agent</h2>
       
       <p class="text-n-weak mb-8">
-        AI agents automatically respond to customer inquiries using your knowledge base. 
-        Start by creating your first agent and adding knowledge sources.
+        {{ $t('SATURN.AGENTS.EMPTY_STATE') }}
       </p>
       
       <Button

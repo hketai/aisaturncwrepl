@@ -687,7 +687,19 @@
       "DELETE_AGENT": "Ajanı Sil",
       "NO_DESCRIPTION": "Açıklama yok",
       "UPDATE_BUTTON": "Güncelle",
-      "ADD_BUTTON": "Ekle"
+      "ADD_BUTTON": "Ekle",
+      "EMPTY_STATE": "İlk ajanınızı oluşturup bilgi kaynakları ekleyerek başlayın.",
+      "DELETE_CONFIRM": "Bu işlem geri alınamaz. İlişkili tüm bilgi kaynakları ve yapılandırmalar kalıcı olarak silinecektir.",
+      "CREATE_DESCRIPTION": "Müşteri sorularına otomatik yanıt vermek için AI ajanınızı yapılandırın",
+      "SELECT_INDUSTRY": "Bir sektör seçin...",
+      "DESCRIPTION_PLACEHOLDER": "Bu ajanın ne yaptığını açıklayın...",
+      "ACTIVATE_IMMEDIATELY": "Ajanı hemen etkinleştir",
+      "SUCCESS_UPDATE": "Ajan başarıyla güncellendi",
+      "SUCCESS_CREATE": "Ajan başarıyla oluşturuldu",
+      "SUCCESS_DELETE": "Ajan başarıyla silindi",
+      "ERROR_LOAD": "Ajanlar yüklenemedi",
+      "ERROR_DELETE": "Ajan silinemedi",
+      "ERROR_OPERATION": "İşlem başarısız"
     },
     "KNOWLEDGE": {
       "TITLE": "Bilgi Kaynakları",
@@ -696,10 +708,27 @@
       "ADD": "Bilgi Kaynağı Ekle",
       "DELETE": "Bilgi Kaynağını Sil",
       "UPDATE_BUTTON": "Bilgi Kaynağını Güncelle",
-      "ADD_BUTTON": "Bilgi Kaynağı Ekle"
+      "ADD_BUTTON": "Bilgi Kaynağı Ekle",
+      "CREATE_DESCRIPTION": "AI ajanınızın müşteri sorularını yanıtlamak için kullanabileceği bilgileri ekleyin",
+      "CONTENT_PLACEHOLDER": "Bilgi içeriğini buraya girin...",
+      "EMPTY_STATE": "Ajanınızın bilgi tabanını oluşturmak için dökümanlar, SSS'ler veya URL'ler ekleyin. Ajan bu bilgileri müşteri sorularını yanıtlamak için kullanacaktır.",
+      "DELETE_CONFIRM": "Bu bilgi kaynağı, ajanın bilgi tabanından kalıcı olarak kaldırılacaktır.",
+      "SUCCESS_UPDATE": "Bilgi kaynağı başarıyla güncellendi",
+      "SUCCESS_CREATE": "Bilgi kaynağı başarıyla eklendi",
+      "SUCCESS_DELETE": "Bilgi kaynağı başarıyla silindi",
+      "ERROR_LOAD_AGENT": "Ajan yüklenemedi",
+      "ERROR_LOAD": "Bilgi kaynakları yüklenemedi",
+      "ERROR_LOAD_SOURCE": "Bilgi kaynağı yüklenemedi",
+      "ERROR_DELETE": "Bilgi kaynağı silinemedi"
     },
     "INBOX_CONNECTIONS": {
-      "TITLE": "Gelen Kutusu Bağlantıları"
+      "TITLE": "Gelen Kutusu Bağlantıları",
+      "EMPTY_STATE": "Bu ajana bağlamadan önce en az bir gelen kutusu oluşturmanız gerekiyor.",
+      "SUCCESS_CONNECT": "Gelen kutusu başarıyla bağlandı",
+      "SUCCESS_DISCONNECT": "Gelen kutusu bağlantısı kesildi",
+      "ERROR_LOAD": "Veriler yüklenemedi",
+      "ERROR_CONNECT": "Gelen kutusu bağlanamadı",
+      "ERROR_DISCONNECT": "Gelen kutusu bağlantısı kesilemedi"
     }
   }
 }

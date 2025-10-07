@@ -1,9 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 import Button from 'dashboard/components-next/button/Button.vue';
+
+const { t } = useI18n();
 
 const props = defineProps({
   agentId: {
@@ -43,9 +46,9 @@ const handleConfirm = async () => {
   
   try {
     await SaturnKnowledgeAPI.deleteForAgent(props.agentId, knowledgeId);
-    useAlert('Knowledge source deleted successfully');
+    useAlert(t('SATURN.KNOWLEDGE.SUCCESS_DELETE'));
   } catch (error) {
-    useAlert('Failed to delete knowledge source');
+    useAlert(t('SATURN.KNOWLEDGE.ERROR_DELETE'));
     emit('restore', knowledgeData);
   }
 };
@@ -70,7 +73,7 @@ defineExpose({ dialogRef });
   >
     <template #description>
       <p class="mb-0 text-sm text-n-slate-11">
-        This knowledge source will be permanently removed from the agent's knowledge base.
+        {{ $t('SATURN.KNOWLEDGE.DELETE_CONFIRM') }}
       </p>
     </template>
     

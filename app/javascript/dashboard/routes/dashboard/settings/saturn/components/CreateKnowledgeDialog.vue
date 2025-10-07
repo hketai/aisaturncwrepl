@@ -1,8 +1,11 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
+
+const { t } = useI18n();
 
 const props = defineProps({
   agentId: {
@@ -69,7 +72,7 @@ const handleSubmit = async () => {
       const response = await SaturnKnowledgeAPI.updateForAgent(props.agentId, props.selectedKnowledge.id, {
         knowledge_source: form.value,
       });
-      useAlert('Knowledge source updated successfully');
+      useAlert(t('SATURN.KNOWLEDGE.SUCCESS_UPDATE'));
       emit('updated', response.data);
       handleClose();
     } else {
@@ -90,12 +93,12 @@ const handleSubmit = async () => {
       const response = await SaturnKnowledgeAPI.createForAgent(props.agentId, {
         knowledge_source: form.value,
       });
-      useAlert('Knowledge source added successfully');
+      useAlert(t('SATURN.KNOWLEDGE.SUCCESS_CREATE'));
       emit('updated', response.data);
       handleClose();
     }
   } catch (error) {
-    const errorMsg = error.response?.data?.error || 'Operation failed';
+    const errorMsg = error.response?.data?.error || t('SATURN.AGENTS.ERROR_OPERATION');
     useAlert(errorMsg);
     if (!isEdit.value) {
       emit('createFailed', form.value.title);
@@ -121,7 +124,7 @@ defineExpose({ dialogRef });
     ref="dialogRef"
     type="edit"
     :title="isEdit ? $t('SATURN.KNOWLEDGE.EDIT') : $t('SATURN.KNOWLEDGE.ADD')"
-    description="Add information that your AI agent can use to answer customer questions"
+    :description="$t('SATURN.KNOWLEDGE.CREATE_DESCRIPTION')"
     :show-cancel-button="false"
     :show-confirm-button="false"
     @close="handleDialogClose"
@@ -155,7 +158,7 @@ defineExpose({ dialogRef });
         <textarea
           v-model="form.content_text"
           class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
-          placeholder="Enter the knowledge content here..."
+          :placeholder="$t('SATURN.KNOWLEDGE.CONTENT_PLACEHOLDER')"
           rows="6"
           required
         />

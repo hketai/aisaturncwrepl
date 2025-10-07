@@ -1,7 +1,10 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnAPI from 'dashboard/api/saturn';
+
+const { t } = useI18n();
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 import Input from 'dashboard/components-next/input/Input.vue';
@@ -299,7 +302,7 @@ const handleSubmit = async () => {
   try {
     if (isEdit.value) {
       const response = await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
-      useAlert('Agent updated successfully');
+      useAlert(t('SATURN.AGENTS.SUCCESS_UPDATE'));
       emit('updated', response.data);
       dialogRef.value.close();
     } else {
@@ -318,11 +321,11 @@ const handleSubmit = async () => {
       dialogRef.value.close();
       
       const response = await SaturnAPI.create({ agent: form.value });
-      useAlert('Agent created successfully');
+      useAlert(t('SATURN.AGENTS.SUCCESS_CREATE'));
       emit('updated', response.data);
     }
   } catch (error) {
-    const errorMsg = error.response?.data?.error || 'Operation failed';
+    const errorMsg = error.response?.data?.error || t('SATURN.AGENTS.ERROR_OPERATION');
     useAlert(errorMsg);
     if (!isEdit.value) {
       emit('createFailed', form.value.name);
@@ -342,7 +345,7 @@ defineExpose({ dialogRef });
     ref="dialogRef"
     type="edit"
     :title="isEdit ? 'Edit Agent' : 'Create New Agent'"
-    description="Configure your AI agent to automatically respond to customer inquiries"
+    :description="$t('SATURN.AGENTS.CREATE_DESCRIPTION')"
     :show-cancel-button="false"
     :show-confirm-button="false"
     @close="handleClose"
@@ -365,7 +368,7 @@ defineExpose({ dialogRef });
           class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
           :disabled="isEdit"
         >
-          <option value="">Select an industry...</option>
+          <option value="">{{ $t('SATURN.AGENTS.SELECT_INDUSTRY') }}</option>
           <option
             v-for="industry in industryTypes"
             :key="industry.value"
@@ -382,7 +385,7 @@ defineExpose({ dialogRef });
       <Textarea
         v-model="form.description"
         label="Description"
-        placeholder="Describe what this agent does..."
+        :placeholder="$t('SATURN.AGENTS.DESCRIPTION_PLACEHOLDER')"
         rows="3"
       />
       
@@ -399,7 +402,7 @@ defineExpose({ dialogRef });
           id="agent-active"
           class="rounded"
         />
-        <label for="agent-active" class="text-sm">Activate agent immediately</label>
+        <label for="agent-active" class="text-sm">{{ $t('SATURN.AGENTS.ACTIVATE_IMMEDIATELY') }}</label>
       </div>
 
       <div class="flex gap-3 pt-4">

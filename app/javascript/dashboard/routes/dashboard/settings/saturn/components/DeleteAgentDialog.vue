@@ -1,9 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnAPI from 'dashboard/api/saturn';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 import Button from 'dashboard/components-next/button/Button.vue';
+
+const { t } = useI18n();
 
 const props = defineProps({
   agent: {
@@ -34,9 +37,9 @@ const handleConfirm = async () => {
   
   try {
     await SaturnAPI.delete(agentId);
-    useAlert('Agent deleted successfully');
+    useAlert(t('SATURN.AGENTS.SUCCESS_DELETE'));
   } catch (error) {
-    useAlert('Failed to delete agent');
+    useAlert(t('SATURN.AGENTS.ERROR_DELETE'));
     emit('restore', agentId);
   }
 };
@@ -61,7 +64,7 @@ defineExpose({ dialogRef });
   >
     <template #description>
       <p class="mb-0 text-sm text-n-slate-11">
-        This action cannot be undone. All associated knowledge sources and configurations will be permanently deleted.
+        {{ $t('SATURN.AGENTS.DELETE_CONFIRM') }}
       </p>
     </template>
     

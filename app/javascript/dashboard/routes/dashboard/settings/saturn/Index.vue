@@ -1,10 +1,13 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnAPI from 'dashboard/api/saturn';
+
+const { t } = useI18n();
 
 import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import AgentCard from './components/AgentCard.vue';
@@ -26,7 +29,7 @@ const fetchAgents = async () => {
     const response = await SaturnAPI.get();
     agents.value = response.data.payload || [];
   } catch (error) {
-    useAlert('Failed to load agents');
+    useAlert(t('SATURN.AGENTS.ERROR_LOAD'));
     console.error('Error fetching agents:', error);
   } finally {
     loading.value = false;

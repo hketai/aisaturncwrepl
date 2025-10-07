@@ -764,7 +764,19 @@
       "DELETE_AGENT": "Delete Agent",
       "NO_DESCRIPTION": "No description",
       "UPDATE_BUTTON": "Update",
-      "ADD_BUTTON": "Add"
+      "ADD_BUTTON": "Add",
+      "EMPTY_STATE": "Start by creating your first agent and adding knowledge sources.",
+      "DELETE_CONFIRM": "This action cannot be undone. All associated knowledge sources and configurations will be permanently deleted.",
+      "CREATE_DESCRIPTION": "Configure your AI agent to automatically respond to customer inquiries",
+      "SELECT_INDUSTRY": "Select an industry...",
+      "DESCRIPTION_PLACEHOLDER": "Describe what this agent does...",
+      "ACTIVATE_IMMEDIATELY": "Activate agent immediately",
+      "SUCCESS_UPDATE": "Agent updated successfully",
+      "SUCCESS_CREATE": "Agent created successfully",
+      "SUCCESS_DELETE": "Agent deleted successfully",
+      "ERROR_LOAD": "Failed to load agents",
+      "ERROR_DELETE": "Failed to delete agent",
+      "ERROR_OPERATION": "Operation failed"
     },
     "KNOWLEDGE": {
       "TITLE": "Knowledge Sources",
@@ -773,10 +785,27 @@
       "ADD": "Add Knowledge Source",
       "DELETE": "Delete Knowledge Source",
       "UPDATE_BUTTON": "Update Knowledge Source",
-      "ADD_BUTTON": "Add Knowledge Source"
+      "ADD_BUTTON": "Add Knowledge Source",
+      "CREATE_DESCRIPTION": "Add information that your AI agent can use to answer customer questions",
+      "CONTENT_PLACEHOLDER": "Enter the knowledge content here...",
+      "EMPTY_STATE": "Add documents, FAQs, or URLs to build your agent's knowledge base. The agent will use this information to answer customer questions.",
+      "DELETE_CONFIRM": "This knowledge source will be permanently removed from the agent's knowledge base.",
+      "SUCCESS_UPDATE": "Knowledge source updated successfully",
+      "SUCCESS_CREATE": "Knowledge source added successfully",
+      "SUCCESS_DELETE": "Knowledge source deleted successfully",
+      "ERROR_LOAD_AGENT": "Failed to load agent",
+      "ERROR_LOAD": "Failed to load knowledge sources",
+      "ERROR_LOAD_SOURCE": "Failed to load knowledge source",
+      "ERROR_DELETE": "Failed to delete knowledge source"
     },
     "INBOX_CONNECTIONS": {
-      "TITLE": "Inbox Connections"
+      "TITLE": "Inbox Connections",
+      "EMPTY_STATE": "You need to create at least one inbox before connecting it to this agent.",
+      "SUCCESS_CONNECT": "Inbox connected successfully",
+      "SUCCESS_DISCONNECT": "Inbox disconnected successfully",
+      "ERROR_LOAD": "Failed to load data",
+      "ERROR_CONNECT": "Failed to connect inbox",
+      "ERROR_DISCONNECT": "Failed to disconnect inbox"
     }
   }
 }

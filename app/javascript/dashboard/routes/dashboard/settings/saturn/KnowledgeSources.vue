@@ -1,8 +1,11 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import { emitter } from 'shared/helpers/mitt';
+
+const { t } = useI18n();
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 import SaturnAPI from 'dashboard/api/saturn';
@@ -29,7 +32,7 @@ const fetchAgent = async () => {
     const response = await SaturnAPI.show(agentId.value);
     agent.value = response.data;
   } catch (error) {
-    useAlert('Failed to load agent');
+    useAlert(t('SATURN.KNOWLEDGE.ERROR_LOAD_AGENT'));
   }
 };
 
@@ -39,7 +42,7 @@ const fetchKnowledgeSources = async () => {
     const response = await SaturnKnowledgeAPI.getForAgent(agentId.value);
     knowledgeSources.value = response.data.payload || [];
   } catch (error) {
-    useAlert('Failed to load knowledge sources');
+    useAlert(t('SATURN.KNOWLEDGE.ERROR_LOAD'));
     console.error(error);
   } finally {
     loading.value = false;
@@ -58,7 +61,7 @@ const handleEdit = async (knowledge) => {
     selectedKnowledge.value = response.data;
     nextTick(() => createDialogRef.value?.dialogRef?.open());
   } catch (error) {
-    useAlert('Failed to load knowledge source');
+    useAlert(t('SATURN.KNOWLEDGE.ERROR_LOAD_SOURCE'));
     console.error(error);
   }
 };
@@ -176,8 +179,7 @@ onBeforeUnmount(() => {
           <h2 class="text-2xl font-semibold mb-3">No Knowledge Sources Yet</h2>
           
           <p class="text-n-weak mb-8">
-            Add documents, FAQs, or URLs to build your agent's knowledge base. 
-            The agent will use this information to answer customer questions.
+            {{ $t('SATURN.KNOWLEDGE.EMPTY_STATE') }}
           </p>
           
           <Button

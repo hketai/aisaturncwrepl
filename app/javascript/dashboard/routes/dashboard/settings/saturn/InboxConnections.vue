@@ -1,12 +1,15 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnInboxConnectionsAPI from 'dashboard/api/saturnInboxConnections';
 import InboxesAPI from 'dashboard/api/inboxes';
 import SaturnAPI from 'dashboard/api/saturn';
+
+const { t } = useI18n();
 
 import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import CardLayout from 'dashboard/components-next/CardLayout.vue';
@@ -39,7 +42,7 @@ const fetchData = async () => {
     const agentResponse = await SaturnAPI.show(agentId.value);
     agent.value = agentResponse.data;
   } catch (error) {
-    useAlert('Failed to load data');
+    useAlert(t('SATURN.INBOX_CONNECTIONS.ERROR_LOAD'));
   } finally {
     loading.value = false;
   }
@@ -67,10 +70,10 @@ const handleConnect = async (inbox) => {
       connectedInboxes.value[index] = response.data;
     }
     
-    useAlert('Inbox connected successfully');
+    useAlert(t('SATURN.INBOX_CONNECTIONS.SUCCESS_CONNECT'));
   } catch (error) {
     connectedInboxes.value = connectedInboxes.value.filter(c => !c._optimistic);
-    useAlert('Failed to connect inbox');
+    useAlert(t('SATURN.INBOX_CONNECTIONS.ERROR_CONNECT'));
   }
 };
 
@@ -80,10 +83,10 @@ const handleDisconnect = async (connection) => {
   
   try {
     await SaturnInboxConnectionsAPI.delete(agentId.value, connection.inbox.id);
-    useAlert('Inbox disconnected successfully');
+    useAlert(t('SATURN.INBOX_CONNECTIONS.SUCCESS_DISCONNECT'));
   } catch (error) {
     connectedInboxes.value.push(connectionData);
-    useAlert('Failed to disconnect inbox');
+    useAlert(t('SATURN.INBOX_CONNECTIONS.ERROR_DISCONNECT'));
   }
 };
 
@@ -219,7 +222,7 @@ onBeforeUnmount(() => {
             <div class="text-6xl text-n-weak">📥</div>
             <p class="text-lg font-medium text-n-strong">No Inboxes Found</p>
             <p class="text-sm text-n-weak max-w-md">
-              You need to create at least one inbox before connecting it to this agent.
+              {{ $t('SATURN.INBOX_CONNECTIONS.EMPTY_STATE') }}
             </p>
             <Button
               color="blue"
