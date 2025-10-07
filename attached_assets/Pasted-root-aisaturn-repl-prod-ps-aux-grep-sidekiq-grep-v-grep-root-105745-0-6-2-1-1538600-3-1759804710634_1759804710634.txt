@@ -1,0 +1,126 @@
+root@aisaturn-repl-prod:~# ps aux | grep sidekiq | grep -v grep
+root      105745  0.6  2.1 1538600 352332 ?      Ssl  01:55   0:15 sidekiq 7.3.1 chatwoot [0 of 12 busy]
+root      105783  0.0  1.6 443816 266240 ?       Sl   01:55   0:00 /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/sidekiq -C config/sidekiq.yml
+root@aisaturn-repl-prod:~# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails console
+I, [2025-10-07T02:37:35.428867 #107557]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:37:35.428989 #107557]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:37:37.701002 #107557]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> account = Account.first
+irb(main):002:0> account.custom_attributes['openai_api_key']
+=> nil
+irb(main):003:0> account = Account.first
+=> 
+#<Account:0x00007b4cbfd42e48
+...
+irb(main):004:0> account.custom_attributes['openai_api_key']
+=> nil
+irb(main):005:0> Message.last(5)
+=> 
+[#<Message:0x00007b4cc4277a90
+  id: 22,
+  content: "süper çalışıyor",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 1,
+  message_type: "outgoing",
+  created_at: Tue, 07 Oct 2025 02:32:19.279194000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:32:19.429204000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {},
+  sender_type: "User",
+  sender_id: 1,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "süper çalışıyor",
+  sentiment: {}>,
+ #<Message:0x00007b4cc4277bd0
+  id: 23,
+  content: "Aynı gün teslimat ücreti ne kadar?",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 2,
+  message_type: "incoming",
+  created_at: Tue, 07 Oct 2025 02:33:16.321117000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:33:16.321117000 UTC +00:00,
+  private: false,
+  status: "sent",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {"in_reply_to"=>nil},
+  sender_type: "Contact",
+  sender_id: 2,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Aynı gün teslimat ücreti ne kadar?",
+  sentiment: {}>,
+ #<Message:0x00007b4cc4277d10
+  id: 24,
+  content: "Ekibin size ulaşması için bir bilgi verin.",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 2,
+  message_type: "template",
+  created_at: Tue, 07 Oct 2025 02:33:16.351404000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:33:17.001161000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {},
+  sender_type: nil,
+  sender_id: nil,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Ekibin size ulaşması için bir bilgi verin.",
+  sentiment: {}>,
+ #<Message:0x00007b4cc4277e50
+  id: 25,
+  content: "E-posta ile haberdar olun",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 2,
+  message_type: "template",
+  created_at: Tue, 07 Oct 2025 02:33:16.360508000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:33:30.895458000 UTC +00:00,
+  private: false,
+  status: "read",
+  source_id: nil,
+  content_type: "input_email",
+  content_attributes: {"submitted_email"=>"teete@tete.com"},
+  sender_type: nil,
+  sender_id: nil,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "E-posta ile haberdar olun",
+  sentiment: {}>,
+ #<Message:0x00007b4cbda4e310
+  id: 26,
+  content: "Aynı gün teslimat ücreti ne kadar?",
+  account_id: 1,
+  inbox_id: 1,
+  conversation_id: 2,
+  message_type: "incoming",
+  created_at: Tue, 07 Oct 2025 02:33:40.222145000 UTC +00:00,
+  updated_at: Tue, 07 Oct 2025 02:33:40.222145000 UTC +00:00,
+  private: false,
+  status: "sent",
+  source_id: nil,
+  content_type: "text",
+  content_attributes: {"in_reply_to"=>nil},
+  sender_type: "Contact",
+  sender_id: 2,
+  external_source_ids: {},
+  additional_attributes: {},
+  processed_message_content: "Aynı gün teslimat ücreti ne kadar?",
+  sentiment: {}>]
+irb(main):006:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 log/sidekiq.log
+tail: cannot open 'log/sidekiq.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# grep -i "saturn" log/production.log | tail -20
+grep: log/production.log: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# 
