@@ -68,6 +68,11 @@ export default {
       return type;
     },
     agentName() {
+      // If Saturn AI message, use agent name from content_attributes
+      if (this.message.content_attributes?.saturn_agent_name) {
+        return this.message.content_attributes.saturn_agent_name;
+      }
+
       if (this.message.sender) {
         return this.message.sender.available_name || this.message.sender.name;
       }
@@ -79,6 +84,11 @@ export default {
       return this.$t('UNREAD_VIEW.BOT');
     },
     avatarUrl() {
+      // If Saturn AI message, use sparkles emoji as avatar
+      if (this.message.content_attributes?.saturn_agent_name) {
+        return '✨';
+      }
+
       const displayImage = this.useInboxAvatarForBot
         ? this.inboxAvatarUrl
         : '/assets/images/chatwoot_bot.png';
