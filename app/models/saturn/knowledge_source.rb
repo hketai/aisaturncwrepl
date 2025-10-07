@@ -6,7 +6,7 @@ class Saturn::KnowledgeSource < ApplicationRecord
   has_many :auto_replies, 
            class_name: 'Saturn::AutoReply', 
            foreign_key: :knowledge_source_id, 
-           dependent: :nullify
+           dependent: :destroy
   
   validates :title, presence: true
   validates :agent_profile_id, presence: true

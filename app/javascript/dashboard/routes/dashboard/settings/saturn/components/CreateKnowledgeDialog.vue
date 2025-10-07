@@ -64,8 +64,8 @@ const handleSubmit = async () => {
       });
       useAlert('Knowledge source updated successfully');
       emit('updated', response.data);
-      dialogRef.value.close();
       handleClose();
+      dialogRef.value?.close();
     } else {
       const optimisticKnowledge = {
         id: `temp-${Date.now()}`,
@@ -86,8 +86,8 @@ const handleSubmit = async () => {
       });
       useAlert('Knowledge source added successfully');
       emit('updated', response.data);
-      dialogRef.value.close();
       handleClose();
+      dialogRef.value?.close();
     }
   } catch (error) {
     const errorMsg = error.response?.data?.error || 'Operation failed';
