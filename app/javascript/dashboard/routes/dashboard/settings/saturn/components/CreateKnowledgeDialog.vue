@@ -134,7 +134,7 @@ defineExpose({ dialogRef });
         <label class="block text-sm font-medium mb-2">{{ $t('SATURN.KNOWLEDGE.SOURCE_TYPE_LABEL') }}</label>
         <div class="grid grid-cols-3 gap-2">
           <button
-            v-for="type in sourceTypes.value"
+            v-for="type in sourceTypes"
             :key="type.value"
             type="button"
             @click="form.source_type = type.value"
