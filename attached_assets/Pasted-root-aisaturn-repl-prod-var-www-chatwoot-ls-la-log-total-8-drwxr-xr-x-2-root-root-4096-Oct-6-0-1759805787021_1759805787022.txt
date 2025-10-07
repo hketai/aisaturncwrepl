@@ -1,0 +1,61 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -la log/
+total 8
+drwxr-xr-x  2 root root 4096 Oct  6 00:00 .
+drwxr-xr-x 33 root root 4096 Oct  7 02:44 ..
+-rw-r--r--  1 root root    0 Oct  6 00:00 .keep
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails console
+I, [2025-10-07T02:53:36.672157 #108229]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:53:36.672256 #108229]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:53:38.907340 #108229]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> require 'sidekiq/api'
+=> false
+irb(main):002:0> stats = Sidekiq::Stats.new
+2025-10-07T02:53:47.182Z pid=108229 tid=2fzt INFO: Sidekiq 7.3.1 connecting to Redis with options {:size=>10, :pool_name=>"internal", :url=>"redis://localhost:6379", :password=>nil, :reconnect_attempts=>2, :timeout=>1}
+=> 
+#<Sidekiq::Stats:0x000074c208dc50c0
+...
+irb(main):003:0> puts "Processed: #{stats.processed}"
+Processed: 5285
+=> nil
+irb(main):004:0> puts "Failed: #{stats.failed}"
+irb(main):005:0> puts "Enqueued: #{stats.enqueued}"
+Failed: 126
+Enqueued: 0
+=> nil
+irb(main):006:1* Sidekiq::RetrySet.new.first(5).each do |job|
+irb(main):007:1*   puts "Failed job: #{job.klass} - #{job['error_message']}"
+irb(main):008:0> end
+=> []
+irb(main):009:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot# Sidekiq::RetrySet.new.first(5).each do |job|
+  puts "Failed job: #{job.klass} - #{job['error_message']}"
+end
+-bash: syntax error near unexpected token `5'
+puts: command not found
+Command 'end' not found, did you mean:
+  command 'tend' from snap tend (0.2.15)
+  command 'gnd' from snap gnd (master)
+  command 'ed' from deb ed (1.21-1)
+  command 'env' from deb coreutils (9.5-1ubuntu1.25.04.2)
+See 'snap info <snapname>' for additional versions.
+root@aisaturn-repl-prod:/var/www/chatwoot# # Widget'tan yeni bir mesaj gönderin, sonra:
+RAILS_ENV=production bundle exec rails console
+I, [2025-10-07T02:55:26.068673 #108278]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:55:26.068773 #108278]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:55:28.290357 #108278]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> msg = Message.where(message_type: 'incoming').last
+=> 
+#<Message:0x00007c9a275616f0
+...
+irb(main):002:0> puts "Last incoming ID: #{msg&.id}"
+Last incoming ID: 37
+=> nil
+irb(main):003:0> puts "Content: #{msg&.content}"
+irb(main):004:0> puts "Created: #{msg&.created_at}"
+Content: selma
+Created: 2025-10-07 02:54:03 UTC
+=> nil
+irb(main):005:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot# 
