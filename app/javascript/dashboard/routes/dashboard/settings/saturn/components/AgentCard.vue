@@ -47,7 +47,7 @@ const handleAction = (action) => {
             {{ name }}
           </h3>
           <p class="text-sm text-n-slate-11 line-clamp-2">
-            {{ description || 'No description' }}
+            {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
         </div>
         <span class="text-xs text-n-slate-11 shrink-0">
@@ -63,7 +63,7 @@ const handleAction = (action) => {
           class="flex-1"
           @click="handleAction('viewKnowledge')"
         >
-          Knowledge
+          {{ $t('SATURN.AGENTS.KNOWLEDGE_BUTTON') }}
         </Button>
         
         <Button
@@ -73,7 +73,7 @@ const handleAction = (action) => {
           class="flex-1"
           @click="handleAction('inboxConnections')"
         >
-          Inboxes
+          {{ $t('SATURN.AGENTS.INBOXES_BUTTON') }}
         </Button>
         
         <Button
@@ -83,7 +83,7 @@ const handleAction = (action) => {
           class="flex-1"
           @click="handleAction('edit')"
         >
-          Edit
+          {{ $t('SATURN.AGENTS.EDIT_BUTTON') }}
         </Button>
         
         <Button
