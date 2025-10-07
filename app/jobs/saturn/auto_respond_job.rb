@@ -115,6 +115,7 @@ module Saturn
           private: false,
           content_attributes: {
             saturn_agent_id: agent_profile.id.to_s,
+            saturn_agent_name: agent_profile.name,
             automated_response: true
           }
         }

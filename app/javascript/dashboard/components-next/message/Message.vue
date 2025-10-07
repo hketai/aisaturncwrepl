@@ -416,6 +416,14 @@ function handleReplyTo() {
 }
 
 const avatarInfo = computed(() => {
+  // If Saturn AI message, use agent name
+  if (props.contentAttributes?.saturn_agent_name) {
+    return {
+      name: props.contentAttributes.saturn_agent_name,
+      src: props.sender?.avatarUrl || props.sender?.thumbnail || '',
+    };
+  }
+
   // If no sender, return bot info
   if (!props.sender) {
     return {
