@@ -58,7 +58,7 @@ All Chatwoot branding has been replaced with AISATURN branding across the platfo
 **UI Updates:**
 - Super Admin Console: Logo and text updated to AISATURN
 - Login page: "Login to AISATURN" heading
-- Dashboard Sidebar: Logo icon + "AISATURN" text in header
+- Dashboard Sidebar: Full AISATURN logo (new_logo.png) replaces icon+text, account switcher removed
 - Database InstallationConfig records synced
 
 **Location:**
