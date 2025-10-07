@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
@@ -28,11 +28,11 @@ const form = ref({
   source_url: '',
 });
 
-const sourceTypes = [
-  { value: 'text', label: 'Text/Document' },
-  { value: 'url', label: 'URL/Website' },
-  { value: 'faq', label: 'FAQ' },
-];
+const sourceTypes = computed(() => [
+  { value: 'text', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_TEXT') },
+  { value: 'url', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_URL') },
+  { value: 'faq', label: t('SATURN.KNOWLEDGE.SOURCE_TYPE_FAQ') },
+]);
 
 const isEdit = ref(false);
 
@@ -131,7 +131,7 @@ defineExpose({ dialogRef });
   >
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
-        <label class="block text-sm font-medium mb-1">Source Type</label>
+        <label class="block text-sm font-medium mb-1">{{ $t('SATURN.KNOWLEDGE.SOURCE_TYPE_LABEL') }}</label>
         <select
           v-model="form.source_type"
           class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500"
@@ -143,18 +143,18 @@ defineExpose({ dialogRef });
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1">Title</label>
+        <label class="block text-sm font-medium mb-1">{{ $t('SATURN.KNOWLEDGE.TITLE_LABEL') }}</label>
         <input
           v-model="form.title"
           type="text"
           class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
-          placeholder="e.g., Product Return Policy"
+          :placeholder="$t('SATURN.KNOWLEDGE.TITLE_PLACEHOLDER')"
           required
         />
       </div>
       
       <div>
-        <label class="block text-sm font-medium mb-1">Content</label>
+        <label class="block text-sm font-medium mb-1">{{ $t('SATURN.KNOWLEDGE.CONTENT_LABEL') }}</label>
         <textarea
           v-model="form.content_text"
           class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
@@ -180,7 +180,7 @@ defineExpose({ dialogRef });
           @click="handleClose"
           class="flex-1 px-4 py-2 border border-n-weak rounded-lg hover:bg-n-solid-2"
         >
-          Cancel
+          {{ $t('SATURN.KNOWLEDGE.CANCEL_BUTTON') }}
         </button>
         <button
           type="submit"
