@@ -1,0 +1,80 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /etc/nginx/sites-enabled/chatwoot 
+upstream chatwoot_server {
+  server 127.0.0.1:3000 fail_timeout=0;
+}
+
+server {
+  server_name app.aisaturn.co;
+
+  client_max_body_size 50M;
+  
+  location / {
+    proxy_pass http://chatwoot_server;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+  
+  location /cable {
+    proxy_pass http://chatwoot_server/cable;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_redirect off;  # ← SADECE BU EKSİK!
+    proxy_read_timeout 86400;
+  }
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/app.aisaturn.co/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/app.aisaturn.co/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+
+server {
+    if ($host = app.aisaturn.co) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  listen 80;
+  listen [::]:80;
+  server_name app.aisaturn.co;
+    return 404; # managed by Certbot
+
+
+}
+root@aisaturn-repl-prod:/var/www/chatwoot# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@aisaturn-repl-prod:/var/www/chatwoot# nginx -s reload
+2025/10/07 02:23:55 [notice] 106363#106363: signal process started
+root@aisaturn-repl-prod:/var/www/chatwoot# systemctl restart nginx
+systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: en>
+     Active: active (running) since Tue 2025-10-07 02:23:59 UTC; 19ms ago
+ Invocation: 081fad769ace45459af9ad481e20dd31
+       Docs: man:nginx(8)
+    Process: 106372 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_pro>
+    Process: 106375 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; >
+   Main PID: 106376 (nginx)
+      Tasks: 5 (limit: 19140)
+     Memory: 4.6M (peak: 4.9M)
+        CPU: 44ms
+     CGroup: /system.slice/nginx.service
+             ├─106376 "nginx: master process /usr/sbin/nginx -g daemon on; mast>
+             ├─106377 "nginx: worker process"
+             ├─106378 "nginx: worker process"
+             ├─106379 "nginx: worker process"
+             └─106380 "nginx: worker process"
+
+Oct 07 02:23:59 aisaturn-repl-prod systemd[1]: Starting nginx.service - A high >
+Oct 07 02:23:59 aisaturn-repl-prod systemd[1]: Started nginx.service - A high p>
+lines 1-20/20 (END)
