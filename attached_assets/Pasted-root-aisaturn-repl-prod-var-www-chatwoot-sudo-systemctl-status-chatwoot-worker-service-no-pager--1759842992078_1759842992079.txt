@@ -1,0 +1,25 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-worker.service --no-pager -l | head -20
+● chatwoot-worker.service - Chatwoot worker
+     Loaded: loaded (/etc/systemd/system/chatwoot-worker.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2025-10-07 13:05:39 UTC; 10min ago
+ Invocation: 6d34463f33d04bc88d51cb65903e29a0
+   Main PID: 118980 (bundle)
+      Tasks: 20 (limit: 19140)
+     Memory: 404.1M (peak: 404.6M)
+        CPU: 9.857s
+     CGroup: /system.slice/chatwoot-worker.service
+             ├─118980 "sidekiq 7.3.1 chatwoot [0 of 12 busy]"
+             └─119006 "/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/sidekiq -C config/sidekiq.yml"
+
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.777467 #118980]  INFO -- : [ActiveJob] [Notification::ReopenSnoozedNotificationsJob] [f60df128-bd8b-4220-8f57-929aef4116fb] Performed Notification::ReopenSnoozedNotificationsJob (Job ID: f60df128-bd8b-4220-8f57-929aef4116fb) from Sidekiq(low) in 9.56ms
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.780302 #118980]  INFO -- : [ActiveJob] [TriggerScheduledItemsJob] [bde7be5f-eeb5-4427-b7ed-bba5fb7a2e11] Enqueued Notification::RemoveOldNotificationJob (Job ID: 20ff387d-d3d2-463f-a2b6-218b6c1fe0f5) to Sidekiq(low)
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.781457 #118980]  INFO -- : [ActiveJob] [Notification::RemoveOldNotificationJob] [20ff387d-d3d2-463f-a2b6-218b6c1fe0f5] Performing Notification::RemoveOldNotificationJob (Job ID: 20ff387d-d3d2-463f-a2b6-218b6c1fe0f5) from Sidekiq(low) enqueued at 2025-10-07T13:15:07.778945130Z
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.782201 #118980]  INFO -- : [ActiveJob] [Sla::TriggerSlasForAccountsJob] [1787a6bd-068e-4ac6-9db5-06bbd1a77392] Performing Sla::TriggerSlasForAccountsJob (Job ID: 1787a6bd-068e-4ac6-9db5-06bbd1a77392) from Sidekiq(scheduled_jobs) enqueued at 2025-10-07T13:15:07.780587159Z
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.783974 #118980]  INFO -- : [ActiveJob] [TriggerScheduledItemsJob] [bde7be5f-eeb5-4427-b7ed-bba5fb7a2e11] Enqueued Sla::TriggerSlasForAccountsJob (Job ID: 1787a6bd-068e-4ac6-9db5-06bbd1a77392) to Sidekiq(scheduled_jobs)
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.786061 #118980]  INFO -- : [ActiveJob] [Account::ConversationsResolutionSchedulerJob] [7a3e4ce7-052b-41f7-a123-321c7e2f5524] Performed Account::ConversationsResolutionSchedulerJob (Job ID: 7a3e4ce7-052b-41f7-a123-321c7e2f5524) from Sidekiq(scheduled_jobs) in 14.03ms
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.786438 #118980]  INFO -- : [ActiveJob] [Channels::Whatsapp::TemplatesSyncSchedulerJob] [8d9fc4e8-3a52-40a3-976b-32445fb98e03] Performed Channels::Whatsapp::TemplatesSyncSchedulerJob (Job ID: 8d9fc4e8-3a52-40a3-976b-32445fb98e03) from Sidekiq(low) in 13.35ms
+Oct 07 13:15:07 aisaturn-repl-prod bundle[118980]: I, [2025-10-07T13:15:07.786646 #118980]  INFO -- : [ActiveJob] [TriggerScheduledItemsJob] [bde7be5f-eeb5-4427-b7ed-bba5fb7a2e11] Performed TriggerScheduledItemsJob (Job ID: bde7be5f-eeb5-4427-b7ed-bba5fb7a2e11) from Sidekiq(scheduled_jobs) in 26.55ms
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -100 /var/www/chatwoot/log/production.log | grep -i saturn
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /var/www/chatwoot/log/sidekiq.log 2>/dev/null | grep -i "saturn\|AutoRespond"
+root@aisaturn-repl-prod:/var/www/chatwoot# 
