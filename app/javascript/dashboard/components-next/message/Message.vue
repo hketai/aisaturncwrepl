@@ -178,7 +178,7 @@ const variant = computed(() => {
 
 const isBotOrAgentMessage = computed(() => {
   // Saturn AI messages should be on the right side
-  if (props.contentAttributes?.saturn_agent_id) {
+  if (props.contentAttributes?.saturnAgentId) {
     return true;
   }
 
@@ -421,10 +421,10 @@ function handleReplyTo() {
 }
 
 const avatarInfo = computed(() => {
-  // If Saturn AI message, use agent name with sparkles icon (API sends snake_case in content_attributes)
-  if (props.contentAttributes?.saturn_agent_name) {
+  // If Saturn AI message, use agent name with sparkles icon (API sends snake_case but dashboard transforms to camelCase)
+  if (props.contentAttributes?.saturnAgentName) {
     return {
-      name: props.contentAttributes.saturn_agent_name,
+      name: props.contentAttributes.saturnAgentName,
       src: '✨', // Saturn AI sparkles icon
       isSaturnAI: true,
     };
