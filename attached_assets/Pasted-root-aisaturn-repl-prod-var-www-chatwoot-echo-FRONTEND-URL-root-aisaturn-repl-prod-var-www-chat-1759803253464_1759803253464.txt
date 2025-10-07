@@ -1,0 +1,39 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# echo $FRONTEND_URL
+
+root@aisaturn-repl-prod:/var/www/chatwoot# grep FRONTEND_URL .env.production
+FRONTEND_URL=https://app.aisaturn.co
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+puts '=== ActionCable Configuration ==='
+puts 'URL: ' + Rails.configuration.action_cable.url.to_s
+puts 'Allowed Origins: '
+Rails.configuration.action_cable.allowed_request_origins.each { |origin| puts '  - ' + origin.inspect }
+puts 'Disable CSRF: ' + Rails.configuration.action_cable.disable_request_forgery_protection.to_s
+"
+I, [2025-10-07T02:13:40.877455 #106210]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:13:40.877578 #106210]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:13:43.339198 #106210]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+=== ActionCable Configuration ===
+URL: wss://app.aisaturn.co/cable
+Allowed Origins: 
+  - "https://app.aisaturn.co"
+  - /https?:\/\/app.aisaturn.co.*/
+Disable CSRF: true
+root@aisaturn-repl-prod:/var/www/chatwoot# grep -i "cable\|websocket" /tmp/puma.log | tail -20
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /var/log/nginx/access.log | grep cable
+81.215.232.40 - - [07/Oct/2025:02:12:15 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:23 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:25 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:28 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:32 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:32 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:41 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:41 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:48 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:51 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:12:57 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:13:02 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:13:06 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:13:13 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:13:16 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:13:26 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+root@aisaturn-repl-prod:/var/www/chatwoot# 
