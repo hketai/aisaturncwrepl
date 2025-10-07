@@ -158,9 +158,9 @@ onBeforeUnmount(() => {
 
 <template>
   <SaturnPageLayout
-    :header-title="`${agent?.name || $t('SETTINGS.SATURN.AGENTS.TITLE')} - ${$t('SETTINGS.SATURN.KNOWLEDGE.TITLE')}`"
+    :header-title="`${agent?.name || $t('SATURN.AGENTS.TITLE')} - ${$t('SATURN.KNOWLEDGE.TITLE')}`"
     :back-url="{ name: 'saturn_agents_index' }"
-    :button-label="$t('SETTINGS.SATURN.KNOWLEDGE.CREATE_BUTTON')"
+    :button-label="$t('SATURN.KNOWLEDGE.CREATE_BUTTON')"
     :is-fetching="loading"
     :is-empty="!knowledgeSources.length"
     :show-pagination-footer="false"

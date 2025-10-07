@@ -133,8 +133,8 @@ onBeforeUnmount(() => {
 
 <template>
   <SaturnPageLayout
-    :header-title="$t('SETTINGS.SATURN.AGENTS.TITLE')"
-    :button-label="$t('SETTINGS.SATURN.AGENTS.CREATE_BUTTON')"
+    :header-title="$t('SATURN.AGENTS.TITLE')"
+    :button-label="$t('SATURN.AGENTS.CREATE_BUTTON')"
     :is-fetching="loading"
     :is-empty="!agents.length"
     :show-pagination-footer="false"
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
           :id="agent.id"
           :key="agent.id"
           :name="agent.name"
-          :description="agent.description || $t('SETTINGS.SATURN.AGENTS.NO_DESCRIPTION')"
+          :description="agent.description || $t('SATURN.AGENTS.NO_DESCRIPTION')"
           :updated-at="agent.updated_at || agent.created_at"
           @action="handleAction"
         />
