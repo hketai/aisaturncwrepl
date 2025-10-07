@@ -1,0 +1,85 @@
+~/workspace$ cat .github/workflows/deploy.yml
+name: Deploy to Digital Ocean Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Deploy to Production Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            set -e
+            echo "🚀 Starting deployment to app.aisaturn.co..."
+            
+            # Navigate to application directory
+            cd /var/www/chatwoot
+            
+            # Pull latest code from GitHub
+            echo "📥 Pulling latest code from GitHub main branch..."
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Load Ruby environment (rbenv) and set correct version
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            rbenv install 3.2.2 --skip-existing
+            rbenv local 3.2.2
+            
+            # Load environment variables from .env.production
+            # (Already configured on server - no need to pass secrets)
+            source /var/www/chatwoot/.env.production || true
+            
+            # Install Ruby dependencies
+            echo "📦 Installing Ruby gems (bundle install)..."
+            bundle install --deployment --without development test
+            
+            # Install Node dependencies
+            echo "📦 Installing Node packages (pnpm install)..."
+            pnpm install --frozen-lockfile
+            
+            # Clean Vite cache to force fresh build
+            echo "🧹 Cleaning Vite cache..."
+            rm -rf tmp/vite-cache
+            rm -rf public/vite-dev
+            rm -rf public/packs/.vite
+            
+            # Precompile assets for production
+            echo "🎨 Precompiling Vite and Rails assets..."
+            RAILS_ENV=production BUILD_MODE=library bin/vite build --force
+            RAILS_ENV=production bin/vite build --force
+            RAILS_ENV=production bundle exec rails assets:precompile
+            
+            # Run database migrations
+            echo "🗄️ Running database migrations..."
+            RAILS_ENV=production bundle exec rails db:migrate
+            
+            # Restart Chatwoot services
+            echo "🔄 Restarting Chatwoot web and worker services..."
+            sudo systemctl restart chatwoot-web
+            sudo systemctl restart chatwoot-worker
+            
+            # Wait for services to start
+            sleep 3
+            
+            # Check service status
+            echo "✅ Checking service status..."
+            sudo systemctl status chatwoot-web --no-pager || true
+            sudo systemctl status chatwoot-worker --no-pager || true
+            
+            echo "✅ Deployment completed successfully!"
+            echo "🌐 Application is now live at https://app.aisaturn.co"
+~/workspace$ 
