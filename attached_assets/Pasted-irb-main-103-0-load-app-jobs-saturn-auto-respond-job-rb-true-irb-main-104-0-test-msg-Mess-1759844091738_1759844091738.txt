@@ -1,0 +1,69 @@
+irb(main):103:0> load 'app/jobs/saturn/auto_respond_job.rb'
+=> true
+irb(main):104:0> test_msg = Message.where(message_type: :incoming).last
+irb(main):105:0> puts "Test mesajı: #{test_msg.id} - #{test_msg.content}"
+Test mesajı: 56 - selam
+=> nil
+irb(main):106:0> 
+irb(main):107:0> job = Saturn::AutoRespondJob.new
+=> 
+#<Saturn::AutoRespondJob:0x00007341ccf52950
+...
+irb(main):108:1* job.perform(
+irb(main):109:1*   message_id: test_msg.id,
+irb(main):110:1*   agent_profile_id: 1,
+irb(main):111:1*   account_id: 1
+irb(main):112:0> )
+I, [2025-10-07T13:34:31.858746 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 87d8d47b-04fa-4dda-a44f-85a62ddc6352) to Sidekiq(critical) with arguments: ["fczMguXy3vk2hCE5g9CunVNd", "en7C2BdcpPBbiqLZpHs3Bpeu"], "message.created", {:id=>61, :content=>"Merhaba! Size nasıl yardımcı olabilirim?", :account_id=>1, :inbox_id=>1, :conversation_id=>3, :message_type=>1, :created_at=>1759844071, :updated_at=>Tue, 07 Oct 2025 13:34:31.839425413 UTC +00:00, :private=>false, :status=>"sent", :source_id=>nil, :content_type=>"text", :content_attributes=>{}, :sender_type=>"Contact", :sender_id=>3, :external_source_ids=>{}, :additional_attributes=>{}, :processed_message_content=>"Merhaba! Size nasıl yardımcı olabilirim?", :sentiment=>{}, :conversation=>{:assignee_id=>1, :unread_count=>0, :last_activity_at=>1759844071, :contact_inbox=>{:source_id=>"7e71a265-1d2d-4f1a-a15e-2f53e267741f"}}, :sender=>{:additional_attributes=>{"created_at_ip"=>"81.215.232.40", "avatar_url_hash"=>"5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639", "last_avatar_sync_at"=>"2025-10-07T02:47:13Z"}, :custom_attributes=>{}, :email=>"sada@asda.com", :id=>3, :identifier=>nil, :name=>"sada", :phone_number=>nil, :thumbnail=>"", :blocked=>false, :type=>"contact"}}
+I, [2025-10-07T13:34:31.861502 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 3be9bb3d-b53d-472e-8d2c-bda18ff9029a) to Sidekiq(critical) with arguments: "message.created", Tue, 07 Oct 2025 13:34:31.847511352 UTC +00:00, {:message=>#<GlobalID:0x00007341ce55d308 @uri=#<URI::GID gid://chatwoot/Message/61>>, :performed_by=>nil}
+I, [2025-10-07T13:34:31.862860 #119393]  INFO -- : [ActiveJob] Enqueued SendReplyJob (Job ID: 1f0455c6-3e19-45d9-973d-06779491ab7b) to Sidekiq(high) with arguments: 61
+I, [2025-10-07T13:34:31.877881 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 9648cf56-d632-4e61-8ad9-8761032cf590) to Sidekiq(critical) with arguments: ["account_1"], "contact.updated", {:additional_attributes=>{"created_at_ip"=>"81.215.232.40", "avatar_url_hash"=>"5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639", "last_avatar_sync_at"=>"2025-10-07T02:47:13Z"}, :custom_attributes=>{}, :email=>"sada@asda.com", :id=>3, :identifier=>nil, :name=>"sada", :phone_number=>nil, :thumbnail=>"", :blocked=>false, :type=>"contact", :account_id=>1}
+I, [2025-10-07T13:34:31.879475 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 829e30ff-603c-4033-a524-236484821091) to Sidekiq(critical) with arguments: "contact.updated", Tue, 07 Oct 2025 13:34:31.876352905 UTC +00:00, {:contact=>#<GlobalID:0x00007341ce4dff48 @uri=#<URI::GID gid://chatwoot/Contact/3>>, :changed_attributes=>{"updated_at"=>[Tue, 07 Oct 2025 13:31:44.992219000 UTC +00:00, Tue, 07 Oct 2025 13:34:31.870916331 UTC +00:00], "last_activity_at"=>[Tue, 07 Oct 2025 13:31:44.984018000 UTC +00:00, Tue, 07 Oct 2025 13:34:31.866669138 UTC +00:00]}}
+=> 
+#<Message:0x00007341ccba76c0
+ id: 61,
+ content: "Merhaba! Size nasıl yardımcı olabilirim?",
+ account_id: 1,
+ inbox_id: 1,
+ conversation_id: 3,
+ message_type: "outgoing",
+ created_at: Tue, 07 Oct 2025 13:34:31.839425413 UTC +00:00,
+ updated_at: Tue, 07 Oct 2025 13:34:31.839425413 UTC +00:00,
+ private: false,
+ status: "sent",
+ source_id: nil,
+ content_type: "text",
+ content_attributes: {},
+ sender_type: "Contact",
+ sender_id: 3,
+ external_source_ids: {},
+ additional_attributes: {},
+ processed_message_content: "Merhaba! Size nasıl yardımcı olabilirim?",
+ sentiment: {}>
+irb(main):113:0> newest = Message.last
+=> 
+#<Message:0x00007341ccbcbb88
+...
+irb(main):114:0> puts "\n✨ YENİ SATURN MESAJI:"
+
+✨ YENİ SATURN MESAJI:
+=> nil
+irb(main):115:0> puts "  ID: #{newest.id}"
+  ID: 61
+=> nil
+irb(main):116:0> puts "  Sender: #{newest.sender.name} (#{newest.sender.class})"
+  Sender: sada (Contact)
+=> nil
+irb(main):117:0> puts "  Content: #{newest.content[0..50]}..."
+  Content: Merhaba! Size nasıl yardımcı olabilirim?...
+=> nil
+irb(main):118:0> puts "  Saturn Agent ID: #{newest.content_attributes['saturn_agent_id']}"
+  Saturn Agent ID: 
+=> nil
+irb(main):119:0> puts "  Saturn Agent Name: #{newest.content_attributes['saturn_agent_name'
+]}"
+irb(main):120:0> puts "  Automated: #{newest.content_attributes['automated_response']}"
+  Saturn Agent Name: 
+  Automated: 
+=> nil
+irb(main):121:0> 
