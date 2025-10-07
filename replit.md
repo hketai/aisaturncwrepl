@@ -47,8 +47,8 @@ All Chatwoot branding has been replaced with AISATURN branding across the platfo
   - LOGO_DARK: '/brand-assets/new_logo_dark.png' (beyaz logo)
   - LOGO_THUMBNAIL: '/aisaturn_favicon.png'
   - BRAND_NAME: 'AISATURN'
-  - BRAND_URL: 'https://merchant.aisaturn.co'
-  - WIDGET_BRAND_URL: 'https://merchant.aisaturn.co'
+  - BRAND_URL: 'https://app.aisaturn.co'
+  - WIDGET_BRAND_URL: 'https://app.aisaturn.co'
 
 **Assets:**
 - Logo files downloaded from merchant.aisaturn.co
@@ -58,6 +58,7 @@ All Chatwoot branding has been replaced with AISATURN branding across the platfo
 **UI Updates:**
 - Super Admin Console: Logo and text updated to AISATURN
 - Login page: "Login to AISATURN" heading
+- Dashboard Sidebar: Logo icon + "AISATURN" text in header
 - Database InstallationConfig records synced
 
 **Location:**
@@ -65,6 +66,8 @@ All Chatwoot branding has been replaced with AISATURN branding across the platfo
 - Logos: `public/brand-assets/new_logo.png`, `new_logo_dark.png`
 - Favicon: `public/aisaturn_favicon.png`
 - Super Admin: `app/views/super_admin/application/_navigation.html.erb`
+- Dashboard Sidebar: `app/javascript/dashboard/components-next/sidebar/Sidebar.vue`
+- Logo Component: `app/javascript/dashboard/components-next/icon/Logo.vue`
 
 ## Recent Changes (October 6, 2025)
 

@@ -537,9 +537,11 @@ const menuItems = computed(() => {
         <div class="grid flex-shrink-0 size-6 place-content-center">
           <Logo class="size-4" />
         </div>
-        <div class="flex-shrink-0 w-px h-3 bg-n-strong" />
+        <span class="text-base font-semibold text-n-slate-12">AISATURN</span>
+      </div>
+      <div class="flex items-center min-w-0 gap-2 px-2">
         <SidebarAccountSwitcher
-          class="flex-grow min-w-0 -mx-1"
+          class="flex-grow min-w-0"
           @show-create-account-modal="emit('showCreateAccountModal')"
         />
       </div>
