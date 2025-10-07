@@ -19,7 +19,7 @@ module Saturn
       return unless account
       
       # Get OpenAI API key from account
-      api_key = account.custom_attributes['openai_api_key']
+      api_key = account.openai_api_key
       if api_key.blank?
         Rails.logger.warn("Saturn: No OpenAI API key for account #{account_id}, skipping auto-response")
         return
