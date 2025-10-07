@@ -51,9 +51,16 @@ const handleCreate = () => {
   nextTick(() => createDialogRef.value?.dialogRef?.open());
 };
 
-const handleEdit = (knowledge) => {
-  selectedKnowledge.value = knowledge;
-  nextTick(() => createDialogRef.value?.dialogRef?.open());
+const handleEdit = async (knowledge) => {
+  try {
+    // Fetch full knowledge data including content_text
+    const response = await SaturnKnowledgeAPI.show(knowledge.id);
+    selectedKnowledge.value = response.data;
+    nextTick(() => createDialogRef.value?.dialogRef?.open());
+  } catch (error) {
+    useAlert('Failed to load knowledge source');
+    console.error(error);
+  }
 };
 
 const handleDelete = (knowledge) => {

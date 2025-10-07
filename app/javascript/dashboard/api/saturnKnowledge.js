@@ -10,6 +10,10 @@ class SaturnKnowledgeAPI extends ApiClient {
     return axios.get(`${this.url}?agent_id=${agentId}`);
   }
 
+  show(id) {
+    return axios.get(`${this.url}/${id}`);
+  }
+
   createForAgent(agentId, data) {
     const payload = { ...data };
     if (payload.knowledge_source) {
