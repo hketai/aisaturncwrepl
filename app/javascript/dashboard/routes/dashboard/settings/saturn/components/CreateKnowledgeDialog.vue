@@ -45,20 +45,24 @@ const resetForm = () => {
   };
 };
 
-watch(() => props.selectedKnowledge, (knowledge) => {
-  if (knowledge) {
+const populateForm = () => {
+  if (props.selectedKnowledge) {
     isEdit.value = true;
-    // Create new object to avoid reactivity issues
-    form.value = {
-      title: knowledge.title || '',
-      content_text: knowledge.content_text || '',
-      source_type: knowledge.source_type || 'text',
-      source_url: knowledge.source_url || '',
-    };
+    // Deep clone to avoid reactivity issues
+    const knowledge = props.selectedKnowledge;
+    form.value.title = knowledge.title || '';
+    form.value.content_text = knowledge.content_text || '';
+    form.value.source_type = knowledge.source_type || 'text';
+    form.value.source_url = knowledge.source_url || '';
   } else {
     isEdit.value = false;
     resetForm();
   }
+};
+
+// Watch only to trigger populate when dialog opens
+watch(() => props.selectedKnowledge, () => {
+  populateForm();
 });
 
 const handleSubmit = async () => {
