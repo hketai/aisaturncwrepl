@@ -4,8 +4,6 @@ import { useAlert } from 'dashboard/composables';
 import SaturnKnowledgeAPI from 'dashboard/api/saturnKnowledge';
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
-import Input from 'dashboard/components-next/input/Input.vue';
-import Textarea from 'dashboard/components-next/textarea/TextArea.vue';
 
 const props = defineProps({
   agentId: {
@@ -138,28 +136,37 @@ defineExpose({ dialogRef });
         </select>
       </div>
 
-      <Input
-        v-model="form.title"
-        label="Title"
-        placeholder="e.g., Product Return Policy"
-        required
-      />
+      <div>
+        <label class="block text-sm font-medium mb-1">Title</label>
+        <input
+          v-model="form.title"
+          type="text"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          placeholder="e.g., Product Return Policy"
+          required
+        />
+      </div>
       
-      <Textarea
-        v-model="form.content_text"
-        label="Content"
-        placeholder="Enter the knowledge content here..."
-        rows="6"
-        required
-      />
+      <div>
+        <label class="block text-sm font-medium mb-1">Content</label>
+        <textarea
+          v-model="form.content_text"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          placeholder="Enter the knowledge content here..."
+          rows="6"
+          required
+        />
+      </div>
       
-      <Input
-        v-if="form.source_type === 'url'"
-        v-model="form.source_url"
-        label="Source URL"
-        type="url"
-        placeholder="https://example.com/docs"
-      />
+      <div v-if="form.source_type === 'url'">
+        <label class="block text-sm font-medium mb-1">Source URL</label>
+        <input
+          v-model="form.source_url"
+          type="url"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          placeholder="https://example.com/docs"
+        />
+      </div>
 
       <div class="flex gap-3 pt-4">
         <button
