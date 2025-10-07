@@ -422,7 +422,14 @@ function handleReplyTo() {
 
 const avatarInfo = computed(() => {
   // If Saturn AI message, use agent name with sparkles icon
+  console.log('🔍 avatarInfo check:', {
+    hasContentAttributes: !!props.contentAttributes,
+    saturnAgentName: props.contentAttributes?.saturn_agent_name,
+    saturnAgentId: props.contentAttributes?.saturn_agent_id,
+  });
+  
   if (props.contentAttributes?.saturn_agent_name) {
+    console.log('✅ Using Saturn AI avatar:', props.contentAttributes.saturn_agent_name);
     return {
       name: props.contentAttributes.saturn_agent_name,
       src: '✨', // Saturn AI sparkles icon
