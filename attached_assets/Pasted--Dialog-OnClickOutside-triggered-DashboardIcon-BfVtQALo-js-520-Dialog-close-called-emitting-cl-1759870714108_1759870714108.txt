@@ -1,0 +1,34 @@
+[Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: 20, oldId: undefined, selectedKnowledge: Proxy(Object)}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: Proxy(Object) {id: 20, title: 'qweqwe', source_url: '', content_text: 'qweqweqweqwe', source_type: 'faq', …}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Form populated: Proxy(Object) {title: 'qweqwe', content_text: 'qweqweqweqwe', source_type: 'faq', source_url: ''}
+DashboardIcon-BfVtQALo.js:520 [Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: undefined, oldId: 20, selectedKnowledge: null}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: null
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] No selectedKnowledge, resetting form
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+DashboardIcon-BfVtQALo.js:520 [Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: 18, oldId: undefined, selectedKnowledge: Proxy(Object)}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: Proxy(Object) {id: 18, title: 'dede', source_url: '', content_text: 'dededededede', source_type: 'faq', …}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Form populated: Proxy(Object) {title: 'dede', content_text: 'dededededede', source_type: 'faq', source_url: ''}
+DashboardIcon-BfVtQALo.js:520 [Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: undefined, oldId: 18, selectedKnowledge: null}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: null
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] No selectedKnowledge, resetting form
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+DashboardIcon-BfVtQALo.js:520 [Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: 18, oldId: undefined, selectedKnowledge: Proxy(Object)}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: Proxy(Object) {id: 18, title: 'dede', source_url: '', content_text: 'dededededede', source_type: 'faq', …}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Form populated: Proxy(Object) {title: 'dede', content_text: 'dededededede', source_type: 'faq', source_url: ''}
+DashboardIcon-BfVtQALo.js:520 [Dialog] OnClickOutside triggered
+DashboardIcon-BfVtQALo.js:520 [Dialog] close() called, emitting close event
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] Watch triggered: {newId: undefined, oldId: 18, selectedKnowledge: null}
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] populateForm called: null
+dashboard-BJX0OGOD.js:20 [CreateKnowledgeDialog] No selectedKnowledge, resetting form

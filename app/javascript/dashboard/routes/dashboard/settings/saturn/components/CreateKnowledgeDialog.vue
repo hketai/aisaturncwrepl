@@ -44,18 +44,14 @@ const resetForm = () => {
 };
 
 const populateForm = () => {
-  console.log('[CreateKnowledgeDialog] populateForm called:', props.selectedKnowledge);
   if (props.selectedKnowledge) {
     isEdit.value = true;
-    // Deep clone to avoid reactivity issues
     const knowledge = props.selectedKnowledge;
     form.value.title = knowledge.title || '';
     form.value.content_text = knowledge.content_text || knowledge.contentText || '';
     form.value.source_type = knowledge.source_type || knowledge.sourceType || 'text';
     form.value.source_url = knowledge.source_url || knowledge.sourceUrl || '';
-    console.log('[CreateKnowledgeDialog] Form populated:', form.value);
   } else {
-    console.log('[CreateKnowledgeDialog] No selectedKnowledge, resetting form');
     isEdit.value = false;
     resetForm();
   }
@@ -63,11 +59,10 @@ const populateForm = () => {
 
 // Watch only ID changes, not the whole object to avoid re-triggering on every input
 watch(() => props.selectedKnowledge?.id, (newId, oldId) => {
-  console.log('[CreateKnowledgeDialog] Watch triggered:', { newId, oldId, selectedKnowledge: props.selectedKnowledge });
   if (newId !== oldId) {
     populateForm();
   }
-}, { immediate: false });
+});
 
 const handleSubmit = async () => {
   try {

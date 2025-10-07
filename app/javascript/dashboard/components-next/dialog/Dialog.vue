@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { OnClickOutside } from '@vueuse/components';
 import { useI18n } from 'vue-i18n';
 
 import Button from 'dashboard/components-next/button/Button.vue';
@@ -80,7 +79,6 @@ const open = () => {
 };
 
 const close = () => {
-  console.log('[Dialog] close() called, emitting close event');
   emit('close');
   dialogRef.value?.close();
 };
@@ -102,14 +100,13 @@ defineExpose({ open, close });
         overflowYAuto ? 'overflow-y-auto' : 'overflow-visible',
       ]"
       @close="close"
+      @click.self="close"
     >
-      <OnClickOutside @trigger="() => { console.log('[Dialog] OnClickOutside triggered'); close(); }">
-        <form
-          ref="dialogContentRef"
-          class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-n-alpha-3 backdrop-blur-[100px] shadow-xl rounded-xl"
-          @submit.prevent="confirm"
-          @click.stop
-        >
+      <form
+        ref="dialogContentRef"
+        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-n-alpha-3 backdrop-blur-[100px] shadow-xl rounded-xl"
+        @submit.prevent="confirm"
+      >
           <div v-if="title || description" class="flex flex-col gap-2">
             <h3 class="text-base font-medium leading-6 text-n-slate-12">
               {{ title }}
@@ -147,8 +144,7 @@ defineExpose({ open, close });
               />
             </div>
           </slot>
-        </form>
-      </OnClickOutside>
+      </form>
     </dialog>
   </TeleportWithDirection>
 </template>
