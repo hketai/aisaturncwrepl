@@ -1,0 +1,62 @@
+ViteRuby::MissingEntrypointError in Dashboard#index
+Showing /home/runner/workspace/app/views/layouts/vueapp.html.erb where line #72 raised:
+
+Vite Ruby can't find entrypoints/dashboard.js in the manifests.
+
+Possible causes:
+  - The last build failed. Try running `bin/vite build --clear --mode=development` manually and check for errors.
+
+Errors:
+  [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+  x Build failed in 6.03s
+  error during build:
+  [vite]: Rollup failed to resolve import "/brand-assets/new_logo.png" from "/home/runner/workspace/app/javascript/dashboard/components-next/sidebar/Sidebar.vue".
+  This is most likely unintended because it can break your application at runtime.
+  If you do want to externalize this module explicitly add it to
+  `build.rollupOptions.external`
+      at viteWarn (file:///home/runner/workspace/node_modules/.pnpm/vite@5.4.20_@types+node@22.7.0_sass@1.79.3_terser@5.33.0/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65854:17)
+      at onRollupWarning (file:///home/runner/workspace/node_modules/.pnpm/vite@5.4.20_@types+node@22.7.0_sass@1.79.3_terser@5.33.0/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65886:5)
+      at onwarn (file:///home/runner/workspace/node_modules/.pnpm/vite@5.4.20_@types+node@22.7.0_sass@1.79.3_terser@5.33.0/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65549:7)
+      at file:///home/runner/workspace/node_modules/.pnpm/rollup@4.50.1/node_modules/rollup/dist/es/shared/node-entry.js:20925:13
+      at Object.logger [as onLog] (file:///home/runner/workspace/node_modules/.pnpm/rollup@4.50.1/node_modules/rollup/dist/es/shared/node-entry.js:22797:9)
+      at ModuleLoader.handleInvalidResolvedId (file:///home/runner/workspace/node_modules/.pnpm/rollup@4.50.1/node_modules/rollup/dist/es/shared/node-entry.js:21541:26)
+      at file:///home/runner/workspace/node_modules/.pnpm/rollup@4.50.1/node_modules/rollup/dist/es/shared/node-entry.js:21499:26
+
+
+Visit the Troubleshooting guide for more information:
+  https://vite-ruby.netlify.app/guide/troubleshooting.html#troubleshooting
+
+
+
+
+Extracted source (around line #72):
+70
+71
+72
+73
+74
+75
+              
+    <% end %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag @application_pack %>
+  </head>
+  <body class="text-slate-600">
+    <div id="app"></div>
+
+Rails.root: /home/runner/workspace
+
+Application Trace | Framework Trace | Full Trace
+app/views/layouts/vueapp.html.erb:72
+app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+app/controllers/concerns/switch_locale.rb:19:in `switch_locale'
+Request
+Parameters:
+
+{"params"=>"accounts/1/settings/saturn-agents/17/knowledge-sources"}
+Toggle session dump
+Toggle env dump
+Response
+Headers:
+
+None

@@ -18,6 +18,8 @@ import SidebarAccountSwitcher from './SidebarAccountSwitcher.vue';
 import Logo from 'next/icon/Logo.vue';
 import ComposeConversation from 'dashboard/components-next/NewConversation/ComposeConversation.vue';
 
+const globalConfig = useMapGetter('globalConfig/get');
+
 const props = defineProps({
   isMobileSidebarOpen: {
     type: Boolean,
@@ -535,10 +537,12 @@ const menuItems = computed(() => {
     <section class="grid gap-2 mt-2 mb-4">
       <div class="flex items-center min-w-0 gap-2 px-2 py-1">
         <img 
-          src="/brand-assets/new_logo.png" 
+          v-if="globalConfig.logo"
+          :src="globalConfig.logo" 
           alt="AISATURN" 
           class="h-6 w-auto"
         />
+        <Logo v-else class="size-6" />
       </div>
       <div class="flex gap-2 px-2">
         <RouterLink
