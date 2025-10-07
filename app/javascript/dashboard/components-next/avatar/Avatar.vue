@@ -228,9 +228,9 @@ watch(
       :style="avatarStyles"
     >
       <!-- Avatar Content -->
-      <!-- If src is an emoji (single char), display it as text instead of image -->
+      <!-- If src is a single emoji character (not a URL), display as text -->
       <span
-        v-if="src && src.length <= 2 && /\p{Emoji}/u.test(src)"
+        v-if="src && src.length <= 4 && !src.startsWith('http') && !src.includes('/')"
         :style="initialsStyles"
         class="select-none"
       >
