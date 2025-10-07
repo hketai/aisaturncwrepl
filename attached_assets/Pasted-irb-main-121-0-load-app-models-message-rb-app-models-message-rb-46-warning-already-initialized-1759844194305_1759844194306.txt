@@ -1,0 +1,60 @@
+irb(main):121:0> load 'app/models/message.rb'
+app/models/message.rb:46: warning: already initialized constant Message::NUMBER_OF_PERMITTED_ATTACHMENTS
+/var/www/chatwoot/app/models/message.rb:46: warning: previous definition of NUMBER_OF_PERMITTED_ATTACHMENTS was here
+app/models/message.rb:48: warning: already initialized constant Message::TEMPLATE_PARAMS_SCHEMA
+/var/www/chatwoot/app/models/message.rb:48: warning: previous definition of TEMPLATE_PARAMS_SCHEMA was here
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/enum.rb:385:in `raise_conflict_error': You tried to define an enum named "message_type" on the model "Message", but this will generate a instance method "incoming?", which is already defined by another enum. (ArgumentError)
+irb(main):122:0> agent = Saturn::AgentProfile.find(1)
+=> 
+#<Saturn::AgentProfile:0x00007341cede70a0
+...
+irb(main):123:0> msg = Message.where(message_type: :incoming).last
+=> 
+#<Message:0x00007341d1eb80d0
+...
+irb(main):124:0> conv = msg.conversation
+=> 
+#<Conversation:0x00007341d2783980
+...
+irb(main):125:0> sender = conv.assignee || conv.inbox.members.first || conv.inbox.account.u
+sers.where(account_users: { role: :administrator }).first
+=> #<SuperAdmin id: 1, provider: "email", uid: "harunketenc@gmail.com", name: "Harun",...
+irb(main):126:1* new_msg = Message.create!(
+irb(main):127:1*   account_id: conv.account_id,
+irb(main):128:1*   inbox_id: conv.inbox_id,
+irb(main):129:1*   conversation_id: conv.id,
+irb(main):130:1*   message_type: :outgoing,
+irb(main):131:1*   content: "ŞİMDİ ÇALIŞMALI! Saturn test #2",
+irb(main):132:1*   sender: sender,
+irb(main):133:1*   private: false,
+irb(main):134:2*   content_attributes: {
+irb(main):135:2*     saturn_agent_id: agent.id.to_s,
+irb(main):136:2*     saturn_agent_name: agent.name,
+irb(main):137:2*     automated_response: true
+irb(main):138:1*   }
+irb(main):139:0> )
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/enum.rb:206:in `assert_valid_value': 'outgoing' is not a valid message_type (ArgumentError)
+
+          raise ArgumentError, "'#{value}' is not a valid #{name}"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+irb(main):140:0> puts "\n✨ ACCESSOR SONRASI TEST:"
+
+✨ ACCESSOR SONRASI TEST:
+=> nil
+irb(main):141:0> puts "  Mesaj ID: #{new_msg.id}"
+  Mesaj ID: 60
+=> nil
+irb(main):142:0> puts "  Sender: #{new_msg.sender.name} (#{new_msg.sender.class})"
+  Sender: Harun (SuperAdmin)
+=> nil
+irb(main):143:0> puts "  Saturn Agent ID: #{new_msg.content_attributes['saturn_agent_id']}"
+
+  Saturn Agent ID: 1
+=> nil
+irb(main):144:0> puts "  Saturn Agent Name: #{new_msg.content_attributes['saturn_agent_name
+']}"
+irb(main):145:0> puts "  Automated: #{new_msg.content_attributes['automated_response']}"
+  Saturn Agent Name: Ayşe
+  Automated: true
+=> nil
+irb(main):146:0> 
