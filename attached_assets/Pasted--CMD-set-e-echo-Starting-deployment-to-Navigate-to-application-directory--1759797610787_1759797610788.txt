@@ -1,0 +1,162 @@
+======CMD======
+set -e
+echo "🚀 Starting deployment to ***..."
+
+# Navigate to application directory
+cd /var/www/chatwoot
+
+# Pull latest code from GitHub
+echo "📥 Pulling latest code from GitHub main branch..."
+git fetch origin main
+git reset --hard origin/main
+
+# Load Ruby environment (rbenv) and set correct version
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+rbenv install 3.2.2 --skip-existing
+rbenv local 3.2.2
+
+# Load environment variables from .env.production
+# (Already configured on server - no need to pass secrets)
+source /var/www/chatwoot/.env.production || true
+
+# Install Ruby dependencies
+echo "📦 Installing Ruby gems (bundle install)..."
+bundle install --deployment --without development test
+
+# Install Node dependencies
+echo "📦 Installing Node packages (pnpm install)..."
+pnpm install --frozen-lockfile
+
+# Precompile assets for production
+echo "🎨 Precompiling Vite and Rails assets..."
+RAILS_ENV=production BUILD_MODE=library bin/vite build
+RAILS_ENV=production bin/vite build
+RAILS_ENV=production bundle exec rails assets:precompile
+
+# Run database migrations
+echo "🗄️ Running database migrations..."
+RAILS_ENV=production bundle exec rails db:migrate
+
+# Restart Chatwoot services
+echo "🔄 Restarting Chatwoot web and worker services..."
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# Wait for services to start
+sleep 3
+
+# Check service status
+echo "✅ Checking service status..."
+sudo systemctl status chatwoot-web --no-pager || true
+sudo systemctl status chatwoot-worker --no-pager || true
+
+echo "✅ Deployment completed successfully!"
+echo "🌐 Application is now live at https://***"
+
+======END======
+out: 🚀 Starting deployment to ***...
+out: 📥 Pulling latest code from GitHub main branch...
+err: From github-aisaturncwrepl:hketai/aisaturncwrepl
+err:  * branch                main       -> FETCH_HEAD
+err:    278f50f22..9852e9ab5  main       -> origin/main
+out: HEAD is now at 9852e9ab5 Trigger deployment for Turkish templates
+out: 📦 Installing Ruby gems (bundle install)...
+err: [DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+err: [DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+err: Don't run Bundler as ***. Installing your bundle as *** will break this
+err: application for all non-*** users on this machine.
+out: Bundle complete! 140 Gemfile dependencies, 277 gems now installed.
+out: Gems in the groups 'development' and 'test' were not installed.
+out: Bundled gems are installed into `./vendor/bundle`
+out: 1 installed gem you directly depend on is looking for funding.
+out:   Run `bundle fund` for details
+out: 📦 Installing Node packages (pnpm install)...
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 1s
+out: 🎨 Precompiling Vite and Rails assets...
+out: I, [2025-10-07T00:26:40.451918 #101173]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:40.451979 #101173]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:42.560505 #101173]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Skipping vite build. Watched files have not changed since the last build at 2025-10-07 00:04:38
+out: I, [2025-10-07T00:26:45.404935 #101192]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:45.405002 #101192]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:47.732854 #101192]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Skipping vite build. Watched files have not changed since the last build at 2025-10-07 00:04:38
+out: I, [2025-10-07T00:26:51.235797 #101210]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:51.235894 #101210]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:51.486185 #101210]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 1s
+out: -------------- Bulding SDK for Production --------------
+out: > @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+out: > BUILD_MODE=library vite build
+err: The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+out: vite v5.4.20 building for production...
+out: transforming...
+err: Browserslist: caniuse-lite is outdated. Please run:
+err:   npx update-browserslist-db@latest
+err:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+out: ✓ 33 modules transformed.
+err: (!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+out: rendering chunks...
+out: computing gzip size...
+out: public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+out: ✓ built in 859ms
+out: -------------- Bulding App for Production --------------
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 993ms
+out: Skipping vite build. Watched files have not changed since the last build at 2025-10-07 00:04:38
+out: 🗄️ Running database migrations...
+out: I, [2025-10-07T00:26:59.313827 #101327]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:59.313920 #101327]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-07T00:26:59.559189 #101327]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Loading Installation config
+out: 🔄 Restarting Chatwoot web and worker services...
+out: ✅ Checking service status...
+out: ● chatwoot-web.service - Chatwoot web server
+out:      Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+out:      Active: active (running) since Tue 2025-10-07 00:27:00 UTC; 5s ago
+out:  Invocation: c76e6cc0b45b4c4f951efc7f8a6eada3
+out:    Main PID: 101349 (ruby)
+out:       Tasks: 2 (limit: 19140)
+out:      Memory: 259.7M (peak: 259.7M)
+out:         CPU: 5.161s
+out:      CGroup: /system.slice/chatwoot-web.service
+out:              └─101349 /***/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+out: Oct 07 00:27:00 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+out: Oct 07 00:27:02 aisaturn-repl-prod bundle[101349]: => Booting Puma
+out: Oct 07 00:27:02 aisaturn-repl-prod bundle[101349]: => Rails 7.1.5.2 application starting in production
+out: Oct 07 00:27:02 aisaturn-repl-prod bundle[101349]: => Run `bin/rails server --help` for more startup options
+out: Oct 07 00:27:03 aisaturn-repl-prod bundle[101349]: I, [2025-10-07T00:27:03.053221 #101349]  INFO -- : [dotenv] Loaded .env.production
+out: Oct 07 00:27:03 aisaturn-repl-prod bundle[101349]: I, [2025-10-07T00:27:03.053277 #101349]  INFO -- : [dotenv] Loaded .env.production
+out: ● chatwoot-worker.service - Chatwoot worker
+out:      Loaded: loaded (/etc/systemd/system/chatwoot-worker.service; enabled; preset: enabled)
+out:      Active: active (running) since Tue 2025-10-07 00:27:02 UTC; 3s ago
+out:  Invocation: 4c865581323e4ceeb197d62a4a6b9c31
+out:    Main PID: 101370 (bundle)
+out:       Tasks: 2 (limit: 19140)
+out:      Memory: 151.6M (peak: 151.6M)
+out:         CPU: 3.032s
+out:      CGroup: /system.slice/chatwoot-worker.service
+out:              └─101370 "/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/sidekiq -C config/sidekiq.yml"
+out: Oct 07 00:27:02 aisaturn-repl-prod systemd[1]: Started chatwoot-worker.service - Chatwoot worker.
+out: Oct 07 00:27:05 aisaturn-repl-prod bundle[101370]: I, [2025-10-07T00:27:05.391940 #101370]  INFO -- : [dotenv] Loaded .env.production
+out: Oct 07 00:27:05 aisaturn-repl-prod bundle[101370]: I, [2025-10-07T00:27:05.392023 #101370]  INFO -- : [dotenv] Loaded .env.production
+out: ✅ Deployment completed successfully!
+out: 🌐 Application is now live at https://***
+==============================================
+✅ Successfully executed commands to all host.
+==============================================

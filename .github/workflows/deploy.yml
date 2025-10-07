@@ -50,10 +50,16 @@ jobs:
             echo "📦 Installing Node packages (pnpm install)..."
             pnpm install --frozen-lockfile
             
+            # Clean Vite cache to force fresh build
+            echo "🧹 Cleaning Vite cache..."
+            rm -rf tmp/vite-cache
+            rm -rf public/vite-dev
+            rm -rf public/packs/.vite
+            
             # Precompile assets for production
             echo "🎨 Precompiling Vite and Rails assets..."
-            RAILS_ENV=production BUILD_MODE=library bin/vite build
-            RAILS_ENV=production bin/vite build
+            RAILS_ENV=production BUILD_MODE=library bin/vite build --force
+            RAILS_ENV=production bin/vite build --force
             RAILS_ENV=production bundle exec rails assets:precompile
             
             # Run database migrations
