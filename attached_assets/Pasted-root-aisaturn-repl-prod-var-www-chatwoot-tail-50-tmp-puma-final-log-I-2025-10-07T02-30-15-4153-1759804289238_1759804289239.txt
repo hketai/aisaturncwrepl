@@ -1,0 +1,71 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /tmp/puma_final.log
+I, [2025-10-07T02:30:15.415342 #106634]  INFO -- : [1ccb69e6-e0b0-4328-a8af-8ad02a033568] Started GET "/.env.debug" for 3.107.106.123 at 2025-10-07 02:30:15 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:15.417656 #106634] FATAL -- : [1ccb69e6-e0b0-4328-a8af-8ad02a033568]   
+[1ccb69e6-e0b0-4328-a8af-8ad02a033568] ActionController::RoutingError (No route matches [GET] "/.env.debug"):
+[1ccb69e6-e0b0-4328-a8af-8ad02a033568]   
+I, [2025-10-07T02:30:15.958246 #106634]  INFO -- : [00467dbc-9a55-4c4c-adde-4cb42db889c5] Started GET "//assets/.env" for 3.107.106.123 at 2025-10-07 02:30:15 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:15.960743 #106634] FATAL -- : [00467dbc-9a55-4c4c-adde-4cb42db889c5]   
+[00467dbc-9a55-4c4c-adde-4cb42db889c5] ActionController::RoutingError (No route matches [GET] "/assets/.env"):
+[00467dbc-9a55-4c4c-adde-4cb42db889c5]   
+I, [2025-10-07T02:30:16.501980 #106634]  INFO -- : [bf3594c0-24e8-4f3b-90a8-b4890ac81af5] Started GET "//upload/.env" for 3.107.106.123 at 2025-10-07 02:30:16 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:16.505014 #106634] FATAL -- : [bf3594c0-24e8-4f3b-90a8-b4890ac81af5]   
+[bf3594c0-24e8-4f3b-90a8-b4890ac81af5] ActionController::RoutingError (No route matches [GET] "/upload/.env"):
+[bf3594c0-24e8-4f3b-90a8-b4890ac81af5]   
+I, [2025-10-07T02:30:17.045415 #106634]  INFO -- : [5cc70b90-377c-4b97-9c14-111afa7e2241] Started GET "/.env.docker" for 3.107.106.123 at 2025-10-07 02:30:17 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:17.048161 #106634] FATAL -- : [5cc70b90-377c-4b97-9c14-111afa7e2241]   
+[5cc70b90-377c-4b97-9c14-111afa7e2241] ActionController::RoutingError (No route matches [GET] "/.env.docker"):
+[5cc70b90-377c-4b97-9c14-111afa7e2241]   
+I, [2025-10-07T02:30:17.314633 #106634]  INFO -- : [c7fc4c0a-48a0-4014-9287-a4c2e0fc0789] Started GET "/cable" for 81.215.232.40 at 2025-10-07 02:30:17 +0000
+I, [2025-10-07T02:30:17.320256 #106634]  INFO -- : [c7fc4c0a-48a0-4014-9287-a4c2e0fc0789] Started GET "/cable" [WebSocket] for 81.215.232.40 at 2025-10-07 02:30:17 +0000
+I, [2025-10-07T02:30:17.320333 #106634]  INFO -- : [c7fc4c0a-48a0-4014-9287-a4c2e0fc0789] Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+I, [2025-10-07T02:30:17.447656 #106634]  INFO -- : RoomChannel is streaming from b4bdtqdXdVS69f524ymTZWRg
+I, [2025-10-07T02:30:17.472037 #106634]  INFO -- : [ca5ed460-bda7-4415-8e11-e7dae7e19d28] Started GET "/cable" for 81.215.232.40 at 2025-10-07 02:30:17 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+I, [2025-10-07T02:30:17.474534 #106634]  INFO -- : [ca5ed460-bda7-4415-8e11-e7dae7e19d28] Started GET "/cable" [WebSocket] for 81.215.232.40 at 2025-10-07 02:30:17 +0000
+I, [2025-10-07T02:30:17.474613 #106634]  INFO -- : [ca5ed460-bda7-4415-8e11-e7dae7e19d28] Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+I, [2025-10-07T02:30:17.560581 #106634]  INFO -- : RoomChannel is streaming from fczMguXy3vk2hCE5g9CunVNd
+I, [2025-10-07T02:30:17.560756 #106634]  INFO -- : RoomChannel is streaming from account_1
+I, [2025-10-07T02:30:17.588900 #106634]  INFO -- : [e3143297-2d58-433b-91ff-194e7cb24bdf] Started GET "//lib/.env" for 3.107.106.123 at 2025-10-07 02:30:17 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:17.592108 #106634] FATAL -- : [e3143297-2d58-433b-91ff-194e7cb24bdf]   
+[e3143297-2d58-433b-91ff-194e7cb24bdf] ActionController::RoutingError (No route matches [GET] "/lib/.env"):
+[e3143297-2d58-433b-91ff-194e7cb24bdf]   
+I, [2025-10-07T02:30:18.133025 #106634]  INFO -- : [f5d516c5-933d-4ff0-b094-7f7ed79b4925] Started GET "//api/.env" for 3.107.106.123 at 2025-10-07 02:30:18 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:18.135962 #106634] FATAL -- : [f5d516c5-933d-4ff0-b094-7f7ed79b4925]   
+[f5d516c5-933d-4ff0-b094-7f7ed79b4925] ActionController::RoutingError (No route matches [GET] "/api/.env"):
+[f5d516c5-933d-4ff0-b094-7f7ed79b4925]   
+I, [2025-10-07T02:30:18.676345 #106634]  INFO -- : [220eecef-7566-4e9d-b617-5ac635e855ab] Started GET "//.env.sqlite" for 3.107.106.123 at 2025-10-07 02:30:18 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:18.679239 #106634] FATAL -- : [220eecef-7566-4e9d-b617-5ac635e855ab]   
+[220eecef-7566-4e9d-b617-5ac635e855ab] ActionController::RoutingError (No route matches [GET] "/.env.sqlite"):
+[220eecef-7566-4e9d-b617-5ac635e855ab]   
+I, [2025-10-07T02:30:19.220415 #106634]  INFO -- : [c158ec35-4473-4a04-904c-c84aefbc01bf] Started GET "//vendor/.env" for 3.107.106.123 at 2025-10-07 02:30:19 +0000
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+F, [2025-10-07T02:30:19.222628 #106634] FATAL -- : [c158ec35-4473-4a04-904c-c84aefbc01bf]   
+[c158ec35-4473-4a04-904c-c84aefbc01bf] ActionController::RoutingError (No route matches [GET] "/vendor/.env"):
+[c158ec35-4473-4a04-904c-c84aefbc01bf]   
+root@aisaturn-repl-prod:/var/www/chatwoot# sleep 5
+curl -I http://localhost:3000/cable
+HTTP/1.1 301 Moved Permanently
+content-type: text/html; charset=utf-8
+location: https://localhost:3000/cable
+Content-Length: 0
+
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -I https://app.aisaturn.co/cable
+HTTP/1.1 404 Not Found
+Server: nginx/1.26.3 (Ubuntu)
+Date: Tue, 07 Oct 2025 02:31:08 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+cache-control: no-cache
+x-request-id: 2a7993c8-4c0e-4ad0-8efb-9b92f0316d11
+x-runtime: 0.003955
+strict-transport-security: max-age=63072000; includeSubDomains
+
+root@aisaturn-repl-prod:/var/www/chatwoot# 
