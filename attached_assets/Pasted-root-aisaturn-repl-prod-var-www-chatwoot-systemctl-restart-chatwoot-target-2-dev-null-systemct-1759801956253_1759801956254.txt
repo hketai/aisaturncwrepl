@@ -1,0 +1,46 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# systemctl restart chatwoot.target 2>/dev/null || systemctl restart chatwoot-web chatwoot-worker 2>/dev/null
+root@aisaturn-repl-prod:/var/www/chatwoot# pm2 restart all 2>/dev/null
+root@aisaturn-repl-prod:/var/www/chatwoot# pkill -f puma
+cd /var/www/chatwoot && RAILS_ENV=production bundle exec puma -C config/puma.rb -d
+bundler: failed to load command: puma (/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:45:in `initialize': ambiguous option: -d (OptionParser::AmbiguousOption)
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `new'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:45:in `initialize': invalid option: d (OptionParser::InvalidOption)
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `new'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# 
