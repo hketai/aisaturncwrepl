@@ -1,0 +1,28 @@
+current directory: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/datadog-2.19.0/ext/libdatadog_api
+/root/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for whether -std=gnu99 is accepted as CFLAGS... yes
+checking for whether -Wno-declaration-after-statement is accepted as CFLAGS... yes
+checking for whether -Werror-implicit-function-declaration is accepted as CFLAGS... yes
+checking for whether -Wunused-parameter is accepted as CFLAGS... no
+checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
+checking for whether -Wold-style-definition is accepted as CFLAGS... yes
+checking for whether -Wall is accepted as CFLAGS... yes
+checking for whether -Wextra is accepted as CFLAGS... yes
+Using libdatadog 18.1.0.1.0 from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/libdatadog-18.1.0.1.0-x86_64-linux/vendor/libdatadog-18.1.0/x86_64-linux/libdatadog-x86_64-unknown-linux-gnu/lib/pkgconfig
+WARN: Skipping build of libdatadog_api (the `pkg-config` system tool is missing). Some functionality will not be available.
+
+current directory: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/datadog-2.19.0/ext/libdatadog_api
+make DESTDIR\= sitearchdir\=./.gem.20251006-78577-sxwfax sitelibdir\=./.gem.20251006-78577-sxwfax clean
+make: Nothing to be done for 'clean'.
+
+current directory: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/datadog-2.19.0/ext/libdatadog_api
+make DESTDIR\= sitearchdir\=./.gem.20251006-78577-sxwfax sitelibdir\=./.gem.20251006-78577-sxwfax
+make: Nothing to be done for 'all'.
+
+current directory: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/datadog-2.19.0/ext/libdatadog_api
+make DESTDIR\= sitearchdir\=./.gem.20251006-78577-sxwfax sitelibdir\=./.gem.20251006-78577-sxwfax install
+make: Nothing to be done for 'install'.
+
+current directory: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/datadog-2.19.0/ext/libdatadog_api
+make DESTDIR\= sitearchdir\=./.gem.20251006-78577-sxwfax sitelibdir\=./.gem.20251006-78577-sxwfax clean
+make: Nothing to be done for 'clean'.
