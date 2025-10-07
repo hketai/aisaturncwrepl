@@ -33,6 +33,39 @@ Use the super admin console to manage the platform, view system information, and
 
 Users can create accounts through the signup flow or via super admin console.
 
+## Recent Changes (October 7, 2025)
+
+### AISATURN Branding Implementation
+**Status:** ✅ **COMPLETE - Full White-Label Branding**
+
+All Chatwoot branding has been replaced with AISATURN branding across the platform:
+
+**Configuration Updates:**
+- `installation_config.yml` updated with AISATURN values:
+  - INSTALLATION_NAME: 'AISATURN'
+  - LOGO: '/brand-assets/new_logo.png' (renkli logo)
+  - LOGO_DARK: '/brand-assets/new_logo_dark.png' (beyaz logo)
+  - LOGO_THUMBNAIL: '/aisaturn_favicon.png'
+  - BRAND_NAME: 'AISATURN'
+  - BRAND_URL: 'https://merchant.aisaturn.co'
+  - WIDGET_BRAND_URL: 'https://merchant.aisaturn.co'
+
+**Assets:**
+- Logo files downloaded from merchant.aisaturn.co
+- Favicon updated across all sizes (16x16, 32x32, 96x96, 512x512)
+- All assets verified accessible via HTTP 200 OK
+
+**UI Updates:**
+- Super Admin Console: Logo and text updated to AISATURN
+- Login page: "Login to AISATURN" heading
+- Database InstallationConfig records synced
+
+**Location:**
+- Config: `config/installation_config.yml`
+- Logos: `public/brand-assets/new_logo.png`, `new_logo_dark.png`
+- Favicon: `public/aisaturn_favicon.png`
+- Super Admin: `app/views/super_admin/application/_navigation.html.erb`
+
 ## Recent Changes (October 6, 2025)
 
 ### Saturn AI - MIT-Licensed Auto-Response System
