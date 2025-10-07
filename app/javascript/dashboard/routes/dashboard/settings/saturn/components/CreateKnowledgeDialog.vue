@@ -74,7 +74,6 @@ const handleSubmit = async () => {
       useAlert('Knowledge source updated successfully');
       emit('updated', response.data);
       handleClose();
-      dialogRef.value?.close();
     } else {
       const optimisticKnowledge = {
         id: `temp-${Date.now()}`,
@@ -96,7 +95,6 @@ const handleSubmit = async () => {
       useAlert('Knowledge source added successfully');
       emit('updated', response.data);
       handleClose();
-      dialogRef.value?.close();
     }
   } catch (error) {
     const errorMsg = error.response?.data?.error || 'Operation failed';
@@ -108,6 +106,11 @@ const handleSubmit = async () => {
 };
 
 const handleClose = () => {
+  resetForm();
+  dialogRef.value?.close();
+};
+
+const handleDialogClose = () => {
   resetForm();
   emit('close');
 };
@@ -123,7 +126,7 @@ defineExpose({ dialogRef });
     description="Add information that your AI agent can use to answer customer questions"
     :show-cancel-button="false"
     :show-confirm-button="false"
-    @close="handleClose"
+    @close="handleDialogClose"
   >
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
@@ -173,7 +176,7 @@ defineExpose({ dialogRef });
       <div class="flex gap-3 pt-4">
         <button
           type="button"
-          @click="dialogRef.close()"
+          @click="handleClose"
           class="flex-1 px-4 py-2 border border-n-weak rounded-lg hover:bg-n-solid-2"
         >
           Cancel
