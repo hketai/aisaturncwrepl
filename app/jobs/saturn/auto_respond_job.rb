@@ -95,7 +95,7 @@ module Saturn
       conversation = original_message.conversation
       inbox = conversation.inbox
       
-      # Find a sender: prefer assigned agent, fallback to first inbox member, then bot user
+      # Find a sender: prefer assigned agent, fallback to first inbox member, then admin
       sender = conversation.assignee || 
                inbox.members.first || 
                inbox.account.users.where(account_users: { role: :administrator }).first
@@ -105,21 +105,24 @@ module Saturn
         return
       end
       
-      # Create outgoing message from agent
-      Messages::MessageBuilder.new(
-        sender,
-        conversation,
-        {
-          message_type: :outgoing,
-          content: response_content,
-          private: false,
-          content_attributes: {
-            saturn_agent_id: agent_profile.id.to_s,
-            saturn_agent_name: agent_profile.name,
-            automated_response: true
-          }
+      # Create message directly (MessageBuilder strips content_attributes)
+      message = Message.create!(
+        account_id: conversation.account_id,
+        inbox_id: conversation.inbox_id,
+        conversation_id: conversation.id,
+        message_type: :outgoing,
+        content: response_content,
+        sender: sender,
+        private: false,
+        content_attributes: {
+          saturn_agent_id: agent_profile.id.to_s,
+          saturn_agent_name: agent_profile.name,
+          automated_response: true
         }
-      ).perform
+      )
+      
+      Rails.logger.info("Saturn: Created auto-response message #{message.id} for conversation #{conversation.id}")
+      message
     end
   end
 end

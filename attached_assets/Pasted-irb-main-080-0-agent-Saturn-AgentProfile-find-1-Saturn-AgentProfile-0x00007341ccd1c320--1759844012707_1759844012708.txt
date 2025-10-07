@@ -1,0 +1,51 @@
+irb(main):080:0> agent = Saturn::AgentProfile.find(1)
+=> 
+#<Saturn::AgentProfile:0x00007341ccd1c320
+...
+irb(main):081:0> msg = Message.find(56)
+=> 
+#<Message:0x00007341ccd59888
+...
+irb(main):082:0> conv = msg.conversation
+irb(main):083:0> inbox = conv.inbox
+=> 
+#<Inbox:0x00007341cce93708
+...
+irb(main):084:0> sender = conv.assignee || inbox.members.first || inbox.account.users.where
+(account_users: { role: :administrator }).first
+irb(main):085:0> puts "Sender: #{sender.name} (#{sender.class})"
+Sender: Harun (SuperAdmin)
+=> nil
+irb(main):086:1* new_msg = Message.create!(
+irb(main):087:1*   account_id: conv.account_id,
+irb(main):088:1*   inbox_id: conv.inbox_id,
+irb(main):089:1*   conversation_id: conv.id,
+irb(main):090:1*   message_type: :outgoing,
+irb(main):091:1*   content: "SATURN TEST: Direkt oluşturuldu!",
+irb(main):092:1*   sender: sender,
+irb(main):093:1*   private: false,
+irb(main):094:2*   content_attributes: {
+irb(main):095:2*     saturn_agent_id: agent.id.to_s,
+irb(main):096:2*     saturn_agent_name: agent.name,
+irb(main):097:2*     automated_response: true
+irb(main):098:1*   }
+irb(main):099:0> )
+I, [2025-10-07T13:33:13.422177 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: ba01d0cc-65d1-4f66-baa5-e92bb69d600b) to Sidekiq(critical) with arguments: ["fczMguXy3vk2hCE5g9CunVNd", "en7C2BdcpPBbiqLZpHs3Bpeu"], "message.created", {:id=>60, :content=>"SATURN TEST: Direkt oluşturuldu!", :account_id=>1, :inbox_id=>1, :conversation_id=>3, :message_type=>1, :created_at=>1759843993, :updated_at=>Tue, 07 Oct 2025 13:33:13.401885293 UTC +00:00, :private=>false, :status=>"sent", :source_id=>nil, :content_type=>"text", :content_attributes=>{"saturn_agent_id"=>"1", "saturn_agent_name"=>"Ayşe", "automated_response"=>true}, :sender_type=>"User", :sender_id=>1, :external_source_ids=>{}, :additional_attributes=>{}, :processed_message_content=>"SATURN TEST: Direkt oluşturuldu!", :sentiment=>{}, :conversation=>{:assignee_id=>1, :unread_count=>0, :last_activity_at=>1759843993, :contact_inbox=>{:source_id=>"7e71a265-1d2d-4f1a-a15e-2f53e267741f"}}, :sender=>{:id=>1, :name=>"Harun", :available_name=>"Harun", :avatar_url=>"", :type=>"user", :availability_status=>nil, :thumbnail=>""}}
+I, [2025-10-07T13:33:13.423987 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 04c8f614-6528-4289-bf53-80b5e9fe2505) to Sidekiq(critical) with arguments: "message.created", Tue, 07 Oct 2025 13:33:13.411367056 UTC +00:00, {:message=>#<GlobalID:0x00007341cf0f3dc0 @uri=#<URI::GID gid://chatwoot/Message/60>>, :performed_by=>nil}
+I, [2025-10-07T13:33:13.425447 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: c326c2e4-c431-4032-a26c-fe6af651e5ce) to Sidekiq(critical) with arguments: "reply.created", Tue, 07 Oct 2025 13:33:13.424294658 UTC +00:00, {:waiting_since=>Tue, 07 Oct 2025 03:27:23.618601000 UTC +00:00, :message=>#<GlobalID:0x00007341cf10fa98 @uri=#<URI::GID gid://chatwoot/Message/60>>}
+I, [2025-10-07T13:33:13.471082 #119393]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: ead1f04b-1aaf-4ffa-a80d-b738e4e12e83) to Sidekiq(critical) with arguments: ["fczMguXy3vk2hCE5g9CunVNd", "en7C2BdcpPBbiqLZpHs3Bpeu"], "conversation.updated", {:additional_attributes=>{"browser"=>{"device_name"=>"Unknown", "browser_name"=>"Safari", "platform_name"=>"macOS", "browser_version"=>"18.0", "platform_version"=>"10.15.7"}, "referer"=>"https://www.kadriyebasturk.com/pages/chat-test", "initiated_at"=>{"timestamp"=>"Tue Oct 07 2025 05:46:35 GMT+0300 (GMT+03:00)"}, "browser_language"=>"tr"}, :can_reply=>true, :channel=>"Channel::WebWidget", :contact_inbox=>#<GlobalID:0x00007341cf04d088 @uri=#<URI::GID gid://chatwoot/ContactInbox/3>>, :id=>3, :inbox_id=>1, :messages=>[{:id=>60, :content=>"SATURN TEST: Direkt oluşturuldu!", :account_id=>1, :inbox_id=>1, :conversation_id=>3, :message_type=>1, :created_at=>1759843993, :updated_at=>Tue, 07 Oct 2025 13:33:13.401885000 UTC +00:00, :private=>false, :status=>"sent", :source_id=>nil, :content_type=>"text", :content_attributes=>{"saturn_agent_id"=>"1", "saturn_agent_name"=>"Ayşe", "automated_response"=>true}, :sender_type=>"User", :sender_id=>1, :external_source_ids=>{}, :additional_attributes=>{}, :processed_message_content=>"SATURN TEST: Direkt oluşturuldu!", :sentiment=>{}, :conversation=>{:assignee_id=>1, :unread_count=>0, :last_activity_at=>1759843993, :contact_inbox=>{:source_id=>"7e71a265-1d2d-4f1a-a15e-2f53e267741f"}}, :sender=>{:id=>1, :name=>"Harun", :available_name=>"Harun", :avatar_url=>"", :type=>"user", :availability_status=>nil, :thumbnail=>""}}], :labels=>[], :meta=>{:sender=>{:additional_attributes=>{"created_at_ip"=>"81.215.232.40", "avatar_url_hash"=>"5c5733b6508b9282c37bf31d3d44676362b66eec8a72ba5a7b3857a9e7f78639", "last_avatar_sync_at"=>"2025-10-07T02:47:13Z"}, :custom_attributes=>{}, :email=>"sada@asda.com", :id=>3, :identifier=>nil, :name=>"sada", :phone_number=>nil, :thumbnail=>"", :blocked=>false, :type=>"contact"}, :assignee=>{:id=>1, :name=>"Harun", :available_name=>"Harun", :avatar_url=>"", :type=>"user", :availability_status=>nil, :thumbnail=>""}, :team=>nil, :hmac_verified=>false}, :status=>"open", :custom_attributes=>{}, :snoozed_until=>nil, :unread_count=>0, :first_reply_created_at=>Tue, 07 Oct 2025 02:47:08.034892000 UTC +00:00, :priority=>nil, :waiting_since=>0, :agent_last_seen_at=>1759843905, :contact_last_seen_at=>1759843439, :last_activity_at=>1759843993, :timestamp=>1759843993, :created_at=>1759805196, :updated_at=>1759843993.4383252, :account_id=>1}
+I, [2025-10-07T13:33:13.472678 #119393]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 08fb1dc0-c684-4fd7-af93-b393ec87a868) to Sidekiq(critical) with arguments: "conversation.updated", Tue, 07 Oct 2025 13:33:13.445921645 UTC +00:00, {:conversation=>#<GlobalID:0x00007341cf0414e0 @uri=#<URI::GID gid://chatwoot/Conversation/3>>, :notifiable_assignee_change=>false, :changed_attributes=>{"updated_at"=>[Tue, 07 Oct 2025 13:33:13.405469276 UTC +00:00, Tue, 07 Oct 2025 13:33:13.438325207 UTC +00:00], "waiting_since"=>[Tue, 07 Oct 2025 03:27:23.618601000 UTC +00:00, nil]}, :performed_by=>nil}
+I, [2025-10-07T13:33:13.473527 #119393]  INFO -- : [ActiveJob] Enqueued SendReplyJob (Job ID: 01bd810c-4001-407c-bc18-f01223dcf681) to Sidekiq(high) with arguments: 60
+=> 
+#<Message:0x00007341d1f52090
+...
+irb(main):100:0> puts "\n✅ Yeni mesaj #{new_msg.id}:"
+
+✅ Yeni mesaj 60:
+=> nil
+irb(main):101:0> puts "  Sender: #{new_msg.sender.name} (#{new_msg.sender.class})"
+irb(main):102:0> puts "  Content Attributes: #{new_msg.content_attributes.inspect}"
+  Sender: Harun (SuperAdmin)
+  Content Attributes: {"saturn_agent_id"=>"1", "saturn_agent_name"=>"Ayşe", "automated_response"=>true}
+=> nil
+irb(main):103:0> 
