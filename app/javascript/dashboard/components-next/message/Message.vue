@@ -177,6 +177,11 @@ const variant = computed(() => {
 });
 
 const isBotOrAgentMessage = computed(() => {
+  // Saturn AI messages should be on the right side
+  if (props.contentAttributes?.saturn_agent_id) {
+    return true;
+  }
+
   if (props.messageType === MESSAGE_TYPES.ACTIVITY) {
     return false;
   }
@@ -416,11 +421,12 @@ function handleReplyTo() {
 }
 
 const avatarInfo = computed(() => {
-  // If Saturn AI message, use agent name
+  // If Saturn AI message, use agent name with sparkles icon
   if (props.contentAttributes?.saturn_agent_name) {
     return {
       name: props.contentAttributes.saturn_agent_name,
-      src: props.sender?.avatarUrl || props.sender?.thumbnail || '',
+      src: '✨', // Saturn AI sparkles icon
+      isSaturnAI: true,
     };
   }
 
@@ -516,7 +522,16 @@ provideMessageContext({
         v-tooltip.left-end="avatarTooltip"
         class="[grid-area:avatar] flex items-end"
       >
-        <Avatar v-bind="avatarInfo" :size="24" />
+        <!-- Saturn AI Avatar -->
+        <div
+          v-if="avatarInfo.isSaturnAI"
+          class="flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0"
+          :style="{ width: '24px', height: '24px', fontSize: '14px' }"
+        >
+          ✨
+        </div>
+        <!-- Regular Avatar -->
+        <Avatar v-else v-bind="avatarInfo" :size="24" />
       </div>
       <div
         class="[grid-area:bubble] flex"
