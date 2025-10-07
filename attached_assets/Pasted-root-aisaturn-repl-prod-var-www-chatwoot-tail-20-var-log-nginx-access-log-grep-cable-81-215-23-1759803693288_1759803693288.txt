@@ -1,0 +1,83 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -20 /var/log/nginx/access.log | grep cable
+81.215.232.40 - - [07/Oct/2025:02:19:59 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:01 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:06 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:08 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:10 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:13 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:17 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:19 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:23 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:24 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:34 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+81.215.232.40 - - [07/Oct/2025:02:20:35 +0000] "GET /cable HTTP/1.1" 301 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /var/log/nginx/error.log
+2025/10/07 01:46:17 [error] 75103#75103: *5944 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 01:52:17 [error] 75103#75103: *6190 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 01:52:17 [error] 75103#75103: *6192 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 01:55:40 [error] 75103#75103: *6457 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 02:08:17 [error] 75103#75103: *6583 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 02:08:17 [error] 75103#75103: *6585 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 02:10:17 [error] 75103#75103: *6592 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+2025/10/07 02:10:17 [error] 75103#75103: *6594 connect() failed (111: Connection refused) while connecting to upstream, client: 81.215.232.40, server: app.aisaturn.co, request: "GET /cable HTTP/1.1", upstream: "http://127.0.0.1:3000/cable", host: "app.aisaturn.co"
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -100 /var/www/chatwoot/log/production.log 2>/dev/null || echo "No production.log"
+No production.log
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /tmp/puma.log
+Puma starting in single mode...
+* Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: production
+*          PID: 106147
+I, [2025-10-07T02:10:26.684364 #106147]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:10:26.684435 #106147]  INFO -- : [dotenv] Loaded .env.production
+bundler: failed to load command: puma (/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `initialize': Address already in use - bind(2) for "0.0.0.0" port 3000 (Errno::EADDRINUSE)
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `new'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:334:in `add_tcp_listener'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:163:in `block in parse'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:146:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/binder.rb:146:in `parse'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/runner.rb:168:in `load_and_bind'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/single.rb:44:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/launcher.rb:194:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:75:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:10:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+	from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+I, [2025-10-07T02:10:29.218293 #106147]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+root@aisaturn-repl-prod:/var/www/chatwoot# curl -i -N \
+  -H "Connection: Upgrade" \
+  -H "Upgrade: websocket" \
+  -H "Sec-WebSocket-Version: 13" \
+  -H "Sec-WebSocket-Key: test" \
+  https://app.aisaturn.co/cable
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.26.3 (Ubuntu)
+Date: Tue, 07 Oct 2025 02:21:03 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+location: https://app.aisaturn.co/cable
+
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "puts Rails.configuration.action_cable.disable_request_forgery_protection"
+I, [2025-10-07T02:21:13.596024 #106330]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:21:13.596120 #106330]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T02:21:15.816579 #106330]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+true
+root@aisaturn-repl-prod:/var/www/chatwoot# 
