@@ -65,6 +65,7 @@ const handleSubmit = async () => {
       useAlert('Knowledge source updated successfully');
       emit('updated', response.data);
       dialogRef.value.close();
+      handleClose();
     } else {
       const optimisticKnowledge = {
         id: `temp-${Date.now()}`,
@@ -79,13 +80,14 @@ const handleSubmit = async () => {
       };
       
       emit('created', optimisticKnowledge);
-      dialogRef.value.close();
       
       const response = await SaturnKnowledgeAPI.createForAgent(props.agentId, {
         knowledge_source: form.value,
       });
       useAlert('Knowledge source added successfully');
       emit('updated', response.data);
+      dialogRef.value.close();
+      handleClose();
     }
   } catch (error) {
     const errorMsg = error.response?.data?.error || 'Operation failed';
