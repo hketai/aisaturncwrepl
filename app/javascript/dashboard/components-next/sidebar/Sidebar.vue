@@ -521,16 +521,16 @@ const menuItems = computed(() => {
       closeMobileSidebar,
       { ignore: ['#mobile-sidebar-launcher'] },
     ]"
-    class="bg-n-solid-2 rtl:border-l ltr:border-r border-n-weak flex flex-col text-sm pb-1 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-transform duration-200 ease-in-out md:static w-[200px] basis-[200px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0"
+    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 border-r border-slate-200/60 dark:border-slate-800/60 flex flex-col text-sm pb-3 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-all duration-300 ease-out md:static w-[240px] basis-[240px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0 shadow-xl md:shadow-none"
     :class="[
       {
-        'shadow-lg md:shadow-none': isMobileSidebarOpen,
+        'shadow-2xl md:shadow-none': isMobileSidebarOpen,
         'ltr:-translate-x-full rtl:translate-x-full': !isMobileSidebarOpen,
       },
     ]"
   >
-    <section class="grid gap-2 mt-2 mb-4">
-      <div class="flex items-center min-w-0 gap-2 px-2 py-1">
+    <section class="grid gap-3 mt-4 mb-6 px-4">
+      <div class="flex items-center min-w-0 gap-3 py-2">
         <template v-if="globalConfig.logo || globalConfig.logoDark">
           <img 
             v-if="globalConfig.logo"
@@ -548,8 +548,8 @@ const menuItems = computed(() => {
         <Logo v-else class="size-6" />
       </div>
     </section>
-    <nav class="grid flex-grow gap-2 px-2 pb-5 overflow-y-scroll no-scrollbar">
-      <ul class="flex flex-col gap-1.5 m-0 list-none">
+    <nav class="grid flex-grow gap-3 px-3 pb-6 overflow-y-scroll no-scrollbar">
+      <ul class="flex flex-col gap-2 m-0 list-none">
         <SidebarGroup
           v-for="item in menuItems"
           :key="item.name"
@@ -558,7 +558,7 @@ const menuItems = computed(() => {
       </ul>
     </nav>
     <section
-      class="p-1 border-t border-n-weak shadow-[0px_-2px_4px_0px_rgba(27,28,29,0.02)] flex-shrink-0 flex justify-between gap-2 items-center"
+      class="px-3 py-2 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm flex-shrink-0 flex justify-between gap-2 items-center"
     >
       <SidebarProfileMenu
         @open-key-shortcut-modal="emit('openKeyShortcutModal')"
