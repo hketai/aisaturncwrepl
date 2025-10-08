@@ -11,10 +11,29 @@ Chatwoot is an open-source, multi-channel customer support platform built with R
 ## System Architecture
 
 ### UI/UX Decisions
-The platform features a distinct visual design with a custom sidebar and navigation to differentiate it from its Chatwoot origins.
-- **Branding:** Replaced all Chatwoot branding with "AISATURN" logos and text across the platform, including the super admin console, login page, and dashboard.
-- **Sidebar Redesign:** Increased width to 240px, implemented a gradient background, shifted to an indigo accent color palette, tightened typography (13px semibold), and increased spacing.
-- **Component Styling:** Custom active states with left indigo accent bars, rounded-md borders, and smooth opacity transitions. Phosphor icons are used instead of Lucide.
+The platform features a completely redesigned visual identity distinct from Chatwoot, with a cohesive indigo/slate design system across all components.
+
+**Complete Design Overhaul (October 8, 2025):**
+- **Color Scheme:** Transitioned from blue (#2781F6) to indigo (#4F46E5) brand color across the entire platform
+- **Palette:** Replaced all blue tones with indigo variants, implemented slate borders and backgrounds throughout
+- **Theme Colors:** Updated CSS variables in `_next-colors.scss` with indigo-focused palette for light/dark modes
+
+**Component Design System:**
+- **Buttons:** rounded-md corners, shadow-sm base, lift effect on hover/focus (-translate-y-0.5 + shadow-md), consistent across all color variants (blue/ruby/amber/slate/teal)
+- **Inputs:** rounded-md, white/slate backgrounds, shadow-sm, smooth 200ms transitions
+- **Cards:** rounded-xl borders, shadow-md elevation, slate-200/800 outlines
+- **Dialogs:** rounded-2xl, shadow-2xl, slate borders, slate-900/50 backdrop blur
+- **Headers:** slate borders, white/slate backgrounds, increased height (h-14)
+
+**Sidebar Redesign:**
+- **Layout:** 240px width with gradient backgrounds (slate-50→white / slate-900→slate-950)
+- **Accent System:** Left indigo accent bars on active items, indigo-50/900 backgrounds
+- **Typography:** 13px semibold fonts, increased spacing (gap-3)
+- **Icons:** Phosphor icon set replacing Lucide throughout
+
+**Branding:**
+- Replaced all Chatwoot branding with "AISATURN" logos and text
+- Custom favicon and logo assets throughout platform
 
 ### Technical Implementations
 - **Backend:** Ruby on Rails 7.1.5.2, PostgreSQL 16, Sidekiq for background jobs, ActionCable for real-time features, RESTful API with token authentication, Puma web server.
