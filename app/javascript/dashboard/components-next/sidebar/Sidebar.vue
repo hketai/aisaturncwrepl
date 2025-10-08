@@ -536,12 +536,20 @@ const menuItems = computed(() => {
   >
     <section class="grid gap-2 mt-2 mb-4">
       <div class="flex items-center min-w-0 gap-2 px-2 py-1">
-        <img 
-          v-if="globalConfig.logo"
-          :src="globalConfig.logo" 
-          alt="AISATURN" 
-          class="h-6 w-auto"
-        />
+        <template v-if="globalConfig.logo || globalConfig.logoDark">
+          <img 
+            v-if="globalConfig.logo"
+            :src="globalConfig.logo" 
+            alt="AISATURN" 
+            :class="globalConfig.logoDark ? 'h-6 w-auto dark:hidden' : 'h-6 w-auto'"
+          />
+          <img 
+            v-if="globalConfig.logoDark"
+            :src="globalConfig.logoDark" 
+            alt="AISATURN" 
+            :class="globalConfig.logo ? 'h-6 w-auto hidden dark:block' : 'h-6 w-auto'"
+          />
+        </template>
         <Logo v-else class="size-6" />
       </div>
       <div class="flex gap-2 px-2">
