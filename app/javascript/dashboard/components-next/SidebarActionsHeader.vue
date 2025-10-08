@@ -20,7 +20,7 @@ const handleButtonClick = button => {
 
 <template>
   <div
-    class="flex items-center justify-between px-4 py-2 border-b border-n-weak h-12"
+    class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800 h-14 bg-white dark:bg-n-solid-2"
   >
     <div class="flex items-center justify-between gap-2 flex-1">
       <span class="font-medium text-sm text-n-slate-12">{{ title }}</span>

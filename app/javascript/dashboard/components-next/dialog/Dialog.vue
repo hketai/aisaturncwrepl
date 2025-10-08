@@ -94,7 +94,7 @@ defineExpose({ open, close });
   <TeleportWithDirection to="body">
     <dialog
       ref="dialogRef"
-      class="w-full transition-all duration-300 ease-in-out shadow-xl rounded-xl"
+      class="w-full transition-all duration-300 ease-in-out shadow-2xl rounded-2xl border border-slate-200 dark:border-slate-800"
       :class="[
         maxWidthClass,
         overflowYAuto ? 'overflow-y-auto' : 'overflow-visible',
@@ -104,7 +104,7 @@ defineExpose({ open, close });
     >
       <form
         ref="dialogContentRef"
-        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-n-alpha-3 backdrop-blur-[100px] shadow-xl rounded-xl"
+        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-white dark:bg-n-solid-2 backdrop-blur-xl shadow-2xl rounded-2xl"
         @submit.prevent="confirm"
       >
           <div v-if="title || description" class="flex flex-col gap-2">
@@ -151,6 +151,6 @@ defineExpose({ open, close });
 
 <style scoped>
 dialog::backdrop {
-  @apply bg-n-alpha-black1 backdrop-blur-[4px];
+  @apply bg-slate-900/50 dark:bg-slate-950/70 backdrop-blur-sm;
 }
 </style>
