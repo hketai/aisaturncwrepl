@@ -12,6 +12,12 @@ class AddAisaturnBranding < ActiveRecord::Migration[7.1]
       config.locked = false
     end
 
+    # Set AISATURN logo thumbnail (for small icons/favicons)
+    InstallationConfig.find_or_create_by(name: 'LOGO_THUMBNAIL') do |config|
+      config.value = '/brand-assets/new_logo.png'
+      config.locked = false
+    end
+
     # Set brand name
     InstallationConfig.find_or_create_by(name: 'BRAND_NAME') do |config|
       config.value = 'AISATURN'
@@ -25,6 +31,7 @@ class AddAisaturnBranding < ActiveRecord::Migration[7.1]
   def down
     InstallationConfig.find_by(name: 'LOGO')&.destroy
     InstallationConfig.find_by(name: 'LOGO_DARK')&.destroy
+    InstallationConfig.find_by(name: 'LOGO_THUMBNAIL')&.destroy
     InstallationConfig.find_by(name: 'BRAND_NAME')&.destroy
     GlobalConfig.clear_cache if defined?(GlobalConfig)
   end
