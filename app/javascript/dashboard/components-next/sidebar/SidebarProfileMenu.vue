@@ -135,7 +135,7 @@ const allowedMenuItems = computed(() => {
       </button>
     </template>
     <DropdownBody 
-      :class="props.topNav ? 'top-12 z-50 mt-2 w-80 ltr:right-0 rtl:left-0' : 'bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0'"
+      :class="props.topNav ? 'top-full z-[9999] mt-2 w-80 right-0' : 'bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0'"
     >
       <SidebarProfileMenuStatus />
       <DropdownSeparator />
