@@ -18,6 +18,12 @@ module Saturn
       account = Account.find_by(id: account_id)
       return unless account
       
+      # Check AI conversation limit
+      if account.ai_conversation_limit.present? && account.ai_conversation_count >= account.ai_conversation_limit
+        Rails.logger.warn("Saturn: Account #{account_id} has reached AI conversation limit (#{account.ai_conversation_limit}), skipping auto-response")
+        return
+      end
+      
       # Get OpenAI API key from account
       api_key = account.openai_api_key
       if api_key.blank?
@@ -122,7 +128,23 @@ module Saturn
       )
       
       Rails.logger.info("Saturn: Created auto-response message #{message.id} for conversation #{conversation.id}")
+      
+      # Increment AI conversation counter
+      increment_ai_conversation_count(conversation.account)
+      
       message
+    end
+    
+    def increment_ai_conversation_count(account)
+      # Reset counter if it's a new month
+      if account.ai_limit_reset_at.nil? || account.ai_limit_reset_at < Time.current.beginning_of_month
+        account.update!(
+          ai_conversation_count: 1,
+          ai_limit_reset_at: Time.current
+        )
+      else
+        account.increment!(:ai_conversation_count)
+      end
     end
   end
 end
