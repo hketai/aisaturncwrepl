@@ -302,18 +302,13 @@ const menuItems = computed(() => {
 });
 </script>
 
-<style scoped>
-.topnav-profile-menu :deep(> div > div.absolute) {
-  position: static !important;
-}
-
-.topnav-profile-menu :deep(ul.n-dropdown-body) {
-  position: fixed !important;
-  top: 3.5rem !important;
-  right: 1rem !important;
-  left: auto !important;
+<style>
+/* TopNavbar profil menüsü için dropdown pozisyonunu düzelt */
+.topnav-profile-menu .n-dropdown-body {
   bottom: auto !important;
-  z-index: 9999 !important;
+  top: 100% !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
 }
 </style>
 
