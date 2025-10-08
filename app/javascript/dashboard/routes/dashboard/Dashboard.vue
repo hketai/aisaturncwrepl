@@ -5,6 +5,7 @@ import TopNavbar from 'dashboard/components-next/topbar/TopNavbar.vue';
 import WootKeyShortcutModal from 'dashboard/components/widgets/modal/WootKeyShortcutModal.vue';
 import AddAccountModal from 'dashboard/components/app/AddAccountModal.vue';
 import UpgradePage from 'dashboard/routes/dashboard/upgrade/UpgradePage.vue';
+import AiLimitBanner from 'dashboard/components/app/AiLimitBanner.vue';
 
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useAccount } from 'dashboard/composables/useAccount';
@@ -28,6 +29,7 @@ export default {
     UpgradePage,
     CopilotLauncher,
     CopilotContainer,
+    AiLimitBanner,
   },
   setup() {
     const upgradePageRef = ref(null);
@@ -118,6 +120,8 @@ export default {
       @close-key-shortcut-modal="closeKeyShortcutModal"
       @show-create-account-modal="openCreateAccountModal"
     />
+    
+    <AiLimitBanner />
 
     <main class="flex flex-1 h-full w-full min-h-0 px-0 overflow-hidden">
       <UpgradePage

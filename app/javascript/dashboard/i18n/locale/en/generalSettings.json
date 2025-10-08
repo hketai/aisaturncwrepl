@@ -1,4 +1,8 @@
 {
+  "AI_LIMIT": {
+    "REACHED": "AI conversation limit reached ({limit} conversations). AI auto-responses are disabled until next month.",
+    "WARNING": "AI usage: {count}/{limit} conversations ({percentage}%). Nearing monthly limit."
+  },
   "GENERAL_SETTINGS": {
     "LIMIT_MESSAGES": {
       "CONVERSATION": "You have exceeded the conversation limit. Hacker plan allows only 500 conversations.",
