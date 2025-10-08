@@ -46,7 +46,7 @@ const menuItems = computed(() => {
       show: showChatSupport.value,
       showOnCustomBrandedInstance: false,
       label: t('SIDEBAR_ITEMS.CONTACT_SUPPORT'),
-      icon: 'i-lucide-life-buoy',
+      icon: 'i-ph-lifebuoy-thin',
       click: () => {
         window.$chatwoot.toggle();
       },
@@ -55,7 +55,7 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.KEYBOARD_SHORTCUTS'),
-      icon: 'i-lucide-keyboard',
+      icon: 'i-ph-keyboard-thin',
       click: () => {
         emit('openKeyShortcutModal');
       },
@@ -64,14 +64,14 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.PROFILE_SETTINGS'),
-      icon: 'i-lucide-user-pen',
+      icon: 'i-ph-user-thin',
       link: { name: 'profile_settings_index' },
     },
     {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.APPEARANCE'),
-      icon: 'i-lucide-palette',
+      icon: 'i-ph-palette-thin',
       click: () => {
         const ninja = document.querySelector('ninja-keys');
         ninja.open({ parent: 'appearance_settings' });
@@ -81,7 +81,7 @@ const menuItems = computed(() => {
       show: currentUser.value.type === 'SuperAdmin',
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.SUPER_ADMIN_CONSOLE'),
-      icon: 'i-lucide-castle',
+      icon: 'i-ph-castle-turret-thin',
       link: '/super_admin',
       nativeLink: true,
       target: '_blank',
@@ -90,7 +90,7 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.LOGOUT'),
-      icon: 'i-lucide-power',
+      icon: 'i-ph-power-thin',
       click: Auth.logout,
     },
   ];

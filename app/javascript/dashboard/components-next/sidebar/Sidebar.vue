@@ -121,7 +121,7 @@ const menuItems = computed(() => {
     {
       name: 'Inbox',
       label: t('SIDEBAR.INBOX'),
-      icon: 'i-lucide-inbox',
+      icon: 'i-ph-tray-thin',
       to: accountScopedRoute('inbox_view'),
       activeOn: ['inbox_view', 'inbox_view_conversation'],
       getterKeys: {
@@ -131,7 +131,7 @@ const menuItems = computed(() => {
     {
       name: 'Conversation',
       label: t('SIDEBAR.CONVERSATIONS'),
-      icon: 'i-lucide-message-circle',
+      icon: 'i-ph-chat-circle-thin',
       children: [
         {
           name: 'All',
@@ -154,7 +154,7 @@ const menuItems = computed(() => {
         {
           name: 'Folders',
           label: t('SIDEBAR.CUSTOM_VIEWS_FOLDER'),
-          icon: 'i-lucide-folder',
+          icon: 'i-ph-folder-thin',
           activeOn: ['conversations_through_folders'],
           children: conversationCustomViews.value.map(view => ({
             name: `${view.name}-${view.id}`,
@@ -165,7 +165,7 @@ const menuItems = computed(() => {
         {
           name: 'Teams',
           label: t('SIDEBAR.TEAMS'),
-          icon: 'i-lucide-users',
+          icon: 'i-ph-users-three-thin',
           activeOn: ['conversations_through_team'],
           children: teams.value.map(team => ({
             name: `${team.name}-${team.id}`,
@@ -176,7 +176,7 @@ const menuItems = computed(() => {
         {
           name: 'Channels',
           label: t('SIDEBAR.CHANNELS'),
-          icon: 'i-lucide-mailbox',
+          icon: 'i-ph-envelope-thin',
           activeOn: ['conversation_through_inbox'],
           children: sortedInboxes.value.map(inbox => ({
             name: `${inbox.name}-${inbox.id}`,
@@ -193,7 +193,7 @@ const menuItems = computed(() => {
         {
           name: 'Labels',
           label: t('SIDEBAR.LABELS'),
-          icon: 'i-lucide-tag',
+          icon: 'i-ph-tag-thin',
           activeOn: ['conversations_through_label'],
           children: labels.value.map(label => ({
             name: `${label.title}-${label.id}`,
@@ -234,13 +234,13 @@ const menuItems = computed(() => {
     {
       name: 'Saturn',
       label: t('SIDEBAR.SATURN'),
-      icon: 'i-lucide-sparkles',
+      icon: 'i-ph-sparkle-thin',
       to: accountScopedRoute('saturn_agents_index'),
     },
     {
       name: 'Contacts',
       label: t('SIDEBAR.CONTACTS'),
-      icon: 'i-lucide-contact',
+      icon: 'i-ph-user-circle-thin',
       children: [
         {
           name: 'All Contacts',
@@ -260,7 +260,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Segments',
-          icon: 'i-lucide-group',
+          icon: 'i-ph-user-list-thin',
           label: t('SIDEBAR.CUSTOM_VIEWS_SEGMENTS'),
           children: contactCustomViews.value.map(view => ({
             name: `${view.name}-${view.id}`,
@@ -278,7 +278,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Tagged With',
-          icon: 'i-lucide-tag',
+          icon: 'i-ph-tag-thin',
           label: t('SIDEBAR.TAGGED_WITH'),
           children: labels.value.map(label => ({
             name: `${label.title}-${label.id}`,
@@ -303,7 +303,7 @@ const menuItems = computed(() => {
     {
       name: 'Reports',
       label: t('SIDEBAR.REPORTS'),
-      icon: 'i-lucide-chart-spline',
+      icon: 'i-ph-chart-line-thin',
       children: [
         {
           name: 'Report Overview',
@@ -336,7 +336,7 @@ const menuItems = computed(() => {
     {
       name: 'Campaigns',
       label: t('SIDEBAR.CAMPAIGNS'),
-      icon: 'i-lucide-megaphone',
+      icon: 'i-ph-megaphone-simple-thin',
       children: [
         {
           name: 'Live chat',
@@ -358,7 +358,7 @@ const menuItems = computed(() => {
     {
       name: 'Portals',
       label: t('SIDEBAR.HELP_CENTER.TITLE'),
-      icon: 'i-lucide-library-big',
+      icon: 'i-ph-books-thin',
       children: [
         {
           name: 'Articles',
@@ -405,108 +405,108 @@ const menuItems = computed(() => {
     {
       name: 'Settings',
       label: t('SIDEBAR.SETTINGS'),
-      icon: 'i-lucide-bolt',
+      icon: 'i-ph-lightning-thin',
       children: [
         {
           name: 'Settings Account Settings',
           label: t('SIDEBAR.ACCOUNT_SETTINGS'),
-          icon: 'i-lucide-briefcase',
+          icon: 'i-ph-briefcase-thin',
           to: accountScopedRoute('general_settings_index'),
         },
         {
           name: 'Settings Agents',
           label: t('SIDEBAR.AGENTS'),
-          icon: 'i-lucide-square-user',
+          icon: 'i-ph-user-square-thin',
           to: accountScopedRoute('agent_list'),
         },
         {
           name: 'Settings Teams',
           label: t('SIDEBAR.TEAMS'),
-          icon: 'i-lucide-users',
+          icon: 'i-ph-users-three-thin',
           to: accountScopedRoute('settings_teams_list'),
         },
         {
           name: 'Settings Agent Assignment',
           label: t('SIDEBAR.AGENT_ASSIGNMENT'),
-          icon: 'i-lucide-user-cog',
+          icon: 'i-ph-user-gear-thin',
           to: accountScopedRoute('assignment_policy_index'),
         },
         {
           name: 'Settings Inboxes',
           label: t('SIDEBAR.INBOXES'),
-          icon: 'i-lucide-inbox',
+          icon: 'i-ph-tray-thin',
           to: accountScopedRoute('settings_inbox_list'),
         },
         {
           name: 'Settings Labels',
           label: t('SIDEBAR.LABELS'),
-          icon: 'i-lucide-tags',
+          icon: 'i-ph-tag-thin',
           to: accountScopedRoute('labels_list'),
         },
         {
           name: 'Settings Custom Attributes',
           label: t('SIDEBAR.CUSTOM_ATTRIBUTES'),
-          icon: 'i-lucide-code',
+          icon: 'i-ph-code-thin',
           to: accountScopedRoute('attributes_list'),
         },
         {
           name: 'Settings Automation',
           label: t('SIDEBAR.AUTOMATION'),
-          icon: 'i-lucide-workflow',
+          icon: 'i-ph-flow-arrow-thin',
           to: accountScopedRoute('automation_list'),
         },
         {
           name: 'Settings Agent Bots',
           label: t('SIDEBAR.AGENT_BOTS'),
-          icon: 'i-lucide-bot',
+          icon: 'i-ph-robot-thin',
           to: accountScopedRoute('agent_bots'),
         },
         {
           name: 'Settings Macros',
           label: t('SIDEBAR.MACROS'),
-          icon: 'i-lucide-toy-brick',
+          icon: 'i-ph-cube-thin',
           to: accountScopedRoute('macros_wrapper'),
         },
         {
           name: 'Settings Canned Responses',
           label: t('SIDEBAR.CANNED_RESPONSES'),
-          icon: 'i-lucide-message-square-quote',
+          icon: 'i-ph-quotes-thin',
           to: accountScopedRoute('canned_list'),
         },
         {
           name: 'Settings Integrations',
           label: t('SIDEBAR.INTEGRATIONS'),
-          icon: 'i-lucide-blocks',
+          icon: 'i-ph-package-thin',
           to: accountScopedRoute('settings_applications'),
         },
         {
           name: 'Settings Audit Logs',
           label: t('SIDEBAR.AUDIT_LOGS'),
-          icon: 'i-lucide-briefcase',
+          icon: 'i-ph-list-bullets-thin',
           to: accountScopedRoute('auditlogs_list'),
         },
         {
           name: 'Settings Custom Roles',
           label: t('SIDEBAR.CUSTOM_ROLES'),
-          icon: 'i-lucide-shield-plus',
+          icon: 'i-ph-shield-plus-thin',
           to: accountScopedRoute('custom_roles_list'),
         },
         {
           name: 'Settings Sla',
           label: t('SIDEBAR.SLA'),
-          icon: 'i-lucide-clock-alert',
+          icon: 'i-ph-clock-thin',
           to: accountScopedRoute('sla_list'),
         },
         {
           name: 'Settings Security',
           label: t('SIDEBAR.SECURITY'),
-          icon: 'i-lucide-shield',
+          icon: 'i-ph-shield-thin',
           to: accountScopedRoute('security_settings_index'),
         },
         {
           name: 'Settings Billing',
           label: t('SIDEBAR.BILLING'),
-          icon: 'i-lucide-credit-card',
+          icon: 'i-ph-credit-card-thin',
           to: accountScopedRoute('billing_settings_index'),
         },
       ],
