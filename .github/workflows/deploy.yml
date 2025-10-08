@@ -50,14 +50,17 @@ jobs:
             echo "📦 Installing Node packages (pnpm install)..."
             pnpm install --frozen-lockfile
             
-            # Clean Vite cache to force fresh build
-            echo "🧹 Cleaning Vite cache..."
+            # Clean ALL caches to force fresh build
+            echo "🧹 Cleaning all caches..."
             rm -rf tmp/vite-cache
-            rm -rf public/vite-dev
-            rm -rf public/packs/.vite
+            rm -rf tmp/cache
+            rm -rf public/vite*
+            rm -rf public/packs
+            rm -rf public/assets
             
-            # Precompile assets for production
+            # Precompile assets for production (with complete clean)
             echo "🎨 Precompiling Vite and Rails assets..."
+            RAILS_ENV=production bundle exec rails assets:clobber || true
             RAILS_ENV=production BUILD_MODE=library bin/vite build --force
             RAILS_ENV=production bin/vite build --force
             RAILS_ENV=production bundle exec rails assets:precompile
