@@ -151,6 +151,11 @@ defineExpose({ open, close });
 
 <style scoped>
 dialog::backdrop {
-  @apply bg-slate-900/50 dark:bg-slate-950/70 backdrop-blur-sm;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.dark dialog::backdrop {
+  background-color: rgba(2, 6, 23, 0.7);
 }
 </style>

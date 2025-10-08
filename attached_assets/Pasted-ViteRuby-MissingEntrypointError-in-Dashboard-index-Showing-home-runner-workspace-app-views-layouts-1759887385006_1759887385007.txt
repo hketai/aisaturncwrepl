@@ -1,0 +1,603 @@
+ViteRuby::MissingEntrypointError in Dashboard#index
+Showing /home/runner/workspace/app/views/layouts/vueapp.html.erb where line #72 raised:
+
+Vite Ruby can't find entrypoints/dashboard.js in the manifests.
+
+Possible causes:
+  - The last build failed. Try running `bin/vite build --clear --mode=development` manually and check for errors.
+
+Errors:
+  [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+  Browserslist: caniuse-lite is outdated. Please run:
+    npx update-browserslist-db@latest
+    Why you should do it regularly: https://github.com/browserslist/update-db#readme
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+  More info: https://sass-lang.com/d/legacy-js-api
+
+  Browserslist: caniuse-lite is outdated. Please run:
+    npx update-browserslist-db@latest
+    Why you should do it regularly: https://github.com/browserslist/update-db#readme
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  [1m[33m[@vue/compiler-sfc][0m[33m ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.[0m
+
+  x Build failed in 22.22s
+  error during build:
+  [vite:css] [postcss] /home/runner/workspace/app/javascript/dashboard/components-next/dialog/Dialog.vue?vue&type=style&index=0&scoped=746e1c89&lang.css:3:3: The `dark:bg-slate-950/70` class does not exist. If `dark:bg-slate-950/70` is a custom class, make sure it is defined within a `@layer` directive.
+  file: /home/runner/workspace/app/javascript/dashboard/components-next/dialog/Dialog.vue?vue&type=style&index=0&scoped=746e1c89&lang.css:3:2
+      at Input.error (/home/runner/workspace/node_modules/.pnpm/postcss@8.5.6/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/home/runner/workspace/node_modules/.pnpm/postcss@8.5.6/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/home/runner/workspace/node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /home/runner/workspace/node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /home/runner/workspace/node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/home/runner/workspace/node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/home/runner/workspace/node_modules/.pnpm/postcss@8.5.6/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///home/runner/workspace/node_modules/.pnpm/vite@5.4.20_@types+node@22.7.0_sass@1.79.3_terser@5.33.0/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36898:21)
+      at async Object.transform (file:///home/runner/workspace/node_modules/.pnpm/vite@5.4.20_@types+node@22.7.0_sass@1.79.3_terser@5.33.0/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36171:11)
+      at async transform (file:///home/runner/workspace/node_modules/.pnpm/rollup@4.50.1/node_modules/rollup/dist/es/shared/node-entry.js:21113:16)
+
+
+Visit the Troubleshooting guide for more information:
+  https://vite-ruby.netlify.app/guide/troubleshooting.html#troubleshooting
+
+
+
+
+Extracted source (around line #72):
+70
+71
+72
+73
+74
+75
+              
+    <% end %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag @application_pack %>
+  </head>
+  <body class="text-slate-600">
+    <div id="app"></div>
+
+Rails.root: /home/runner/workspace
+
+Application Trace | Framework Trace | Full Trace
+app/views/layouts/vueapp.html.erb:72
+app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+app/controllers/concerns/switch_locale.rb:19:in `switch_locale'
+Request
+Parameters:
+
+{"params"=>"accounts/1/settings/saturn-agents"}
+Toggle session dump
+Toggle env dump
+Response
+Headers:
+
+None
