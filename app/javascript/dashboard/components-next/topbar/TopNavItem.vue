@@ -37,6 +37,7 @@ const props = defineProps({
 
 const route = useRoute();
 const showDropdown = ref(false);
+const buttonRef = ref(null);
 
 const count = computed(() => {
   if (props.getterKeys?.count) {
@@ -57,6 +58,15 @@ const isActive = computed(() => {
   return false;
 });
 
+const dropdownPosition = computed(() => {
+  if (!buttonRef.value) return { top: 0, left: 0 };
+  const rect = buttonRef.value.getBoundingClientRect();
+  return {
+    top: rect.bottom + 4,
+    left: rect.left,
+  };
+});
+
 const emit = defineEmits(['itemClick']);
 
 const toggleDropdown = () => {
@@ -74,7 +84,7 @@ const closeDropdown = () => {
 </script>
 
 <template>
-  <div class="relative" v-on-click-outside="closeDropdown">
+  <div class="relative" v-on-click-outside="closeDropdown" ref="buttonRef">
     <component
       :is="to && !children.length ? 'router-link' : 'button'"
       :to="to && !children.length ? to : undefined"
@@ -84,7 +94,7 @@ const closeDropdown = () => {
           ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400'
           : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800',
       ]"
-      @click="toggleDropdown"
+      @click.stop="toggleDropdown"
     >
       <span v-if="icon" :class="[icon, 'text-lg']" />
       <span>{{ label }}</span>
@@ -103,20 +113,27 @@ const closeDropdown = () => {
       />
     </component>
 
-    <div
-      v-if="children && children.length > 0 && showDropdown"
-      class="absolute top-full left-0 mt-1 min-w-[200px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg z-50 py-1 max-h-96 overflow-y-auto"
-    >
-      <router-link
-        v-for="child in children"
-        :key="child.name"
-        :to="child.to"
-        class="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-        @click="closeDropdown"
+    <Teleport to="body">
+      <div
+        v-if="children && children.length > 0 && showDropdown"
+        :style="{
+          position: 'fixed',
+          top: dropdownPosition.top + 'px',
+          left: dropdownPosition.left + 'px',
+        }"
+        class="min-w-[200px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl z-[9999] py-1 max-h-96 overflow-y-auto"
       >
-        <span v-if="child.icon" :class="child.icon" />
-        <span>{{ child.label }}</span>
-      </router-link>
-    </div>
+        <router-link
+          v-for="child in children"
+          :key="child.name"
+          :to="child.to"
+          class="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+          @click="closeDropdown"
+        >
+          <span v-if="child.icon" :class="child.icon" />
+          <span>{{ child.label }}</span>
+        </router-link>
+      </div>
+    </Teleport>
   </div>
 </template>

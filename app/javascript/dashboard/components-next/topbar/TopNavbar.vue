@@ -322,7 +322,7 @@ const menuItems = computed(() => {
       <Logo v-else class="size-6" />
     </div>
 
-    <nav class="hidden md:flex items-center justify-center gap-1 flex-1 overflow-x-auto no-scrollbar">
+    <nav class="hidden md:flex items-center justify-center gap-1 flex-1 overflow-x-auto overflow-y-visible no-scrollbar">
       <TopNavItem
         v-for="item in menuItems"
         :key="item.name"
