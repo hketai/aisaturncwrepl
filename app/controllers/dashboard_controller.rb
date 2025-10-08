@@ -52,7 +52,7 @@ class DashboardController < ActionController::Base
     domain = request.host
     return if domain == URI.parse(ENV.fetch('FRONTEND_URL', '')).host
 
-    @portal = Portal.find_by(custom_domain: domain)
+    @portal ||= Portal.find_by(custom_domain: domain)
     return unless @portal
 
     @locale = @portal.default_locale
