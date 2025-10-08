@@ -395,14 +395,35 @@ defineExpose({ dialogRef });
         placeholder="e.g., SaaS product support, E-commerce store"
       />
       
-      <div class="flex items-center gap-2">
-        <input
-          v-model="form.active"
-          type="checkbox"
-          id="agent-active"
-          class="rounded"
-        />
-        <label for="agent-active" class="text-sm">{{ $t('SATURN.AGENTS.ACTIVATE_IMMEDIATELY') }}</label>
+      <div class="flex items-center justify-between p-3 rounded-lg bg-n-solid-2">
+        <div class="flex flex-col gap-1">
+          <label class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.STATUS_LABEL') }}</label>
+          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.STATUS_DESCRIPTION') }}</p>
+        </div>
+        <button
+          type="button"
+          :class="[
+            'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
+            form.active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+          ]"
+          :aria-pressed="form.active"
+          :aria-label="form.active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
+          @click="form.active = !form.active"
+        >
+          <span
+            :class="[
+              'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+              form.active ? 'translate-x-5' : 'translate-x-0'
+            ]"
+          />
+        </button>
+      </div>
+      
+      <div v-if="form.active" class="text-sm text-n-slate-11 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-3">
+        <p class="flex items-start gap-2">
+          <span class="i-ph-info-bold text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0"></span>
+          <span>{{ $t('SATURN.AGENTS.ACTIVE_INFO') }}</span>
+        </p>
       </div>
 
       <div class="flex gap-3 pt-4">

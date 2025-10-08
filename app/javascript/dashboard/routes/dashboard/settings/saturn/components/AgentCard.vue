@@ -22,6 +22,10 @@ const props = defineProps({
     type: [String, Number],
     required: true,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const emit = defineEmits(['action']);
@@ -41,11 +45,33 @@ const handleAction = (action) => {
 <template>
   <CardLayout>
     <div class="flex flex-col gap-3 w-full">
-      <div class="flex justify-between w-full gap-2">
+      <div class="flex justify-between w-full gap-3">
         <div class="flex-1 min-w-0">
-          <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium mb-1">
-            {{ name }}
-          </h3>
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium">
+              {{ name }}
+            </h3>
+            <button
+              type="button"
+              :class="[
+                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
+                active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+              ]"
+              :aria-pressed="active"
+              :aria-label="active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
+              @click.stop="handleAction('toggleActive')"
+            >
+              <span
+                :class="[
+                  'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                  active ? 'translate-x-4' : 'translate-x-0'
+                ]"
+              />
+            </button>
+            <span class="text-xs font-medium" :class="active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'">
+              {{ active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE') }}
+            </span>
+          </div>
           <p class="text-sm text-n-slate-11 line-clamp-2">
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
