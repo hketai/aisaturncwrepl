@@ -7,37 +7,45 @@ Chatwoot is an open-source, multi-channel customer support platform built with R
 - Running in development mode for easier debugging and iteration
 - Using Replit's managed PostgreSQL (Neon) for database
 - Single-process Puma configuration (suitable for development)
+- Minimal color palette with high contrast for accessibility
+- Clean, professional design with #3072ff primary blue
 
 ## System Architecture
 
 ### UI/UX Decisions
-The platform features a completely redesigned visual identity distinct from Chatwoot, with a cohesive indigo/slate design system across all components.
+The platform features a completely redesigned visual identity distinct from Chatwoot, with a minimal and professional design system.
 
-**Complete Design Overhaul (October 8, 2025):**
-- **Color Scheme:** Transitioned from blue (#2781F6) to indigo (#4F46E5) brand color across the entire platform
-- **Palette:** Replaced all blue tones with indigo variants, implemented slate borders and backgrounds throughout
-- **Theme Colors:** Updated CSS variables in `_next-colors.scss` with indigo-focused palette for light/dark modes
+**Simplified Design System (October 8, 2025):**
+- **Primary Color:** #3072ff blue for all interactive elements (buttons, links, accents)
+- **Color Palette:** Minimalist approach - only blue (#3072ff) and neutral grays, no multi-color scheme
+- **Contrast:** Enhanced text contrast for better readability in light mode (slate-11/slate-12 for text)
+- **Backgrounds:** Clean white/slate with subtle gradients for depth
+- **Status Colors:** Minimal set - success (green), warning (amber), error (red) only when necessary
 
 **Component Design System:**
-- **Buttons:** rounded-md corners, shadow-sm base, lift effect on hover/focus (-translate-y-0.5 + shadow-md), consistent across all color variants (blue/ruby/amber/slate/teal)
-- **Inputs:** rounded-md, white/slate backgrounds, shadow-sm, smooth 200ms transitions
-- **Cards:** rounded-xl borders, shadow-md elevation, slate-200/800 outlines
-- **Dialogs:** rounded-2xl, shadow-2xl, slate borders, slate-900/50 backdrop blur
-- **Headers:** slate borders, white/slate backgrounds, increased height (h-14)
+- **Buttons:** #3072ff blue, semibold text, smooth transitions, shadow-sm elevation
+- **Active States:** Blue backgrounds with proper contrast ratios
+- **Hover Effects:** Subtle slate-2/slate-3 backgrounds with smooth 200ms transitions
+- **Accent Bars:** 1px wide blue indicators on active sidebar items
+- **Typography:** Semibold fonts (13-14px) for better hierarchy
 
-**Sidebar Redesign:**
-- **Layout:** 240px width with gradient backgrounds (slate-50→white / slate-900→slate-950)
-- **Accent System:** Left indigo accent bars on active items, indigo-50/900 backgrounds
-- **Typography:** 13px semibold fonts, increased spacing (gap-3)
-- **Icons:** Phosphor icon set replacing Lucide throughout
+**Navigation:**
+- **Top Navbar:** Horizontal navigation with blue active states
+- **Sidebar:** Minimal design with blue accent system
+- **Menu Structure:** Simplified - removed Inbox View, Campaigns (Live Chat/SMS), Help Center/Portals, and Integrations
 
 **Branding:**
 - Replaced all Chatwoot branding with "AISATURN" logos and text
 - Custom favicon and logo assets throughout platform
+- Consistent AISATURN naming across development and production
 
 ### Technical Implementations
 - **Backend:** Ruby on Rails 7.1.5.2, PostgreSQL 16, Sidekiq for background jobs, ActionCable for real-time features, RESTful API with token authentication, Puma web server.
-- **Frontend:** Vue 3 with Composition API, Vite 5.4.20 for asset building, Vuex for state management, Vue Router, and Tailwind CSS for styling. Vite compiles assets on-demand for Rails views.
+- **Frontend:** Vue 3 with Composition API, Vite 5.4.20 for asset building (pre-built on startup to avoid conflicts), Vuex for state management, Vue Router, and Tailwind CSS for styling.
+- **Performance Optimizations:**
+    - **GlobalConfig:** Batch-fetch implementation using Redis mget and single SQL WHERE IN query (reduced from 21 sequential queries to 1)
+    - **Portal Lookups:** Memoized to prevent duplicate database queries per request
+    - **Startup:** Vite builds assets once during startup to prevent on-demand build conflicts
 - **Saturn AI (MIT-Licensed Auto-Response System):**
     - **Architecture:** Uses `saturn_*` database tables (`saturn_agent_profiles`, `saturn_knowledge_sources`, `saturn_inbox_connections`), dedicated backend models, and services like `Saturn::Orchestrator` (multi-turn conversation) and `Saturn::LlmService` (OpenAI integration).
     - **Features:** Full CRUD for agents, knowledge sources (Text/Document, URL, FAQ), and inbox connections. Includes UI for agent management, knowledge base configuration, and connecting agents to inboxes.
@@ -48,22 +56,26 @@ The platform features a completely redesigned visual identity distinct from Chat
     - **Setting Values:** Always use `config.value = 'new_value'` which properly wraps in YAML format. Never use direct SQL with JSON format.
     - **Deployment:** Automated branding configuration in `.github/workflows/deploy.yml` uses Rails model methods to ensure proper YAML serialization.
 - **CI/CD:** Automated deployment pipeline via GitHub Actions to Digital Ocean, using SSH key authentication.
-- **Configuration:** Optimized `start_app.sh` script for workflow entry, `config/puma.rb` for server, `vite.config.ts` for frontend, and `.env` for environment variables.
+- **Configuration:** Optimized `start_app.sh` script for workflow entry (Vite build → Sidekiq → Puma), `config/puma.rb` for server, `vite.config.ts` for frontend, and `.env` for environment variables.
 
 ### Feature Specifications
-- **AISATURN Branding:** Full white-label branding implemented.
+- **AISATURN Branding:** Full white-label branding implemented with consistent naming.
 - **Saturn AI:** Provides AI-powered auto-responses using OpenAI, with distinct architectural components and UI for managing agents, knowledge sources, and inbox connections.
 - **Multi-channel Communication:** Core Chatwoot functionality for managing customer interactions across various channels.
 - **Team Collaboration:** Tools for agents to collaborate on customer support tickets.
 - **Reporting:** Comprehensive features for tracking and analyzing support performance.
 
 ## External Dependencies
-- **PostgreSQL 16:** Database, provided via Replit's Neon service. Requires `pgvector` extension for AI embeddings.
-- **Redis:** Used for Sidekiq background jobs and caching.
+- **PostgreSQL 16:** Database, provided via Replit's Neon service. Requires `pgvector` extension for AI embeddings. Note: Development may experience latency (~1-3s per request) due to Neon free tier network distance.
+- **Redis:** Used for Sidekiq background jobs and GlobalConfig caching.
 - **OpenAI:** Integrated for the Saturn AI auto-response system's LLM capabilities. Requires an OpenAI API key.
 - **Node.js 23.11.1 & pnpm 10.2.0:** For frontend development and asset compilation.
 - **Ruby 3.2.2:** Core backend language runtime.
-- **Vite 5.4.20:** Frontend build tool, integrated via `vite_rails` gem.
-- **Tailwind CSS:** For styling the frontend.
+- **Vite 5.4.20:** Frontend build tool, integrated via `vite_rails` gem. Builds once on startup to prevent conflicts.
+- **Tailwind CSS:** For styling the frontend with custom color system.
 - **Puma 6.4.3:** Web server for the Rails application.
 - **Sidekiq 7.3.1:** Background job processor.
+
+## Known Issues & Notes
+- **Development Performance:** Neon PostgreSQL (free tier) has network latency (~1-3s per request). Production deployment will be significantly faster with premium tier or closer edge locations.
+- **Database Optimizations:** GlobalConfig and Portal queries are fully optimized with batch fetching and memoization. Any remaining slowness is infrastructure-related.
