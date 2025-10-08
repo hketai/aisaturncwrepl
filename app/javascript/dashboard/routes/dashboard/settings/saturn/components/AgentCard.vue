@@ -45,40 +45,41 @@ const handleAction = (action) => {
 <template>
   <CardLayout>
     <div class="flex flex-col gap-3 w-full">
-      <div class="flex justify-between w-full gap-3">
+      <div class="flex justify-between items-start w-full gap-4">
         <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-1">
-            <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium">
-              {{ name }}
-            </h3>
-            <button
-              type="button"
-              :class="[
-                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
-                active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
-              ]"
-              :aria-pressed="active"
-              :aria-label="active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
-              @click.stop="handleAction('toggleActive')"
-            >
-              <span
-                :class="[
-                  'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
-                  active ? 'translate-x-4' : 'translate-x-0'
-                ]"
-              />
-            </button>
-            <span class="text-xs font-medium" :class="active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'">
-              {{ active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE') }}
-            </span>
-          </div>
-          <p class="text-sm text-n-slate-11 line-clamp-2">
+          <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium mb-1">
+            {{ name }}
+          </h3>
+          <p class="text-sm text-n-slate-11 line-clamp-2 mb-1">
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
+          <span class="text-xs text-n-slate-11">
+            {{ lastUpdatedAt }}
+          </span>
         </div>
-        <span class="text-xs text-n-slate-11 shrink-0">
-          {{ lastUpdatedAt }}
-        </span>
+        
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="text-xs font-semibold" :class="active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'">
+            {{ active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE') }}
+          </span>
+          <button
+            type="button"
+            :class="[
+              'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
+              active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+            ]"
+            :aria-pressed="active"
+            :aria-label="active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
+            @click.stop="handleAction('toggleActive')"
+          >
+            <span
+              :class="[
+                'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                active ? 'translate-x-4' : 'translate-x-0'
+              ]"
+            />
+          </button>
+        </div>
       </div>
       
       <div class="flex items-center gap-2 pt-4 mt-2 border-t border-n-weak">
