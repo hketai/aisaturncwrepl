@@ -42,6 +42,11 @@ The platform features a completely redesigned visual identity distinct from Chat
     - **Architecture:** Uses `saturn_*` database tables (`saturn_agent_profiles`, `saturn_knowledge_sources`, `saturn_inbox_connections`), dedicated backend models, and services like `Saturn::Orchestrator` (multi-turn conversation) and `Saturn::LlmService` (OpenAI integration).
     - **Features:** Full CRUD for agents, knowledge sources (Text/Document, URL, FAQ), and inbox connections. Includes UI for agent management, knowledge base configuration, and connecting agents to inboxes.
     - **Auto-Response Mechanism:** Event-driven system using `SaturnListener` and `Saturn::AutoRespondJob` to provide AI-powered responses to incoming messages in connected inboxes, leveraging a knowledge base for relevant information.
+    - **AI Conversation Limits:** Account-level limits with fields `ai_conversation_limit`, `ai_conversation_count`, and `ai_limit_reset_at`. Saturn::AutoRespondJob enforces limits before responding, with automatic monthly reset. Frontend displays warning banner at ≥80% usage.
+- **InstallationConfig (Configuration Management):**
+    - **Serialization:** Uses JSONB column with YAML serialization (`serialize :serialized_value, coder: YAML`). Values stored as YAML strings inside JSONB.
+    - **Setting Values:** Always use `config.value = 'new_value'` which properly wraps in YAML format. Never use direct SQL with JSON format.
+    - **Deployment:** Automated branding configuration in `.github/workflows/deploy.yml` uses Rails model methods to ensure proper YAML serialization.
 - **CI/CD:** Automated deployment pipeline via GitHub Actions to Digital Ocean, using SSH key authentication.
 - **Configuration:** Optimized `start_app.sh` script for workflow entry, `config/puma.rb` for server, `vite.config.ts` for frontend, and `.env` for environment variables.
 

@@ -72,12 +72,20 @@ jobs:
             # Configure AISATURN branding in database
             echo "🎨 Setting up AISATURN branding..."
             RAILS_ENV=production bundle exec rails runner "
-              InstallationConfig.find_or_initialize_by(name: 'LOGO').update!(value: '/brand-assets/new_logo.png', locked: false)
-              InstallationConfig.find_or_initialize_by(name: 'LOGO_DARK').update!(value: '/brand-assets/new_logo_dark.png', locked: false)
-              InstallationConfig.find_or_initialize_by(name: 'LOGO_THUMBNAIL').update!(value: '/brand-assets/new_logo.png', locked: false)
-              InstallationConfig.find_or_initialize_by(name: 'BRAND_NAME').update!(value: 'AISATURN', locked: false)
-              InstallationConfig.find_or_initialize_by(name: 'BRAND_URL').update!(value: 'https://app.aisaturn.co', locked: false)
-              InstallationConfig.find_or_initialize_by(name: 'INSTALLATION_NAME').update!(value: 'AISATURN', locked: false)
+              # Helper to set config with proper YAML format
+              def set_config(name, value)
+                config = InstallationConfig.find_or_initialize_by(name: name)
+                config.locked = false
+                config.value = value
+                config.save!
+              end
+              
+              set_config('LOGO', '/brand-assets/new_logo.png')
+              set_config('LOGO_DARK', '/brand-assets/new_logo_dark.png')
+              set_config('LOGO_THUMBNAIL', '/brand-assets/new_logo.png')
+              set_config('BRAND_NAME', 'AISATURN')
+              set_config('BRAND_URL', 'https://app.aisaturn.co')
+              set_config('INSTALLATION_NAME', 'AISATURN')
               GlobalConfig.clear_cache
               puts '✅ AISATURN branding configured!'
             "
