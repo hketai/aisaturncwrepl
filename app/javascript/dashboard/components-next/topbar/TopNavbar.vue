@@ -183,9 +183,15 @@ const menuItems = computed(() => {
       ],
     },
     {
+      name: 'Inboxes',
+      label: t('SIDEBAR.INBOXES'),
+      icon: 'i-ph-tray-thin',
+      to: accountScopedRoute('settings_inbox_list'),
+    },
+    {
       name: 'Settings',
       label: t('SIDEBAR.SETTINGS'),
-      icon: 'i-ph-lightning-thin',
+      icon: 'i-ph-gear-thin',
       children: [
         {
           name: 'Settings Account Settings',
@@ -204,12 +210,6 @@ const menuItems = computed(() => {
           label: t('SIDEBAR.TEAMS'),
           icon: 'i-ph-users-three-thin',
           to: accountScopedRoute('settings_teams_list'),
-        },
-        {
-          name: 'Settings Inboxes',
-          label: t('SIDEBAR.INBOXES'),
-          icon: 'i-ph-tray-thin',
-          to: accountScopedRoute('settings_inbox_list'),
         },
         {
           name: 'Settings Labels',
