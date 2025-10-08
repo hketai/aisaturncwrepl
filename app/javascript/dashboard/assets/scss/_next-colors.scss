@@ -2,7 +2,7 @@
 @layer base {
   // NEXT COLORS START
   :root {
-    // slate - neutral colors
+    // slate
     --slate-1: 252 252 253;
     --slate-2: 249 249 251;
     --slate-3: 240 240 243;
@@ -16,32 +16,21 @@
     --slate-11: 96 100 108;
     --slate-12: 28 32 36;
 
-    // Primary brand color - from logo (#47A7F6)
-    --brand-1: 248 251 254;
-    --brand-2: 239 247 254;
-    --brand-3: 224 239 253;
-    --brand-4: 196 228 251;
-    --brand-5: 168 217 249;
-    --brand-6: 125 198 245;
-    --brand-7: 71 167 246;
-    --brand-8: 56 142 220;
-    --brand-9: 71 167 246;
-    --brand-10: 56 142 220;
-    --brand-11: 45 117 182;
-    --brand-12: 20 51 79;
+    --indigo-1: 253 253 255;
+    --indigo-2: 248 248 255;
+    --indigo-3: 240 241 254;
+    --indigo-4: 230 231 255;
+    --indigo-5: 218 220 255;
+    --indigo-6: 203 205 255;
+    --indigo-7: 184 186 248;
+    --indigo-8: 155 158 240;
+    --indigo-9: 79 70 229;
+    --indigo-10: 67 56 202;
+    --indigo-11: 55 48 163;
+    --indigo-12: 30 27 75;
 
-    // Minimal supporting colors
-    --ruby-9: 239 68 68;
-    --ruby-10: 220 38 38;
-    
-    --teal-9: 20 184 166;
-    --teal-10: 13 148 136;
-
-    --amber-9: 245 158 11;
-    --amber-10: 217 119 6;
-
-    --background-color: 255 255 255;
-    --text-primary: 28 32 36;
+    --background-color: 253 253 253;
+    --text-indigo: 67 56 202;
     --border-container: 226 232 240;
     --border-strong: 203 213 225;
     --border-weak: 241 245 249;
@@ -49,19 +38,19 @@
     --solid-2: 255 255 255;
     --solid-3: 255 255 255;
     --solid-active: 255 255 255;
-    --solid-brand: 224 239 253;
+    --solid-indigo: 230 231 255;
 
     --alpha-1: 67, 67, 67, 0.06;
     --alpha-2: 201, 202, 207, 0.15;
     --alpha-3: 255, 255, 255, 0.96;
     --black-alpha-1: 0, 0, 0, 0.12;
     --black-alpha-2: 0, 0, 0, 0.04;
-    --border-brand: 71, 167, 246, 0.3;
+    --border-indigo: 79, 70, 229, 0.5;
     --white-alpha: 255, 255, 255, 0.8;
   }
 
   .dark {
-    // slate - neutral colors
+    // slate
     --slate-1: 17 17 19;
     --slate-2: 24 25 27;
     --slate-3: 33 34 37;
@@ -75,46 +64,35 @@
     --slate-11: 176 180 186;
     --slate-12: 237 238 240;
 
-    // Primary brand color - adjusted for dark mode
-    --brand-1: 13 25 35;
-    --brand-2: 15 32 46;
-    --brand-3: 18 45 68;
-    --brand-4: 22 60 91;
-    --brand-5: 28 79 120;
-    --brand-6: 39 102 153;
-    --brand-7: 56 142 220;
-    --brand-8: 71 167 246;
-    --brand-9: 71 167 246;
-    --brand-10: 125 198 245;
-    --brand-11: 168 217 249;
-    --brand-12: 224 239 253;
-
-    // Minimal supporting colors
-    --ruby-9: 248 113 113;
-    --ruby-10: 252 165 165;
-    
-    --teal-9: 45 212 191;
-    --teal-10: 94 234 212;
-
-    --amber-9: 251 191 36;
-    --amber-10: 253 224 71;
+    --indigo-1: 19 19 30;
+    --indigo-2: 23 22 37;
+    --indigo-3: 32 34 72;
+    --indigo-4: 38 42 101;
+    --indigo-5: 48 51 116;
+    --indigo-6: 61 62 130;
+    --indigo-7: 74 74 149;
+    --indigo-8: 89 88 177;
+    --indigo-9: 79 70 229;
+    --indigo-10: 99 102 241;
+    --indigo-11: 165 180 252;
+    --indigo-12: 224 231 255;
 
     --background-color: 15 23 42;
-    --text-primary: 237 238 240;
     --border-strong: 51 65 85;
     --border-weak: 30 41 59;
     --solid-1: 30 41 59;
     --solid-2: 51 65 85;
     --solid-3: 71 85 105;
     --solid-active: 100 116 139;
-    --solid-brand: 18 45 68;
+    --solid-indigo: 38 42 101;
+    --text-indigo: 165 180 252;
 
     --alpha-1: 36, 36, 36, 0.8;
     --alpha-2: 139, 147, 182, 0.15;
     --alpha-3: 36, 38, 45, 0.9;
     --black-alpha-1: 0, 0, 0, 0.3;
     --black-alpha-2: 0, 0, 0, 0.2;
-    --border-brand: 71, 167, 246, 0.3;
+    --border-indigo: 79, 70, 229, 0.5;
     --border-container: 51, 65, 85, 0.5;
     --white-alpha: 255, 255, 255, 0.1;
   }

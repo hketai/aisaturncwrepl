@@ -6,6 +6,7 @@ echo "================================"
 # Kill any existing process on port 5000
 echo "Checking for existing process on port 5000..."
 fuser -k 5000/tcp 2>/dev/null || true
+pkill -9 -f vite 2>/dev/null || true
 sleep 2
 
 # Ensure Redis is running
@@ -39,6 +40,15 @@ echo "Database: $POSTGRES_DATABASE"
 echo "Redis: $REDIS_URL"
 echo "Frontend URL: $FRONTEND_URL"
 echo ""
+
+# Build assets once with Vite
+echo "Building frontend assets with Vite..."
+pnpm exec vite build --mode development > /dev/null 2>&1 &
+VITE_PID=$!
+wait $VITE_PID
+echo "Vite build complete!"
+echo ""
+
 echo "Starting Sidekiq background worker..."
 bundle exec sidekiq -C config/sidekiq.yml > log/sidekiq.log 2>&1 &
 SIDEKIQ_PID=$!

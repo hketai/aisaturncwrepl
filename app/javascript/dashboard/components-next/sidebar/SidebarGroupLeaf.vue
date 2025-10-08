@@ -33,13 +33,13 @@ const shouldRenderComponent = computed(() => {
       :title="label"
       class="flex h-8 items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-150 group relative"
       :class="{
-        'text-brand-600 dark:text-brand-400 bg-brand-50/80 dark:bg-brand-900/20 font-medium': active,
+        'text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-900/20 font-medium': active,
         'hover:bg-slate-100/80 dark:hover:bg-slate-800/40 hover:text-slate-900 dark:hover:text-slate-100': !active,
       }"
     >
       <div 
         v-if="active"
-        class="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-brand-600 dark:bg-brand-400 rounded-r-full"
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-indigo-600 dark:bg-indigo-400 rounded-r-full"
       />
       <component
         :is="component"
