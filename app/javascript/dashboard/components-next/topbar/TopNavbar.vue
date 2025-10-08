@@ -303,12 +303,16 @@ const menuItems = computed(() => {
 </script>
 
 <style scoped>
-.topnav-profile-menu :deep(.absolute) {
+.topnav-profile-menu :deep(> div > div.absolute) {
+  position: static !important;
+}
+
+.topnav-profile-menu :deep(ul.n-dropdown-body) {
   position: fixed !important;
-  bottom: auto !important;
   top: 3.5rem !important;
   right: 1rem !important;
   left: auto !important;
+  bottom: auto !important;
   z-index: 9999 !important;
 }
 </style>
