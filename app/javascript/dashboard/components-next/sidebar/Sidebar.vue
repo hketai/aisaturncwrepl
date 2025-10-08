@@ -407,12 +407,6 @@ const menuItems = computed(() => {
           to: accountScopedRoute('canned_list'),
         },
         {
-          name: 'Settings Integrations',
-          label: t('SIDEBAR.INTEGRATIONS'),
-          icon: 'i-ph-package-thin',
-          to: accountScopedRoute('settings_applications'),
-        },
-        {
           name: 'Settings Audit Logs',
           label: t('SIDEBAR.AUDIT_LOGS'),
           icon: 'i-ph-list-bullets-thin',

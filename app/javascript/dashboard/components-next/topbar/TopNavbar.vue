@@ -223,12 +223,6 @@ const menuItems = computed(() => {
           icon: 'i-ph-flow-arrow-thin',
           to: accountScopedRoute('automation_list'),
         },
-        {
-          name: 'Settings Integrations',
-          label: t('SIDEBAR.INTEGRATIONS'),
-          icon: 'i-ph-package-thin',
-          to: accountScopedRoute('settings_applications'),
-        },
       ],
     },
   ];
