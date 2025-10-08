@@ -303,16 +303,18 @@ const menuItems = computed(() => {
 </script>
 
 <style scoped>
-.topnav-profile-menu :deep(.bottom-12) {
-  bottom: auto;
-  top: 100%;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
+.topnav-profile-menu :deep(.absolute) {
+  position: fixed !important;
+  bottom: auto !important;
+  top: 3.5rem !important;
+  right: 1rem !important;
+  left: auto !important;
+  z-index: 9999 !important;
 }
 </style>
 
 <template>
-  <header class="bg-white dark:bg-slate-900 border-b border-slate-200/60 dark:border-slate-800/60 h-14 flex items-center px-4 gap-4 flex-shrink-0">
+  <header class="bg-white dark:bg-slate-900 border-b border-slate-200/60 dark:border-slate-800/60 h-14 flex items-center px-4 gap-4 flex-shrink-0 relative z-50">
     <div class="flex items-center gap-3">
       <template v-if="globalConfig.logo || globalConfig.logoDark">
         <img 
