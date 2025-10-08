@@ -50,7 +50,7 @@ const handleAction = async ({ action, id }) => {
       const response = await SaturnAPI.update(id, { agent: { active: !agent.active } });
       const index = agents.value.findIndex(a => a.id === id);
       if (index !== -1) {
-        agents.value[index] = response.data.payload;
+        agents.value[index] = response.data;
       }
     } catch (error) {
       useAlert(t('SATURN.AGENTS.ERROR_OPERATION'));
