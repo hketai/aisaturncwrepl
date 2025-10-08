@@ -1,0 +1,301 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+
+# Git pull (eğer Replit'ten değişiklik pushlanmışsa)
+git pull origin main
+
+# Frontend assets build et
+RAILS_ENV=production bundle exec rake assets:precompile
+
+# Services restart
+sudo systemctl restart chatwoot-web.service
+sudo systemctl restart chatwoot-worker.service
+From github-aisaturncwrepl:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+Already up to date.
+This project is configured to use pnpm because /var/www/chatwoot/package.json has a "packageManager" field
+I, [2025-10-07T14:19:58.392635 #123024]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:19:58.392750 #123024]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:19:58.655087 #123024]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1s
+-------------- Bulding SDK for Production --------------
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 1.07s
+-------------- Bulding App for Production --------------
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.2s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-07 13:49:18
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+
+# Git pull
+git pull origin main
+
+# Assets build
+RAILS_ENV=production NODE_ENV=production bundle exec rake assets:precompile
+
+# Restart
+sudo systemctl restart chatwoot-web.service
+From github-aisaturncwrepl:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+Already up to date.
+This project is configured to use pnpm because /var/www/chatwoot/package.json has a "packageManager" field
+I, [2025-10-07T14:26:18.958059 #123496]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:26:18.958230 #123496]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:26:19.250284 #123496]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.1s
+-------------- Bulding SDK for Production --------------
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 914ms
+-------------- Bulding App for Production --------------
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.1s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-07 13:49:18
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot# git log -1 --oneline
+6a5750bc9 (HEAD -> main, origin/main, origin/HEAD) Add image asset to the project
+root@aisaturn-repl-prod:/var/www/chatwoot# stat -c '%y' public/vite/assets/Message-*.js 2>/dev/null | head -1
+root@aisaturn-repl-prod:/var/www/chatwoot# git log -1 --format='%ai'
+2025-10-07 14:27:29 +0000
+root@aisaturn-repl-prod:/var/www/chatwoot# # Vite assets klasöründe ne var?
+ls -lh public/vite/assets/ | grep -i message
+
+# Veya tüm assets'i listele
+ls -lh public/vite/assets/ | head -20
+
+# Vite manifest var mı?
+cat public/vite/.vite/manifest.json | grep -i message
+-rw-r--r-- 1 root root  47K Oct  7 14:34 Messages-uzlXwKgh.js
+-rw-r--r-- 1 root root 114K Oct  7 14:34 Messages-uzlXwKgh.js.map
+-rw-r--r-- 1 root root  15K Oct  7 14:34 Messages-ygpkYUrV.css
+-rw-r--r-- 1 root root 4.1K Oct  7 14:34 UnreadMessageList--jcvaGuA.js
+-rw-r--r-- 1 root root  12K Oct  7 14:34 UnreadMessageList--jcvaGuA.js.map
+-rw-r--r-- 1 root root 3.3K Oct  7 14:34 UnreadMessageList-C80tQpqe.css
+-rw-r--r-- 1 root root 1.1K Oct  7 14:34 UnreadMessages-C756fAEf.js
+-rw-r--r-- 1 root root 1.2K Oct  7 14:34 UnreadMessages-C756fAEf.js.map
+total 54M
+-rw-r--r-- 1 root root  17K Oct  7 14:34 ArticleEditor-DyLP94GN.js
+-rw-r--r-- 1 root root  47K Oct  7 14:34 ArticleEditor-DyLP94GN.js.map
+-rw-r--r-- 1 root root  17K Oct  7 13:49 ArticleEditor-HTcpThtk.js
+-rw-r--r-- 1 root root  47K Oct  7 13:49 ArticleEditor-HTcpThtk.js.map
+-rw-r--r-- 1 root root  13K Oct  7 14:34 ArticleEditor-QP3vQWC_.css
+-rw-r--r-- 1 root root  477 Oct  7 14:34 ArticleViewer-CacazmeP.js
+-rw-r--r-- 1 root root  745 Oct  7 14:34 ArticleViewer-CacazmeP.js.map
+-rw-r--r-- 1 root root 143K Oct  7 14:34 BarChart-DmyK_5oR.js
+-rw-r--r-- 1 root root 758K Oct  7 14:34 BarChart-DmyK_5oR.js.map
+-rw-r--r-- 1 root root 1.6K Oct  7 14:34 Branding-BL69nIBj.js
+-rw-r--r-- 1 root root 3.5K Oct  7 14:34 Branding-BL69nIBj.js.map
+-rw-r--r-- 1 root root 1010 Oct  7 14:34 Button-Bd8BuYYc.js
+-rw-r--r-- 1 root root 2.3K Oct  7 14:34 Button-Bd8BuYYc.js.map
+-rw-r--r-- 1 root root 1.2K Oct  7 14:34 Campaigns-C2naKpxM.js
+-rw-r--r-- 1 root root 1.7K Oct  7 14:34 Campaigns-C2naKpxM.js.map
+-rw-r--r-- 1 root root  12K Oct  7 13:49 CategoryHeaderControls-B2LINXN1.js
+-rw-r--r-- 1 root root  23K Oct  7 13:49 CategoryHeaderControls-B2LINXN1.js.map
+-rw-r--r-- 1 root root  12K Oct  7 14:34 CategoryHeaderControls-CJGr4u-q.js
+-rw-r--r-- 1 root root  23K Oct  7 14:34 CategoryHeaderControls-CJGr4u-q.js.map
+  "_UnreadMessageList-!~{00Q}~.js": {
+    "file": "assets/UnreadMessageList-C80tQpqe.css",
+    "src": "_UnreadMessageList-!~{00Q}~.js"
+  "_UnreadMessageList--jcvaGuA.js": {
+    "file": "assets/UnreadMessageList--jcvaGuA.js",
+    "name": "UnreadMessageList",
+      "assets/UnreadMessageList-C80tQpqe.css"
+      "widget/views/UnreadMessages.vue",
+      "widget/views/Messages.vue",
+      "_UnreadMessageList--jcvaGuA.js",
+  "widget/views/Messages.vue": {
+    "file": "assets/Messages-uzlXwKgh.js",
+    "name": "Messages",
+    "src": "widget/views/Messages.vue",
+      "assets/Messages-ygpkYUrV.css"
+  "widget/views/UnreadMessages.vue": {
+    "file": "assets/UnreadMessages-C756fAEf.js",
+    "name": "UnreadMessages",
+    "src": "widget/views/UnreadMessages.vue",
+      "_UnreadMessageList--jcvaGuA.js",
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -lh public/vite/assets/ | grep -i "dashboard\|app\|conversation"
+-rw-r--r-- 1 root root 9.1M Oct  7 14:34 DashboardIcon-EKkgPWHP.js
+-rw-r--r-- 1 root root 1.7M Oct  7 14:34 DashboardIcon-EKkgPWHP.js.map
+-rw-r--r-- 1 root root 1.2K Oct  7 14:34 DashboardIcon-Q9LE-ZWn.css
+-rw-r--r-- 1 root root 2.5M Oct  7 13:49 dashboard-B4mN9dUD.js
+-rw-r--r-- 1 root root 7.1M Oct  7 13:49 dashboard-B4mN9dUD.js.map
+-rw-r--r-- 1 root root 2.5M Oct  7 14:34 dashboard-BwlOHjSC.js
+-rw-r--r-- 1 root root 7.1M Oct  7 14:34 dashboard-BwlOHjSC.js.map
+-rw-r--r-- 1 root root 2.2M Oct  7 14:34 dashboard-DYxzaAXJ.css
+-rw-r--r-- 1 root root 676K Oct  7 14:34 v3app-BGSyN2Uk.css
+-rw-r--r-- 1 root root 256K Oct  7 14:34 v3app-D63o9xZO.js
+-rw-r--r-- 1 root root 410K Oct  7 14:34 v3app-D63o9xZO.js.map
+root@aisaturn-repl-prod:/var/www/chatwoot# cat public/vite/.vite/manifest.json | grep -i "dashboard" | head -10
+      "entrypoints/dashboard.js",
+      "_DashboardIcon-EKkgPWHP.js",
+      "_DashboardIcon-EKkgPWHP.js",
+      "entrypoints/dashboard.js",
+  "_DashboardIcon-!~{00o}~.js": {
+    "file": "assets/DashboardIcon-Q9LE-ZWn.css",
+    "src": "_DashboardIcon-!~{00o}~.js"
+  "_DashboardIcon-EKkgPWHP.js": {
+    "file": "assets/DashboardIcon-EKkgPWHP.js",
+    "name": "DashboardIcon",
+root@aisaturn-repl-prod:/var/www/chatwoot# # En son Saturn mesajını kontrol et
+RAILS_ENV=production bundle exec rails runner "
+  msg = Message.where(message_type: :outgoing).where.not(content_attributes: nil).order(created_at: :desc).first
+  puts '📝 Message ID: ' + msg.id.to_s
+  puts '📦 content_attributes: ' + msg.content_attributes.inspect
+  puts '🤖 saturn_agent_name: ' + msg.saturn_agent_name.inspect
+"
+I, [2025-10-07T14:47:06.135023 #124331]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:47:06.135120 #124331]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-07T14:47:08.611889 #124331]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+📝 Message ID: 60
+📦 content_attributes: {"saturn_agent_id"=>"1", "saturn_agent_name"=>"Ayşe", "automated_response"=>true}
+🤖 saturn_agent_name: "Ayşe"
+root@aisaturn-repl-prod:/var/www/chatwoot# git log -1 --oneline
+b8e5f95f2 (HEAD -> main, origin/main, origin/HEAD) Improve display of AI agent avatars in messages
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -lh public/vite/assets/dashboard-*.js
+-rw-r--r-- 1 root root 2.5M Oct  7 15:00 public/vite/assets/dashboard-B4mN9dUD.js
+-rw-r--r-- 1 root root 2.5M Oct  7 14:34 public/vite/assets/dashboard-BwlOHjSC.js
+root@aisaturn-repl-prod:/var/www/chatwoot# Connection to app.aisaturn.co closed by remote host.
+Connection to app.aisaturn.co closed.
+client_loop: send disconnect: Broken pipe
+harun@Harun-MacBook-Air ~ % ssh root@app.aisaturn.co
+root@app.aisaturn.co's password: 
+Welcome to Ubuntu 25.04 (GNU/Linux 6.14.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Oct  8 00:39:24 UTC 2025
+
+  System load:  0.08               Processes:             158
+  Usage of /:   3.5% of 192.85GB   Users logged in:       1
+  Memory usage: 11%                IPv4 address for eth0: 167.71.54.139
+  Swap usage:   0%                 IPv4 address for eth0: 10.19.0.9
+
+0 updates can be applied immediately.
+
+
+*** System restart required ***
+root@aisaturn-repl-prod:~# cd /var/www/chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot# git pull origin main
+From github-aisaturncwrepl:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+Already up to date.
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rake assets:precompile
+This project is configured to use pnpm because /var/www/chatwoot/package.json has a "packageManager" field
+I, [2025-10-08T00:39:46.010584 #136210]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-08T00:39:46.010705 #136210]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-08T00:39:46.273391 #136210]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1s
+-------------- Bulding SDK for Production --------------
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 975ms
+-------------- Bulding App for Production --------------
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-08 00:28:38
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+config = InstallationConfig.find_or_create_by(name: 'LOGO')
+config.update(value: '/brand-assets/new_logo.png')
+
+config_dark = InstallationConfig.find_or_create_by(name: 'LOGO_DARK')
+config_dark.update(value: '/brand-assets/new_logo_dark.png')
+
+config_thumb = InstallationConfig.find_or_create_by(name: 'LOGO_THUMBNAIL')
+config_thumb.update(value: '/aisaturn_favicon.png')
+
+brand = InstallationConfig.find_or_create_by(name: 'INSTALLATION_NAME')
+brand.update(value: 'AISATURN')
+
+puts 'Branding updated!'
+"
+I, [2025-10-08T00:39:59.154237 #136349]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-08T00:39:59.154336 #136349]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-08T00:40:01.976741 #136349]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Branding updated!
+root@aisaturn-repl-prod:/var/www/chatwoot# systemctl restart chatwoot.target
+# veya
+pm2 restart all
+Failed to restart chatwoot.target: Unit chatwoot.target not found.
+pm2: command not found
+root@aisaturn-repl-prod:/var/www/chatwoot# systemctl restart chatwoot.target
+Failed to restart chatwoot.target: Unit chatwoot.target not found.
+root@aisaturn-repl-prod:/var/www/chatwoot# pm2 restart all
+pm2: command not found
+root@aisaturn-repl-prod:/var/www/chatwoot# 
