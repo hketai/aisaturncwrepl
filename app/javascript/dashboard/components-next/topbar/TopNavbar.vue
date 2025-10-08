@@ -128,32 +128,175 @@ const menuItems = computed(() => {
       name: 'Contacts',
       label: t('SIDEBAR.CONTACTS'),
       icon: 'i-ph-user-circle-thin',
-      to: accountScopedRoute('contacts_dashboard_index', {}, { page: 1, search: undefined }),
-      activeOn: ['contacts_dashboard_index', 'contacts_edit'],
+      children: [
+        {
+          name: 'All Contacts',
+          label: t('SIDEBAR.ALL_CONTACTS'),
+          to: accountScopedRoute(
+            'contacts_dashboard_index',
+            {},
+            { page: 1, search: undefined }
+          ),
+          activeOn: ['contacts_dashboard_index', 'contacts_edit'],
+        },
+        {
+          name: 'Active',
+          label: t('SIDEBAR.ACTIVE'),
+          to: accountScopedRoute('contacts_dashboard_active'),
+          activeOn: ['contacts_dashboard_active'],
+        },
+      ],
     },
     {
       name: 'Reports',
       label: t('SIDEBAR.REPORTS'),
       icon: 'i-ph-chart-line-thin',
-      to: accountScopedRoute('account_overview_reports'),
+      children: [
+        {
+          name: 'Report Overview',
+          label: t('SIDEBAR.REPORTS_OVERVIEW'),
+          to: accountScopedRoute('account_overview_reports'),
+        },
+        {
+          name: 'Report Conversation',
+          label: t('SIDEBAR.REPORTS_CONVERSATION'),
+          to: accountScopedRoute('conversation_reports'),
+        },
+        ...reportRoutes.value,
+        {
+          name: 'Reports CSAT',
+          label: t('SIDEBAR.CSAT'),
+          to: accountScopedRoute('csat_reports'),
+        },
+        {
+          name: 'Reports SLA',
+          label: t('SIDEBAR.REPORTS_SLA'),
+          to: accountScopedRoute('sla_reports'),
+        },
+        {
+          name: 'Reports Bot',
+          label: t('SIDEBAR.REPORTS_BOT'),
+          to: accountScopedRoute('bot_reports'),
+        },
+      ],
     },
     {
       name: 'Campaigns',
       label: t('SIDEBAR.CAMPAIGNS'),
       icon: 'i-ph-megaphone-simple-thin',
-      to: accountScopedRoute('campaigns_livechat_index'),
+      children: [
+        {
+          name: 'Live chat',
+          label: t('SIDEBAR.LIVE_CHAT'),
+          to: accountScopedRoute('campaigns_livechat_index'),
+        },
+        {
+          name: 'SMS',
+          label: t('SIDEBAR.SMS'),
+          to: accountScopedRoute('campaigns_sms_index'),
+        },
+        {
+          name: 'WhatsApp',
+          label: t('SIDEBAR.WHATSAPP'),
+          to: accountScopedRoute('campaigns_whatsapp_index'),
+        },
+      ],
     },
     {
       name: 'Portals',
       label: t('SIDEBAR.HELP_CENTER.TITLE'),
       icon: 'i-ph-books-thin',
-      to: accountScopedRoute('portals_index', { navigationPath: 'portals_articles_index' }),
+      children: [
+        {
+          name: 'Articles',
+          label: t('SIDEBAR.HELP_CENTER.ARTICLES'),
+          activeOn: [
+            'portals_articles_index',
+            'portals_articles_new',
+            'portals_articles_edit',
+          ],
+          to: accountScopedRoute('portals_index', {
+            navigationPath: 'portals_articles_index',
+          }),
+        },
+        {
+          name: 'Categories',
+          label: t('SIDEBAR.HELP_CENTER.CATEGORIES'),
+          activeOn: [
+            'portals_categories_index',
+            'portals_categories_articles_index',
+            'portals_categories_articles_edit',
+          ],
+          to: accountScopedRoute('portals_index', {
+            navigationPath: 'portals_categories_index',
+          }),
+        },
+        {
+          name: 'Locales',
+          label: t('SIDEBAR.HELP_CENTER.LOCALES'),
+          activeOn: ['portals_locales_index'],
+          to: accountScopedRoute('portals_index', {
+            navigationPath: 'portals_locales_index',
+          }),
+        },
+        {
+          name: 'Settings',
+          label: t('SIDEBAR.HELP_CENTER.SETTINGS'),
+          activeOn: ['portals_settings_index'],
+          to: accountScopedRoute('portals_index', {
+            navigationPath: 'portals_settings_index',
+          }),
+        },
+      ],
     },
     {
       name: 'Settings',
       label: t('SIDEBAR.SETTINGS'),
       icon: 'i-ph-lightning-thin',
-      to: accountScopedRoute('general_settings_index'),
+      children: [
+        {
+          name: 'Settings Account Settings',
+          label: t('SIDEBAR.ACCOUNT_SETTINGS'),
+          icon: 'i-ph-briefcase-thin',
+          to: accountScopedRoute('general_settings_index'),
+        },
+        {
+          name: 'Settings Agents',
+          label: t('SIDEBAR.AGENTS'),
+          icon: 'i-ph-user-square-thin',
+          to: accountScopedRoute('agent_list'),
+        },
+        {
+          name: 'Settings Teams',
+          label: t('SIDEBAR.TEAMS'),
+          icon: 'i-ph-users-three-thin',
+          to: accountScopedRoute('settings_teams_list'),
+        },
+        {
+          name: 'Settings Inboxes',
+          label: t('SIDEBAR.INBOXES'),
+          icon: 'i-ph-tray-thin',
+          to: accountScopedRoute('settings_inbox_list'),
+        },
+        {
+          name: 'Settings Labels',
+          label: t('SIDEBAR.LABELS'),
+          icon: 'i-ph-tag-thin',
+          to: accountScopedRoute('labels_list'),
+        },
+        {
+          name: 'Settings Automation',
+          label: t('SIDEBAR.AUTOMATION'),
+          icon: 'i-ph-flow-arrow-thin',
+          to: accountScopedRoute('automation_list'),
+        },
+        {
+          name: 'Settings Integrations',
+          label: t('SIDEBAR.INTEGRATIONS'),
+          icon: 'i-ph-package-thin',
+          to: accountScopedRoute('settings_applications'),
+        },
+      ],
     },
   ];
 });
