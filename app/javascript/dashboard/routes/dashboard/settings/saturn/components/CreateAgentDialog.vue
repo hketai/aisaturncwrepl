@@ -403,19 +403,14 @@ defineExpose({ dialogRef });
         <button
           type="button"
           :class="[
-            'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
-            form.active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+            'inline-flex items-center h-6 w-11 p-0.5 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
+            form.active ? 'bg-indigo-600 justify-end' : 'bg-slate-300 dark:bg-slate-600 justify-start'
           ]"
           :aria-pressed="form.active"
           :aria-label="form.active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
           @click="form.active = !form.active"
         >
-          <span
-            :class="[
-              'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
-              form.active ? 'translate-x-5' : 'translate-x-0'
-            ]"
-          />
+          <span class="h-5 w-5 rounded-full bg-white shadow-lg transition-all duration-200 ease-in-out" />
         </button>
       </div>
       

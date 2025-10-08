@@ -65,19 +65,14 @@ const handleAction = (action) => {
           <button
             type="button"
             :class="[
-              'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
-              active ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+              'inline-flex items-center h-6 w-11 p-0.5 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2',
+              active ? 'bg-indigo-600 justify-end' : 'bg-slate-300 dark:bg-slate-600 justify-start'
             ]"
             :aria-pressed="active"
             :aria-label="active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
             @click.stop="handleAction('toggleActive')"
           >
-            <span
-              :class="[
-                'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
-                active ? 'translate-x-4' : 'translate-x-0'
-              ]"
-            />
+            <span class="h-5 w-5 rounded-full bg-white shadow-lg transition-all duration-200 ease-in-out" />
           </button>
         </div>
       </div>
