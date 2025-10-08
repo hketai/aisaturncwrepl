@@ -69,6 +69,19 @@ jobs:
             echo "🗄️ Running database migrations..."
             RAILS_ENV=production bundle exec rails db:migrate
             
+            # Configure AISATURN branding in database
+            echo "🎨 Setting up AISATURN branding..."
+            RAILS_ENV=production bundle exec rails runner "
+              InstallationConfig.find_or_initialize_by(name: 'LOGO').update!(value: '/brand-assets/new_logo.png', locked: false)
+              InstallationConfig.find_or_initialize_by(name: 'LOGO_DARK').update!(value: '/brand-assets/new_logo_dark.png', locked: false)
+              InstallationConfig.find_or_initialize_by(name: 'LOGO_THUMBNAIL').update!(value: '/brand-assets/new_logo.png', locked: false)
+              InstallationConfig.find_or_initialize_by(name: 'BRAND_NAME').update!(value: 'AISATURN', locked: false)
+              InstallationConfig.find_or_initialize_by(name: 'BRAND_URL').update!(value: 'https://app.aisaturn.co', locked: false)
+              InstallationConfig.find_or_initialize_by(name: 'INSTALLATION_NAME').update!(value: 'AISATURN', locked: false)
+              GlobalConfig.clear_cache
+              puts '✅ AISATURN branding configured!'
+            "
+            
             # Restart Chatwoot services
             echo "🔄 Restarting Chatwoot web and worker services..."
             sudo systemctl restart chatwoot-web
