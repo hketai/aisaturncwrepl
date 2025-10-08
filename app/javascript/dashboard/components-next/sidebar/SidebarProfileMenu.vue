@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import Auth from 'dashboard/api/auth';
 import { useMapGetter } from 'dashboard/composables/store';
 import { useI18n } from 'vue-i18n';
@@ -23,6 +23,19 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close', 'openKeyShortcutModal']);
+
+const triggerRef = ref(null);
+const dropdownPosition = ref({ top: 0, right: 0 });
+
+const updateDropdownPosition = () => {
+  if (props.topNav && triggerRef.value) {
+    const rect = triggerRef.value.getBoundingClientRect();
+    dropdownPosition.value = {
+      top: rect.bottom + 8,
+      right: window.innerWidth - rect.right,
+    };
+  }
+};
 
 defineOptions({
   inheritAttrs: false,
@@ -112,9 +125,10 @@ const allowedMenuItems = computed(() => {
   <DropdownContainer class="relative w-full min-w-0" @close="emit('close')">
     <template #trigger="{ toggle, isOpen }">
       <button
+        ref="triggerRef"
         class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-n-alpha-1"
         :class="{ 'bg-n-alpha-1': isOpen }"
-        @click="toggle"
+        @click="() => { updateDropdownPosition(); toggle(); }"
       >
         <Avatar
           :size="32"
@@ -134,8 +148,33 @@ const allowedMenuItems = computed(() => {
         </div>
       </button>
     </template>
+    <Teleport v-if="props.topNav" to="body">
+      <div
+        v-if="triggerRef"
+        class="fixed z-[9999] w-80"
+        :style="{
+          top: dropdownPosition.top + 'px',
+          right: dropdownPosition.right + 'px'
+        }"
+      >
+        <ul
+          class="text-sm bg-n-alpha-3 backdrop-blur-[100px] border border-n-weak rounded-xl shadow-sm py-2 n-dropdown-body gap-2 grid list-none px-2 reset-base relative"
+        >
+          <SidebarProfileMenuStatus />
+          <DropdownSeparator />
+          <template v-for="item in allowedMenuItems" :key="item.label">
+            <CustomBrandPolicyWrapper
+              :show-on-custom-branded-instance="item.showOnCustomBrandedInstance"
+            >
+              <DropdownItem v-if="item.show" v-bind="item" />
+            </CustomBrandPolicyWrapper>
+          </template>
+        </ul>
+      </div>
+    </Teleport>
     <DropdownBody 
-      :class="props.topNav ? 'top-full z-[9999] mt-2 w-80 right-0' : 'bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0'"
+      v-else
+      class="bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0"
     >
       <SidebarProfileMenuStatus />
       <DropdownSeparator />
