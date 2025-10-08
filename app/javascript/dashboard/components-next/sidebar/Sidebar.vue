@@ -2,7 +2,6 @@
 import { h, computed, onMounted } from 'vue';
 import { provideSidebarContext } from './provider';
 import { useAccount } from 'dashboard/composables/useAccount';
-import { useKbd } from 'dashboard/composables/utils/useKbd';
 import { useMapGetter } from 'dashboard/composables/store';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
@@ -10,13 +9,10 @@ import { useStorage } from '@vueuse/core';
 import { useSidebarKeyboardShortcuts } from './useSidebarKeyboardShortcuts';
 import { vOnClickOutside } from '@vueuse/components';
 
-import Button from 'dashboard/components-next/button/Button.vue';
 import SidebarGroup from './SidebarGroup.vue';
 import SidebarProfileMenu from './SidebarProfileMenu.vue';
 import ChannelLeaf from './ChannelLeaf.vue';
-import SidebarAccountSwitcher from './SidebarAccountSwitcher.vue';
 import Logo from 'next/icon/Logo.vue';
-import ComposeConversation from 'dashboard/components-next/NewConversation/ComposeConversation.vue';
 
 const globalConfig = useMapGetter('globalConfig/get');
 
@@ -36,7 +32,6 @@ const emit = defineEmits([
 
 const { accountScopedRoute } = useAccount();
 const store = useStore();
-const searchShortcut = useKbd([`$mod`, 'k']);
 const { t } = useI18n();
 
 const toggleShortcutModalFn = show => {
@@ -551,33 +546,6 @@ const menuItems = computed(() => {
           />
         </template>
         <Logo v-else class="size-6" />
-      </div>
-      <div class="flex gap-2 px-2">
-        <RouterLink
-          :to="{ name: 'search' }"
-          class="flex items-center w-full gap-2 px-2 py-1 rounded-lg h-7 outline outline-1 outline-n-weak bg-n-solid-3 dark:bg-n-black/30"
-        >
-          <span class="flex-shrink-0 i-lucide-search size-4 text-n-slate-11" />
-          <span class="flex-grow text-left">
-            {{ t('COMBOBOX.SEARCH_PLACEHOLDER') }}
-          </span>
-          <span
-            class="hidden tracking-wide pointer-events-none select-none text-n-slate-10"
-          >
-            {{ searchShortcut }}
-          </span>
-        </RouterLink>
-        <ComposeConversation align-position="right">
-          <template #trigger="{ toggle }">
-            <Button
-              icon="i-lucide-pen-line"
-              color="slate"
-              size="sm"
-              class="!h-7 !bg-n-solid-3 dark:!bg-n-black/30 !outline-n-weak !text-n-slate-11"
-              @click="toggle"
-            />
-          </template>
-        </ComposeConversation>
       </div>
     </section>
     <nav class="grid flex-grow gap-2 px-2 pb-5 overflow-y-scroll no-scrollbar">
