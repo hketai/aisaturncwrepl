@@ -302,15 +302,6 @@ const menuItems = computed(() => {
 });
 </script>
 
-<style>
-/* TopNavbar profil menüsü için dropdown pozisyonunu düzelt */
-.topnav-profile-menu .n-dropdown-body {
-  bottom: auto !important;
-  top: 100% !important;
-  margin-top: 0.5rem !important;
-  margin-bottom: 0 !important;
-}
-</style>
 
 <template>
   <header class="bg-white dark:bg-slate-900 border-b border-slate-200/60 dark:border-slate-800/60 h-14 flex items-center px-4 gap-4 flex-shrink-0 relative z-50">
@@ -347,13 +338,11 @@ const menuItems = computed(() => {
       >
         <span class="i-ph-list text-xl" />
       </button>
-      <div class="relative">
-        <SidebarProfileMenu
-          @open-key-shortcut-modal="emit('openKeyShortcutModal')"
-          @close="$event => {}"
-          class="topnav-profile-menu"
-        />
-      </div>
+      <SidebarProfileMenu
+        :top-nav="true"
+        @open-key-shortcut-modal="emit('openKeyShortcutModal')"
+        @close="$event => {}"
+      />
     </div>
 
     <!-- Mobile Menu -->

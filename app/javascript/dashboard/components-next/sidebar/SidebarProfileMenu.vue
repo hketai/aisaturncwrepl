@@ -15,6 +15,13 @@ import {
 } from 'next/dropdown-menu/base';
 import CustomBrandPolicyWrapper from '../../components/CustomBrandPolicyWrapper.vue';
 
+const props = defineProps({
+  topNav: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const emit = defineEmits(['close', 'openKeyShortcutModal']);
 
 defineOptions({
@@ -127,7 +134,9 @@ const allowedMenuItems = computed(() => {
         </div>
       </button>
     </template>
-    <DropdownBody class="bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0">
+    <DropdownBody 
+      :class="props.topNav ? 'top-12 z-50 mt-2 w-80 ltr:right-0 rtl:left-0' : 'bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0'"
+    >
       <SidebarProfileMenuStatus />
       <DropdownSeparator />
       <template v-for="item in allowedMenuItems" :key="item.label">
