@@ -302,6 +302,15 @@ const menuItems = computed(() => {
 });
 </script>
 
+<style scoped>
+.topnav-profile-menu :deep(.bottom-12) {
+  bottom: auto;
+  top: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+</style>
+
 <template>
   <header class="bg-white dark:bg-slate-900 border-b border-slate-200/60 dark:border-slate-800/60 h-14 flex items-center px-4 gap-4 flex-shrink-0">
     <div class="flex items-center gap-3">
@@ -337,9 +346,13 @@ const menuItems = computed(() => {
       >
         <span class="i-ph-list text-xl" />
       </button>
-      <SidebarProfileMenu
-        @open-key-shortcut-modal="emit('openKeyShortcutModal')"
-      />
+      <div class="relative">
+        <SidebarProfileMenu
+          @open-key-shortcut-modal="emit('openKeyShortcutModal')"
+          @close="$event => {}"
+          class="topnav-profile-menu"
+        />
+      </div>
     </div>
 
     <!-- Mobile Menu -->
