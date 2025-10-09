@@ -70,10 +70,29 @@ jobs:
             echo "🧹 Cleaning up old YAML installation configs..."
             PGPASSWORD=chatwoot_password_2025 psql -h localhost -U chatwoot -d chatwoot_production -c "DELETE FROM installation_configs WHERE value::text LIKE '---%%';" || true
             
+            # Seed database (if seed file exists and has content)
+            if [ -f db/seeds.rb ] && [ -s db/seeds.rb ]; then
+              echo "🌱 Seeding database with initial data..."
+              RAILS_ENV=production bundle exec rails db:seed || echo "⚠️ Seed skipped (idempotent or already seeded)"
+            fi
+            
+            # Clear Rails cache
+            echo "🧹 Clearing Rails cache..."
+            RAILS_ENV=production bundle exec rails cache:clear || true
+            
+            # Clear Sidekiq queues (optional, use with caution)
+            # Uncomment if you want to clear pending jobs on each deploy
+            # echo "🧹 Clearing Sidekiq queues..."
+            # RAILS_ENV=production bundle exec rails runner "Sidekiq::Queue.all.each(&:clear)" || true
+            
             # Restart Chatwoot services
             echo "🔄 Restarting Chatwoot web and worker services..."
             sudo systemctl restart chatwoot-web
             sudo systemctl restart chatwoot-worker
+            
+            # Restart Nginx to clear any stuck connections
+            echo "🔄 Restarting Nginx..."
+            sudo systemctl restart nginx
             
             # Wait for services to start
             sleep 3

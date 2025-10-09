@@ -2,6 +2,27 @@
 
 ## Recent Changes (October 9, 2025)
 
+### 🎨 UI/UX Improvements - COMPLETE
+
+**Button Label Updates:**
+- ✅ "Bilgi Kaynakları" → "Öğret" (more concise, action-oriented)
+- ✅ "Gelen Kutuları" → "Kanala Bağla" (clearer connection metaphor)
+- ✅ "Devret Ayarları" → "Devretme Ayarları" (grammatically correct Turkish)
+
+**Button Color Scheme:**
+- ✅ Öğret: Blue (primary action)
+- ✅ Kanala Bağla: Teal (connectivity)
+- ✅ Devretme Ayarları: Faded Slate (secondary action)
+- ✅ Düzenle: Slate (neutral)
+- ✅ Sil: Ruby (destructive)
+
+**Dark Mode Enhancements:**
+- ✅ Radio button option titles readable in dark theme (text-n-slate-1)
+- ✅ Unselected option icons visible (text-n-slate-5 in dark mode)
+- ✅ "Create Team" button prominent in both light/dark themes
+- ✅ Amber warning banner properly styled for dark mode
+- Files: `app/javascript/dashboard/routes/dashboard/settings/saturn/components/HandoffDialog.vue`, `app/javascript/dashboard/routes/dashboard/settings/saturn/components/AgentCard.vue`, `app/javascript/dashboard/i18n/locale/tr/settings.json`
+
 ### ⚙️ AI Agent Status Toggle - COMPLETE
 
 **Agent Enable/Disable Functionality:**
@@ -62,6 +83,18 @@
 - ✅ **Deployment workflow updated:** Automatic YAML cleanup after every migration
 - ✅ **Future-proof:** Every deployment now auto-cleans old YAML configs before restart
 - Files: `app/models/installation_config.rb`, `.github/workflows/deploy.yml`
+
+**Production Deployment Automation - Complete:**
+- ✅ **Full CI/CD Pipeline:** GitHub Actions auto-deploy on push to main branch
+- ✅ **Dependency Management:** Bundle install (Ruby gems) + pnpm install (Node packages)
+- ✅ **Database Migration:** Automatic db:migrate on every deployment
+- ✅ **Database Seeding:** Smart db:seed (runs only if seed file exists and has content)
+- ✅ **Cache Clearing:** Vite cache + Rails cache cleared on each deploy
+- ✅ **Asset Compilation:** Vite builds (library + app) + Rails asset precompile
+- ✅ **Service Restart:** Chatwoot web server + Sidekiq worker + Nginx restart
+- ✅ **YAML Cleanup:** Automatic removal of old YAML configs that cause production errors
+- ✅ **Health Checks:** Service status verification after deployment
+- File: `.github/workflows/deploy.yml`
 
 **AI Conversation Limits - Restored:**
 - ✅ Database columns: ai_conversation_limit, ai_conversation_count, ai_limit_reset_at
