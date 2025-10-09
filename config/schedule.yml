@@ -53,3 +53,10 @@ bulk_auto_assignment_job:
   cron: '*/15 * * * *'
   class: 'Inboxes::BulkAutoAssignmentJob'
   queue: scheduled_jobs
+
+# executed daily at 0000 UTC (midnight)
+# to refresh all URL knowledge sources
+saturn_daily_url_sync_job:
+  cron: '0 0 * * *'
+  class: 'Saturn::DailyUrlSyncJob'
+  queue: scheduled_jobs

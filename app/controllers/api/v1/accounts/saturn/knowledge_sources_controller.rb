@@ -16,6 +16,11 @@ class Api::V1::Accounts::Saturn::KnowledgeSourcesController < Api::V1::Accounts:
   def create
     @knowledge_source = Current.account.saturn_knowledge_sources.new(knowledge_source_params)
     @knowledge_source.save!
+    
+    # Auto-scrape URL sources
+    if @knowledge_source.source_type == 'url' && @knowledge_source.source_url.present?
+      Saturn::ScrapeUrlJob.perform_later(@knowledge_source.id)
+    end
   end
   
   def update
