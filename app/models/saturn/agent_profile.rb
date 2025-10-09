@@ -26,7 +26,7 @@ class Saturn::AgentProfile < ApplicationRecord
             numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }, 
             allow_nil: true
   
-  scope :active, -> { where(active: true) }
+  scope :enabled, -> { where(enabled: true) }
   scope :for_account, ->(account_id) { where(account_id: account_id) }
   scope :ordered, -> { order(created_at: :desc) }
   
@@ -46,7 +46,7 @@ class Saturn::AgentProfile < ApplicationRecord
       name: name,
       avatar_url: avatar_url.presence || default_avatar_url,
       description: description,
-      active: active,
+      enabled: enabled,
       created_at: created_at,
       type: 'saturn_agent'
     }
