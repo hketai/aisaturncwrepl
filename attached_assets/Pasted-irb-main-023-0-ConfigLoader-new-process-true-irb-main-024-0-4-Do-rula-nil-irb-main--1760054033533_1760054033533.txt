@@ -1,0 +1,49 @@
+irb(main):023:0> ConfigLoader.new.process
+=> true
+irb(main):024:0> # 4. Doğrula
+=> nil
+irb(main):025:0> puts "Installation Name: #{GlobalConfig.get('INSTALLATION_NAME')}"
+Installation Name: {"INSTALLATION_NAME"=>"AISATURN"}
+=> nil
+irb(main):026:0> puts "Brand Name: #{GlobalConfig.get('BRAND_NAME')}"
+irb(main):027:0> puts "Logo: #{GlobalConfig.get('LOGO')}"
+Logo: {"LOGO"=>"/brand-assets/new_logo.png"}
+irb(main):028:0> # İlk account'u al
+irb(main):029:0> account = Account.first
+=>
+#<Account:0x000071597fa55880
+Account: Saturn (ID: 1)
+Total Agents: 2
+=> nil
+irb(main):035:0>
+irb(main):036:0> # Agent'ları listele
+=> nil
+irb(main):037:1* if agent_count > 0
+irb(main):038:2*   account.saturn_agent_profiles.each do |agent|
+irb(main):039:2*     puts "  - #{agent.name} (ID: #{agent.id}, Enabled: #{agent.enabled})"
+irb(main):040:1*   end
+irb(main):041:1* else
+irb(main):042:1*   puts "  ⚠️ No agents found!"
+irb(main):043:0> end
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activemodel-7.1.5.2/lib/active_model/attribute_methods.rb:511:in `method_missing': undefined method `enabled' for #<Saturn::AgentProfile id: 1, name: "Ayşe", description: "Online mağazalar ve e-ticaret platformları için AI...", account_id: 1, configuration: {}, behavior_rules: ["Her zaman yardımcı ve ürün odaklı ol", "Ürünler, kargo ve iadeler hakkında net bilgi ver", "Müşterilere satın alma sürecinde rehberlik et", "Sipariş durumu sorgularını profesyonelce ele al", "Uygun olduğunda ek satış ve çapraz satış yap", "Şikayetleri empati ve çözümlerle karşıla"], safety_guidelines: ["Asla müşteri ödeme bilgilerini paylaşma", "İadeleri doğrudan işleme koyma - insan temsilciye aktar", "Hassas hesap değişiklikleri için müşteri kimliğini doğrula", "Şirket iade ve geri ödeme politikalarını kesinlikle takip et", "Dolandırıcılık veya şüpheli aktiviteyi hemen bildir"], ai_temperature: 0.7, product_context: "E-ticaret müşteri desteği", created_at: "2025-10-07 01:00:06.456718000 +0000", updated_at: "2025-10-07 01:00:06.456718000 +0000", industry_type: "ecommerce", handoff_enabled: false, handoff_team_id: nil, transfer_enabled: false, transfer_agent_id: nil, intent_routing_enabled: nil, intent_team_mappings: nil, intent_agent_mappings: nil> (NoMethodError)
+irb(main):044:0> # Onboarding flag'i kontrol et
+=> nil
+irb(main):045:0> onboarding_flag = Redis::Alfred.get(Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING)
+=> nil
+irb(main):046:0> puts "\nOnboarding Flag: #{onboarding_flag.inspect}"
+
+Onboarding Flag: nil
+=> nil
+irb(main):047:0>
+irb(main):048:0> # Eğer true/1/'true' ise temizle
+=> nil
+irb(main):049:1* if onboarding_flag.to_s == 'true' || onboarding_flag.to_s == '1'
+irb(main):050:1*   puts "⚠️ Onboarding flag is TRUE - clearing it..."
+irb(main):051:1*   Redis::Alfred.delete(Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING)
+irb(main):052:1*   puts "✅ Flag cleared!"
+irb(main):053:1* else
+irb(main):054:1*   puts "✅ Onboarding flag is OK (#{onboarding_flag.inspect})"
+irb(main):055:0> end
+✅ Onboarding flag is OK (nil)
+=> nil
+irb(main):056:0>
