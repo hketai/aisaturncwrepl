@@ -27,34 +27,9 @@ const form = ref({
   industry_type: '',
   behavior_rules: [],
   safety_guidelines: [],
-  transfer_enabled: false,
-  transfer_agent_id: null,
 });
 
 const isEdit = ref(false);
-const allAgents = ref([]);
-
-// Available agents for transfer (excluding current agent)
-const availableAgents = computed(() => {
-  if (!isEdit.value) {
-    return allAgents.value;
-  }
-  return allAgents.value.filter(agent => agent.id !== props.selectedAgent?.id);
-});
-
-// Fetch all agents for transfer dropdown
-const fetchAgents = async () => {
-  try {
-    const response = await SaturnAPI.get();
-    allAgents.value = response.data.payload || [];
-  } catch (error) {
-    console.error('Error fetching agents:', error);
-  }
-};
-
-onMounted(() => {
-  fetchAgents();
-});
 
 const industryTypes = [
   { value: 'ecommerce', label: 'E-Ticaret', description: 'Online mağazalar ve e-ticaret platformları' },
@@ -306,8 +281,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: agent.industry_type || '',
       behavior_rules: agent.behavior_rules || [],
       safety_guidelines: agent.safety_guidelines || [],
-      transfer_enabled: agent.transfer_enabled || false,
-      transfer_agent_id: agent.transfer_agent_id || null,
     };
   } else {
     isEdit.value = false;
@@ -318,8 +291,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: '',
       behavior_rules: [],
       safety_guidelines: [],
-      transfer_enabled: false,
-      transfer_agent_id: null,
     };
   }
 }, { immediate: true });
@@ -420,41 +391,6 @@ defineExpose({ dialogRef });
         :label="$t('SATURN.AGENTS.PRODUCT_CONTEXT_LABEL')"
         placeholder="e.g., SaaS product support, E-commerce store"
       />
-
-      <!-- Agent Transfer Settings -->
-      <div class="border-t border-n-weak pt-4 space-y-3">
-        <h4 class="text-sm font-semibold text-n-slate-12">{{ $t('SATURN.AGENTS.TRANSFER_SETTINGS') }}</h4>
-        
-        <div class="flex items-center gap-2">
-          <input
-            v-model="form.transfer_enabled"
-            type="checkbox"
-            id="transfer-enabled"
-            class="rounded"
-          />
-          <label for="transfer-enabled" class="text-sm">{{ $t('SATURN.AGENTS.ENABLE_TRANSFER') }}</label>
-        </div>
-
-        <div v-if="form.transfer_enabled" class="space-y-2 pl-6">
-          <label class="block text-sm font-medium text-n-slate-12">
-            {{ $t('SATURN.AGENTS.TRANSFER_AGENT_LABEL') }}
-          </label>
-          <select
-            v-model="form.transfer_agent_id"
-            class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
-          >
-            <option :value="null">{{ $t('SATURN.AGENTS.SELECT_AGENT') }}</option>
-            <option
-              v-for="agent in availableAgents"
-              :key="agent.id"
-              :value="agent.id"
-            >
-              {{ agent.name }}
-            </option>
-          </select>
-          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.TRANSFER_AGENT_HINT') }}</p>
-        </div>
-      </div>
 
       <div class="flex gap-3 pt-4">
         <button

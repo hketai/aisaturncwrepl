@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import { useAlert } from 'dashboard/composables';
 import { useMapGetter } from 'dashboard/composables/store';
 import SaturnAPI from 'dashboard/api/saturn';
@@ -8,6 +9,7 @@ import SaturnAPI from 'dashboard/api/saturn';
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 
 const { t } = useI18n();
+const router = useRouter();
 
 const props = defineProps({
   selectedAgent: {
@@ -20,18 +22,45 @@ const emit = defineEmits(['close', 'updated']);
 
 const dialogRef = ref(null);
 const teams = useMapGetter('teams/getTeams');
+const allAgents = ref([]);
+
+const handoffType = ref('human');
 
 const form = ref({
   handoff_enabled: false,
   handoff_team_id: null,
   intent_routing_enabled: false,
   intent_team_mappings: [],
+  transfer_enabled: false,
+  transfer_agent_id: null,
 });
 
 const newIntent = ref('');
 const newTeamId = ref(null);
 
 const hasNoTeams = computed(() => !teams.value || teams.value.length === 0);
+
+const availableAgents = computed(() => {
+  return allAgents.value.filter(agent => agent.id !== props.selectedAgent?.id);
+});
+
+const fetchAgents = async () => {
+  try {
+    const response = await SaturnAPI.get();
+    allAgents.value = response.data.payload || [];
+  } catch (error) {
+    console.error('Error fetching agents:', error);
+  }
+};
+
+const navigateToTeams = () => {
+  dialogRef.value.close();
+  router.push({ name: 'settings_teams_list', params: { accountId: 1 } });
+};
+
+onMounted(() => {
+  fetchAgents();
+});
 
 watch(() => props.selectedAgent, (agent) => {
   if (agent) {
@@ -40,16 +69,39 @@ watch(() => props.selectedAgent, (agent) => {
       handoff_team_id: agent.handoff_team_id || null,
       intent_routing_enabled: agent.intent_routing_enabled || false,
       intent_team_mappings: [...(agent.intent_team_mappings || [])],
+      transfer_enabled: agent.transfer_enabled || false,
+      transfer_agent_id: agent.transfer_agent_id || null,
     };
+    
+    if (agent.transfer_enabled) {
+      handoffType.value = 'agent';
+    } else if (agent.handoff_enabled) {
+      handoffType.value = 'human';
+    }
   } else {
     form.value = {
       handoff_enabled: false,
       handoff_team_id: null,
       intent_routing_enabled: false,
       intent_team_mappings: [],
+      transfer_enabled: false,
+      transfer_agent_id: null,
     };
+    handoffType.value = 'human';
   }
 }, { immediate: true });
+
+watch(handoffType, (type) => {
+  if (type === 'human') {
+    form.value.transfer_enabled = false;
+    form.value.transfer_agent_id = null;
+  } else if (type === 'agent') {
+    form.value.handoff_enabled = false;
+    form.value.handoff_team_id = null;
+    form.value.intent_routing_enabled = false;
+    form.value.intent_team_mappings = [];
+  }
+});
 
 const addIntentMapping = () => {
   if (newIntent.value.trim() && newTeamId.value) {
@@ -70,7 +122,21 @@ const removeIntentMapping = (index) => {
 
 const handleSubmit = async () => {
   try {
-    const response = await SaturnAPI.update(props.selectedAgent.id, { agent: form.value });
+    const payload = { ...form.value };
+    
+    if (handoffType.value === 'human') {
+      payload.handoff_enabled = true;
+      payload.transfer_enabled = false;
+      payload.transfer_agent_id = null;
+    } else if (handoffType.value === 'agent') {
+      payload.transfer_enabled = true;
+      payload.handoff_enabled = false;
+      payload.handoff_team_id = null;
+      payload.intent_routing_enabled = false;
+      payload.intent_team_mappings = [];
+    }
+    
+    const response = await SaturnAPI.update(props.selectedAgent.id, { agent: payload });
     useAlert(t('SATURN.AGENTS.HANDOFF_SUCCESS'));
     emit('updated', response.data);
     dialogRef.value.close();
@@ -98,36 +164,76 @@ defineExpose({ dialogRef });
     @close="handleClose"
   >
     <form @submit.prevent="handleSubmit" class="space-y-4">
-      <!-- No Teams Warning -->
-      <div v-if="hasNoTeams" class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <div class="flex items-start gap-3">
-          <i class="i-lucide-alert-triangle text-amber-600 text-xl mt-0.5"></i>
-          <div class="flex-1">
-            <h4 class="text-sm font-semibold text-amber-900 mb-1">{{ $t('SATURN.AGENTS.NO_TEAMS_WARNING') }}</h4>
-            <p class="text-xs text-amber-800">{{ $t('SATURN.AGENTS.NO_TEAMS_MESSAGE') }}</p>
-            <a 
-              href="#/app/accounts/1/settings/teams/list"
-              class="inline-block mt-2 text-xs font-medium text-amber-700 hover:text-amber-900 underline"
-            >
-              {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
-            </a>
-          </div>
+      <!-- Handoff Type Selection -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_TYPE_LABEL') }}</h4>
+        
+        <div class="flex gap-3">
+          <label 
+            :class="[
+              'flex-1 p-4 border-2 rounded-lg cursor-pointer transition-all',
+              handoffType === 'human' ? 'border-woot-500 bg-woot-50' : 'border-n-weak hover:border-n-slate-7'
+            ]"
+          >
+            <input
+              v-model="handoffType"
+              type="radio"
+              value="human"
+              class="sr-only"
+            />
+            <div class="flex items-center gap-3">
+              <i class="i-lucide-user-round-search text-2xl" :class="handoffType === 'human' ? 'text-woot-500' : 'text-n-slate-11'"></i>
+              <div>
+                <div class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
+                <div class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
+              </div>
+            </div>
+          </label>
+
+          <label 
+            :class="[
+              'flex-1 p-4 border-2 rounded-lg cursor-pointer transition-all',
+              handoffType === 'agent' ? 'border-woot-500 bg-woot-50' : 'border-n-weak hover:border-n-slate-7'
+            ]"
+          >
+            <input
+              v-model="handoffType"
+              type="radio"
+              value="agent"
+              class="sr-only"
+            />
+            <div class="flex items-center gap-3">
+              <i class="i-lucide-bot text-2xl" :class="handoffType === 'agent' ? 'text-woot-500' : 'text-n-slate-11'"></i>
+              <div>
+                <div class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
+                <div class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
+              </div>
+            </div>
+          </label>
         </div>
       </div>
 
-      <!-- Basic Handoff Settings -->
-      <div class="space-y-3">
-        <div class="flex items-center gap-2">
-          <input
-            v-model="form.handoff_enabled"
-            type="checkbox"
-            id="handoff-enabled"
-            class="rounded"
-          />
-          <label for="handoff-enabled" class="text-sm font-medium">{{ $t('SATURN.AGENTS.ENABLE_HANDOFF') }}</label>
+      <!-- Human Handoff Settings -->
+      <div v-if="handoffType === 'human'" class="space-y-4 border-t border-n-weak pt-4">
+        <!-- No Teams Warning -->
+        <div v-if="hasNoTeams" class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <div class="flex items-start gap-3">
+            <i class="i-lucide-alert-triangle text-amber-600 text-xl mt-0.5"></i>
+            <div class="flex-1">
+              <h4 class="text-sm font-semibold text-amber-900 mb-1">{{ $t('SATURN.AGENTS.NO_TEAMS_WARNING') }}</h4>
+              <p class="text-xs text-amber-800">{{ $t('SATURN.AGENTS.NO_TEAMS_MESSAGE') }}</p>
+              <button
+                type="button"
+                @click="navigateToTeams"
+                class="inline-block mt-2 px-3 py-1 text-xs font-medium text-white bg-amber-600 hover:bg-amber-700 rounded"
+              >
+                {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div v-if="form.handoff_enabled" class="space-y-2 pl-6">
+        <div class="space-y-2">
           <label class="block text-sm font-medium text-n-slate-12">
             {{ $t('SATURN.AGENTS.DEFAULT_HANDOFF_TEAM_LABEL') }}
           </label>
@@ -149,7 +255,7 @@ defineExpose({ dialogRef });
       </div>
 
       <!-- Intent-Based Routing -->
-      <div v-if="form.handoff_enabled" class="border-t border-n-weak pt-4 space-y-3">
+      <div v-if="handoffType === 'human'" class="border-t border-n-weak pt-4 space-y-3">
         <div class="flex items-center gap-2">
           <input
             v-model="form.intent_routing_enabled"
@@ -217,6 +323,29 @@ defineExpose({ dialogRef });
               {{ $t('SATURN.AGENTS.ADD_MAPPING_BUTTON') }}
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- Agent Transfer Settings -->
+      <div v-if="handoffType === 'agent'" class="space-y-4 border-t border-n-weak pt-4">
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-n-slate-12">
+            {{ $t('SATURN.AGENTS.TRANSFER_AGENT_LABEL') }}
+          </label>
+          <select
+            v-model="form.transfer_agent_id"
+            class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
+          >
+            <option :value="null">{{ $t('SATURN.AGENTS.SELECT_AGENT') }}</option>
+            <option
+              v-for="agent in availableAgents"
+              :key="agent.id"
+              :value="agent.id"
+            >
+              {{ agent.name }}
+            </option>
+          </select>
+          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.TRANSFER_AGENT_HINT') }}</p>
         </div>
       </div>
 
