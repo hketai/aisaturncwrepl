@@ -48,6 +48,24 @@
 - ✅ Updated: All icons changed from Lucide to Phosphor (ph-thin) for consistency
 - ✅ Streamlined: Conversations, Saturn AI, Contacts, Reports, Settings, WhatsApp campaigns
 
+### 🔐 URL Auto-Scraping with Enterprise Security - COMPLETE
+
+**Automatic Web Content Scraping:**
+- ✅ Service: Saturn::UrlScraperService with Nokogiri for HTML parsing and content extraction
+- ✅ Auto-scraping: ScrapeUrlJob triggered on URL knowledge source creation
+- ✅ Daily refresh: DailyUrlSyncJob scheduled at 00:00 UTC via Sidekiq-cron
+- ✅ Metadata tracking: scraping_status (success/failed), scraping_error, last_scraped_at
+- ✅ Frontend: Real-time scraping status badges (green checkmark, red failed, blue loading)
+
+**Production-Grade Security (SSRF/LFI/MITM Protection):**
+- ✅ DNS resolution: Single Resolv.getaddresses call, validated IP reused for connection
+- ✅ IP filtering: Blocks loopback (127.0.0.0/8, ::1), private (RFC1918, fc00::/7), link-local (169.254.0.0/16, fe80::/10)
+- ✅ DNS rebinding prevention: Net::HTTP connects to validated IP directly, no re-resolution
+- ✅ SSL/TLS verification: VERIFY_PEER with CA chain + hostname validation on leaf certificate
+- ✅ Self-signed cert rejection: preverify_ok && verify_certificate_identity ensures valid CA
+- ✅ SNI support: http.hostname set for proper certificate presentation (Ruby 3.0+)
+- Files: `app/services/saturn/url_scraper_service.rb`, `app/jobs/saturn/scrape_url_job.rb`, `app/jobs/saturn/daily_url_sync_job.rb`
+
 ## Overview
 Chatwoot is an open-source customer support platform offering multi-channel communication, AI-powered support agents, team collaboration, and reporting. It is a Ruby on Rails 7.1 + Vue.js 3 application, rebranded as AISATURN, focusing on AI-driven customer support solutions. The project aims to provide a comprehensive, white-label platform for businesses to manage customer interactions efficiently.
 
