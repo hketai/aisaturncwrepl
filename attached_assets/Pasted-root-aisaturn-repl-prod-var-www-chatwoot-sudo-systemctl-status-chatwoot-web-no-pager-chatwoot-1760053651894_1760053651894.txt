@@ -1,0 +1,57 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-web --no-pager
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-10-09 23:42:04 UTC; 5s ago
+ Invocation: 2e64c2114c2f442a8b7289160ed55213
+   Main PID: 178200 (ruby)
+      Tasks: 2 (limit: 19140)
+     Memory: 222.2M (peak: 222.2M)
+        CPU: 5.394s
+     CGroup: /system.slice/chatwoot-web.service
+             └─178200 /root/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+
+Oct 09 23:42:04 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 09 23:42:07 aisaturn-repl-prod bundle[178200]: => Booting Puma
+Oct 09 23:42:07 aisaturn-repl-prod bundle[178200]: => Rails 7.1.5.2 application starting in production
+Oct 09 23:42:07 aisaturn-repl-prod bundle[178200]: => Run `bin/rails server --help` for more startup options
+Oct 09 23:42:07 aisaturn-repl-prod bundle[178200]: I, [2025-10-09T23:42:07.908362 #178200]  INFO -- : [dotenv] L…duction
+Oct 09 23:42:07 aisaturn-repl-prod bundle[178200]: I, [2025-10-09T23:42:07.908432 #178200]  INFO -- : [dotenv] L…duction
+Hint: Some lines were ellipsized, use -l to show in full.
+RAILS_ENV=production bundle exec rails console
+# 2. Config cache'i temizleyip reload edin
+ConfigLoader.new.process
+# Kontrol edin - AISATURN görünmeli
+GlobalConfig['INSTALLATION_NAME']
+# => "AISATURN" olmalı
+
+# 3. Agent'ları kontrol edin (örnek account_id: 1)
+Account.first.saturn_agent_profiles.count
+# Kaç agent var?
+
+exit
+
+# 4. Web servisi restart
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# 5. Kontrol
+curl -I https://app.aisaturn.co
+I, [2025-10-09T23:46:31.916763 #178407]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T23:46:31.916854 #178407]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T23:46:34.338034 #178407]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> GlobalConfig.clear_cache
+irb(main):002:0> ConfigLoader.new.process
+=> true
+irb(main):003:0> GlobalConfig['INSTALLATION_NAME']
+(irb):3:in `<main>': undefined method `[]' for GlobalConfig:Class (NoMethodError)
+irb(main):004:0> Account.first.saturn_agent_profiles.count
+=> 2
+irb(main):005:0> exit
+GlobalConfig.clear_cache: command not found
+ConfigLoader.new.process: command not found
+GlobalConfig[INSTALLATION_NAME]: command not found
+Account.first.saturn_agent_profiles.count: command not found
+logout
+Connection to app.aisaturn.co closed.
+PS C:\Users\hkete>
