@@ -53,7 +53,7 @@
 **Automatic Web Content Scraping:**
 - ✅ Service: Saturn::UrlScraperService with Nokogiri for HTML parsing and content extraction
 - ✅ Auto-scraping: ScrapeUrlJob triggered on URL knowledge source creation
-- ✅ Daily refresh: DailyUrlSyncJob scheduled at 00:00 UTC via Sidekiq-cron
+- ✅ Daily refresh: DailyUrlSyncJob scheduled at 04:00 UTC via Sidekiq-cron
 - ✅ Metadata tracking: scraping_status (success/failed), scraping_error, last_scraped_at
 - ✅ Frontend: Real-time scraping status badges (green checkmark, red failed, blue loading)
 
