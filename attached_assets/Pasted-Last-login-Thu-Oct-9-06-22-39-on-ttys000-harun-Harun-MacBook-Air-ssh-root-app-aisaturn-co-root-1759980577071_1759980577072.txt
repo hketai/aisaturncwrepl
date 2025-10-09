@@ -1,0 +1,175 @@
+Last login: Thu Oct  9 06:22:39 on ttys000
+harun@Harun-MacBook-Air ~ % ssh root@app.aisaturn.co
+root@app.aisaturn.co's password: 
+Welcome to Ubuntu 25.04 (GNU/Linux 6.14.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Oct  9 03:25:40 UTC 2025
+
+  System load:  0.67               Processes:             147
+  Usage of /:   3.4% of 192.85GB   Users logged in:       1
+  Memory usage: 6%                 IPv4 address for eth0: 167.71.54.139
+  Swap usage:   0%                 IPv4 address for eth0: 10.19.0.9
+
+0 updates can be applied immediately.
+
+
+*** System restart required ***
+root@aisaturn-repl-prod:~# mv /var/www/chatwoot/app/models/installation_config.rb /var/www/chatwoot/app/models/installation_config.rb.backup
+root@aisaturn-repl-prod:~# cat > /var/www/chatwoot/app/models/installation_config.rb << 'EOF'
+class InstallationConfig < ApplicationRecord
+  self.table_name = 'installation_configs'
+  
+  def self.cleanup_yaml_records
+    connection.execute("DELETE FROM installation_configs WHERE value::text LIKE '---%%'")
+  end
+end
+EOF
+root@aisaturn-repl-prod:~# RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned!'"
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned')"
+Could not locate Gemfile or .bundle/ directory
+root@aisaturn-repl-prod:~# RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned!'"
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned')"
+Could not locate Gemfile or .bundle/ directory
+root@aisaturn-repl-prod:~# cd /var/www/chatwoot && \
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned!'" && \
+mv app/models/installation_config.rb.backup app/models/installation_config.rb && \
+RAILS_ENV=production bundle exec rails runner "Rails.cache.clear; puts 'Cache cleared!'" && \
+sudo systemctl restart chatwoot-web && \
+sudo systemctl restart chatwoot-worker && \
+sleep 3 && \
+echo "✅ Tamamlandı! Servis durumu:" && \
+sudo systemctl status chatwoot-web --no-pager | head -15
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned')" && \
+RAILS_ENV=production bundle exec rails runner "Rails.cache.clear; puts 'Cache cleared')" && \
+I, [2025-10-09T03:28:16.921830 #163736]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:28:16.921922 #163736]  INFO -- : [dotenv] Loaded .env.production
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activemodel-7.1.5.2/lib/active_model/attribute_methods.rb:511:in `method_missing': undefined method `value' for #<InstallationConfig id: 41, name: "DEPLOYMENT_ENV", serialized_value: "--- !ruby/hash:ActiveSupport::HashWithIndifferentA...", created_at: "2025-10-06 00:29:50.368425000 +0000", updated_at: "2025-10-06 00:29:50.368425000 +0000", locked: true> (NoMethodError)
+Did you mean?  values_at
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_methods.rb:499:in `method_missing'
+	from /var/www/chatwoot/lib/global_config.rb:54:in `db_fallback'
+	from /var/www/chatwoot/lib/global_config.rb:45:in `load_from_cache'
+	from /var/www/chatwoot/lib/global_config.rb:20:in `get_value'
+	from /var/www/chatwoot/lib/chatwoot_app.rb:21:in `chatwoot_cloud?'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:17:in `<class:AccountDashboard>'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:3:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:26:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `const_get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:413:in `block in eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application/finisher.rb:80:in `block in <module:Finisher>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `instance_exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:61:in `block in run_initializers'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:228:in `block in tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:431:in `each_strongly_connected_component_from'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:349:in `block in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `call'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:226:in `tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:205:in `tsort_each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:60:in `run_initializers'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:426:in `initialize!'
+	from /var/www/chatwoot/config/environment.rb:5:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:402:in `require_environment!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/actions.rb:20:in `boot_application!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:28:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor.rb:538:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in `block in invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from bin/rails:4:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# # Önce mevcut geçici model'i sil
+rm /var/www/chatwoot/app/models/installation_config.rb
+
+# Daha kapsamlı geçici model oluştur
+cat > /var/www/chatwoot/app/models/installation_config.rb << 'EOF'
+class InstallationConfig < ApplicationRecord
+  self.table_name = 'installation_configs'
+  
+  # Geçici value methodu - sadece nil dönsün ki hata vermesin
+  def value
+    nil
+  end
+  
+  def self.cleanup_yaml_records
+    connection.execute("DELETE FROM installation_configs")
+  end
+end
+EOF
+
+# Şimdi temizleme işlemini çalıştır
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned!'"
+
+# Gerçek model'i geri koy
+sudo systemctl status chatwoot-web --no-pager | head -15he.clear; puts 'Cache cl
+RAILS_ENV=production bundle exec rails runner "InstallationConfig.cleanup_yaml_records; puts 'Database cleaned')"
+I, [2025-10-09T03:29:19.673762 #163934]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:29:19.673851 #163934]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:29:22.000478 #163934]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Please specify a valid ruby command or the path of a script to run.
+Run 'bin/rails runner -h' for help.
+
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:46: syntax error, unexpected ')', expecting end-of-input
+...cords; puts 'Database cleaned')
+...                              ^
+RAILS_ENV=production bundle exec rails runner "Rails.cache.clear; puts 'Cache cleared')"
+I, [2025-10-09T03:29:25.051393 #163973]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:29:25.051473 #163973]  INFO -- : [dotenv] Loaded .env.production
+E, [2025-10-09T03:29:27.266240 #163973] ERROR -- : Failed to configure AI Agents SDK: undefined method `value' for #<InstallationConfig id: 31, name: "CAPTAIN_OPEN_AI_API_KEY", serialized_value: "--- !ruby/hash:ActiveSupport::HashWithIndifferentA...", created_at: "2025-10-06 00:29:50.334229000 +0000", updated_at: "2025-10-06 00:29:50.334229000 +0000", locked: false>
+I, [2025-10-09T03:29:27.266413 #163973]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Please specify a valid ruby command or the path of a script to run.
+Run 'bin/rails runner -h' for help.
+
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:46: syntax error, unexpected ')', expecting end-of-input
+...he.clear; puts 'Cache cleared')
+...                              ^
+✅ Tamamlandı! Servis durumu:
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-10-09 03:29:27 UTC; 3s ago
+ Invocation: 090bab02ef144a6a9885179f76339fca
+   Main PID: 164021 (ruby)
+      Tasks: 2 (limit: 19140)
+     Memory: 173.8M (peak: 173.8M)
+        CPU: 3.051s
+     CGroup: /system.slice/chatwoot-web.service
+             └─164021 /root/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+
+Oct 09 03:29:27 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 09 03:29:30 aisaturn-repl-prod bundle[164021]: => Booting Puma
+Oct 09 03:29:30 aisaturn-repl-prod bundle[164021]: => Rails 7.1.5.2 application starting in production
+Oct 09 03:29:30 aisaturn-repl-prod bundle[164021]: => Run `bin/rails server --help` for more startup options
+root@aisaturn-repl-prod:/var/www/chatwoot# 
