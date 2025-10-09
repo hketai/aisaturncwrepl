@@ -3,7 +3,7 @@ json.payload do
     json.id agent.id
     json.name agent.name
     json.description agent.description
-    json.active agent.active
+    json.enabled agent.enabled
     json.ai_temperature agent.ai_temperature
     json.product_context agent.product_context
     json.industry_type agent.industry_type
