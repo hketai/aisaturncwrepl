@@ -29,7 +29,6 @@ const form = ref({
   industry_type: '',
   behavior_rules: [],
   safety_guidelines: [],
-  active: true,
   handoff_enabled: false,
   handoff_team_id: null,
   transfer_enabled: false,
@@ -314,7 +313,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: agent.industry_type || '',
       behavior_rules: agent.behavior_rules || [],
       safety_guidelines: agent.safety_guidelines || [],
-      active: agent.active,
       handoff_enabled: agent.handoff_enabled || false,
       handoff_team_id: agent.handoff_team_id || null,
       transfer_enabled: agent.transfer_enabled || false,
@@ -329,7 +327,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: '',
       behavior_rules: [],
       safety_guidelines: [],
-      active: true,
       handoff_enabled: false,
       handoff_team_id: null,
       transfer_enabled: false,
@@ -351,7 +348,7 @@ const handleSubmit = async () => {
         name: form.value.name,
         description: form.value.description,
         product_context: form.value.product_context,
-        active: form.value.active,
+        enabled: true,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         _optimistic: true,
@@ -434,16 +431,6 @@ defineExpose({ dialogRef });
         :label="$t('SATURN.AGENTS.PRODUCT_CONTEXT_LABEL')"
         placeholder="e.g., SaaS product support, E-commerce store"
       />
-      
-      <div class="flex items-center gap-2">
-        <input
-          v-model="form.active"
-          type="checkbox"
-          id="agent-active"
-          class="rounded"
-        />
-        <label for="agent-active" class="text-sm">{{ $t('SATURN.AGENTS.ACTIVATE_IMMEDIATELY') }}</label>
-      </div>
 
       <!-- Handoff Settings -->
       <div class="border-t border-n-weak pt-4 space-y-3">
