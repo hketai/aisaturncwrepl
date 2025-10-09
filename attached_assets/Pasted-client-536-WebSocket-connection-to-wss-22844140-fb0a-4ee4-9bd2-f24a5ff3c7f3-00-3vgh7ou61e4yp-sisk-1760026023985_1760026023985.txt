@@ -1,0 +1,250 @@
+client:536 WebSocket connection to 'wss://22844140-fb0a-4ee4-9bd2-f24a5ff3c7f3-00-3vgh7ou61e4yp.sisko.replit.dev:3036/vite-dev/?token=d7BVqFBkqde2' failed: 
+client:560 [vite] server connection lost. Polling for restart...
+Modal.vue:63 [DEPRECATED] The 'onClose' prop is deprecated. Please use the 'close' event instead.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< undefined > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< undefined > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Property "searchShortcut" was accessed during render but is not defined on instance. 
+  at <RouterLink to= 
+Object
+ class="flex items-center w-full gap-2 px-2 py-1 rounded-lg h-7 outline outline-1 outline-n-weak bg-n-solid-3 dark:bg-n-black/30" > 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< undefined > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.TRANSFER_SETTINGS' key in 'en' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.ENABLE_TRANSFER' key in 'en' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.HANDOFF_SETTINGS' key in 'en' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.HANDOFF_DESCRIPTION' key in 'en' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.ENABLE_HANDOFF' key in 'en' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SATURN.AGENTS.SAVE_BUTTON' key in 'en' locale messages.
+3
+Modal.vue:63 [DEPRECATED] The 'onClose' prop is deprecated. Please use the 'close' event instead.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Property "searchShortcut" was accessed during render but is not defined on instance. 
+  at <RouterLink to= 
+Object
+ class="flex items-center w-full gap-2 px-2 py-1 rounded-lg h-7 outline outline-1 outline-n-weak bg-n-solid-3 dark:bg-n-black/30" > 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+/enterprise/api/v1/accounts/1/limits:1 
+ Failed to load resource: the server responded with a status of 404 (Not Found)
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+reactive-element.js?v=af1e6b57:45 Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@chatwoot_ninja-keys.js?v=af1e6b57:105 Multiple versions of Lit loaded. Loading multiple versions is not recommended. See https://lit.dev/msg/multiple-versions for more information.
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+:3036/vite-dev/:1 
+ Failed to load resource: net::ERR_CONNECTION_TIMED_OUT
+vue-i18n.js?v=af1e6b57:28 [intlify] Not found 'SIDEBAR.SECURITY' key in 'tr' locale messages.
+vue-i18n.js?v=af1e6b57:28 [intlify] Fall back to translate 'SIDEBAR.SECURITY' key with 'en' locale.
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: Button
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Failed to resolve component: ComposeConversation
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Sidebar is-mobile-sidebar-open=false onToggleAccountModal=fn<bound toggleAccountModal> onOpenKeyShortcutModal=fn<bound toggleKeyShortcutModal>  ... > 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Invalid prop: custom validator check failed for prop "color". 
+  at <Button icon="i-lucide-user-round-search" color="violet" size="sm"  ... > 
+  at <CardLayout> 
+  at <AgentCard id=17 key=17 name="AI"  ... > 
+  at <SaturnPageLayout header-title="Saturn AI Ajanları" button-label="Ajan Oluştur" is-fetching=false  ... > 
+  at <Index onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <KeepAlive key=0 > 
+  at <RouterView> 
+  at <SettingsWrapper onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <RouterView> 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Unhandled error during execution of render function 
+  at <Button icon="i-lucide-user-round-search" color="violet" size="sm"  ... > 
+  at <CardLayout> 
+  at <AgentCard id=17 key=17 name="AI"  ... > 
+  at <SaturnPageLayout header-title="Saturn AI Ajanları" button-label="Ajan Oluştur" is-fetching=false  ... > 
+  at <Index onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <KeepAlive key=0 > 
+  at <RouterView> 
+  at <SettingsWrapper onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <RouterView> 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+chunk-MLLCXMUH.js?v=af1e6b57:2190 [Vue warn]: Unhandled error during execution of component update 
+  at <Index onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <KeepAlive key=0 > 
+  at <RouterView> 
+  at <SettingsWrapper onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <RouterView> 
+  at <Dashboard onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy(Object)
+ > > 
+  at <BaseTransition mode="out-in" appear=false persisted=false  ... > 
+  at <Transition name="fade" mode="out-in" > 
+  at <RouterView> 
+  at <App>
+Button.vue:192 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'ghost')
+    at ComputedRefImpl.fn (Button.vue:192:56)
+    at ComputedRefImpl.fn (Button.vue:208:20)
+    at Proxy._sfc_render (Button.vue:229:84)

@@ -109,7 +109,7 @@ const handleToggle = () => {
         
         <Button
           icon="i-lucide-user-round-search"
-          color="violet"
+          color="amber"
           size="sm"
           class="flex-1"
           @click="handleAction('handoff')"
