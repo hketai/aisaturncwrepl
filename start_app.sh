@@ -41,12 +41,24 @@ echo "Redis: $REDIS_URL"
 echo "Frontend URL: $FRONTEND_URL"
 echo ""
 
-# Build assets once with Vite
+# Build assets once with Vite (with timeout)
 echo "Building frontend assets with Vite..."
-pnpm exec vite build --mode development > /dev/null 2>&1 &
+timeout 120 pnpm exec vite build --mode development 2>&1 | grep -v "DEPRECATION\|legacy JS API\|Browserslist" &
 VITE_PID=$!
-wait $VITE_PID
-echo "Vite build complete!"
+
+# Wait up to 90 seconds for build to complete
+waited=0
+while kill -0 $VITE_PID 2>/dev/null && [ $waited -lt 90 ]; do
+    sleep 2
+    waited=$((waited + 2))
+done
+
+# Check if build completed successfully
+if [ -f "public/vite/manifest.json" ] || [ -f "public/vite/.vite/manifest.json" ]; then
+    echo "✅ Vite build complete!"
+else
+    echo "⚠️  Vite build may be incomplete, continuing anyway..."
+fi
 echo ""
 
 echo "Starting Sidekiq background worker..."
