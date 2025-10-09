@@ -79,6 +79,7 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       :industry_type,
       :ai_temperature,
       :active,
+      :enabled,
       :model_name,
       :model_provider,
       :max_tokens,

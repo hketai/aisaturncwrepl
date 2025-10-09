@@ -65,6 +65,25 @@ const handleAction = ({ action, id }) => {
   });
 };
 
+const handleToggleStatus = async ({ id, enabled }) => {
+  try {
+    await SaturnAPI.update(id, {
+      agent: { enabled }
+    });
+    
+    const index = agents.value.findIndex(a => a.id === id);
+    if (index !== -1) {
+      agents.value[index].enabled = enabled;
+    }
+    
+    const statusText = enabled ? t('SATURN.AGENTS.ENABLED') : t('SATURN.AGENTS.DISABLED');
+    useAlert(`${t('SATURN.AGENTS.STATUS_UPDATED')} ${statusText}`);
+  } catch (error) {
+    useAlert(t('SATURN.AGENTS.ERROR_UPDATE_STATUS'));
+    console.error('Error updating agent status:', error);
+  }
+};
+
 const handleAgentCreated = (agent) => {
   agents.value.push(agent);
 };
@@ -195,7 +214,9 @@ const limitWarningMessage = computed(() => {
           :name="agent.name"
           :description="agent.description || $t('SATURN.AGENTS.NO_DESCRIPTION')"
           :updated-at="agent.updated_at || agent.created_at"
+          :enabled="agent.enabled !== false"
           @action="handleAction"
+          @toggle-status="handleToggleStatus"
         />
       </div>
     </template>

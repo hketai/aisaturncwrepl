@@ -22,9 +22,13 @@ const props = defineProps({
     type: [String, Number],
     required: true,
   },
+  enabled: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const emit = defineEmits(['action']);
+const emit = defineEmits(['action', 'toggle-status']);
 
 const lastUpdatedAt = computed(() => {
   const timestamp = typeof props.updatedAt === 'string' 
@@ -35,6 +39,10 @@ const lastUpdatedAt = computed(() => {
 
 const handleAction = (action) => {
   emit('action', { action, id: props.id });
+};
+
+const handleToggle = () => {
+  emit('toggle-status', { id: props.id, enabled: !props.enabled });
 };
 </script>
 
@@ -50,9 +58,32 @@ const handleAction = (action) => {
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
         </div>
-        <span class="text-xs text-n-slate-11 shrink-0">
-          {{ lastUpdatedAt }}
-        </span>
+        <div class="flex items-center gap-3 shrink-0">
+          <button
+            type="button"
+            :class="[
+              'relative h-4 transition-colors duration-200 ease-in-out rounded-full w-7',
+              'focus:outline-none focus:ring-1 focus:ring-n-brand focus:ring-offset-n-slate-2 focus:ring-offset-2',
+              'flex-shrink-0',
+              enabled ? 'bg-n-brand' : 'bg-n-slate-6'
+            ]"
+            role="switch"
+            :aria-checked="enabled"
+            @click="handleToggle"
+          >
+            <span class="sr-only">{{ $t('SATURN.AGENTS.TOGGLE_STATUS') }}</span>
+            <span
+              :class="[
+                'absolute top-0.5 left-0.5 h-3 w-3 transform rounded-full shadow-sm',
+                'transition-transform duration-200 ease-in-out bg-n-background',
+                enabled ? 'translate-x-3' : 'translate-x-0'
+              ]"
+            ></span>
+          </button>
+          <span class="text-xs text-n-slate-11">
+            {{ lastUpdatedAt }}
+          </span>
+        </div>
       </div>
       
       <div class="flex items-center gap-2 pt-4 mt-2 border-t border-n-weak">
