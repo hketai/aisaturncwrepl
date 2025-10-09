@@ -7,6 +7,26 @@ class SaturnListener < BaseListener
     conversation = message.conversation
     inbox = conversation.inbox
     
+    # Check if conversation has been transferred to a specific agent
+    current_agent_id = conversation.custom_attributes&.dig('current_saturn_agent_id')
+    transfer_depth = (conversation.custom_attributes&.dig('transfer_depth') || 0).to_i
+    
+    if current_agent_id.present?
+      # Use the transferred agent
+      agent_profile = Saturn::AgentProfile.find_by(id: current_agent_id, active: true)
+      
+      if agent_profile
+        Saturn::AutoRespondJob.perform_later(
+          message_id: message.id,
+          agent_profile_id: agent_profile.id,
+          account_id: conversation.account_id,
+          transfer_depth: transfer_depth
+        )
+        return
+      end
+      # If transferred agent not found/active, fall back to inbox connection
+    end
+    
     # Find active Saturn agent connected to this inbox
     connection = Saturn::InboxConnection
       .joins(:agent_profile)

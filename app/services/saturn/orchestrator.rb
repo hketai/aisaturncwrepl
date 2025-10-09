@@ -7,6 +7,7 @@ module Saturn
     def initialize(agent_profile:, api_key: nil)
       @agent_profile = agent_profile
       @conversation_history = []
+      @last_tool_action = nil
       @llm_service = Saturn::LlmService.new(
         api_key: api_key,
         model: agent_profile.model_name || 'gpt-4o-mini',
@@ -107,7 +108,17 @@ module Saturn
       tool = @available_tools.find { |t| t.name == function_name }
       return "Tool not found: #{function_name}" unless tool
       
-      tool.execute(arguments)
+      result_string = tool.execute(arguments)
+      
+      # Parse result to check for special actions (handoff/transfer)
+      begin
+        result_hash = JSON.parse(result_string)
+        @last_tool_action = result_hash if result_hash['action']
+      rescue JSON::ParserError
+        # Not JSON, just string result
+      end
+      
+      result_string
     rescue StandardError => e
       "Tool execution failed: #{e.message}"
     end
@@ -137,12 +148,19 @@ module Saturn
     end
     
     def format_final_response(content)
-      {
+      response = {
         success: true,
         response: content,
         agent_name: agent_profile.name,
         timestamp: Time.current
       }
+      
+      # Include action data if tool triggered special action (handoff/transfer)
+      if @last_tool_action
+        response.merge!(@last_tool_action.symbolize_keys)
+      end
+      
+      response
     end
     
     def handle_error(result)

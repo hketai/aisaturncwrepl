@@ -2,7 +2,9 @@ module Saturn
   class AutoRespondJob < ApplicationJob
     queue_as :default
     
-    def perform(message_id:, agent_profile_id:, account_id:)
+    MAX_TRANSFER_DEPTH = 3 # Prevent infinite transfer loops
+    
+    def perform(message_id:, agent_profile_id:, account_id:, transfer_depth: 0)
       message = Message.find_by(id: message_id)
       return unless message
       
@@ -42,12 +44,9 @@ module Saturn
       
       result = orchestrator.process(message.content, context: context)
       
-      # Create response message if successful
-      if result[:success] && result[:response].present?
-        create_response_message(message, result[:response], agent_profile)
-        
-        # Increment AI conversation count
-        account.increment_ai_conversation_count!
+      # Handle result (including actions)
+      if result[:success]
+        process_agent_result(message, result, agent_profile, account, api_key, transfer_depth)
       else
         Rails.logger.error("Saturn auto-respond failed: #{result[:error]}")
       end
@@ -98,6 +97,130 @@ module Saturn
         .where("content_attributes->>'saturn_agent_id' = ?", agent_profile_id.to_s)
         .where('created_at > ?', message.created_at)
         .exists?
+    end
+    
+    def handle_handoff(message, result)
+      conversation = message.conversation
+      team_id = result[:team_id]
+      
+      # Set conversation to pending status (waiting for human)
+      conversation.update!(status: :pending, team_id: team_id)
+      
+      # Send handoff message to customer
+      create_info_message(message, result[:message], :handoff)
+      
+      # Create internal note for team
+      create_internal_note(message, result[:note_for_agent])
+      
+      Rails.logger.info("Saturn: Handed off conversation #{conversation.id} to team #{team_id}. Reason: #{result[:reason]}")
+    end
+    
+    def handle_agent_transfer(message, result, account, api_key, depth = 0)
+      transfer_agent_id = result[:transfer_to_agent_id]
+      transfer_agent = Saturn::AgentProfile.find_by(id: transfer_agent_id)
+      
+      unless transfer_agent&.active?
+        Rails.logger.error("Saturn: Transfer agent #{transfer_agent_id} not found or not active")
+        return
+      end
+      
+      # Send transfer message to customer
+      create_info_message(message, result[:message], :transfer)
+      
+      # Create internal note
+      create_internal_note(message, result[:note])
+      
+      # Update conversation to track current agent
+      conversation = message.conversation
+      conversation.update!(
+        custom_attributes: (conversation.custom_attributes || {}).merge(
+          'current_saturn_agent_id' => transfer_agent_id,
+          'transfer_depth' => depth
+        )
+      )
+      
+      # Continue conversation with new agent
+      context = build_context(message)
+      orchestrator = Saturn::Orchestrator.new(
+        agent_profile: transfer_agent,
+        api_key: api_key
+      )
+      
+      new_result = orchestrator.process(message.content, context: context)
+      
+      # Handle result recursively (new agent might also handoff/transfer)
+      if new_result[:success]
+        process_agent_result(message, new_result, transfer_agent, account, api_key, depth)
+      end
+      
+      Rails.logger.info("Saturn: Transferred conversation #{conversation.id} to agent #{transfer_agent.name} (depth: #{depth})")
+    end
+    
+    def process_agent_result(message, result, agent_profile, account, api_key, depth = 0)
+      # Check transfer depth to prevent infinite loops
+      if depth >= MAX_TRANSFER_DEPTH
+        Rails.logger.error("Saturn: Max transfer depth (#{MAX_TRANSFER_DEPTH}) reached. Preventing infinite loop.")
+        create_info_message(message, "Üzgünüm, teknik bir sorun oluştu. Lütfen bir temsilciyle görüşün.", :error)
+        return
+      end
+      
+      case result[:action]
+      when 'handoff_requested'
+        handle_handoff(message, result)
+      when 'agent_transfer_requested'
+        handle_agent_transfer(message, result, account, api_key, depth + 1)
+      else
+        # Normal response
+        if result[:response].present?
+          create_response_message(message, result[:response], agent_profile)
+          account.increment_ai_conversation_count!
+        end
+      end
+    end
+    
+    def create_info_message(original_message, content, message_type)
+      conversation = original_message.conversation
+      inbox = conversation.inbox
+      
+      sender = inbox.members.first || inbox.account.users.where(account_users: { role: :administrator }).first
+      
+      return unless sender
+      
+      Message.create!(
+        account_id: conversation.account_id,
+        inbox_id: conversation.inbox_id,
+        conversation_id: conversation.id,
+        message_type: :outgoing,
+        content: content,
+        sender: sender,
+        private: false,
+        content_attributes: {
+          automated_response: true,
+          transfer_type: message_type.to_s
+        }
+      )
+    end
+    
+    def create_internal_note(original_message, content)
+      conversation = original_message.conversation
+      inbox = conversation.inbox
+      
+      sender = inbox.members.first || inbox.account.users.where(account_users: { role: :administrator }).first
+      
+      return unless sender
+      
+      Message.create!(
+        account_id: conversation.account_id,
+        inbox_id: conversation.inbox_id,
+        conversation_id: conversation.id,
+        message_type: :outgoing,
+        content: content,
+        sender: sender,
+        private: true,
+        content_attributes: {
+          automated_note: true
+        }
+      )
     end
     
     def create_response_message(original_message, response_content, agent_profile)
