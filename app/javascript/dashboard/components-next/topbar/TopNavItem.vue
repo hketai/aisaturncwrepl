@@ -89,10 +89,10 @@ const closeDropdown = () => {
       :is="to && !children.length ? 'router-link' : 'button'"
       :to="to && !children.length ? to : undefined"
       :class="[
-        'flex items-center gap-2 px-3 h-10 rounded-md text-sm font-semibold transition-all duration-200',
+        'flex items-center gap-2 px-3 h-10 rounded-md text-sm font-medium transition-colors duration-150',
         isActive
-          ? 'bg-n-brand-50 dark:bg-n-brand-900/30 text-n-brand-700 dark:text-n-brand-300'
-          : 'text-n-slate-11 dark:text-n-slate-6 hover:bg-n-slate-2 dark:hover:bg-n-slate-3 hover:text-n-slate-12 dark:hover:text-n-slate-12',
+          ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400'
+          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800',
       ]"
       @click.stop="toggleDropdown"
     >
@@ -100,7 +100,7 @@ const closeDropdown = () => {
       <span>{{ label }}</span>
       <span
         v-if="count > 0"
-        class="ml-1 px-1.5 py-0.5 text-xs font-bold rounded-full bg-n-brand-700 text-white shadow-sm"
+        class="ml-1 px-1.5 py-0.5 text-xs font-semibold rounded-full bg-indigo-600 text-white"
       >
         {{ count }}
       </span>

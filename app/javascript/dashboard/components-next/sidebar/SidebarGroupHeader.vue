@@ -32,21 +32,21 @@ const count = computed(() =>
     :to="to"
     :title="label"
     :class="{
-      'text-n-brand-700 dark:text-n-brand-300 bg-n-brand-50 dark:bg-n-brand-900/30 font-semibold': isActive && !hasActiveChild,
-      'text-n-slate-12 dark:text-n-slate-12 font-semibold': hasActiveChild,
-      'text-n-slate-11 dark:text-n-slate-6 hover:bg-n-slate-2 dark:hover:bg-n-slate-3 hover:text-n-slate-12 dark:hover:text-n-slate-12': !isActive && !hasActiveChild,
+      'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 font-semibold shadow-sm': isActive && !hasActiveChild,
+      'text-slate-900 dark:text-slate-100 font-semibold': hasActiveChild,
+      'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-100': !isActive && !hasActiveChild,
     }"
     @click.stop="emit('toggle')"
   >
     <div 
       v-if="isActive && !hasActiveChild"
-      class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-n-brand-700 dark:bg-n-brand-400 rounded-r"
+      class="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-indigo-600 dark:bg-indigo-400 rounded-r-full"
     />
     <div v-if="icon" class="relative flex items-center gap-2">
       <Icon v-if="icon" :icon="icon" class="size-[18px]" />
       <span
         v-if="showBadge"
-        class="size-2 -top-px ltr:-right-px rtl:-left-px bg-n-brand-700 dark:bg-n-brand-400 absolute rounded-full border-2 border-white dark:border-n-slate-1"
+        class="size-2 -top-px ltr:-right-px rtl:-left-px bg-indigo-600 dark:bg-indigo-400 absolute rounded-full border-2 border-white dark:border-slate-900"
       />
     </div>
     <div class="flex items-center gap-2 flex-grow min-w-0">
@@ -57,8 +57,8 @@ const count = computed(() =>
         v-if="dynamicCount && !expandable"
         class="rounded-full capitalize text-[11px] leading-4 font-bold text-center px-2 py-0.5 flex-shrink-0"
         :class="{
-          'text-n-brand-800 dark:text-n-brand-200 bg-n-brand-100 dark:bg-n-brand-900/50 font-bold': isActive,
-          'text-n-slate-10 dark:text-n-slate-7 bg-n-slate-3 dark:bg-n-slate-4 font-semibold': !isActive,
+          'text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40': isActive,
+          'text-slate-600 dark:text-slate-400 bg-slate-200/60 dark:bg-slate-700/50': !isActive,
         }"
       >
         {{ count }}
