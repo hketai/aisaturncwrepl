@@ -1,0 +1,255 @@
+Last login: Tue Oct  7 15:26:12 on ttys000
+harun@Harun-MacBook-Air ~ % ssh root@app.aisaturn.co
+root@app.aisaturn.co's password: 
+Welcome to Ubuntu 25.04 (GNU/Linux 6.14.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Oct  9 03:22:51 UTC 2025
+
+  System load:  0.1                Processes:             164
+  Usage of /:   3.4% of 192.85GB   Users logged in:       1
+  Memory usage: 11%                IPv4 address for eth0: 167.71.54.139
+  Swap usage:   0%                 IPv4 address for eth0: 10.19.0.9
+
+0 updates can be applied immediately.
+
+
+*** System restart required ***
+root@aisaturn-repl-prod:~# cd /var/www/chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails console
+I, [2025-10-09T03:23:09.402276 #162483]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:23:09.402369 #162483]  INFO -- : [dotenv] Loaded .env.production
+/var/www/chatwoot/app/models/installation_config.rb:37:in `value': undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue: self-hosted\n":String (NoMethodError)
+
+    serialized_value.with_indifferent_access[:value]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+	from /var/www/chatwoot/lib/global_config.rb:54:in `db_fallback'
+	from /var/www/chatwoot/lib/global_config.rb:45:in `load_from_cache'
+	from /var/www/chatwoot/lib/global_config.rb:20:in `get_value'
+	from /var/www/chatwoot/lib/chatwoot_app.rb:21:in `chatwoot_cloud?'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:17:in `<class:AccountDashboard>'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:3:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:26:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `const_get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:413:in `block in eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application/finisher.rb:80:in `block in <module:Finisher>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `instance_exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:61:in `block in run_initializers'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:228:in `block in tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:431:in `each_strongly_connected_component_from'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:349:in `block in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `call'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:226:in `tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:205:in `tsort_each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:60:in `run_initializers'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:426:in `initialize!'
+	from /var/www/chatwoot/config/environment.rb:5:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:402:in `require_environment!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/actions.rb:20:in `boot_application!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/console/console_command.rb:105:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor.rb:538:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in `block in invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from bin/rails:4:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# InstallationConfig.delete_all
+Rails.cache.clear
+InstallationConfig.delete_all: command not found
+Rails.cache.clear: command not found
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot# # PostgreSQL'e bağlan (production database)
+PGPASSWORD=$(grep DATABASE_URL /var/www/chatwoot/.env.production | cut -d'@' -f2 | cut -d'/' -f2) psql -h $(grep DATABASE_URL /var/www/chatwoot/.env.production | cut -d'@' -f2 | cut -d':' -f1) -U $(grep DATABASE_URL /var/www/chatwoot/.env.production | cut -d':' -f2 | cut -d'/' -f3 | cut -d'@' -f1) -d $(grep DATABASE_URL /var/www/chatwoot/.env.production | cut -d'/' -f4)
+psql: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "chatwoot"
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "chatwoot"
+root@aisaturn-repl-prod:/var/www/chatwoot# # .env.production dosyasını göster
+grep DATABASE_URL /var/www/chatwoot/.env.production
+DATABASE_URL=postgresql://chatwoot:chatwoot_password_2025@localhost:5432/chatwoot_production
+root@aisaturn-repl-prod:/var/www/chatwoot# # Direkt SQL query çalıştır (Rails olmadan)
+RAILS_ENV=production bundle exec rails runner "ActiveRecord::Base.connection.execute('DELETE FROM installation_configs WHERE value LIKE '\''---%%'\''); puts 'Cleaned!'"
+RAILS_ENV=production bundle exec rails runner "ActiveRecord::Base.connection.execute('DELETE FROM installation_configs WHERE value LIKE '\''---%%'\''); puts 'Cleaned')"
+I, [2025-10-09T03:24:34.451176 #162866]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:24:34.451263 #162866]  INFO -- : [dotenv] Loaded .env.production
+/var/www/chatwoot/app/models/installation_config.rb:37:in `value': undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue: self-hosted\n":String (NoMethodError)
+
+    serialized_value.with_indifferent_access[:value]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+	from /var/www/chatwoot/lib/global_config.rb:54:in `db_fallback'
+	from /var/www/chatwoot/lib/global_config.rb:45:in `load_from_cache'
+	from /var/www/chatwoot/lib/global_config.rb:20:in `get_value'
+	from /var/www/chatwoot/lib/chatwoot_app.rb:21:in `chatwoot_cloud?'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:17:in `<class:AccountDashboard>'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:3:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:26:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `const_get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:413:in `block in eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application/finisher.rb:80:in `block in <module:Finisher>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `instance_exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:61:in `block in run_initializers'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:228:in `block in tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:431:in `each_strongly_connected_component_from'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:349:in `block in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `call'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:226:in `tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:205:in `tsort_each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:60:in `run_initializers'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:426:in `initialize!'
+	from /var/www/chatwoot/config/environment.rb:5:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:402:in `require_environment!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/actions.rb:20:in `boot_application!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/runner/runner_command.rb:28:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor.rb:538:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in `block in invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from bin/rails:4:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# mv /var/www/chatwoot/app/models/installation_config.rb /var/www/chatwoot/app/models/installation_config.rb.backup
+root@aisaturn-repl-prod:/var/www/chatwoot# cat > /var/www/chatwoot/app/models/installation_config.rb << 'EOF'
+class InstallationConfig < ApplicationRecord
+  def self.delete_all
+    connection.execute("DELETE FROM installation_configs")
+  end
+end
+EOF
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails console
+I, [2025-10-09T03:24:53.293256 #162939]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T03:24:53.293346 #162939]  INFO -- : [dotenv] Loaded .env.production
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activemodel-7.1.5.2/lib/active_model/attribute_methods.rb:511:in `method_missing': undefined method `value' for #<InstallationConfig id: 41, name: "DEPLOYMENT_ENV", serialized_value: "--- !ruby/hash:ActiveSupport::HashWithIndifferentA...", created_at: "2025-10-06 00:29:50.368425000 +0000", updated_at: "2025-10-06 00:29:50.368425000 +0000", locked: true> (NoMethodError)
+Did you mean?  values_at
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/attribute_methods.rb:499:in `method_missing'
+	from /var/www/chatwoot/lib/global_config.rb:54:in `db_fallback'
+	from /var/www/chatwoot/lib/global_config.rb:45:in `load_from_cache'
+	from /var/www/chatwoot/lib/global_config.rb:20:in `get_value'
+	from /var/www/chatwoot/lib/chatwoot_app.rb:21:in `chatwoot_cloud?'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:17:in `<class:AccountDashboard>'
+	from /var/www/chatwoot/app/dashboards/account_dashboard.rb:3:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:26:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `const_get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `get'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:413:in `block in eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `eager_load_all'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application/finisher.rb:80:in `block in <module:Finisher>'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `instance_exec'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:32:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:61:in `block in run_initializers'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:228:in `block in tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:431:in `each_strongly_connected_component_from'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:349:in `block in each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `call'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:347:in `each_strongly_connected_component'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:226:in `tsort_each'
+	from /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/tsort.rb:205:in `tsort_each'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/initializable.rb:60:in `run_initializers'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:426:in `initialize!'
+	from /var/www/chatwoot/config/environment.rb:5:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/application.rb:402:in `require_environment!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/actions.rb:20:in `boot_application!'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/console/console_command.rb:105:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/command.rb:28:in `run'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor/invocation.rb:127:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:178:in `invoke_command'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/thor-1.4.0/lib/thor.rb:538:in `dispatch'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command/base.rb:73:in `perform'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:71:in `block in invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+	from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+	from bin/rails:4:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# InstallationConfig.delete_all
+exit
+InstallationConfig.delete_all: command not found
+logout
+Connection to app.aisaturn.co closed.
+harun@Harun-MacBook-Air ~ % mv /var/www/chatwoot/app/models/installation_config.rb.backup /var/www/chatwoot/app/models/installation_config.rb
+mv: rename /var/www/chatwoot/app/models/installation_config.rb.backup to /var/www/chatwoot/app/models/installation_config.rb: No such file or directory
+harun@Harun-MacBook-Air ~ % 
