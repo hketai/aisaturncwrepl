@@ -3,11 +3,13 @@ import { computed, onMounted, onBeforeUnmount, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
+import { useAccount } from 'dashboard/composables/useAccount';
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import SaturnAPI from 'dashboard/api/saturn';
 
 const { t } = useI18n();
+const { currentAccount } = useAccount();
 
 import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import AgentCard from './components/AgentCard.vue';
@@ -132,6 +134,25 @@ onBeforeUnmount(() => {
   emitter.off(BUS_EVENTS.SATURN_AGENT_UPDATED, handleWebSocketAgentUpdated);
   emitter.off(BUS_EVENTS.SATURN_AGENT_DELETED, handleWebSocketAgentDeleted);
 });
+
+const showLimitWarning = computed(() => {
+  if (!currentAccount.value?.ai_conversation_limit) return false;
+  const remaining = currentAccount.value.ai_conversations_remaining || 0;
+  const limit = currentAccount.value.ai_conversation_limit;
+  return remaining <= limit * 0.2;
+});
+
+const limitWarningMessage = computed(() => {
+  if (!currentAccount.value) return '';
+  const remaining = currentAccount.value.ai_conversations_remaining || 0;
+  const count = currentAccount.value.ai_conversation_count || 0;
+  const limit = currentAccount.value.ai_conversation_limit;
+  
+  if (remaining === 0) {
+    return t('SATURN.LIMIT.REACHED', { count, limit });
+  }
+  return t('SATURN.LIMIT.WARNING', { remaining, limit });
+});
 </script>
 
 <template>
@@ -149,6 +170,24 @@ onBeforeUnmount(() => {
 
     <template #body>
       <div class="flex flex-col gap-4">
+        <div
+          v-if="showLimitWarning"
+          class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-4"
+        >
+          <div class="flex items-start gap-3">
+            <fluent-icon
+              icon="warning"
+              size="20"
+              class="text-yellow-600 dark:text-yellow-400 mt-0.5"
+            />
+            <div class="flex-1">
+              <p class="text-sm text-yellow-800 dark:text-yellow-200 font-medium">
+                {{ limitWarningMessage }}
+              </p>
+            </div>
+          </div>
+        </div>
+
         <AgentCard
           v-for="agent in agents"
           :id="agent.id"

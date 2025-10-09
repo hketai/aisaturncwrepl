@@ -749,6 +749,10 @@
       "ERROR_LOAD": "Veriler yüklenemedi",
       "ERROR_CONNECT": "Gelen kutusu bağlanamadı",
       "ERROR_DISCONNECT": "Gelen kutusu bağlantısı kesilemedi"
+    },
+    "LIMIT": {
+      "WARNING": "⚠️ Aylık AI konuşma limitinize yaklaşıyorsunuz. {remaining} / {limit} konuşma hakkınız kaldı.",
+      "REACHED": "🚫 Aylık AI konuşma limitinize ulaştınız ({count} / {limit}). Otomatik yanıtlar durduruldu."
     }
   }
 }

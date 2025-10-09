@@ -25,3 +25,7 @@ json.name @account.name
 json.support_email @account.support_email
 json.status @account.status
 json.cache_keys @account.cache_keys
+json.ai_conversation_limit @account.ai_conversation_limit
+json.ai_conversation_count @account.ai_conversation_count
+json.ai_conversations_remaining @account.ai_conversations_remaining
+json.ai_limit_reached @account.ai_limit_reached?

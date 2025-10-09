@@ -161,6 +161,30 @@ class Account < ApplicationRecord
     ISO_639.find(account_locale)&.english_name&.downcase || 'english'
   end
 
+  def increment_ai_conversation_count!
+    reset_ai_conversation_count_if_needed!
+    increment!(:ai_conversation_count)
+  end
+
+  def reset_ai_conversation_count_if_needed!
+    return if ai_limit_reset_at.present? && ai_limit_reset_at > 1.month.ago
+
+    update!(
+      ai_conversation_count: 0,
+      ai_limit_reset_at: Time.current
+    )
+  end
+
+  def ai_conversations_remaining
+    return nil if ai_conversation_limit.nil?
+
+    [ai_conversation_limit - ai_conversation_count, 0].max
+  end
+
+  def ai_limit_reached?
+    ai_conversation_limit.present? && ai_conversation_count >= ai_conversation_limit
+  end
+
   private
 
   def notify_creation
