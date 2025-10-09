@@ -214,8 +214,30 @@ onBeforeUnmount(() => {
                   <span class="text-xs px-2 py-0.5 rounded-full bg-n-alpha-2 text-n-slate-11">
                     {{ knowledge.source_type }}
                   </span>
-                  <span v-if="knowledge.source_url" class="text-xs text-n-slate-11 truncate">
+                  <span v-if="knowledge.source_url" class="text-xs text-n-slate-11 truncate max-w-xs">
                     {{ knowledge.source_url }}
+                  </span>
+                  <span 
+                    v-if="knowledge.source_type === 'url' && knowledge.metadata?.scraping_status === 'success'"
+                    class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 flex items-center gap-1"
+                  >
+                    <i class="i-lucide-check-circle text-xs"></i>
+                    Scraped
+                  </span>
+                  <span 
+                    v-if="knowledge.source_type === 'url' && knowledge.metadata?.scraping_status === 'failed'"
+                    class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400 flex items-center gap-1"
+                    :title="knowledge.metadata?.scraping_error"
+                  >
+                    <i class="i-lucide-alert-circle text-xs"></i>
+                    Failed
+                  </span>
+                  <span 
+                    v-if="knowledge.source_type === 'url' && !knowledge.metadata?.scraping_status"
+                    class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 flex items-center gap-1"
+                  >
+                    <i class="i-lucide-loader-2 text-xs animate-spin"></i>
+                    Scraping...
                   </span>
                 </div>
               </div>

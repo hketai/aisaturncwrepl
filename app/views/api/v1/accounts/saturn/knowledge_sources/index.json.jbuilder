@@ -7,5 +7,6 @@ json.payload do
     json.agent_profile_id source.agent_profile_id
     json.content_preview source.content_text&.truncate(200)
     json.created_at source.created_at
+    json.metadata source.metadata
   end
 end
