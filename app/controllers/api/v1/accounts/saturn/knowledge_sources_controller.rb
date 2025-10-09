@@ -14,6 +14,19 @@ class Api::V1::Accounts::Saturn::KnowledgeSourcesController < Api::V1::Accounts:
   def show; end
   
   def create
+    # Check URL limit for URL sources
+    if knowledge_source_params[:source_type] == 'url'
+      max_urls = GlobalConfigService.load('MAX_URL_SOURCES_PER_ACCOUNT', '100').to_i
+      current_url_count = Current.account.saturn_knowledge_sources.where(source_type: 'url').count
+      
+      if current_url_count >= max_urls
+        render json: { 
+          error: "URL kaynak limiti aşıldı. Maksimum #{max_urls} URL kaynağı ekleyebilirsiniz." 
+        }, status: :unprocessable_entity
+        return
+      end
+    end
+    
     @knowledge_source = Current.account.saturn_knowledge_sources.new(knowledge_source_params)
     @knowledge_source.save!
     
