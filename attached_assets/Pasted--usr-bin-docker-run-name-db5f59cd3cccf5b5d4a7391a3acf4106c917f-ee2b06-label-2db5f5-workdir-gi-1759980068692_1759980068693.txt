@@ -1,0 +1,751 @@
+/usr/bin/docker run --name db5f59cd3cccf5b5d4a7391a3acf4106c917f_ee2b06 --label 2db5f5 --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_PORT" -e "INPUT_SCRIPT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/aisaturncwrepl/aisaturncwrepl":"/github/workspace" 2db5f5:9cd3cccf5b5d4a7391a3acf4106c917f
+======CMD======
+set -e
+echo "🚀 Starting deployment to ***..."
+
+# Navigate to application directory
+cd /var/www/chatwoot
+
+# Pull latest code from GitHub
+echo "📥 Pulling latest code from GitHub main branch..."
+git fetch origin main
+git reset --hard origin/main
+
+# Load Ruby environment (rbenv) and set correct version
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+rbenv install 3.2.2 --skip-existing
+rbenv local 3.2.2
+
+# Load environment variables from .env.production
+# (Already configured on server - no need to pass secrets)
+source /var/www/chatwoot/.env.production || true
+
+# Install Ruby dependencies
+echo "📦 Installing Ruby gems (bundle install)..."
+bundle install --deployment --without development test
+
+# Install Node dependencies
+echo "📦 Installing Node packages (pnpm install)..."
+pnpm install --frozen-lockfile
+
+# Clean Vite cache to force fresh build
+echo "🧹 Cleaning Vite cache..."
+rm -rf tmp/vite-cache
+rm -rf public/vite-dev
+rm -rf public/packs/.vite
+
+# Precompile assets for production
+echo "🎨 Precompiling Vite and Rails assets..."
+RAILS_ENV=production BUILD_MODE=library bin/vite build --force
+RAILS_ENV=production bin/vite build --force
+RAILS_ENV=production bundle exec rails assets:precompile
+
+# Run database migrations
+echo "🗄️ Running database migrations..."
+RAILS_ENV=production bundle exec rails db:migrate
+
+# Restart Chatwoot services
+echo "🔄 Restarting Chatwoot web and worker services..."
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# Wait for services to start
+sleep 3
+
+# Check service status
+echo "✅ Checking service status..."
+sudo systemctl status chatwoot-web --no-pager || true
+sudo systemctl status chatwoot-worker --no-pager || true
+
+echo "✅ Deployment completed successfully!"
+echo "🌐 Application is now live at https://***"
+
+======END======
+out: 🚀 Starting deployment to ***...
+out: 📥 Pulling latest code from GitHub main branch...
+err: From github-aisaturncwrepl:hketai/aisaturncwrepl
+err:  * branch                main       -> FETCH_HEAD
+err:    fad5a6280..d1010357f  main       -> origin/main
+out: HEAD is now at d1010357f Fix: Restore AI conversation limits, cleanup menu, fix InstallationConfig JSONB - Fixed InstallationConfig YAML serialization bug (TypeError resolved) - Restored AI conversation limit feature (backend + frontend + i18n) - Removed unwanted menu items (Inbox, Portals, Integrations, Live Chat, SMS) - Updated all icons from Lucide to Phosphor for consistency - Updated replit.md with automatic setup instructions
+out: 📦 Installing Ruby gems (bundle install)...
+err: [DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+err: [DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+err: Don't run Bundler as ***. Installing your bundle as *** will break this
+err: application for all non-*** users on this machine.
+out: Bundle complete! 140 Gemfile dependencies, 277 gems now installed.
+out: Gems in the groups 'development' and 'test' were not installed.
+out: Bundled gems are installed into `./vendor/bundle`
+out: 1 installed gem you directly depend on is looking for funding.
+out:   Run `bundle fund` for details
+out: 📦 Installing Node packages (pnpm install)...
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out:    ╭───────────────────────────────────────────────────────────────────╮
+out:    │                                                                   │
+out:    │                Update available! 10.2.0 → 10.18.1.                │
+out:    │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v10.18.1   │
+out:    │         Run "corepack install -g pnpm@10.18.1" to update.         │
+out:    │                                                                   │
+out:    ╰───────────────────────────────────────────────────────────────────╯
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 1.1s
+out: 🧹 Cleaning Vite cache...
+out: 🎨 Precompiling Vite and Rails assets...
+out: I, [2025-10-09T03:18:41.858950 #162026]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-09T03:18:41.859016 #162026]  INFO -- : [dotenv] Loaded .env.production
+err: Unable to initialize Rails application before Vite build:
+err: 	undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue: self-hosted\n":String
+out: Building with Vite ⚡️
+out: vite v5.4.20 building for production...
+out: transforming...
+out: ✓ 33 modules transformed.
+out: rendering chunks...
+out: computing gzip size...
+out: public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+out: ✓ built in 754ms
+out: Build with Vite complete: /var/www/chatwoot/public/vite
+out: The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+out: Browserslist: caniuse-lite is outdated. Please run:
+out:   npx update-browserslist-db@latest
+out:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+out: (!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+out: I, [2025-10-09T03:18:47.311952 #162081]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-09T03:18:47.312026 #162081]  INFO -- : [dotenv] Loaded .env.production
+err: Unable to initialize Rails application before Vite build:
+err: 	undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue: self-hosted\n":String
+out: Building with Vite ⚡️
+out: vite v5.4.20 building for production...
+out: transforming...
+out: ✓ 4432 modules transformed.
+out: rendering chunks...
+out: computing gzip size...
+out: ../../public/vite/.vite/manifest-assets.json                         0.00 kB │ gzip:     0.02 kB
+out: ../../public/vite/assets/pf-CEX9Vx76.svg                             4.11 kB │ gzip:     1.73 kB
+out: ../../public/vite/assets/pf-CMTHIumB.svg                             4.15 kB │ gzip:     1.72 kB
+out: ../../public/vite/assets/sz-DpZ3V1AK.svg                             4.75 kB │ gzip:     1.95 kB
+out: ../../public/vite/assets/sz-BC3w3Gmj.svg                             4.80 kB │ gzip:     1.97 kB
+out: ../../public/vite/assets/gu-wFhsTC1Y.svg                             4.91 kB │ gzip:     1.91 kB
+out: ../../public/vite/assets/gq-OBiOttRB.svg                             5.07 kB │ gzip:     2.05 kB
+out: ../../public/vite/assets/gu-Bkjkorus.svg                             5.10 kB │ gzip:     2.00 kB
+out: ../../public/vite/assets/gq-BvOxIUGP.svg                             5.16 kB │ gzip:     2.15 kB
+out: ../../public/vite/assets/zm-CNg0kgkw.svg                             5.41 kB │ gzip:     2.29 kB
+out: ../../public/vite/assets/zm-BmHUGSoa.svg                             5.51 kB │ gzip:     2.29 kB
+out: ../../public/vite/assets/nf--j2oelto.svg                             5.56 kB │ gzip:     2.44 kB
+out: ../../public/vite/assets/ki-COZ8g898.svg                             5.64 kB │ gzip:     1.64 kB
+out: ../../public/vite/assets/ki-CM44VBPm.svg                             5.81 kB │ gzip:     1.70 kB
+out: ../../public/vite/assets/nf-COchEj81.svg                             5.81 kB │ gzip:     2.55 kB
+out: ../../public/vite/assets/cy-VQFkW-qk.svg                             5.91 kB │ gzip:     2.52 kB
+out: ../../public/vite/assets/cy-Bgo0XIP0.svg                             6.00 kB │ gzip:     2.57 kB
+out: ../../public/vite/assets/ms-7tNehsjt.svg                             6.07 kB │ gzip:     2.61 kB
+out: ../../public/vite/assets/ms-D--tLJBo.svg                             6.12 kB │ gzip:     2.56 kB
+out: ../../public/vite/assets/no-chat-dark-BSWrQBd3.svg                   6.35 kB │ gzip:     2.40 kB
+out: ../../public/vite/assets/zw-DGkTG73v.svg                             6.65 kB │ gzip:     2.61 kB
+out: ../../public/vite/assets/zw-Ceqd3Xj3.svg                             6.67 kB │ gzip:     2.64 kB
+out: ../../public/vite/assets/no-chat-okxWD-4P.svg                        6.68 kB │ gzip:     2.48 kB
+out: ../../public/vite/assets/tc-CYGgqbY-.svg                             7.15 kB │ gzip:     3.00 kB
+out: ../../public/vite/assets/tc-BB3tFO-G.svg                             7.15 kB │ gzip:     3.00 kB
+out: ../../public/vite/assets/kh-V4Sa3vlt.svg                             7.28 kB │ gzip:     2.77 kB
+out: ../../public/vite/assets/kh-CAffWc0R.svg                             7.28 kB │ gzip:     2.78 kB
+out: ../../public/vite/assets/kz-DBjWpOlG.svg                             7.29 kB │ gzip:     2.99 kB
+out: ../../public/vite/assets/kz-BBCbe9jj.svg                             7.29 kB │ gzip:     2.98 kB
+out: ../../public/vite/assets/br-Yf30zEjB.svg                             7.68 kB │ gzip:     2.54 kB
+out: ../../public/vite/assets/br-DaE4AJQY.svg                             8.10 kB │ gzip:     2.74 kB
+out: ../../public/vite/assets/li-DgeenFRc.svg                             8.25 kB │ gzip:     3.25 kB
+out: ../../public/vite/assets/li-y6TPS81M.svg                             8.27 kB │ gzip:     3.26 kB
+out: ../../public/vite/assets/pt-BV5okG4O.svg                             8.32 kB │ gzip:     3.34 kB
+out: ../../public/vite/assets/vi-1FTBesw2.svg                             8.62 kB │ gzip:     3.61 kB
+out: ../../public/vite/assets/xk-B6uU6dIH.svg                             8.63 kB │ gzip:     3.24 kB
+out: ../../public/vite/assets/pt-BLLm3V0o.svg                             8.67 kB │ gzip:     3.36 kB
+out: ../../public/vite/assets/vi-DatfOFqY.svg                             8.68 kB │ gzip:     3.65 kB
+out: ../../public/vite/assets/aw-W0PWLK5p.svg                             9.00 kB │ gzip:     1.67 kB
+out: ../../public/vite/assets/gb-wls-lLp_JivI.svg                         9.07 kB │ gzip:     4.05 kB
+out: ../../public/vite/assets/gb-wls-C4LdH8Nd.svg                         9.18 kB │ gzip:     4.17 kB
+out: ../../public/vite/assets/xk-F5dDvX79.svg                             9.31 kB │ gzip:     3.50 kB
+out: ../../public/vite/assets/eg-BIzzVp3n.svg                             9.85 kB │ gzip:     3.88 kB
+out: ../../public/vite/assets/eg-C1MYAOXe.svg                             9.87 kB │ gzip:     3.89 kB
+out: ../../public/vite/assets/im-BAoxVCMv.svg                             9.90 kB │ gzip:     3.77 kB
+out: ../../public/vite/assets/sa-eH5F7cXy.svg                            10.17 kB │ gzip:     4.26 kB
+out: ../../public/vite/assets/im-deD7ny0b.svg                            10.22 kB │ gzip:     4.01 kB
+out: ../../public/vite/assets/sa-DLf2NaXn.svg                            10.24 kB │ gzip:     4.31 kB
+out: ../../public/vite/assets/aw-CLCX8uk5.svg                            10.36 kB │ gzip:     1.79 kB
+out: ../../public/vite/assets/vg-qlt33Cv3.svg                            10.39 kB │ gzip:     4.28 kB
+out: ../../public/vite/assets/vg-DKEU1GdO.svg                            10.41 kB │ gzip:     4.27 kB
+out: ../../public/vite/assets/md-DArlF80d.svg                            11.20 kB │ gzip:     2.85 kB
+out: ../../public/vite/assets/md-DRw6DF0o.svg                            11.31 kB │ gzip:     2.72 kB
+out: ../../public/vite/assets/lk-B2IfFxoh.svg                            11.34 kB │ gzip:     4.63 kB
+out: ../../public/vite/assets/lk-DIvkWByA.svg                            11.35 kB │ gzip:     4.63 kB
+out: ../../public/vite/assets/sx-DzlMoqh2.svg                            12.95 kB │ gzip:     4.40 kB
+out: ../../public/vite/assets/sx-4BiL6F_v.svg                            13.14 kB │ gzip:     4.61 kB
+out: ../../public/vite/assets/mt-DeenPMqd.svg                            13.73 kB │ gzip:     5.65 kB
+out: ../../public/vite/assets/pn-DEs-Vj71.svg                            13.84 kB │ gzip:     5.03 kB
+out: ../../public/vite/assets/pn-vyD5VXw1.svg                            13.88 kB │ gzip:     5.09 kB
+out: ../../public/vite/assets/eac-CZCl_pn7.svg                           14.22 kB │ gzip:     4.98 kB
+out: ../../public/vite/assets/eac-D_uIzpYR.svg                           14.23 kB │ gzip:     4.98 kB
+out: ../../public/vite/assets/bn-BDKbSv-u.svg                            14.32 kB │ gzip:     5.94 kB
+out: ../../public/vite/assets/bn-UGyQANfK.svg                            14.46 kB │ gzip:     5.96 kB
+out: ../../public/vite/assets/ht-DPCqX9cm.svg                            14.57 kB │ gzip:     5.13 kB
+out: ../../public/vite/assets/mt-0OWB-5b3.svg                            14.64 kB │ gzip:     6.04 kB
+out: ../../public/vite/assets/ht-HoSCtdNQ.svg                            14.70 kB │ gzip:     5.17 kB
+out: ../../public/vite/assets/ir-CXFV1BFU.svg                            15.31 kB │ gzip:     2.29 kB
+out: ../../public/vite/assets/ir-cCIgaNf6.svg                            15.40 kB │ gzip:     2.24 kB
+out: ../../public/vite/assets/sm-DHRSzt4z.svg                            15.66 kB │ gzip:     5.38 kB
+out: ../../public/vite/assets/sm-1NcqoN_z.svg                            15.77 kB │ gzip:     5.28 kB
+out: ../../public/vite/assets/dm-BlhP-6zy.svg                            15.82 kB │ gzip:     3.08 kB
+out: ../../public/vite/assets/dm-ClJ_IDld.svg                            16.31 kB │ gzip:     3.24 kB
+out: ../../public/vite/assets/facebook_login-_skaVloV.png                16.39 kB
+out: ../../public/vite/assets/py-BfpB8kRi.svg                            17.19 kB │ gzip:     6.09 kB
+out: ../../public/vite/assets/py-CRTEf2ay.svg                            17.36 kB │ gzip:     6.17 kB
+out: ../../public/vite/assets/ni-CC3zFI7h.svg                            18.44 kB │ gzip:     5.75 kB
+out: ../../public/vite/assets/ni-ChnV2lR-.svg                            18.49 kB │ gzip:     5.81 kB
+out: ../../public/vite/assets/typing-DYm07fFx.gif                        19.30 kB
+out: ../../public/vite/assets/un-0G1DCZ6c.svg                            20.05 kB │ gzip:     7.92 kB
+out: ../../public/vite/assets/un-BQ1kEGox.svg                            20.29 kB │ gzip:     8.04 kB
+out: ../../public/vite/assets/af-Cc32fsDB.svg                            20.92 kB │ gzip:     8.30 kB
+out: ../../public/vite/assets/af-CI4E3ER1.svg                            21.06 kB │ gzip:     8.36 kB
+out: ../../public/vite/assets/om-Ri__rIwP.svg                            22.61 kB │ gzip:     4.45 kB
+out: ../../public/vite/assets/om-DnUPbroW.svg                            22.62 kB │ gzip:     4.44 kB
+out: ../../public/vite/assets/bm-D2j4bkLD.svg                            22.73 kB │ gzip:     7.25 kB
+out: ../../public/vite/assets/bm-BoWRAtUx.svg                            22.81 kB │ gzip:     7.25 kB
+out: ../../public/vite/assets/io-BzKkDPkD.svg                            22.88 kB │ gzip:     4.14 kB
+out: ../../public/vite/assets/dg-CPWO5scz.svg                            22.88 kB │ gzip:     4.14 kB
+out: ../../public/vite/assets/io-Bkx8USW1.svg                            23.16 kB │ gzip:     4.16 kB
+out: ../../public/vite/assets/dg-B55Nvqqm.svg                            23.16 kB │ gzip:     4.16 kB
+out: ../../public/vite/assets/mp-xI88Vk3c.svg                            23.33 kB │ gzip:     7.19 kB
+out: ../../public/vite/assets/mp-DOjKDFJv.svg                            23.58 kB │ gzip:     7.25 kB
+out: ../../public/vite/assets/gb-nir-BOm9QMOa.svg                        23.59 kB │ gzip:     6.30 kB
+out: ../../public/vite/assets/ky-D_l3blFP.svg                            23.99 kB │ gzip:     8.63 kB
+out: ../../public/vite/assets/ky-BqProAqG.svg                            24.01 kB │ gzip:     8.62 kB
+out: ../../public/vite/assets/bt-Cm0R6rAQ.svg                            24.91 kB │ gzip:    10.08 kB
+out: ../../public/vite/assets/bt-Csq9bKsA.svg                            25.12 kB │ gzip:    10.18 kB
+out: ../../public/vite/assets/gb-nir-BZUeOVwE.svg                        25.13 kB │ gzip:     5.79 kB
+out: ../../public/vite/assets/fj-DLvzYbo8.svg                            25.69 kB │ gzip:     9.56 kB
+out: ../../public/vite/assets/fj-CJDn3VQ8.svg                            25.79 kB │ gzip:     9.65 kB
+out: ../../public/vite/assets/arab-DwNob5Qo.svg                          26.34 kB │ gzip:     9.21 kB
+out: ../../public/vite/assets/arab-PzQTPYwO.svg                          26.46 kB │ gzip:     9.21 kB
+out: ../../public/vite/assets/es-ga-BbFllROk.svg                         28.63 kB │ gzip:     6.35 kB
+out: ../../public/vite/assets/es-ga-RI_ZudJJ.svg                         28.74 kB │ gzip:     6.34 kB
+out: ../../public/vite/assets/ec-LNhQ9L4k.svg                            28.97 kB │ gzip:     6.89 kB
+out: ../../public/vite/assets/va-BntFJQHU.svg                            29.40 kB │ gzip:     9.89 kB
+out: ../../public/vite/assets/va-maDzWwNR.svg                            29.46 kB │ gzip:     9.91 kB
+out: ../../public/vite/assets/ec-sTVr1A3S.svg                            29.55 kB │ gzip:     6.77 kB
+out: ../../public/vite/assets/fk-Ck9cznm4.svg                            30.04 kB │ gzip:     9.56 kB
+out: ../../public/vite/assets/fk-Be42QBCW.svg                            30.31 kB │ gzip:     9.37 kB
+out: ../../public/vite/assets/sh-ta-DNDOtP8t.svg                         30.57 kB │ gzip:    11.36 kB
+out: ../../public/vite/assets/sh-ta-clv2MsBt.svg                         30.83 kB │ gzip:    11.52 kB
+out: ../../public/vite/assets/as-D2gsNMrP.svg                            32.25 kB │ gzip:    11.92 kB
+out: ../../public/vite/assets/ad-CDtWnnSA.svg                            32.46 kB │ gzip:    11.62 kB
+out: ../../public/vite/assets/as-_t1IQUdv.svg                            32.50 kB │ gzip:    12.02 kB
+out: ../../public/vite/assets/gs-Di8hLP4g.svg                            32.53 kB │ gzip:    11.73 kB
+out: ../../public/vite/assets/gs-PK6r6yhR.svg                            33.02 kB │ gzip:    11.45 kB
+out: ../../public/vite/assets/ad-BOo-tPI4.svg                            33.68 kB │ gzip:    12.13 kB
+out: ../../public/vite/assets/gt-CovS1bZs.svg                            35.09 kB │ gzip:    12.35 kB
+out: ../../public/vite/assets/gt-Ufdm0MFv.svg                            35.09 kB │ gzip:    12.35 kB
+out: ../../public/vite/assets/sh-hl-DWwv0HRi.svg                         38.31 kB │ gzip:    13.42 kB
+out: ../../public/vite/assets/tm-CCv743R_.svg                            38.37 kB │ gzip:    12.01 kB
+out: ../../public/vite/assets/tm-DYhdxDK7.svg                            38.50 kB │ gzip:    12.11 kB
+out: ../../public/vite/assets/sh-hl-CnGxQM93.svg                         38.83 kB │ gzip:    13.71 kB
+out: ../../public/vite/assets/hr-cWEworf7.svg                            41.18 kB │ gzip:    15.80 kB
+out: ../../public/vite/assets/hr-C7VqhX5l.svg                            41.37 kB │ gzip:    15.98 kB
+out: ../../public/vite/assets/je-PUw16g1j.svg                            46.07 kB │ gzip:    12.13 kB
+out: ../../public/vite/assets/bz-YpwBidLU.svg                            46.67 kB │ gzip:    16.80 kB
+out: ../../public/vite/assets/je-YWv5VSiQ.svg                            46.77 kB │ gzip:    12.47 kB
+out: ../../public/vite/assets/bz-CqiVUvof.svg                            46.96 kB │ gzip:    16.82 kB
+out: ../../public/vite/assets/do--tGVu9lQ.svg                            50.07 kB │ gzip:    16.78 kB
+out: ../../public/vite/assets/do-DJGo0v5t.svg                            50.86 kB │ gzip:    17.04 kB
+out: ../../public/vite/assets/me-B32CQdRA.svg                            62.57 kB │ gzip:    23.16 kB
+out: ../../public/vite/assets/me-BUFcTh_w.svg                            63.55 kB │ gzip:    23.56 kB
+out: ../../public/vite/.vite/manifest.json                               69.30 kB │ gzip:     6.94 kB
+out: ../../public/vite/assets/auth--bg-CbBjuTMc.svg                      77.38 kB │ gzip:    52.39 kB
+out: ../../public/vite/assets/sv-n55iiUxg.svg                            82.82 kB │ gzip:    23.62 kB
+out: ../../public/vite/assets/sv-BGK8a8aZ.svg                            83.34 kB │ gzip:    23.81 kB
+out: ../../public/vite/assets/mx-4c9y9ryX.svg                            88.84 kB │ gzip:    30.39 kB
+out: ../../public/vite/assets/es-DL6RIaKh.svg                            91.01 kB │ gzip:    16.37 kB
+out: ../../public/vite/assets/es-CR0ZfKpD.svg                            92.80 kB │ gzip:    17.17 kB
+out: ../../public/vite/assets/mx-C7ivyfFO.svg                            93.45 kB │ gzip:    32.18 kB
+out: ../../public/vite/assets/InterDisplay-Regular-C0mmbI_t.woff2       105.57 kB
+out: ../../public/vite/assets/InterDisplay-Thin-DMFvXDOM.woff2          106.24 kB
+out: ../../public/vite/assets/Inter-Thin-B4o5siQk.woff2                 106.62 kB
+out: ../../public/vite/assets/InterDisplay-Black-DM1fLmGj.woff2         107.22 kB
+out: ../../public/vite/assets/Inter-Regular-B0QUfDW0.woff2              108.49 kB
+out: ../../public/vite/assets/InterDisplay-ExtraLight-CkrcZ2OC.woff2    109.66 kB
+out: ../../public/vite/assets/InterDisplay-Light-DB1R7qf0.woff2         109.86 kB
+out: ../../public/vite/assets/Inter-Light-MWFfSqj5.woff2                109.99 kB
+out: ../../public/vite/assets/InterDisplay-Medium-BRBaQVhl.woff2        110.01 kB
+out: ../../public/vite/assets/InterDisplay-Bold-CXJyJlfA.woff2          110.18 kB
+out: ../../public/vite/assets/InterDisplay-SemiBold-J6ePsRbj.woff2      110.23 kB
+out: ../../public/vite/assets/InterDisplay-ExtraBold-DsWMgBJM.woff2     110.30 kB
+out: ../../public/vite/assets/Inter-Bold-CytjP_7U.woff2                 111.04 kB
+out: ../../public/vite/assets/Inter-Medium-B0NFony0.woff2               111.38 kB
+out: ../../public/vite/assets/Inter-SemiBold-_JLwM7Yv.woff2             111.59 kB
+out: ../../public/vite/assets/bo-BqtZbaiW.svg                           112.08 kB │ gzip:    27.17 kB
+out: ../../public/vite/assets/bo-CP9m75_5.svg                           114.01 kB │ gzip:    27.60 kB
+out: ../../public/vite/assets/Inter-Italic-B_ozvy2G.woff2               114.58 kB
+out: ../../public/vite/assets/sh-ac-6pU0wZVL.svg                        153.41 kB │ gzip:    50.86 kB
+out: ../../public/vite/assets/sh-ac-Ch9Jh9Lp.svg                        156.13 kB │ gzip:    51.52 kB
+out: ../../public/vite/assets/rs-D2wyuxjv.svg                           184.05 kB │ gzip:    50.63 kB
+out: ../../public/vite/assets/rs-Dv4N4BPN.svg                           184.17 kB │ gzip:    50.88 kB
+out: ../../public/vite/assets/CategoryHeaderControls-nLd8rpU7.css         0.05 kB │ gzip:     0.07 kB
+out: ../../public/vite/assets/PortalsArticlesIndexPage-Dz6Zpu1T.css       0.17 kB │ gzip:     0.13 kB
+out: ../../public/vite/assets/commandbar-DaCNDihA.css                     0.41 kB │ gzip:     0.23 kB
+out: ../../public/vite/assets/DashboardIcon-D_JMBKPC.css                  1.15 kB │ gzip:     0.21 kB
+out: ../../public/vite/assets/useBranding-aTKfDg_G.css                    1.41 kB │ gzip:     0.49 kB
+out: ../../public/vite/assets/PreChatForm-CGQujdTq.css                    1.78 kB │ gzip:     0.44 kB
+out: ../../public/vite/assets/PortalsSettingsIndexPage-CNO_7cB-.css       3.01 kB │ gzip:     0.56 kB
+out: ../../public/vite/assets/UnreadMessageList-C80tQpqe.css              3.34 kB │ gzip:     0.83 kB
+out: ../../public/vite/assets/ArticleEditor-QP3vQWC_.css                 12.69 kB │ gzip:     2.77 kB
+out: ../../public/vite/assets/Messages-ygpkYUrV.css                      14.78 kB │ gzip:     2.49 kB
+out: ../../public/vite/assets/EmojiInput-CjsAvfhW.css                   502.66 kB │ gzip:    44.67 kB
+out: ../../public/vite/assets/portal-BWEF5xhd.css                       715.19 kB │ gzip:    75.21 kB
+out: ../../public/vite/assets/superadmin-Cm8FsGZo.css                   717.60 kB │ gzip:    76.99 kB
+out: ../../public/vite/assets/v3app-X6xCflh6.css                        717.76 kB │ gzip:    77.28 kB
+out: ../../public/vite/assets/survey-ZMIlMXha.css                       719.13 kB │ gzip:    77.95 kB
+out: ../../public/vite/assets/widget-p6QQ7bz5.css                       736.53 kB │ gzip:    79.63 kB
+out: ../../public/vite/assets/dashboard-DrNQICZM.css                  2,295.80 kB │ gzip:   271.68 kB
+out: ../../public/vite/assets/superadmin-CxrwKY4M.js                      0.05 kB │ gzip:     0.07 kB │ map:     0.10 kB
+out: ../../public/vite/assets/constants-lVAyZKq6.js                       0.16 kB │ gzip:     0.17 kB │ map:     0.58 kB
+out: ../../public/vite/assets/ArticleViewer-CFoIUfXu.js                   0.48 kB │ gzip:     0.35 kB │ map:     0.75 kB
+out: ../../public/vite/assets/_commonjsHelpers-BosuxZz1.js                0.75 kB │ gzip:     0.43 kB │ map:     0.11 kB
+out: ../../public/vite/assets/index-DN3rM4CW.js                           0.89 kB │ gzip:     0.53 kB │ map:     5.33 kB
+out: ../../public/vite/assets/Button-C0z3YEYc.js                          1.01 kB │ gzip:     0.59 kB │ map:     2.29 kB
+out: ../../public/vite/assets/UnreadMessages-2UujTMNc.js                  1.07 kB │ gzip:     0.61 kB │ map:     1.16 kB
+out: ../../public/vite/assets/sharedFrameEvents-0qZ2yOho.js               1.08 kB │ gzip:     0.63 kB │ map:     5.17 kB
+out: ../../public/vite/assets/StarRating-DgEA6zNR.js                      1.19 kB │ gzip:     0.70 kB │ map:     2.29 kB
+out: ../../public/vite/assets/Campaigns-h7gsX_EZ.js                       1.23 kB │ gzip:     0.69 kB │ map:     1.73 kB
+out: ../../public/vite/assets/js.cookie-Cz0CWeBA.js                       1.46 kB │ gzip:     0.76 kB │ map:     5.89 kB
+out: ../../public/vite/assets/Branding-ybwnR6oc.js                        1.55 kB │ gzip:     0.87 kB │ map:     3.52 kB
+out: ../../public/vite/assets/PortalsArticlesNewPage-D5y36JYV.js          2.18 kB │ gzip:     1.13 kB │ map:     4.62 kB
+out: ../../public/vite/assets/PortalsArticlesEditPage-DpT5asK3.js         2.46 kB │ gzip:     1.21 kB │ map:     5.69 kB
+out: ../../public/vite/assets/IframeLoader-Cra_XoNn.js                    2.55 kB │ gzip:     0.93 kB │ map:     4.45 kB
+out: ../../public/vite/assets/useKeyboardNavigableList-CDpCcdBV.js        3.66 kB │ gzip:     1.83 kB │ map:    18.97 kB
+out: ../../public/vite/assets/UnreadMessageList-C_G3chNM.js               4.13 kB │ gzip:     1.81 kB │ map:    11.34 kB
+out: ../../public/vite/assets/colorHelper-DkkSNPxc.js                     4.45 kB │ gzip:     2.51 kB │ map:    23.99 kB
+out: ../../public/vite/assets/EmojiInput-Bh2kfwug.js                      4.65 kB │ gzip:     2.04 kB │ map:    11.70 kB
+out: ../../public/vite/assets/HelpCenterLayout-C1KyPCWs.js                5.35 kB │ gzip:     2.28 kB │ map:    11.21 kB
+out: ../../public/vite/assets/Home-BkoLS4Ei.js                            5.75 kB │ gzip:     2.47 kB │ map:    13.95 kB
+out: ../../public/vite/assets/Icon-DTLRpWAv.js                            5.90 kB │ gzip:     2.07 kB │ map:    17.97 kB
+out: ../../public/vite/assets/superadmin_pages-iF1qKVuO.js                7.03 kB │ gzip:     2.94 kB │ map:    11.81 kB
+out: ../../public/vite/assets/PortalsLocalesIndexPage-CKM5WNMb.js         7.72 kB │ gzip:     3.14 kB │ map:    17.50 kB
+out: ../../public/vite/assets/module-Dhcl_SD9.js                          8.55 kB │ gzip:     3.63 kB │ map:     4.32 kB
+out: ../../public/vite/assets/PortalsCategoriesIndexPage-pv_WkSLd.js     11.18 kB │ gzip:     4.28 kB │ map:    24.04 kB
+out: ../../public/vite/assets/CategoryHeaderControls-D4uHb5dd.js         11.28 kB │ gzip:     3.91 kB │ map:    22.70 kB
+out: ../../public/vite/assets/PortalsArticlesIndexPage-CocMmwZY.js       11.89 kB │ gzip:     4.42 kB │ map:    32.16 kB
+out: ../../public/vite/assets/PreChatForm-pKgjAFys.js                    12.72 kB │ gzip:     4.93 kB │ map:    32.63 kB
+out: ../../public/vite/assets/ArticleEditor-BmZBgzLy.js                  16.78 kB │ gzip:     5.95 kB │ map:    48.01 kB
+out: ../../public/vite/assets/index-CwJt07oN.js                          22.56 kB │ gzip:     7.82 kB │ map:    88.49 kB
+out: ../../public/vite/assets/PortalsSettingsIndexPage-CupI9egS.js       23.76 kB │ gzip:     6.74 kB │ map:    51.52 kB
+out: ../../public/vite/assets/sdk-O1XO42KB.js                            25.93 kB │ gzip:     8.42 kB │ map:    74.49 kB
+out: ../../public/vite/assets/survey-Btaxi0iS.js                         30.38 kB │ gzip:    14.10 kB │ map:    23.89 kB
+out: ../../public/vite/assets/index-BtuGy7By.js                          35.00 kB │ gzip:    14.04 kB │ map:   166.42 kB
+out: ../../public/vite/assets/Messages-D0iULPZj.js                       47.48 kB │ gzip:    13.55 kB │ map:   116.92 kB
+out: ../../public/vite/assets/utils.esm-i4ckM2V3.js                      48.66 kB │ gzip:    11.67 kB │ map:   126.91 kB
+out: ../../public/vite/assets/helper-q29O9VCT.js                         58.52 kB │ gzip:    16.28 kB │ map:   162.49 kB
+out: ../../public/vite/assets/useBranding-Ci_vANpE.js                    83.09 kB │ gzip:    27.23 kB │ map:   450.54 kB
+out: ../../public/vite/assets/portal-DGgBuW8r.js                         85.78 kB │ gzip:    26.94 kB │ map:   227.15 kB
+out: ../../public/vite/assets/Validators-DjvJZJAr.js                     91.12 kB │ gzip:    31.27 kB │ map:   599.59 kB
+out: ../../public/vite/assets/widget-BM8dIDl9.js                         92.24 kB │ gzip:    26.85 kB │ map:   383.16 kB
+out: ../../public/vite/assets/commandbar-TZHYCs7f.js                    100.79 kB │ gzip:    30.23 kB │ map:   225.25 kB
+out: ../../public/vite/assets/vue-dompurify-html-CEAHYyWB.js            129.89 kB │ gzip:    53.23 kB │ map:   448.63 kB
+out: ../../public/vite/assets/BarChart-xLy8TIdL.js                      146.24 kB │ gzip:    51.42 kB │ map:   775.34 kB
+out: ../../public/vite/assets/_plugin-vue_export-helper-DJHPPWZV.js     172.12 kB │ gzip:    64.78 kB │ map:   914.49 kB
+out: ../../public/vite/assets/index-B_59Eqm_.js                         173.68 kB │ gzip:    57.67 kB │ map:   385.53 kB
+out: ../../public/vite/assets/v3app-Sh4WoNhZ.js                         261.60 kB │ gzip:    95.00 kB │ map:   419.52 kB
+out: ../../public/vite/assets/index-DaipBM8J.js                         305.68 kB │ gzip:    96.13 kB │ map: 1,132.17 kB
+out: ../../public/vite/assets/typing-DeIu9LCX.js                        524.71 kB │ gzip:   175.81 kB │ map: 1,822.78 kB
+out: ../../public/vite/assets/dashboard-BYpWuZ6p.js                   2,633.15 kB │ gzip:   735.72 kB │ map: 7,745.38 kB
+out: ../../public/vite/assets/DashboardIcon-CB_FiFsu.js               8,691.30 kB │ gzip: 2,541.25 kB │ map: 1,352.88 kB
+out: ✓ built in 1m 6s
+out: Build with Vite complete: /var/www/chatwoot/public/vite
+out: The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+out: Browserslist: caniuse-lite is outdated. Please run:
+out:   npx update-browserslist-db@latest
+out:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: Browserslist: caniuse-lite is outdated. Please run:
+out:   npx update-browserslist-db@latest
+out:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: [@vue/compiler-sfc] ::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead of ::v-deep <inner-selector>.
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+out: More info: https://sass-lang.com/d/legacy-js-api
+out: (!) Some chunks are larger than 500 kB after minification. Consider:
+out: - Using dynamic import() to code-split the application
+out: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+out: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+out: I, [2025-10-09T03:19:58.545852 #162142]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-09T03:19:58.545939 #162142]  INFO -- : [dotenv] Loaded .env.production
+out: E, [2025-10-09T03:19:58.784784 #162142] ERROR -- : Failed to configure AI Agents SDK: undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue:\n":String
+out: I, [2025-10-09T03:19:58.785572 #162142]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 1s
+out: -------------- Bulding SDK for Production --------------
+out: > @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+out: > BUILD_MODE=library vite build
+err: The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+out: vite v5.4.20 building for production...
+out: transforming...
+err: Browserslist: caniuse-lite is outdated. Please run:
+err:   npx update-browserslist-db@latest
+err:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+out: ✓ 33 modules transformed.
+err: (!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+out: rendering chunks...
+out: computing gzip size...
+out: public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+out: ✓ built in 974ms
+out: -------------- Bulding App for Production --------------
+out: Lockfile is up to date, resolution step is skipped
+out: Already up to date
+out: > @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+out: > husky install
+out: husky - Git hooks installed
+out: Done in 1.1s
+out: Skipping vite build. Watched files have not changed since the last build at 2025-10-09 03:19:55
+out: 🗄️ Running database migrations...
+out: I, [2025-10-09T03:20:06.929114 #162263]  INFO -- : [dotenv] Loaded .env.production
+out: I, [2025-10-09T03:20:06.929192 #162263]  INFO -- : [dotenv] Loaded .env.production
+out: E, [2025-10-09T03:20:07.172981 #162263] ERROR -- : Failed to configure AI Agents SDK: undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue:\n":String
+out: I, [2025-10-09T03:20:07.173700 #162263]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+out: Loading Installation config
+err: bin/rails aborted!
+err: NoMethodError: undefined method `with_indifferent_access' for "--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\nvalue:\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: inbound_emails\n  display_name: Inbound Emails\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_email\n  display_name: Email Channel\n  enabled: true\n  help_url: https://chwt.app/hc/email\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_facebook\n  display_name: Facebook Channel\n  enabled: true\n  help_url: https://chwt.app/hc/fb\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_twitter\n  display_name: Twitter Channel\n  enabled: true\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: ip_lookup\n  display_name: IP Lookup\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: disable_branding\n  display_name: Disable Branding\n  enabled: false\n  premium: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: email_continuity_on_api_channel\n  display_name: Email Continuity on API Channel\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: help_center\n  display_name: Help Center\n  enabled: true\n  help_url: https://chwt.app/hc/help-center\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: agent_bots\n  display_name: Agent Bots\n  enabled: true\n  help_url: https://chwt.app/hc/agent-bots\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: macros\n  display_name: Macros\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: agent_management\n  display_name: Agent Management\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: team_management\n  display_name: Team Management\n  enabled: true\n  help_url: https://chwt.app/hc/teams\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: inbox_management\n  display_name: Inbox Management\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: labels\n  display_name: Labels\n  enabled: true\n  help_url: https://chwt.app/hc/labels\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: custom_attributes\n  display_name: Custom Attributes\n  enabled: true\n  help_url: https://chwt.app/hc/custom-attributes\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: automations\n  display_name: Automations\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: canned_responses\n  display_name: Canned Responses\n  enabled: true\n  help_url: https://chwt.app/hc/canned\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: integrations\n  display_name: Integrations\n  enabled: true\n  help_url: https://chwt.app/hc/integrations\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: voice_recorder\n  display_name: Voice Recorder\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: mobile_v2\n  display_name: Mobile App V2\n  enabled: false\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_website\n  display_name: Website Channel\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: campaigns\n  display_name: Campaigns\n  enabled: true\n  help_url: https://chwt.app/hc/campaigns\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: reports\n  display_name: Reports\n  enabled: true\n  help_url: https://chwt.app/hc/reports\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: crm\n  display_name: CRM\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: auto_resolve_conversations\n  display_name: Auto Resolve Conversations\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: custom_reply_email\n  display_name: Custom Reply Email\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: custom_reply_domain\n  display_name: Custom Reply Domain\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: audit_logs\n  display_name: Audit Logs\n  enabled: false\n  premium: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: response_bot\n  display_name: Response Bot\n  enabled: false\n  premium: true\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: message_reply_to\n  display_name: Message Reply To\n  enabled: false\n  help_url: https://chwt.app/hc/reply-to\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: insert_article_in_reply\n  display_name: Insert Article in Reply\n  enabled: false\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: inbox_view\n  display_name: Inbox View\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: sla\n  display_name: SLA\n  enabled: false\n  premium: true\n  help_url: https://chwt.app/hc/sla\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: help_center_embedding_search\n  display_name: Help Center Embedding Search\n  enabled: false\n  premium: true\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: linear_integration\n  display_name: Linear Integration\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: captain_integration\n  display_name: Captain\n  enabled: false\n  premium: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: custom_roles\n  display_name: Custom Roles\n  enabled: false\n  premium: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: chatwoot_v4\n  display_name: Chatwoot V4\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: report_v4\n  display_name: Report V4\n  enabled: true\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: contact_chatwoot_support_team\n  display_name: Contact Chatwoot Support Team\n  enabled: true\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: shopify_integration\n  display_name: Shopify Integration\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: search_with_gin\n  display_name: Search messages with GIN\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_instagram\n  display_name: Instagram Channel\n  enabled: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: crm_integration\n  display_name: CRM Integration\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: channel_voice\n  display_name: Voice Channel\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: notion_integration\n  display_name: Notion Integration\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: captain_integration_v2\n  display_name: Captain V2\n  enabled: false\n  premium: true\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: whatsapp_embedded_signup\n  display_name: WhatsApp Embedded Signup\n  enabled: false\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: whatsapp_campaign\n  display_name: WhatsApp Campaign\n  enabled: false\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: crm_v2\n  display_name: CRM V2\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: assignment_v2\n  display_name: Assignment V2\n  enabled: false\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: twilio_content_templates\n  display_name: Twilio Content Templates\n  enabled: false\n  deprecated: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: advanced_search\n  display_name: Advanced Search\n  enabled: false\n  premium: true\n  chatwoot_internal: true\n- !ruby/hash:ActiveSupport::HashWithIndifferentAccess\n  name: saml\n  display_name: SAML\n  enabled: false\n  premium: true\n":String (NoMethodError)
+err:     serialized_value.with_indifferent_access[:value]
+err:                     ^^^^^^^^^^^^^^^^^^^^^^^^
+err: /var/www/chatwoot/app/models/installation_config.rb:37:in `value'
+err: /var/www/chatwoot/lib/config_loader.rb:73:in `reconcile_feature_config'
+err: /var/www/chatwoot/lib/config_loader.rb:26:in `process'
+err: /var/www/chatwoot/lib/tasks/db_enhancements.rake:5:in `block in <main>'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `block in execute'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `each'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `execute'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:219:in `block in invoke_with_call_chain'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:199:in `synchronize'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:199:in `invoke_with_call_chain'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/task.rb:188:in `invoke'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:188:in `invoke_task'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:138:in `block (2 levels) in top_level'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:138:in `each'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:138:in `block in top_level'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:147:in `run_with_threads'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:132:in `top_level'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in `block (2 levels) in perform'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/application.rb:214:in `standard_exception_handling'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:27:in `block in perform'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:44:in `block in with_rake'
+2025/10/09 03:20:07 Process exited with status 1
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/rake-13.2.1/lib/rake/rake_module.rb:59:in `with_application'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:41:in `with_rake'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands/rake/rake_command.rb:20:in `perform'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:156:in `invoke_rake'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:73:in `block in invoke'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:149:in `with_argv'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/command.rb:69:in `invoke'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/railties-7.1.5.2/lib/rails/commands.rb:18:in `<main>'
+err: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+err: Tasks: TOP => db:migrate
+err: (See full trace by running task with --trace)
