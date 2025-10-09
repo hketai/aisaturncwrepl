@@ -31,6 +31,8 @@ const form = ref({
 const newIntent = ref('');
 const newTeamId = ref(null);
 
+const hasNoTeams = computed(() => !teams.value || teams.value.length === 0);
+
 watch(() => props.selectedAgent, (agent) => {
   if (agent) {
     form.value = {
@@ -96,6 +98,23 @@ defineExpose({ dialogRef });
     @close="handleClose"
   >
     <form @submit.prevent="handleSubmit" class="space-y-4">
+      <!-- No Teams Warning -->
+      <div v-if="hasNoTeams" class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <div class="flex items-start gap-3">
+          <i class="i-lucide-alert-triangle text-amber-600 text-xl mt-0.5"></i>
+          <div class="flex-1">
+            <h4 class="text-sm font-semibold text-amber-900 mb-1">{{ $t('SATURN.AGENTS.NO_TEAMS_WARNING') }}</h4>
+            <p class="text-xs text-amber-800">{{ $t('SATURN.AGENTS.NO_TEAMS_MESSAGE') }}</p>
+            <a 
+              href="#/app/accounts/1/settings/teams/list"
+              class="inline-block mt-2 text-xs font-medium text-amber-700 hover:text-amber-900 underline"
+            >
+              {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- Basic Handoff Settings -->
       <div class="space-y-3">
         <div class="flex items-center gap-2">
