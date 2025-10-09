@@ -82,6 +82,10 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       :model_name,
       :model_provider,
       :max_tokens,
+      :handoff_enabled,
+      :handoff_team_id,
+      :transfer_enabled,
+      :transfer_agent_id,
       behavior_rules: [],
       safety_guidelines: [],
       configuration: {}

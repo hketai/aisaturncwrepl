@@ -15,6 +15,10 @@ class Saturn::AgentProfile < ApplicationRecord
   has_many :inboxes, through: :inbox_connections
   has_many :messages, as: :sender, dependent: :nullify
   
+  # Handoff and transfer associations
+  belongs_to :handoff_team, class_name: 'Team', optional: true
+  belongs_to :transfer_agent, class_name: 'Saturn::AgentProfile', optional: true
+  
   validates :name, presence: true
   validates :account_id, presence: true
   validates :name, uniqueness: { scope: :account_id }

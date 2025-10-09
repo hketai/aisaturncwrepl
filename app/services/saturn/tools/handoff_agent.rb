@@ -23,11 +23,31 @@ module Saturn
       def execute(arguments)
         reason = arguments['reason'] || 'User requested human assistance'
         
+        # Check if handoff is enabled for this agent
+        unless @agent_profile.handoff_enabled?
+          return {
+            success: false,
+            error: 'Handoff is not enabled for this agent',
+            message: 'This agent cannot transfer conversations to human agents.'
+          }.to_json
+        end
+        
+        # Check if handoff team is configured
+        unless @agent_profile.handoff_team_id.present?
+          return {
+            success: false,
+            error: 'No handoff team configured',
+            message: 'No team has been configured to receive handoffs from this agent.'
+          }.to_json
+        end
+        
         {
           success: true,
           action: 'handoff_requested',
           reason: reason,
-          message: 'This conversation will be transferred to a human agent.',
+          team_id: @agent_profile.handoff_team_id,
+          message: 'Bu konuşma bir temsilciye aktarılıyor...',
+          note_for_agent: "AI tarafından transfer edildi. Sebep: #{reason}",
           timestamp: Time.current.iso8601
         }.to_json
       end

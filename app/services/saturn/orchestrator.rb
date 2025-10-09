@@ -81,10 +81,19 @@ module Saturn
     end
     
     def build_tool_registry
-      [
+      tools = [
         Saturn::Tools::KnowledgeSearch.new(agent_profile),
-        Saturn::Tools::HandoffAgent.new(agent_profile)
+        Saturn::Tools::HandoffAgent.new(agent_profile),
+        Saturn::Tools::AgentTransfer.new(agent_profile)
       ]
+      
+      # Only include handoff tool if enabled
+      tools.delete_if { |t| t.is_a?(Saturn::Tools::HandoffAgent) } unless agent_profile.handoff_enabled?
+      
+      # Only include agent transfer tool if enabled
+      tools.delete_if { |t| t.is_a?(Saturn::Tools::AgentTransfer) } unless agent_profile.transfer_enabled?
+      
+      tools
     end
     
     def tool_definitions

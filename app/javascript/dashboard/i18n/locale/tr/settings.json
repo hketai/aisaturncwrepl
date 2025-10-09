@@ -707,7 +707,17 @@
       "SUCCESS_DELETE": "Ajan başarıyla silindi",
       "ERROR_LOAD": "Ajanlar yüklenemedi",
       "ERROR_DELETE": "Ajan silinemedi",
-      "ERROR_OPERATION": "İşlem başarısız"
+      "ERROR_OPERATION": "İşlem başarısız",
+      "HANDOFF_SETTINGS": "İnsan Operatöre Devret Ayarları",
+      "ENABLE_HANDOFF": "İnsan operatöre devrini etkinleştir",
+      "HANDOFF_TEAM_LABEL": "Devredilecek Ekip",
+      "SELECT_TEAM": "Bir ekip seçin...",
+      "HANDOFF_TEAM_HINT": "AI yardım edemediğinde veya talep edildiğinde konuşma bu ekibe devredilecek",
+      "TRANSFER_SETTINGS": "Başka AI Ajanına Devret Ayarları",
+      "ENABLE_TRANSFER": "Başka AI ajanına devrini etkinleştir",
+      "TRANSFER_AGENT_LABEL": "Devredilecek Ajan",
+      "SELECT_AGENT": "Bir ajan seçin...",
+      "TRANSFER_AGENT_HINT": "Bu ajan yardım edemediğinde konuşma seçilen AI ajanına devredilecek"
     },
     "KNOWLEDGE": {
       "TITLE": "Bilgi Kaynakları",
