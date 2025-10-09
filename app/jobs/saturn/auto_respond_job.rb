@@ -15,7 +15,7 @@ module Saturn
       end
       
       agent_profile = Saturn::AgentProfile.find_by(id: agent_profile_id)
-      return unless agent_profile&.active?
+      return unless agent_profile&.enabled?
       
       account = Account.find_by(id: account_id)
       return unless account
@@ -119,8 +119,8 @@ module Saturn
       transfer_agent_id = result[:transfer_to_agent_id]
       transfer_agent = Saturn::AgentProfile.find_by(id: transfer_agent_id)
       
-      unless transfer_agent&.active?
-        Rails.logger.error("Saturn: Transfer agent #{transfer_agent_id} not found or not active")
+      unless transfer_agent&.enabled?
+        Rails.logger.error("Saturn: Transfer agent #{transfer_agent_id} not found or not enabled")
         return
       end
       

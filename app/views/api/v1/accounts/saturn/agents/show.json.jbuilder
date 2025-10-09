@@ -1,7 +1,7 @@
 json.id @agent_profile.id
 json.name @agent_profile.name
 json.description @agent_profile.description
-json.active @agent_profile.active
+json.enabled @agent_profile.enabled
 json.ai_temperature @agent_profile.ai_temperature
 json.product_context @agent_profile.product_context
 json.industry_type @agent_profile.industry_type

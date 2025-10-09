@@ -717,7 +717,12 @@
       "ENABLE_TRANSFER": "Başka AI ajanına devrini etkinleştir",
       "TRANSFER_AGENT_LABEL": "Devredilecek Ajan",
       "SELECT_AGENT": "Bir ajan seçin...",
-      "TRANSFER_AGENT_HINT": "Bu ajan yardım edemediğinde konuşma seçilen AI ajanına devredilecek"
+      "TRANSFER_AGENT_HINT": "Bu ajan yardım edemediğinde konuşma seçilen AI ajanına devredilecek",
+      "TOGGLE_STATUS": "Ajan durumunu değiştir",
+      "ENABLED": "Aktif",
+      "DISABLED": "Pasif",
+      "STATUS_UPDATED": "Ajan durumu güncellendi:",
+      "ERROR_UPDATE_STATUS": "Ajan durumu güncellenemedi"
     },
     "KNOWLEDGE": {
       "TITLE": "Bilgi Kaynakları",

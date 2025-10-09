@@ -45,6 +45,13 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
     user_message = params[:message]
     context = params[:context] || {}
     
+    unless @agent_profile.enabled
+      return render json: { 
+        success: false, 
+        error: 'This agent is currently disabled.' 
+      }, status: :unprocessable_entity
+    end
+    
     api_key = Current.account.openai_api_key
     
     if api_key.blank?
@@ -78,7 +85,6 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       :product_context,
       :industry_type,
       :ai_temperature,
-      :active,
       :enabled,
       :model_name,
       :model_provider,
