@@ -20,12 +20,15 @@
 
 ### 🚀 AI Agent Handoff & Transfer Features - COMPLETE
 
-**Manual Operator Handoff:**
-- ✅ Database: handoff_enabled, handoff_team_id columns in saturn_agent_profiles
+**Manual Operator Handoff with Intent-Based Routing:**
+- ✅ Database: handoff_enabled, handoff_team_id, intent_routing_enabled, intent_team_mappings columns
 - ✅ Backend: HandoffAgent tool transfers conversation to human team
 - ✅ Conversation state: Sets status to pending and assigns to team
-- ✅ Frontend: Toggle and team selector in agent settings
-- ✅ Turkish i18n: Full translation support
+- ✅ Frontend: Dedicated HandoffDialog accessible via agent card button (removed from edit dialog)
+- ✅ Intent-Based Routing: Map customer intents to specific teams for smart routing
+- ✅ Default Team: Fallback team when no intent matches or routing disabled
+- ✅ Dynamic Intent Mapping: Add/remove intent→team mappings with live UI
+- ✅ Turkish i18n: Full translation support for all handoff features
 
 **AI-to-AI Agent Transfer:**
 - ✅ Database: transfer_enabled, transfer_agent_id columns in saturn_agent_profiles
@@ -33,13 +36,18 @@
 - ✅ Conversation persistence: current_saturn_agent_id stored in custom_attributes
 - ✅ Infinite loop protection: MAX_TRANSFER_DEPTH=3 prevents cyclic transfers
 - ✅ Depth tracking: transfer_depth persists across messages via SaturnListener
-- ✅ Frontend: Toggle and agent selector in agent settings
+- ✅ Frontend: Toggle and agent selector in edit dialog
 - ✅ Turkish i18n: Full translation support
 
 **Recursion Safety:**
 - ✅ Cross-message depth persistence: Prevents A→B→A loops across multiple messages
 - ✅ Error handling: User-friendly message when depth limit exceeded
 - ✅ Logging: Full audit trail with depth tracking
+
+**UI Organization:**
+- Handoff settings moved to dedicated dialog (button on agent card)
+- Agent transfer settings remain in edit dialog
+- Cleaner separation of concerns for better UX
 
 ### 🔧 Critical Bug Fixes & Production Deployment Fix
 

@@ -15,6 +15,7 @@ import SaturnPageLayout from './components/SaturnPageLayout.vue';
 import AgentCard from './components/AgentCard.vue';
 import CreateAgentDialog from './components/CreateAgentDialog.vue';
 import DeleteAgentDialog from './components/DeleteAgentDialog.vue';
+import HandoffDialog from './components/HandoffDialog.vue';
 import EmptyState from './components/EmptyState.vue';
 
 const router = useRouter();
@@ -24,6 +25,7 @@ const selectedAgent = ref(null);
 
 const createDialogRef = ref(null);
 const deleteDialogRef = ref(null);
+const handoffDialogRef = ref(null);
 
 const fetchAgents = async () => {
   try {
@@ -51,6 +53,8 @@ const handleAction = ({ action, id }) => {
       createDialogRef.value?.dialogRef?.open();
     } else if (action === 'delete') {
       deleteDialogRef.value?.dialogRef?.open();
+    } else if (action === 'handoff') {
+      handoffDialogRef.value?.dialogRef?.open();
     } else if (action === 'viewKnowledge') {
       router.push({
         name: 'saturn_knowledge_sources',
@@ -236,6 +240,13 @@ const limitWarningMessage = computed(() => {
     :agent="selectedAgent"
     @deleted="handleAgentDeleted"
     @restore="handleAgentRestore"
+    @close="handleDialogClose"
+  />
+
+  <HandoffDialog
+    ref="handoffDialogRef"
+    :selected-agent="selectedAgent"
+    @updated="handleAgentUpdated"
     @close="handleDialogClose"
   />
 </template>

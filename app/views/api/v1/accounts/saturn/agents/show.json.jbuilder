@@ -8,6 +8,12 @@ json.industry_type @agent_profile.industry_type
 json.behavior_rules @agent_profile.behavior_rules
 json.safety_guidelines @agent_profile.safety_guidelines
 json.configuration @agent_profile.configuration
+json.handoff_enabled @agent_profile.handoff_enabled
+json.handoff_team_id @agent_profile.handoff_team_id
+json.transfer_enabled @agent_profile.transfer_enabled
+json.transfer_agent_id @agent_profile.transfer_agent_id
+json.intent_routing_enabled @agent_profile.intent_routing_enabled
+json.intent_team_mappings @agent_profile.intent_team_mappings
 json.avatar_url @agent_profile.push_event_data[:avatar_url]
 json.created_at @agent_profile.created_at
 json.updated_at @agent_profile.updated_at

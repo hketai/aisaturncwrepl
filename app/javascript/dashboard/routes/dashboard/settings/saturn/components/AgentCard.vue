@@ -108,6 +108,16 @@ const handleToggle = () => {
         </Button>
         
         <Button
+          icon="i-lucide-user-round-search"
+          color="violet"
+          size="sm"
+          class="flex-1"
+          @click="handleAction('handoff')"
+        >
+          {{ $t('SATURN.AGENTS.HANDOFF_BUTTON') }}
+        </Button>
+        
+        <Button
           icon="i-lucide-pencil-line"
           color="slate"
           size="sm"

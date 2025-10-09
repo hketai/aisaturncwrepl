@@ -722,7 +722,18 @@
       "ENABLED": "Aktif",
       "DISABLED": "Pasif",
       "STATUS_UPDATED": "Ajan durumu güncellendi:",
-      "ERROR_UPDATE_STATUS": "Ajan durumu güncellenemedi"
+      "ERROR_UPDATE_STATUS": "Ajan durumu güncellenemedi",
+      "HANDOFF_BUTTON": "Devret Ayarları",
+      "HANDOFF_DESCRIPTION": "İnsan operatöre devretme ve intent tabanlı yönlendirme ayarlarını yapılandırın",
+      "HANDOFF_SUCCESS": "Devret ayarları başarıyla güncellendi",
+      "DEFAULT_HANDOFF_TEAM_LABEL": "Varsayılan Ekip",
+      "DEFAULT_HANDOFF_HINT": "AI yardım edemediğinde veya talep edildiğinde konuşma varsayılan olarak bu ekibe devredilecek",
+      "ENABLE_INTENT_ROUTING": "Intent tabanlı yönlendirmeyi etkinleştir",
+      "INTENT_ROUTING_DESCRIPTION": "Müşteri niyetine göre otomatik olarak farklı ekiplere yönlendirme yapın. AI müşteri mesajını analiz edip uygun ekibe devredecek.",
+      "ADD_INTENT_MAPPING": "Yeni Intent Eşleştirmesi Ekle",
+      "INTENT_PLACEHOLDER": "örn., Ödeme sorunu, Teknik destek, İptal talebi",
+      "ADD_MAPPING_BUTTON": "Eşleştirme Ekle",
+      "SAVE_BUTTON": "Kaydet"
     },
     "KNOWLEDGE": {
       "TITLE": "Bilgi Kaynakları",

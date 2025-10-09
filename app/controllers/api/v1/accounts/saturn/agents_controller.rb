@@ -34,6 +34,7 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
   
   def update
     @agent_profile.update!(agent_params)
+    render :show
   end
   
   def destroy
@@ -93,9 +94,11 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       :handoff_team_id,
       :transfer_enabled,
       :transfer_agent_id,
+      :intent_routing_enabled,
       behavior_rules: [],
       safety_guidelines: [],
-      configuration: {}
+      configuration: {},
+      intent_team_mappings: [:intent, :team_id, :team_name]
     )
   end
 end
