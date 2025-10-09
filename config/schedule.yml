@@ -54,9 +54,9 @@ bulk_auto_assignment_job:
   class: 'Inboxes::BulkAutoAssignmentJob'
   queue: scheduled_jobs
 
-# executed daily at 0400 UTC (04:00)
+# executed daily at 0100 UTC (04:00 Turkey time)
 # to refresh all URL knowledge sources
 saturn_daily_url_sync_job:
-  cron: '0 4 * * *'
+  cron: '0 1 * * *'
   class: 'Saturn::DailyUrlSyncJob'
   queue: scheduled_jobs
