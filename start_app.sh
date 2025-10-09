@@ -39,6 +39,11 @@ echo "Database: $POSTGRES_DATABASE"
 echo "Redis: $REDIS_URL"
 echo "Frontend URL: $FRONTEND_URL"
 echo ""
+echo "Starting Vite dev server..."
+bin/vite dev > log/vite.log 2>&1 &
+VITE_PID=$!
+echo "Vite started (PID: $VITE_PID)"
+echo ""
 echo "Starting Sidekiq background worker..."
 bundle exec sidekiq -C config/sidekiq.yml > log/sidekiq.log 2>&1 &
 SIDEKIQ_PID=$!
@@ -51,6 +56,7 @@ echo ""
 cleanup() {
     echo ""
     echo "Shutting down..."
+    kill $VITE_PID 2>/dev/null
     kill $SIDEKIQ_PID 2>/dev/null
     exit 0
 }
