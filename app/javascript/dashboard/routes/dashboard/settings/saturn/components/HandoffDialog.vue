@@ -33,10 +33,13 @@ const form = ref({
   intent_team_mappings: [],
   transfer_enabled: false,
   transfer_agent_id: null,
+  intent_agent_mappings: [],
 });
 
 const newIntent = ref('');
 const newTeamId = ref(null);
+const newAgentIntent = ref('');
+const newAgentId = ref(null);
 
 const hasNoTeams = computed(() => !teams.value || teams.value.length === 0);
 
@@ -71,6 +74,7 @@ watch(() => props.selectedAgent, (agent) => {
       intent_team_mappings: [...(agent.intent_team_mappings || [])],
       transfer_enabled: agent.transfer_enabled || false,
       transfer_agent_id: agent.transfer_agent_id || null,
+      intent_agent_mappings: [...(agent.intent_agent_mappings || [])],
     };
     
     if (agent.transfer_enabled) {
@@ -86,6 +90,7 @@ watch(() => props.selectedAgent, (agent) => {
       intent_team_mappings: [],
       transfer_enabled: false,
       transfer_agent_id: null,
+      intent_agent_mappings: [],
     };
     handoffType.value = 'human';
   }
@@ -95,6 +100,7 @@ watch(handoffType, (type) => {
   if (type === 'human') {
     form.value.transfer_enabled = false;
     form.value.transfer_agent_id = null;
+    form.value.intent_agent_mappings = [];
   } else if (type === 'agent') {
     form.value.handoff_enabled = false;
     form.value.handoff_team_id = null;
@@ -118,6 +124,23 @@ const addIntentMapping = () => {
 
 const removeIntentMapping = (index) => {
   form.value.intent_team_mappings.splice(index, 1);
+};
+
+const addAgentIntentMapping = () => {
+  if (newAgentIntent.value.trim() && newAgentId.value) {
+    const agentName = allAgents.value.find(a => a.id === newAgentId.value)?.name;
+    form.value.intent_agent_mappings.push({
+      intent: newAgentIntent.value.trim(),
+      agent_id: newAgentId.value,
+      agent_name: agentName,
+    });
+    newAgentIntent.value = '';
+    newAgentId.value = null;
+  }
+};
+
+const removeAgentIntentMapping = (index) => {
+  form.value.intent_agent_mappings.splice(index, 1);
 };
 
 const handleSubmit = async () => {
@@ -327,14 +350,44 @@ defineExpose({ dialogRef });
       </div>
 
       <!-- Agent Transfer Settings -->
-      <div v-if="handoffType === 'agent'" class="space-y-4 border-t border-n-weak pt-4">
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-n-slate-12">
-            {{ $t('SATURN.AGENTS.TRANSFER_AGENT_LABEL') }}
+      <div v-if="handoffType === 'agent'" class="border-t border-n-weak pt-4 space-y-3">
+        <p class="text-sm text-n-slate-11">{{ $t('SATURN.AGENTS.AGENT_INTENT_ROUTING_DESCRIPTION') }}</p>
+        
+        <!-- Intent Mappings List -->
+        <div v-if="form.intent_agent_mappings.length > 0" class="space-y-2">
+          <div
+            v-for="(mapping, index) in form.intent_agent_mappings"
+            :key="index"
+            class="flex items-center gap-2 p-2 bg-n-solid-1 rounded-lg"
+          >
+            <div class="flex-1">
+              <div class="text-sm font-medium text-n-slate-12">{{ mapping.intent }}</div>
+              <div class="text-xs text-n-slate-11">→ {{ mapping.agent_name }}</div>
+            </div>
+            <button
+              type="button"
+              @click="removeAgentIntentMapping(index)"
+              class="p-1 text-red-600 hover:bg-red-50 rounded"
+            >
+              <i class="i-lucide-trash text-base"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add New Intent Mapping -->
+        <div class="space-y-2 p-3 bg-n-solid-1 rounded-lg">
+          <label class="block text-xs font-medium text-n-slate-12">
+            {{ $t('SATURN.AGENTS.ADD_AGENT_INTENT_MAPPING') }}
           </label>
+          <input
+            v-model="newAgentIntent"
+            type="text"
+            :placeholder="$t('SATURN.AGENTS.AGENT_INTENT_PLACEHOLDER')"
+            class="w-full px-3 py-2 border border-n-weak rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-woot-500"
+          />
           <select
-            v-model="form.transfer_agent_id"
-            class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
+            v-model="newAgentId"
+            class="w-full px-3 py-2 border border-n-weak rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-woot-500"
           >
             <option :value="null">{{ $t('SATURN.AGENTS.SELECT_AGENT') }}</option>
             <option
@@ -345,7 +398,14 @@ defineExpose({ dialogRef });
               {{ agent.name }}
             </option>
           </select>
-          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.TRANSFER_AGENT_HINT') }}</p>
+          <button
+            type="button"
+            @click="addAgentIntentMapping"
+            :disabled="!newAgentIntent.trim() || !newAgentId"
+            class="w-full px-3 py-2 bg-woot-500 text-white rounded-lg text-sm font-medium hover:bg-woot-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {{ $t('SATURN.AGENTS.ADD_MAPPING_BUTTON') }}
+          </button>
         </div>
       </div>
 
