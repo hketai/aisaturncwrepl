@@ -66,6 +66,10 @@ jobs:
             echo "🗄️ Running database migrations..."
             RAILS_ENV=production bundle exec rails db:migrate
             
+            # Cleanup old YAML configs that cause errors
+            echo "🧹 Cleaning up old YAML installation configs..."
+            PGPASSWORD=chatwoot_password_2025 psql -h localhost -U chatwoot -d chatwoot_production -c "DELETE FROM installation_configs WHERE value::text LIKE '---%%';" || true
+            
             # Restart Chatwoot services
             echo "🔄 Restarting Chatwoot web and worker services..."
             sudo systemctl restart chatwoot-web

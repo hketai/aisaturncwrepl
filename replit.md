@@ -1,5 +1,30 @@
 # Chatwoot - Customer Support Platform
 
+## Recent Changes (October 9, 2025)
+
+### 🔧 Critical Bug Fixes & Production Deployment Fix
+
+**InstallationConfig JSONB Fix - Production Ready:**
+- ✅ Fixed TypeError in production: YAML serialization removed from InstallationConfig model
+- ✅ Native JSONB handling implemented with proper nil guards
+- ✅ **Production database cleaned:** 84 old YAML configs removed via direct PostgreSQL
+- ✅ **Deployment workflow updated:** Automatic YAML cleanup after every migration
+- ✅ **Future-proof:** Every deployment now auto-cleans old YAML configs before restart
+- Files: `app/models/installation_config.rb`, `.github/workflows/deploy.yml`
+
+**AI Conversation Limits - Restored:**
+- ✅ Database columns: ai_conversation_limit, ai_conversation_count, ai_limit_reset_at
+- ✅ Backend logic: Account model methods (increment, reset, check limit)
+- ✅ AutoRespondJob: Limit checking before generating responses
+- ✅ API: Limit info exposed in account endpoint
+- ✅ Frontend: Warning banner on Saturn AI page (yellow at 20%, red at 0%)
+- ✅ Turkish i18n: Limit warning messages
+
+**Menu Cleanup:**
+- ❌ Removed: Inbox (standalone), Live Chat, SMS campaigns, Portals/Help Center, Integrations
+- ✅ Updated: All icons changed from Lucide to Phosphor (ph-thin) for consistency
+- ✅ Streamlined: Conversations, Saturn AI, Contacts, Reports, Settings, WhatsApp campaigns
+
 ## Overview
 Chatwoot is an open-source customer support platform offering multi-channel communication, AI-powered support agents, team collaboration, and reporting. It is a Ruby on Rails 7.1 + Vue.js 3 application, rebranded as AISATURN, focusing on AI-driven customer support solutions. The project aims to provide a comprehensive, white-label platform for businesses to manage customer interactions efficiently.
 
