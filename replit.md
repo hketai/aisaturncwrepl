@@ -2,6 +2,29 @@
 
 ## Recent Changes (October 9, 2025)
 
+### 🚀 AI Agent Handoff & Transfer Features - COMPLETE
+
+**Manual Operator Handoff:**
+- ✅ Database: handoff_enabled, handoff_team_id columns in saturn_agent_profiles
+- ✅ Backend: HandoffAgent tool transfers conversation to human team
+- ✅ Conversation state: Sets status to pending and assigns to team
+- ✅ Frontend: Toggle and team selector in agent settings
+- ✅ Turkish i18n: Full translation support
+
+**AI-to-AI Agent Transfer:**
+- ✅ Database: transfer_enabled, transfer_agent_id columns in saturn_agent_profiles
+- ✅ Backend: AgentTransfer tool switches conversation to different AI agent
+- ✅ Conversation persistence: current_saturn_agent_id stored in custom_attributes
+- ✅ Infinite loop protection: MAX_TRANSFER_DEPTH=3 prevents cyclic transfers
+- ✅ Depth tracking: transfer_depth persists across messages via SaturnListener
+- ✅ Frontend: Toggle and agent selector in agent settings
+- ✅ Turkish i18n: Full translation support
+
+**Recursion Safety:**
+- ✅ Cross-message depth persistence: Prevents A→B→A loops across multiple messages
+- ✅ Error handling: User-friendly message when depth limit exceeded
+- ✅ Logging: Full audit trail with depth tracking
+
 ### 🔧 Critical Bug Fixes & Production Deployment Fix
 
 **InstallationConfig JSONB Fix - Production Ready:**
@@ -54,6 +77,12 @@ Chatwoot is an open-source customer support platform offering multi-channel comm
 - **Agent Management:** Card-based list with dialog-based CRUD operations for AI agents.
 - **Knowledge Sources:** CRUD for documents, URLs, and FAQs, with agent-specific knowledge bases.
 - **Inbox Connections:** Ability to connect AI agents to specific inboxes for automated responses.
+- **Handoff & Transfer:**
+  - **Manual Handoff:** AI agents can transfer conversations to human teams when configured
+  - **AI Agent Transfer:** AI agents can transfer conversations to other AI agents with different expertise
+  - **Infinite Loop Protection:** MAX_TRANSFER_DEPTH=3 prevents cyclic transfers (A→B→A)
+  - **Depth Persistence:** Transfer depth tracked across messages via conversation.custom_attributes
+  - **Error Handling:** User-friendly messages when limits exceeded
 
 ### System Design Choices
 - **Backend:** Ruby on Rails 7.1.5.2, PostgreSQL 16, Sidekiq with Redis for background jobs, ActionCable for real-time features, RESTful API with token authentication, Puma server.
