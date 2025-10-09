@@ -2,6 +2,22 @@
 
 ## Recent Changes (October 9, 2025)
 
+### ⚙️ AI Agent Status Toggle - COMPLETE
+
+**Agent Enable/Disable Functionality:**
+- ✅ Database: `enabled` column (boolean, default true) added to saturn_agent_profiles
+- ✅ Frontend: Toggle switch in AgentCard for activating/deactivating agents
+- ✅ Backend: Chat endpoint and AutoRespondJob check enabled status before responding
+- ✅ API: Returns enabled field in agent responses
+- ✅ Model: Updated scope and push_event_data to use enabled instead of active
+- ✅ Migration: Legacy `active` column removed, Rails migration added for tracking
+- ✅ Turkish i18n: Full translation support for status toggle
+
+**Behavior:**
+- Disabled agents skip auto-responding in AutoRespondJob
+- Chat endpoint returns error when agent is disabled
+- Toggle updates agent status in real-time with user feedback
+
 ### 🚀 AI Agent Handoff & Transfer Features - COMPLETE
 
 **Manual Operator Handoff:**
