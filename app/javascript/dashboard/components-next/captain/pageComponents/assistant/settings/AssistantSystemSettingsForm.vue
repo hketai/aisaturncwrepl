@@ -96,7 +96,7 @@ watch(
     />
 
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-medium text-n-slate-12">
+      <label class="text-sm font-medium text-slate-900">
         {{ t('CAPTAIN.ASSISTANTS.FORM.TEMPERATURE.LABEL') }}
       </label>
       <div class="flex items-center gap-4">
@@ -108,9 +108,9 @@ watch(
           step="0.1"
           class="w-full"
         />
-        <span class="text-sm text-n-slate-12">{{ state.temperature }}</span>
+        <span class="text-sm text-slate-900">{{ state.temperature }}</span>
       </div>
-      <p class="text-sm text-n-slate-11 italic">
+      <p class="text-sm text-slate-900 italic">
         {{ t('CAPTAIN.ASSISTANTS.FORM.TEMPERATURE.DESCRIPTION') }}
       </p>
     </div>

@@ -67,7 +67,7 @@ function getDayOfTheWeek(date) {
   return days[dayIndex];
 }
 function getHeatmapLevelClass(value) {
-  if (!value) return 'outline-n-container bg-n-slate-2 dark:bg-n-slate-5/50';
+  if (!value) return 'outline-slate-300 bg-slate-100 dark:bg-slate-400/50';
 
   let level = [...quantileRange.value, Infinity].findIndex(
     range => value <= range && value > 0
@@ -76,16 +76,16 @@ function getHeatmapLevelClass(value) {
   if (level > 6) level = 5;
 
   if (level === 0) {
-    return 'outline-n-container bg-n-slate-2 dark:bg-n-slate-5/50';
+    return 'outline-slate-300 bg-slate-100 dark:bg-slate-400/50';
   }
 
   const classes = [
-    'bg-n-blue-3 dark:outline-n-blue-4',
-    'bg-n-blue-5 dark:outline-n-blue-6',
-    'bg-n-blue-7 dark:outline-n-blue-8',
-    'bg-n-blue-8 dark:outline-n-blue-9',
-    'bg-n-blue-10 dark:outline-n-blue-8',
-    'bg-n-blue-11 dark:outline-n-blue-10',
+    'bg-indigo-200 dark:outline-indigo-300',
+    'bg-indigo-400 dark:outline-indigo-500',
+    'bg-indigo-600 dark:outline-indigo-700',
+    'bg-indigo-700 dark:outline-indigo-800',
+    'bg-indigo-900 dark:outline-indigo-700',
+    'bg-indigo-900 dark:outline-indigo-900',
   ];
 
   return classes[level - 1];
@@ -101,7 +101,7 @@ function getHeatmapLevelClass(value) {
         <div
           v-for="ii in numberOfRows"
           :key="ii"
-          class="w-full rounded-sm bg-n-slate-3 dark:bg-n-slate-1 animate-loader-pulse h-8 min-w-[70px]"
+          class="w-full rounded-sm bg-slate-200 dark:bg-slate-50 animate-loader-pulse h-8 min-w-[70px]"
         />
       </div>
       <div class="grid gap-[5px] w-full min-w-[700px]">
@@ -113,13 +113,13 @@ function getHeatmapLevelClass(value) {
           <div
             v-for="jj in 24"
             :key="jj"
-            class="w-full h-8 rounded-sm bg-n-slate-3 dark:bg-n-slate-1 animate-loader-pulse"
+            class="w-full h-8 rounded-sm bg-slate-200 dark:bg-slate-50 animate-loader-pulse"
           />
         </div>
       </div>
       <div />
       <div
-        class="grid grid-cols-[repeat(24,_1fr)] gap-[5px] w-full text-[8px] font-semibold h-5 text-n-slate-11"
+        class="grid grid-cols-[repeat(24,_1fr)] gap-[5px] w-full text-[8px] font-semibold h-5 text-slate-900"
       >
         <div
           v-for="ii in 24"
@@ -135,10 +135,10 @@ function getHeatmapLevelClass(value) {
         <div
           v-for="dateKey in processedData.keys()"
           :key="dateKey"
-          class="h-8 min-w-[70px] text-n-slate-12 text-[10px] font-semibold flex flex-col items-end justify-center"
+          class="h-8 min-w-[70px] text-slate-900 text-[10px] font-semibold flex flex-col items-end justify-center"
         >
           {{ getDayOfTheWeek(new Date(dateKey)) }}
-          <time class="font-normal text-n-slate-11">
+          <time class="font-normal text-slate-900">
             {{ formatDate(dateKey) }}
           </time>
         </div>
@@ -160,7 +160,7 @@ function getHeatmapLevelClass(value) {
       </div>
       <div />
       <div
-        class="grid grid-cols-[repeat(24,_1fr)] gap-[5px] w-full text-[8px] font-semibold h-5 text-n-slate-12"
+        class="grid grid-cols-[repeat(24,_1fr)] gap-[5px] w-full text-[8px] font-semibold h-5 text-slate-900"
       >
         <div
           v-for="ii in 24"

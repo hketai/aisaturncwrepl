@@ -30,7 +30,7 @@ const fileType = computed(() => {
 <template>
   <BaseAttachmentBubble
     icon="i-teenyicons-user-circle-solid"
-    icon-bg-color="bg-n-alpha-3 dark:bg-n-alpha-white"
+    icon-bg-color="bg-slate-900/15 dark:bg-white/70"
     sender-translation-key="CONVERSATION.SHARED_ATTACHMENT.FILE"
     :content="decodeURI(fileName)"
     :action="{

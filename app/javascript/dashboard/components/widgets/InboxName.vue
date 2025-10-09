@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex items-center text-n-slate-11 text-xs min-w-0">
+  <div class="flex items-center text-slate-900 text-xs min-w-0">
     <ChannelIcon
       :inbox="inbox"
       class="size-3 ltr:mr-1 rtl:ml-1 flex-shrink-0"

@@ -209,7 +209,7 @@ export default {
             {{ $t('AUTOMATION.ADD.FORM.CONDITIONS.LABEL') }}
           </label>
           <div
-            class="w-full p-4 mb-4 border border-solid rounded-lg bg-n-slate-2 dark:bg-n-solid-2 border-n-strong"
+            class="w-full p-4 mb-4 border border-solid rounded-lg bg-slate-100 dark:bg-slate-200 border-slate-400"
           >
             <FilterInputBox
               v-for="(condition, i) in automation.conditions"
@@ -275,7 +275,7 @@ export default {
             {{ $t('AUTOMATION.ADD.FORM.ACTIONS.LABEL') }}
           </label>
           <div
-            class="w-full p-4 mb-4 border border-solid rounded-lg bg-n-slate-2 dark:bg-n-solid-2 border-n-strong"
+            class="w-full p-4 mb-4 border border-solid rounded-lg bg-slate-100 dark:bg-slate-200 border-slate-400"
           >
             <AutomationActionInput
               v-for="(action, i) in automation.actions"
@@ -337,7 +337,7 @@ export default {
     @apply m-0;
   }
   .info-message {
-    @apply text-xs text-n-teal-10  text-right;
+    @apply text-xs text-teal-900  text-right;
   }
 
   @apply mb-6;

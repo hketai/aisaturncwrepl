@@ -53,8 +53,6 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
-@import '../dashboard/assets/scss/next-colors';
-
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -68,7 +66,7 @@ body {
 }
 
 .text-link {
-  @apply text-n-brand font-medium hover:text-n-blue-10;
+  @apply text-indigo-600 font-medium hover:text-indigo-900;
 }
 
 .v-popper--theme-tooltip .v-popper__inner {

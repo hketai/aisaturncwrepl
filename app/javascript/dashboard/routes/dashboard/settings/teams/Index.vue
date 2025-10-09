@@ -84,7 +84,7 @@ const confirmPlaceHolderText = computed(() =>
         </router-link>
       </template>
     </BaseSettingsHeader>
-    <div class="mt-6 flex-1 text-n-slate-11">
+    <div class="mt-6 flex-1 text-slate-900">
       <woot-loading-state
         v-if="uiFlags.isFetching"
         :message="$t('TEAMS_SETTINGS.LOADING')"
@@ -96,8 +96,8 @@ const confirmPlaceHolderText = computed(() =>
         {{ $t('TEAMS_SETTINGS.LIST.404') }}
       </p>
 
-      <table v-else class="min-w-full divide-y divide-n-weak">
-        <tbody class="divide-y divide-n-weak">
+      <table v-else class="min-w-full divide-y divide-slate-300">
+        <tbody class="divide-y divide-slate-300">
           <tr v-for="team in teamsList" :key="team.id">
             <td class="py-4 ltr:pr-4 rtl:pl-4">
               <span class="block font-medium capitalize">{{ team.name }}</span>

@@ -72,11 +72,11 @@ const articleMenuItems = computed(() => {
 const statusTextColor = computed(() => {
   switch (props.status) {
     case 'archived':
-      return 'text-n-slate-12';
+      return 'text-slate-900';
     case 'draft':
-      return 'text-n-amber-11';
+      return 'text-amber-900';
     default:
-      return 'text-n-teal-11';
+      return 'text-teal-900';
   }
 });
 
@@ -126,14 +126,14 @@ const handleClick = id => {
   <CardLayout>
     <div class="flex justify-between w-full gap-1">
       <span
-        class="text-base cursor-pointer hover:underline underline-offset-2 hover:text-n-blue-text text-n-slate-12 line-clamp-1"
+        class="text-base cursor-pointer hover:underline underline-offset-2 hover:text-indigo-700 text-slate-900 line-clamp-1"
         @click="handleClick(id)"
       >
         {{ title }}
       </span>
       <div class="flex items-center gap-2">
         <span
-          class="text-xs font-medium inline-flex items-center h-6 px-2 py-0.5 rounded-md bg-n-alpha-2"
+          class="text-xs font-medium inline-flex items-center h-6 px-2 py-0.5 rounded-md bg-slate-900/10"
           :class="statusTextColor"
         >
           {{ statusText }}
@@ -146,7 +146,7 @@ const handleClick = id => {
             icon="i-lucide-ellipsis-vertical"
             color="slate"
             size="xs"
-            class="rounded-md group-hover:bg-n-alpha-2"
+            class="rounded-md group-hover:bg-slate-900/10"
             @click="toggleDropdown()"
           />
           <DropdownMenu
@@ -167,15 +167,15 @@ const handleClick = id => {
             :size="16"
             rounded-full
           />
-          <span class="text-sm truncate text-n-slate-11">
+          <span class="text-sm truncate text-slate-900">
             {{ authorName || '-' }}
           </span>
         </div>
-        <span class="block text-sm whitespace-nowrap text-n-slate-11">
+        <span class="block text-sm whitespace-nowrap text-slate-900">
           {{ categoryName }}
         </span>
         <div
-          class="inline-flex items-center gap-1 text-n-slate-11 whitespace-nowrap"
+          class="inline-flex items-center gap-1 text-slate-900 whitespace-nowrap"
         >
           <Icon icon="i-lucide-eye" class="size-4" />
           <span class="text-sm">
@@ -187,7 +187,7 @@ const handleClick = id => {
           </span>
         </div>
       </div>
-      <span class="text-sm text-n-slate-11 line-clamp-1">
+      <span class="text-sm text-slate-900 line-clamp-1">
         {{ lastUpdatedAt }}
       </span>
     </div>

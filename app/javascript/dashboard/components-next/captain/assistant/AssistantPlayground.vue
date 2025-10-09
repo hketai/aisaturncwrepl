@@ -65,7 +65,7 @@ const sendMessage = async () => {
 
 <template>
   <div
-    class="flex flex-col h-full rounded-lg p-4 border border-n-slate-4 text-n-slate-11"
+    class="flex flex-col h-full rounded-lg p-4 border border-slate-300 text-slate-900"
   >
     <div class="mb-4">
       <div class="flex justify-between items-center mb-1">
@@ -79,7 +79,7 @@ const sendMessage = async () => {
           @click="resetConversation"
         />
       </div>
-      <p class="text-sm text-n-slate-11">
+      <p class="text-sm text-slate-900">
         {{ t('CAPTAIN.PLAYGROUND.DESCRIPTION') }}
       </p>
     </div>
@@ -87,7 +87,7 @@ const sendMessage = async () => {
     <MessageList :messages="messages" :is-loading="isLoading" />
 
     <div
-      class="flex items-center bg-n-solid-1 outline outline-n-container rounded-lg p-3"
+      class="flex items-center bg-slate-100 outline outline-slate-300 rounded-lg p-3"
     >
       <input
         v-model="newMessage"
@@ -104,7 +104,7 @@ const sendMessage = async () => {
       />
     </div>
 
-    <p class="text-xs text-n-slate-11 pt-2 text-center">
+    <p class="text-xs text-slate-900 pt-2 text-center">
       {{ t('CAPTAIN.PLAYGROUND.CREDIT_NOTE') }}
     </p>
   </div>

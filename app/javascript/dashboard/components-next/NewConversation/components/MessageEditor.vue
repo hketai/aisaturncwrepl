@@ -85,7 +85,7 @@ const replaceText = async message => {
         class="[&>div]:!border-transparent [&>div]:px-4 [&>div]:py-4 [&>div]:!bg-transparent h-full [&_.ProseMirror-woot-style]:!max-h-[200px]"
         :class="
           hasErrors
-            ? '[&_.empty-node]:before:!text-n-ruby-9 [&_.empty-node]:dark:before:!text-n-ruby-9'
+            ? '[&_.empty-node]:before:!text-red-800 [&_.empty-node]:dark:before:!text-red-800'
             : ''
         "
         enable-variables
@@ -101,7 +101,7 @@ const replaceText = async message => {
         class="!px-0 [&>div]:!px-4 [&>div]:!border-transparent [&>div]:!bg-transparent"
         :custom-text-area-class="
           hasErrors
-            ? 'placeholder:!text-n-ruby-9 dark:placeholder:!text-n-ruby-9'
+            ? 'placeholder:!text-red-800 dark:placeholder:!text-red-800'
             : ''
         "
         auto-height

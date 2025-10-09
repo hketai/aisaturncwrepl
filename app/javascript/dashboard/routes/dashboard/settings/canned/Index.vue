@@ -141,16 +141,16 @@ const tableHeaders = computed(() => {
       />
       <p
         v-else-if="!records.length"
-        class="flex flex-col items-center justify-center h-full text-base text-n-slate-11 py-8"
+        class="flex flex-col items-center justify-center h-full text-base text-slate-900 py-8"
       >
         {{ $t('CANNED_MGMT.LIST.404') }}
       </p>
-      <table v-else class="min-w-full overflow-x-auto divide-y divide-n-weak">
+      <table v-else class="min-w-full overflow-x-auto divide-y divide-slate-300">
         <thead>
           <th
             v-for="thHeader in tableHeaders"
             :key="thHeader"
-            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-n-slate-11 last:text-right"
+            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-slate-900 last:text-right"
           >
             <span v-if="thHeader !== tableHeaders[0]">
               {{ thHeader }}
@@ -170,7 +170,7 @@ const tableHeaders = computed(() => {
             </button>
           </th>
         </thead>
-        <tbody class="divide-y divide-n-weak text-n-slate-11">
+        <tbody class="divide-y divide-slate-300 text-slate-900">
           <tr
             v-for="(cannedItem, index) in records"
             :key="cannedItem.short_code"

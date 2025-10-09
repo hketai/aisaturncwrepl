@@ -33,10 +33,10 @@ const selectedValue = computed({
 <template>
   <div class="flex gap-2 justify-between w-full items-start">
     <div>
-      <label class="text-n-gray-12 font-medium leading-6 text-sm">
+      <label class="text-gray-900 font-medium leading-6 text-sm">
         {{ label }}
       </label>
-      <p class="text-n-gray-11">
+      <p class="text-gray-900">
         {{ description }}
       </p>
     </div>

@@ -47,13 +47,13 @@ const handleAction = (action) => {
     <div class="flex flex-col gap-3 w-full">
       <div class="flex justify-between items-start w-full gap-4">
         <div class="flex-1 min-w-0">
-          <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium mb-1">
+          <h3 class="text-base text-slate-900 line-clamp-1 font-medium mb-1">
             {{ name }}
           </h3>
-          <p class="text-sm text-n-slate-11 line-clamp-2 mb-1">
+          <p class="text-sm text-slate-900 line-clamp-2 mb-1">
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
-          <span class="text-xs text-n-slate-11">
+          <span class="text-xs text-slate-900">
             {{ lastUpdatedAt }}
           </span>
         </div>
@@ -77,7 +77,7 @@ const handleAction = (action) => {
         </div>
       </div>
       
-      <div class="flex items-center gap-2 pt-4 mt-2 border-t border-n-weak">
+      <div class="flex items-center gap-2 pt-4 mt-2 border-t border-slate-300">
         <Button
           icon="i-lucide-book-open"
           color="blue"

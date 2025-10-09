@@ -63,7 +63,7 @@ defineExpose({ dialogRef });
     @close="handleClose"
   >
     <template #description>
-      <p class="mb-0 text-sm text-n-slate-11">
+      <p class="mb-0 text-sm text-slate-900">
         {{ $t('SATURN.AGENTS.DELETE_CONFIRM') }}
       </p>
     </template>

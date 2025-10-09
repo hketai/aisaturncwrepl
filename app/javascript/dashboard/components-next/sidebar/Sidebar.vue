@@ -189,7 +189,7 @@ const menuItems = computed(() => {
             name: `${label.title}-${label.id}`,
             label: label.title,
             icon: h('span', {
-              class: `size-[12px] ring-1 ring-n-alpha-1 dark:ring-white/20 ring-inset rounded-sm`,
+              class: `size-[12px] ring-1 ring-slate-900/5 dark:ring-white/20 ring-inset rounded-sm`,
               style: { backgroundColor: label.color },
             }),
             to: accountScopedRoute('label_conversations', {
@@ -274,7 +274,7 @@ const menuItems = computed(() => {
             name: `${label.title}-${label.id}`,
             label: label.title,
             icon: h('span', {
-              class: `size-[12px] ring-1 ring-n-alpha-1 dark:ring-white/20 ring-inset rounded-sm`,
+              class: `size-[12px] ring-1 ring-slate-900/5 dark:ring-white/20 ring-inset rounded-sm`,
               style: { backgroundColor: label.color },
             }),
             to: accountScopedRoute(
@@ -448,7 +448,7 @@ const menuItems = computed(() => {
       closeMobileSidebar,
       { ignore: ['#mobile-sidebar-launcher'] },
     ]"
-    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 border-r border-slate-200/60 dark:border-slate-800/60 flex flex-col text-sm pb-3 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-all duration-300 ease-out md:static w-[240px] basis-[240px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0 shadow-xl md:shadow-none"
+    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900 border-r border-slate-200/60 dark:border-slate-800/60 flex flex-col text-sm pb-3 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-all duration-300 ease-out md:static w-[240px] basis-[240px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0 shadow-xl md:shadow-none"
     :class="[
       {
         'shadow-2xl md:shadow-none': isMobileSidebarOpen,

@@ -106,7 +106,7 @@ export default {
   @apply flex flex-col max-h-[15rem] min-h-[auto];
 
   .labels-list__header {
-    @apply bg-n-alpha-3 backdrop-blur-[100px] py-0 px-2.5;
+    @apply bg-slate-900/15 backdrop-blur-[100px] py-0 px-2.5;
   }
 
   .labels-list__body {
@@ -127,10 +127,10 @@ export default {
 }
 
 .label-list-search {
-  @apply bg-n-alpha-black2 py-0 px-2.5 border border-solid border-n-strong rounded-md;
+  @apply bg-slate-900/10 py-0 px-2.5 border border-solid border-slate-400 rounded-md;
 
   .search-icon {
-    @apply text-n-slate-10;
+    @apply text-slate-900;
   }
 
   .label--search_input {
@@ -139,7 +139,7 @@ export default {
 }
 
 .labels-container {
-  @apply absolute ltr:right-2 rtl:left-2 top-12 origin-top-right w-auto z-20 max-w-[15rem] min-w-[15rem] bg-n-alpha-3 backdrop-blur-[100px] border-n-weak rounded-lg border border-solid shadow-md;
+  @apply absolute ltr:right-2 rtl:left-2 top-12 origin-top-right w-auto z-20 max-w-[15rem] min-w-[15rem] bg-slate-900/15 backdrop-blur-[100px] border-slate-300 rounded-lg border border-solid shadow-md;
 
   .header {
     @apply p-2.5;
@@ -161,7 +161,7 @@ export default {
     @apply block z-10 absolute text-left -top-3 ltr:right-[--triangle-position] rtl:left-[--triangle-position];
 
     svg path {
-      @apply fill-n-alpha-3 backdrop-blur-[100px]  stroke-n-weak;
+      @apply fill-slate-900/15 backdrop-blur-[100px]  stroke-slate-300;
     }
   }
 }
@@ -178,10 +178,10 @@ ul {
   @apply my-1 mx-0 py-0 px-2.5;
 
   .item {
-    @apply items-center rounded-md cursor-pointer flex py-1 px-2.5 hover:bg-n-slate-3 dark:hover:bg-n-solid-3;
+    @apply items-center rounded-md cursor-pointer flex py-1 px-2.5 hover:bg-slate-200 dark:hover:bg-slate-300;
 
     &.label-selected {
-      @apply bg-n-slate-2;
+      @apply bg-slate-100;
     }
 
     span {
@@ -197,12 +197,12 @@ ul {
     }
 
     .label-pill {
-      @apply rounded-md h-3 w-3 flex-shrink-0 border border-solid border-n-weak;
+      @apply rounded-md h-3 w-3 flex-shrink-0 border border-solid border-slate-300;
     }
   }
 }
 
 .search-container {
-  @apply bg-n-alpha-3 backdrop-blur-[100px] py-0 px-2.5 sticky top-0 z-20;
+  @apply bg-slate-900/15 backdrop-blur-[100px] py-0 px-2.5 sticky top-0 z-20;
 }
 </style>

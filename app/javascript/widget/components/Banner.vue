@@ -37,11 +37,11 @@ export default {
   @apply text-white text-sm font-semibold p-3 text-center;
 
   &.success {
-    @apply bg-n-teal-9;
+    @apply bg-teal-800;
   }
 
   &.error {
-    @apply bg-n-ruby-9;
+    @apply bg-red-800;
   }
 }
 </style>

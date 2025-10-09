@@ -359,13 +359,13 @@ defineExpose({ dialogRef });
       />
       
       <div class="space-y-2">
-        <label class="block text-sm font-medium text-n-slate-12">
+        <label class="block text-sm font-medium text-slate-900">
           {{ $t('SATURN.AGENTS.INDUSTRY_TYPE_LABEL') }}
         </label>
         <select
           v-model="form.industry_type"
           @change="handleIndustryChange"
-          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
+          class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
           :disabled="isEdit"
         >
           <option value="">{{ $t('SATURN.AGENTS.SELECT_INDUSTRY') }}</option>
@@ -377,7 +377,7 @@ defineExpose({ dialogRef });
             {{ industry.label }}
           </option>
         </select>
-        <p v-if="form.industry_type" class="text-xs text-n-slate-11">
+        <p v-if="form.industry_type" class="text-xs text-slate-900">
           {{ industryTypes.find(i => i.value === form.industry_type)?.description }}
         </p>
       </div>
@@ -395,10 +395,10 @@ defineExpose({ dialogRef });
         placeholder="e.g., SaaS product support, E-commerce store"
       />
       
-      <div class="flex items-center justify-between p-3 rounded-lg bg-n-solid-2">
+      <div class="flex items-center justify-between p-3 rounded-lg bg-slate-200">
         <div class="flex flex-col gap-1">
-          <label class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.STATUS_LABEL') }}</label>
-          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.STATUS_DESCRIPTION') }}</p>
+          <label class="text-sm font-medium text-slate-900">{{ $t('SATURN.AGENTS.STATUS_LABEL') }}</label>
+          <p class="text-xs text-slate-900">{{ $t('SATURN.AGENTS.STATUS_DESCRIPTION') }}</p>
         </div>
         <button
           type="button"
@@ -414,7 +414,7 @@ defineExpose({ dialogRef });
         </button>
       </div>
       
-      <div v-if="form.active" class="text-sm text-n-slate-11 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-3">
+      <div v-if="form.active" class="text-sm text-slate-900 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-3">
         <p class="flex items-start gap-2">
           <span class="i-ph-info-bold text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0"></span>
           <span>{{ $t('SATURN.AGENTS.ACTIVE_INFO') }}</span>
@@ -425,7 +425,7 @@ defineExpose({ dialogRef });
         <button
           type="button"
           @click="dialogRef.close()"
-          class="flex-1 px-4 py-2 border border-n-weak rounded-lg hover:bg-n-solid-2"
+          class="flex-1 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-200"
         >
           {{ $t('SATURN.AGENTS.CANCEL_BUTTON') }}
         </button>

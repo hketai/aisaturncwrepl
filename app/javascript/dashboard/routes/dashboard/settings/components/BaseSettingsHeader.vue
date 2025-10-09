@@ -51,20 +51,20 @@ const openInNewTab = url => {
       <div class="flex items-center gap-3">
         <div
           v-if="iconName"
-          class="flex items-center w-10 h-10 p-1 rounded-full bg-n-blue-2"
+          class="flex items-center w-10 h-10 p-1 rounded-full bg-indigo-100"
         >
           <div
-            class="flex items-center justify-center w-full h-full rounded-full bg-n-blue-3"
+            class="flex items-center justify-center w-full h-full rounded-full bg-indigo-200"
           >
             <fluent-icon
               size="14"
               :icon="iconName"
               type="outline"
-              class="flex-shrink-0 text-n-brand"
+              class="flex-shrink-0 text-indigo-600"
             />
           </div>
         </div>
-        <h1 class="text-xl font-medium tracking-tight text-n-slate-12">
+        <h1 class="text-xl font-medium tracking-tight text-slate-900">
           {{ title }}
         </h1>
       </div>
@@ -73,7 +73,7 @@ const openInNewTab = url => {
         <slot name="actions" />
       </div>
     </div>
-    <div class="flex flex-col w-full gap-3 text-n-slate-11">
+    <div class="flex flex-col w-full gap-3 text-slate-900">
       <p
         class="mb-0 text-sm font-normal line-clamp-5 sm:line-clamp-none max-w-3xl"
       >
@@ -85,12 +85,12 @@ const openInNewTab = url => {
           :href="helpURL"
           target="_blank"
           rel="noopener noreferrer"
-          class="items-center hidden gap-1 text-sm font-medium sm:inline-flex w-fit text-n-blue-text hover:underline"
+          class="items-center hidden gap-1 text-sm font-medium sm:inline-flex w-fit text-indigo-700 hover:underline"
         >
           {{ linkText }}
           <Icon
             icon="i-lucide-chevron-right"
-            class="flex-shrink-0 text-n-blue-text size-4"
+            class="flex-shrink-0 text-indigo-700 size-4"
           />
         </a>
       </CustomBrandPolicyWrapper>

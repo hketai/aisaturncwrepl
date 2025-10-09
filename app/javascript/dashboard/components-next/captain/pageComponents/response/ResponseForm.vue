@@ -126,7 +126,7 @@ watch(
     />
 
     <div class="flex flex-col gap-1">
-      <label for="assistant" class="mb-0.5 text-sm font-medium text-n-slate-12">
+      <label for="assistant" class="mb-0.5 text-sm font-medium text-slate-900">
         {{ t('CAPTAIN.RESPONSES.FORM.ASSISTANT.LABEL') }}
       </label>
       <ComboBox
@@ -135,7 +135,7 @@ watch(
         :options="assistantList"
         :has-error="!!formErrors.assistantId"
         :placeholder="t('CAPTAIN.RESPONSES.FORM.ASSISTANT.PLACEHOLDER')"
-        class="[&>div>button]:bg-n-alpha-black2 [&>div>button:not(.focused)]:dark:outline-n-weak [&>div>button:not(.focused)]:hover:!outline-n-slate-6"
+        class="[&>div>button]:bg-slate-900/10 [&>div>button:not(.focused)]:dark:outline-slate-300 [&>div>button:not(.focused)]:hover:!outline-slate-500"
         :message="formErrors.assistantId"
       />
     </div>
@@ -146,7 +146,7 @@ watch(
         variant="faded"
         color="slate"
         :label="t('CAPTAIN.FORM.CANCEL')"
-        class="w-full bg-n-alpha-2 text-n-blue-text hover:bg-n-alpha-3"
+        class="w-full bg-slate-900/10 text-indigo-700 hover:bg-slate-900/15"
         @click="handleCancel"
       />
       <Button

@@ -25,15 +25,15 @@ export default {
   <div
     class="ml-0 mr-0 py-8 w-full"
     :class="{
-      'border-b border-solid border-n-weak/60 dark:border-n-weak': showBorder,
+      'border-b border-solid border-slate-300/60 dark:border-slate-300': showBorder,
     }"
   >
     <div class="grid grid-cols-1 lg:grid-cols-8 gap-6">
       <div class="col-span-2">
-        <p v-if="title" class="text-base text-n-brand mb-0 font-medium">
+        <p v-if="title" class="text-base text-indigo-600 mb-0 font-medium">
           {{ title }}
         </p>
-        <p class="text-sm mb-2 text-n-slate-11 leading-5 tracking-normal mt-2">
+        <p class="text-sm mb-2 text-slate-900 leading-5 tracking-normal mt-2">
           <slot v-if="subTitle" name="subTitle">
             {{ subTitle }}
           </slot>

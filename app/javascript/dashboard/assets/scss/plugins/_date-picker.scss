@@ -25,44 +25,44 @@
   }
 
   .mx-input {
-    @apply h-[2.5rem] flex border border-solid border-n-weak rounded-md shadow-none;
+    @apply h-[2.5rem] flex border border-solid border-slate-300 rounded-md shadow-none;
   }
 
   .mx-input:disabled,
   .mx-input[readonly] {
-    @apply bg-n-background cursor-pointer;
+    @apply bg-white cursor-pointer;
   }
 
   .mx-icon-calendar {
-    @apply text-n-slate-10;
+    @apply text-slate-900;
   }
 }
 
 .mx-datepicker-main {
-  @apply border-0 bg-n-solid-2 rounded-xl;
+  @apply border-0 bg-slate-200 rounded-xl;
 
   .cell {
     &.disabled {
-      @apply bg-n-slate-2 dark:bg-n-background text-n-slate-10;
+      @apply bg-slate-100 dark:bg-white text-slate-900;
     }
 
     &:hover,
     &.hover-in-range,
     &.in-range {
-      @apply bg-n-slate-3 dark:bg-n-solid-3 text-n-slate-12;
+      @apply bg-slate-200 dark:bg-slate-300 text-slate-900;
     }
   }
 
   .mx-calendar + .mx-calendar {
-    @apply border-l border-n-weak;
+    @apply border-l border-slate-300;
   }
 
   .mx-datepicker-footer {
-    @apply border border-n-weak;
+    @apply border border-slate-300;
   }
 
   .mx-time {
-    @apply border-0 bg-n-background dark:bg-n-solid-2;
+    @apply border-0 bg-white dark:bg-slate-200;
 
     .mx-time-header {
       @apply border-0;
@@ -70,11 +70,11 @@
 
     .mx-time-item {
       &.disabled {
-        @apply bg-n-slate-2 dark:bg-n-background;
+        @apply bg-slate-100 dark:bg-white;
       }
 
       &:hover {
-        @apply bg-n-slate-3 dark:bg-n-solid-3;
+        @apply bg-slate-200 dark:bg-slate-300;
       }
     }
   }

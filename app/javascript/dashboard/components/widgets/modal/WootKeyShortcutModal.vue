@@ -43,7 +43,7 @@ onMounted(async () => {
       />
       <div class="grid grid-cols-2 px-8 pt-0 pb-4 mt-6 gap-x-5 gap-y-3">
         <div class="flex justify-between items-center min-w-[25rem]">
-          <h5 class="text-sm text-n-slate-12">
+          <h5 class="text-sm text-slate-900">
             {{ $t('KEYBOARD_SHORTCUTS.TOGGLE_MODAL') }}
           </h5>
           <div class="flex items-center gap-2 mb-1 ml-2">
@@ -63,7 +63,7 @@ onMounted(async () => {
           :key="shortcut.id"
           class="flex justify-between items-center min-w-[25rem]"
         >
-          <h5 class="text-sm text-n-slate-12 min-w-[36px]">
+          <h5 class="text-sm text-slate-900 min-w-[36px]">
             {{ title(shortcut) }}
           </h5>
           <div class="flex items-center gap-2 mb-1 ml-2">
@@ -83,7 +83,7 @@ onMounted(async () => {
               </template>
               <span
                 v-else
-                class="flex items-center text-sm font-semibold text-n-slate-12"
+                class="flex items-center text-sm font-semibold text-slate-900"
               >
                 {{ key }}
               </span>
@@ -97,6 +97,6 @@ onMounted(async () => {
 
 <style scoped>
 .key {
-  @apply py-2 px-2.5 font-semibold text-xs text-n-slate-12 bg-n-slate-4 dark:bg-n-slate-2 shadow border-b-2 rtl:border-l-2 ltr:border-r-2 border-n-strong;
+  @apply py-2 px-2.5 font-semibold text-xs text-slate-900 bg-slate-300 dark:bg-slate-100 shadow border-b-2 rtl:border-l-2 ltr:border-r-2 border-slate-400;
 }
 </style>

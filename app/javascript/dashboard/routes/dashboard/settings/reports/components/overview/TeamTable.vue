@@ -73,8 +73,8 @@ const defaulSpanRender = cellProps =>
     'span',
     {
       class: cellProps.getValue()
-        ? 'capitalize text-n-slate-12'
-        : 'capitalize text-n-slate-11',
+        ? 'capitalize text-slate-900'
+        : 'capitalize text-slate-900',
     },
     cellProps.getValue() ? cellProps.getValue() : '---'
   );

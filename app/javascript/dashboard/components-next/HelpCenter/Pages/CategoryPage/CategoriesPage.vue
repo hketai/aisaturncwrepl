@@ -113,7 +113,7 @@ const handleAction = ({ action, id, category: categoryData }) => {
     <template #content>
       <div
         v-if="isLoading"
-        class="flex items-center justify-center py-10 text-n-slate-11"
+        class="flex items-center justify-center py-10 text-slate-900"
       >
         <Spinner />
       </div>

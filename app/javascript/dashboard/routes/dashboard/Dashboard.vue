@@ -113,7 +113,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col flex-grow overflow-hidden text-n-slate-12">
+  <div class="flex flex-col flex-grow overflow-hidden text-slate-900">
     <TopNavbar
       @toggle-account-modal="toggleAccountModal"
       @open-key-shortcut-modal="toggleKeyShortcutModal"

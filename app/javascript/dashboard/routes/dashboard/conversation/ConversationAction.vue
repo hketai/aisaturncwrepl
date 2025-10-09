@@ -207,7 +207,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-n-background">
+  <div class="bg-white">
     <div class="multiselect-wrap--small">
       <ContactDetailsItem
         compact

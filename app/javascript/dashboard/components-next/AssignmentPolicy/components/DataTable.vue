@@ -29,7 +29,7 @@ const handleDelete = itemId => {
 <template>
   <div
     v-if="isFetching"
-    class="flex items-center justify-center py-3 w-full text-n-slate-11"
+    class="flex items-center justify-center py-3 w-full text-slate-900"
   >
     <Spinner />
   </div>
@@ -37,11 +37,11 @@ const handleDelete = itemId => {
     v-else-if="items.length === 0 && emptyStateMessage"
     class="custom-dashed-border flex items-center justify-center py-6 w-full"
   >
-    <span class="text-sm text-n-slate-11">
+    <span class="text-sm text-slate-900">
       {{ emptyStateMessage }}
     </span>
   </div>
-  <div v-else class="flex flex-col divide-y divide-n-weak">
+  <div v-else class="flex flex-col divide-y divide-slate-300">
     <div
       v-for="item in items"
       :key="item.id"
@@ -51,7 +51,7 @@ const handleDelete = itemId => {
         <Icon
           v-if="item.icon"
           :icon="item.icon"
-          class="size-4 text-n-slate-12 flex-shrink-0"
+          class="size-4 text-slate-900 flex-shrink-0"
         />
         <Avatar
           v-else
@@ -61,7 +61,7 @@ const handleDelete = itemId => {
           :size="20"
           rounded-full
         />
-        <span class="text-sm text-n-slate-12 truncate min-w-0">
+        <span class="text-sm text-slate-900 truncate min-w-0">
           {{ item.name }}
         </span>
       </div>
@@ -69,7 +69,7 @@ const handleDelete = itemId => {
       <div class="flex items-start gap-2 col-span-1">
         <span
           :title="item.email || item.phoneNumber"
-          class="text-sm text-n-slate-12 truncate min-w-0"
+          class="text-sm text-slate-900 truncate min-w-0"
         >
           {{ item.email || item.phoneNumber }}
         </span>

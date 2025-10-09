@@ -83,17 +83,17 @@ const tableHeaders = computed(() => {
       </BaseSettingsHeader>
     </template>
     <template #body>
-      <table class="min-w-full divide-y divide-n-weak">
+      <table class="min-w-full divide-y divide-slate-300">
         <thead>
           <th
             v-for="thHeader in tableHeaders"
             :key="thHeader"
-            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-n-slate-11"
+            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-slate-900"
           >
             {{ thHeader }}
           </th>
         </thead>
-        <tbody class="divide-y divide-n-weak text-n-slate-11">
+        <tbody class="divide-y divide-slate-300 text-slate-900">
           <MacrosTableRow
             v-for="(macro, index) in records"
             :key="index"

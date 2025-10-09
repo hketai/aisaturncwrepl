@@ -107,16 +107,16 @@ const isNextDayInRange = day => {
 };
 
 const dayClasses = day => ({
-  'text-n-slate-10 pointer-events-none': !isInCurrentMonth(day),
-  'text-n-slate-12 hover:text-n-slate-12 hover:bg-n-blue-6 dark:hover:bg-n-blue-7':
+  'text-slate-900 pointer-events-none': !isInCurrentMonth(day),
+  'text-slate-900 hover:text-slate-900 hover:bg-indigo-500 dark:hover:bg-indigo-600':
     isInCurrentMonth(day),
-  'bg-n-brand text-white':
+  'bg-indigo-600 text-white':
     isSelectedStartOrEndDate(day) && isInCurrentMonth(day),
-  'bg-n-blue-4 dark:bg-n-blue-5':
+  'bg-indigo-300 dark:bg-indigo-400':
     (isInRange(day) || isHoveringInRange(day)) &&
     !isSelectedStartOrEndDate(day) &&
     isInCurrentMonth(day),
-  'outline outline-1 outline-n-blue-8 -outline-offset-1 !text-n-blue-text':
+  'outline outline-1 outline-indigo-700 -outline-offset-1 !text-indigo-700':
     isToday(props.currentDate, day) && !isSelectedStartOrEndDate(day),
 });
 </script>
@@ -163,7 +163,7 @@ const dayClasses = day => ({
             !isLastDayOfMonth(day) &&
             isInCurrentMonth(day)
           "
-          class="absolute bottom-0 w-6 h-8 ltr:-right-4 rtl:-left-4 bg-n-blue-4 dark:bg-n-blue-5 -z-10"
+          class="absolute bottom-0 w-6 h-8 ltr:-right-4 rtl:-left-4 bg-indigo-300 dark:bg-indigo-400 -z-10"
         />
       </div>
     </div>

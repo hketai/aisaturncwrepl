@@ -48,16 +48,16 @@ const openDatePicker = () => {
 
 <template>
   <button
-    class="inline-flex relative items-center rounded-lg gap-2 py-1.5 px-3 h-8 bg-n-alpha-2 hover:bg-n-alpha-1 active:bg-n-alpha-1"
+    class="inline-flex relative items-center rounded-lg gap-2 py-1.5 px-3 h-8 bg-slate-900/10 hover:bg-slate-900/5 active:bg-slate-900/5"
     @click="openDatePicker"
   >
-    <fluent-icon class="text-n-slate-12" icon="calendar" size="16" />
-    <span class="text-sm font-medium text-n-slate-12">
+    <fluent-icon class="text-slate-900" icon="calendar" size="16" />
+    <span class="text-sm font-medium text-slate-900">
       {{ $t(activeDateRange) }}
     </span>
-    <span class="text-sm font-medium text-n-slate-11">
+    <span class="text-sm font-medium text-slate-900">
       {{ formatDateRange }}
     </span>
-    <fluent-icon class="text-n-slate-12" icon="chevron-down" size="14" />
+    <fluent-icon class="text-slate-900" icon="chevron-down" size="14" />
   </button>
 </template>

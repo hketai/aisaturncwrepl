@@ -37,14 +37,14 @@ const showDivider = index => {
 </script>
 
 <template>
-  <div class="flex items-center h-8 rounded-lg bg-n-alpha-1 w-fit">
+  <div class="flex items-center h-8 rounded-lg bg-slate-900/5 w-fit">
     <template v-for="(tab, index) in tabs" :key="index">
       <button
-        class="relative px-4 truncate py-1.5 text-sm border-0 outline-1 outline rounded-lg transition-colors duration-300 ease-in-out hover:text-n-brand"
+        class="relative px-4 truncate py-1.5 text-sm border-0 outline-1 outline rounded-lg transition-colors duration-300 ease-in-out hover:text-indigo-600"
         :class="[
           activeTab === index
-            ? 'text-n-blue-text bg-n-solid-active outline-n-container dark:outline-transparent'
-            : 'text-n-slate-10 outline-transparent h-8',
+            ? 'text-indigo-700 bg-slate-200 outline-slate-300 dark:outline-transparent'
+            : 'text-slate-900 outline-transparent h-8',
         ]"
         @click="selectTab(index)"
       >
@@ -54,7 +54,7 @@ const showDivider = index => {
         class="w-px h-3.5 rounded my-auto transition-colors duration-300 ease-in-out"
         :class="
           showDivider(index)
-            ? 'bg-n-strong'
+            ? 'bg-slate-400'
             : 'bg-transparent dark:bg-transparent'
         "
       />

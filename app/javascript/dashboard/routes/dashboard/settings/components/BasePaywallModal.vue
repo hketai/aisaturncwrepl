@@ -26,26 +26,26 @@ const emit = defineEmits(['upgrade']);
 
 <template>
   <div
-    class="flex flex-col max-w-md px-6 py-6 border shadow bg-n-solid-1 rounded-xl border-n-weak"
+    class="flex flex-col max-w-md px-6 py-6 border shadow bg-slate-100 rounded-xl border-slate-300"
   >
     <div class="flex items-center w-full gap-2 mb-4">
       <span
-        class="flex items-center justify-center w-6 h-6 rounded-full bg-n-solid-blue"
+        class="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100"
       >
         <Icon
-          class="flex-shrink-0 text-n-brand size-[14px]"
+          class="flex-shrink-0 text-indigo-600 size-[14px]"
           icon="i-lucide-lock-keyhole"
         />
       </span>
-      <span class="text-base font-medium text-n-slate-12">
+      <span class="text-base font-medium text-slate-900">
         {{ $t(`${featurePrefix}.PAYWALL.TITLE`) }}
       </span>
     </div>
     <p
       v-dompurify-html="$t(`${featurePrefix}.${i18nKey}.AVAILABLE_ON`)"
-      class="text-sm font-normal text-n-slate-11"
+      class="text-sm font-normal text-slate-900"
     />
-    <p class="text-sm font-normal text-n-slate-11">
+    <p class="text-sm font-normal text-slate-900">
       {{ $t(`${featurePrefix}.${i18nKey}.UPGRADE_PROMPT`) }}
       <span v-if="!isOnChatwootCloud && !isSuperAdmin">
         {{ $t(`${featurePrefix}.ENTERPRISE_PAYWALL.ASK_ADMIN`) }}
@@ -55,7 +55,7 @@ const emit = defineEmits(['upgrade']);
       <ButtonV4 blue solid md @click="emit('upgrade')">
         {{ $t(`${featurePrefix}.PAYWALL.UPGRADE_NOW`) }}
       </ButtonV4>
-      <span class="mt-2 text-xs tracking-tight text-center text-n-slate-11">
+      <span class="mt-2 text-xs tracking-tight text-center text-slate-900">
         {{ $t(`${featurePrefix}.PAYWALL.CANCEL_ANYTIME`) }}
       </span>
     </template>

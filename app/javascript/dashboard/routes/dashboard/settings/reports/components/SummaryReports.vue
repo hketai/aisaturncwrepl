@@ -54,7 +54,7 @@ const defaulSpanRender = cellProps =>
   h(
     'span',
     {
-      class: cellProps.getValue() ? '' : 'text-n-slate-12',
+      class: cellProps.getValue() ? '' : 'text-slate-900',
     },
     cellProps.getValue()
   );
@@ -180,7 +180,7 @@ defineExpose({ downloadReports });
 <template>
   <ReportFilterSelector @filter-change="onFilterChange" />
   <div
-    class="flex-1 overflow-auto px-2 py-2 mt-5 shadow outline-1 outline outline-n-container rounded-xl bg-n-solid-2"
+    class="flex-1 overflow-auto px-2 py-2 mt-5 shadow outline-1 outline outline-slate-300 rounded-xl bg-slate-200"
   >
     <Table :table="table" />
   </div>

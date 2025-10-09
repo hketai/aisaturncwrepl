@@ -22,7 +22,7 @@ export default {
 
 <template>
   <div
-    class="text-sm text-n-slate-11 h-[50px] leading-[50px] relative text-center w-full before:content-[''] before:h-px before:absolute before:top-6 before:w-[calc((100%-120px)/2)] before:bg-n-slate-4 before:dark:bg-n-slate-6 before:left-0 after:content-[''] after:h-px after:absolute after:top-6 after:w-[calc((100%-120px)/2)] after:bg-n-slate-4 after:dark:bg-n-slate-6 after:right-0"
+    class="text-sm text-slate-900 h-[50px] leading-[50px] relative text-center w-full before:content-[''] before:h-px before:absolute before:top-6 before:w-[calc((100%-120px)/2)] before:bg-slate-300 before:dark:bg-slate-500 before:left-0 after:content-[''] after:h-px after:absolute after:top-6 after:w-[calc((100%-120px)/2)] after:bg-slate-300 after:dark:bg-slate-500 after:right-0"
   >
     {{ formattedDate }}
   </div>

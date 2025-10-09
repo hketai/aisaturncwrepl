@@ -132,8 +132,8 @@ export default {
     },
     getInputErrorClass(errorMessage) {
       return errorMessage
-        ? 'bg-n-ruby-8/20 border-n-ruby-5 dark:border-n-ruby-5'
-        : 'bg-n-background border-n-weak dark:border-n-weak';
+        ? 'bg-red-700/20 border-red-400 dark:border-red-400'
+        : 'bg-white border-slate-300 dark:border-slate-300';
     },
   },
 };
@@ -272,10 +272,10 @@ export default {
       v-if="showQueryOperator"
       class="flex items-center justify-center relative my-2.5 mx-0"
     >
-      <hr class="absolute w-full border-b border-solid border-n-weak" />
+      <hr class="absolute w-full border-b border-solid border-slate-300" />
       <select
         v-model="query_operator"
-        class="relative w-auto mb-0 bg-n-background text-n-slate-12 border-n-weak"
+        class="relative w-auto mb-0 bg-white text-slate-900 border-slate-300"
       >
         <option value="and">
           {{ $t('FILTER.QUERY_DROPDOWN_LABELS.AND') }}
@@ -291,12 +291,12 @@ export default {
 <style lang="scss" scoped>
 .filter__answer--wrap {
   input {
-    @apply bg-n-background mb-0 text-n-slate-12 border-n-weak;
+    @apply bg-white mb-0 text-slate-900 border-slate-300;
   }
 }
 
 .filter-error {
-  @apply text-n-ruby-9 dark:text-n-ruby-9 block my-1 mx-0;
+  @apply text-red-800 dark:text-red-800 block my-1 mx-0;
 }
 
 .multiselect {

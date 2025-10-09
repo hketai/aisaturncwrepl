@@ -36,10 +36,10 @@ const contextMenuPosition = ref({ x: null, y: null });
 const slaCardLabel = ref(null);
 
 const getMessageClasses = {
-  emphasis: 'text-sm font-medium text-n-slate-11',
-  emphasisUnread: 'text-sm font-medium text-n-slate-12',
-  normal: 'text-sm font-normal text-n-slate-11',
-  normalUnread: 'text-sm text-n-slate-12',
+  emphasis: 'text-sm font-medium text-slate-900',
+  emphasisUnread: 'text-sm font-medium text-slate-900',
+  normal: 'text-sm font-normal text-slate-900',
+  normalUnread: 'text-sm text-slate-900',
 };
 
 const primaryActor = computed(() => props.inboxItem?.primaryActor);
@@ -94,13 +94,13 @@ const formattedMessage = computed(() => {
   const messageContent = `<span class="${messageClasses.value.normal}">${formatPushMessage(props.inboxItem?.pushMessageBody || '')}</span>`;
 
   return isUnread.value
-    ? `<span class="inline-flex flex-shrink-0 w-2 h-2 mb-px rounded-full bg-n-iris-10 ltr:mr-1 rtl:ml-1"></span> ${messageContent}`
+    ? `<span class="inline-flex flex-shrink-0 w-2 h-2 mb-px rounded-full bg-indigo-900 ltr:mr-1 rtl:ml-1"></span> ${messageContent}`
     : messageContent;
 });
 
 const notificationDetails = computed(() => {
   const type = props.inboxItem?.notificationType?.toUpperCase() || '';
-  const [icon = '', color = 'text-n-blue-text'] =
+  const [icon = '', color = 'text-indigo-700'] =
     NOTIFICATION_TYPES_MAPPING[type] || [];
   return { text: type ? t(`INBOX.TYPES_NEXT.${type}`) : '', icon, color };
 });
@@ -181,11 +181,11 @@ onBeforeMount(contextMenuActions.close);
                 : 'i-lucide-alarm-clock-off'
             "
             class="flex-shrink-0 size-4"
-            :class="!isUnread ? 'text-n-slate-11' : 'text-n-blue-text'"
+            :class="!isUnread ? 'text-slate-900' : 'text-indigo-700'"
           />
           <span
             class="text-xs font-medium truncate"
-            :class="!isUnread ? 'text-n-slate-11' : 'text-n-blue-text'"
+            :class="!isUnread ? 'text-slate-900' : 'text-indigo-700'"
           >
             {{ snoozedText }}
           </span>
@@ -196,12 +196,12 @@ onBeforeMount(contextMenuActions.close);
         >
           <Icon
             :icon="notificationDetails.icon"
-            :class="isUnread ? notificationDetails.color : 'text-n-slate-11'"
+            :class="isUnread ? notificationDetails.color : 'text-slate-900'"
             class="flex-shrink-0 size-4"
           />
           <span
             class="text-xs font-medium truncate"
-            :class="isUnread ? notificationDetails.color : 'text-n-slate-11'"
+            :class="isUnread ? notificationDetails.color : 'text-slate-900'"
           >
             {{ notificationDetails.text }}
           </span>
@@ -214,10 +214,10 @@ onBeforeMount(contextMenuActions.close);
           :conversation="primaryActor"
           class="[&>span]:text-xs"
           :class="
-            !isUnread && '[&>span]:text-n-slate-11 [&>div>svg]:fill-n-slate-11'
+            !isUnread && '[&>span]:text-slate-900 [&>div>svg]:fill-slate-900'
           "
         />
-        <div v-if="hasSlaThreshold" class="w-px h-3 rounded-sm bg-n-slate-4" />
+        <div v-if="hasSlaThreshold" class="w-px h-3 rounded-sm bg-slate-300" />
         <CardPriorityIcon
           v-if="primaryActor?.priority"
           :priority="primaryActor?.priority"
@@ -226,14 +226,14 @@ onBeforeMount(contextMenuActions.close);
         <div
           v-if="inboxIcon"
           v-tooltip.left="inbox?.name"
-          class="flex items-center justify-center flex-shrink-0 rounded-full bg-n-alpha-2 size-4"
+          class="flex items-center justify-center flex-shrink-0 rounded-full bg-slate-900/10 size-4"
         >
           <Icon
             :icon="inboxIcon"
-            class="flex-shrink-0 text-n-slate-11 size-2.5"
+            class="flex-shrink-0 text-slate-900 size-2.5"
           />
         </div>
-        <span class="text-xs text-n-slate-10">
+        <span class="text-xs text-slate-900">
           {{ lastActivityAt }}
         </span>
       </div>

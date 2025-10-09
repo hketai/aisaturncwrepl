@@ -67,7 +67,7 @@ watch(
   <div
     ref="tabsContainer"
     class="flex"
-    :class="[border && 'border-b border-b-n-weak']"
+    :class="[border && 'border-b border-b-slate-300']"
   >
     <button
       v-if="hasScroll"

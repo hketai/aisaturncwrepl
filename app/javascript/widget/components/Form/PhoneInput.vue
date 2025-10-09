@@ -166,15 +166,15 @@ function onSelect() {
 <template>
   <div class="relative mt-2 phone-input--wrap">
     <div
-      class="flex items-center justify-start outline-none phone-input rounded-lg box-border bg-n-background dark:bg-n-alpha-2 border-none outline outline-1 outline-offset-[-1px] text-sm w-full text-n-slate-12 focus-within:outline-n-brand focus-within:ring-1 focus-within:ring-n-brand"
+      class="flex items-center justify-start outline-none phone-input rounded-lg box-border bg-white dark:bg-slate-900/10 border-none outline outline-1 outline-offset-[-1px] text-sm w-full text-slate-900 focus-within:outline-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600"
       :class="{
-        'outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9':
+        'outline-red-700 dark:outline-red-700 hover:outline-red-800 dark:hover:outline-red-800':
           hasErrorInPhoneInput,
-        'outline-n-weak': !hasErrorInPhoneInput,
+        'outline-slate-300': !hasErrorInPhoneInput,
       }"
     >
       <div
-        class="flex items-center justify-between h-[2.625rem] px-2 py-2 cursor-pointer bg-n-alpha-1 dark:bg-n-solid-1 ltr:rounded-bl-lg rtl:rounded-br-lg ltr:rounded-tl-lg rtl:rounded-tr-lg min-w-[3.6rem] w-[3.6rem]"
+        class="flex items-center justify-between h-[2.625rem] px-2 py-2 cursor-pointer bg-slate-900/5 dark:bg-slate-100 ltr:rounded-bl-lg rtl:rounded-br-lg ltr:rounded-tl-lg rtl:rounded-tr-lg min-w-[3.6rem] w-[3.6rem]"
         @click="toggleCountryDropdown"
       >
         <h5 v-if="activeCountry.emoji" class="mb-0 text-xl">
@@ -185,7 +185,7 @@ function onSelect() {
       </div>
       <span
         v-if="activeDialCode"
-        class="py-2 ltr:pl-2 rtl:pr-2 text-base text-n-slate-11"
+        class="py-2 ltr:pl-2 rtl:pr-2 text-base text-slate-900"
       >
         {{ activeDialCode }}
       </span>
@@ -203,30 +203,30 @@ function onSelect() {
       v-if="showDropdown"
       ref="dropdownRef"
       v-on-clickaway="closeDropdown"
-      class="country-dropdown absolute bg-n-background text-n-slate-12 dark:bg-n-solid-3 z-10 h-48 px-0 pt-0 pb-1 pl-1 pr-1 overflow-y-auto rounded-lg shadow-lg top-12 w-full min-w-24 max-w-[14.8rem]"
+      class="country-dropdown absolute bg-white text-slate-900 dark:bg-slate-300 z-10 h-48 px-0 pt-0 pb-1 pl-1 pr-1 overflow-y-auto rounded-lg shadow-lg top-12 w-full min-w-24 max-w-[14.8rem]"
       @keydown.up="moveSelectionUp"
       @keydown.down="moveSelectionDown"
       @keydown.enter="onSelect"
     >
       <div
-        class="sticky top-0 bg-n-background text-n-slate-12 dark:bg-n-solid-3"
+        class="sticky top-0 bg-white text-slate-900 dark:bg-slate-300"
       >
         <input
           ref="searchbarRef"
           v-model="searchCountry"
           type="text"
           :placeholder="$t('PRE_CHAT_FORM.FIELDS.PHONE_NUMBER.DROPDOWN_SEARCH')"
-          class="w-full h-8 !ring-0 px-3 py-2 mt-1 mb-1 text-sm rounded bg-n-alpha-black2"
+          class="w-full h-8 !ring-0 px-3 py-2 mt-1 mb-1 text-sm rounded bg-slate-900/10"
         />
       </div>
       <div
         v-for="(country, index) in items"
         :key="index"
-        class="flex items-center h-8 px-2 py-2 rounded cursor-pointer country-dropdown--item text-n-slate-12 dark:hover:bg-n-solid-2 hover:bg-n-alpha-2"
+        class="flex items-center h-8 px-2 py-2 rounded cursor-pointer country-dropdown--item text-slate-900 dark:hover:bg-slate-200 hover:bg-slate-900/10"
         :class="[
           country.id === activeCountryCode &&
-            'active bg-n-alpha-1 dark:bg-n-solid-1',
-          index === selectedIndex && 'focus dark:bg-n-solid-2 bg-n-alpha-2',
+            'active bg-slate-900/5 dark:bg-slate-100',
+          index === selectedIndex && 'focus dark:bg-slate-200 bg-slate-900/10',
         ]"
         @click="onSelectCountry(country)"
       >
@@ -240,7 +240,7 @@ function onSelect() {
       </div>
       <div v-if="items.length === 0">
         <span
-          class="flex justify-center mt-4 text-sm text-center text-n-slate-11"
+          class="flex justify-center mt-4 text-sm text-center text-slate-900"
         >
           {{ $t('PRE_CHAT_FORM.FIELDS.PHONE_NUMBER.DROPDOWN_EMPTY') }}
         </span>

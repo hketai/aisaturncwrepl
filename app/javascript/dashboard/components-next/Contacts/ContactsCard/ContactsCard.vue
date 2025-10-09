@@ -103,17 +103,17 @@ const onClickViewDetails = () => emit('showContact', props.id);
       />
       <div class="flex flex-col gap-0.5 flex-1">
         <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span class="text-base font-medium truncate text-n-slate-12">
+          <span class="text-base font-medium truncate text-slate-900">
             {{ name }}
           </span>
           <span class="inline-flex items-center gap-1">
             <span
               v-if="additionalAttributes?.companyName"
-              class="i-ph-building-light size-4 text-n-slate-10 mb-0.5"
+              class="i-ph-building-light size-4 text-slate-900 mb-0.5"
             />
             <span
               v-if="additionalAttributes?.companyName"
-              class="text-sm truncate text-n-slate-11"
+              class="text-sm truncate text-slate-900"
             >
               {{ additionalAttributes.companyName }}
             </span>
@@ -121,23 +121,23 @@ const onClickViewDetails = () => emit('showContact', props.id);
         </div>
         <div class="flex flex-wrap items-center justify-start gap-x-3 gap-y-1">
           <div v-if="email" class="truncate max-w-72" :title="email">
-            <span class="text-sm text-n-slate-11">
+            <span class="text-sm text-slate-900">
               {{ email }}
             </span>
           </div>
-          <div v-if="email" class="w-px h-3 truncate bg-n-slate-6" />
-          <span v-if="phoneNumber" class="text-sm truncate text-n-slate-11">
+          <div v-if="email" class="w-px h-3 truncate bg-slate-500" />
+          <span v-if="phoneNumber" class="text-sm truncate text-slate-900">
             {{ phoneNumber }}
           </span>
-          <div v-if="phoneNumber" class="w-px h-3 truncate bg-n-slate-6" />
+          <div v-if="phoneNumber" class="w-px h-3 truncate bg-slate-500" />
           <span
             v-if="countryDetails"
-            class="inline-flex items-center gap-2 text-sm truncate text-n-slate-11"
+            class="inline-flex items-center gap-2 text-sm truncate text-slate-900"
           >
             <Flag :country="countryDetails.countryCode" class="size-3.5" />
             {{ formattedLocation }}
           </span>
-          <div v-if="countryDetails" class="w-px h-3 truncate bg-n-slate-6" />
+          <div v-if="countryDetails" class="w-px h-3 truncate bg-slate-500" />
           <Button
             :label="t('CONTACTS_LAYOUT.CARD.VIEW_DETAILS')"
             variant="link"
@@ -167,7 +167,7 @@ const onClickViewDetails = () => emit('showContact', props.id);
         "
       >
         <div class="overflow-hidden">
-          <div class="flex flex-col gap-6 p-6 border-t border-n-strong">
+          <div class="flex flex-col gap-6 p-6 border-t border-slate-400">
             <ContactsForm
               ref="contactsFormRef"
               :contact-data="contactData"

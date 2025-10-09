@@ -52,7 +52,7 @@ const defaultSpanRender = cellProps => {
   return h(
     'span',
     {
-      class: 'line-clamp-5 break-words max-w-full text-n-slate-12',
+      class: 'line-clamp-5 break-words max-w-full text-slate-900',
       title: value,
     },
     value
@@ -105,7 +105,7 @@ const columns = computed(() => [
         {
           class: ratingObject.emoji
             ? 'emoji-response text-lg'
-            : 'text-n-slate-10',
+            : 'text-slate-900',
         },
         ratingObject.emoji || '---'
       );
@@ -157,12 +157,12 @@ const table = useVueTable({
 
 <template>
   <div
-    class="shadow outline-1 outline outline-n-container rounded-xl bg-n-solid-2 px-6 py-5"
+    class="shadow outline-1 outline outline-slate-300 rounded-xl bg-slate-200 px-6 py-5"
   >
     <Table :table="table" class="max-h-[calc(100vh-21.875rem)]" />
     <div
       v-show="!tableData.length"
-      class="h-48 flex items-center justify-center text-n-slate-12 text-sm"
+      class="h-48 flex items-center justify-center text-slate-900 text-sm"
     >
       {{ $t('CSAT_REPORTS.NO_RECORDS') }}
     </div>

@@ -83,7 +83,7 @@ const tableHeaders = computed(() => {
       feature-name="audit_logs"
     />
 
-    <div class="mt-6 flex-1 text-n-slate-11">
+    <div class="mt-6 flex-1 text-slate-900">
       <woot-loading-state
         v-if="uiFlags.fetchingList"
         :message="$t('AUDIT_LOGS.LOADING')"
@@ -95,17 +95,17 @@ const tableHeaders = computed(() => {
         {{ $t('AUDIT_LOGS.LIST.404') }}
       </p>
       <div v-else class="min-w-full overflow-x-auto">
-        <table class="divide-y divide-n-weak">
+        <table class="divide-y divide-slate-300">
           <thead>
             <th
               v-for="thHeader in tableHeaders"
               :key="thHeader"
-              class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-n-slate-11"
+              class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-slate-900"
             >
               {{ thHeader }}
             </th>
           </thead>
-          <tbody class="divide-y divide-n-weak text-n-slate-11">
+          <tbody class="divide-y divide-slate-300 text-slate-900">
             <tr v-for="auditLogItem in records" :key="auditLogItem.id">
               <td class="py-4 ltr:pr-4 rtl:pl-4 break-all whitespace-nowrap">
                 {{ generateLogText(auditLogItem) }}
@@ -128,7 +128,7 @@ const tableHeaders = computed(() => {
           :current-page="Number(meta.currentPage)"
           :total-count="meta.totalEntries"
           :page-size="meta.perPage"
-          class="border-n-weak border-t !px-0 py-4"
+          class="border-slate-300 border-t !px-0 py-4"
           @page-change="onPageChange"
         />
       </div>

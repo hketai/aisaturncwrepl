@@ -78,7 +78,7 @@ const handleAction = ({ action, value }) => {
     <div class="flex justify-between w-full gap-1">
       <router-link
         :to="{ name: 'captain_assistants_edit', params: { assistantId: id } }"
-        class="text-base text-n-slate-12 line-clamp-1 hover:underline transition-colors"
+        class="text-base text-slate-900 line-clamp-1 hover:underline transition-colors"
       >
         {{ name }}
       </router-link>
@@ -91,7 +91,7 @@ const handleAction = ({ action, value }) => {
             icon="i-lucide-ellipsis-vertical"
             color="slate"
             size="xs"
-            class="rounded-md group-hover:bg-n-alpha-2"
+            class="rounded-md group-hover:bg-slate-900/10"
             @click="toggleDropdown()"
           />
           <DropdownMenu
@@ -104,10 +104,10 @@ const handleAction = ({ action, value }) => {
       </div>
     </div>
     <div class="flex items-center justify-between w-full gap-4">
-      <span class="text-sm truncate text-n-slate-11">
+      <span class="text-sm truncate text-slate-900">
         {{ description || 'Description not available' }}
       </span>
-      <span class="text-sm text-n-slate-11 line-clamp-1 shrink-0">
+      <span class="text-sm text-slate-900 line-clamp-1 shrink-0">
         {{ lastUpdatedAt }}
       </span>
     </div>

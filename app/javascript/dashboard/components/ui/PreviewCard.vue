@@ -25,15 +25,15 @@ export default {
   <div
     class="flex flex-col min-w-[15rem] max-h-[21.25rem] max-w-[23.75rem] rounded-md border border-solid"
     :class="{
-      'bg-n-blue-1 dark:bg-n-solid-2 border-n-blue-4': active,
-      'border-n-weak': !active,
+      'bg-indigo-50 dark:bg-slate-200 border-indigo-300': active,
+      'border-slate-300': !active,
     }"
   >
     <div
       class="flex justify-between items-center rounded-t-md px-2 w-full h-10 border-b border-solid"
       :class="{
-        'bg-n-blue-2 border-n-blue-4': active,
-        'bg-n-slate-2 border-n-weak': !active,
+        'bg-indigo-100 border-indigo-300': active,
+        'bg-slate-100 border-slate-300': !active,
       }"
     >
       <div class="flex items-center p-1 text-sm font-medium">{{ heading }}</div>
@@ -42,11 +42,11 @@ export default {
         icon="checkmark-circle"
         type="solid"
         size="24"
-        class="text-n-brand"
+        class="text-indigo-600"
       />
     </div>
     <div
-      class="text-n-slate-11 text-xs leading-[1.4] px-3 pt-3 pb-0 text-start"
+      class="text-slate-900 text-xs leading-[1.4] px-3 pt-3 pb-0 text-start"
     >
       {{ content }}
     </div>
@@ -54,7 +54,7 @@ export default {
       <img
         :src="src"
         class="border rounded-md"
-        :class="active ? 'border-n-blue-border' : 'border-n-weak'"
+        :class="active ? 'border-indigo-600' : 'border-slate-300'"
       />
     </div>
     <slot v-else />

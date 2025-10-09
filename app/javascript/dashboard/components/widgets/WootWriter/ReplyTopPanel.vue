@@ -78,7 +78,7 @@ export default {
       };
     },
     charLengthClass() {
-      return this.charactersRemaining < 0 ? 'text-n-ruby-9' : 'text-n-slate-11';
+      return this.charactersRemaining < 0 ? 'text-red-800' : 'text-slate-900';
     },
     characterLengthWarning() {
       return this.charactersRemaining < 0
@@ -106,7 +106,7 @@ export default {
     </div>
     <NextButton
       ghost
-      class="ltr:rounded-bl-md rtl:rounded-br-md ltr:rounded-br-none rtl:rounded-bl-none ltr:rounded-tl-none rtl:rounded-tr-none text-n-slate-11 ltr:rounded-tr-[11px] rtl:rounded-tl-[11px]"
+      class="ltr:rounded-bl-md rtl:rounded-br-md ltr:rounded-br-none rtl:rounded-bl-none ltr:rounded-tl-none rtl:rounded-tr-none text-slate-900 ltr:rounded-tr-[11px] rtl:rounded-tl-[11px]"
       icon="i-lucide-maximize-2"
       @click="$emit('togglePopout')"
     />

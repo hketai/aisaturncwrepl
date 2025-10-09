@@ -75,7 +75,7 @@ const handlePageChange = event => {
 </script>
 
 <template>
-  <section class="flex flex-col w-full h-full overflow-hidden bg-n-background">
+  <section class="flex flex-col w-full h-full overflow-hidden bg-white">
     <header class="sticky top-0 z-10 px-6">
       <div class="w-full max-w-[60rem] mx-auto">
         <div
@@ -84,7 +84,7 @@ const handlePageChange = event => {
           <div class="flex gap-4 items-center">
             <BackButton v-if="backUrl" :to="backUrl" />
             <slot name="headerTitle">
-              <span class="text-xl font-medium text-n-slate-12">
+              <span class="text-xl font-medium text-slate-900">
                 {{ headerTitle }}
               </span>
             </slot>
@@ -92,7 +92,7 @@ const handlePageChange = event => {
               v-if="!isEmpty && showKnowMore"
               class="flex items-center gap-2"
             >
-              <div class="w-0.5 h-4 rounded-2xl bg-n-weak" />
+              <div class="w-0.5 h-4 rounded-2xl bg-slate-300" />
               <slot name="knowMore" />
             </div>
           </div>
@@ -121,7 +121,7 @@ const handlePageChange = event => {
         <slot v-if="!showPaywall" name="controls" />
         <div
           v-if="isFetching"
-          class="flex items-center justify-center py-10 text-n-slate-11"
+          class="flex items-center justify-center py-10 text-slate-900"
         >
           <Spinner />
         </div>

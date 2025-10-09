@@ -107,7 +107,7 @@ onMounted(fetchAccountDetails);
           </template>
           <div
             v-if="planName || subscribedQuantity || subscriptionRenewsOn"
-            class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-2 divide-x divide-n-weak"
+            class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-2 divide-x divide-slate-300"
           >
             <DetailItem
               :label="$t('BILLING_SETTINGS.CURRENT_PLAN.TITLE')"

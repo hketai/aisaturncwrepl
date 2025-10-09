@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="menu text-n-slate-12 min-h-7 min-w-0" role="button">
+  <div class="menu text-slate-900 min-h-7 min-w-0" role="button">
     <fluent-icon
       v-if="variant === 'icon' && option.icon"
       :icon="option.icon"
@@ -50,7 +50,7 @@ defineProps({
   }
 
   &:hover {
-    @apply bg-n-brand text-white;
+    @apply bg-indigo-600 text-white;
   }
 }
 
@@ -59,6 +59,6 @@ defineProps({
 }
 
 .label-pill {
-  @apply w-4 h-4 rounded-full border border-n-strong border-solid flex-shrink-0;
+  @apply w-4 h-4 rounded-full border border-slate-400 border-solid flex-shrink-0;
 }
 </style>

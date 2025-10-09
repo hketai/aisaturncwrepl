@@ -20,11 +20,11 @@ const emit = defineEmits(['action']);
 
 const bannerClass = computed(() => {
   const classMap = {
-    slate: 'bg-n-slate-3 border-n-slate-4 text-n-slate-11',
-    amber: 'bg-n-amber-3 border-n-amber-4 text-n-amber-11',
-    teal: 'bg-n-teal-3 border-n-teal-4 text-n-teal-11',
-    ruby: 'bg-n-ruby-3 border-n-ruby-4 text-n-ruby-11',
-    blue: 'bg-n-blue-3 border-n-blue-4 text-n-blue-11',
+    slate: 'bg-slate-200 border-slate-300 text-slate-900',
+    amber: 'bg-amber-200 border-amber-300 text-amber-900',
+    teal: 'bg-teal-200 border-teal-300 text-teal-900',
+    ruby: 'bg-red-200 border-red-300 text-red-900',
+    blue: 'bg-indigo-200 border-indigo-300 text-indigo-900',
   };
 
   return classMap[props.color];
@@ -32,11 +32,11 @@ const bannerClass = computed(() => {
 
 const buttonClass = computed(() => {
   const classMap = {
-    slate: 'bg-n-slate-4 hover:bg-n-slate-5 text-n-slate-11',
-    amber: 'bg-n-amber-4 hover:bg-n-amber-5 text-n-amber-11',
-    teal: 'bg-n-teal-4 hover:bg-n-teal-5 text-n-teal-11',
-    ruby: 'bg-n-ruby-4 hover:bg-n-ruby-5 text-n-ruby-11',
-    blue: 'bg-n-blue-4 hover:bg-n-blue-5 text-n-blue-11',
+    slate: 'bg-slate-300 hover:bg-slate-400 text-slate-900',
+    amber: 'bg-amber-300 hover:bg-amber-400 text-amber-900',
+    teal: 'bg-teal-300 hover:bg-teal-400 text-teal-900',
+    ruby: 'bg-red-300 hover:bg-red-400 text-red-900',
+    blue: 'bg-indigo-300 hover:bg-indigo-400 text-indigo-900',
   };
 
   return classMap[props.color];

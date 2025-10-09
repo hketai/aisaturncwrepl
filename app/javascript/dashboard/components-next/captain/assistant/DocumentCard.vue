@@ -81,7 +81,7 @@ const handleAction = ({ action, value }) => {
 <template>
   <CardLayout>
     <div class="flex gap-1 justify-between w-full">
-      <span class="text-base text-n-slate-12 line-clamp-1">
+      <span class="text-base text-slate-900 line-clamp-1">
         {{ name }}
       </span>
       <div class="flex gap-2 items-center">
@@ -93,7 +93,7 @@ const handleAction = ({ action, value }) => {
             icon="i-lucide-ellipsis-vertical"
             color="slate"
             size="xs"
-            class="rounded-md group-hover:bg-n-alpha-2"
+            class="rounded-md group-hover:bg-slate-900/10"
             @click="toggleDropdown()"
           />
           <DropdownMenu
@@ -107,18 +107,18 @@ const handleAction = ({ action, value }) => {
     </div>
     <div class="flex gap-4 justify-between items-center w-full">
       <span
-        class="flex gap-1 items-center text-sm truncate shrink-0 text-n-slate-11"
+        class="flex gap-1 items-center text-sm truncate shrink-0 text-slate-900"
       >
         <i class="i-woot-captain" />
         {{ assistant?.name || '' }}
       </span>
       <span
-        class="flex flex-1 gap-1 justify-start items-center text-sm truncate text-n-slate-11"
+        class="flex flex-1 gap-1 justify-start items-center text-sm truncate text-slate-900"
       >
         <i :class="linkIcon" class="shrink-0" />
         <span class="truncate">{{ displayLink }}</span>
       </span>
-      <div class="text-sm shrink-0 text-n-slate-11 line-clamp-1">
+      <div class="text-sm shrink-0 text-slate-900 line-clamp-1">
         {{ createdAt }}
       </div>
     </div>

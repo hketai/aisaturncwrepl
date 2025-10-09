@@ -213,10 +213,10 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-  @apply bg-n-background p-2 border border-solid border-n-strong dark:border-n-strong rounded-lg mb-2;
+  @apply bg-white p-2 border border-solid border-slate-400 dark:border-slate-400 rounded-lg mb-2;
 
   &.is-a-macro {
-    @apply mb-0 bg-n-background dark:bg-n-solid-1 p-0 border-0 rounded-none;
+    @apply mb-0 bg-white dark:bg-slate-100 p-0 border-0 rounded-none;
   }
 }
 
@@ -225,7 +225,7 @@ export default {
 }
 
 .filter.has-error {
-  @apply bg-n-ruby-8/20 border-n-ruby-5 dark:border-n-ruby-5;
+  @apply bg-red-700/20 border-red-400 dark:border-red-400;
 
   &.is-a-macro {
     @apply bg-transparent;
@@ -237,7 +237,7 @@ export default {
 }
 
 .filter-error {
-  @apply text-n-ruby-9 dark:text-n-ruby-9 block my-1 mx-0;
+  @apply text-red-800 dark:text-red-800 block my-1 mx-0;
 }
 
 .action__question,
@@ -274,7 +274,7 @@ export default {
   @apply flex items-center justify-center relative my-2.5 mx-0;
 
   .operator__line {
-    @apply absolute w-full border-b border-solid border-n-weak;
+    @apply absolute w-full border-b border-solid border-slate-300;
   }
 
   .operator__select {

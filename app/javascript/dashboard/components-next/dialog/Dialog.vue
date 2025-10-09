@@ -104,15 +104,15 @@ defineExpose({ open, close });
     >
       <form
         ref="dialogContentRef"
-        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-white dark:bg-n-solid-2 backdrop-blur-xl shadow-2xl rounded-2xl"
+        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-white dark:bg-slate-200 backdrop-blur-xl shadow-2xl rounded-2xl"
         @submit.prevent="confirm"
       >
           <div v-if="title || description" class="flex flex-col gap-2">
-            <h3 class="text-base font-medium leading-6 text-n-slate-12">
+            <h3 class="text-base font-medium leading-6 text-slate-900">
               {{ title }}
             </h3>
             <slot name="description">
-              <p v-if="description" class="mb-0 text-sm text-n-slate-11">
+              <p v-if="description" class="mb-0 text-sm text-slate-900">
                 {{ description }}
               </p>
             </slot>

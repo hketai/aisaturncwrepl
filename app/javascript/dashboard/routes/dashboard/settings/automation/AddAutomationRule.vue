@@ -215,7 +215,7 @@ export default {
           </label>
           <p
             v-if="hasAutomationMutated"
-            class="text-xs text-right text-n-teal-10 pt-1"
+            class="text-xs text-right text-teal-900 pt-1"
           >
             {{ $t('AUTOMATION.FORM.RESET_MESSAGE') }}
           </p>
@@ -226,7 +226,7 @@ export default {
             {{ $t('AUTOMATION.ADD.FORM.CONDITIONS.LABEL') }}
           </label>
           <div
-            class="w-full p-4 mb-4 border border-solid rounded-lg bg-n-slate-2 dark:bg-n-solid-2 border-n-strong"
+            class="w-full p-4 mb-4 border border-solid rounded-lg bg-slate-100 dark:bg-slate-200 border-slate-400"
           >
             <FilterInputBox
               v-for="(condition, i) in automation.conditions"
@@ -292,7 +292,7 @@ export default {
             {{ $t('AUTOMATION.ADD.FORM.ACTIONS.LABEL') }}
           </label>
           <div
-            class="w-full p-4 mb-4 border border-solid rounded-lg bg-n-slate-2 dark:bg-n-solid-2 border-n-strong"
+            class="w-full p-4 mb-4 border border-solid rounded-lg bg-slate-100 dark:bg-slate-200 border-slate-400"
           >
             <AutomationActionInput
               v-for="(action, i) in automation.actions"

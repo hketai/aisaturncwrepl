@@ -35,8 +35,8 @@ const getAvatarName = sender =>
 
 const getMessageStyle = sender =>
   isUserMessage(sender)
-    ? 'bg-n-strong text-n-white'
-    : 'bg-n-solid-iris text-n-slate-12';
+    ? 'bg-slate-400 text-white'
+    : 'bg-indigo-100 text-slate-900';
 
 const scrollToBottom = async () => {
   await nextTick();
@@ -73,15 +73,15 @@ watch(() => props.messages.length, scrollToBottom);
       <div class="flex items-start gap-1.5">
         <Avatar :name="getAvatarName('assistant')" rounded-full :size="24" />
         <div
-          class="max-w-sm rounded-lg p-3 text-sm bg-n-solid-iris text-n-slate-12"
+          class="max-w-sm rounded-lg p-3 text-sm bg-indigo-100 text-slate-900"
         >
           <div class="flex gap-1">
-            <div class="w-2 h-2 rounded-full bg-n-iris-10 animate-bounce" />
+            <div class="w-2 h-2 rounded-full bg-indigo-900 animate-bounce" />
             <div
-              class="w-2 h-2 rounded-full bg-n-iris-10 animate-bounce [animation-delay:0.2s]"
+              class="w-2 h-2 rounded-full bg-indigo-900 animate-bounce [animation-delay:0.2s]"
             />
             <div
-              class="w-2 h-2 rounded-full bg-n-iris-10 animate-bounce [animation-delay:0.4s]"
+              class="w-2 h-2 rounded-full bg-indigo-900 animate-bounce [animation-delay:0.4s]"
             />
           </div>
         </div>

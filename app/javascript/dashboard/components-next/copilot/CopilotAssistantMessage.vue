@@ -56,9 +56,9 @@ const useCopilotResponse = () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-1 text-n-slate-12">
+  <div class="flex flex-col gap-1 text-slate-900">
     <div class="font-medium">{{ $t('CAPTAIN.NAME') }}</div>
-    <span v-if="hasEmptyMessageContent" class="text-n-ruby-11">
+    <span v-if="hasEmptyMessageContent" class="text-red-900">
       {{ $t('CAPTAIN.COPILOT.EMPTY_MESSAGE') }}
     </span>
     <div

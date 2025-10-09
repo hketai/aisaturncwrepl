@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
     <template #body>
       <div class="space-y-6">
         <div v-if="connectedInboxes.length > 0">
-          <h3 class="text-base font-semibold text-n-slate-12 mb-4">{{ $t('SATURN.INBOX_CONNECTIONS.CONNECTED_TITLE') }}</h3>
+          <h3 class="text-base font-semibold text-slate-900 mb-4">{{ $t('SATURN.INBOX_CONNECTIONS.CONNECTED_TITLE') }}</h3>
           <div class="flex flex-col gap-3">
             <CardLayout
               v-for="connection in connectedInboxes"
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
               <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-2">
-                    <h4 class="text-lg font-semibold text-n-slate-12 truncate">
+                    <h4 class="text-lg font-semibold text-slate-900 truncate">
                       {{ connection.inbox.name }}
                     </h4>
                     <span
@@ -161,7 +161,7 @@ onBeforeUnmount(() => {
                       Connecting...
                     </span>
                   </div>
-                  <p class="text-sm text-n-slate-11">
+                  <p class="text-sm text-slate-900">
                     Channel: {{ connection.inbox.channel_type || 'Unknown' }}
                   </p>
                 </div>
@@ -183,7 +183,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div v-if="availableInboxes.length > 0">
-          <h3 class="text-base font-semibold text-n-slate-12 mb-4">Available Inboxes</h3>
+          <h3 class="text-base font-semibold text-slate-900 mb-4">Available Inboxes</h3>
           <div class="flex flex-col gap-3">
             <CardLayout
               v-for="inbox in availableInboxes"
@@ -192,10 +192,10 @@ onBeforeUnmount(() => {
             >
               <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                  <h4 class="text-lg font-semibold text-n-slate-12 truncate mb-2">
+                  <h4 class="text-lg font-semibold text-slate-900 truncate mb-2">
                     {{ inbox.name }}
                   </h4>
-                  <p class="text-sm text-n-slate-11">
+                  <p class="text-sm text-slate-900">
                     Channel: {{ inbox.channel_type || 'Unknown' }}
                   </p>
                 </div>
@@ -219,9 +219,9 @@ onBeforeUnmount(() => {
           class="text-center py-12"
         >
           <div class="flex flex-col items-center gap-4">
-            <div class="text-6xl text-n-weak">📥</div>
-            <p class="text-lg font-medium text-n-strong">No Inboxes Found</p>
-            <p class="text-sm text-n-weak max-w-md">
+            <div class="text-6xl text-slate-300">📥</div>
+            <p class="text-lg font-medium text-slate-400">No Inboxes Found</p>
+            <p class="text-sm text-slate-300 max-w-md">
               {{ $t('SATURN.INBOX_CONNECTIONS.EMPTY_STATE') }}
             </p>
             <Button

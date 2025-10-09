@@ -39,9 +39,9 @@ const handleClose = () => emit('close');
 
 <template>
   <div
-    class="w-[25rem] z-50 min-w-0 absolute top-10 ltr:right-0 rtl:left-0 bg-n-alpha-3 backdrop-blur-[100px] p-6 rounded-xl border border-n-weak shadow-md flex flex-col gap-6"
+    class="w-[25rem] z-50 min-w-0 absolute top-10 ltr:right-0 rtl:left-0 bg-slate-900/15 backdrop-blur-[100px] p-6 rounded-xl border border-slate-300 shadow-md flex flex-col gap-6"
   >
-    <h3 class="text-base font-medium text-n-slate-12">
+    <h3 class="text-base font-medium text-slate-900">
       {{ t(`CAMPAIGN.SMS.CREATE.TITLE`) }}
     </h3>
     <SMSCampaignForm @submit="handleSubmit" @cancel="handleClose" />

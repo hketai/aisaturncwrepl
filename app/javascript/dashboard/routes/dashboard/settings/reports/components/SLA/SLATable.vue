@@ -57,10 +57,10 @@ export default {
 <template>
   <div>
     <div
-      class="min-w-full shadow outline-1 outline outline-n-container rounded-xl bg-n-solid-2 p-6"
+      class="min-w-full shadow outline-1 outline outline-slate-300 rounded-xl bg-slate-200 p-6"
     >
       <div
-        class="grid content-center h-12 grid-cols-12 gap-4 px-6 py-0 bg-n-slate-2 rounded-md"
+        class="grid content-center h-12 grid-cols-12 gap-4 px-6 py-0 bg-slate-100 rounded-md"
       >
         <TableHeaderCell
           :span="6"

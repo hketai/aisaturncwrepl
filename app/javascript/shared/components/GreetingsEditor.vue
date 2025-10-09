@@ -22,7 +22,7 @@ const greetingsMessage = computed({
   <section>
     <div
       v-if="richtext"
-      class="px-4 py-0 mx-0 mt-0 mb-4 rounded-lg outline outline-1 outline-n-weak hover:outline-n-slate-6 dark:hover:outline-n-slate-6 bg-n-alpha-black2"
+      class="px-4 py-0 mx-0 mt-0 mb-4 rounded-lg outline outline-1 outline-slate-300 hover:outline-slate-500 dark:hover:outline-slate-500 bg-slate-900/10"
     >
       <WootMessageEditor
         v-model="greetingsMessage"

@@ -45,10 +45,10 @@ const toggleSidebar = () => {
       },
     ]"
   >
-    <div class="rounded-full bg-n-alpha-2 p-1">
+    <div class="rounded-full bg-slate-900/10 p-1">
       <Button
         icon="i-lucide-menu"
-        class="!rounded-full !bg-n-solid-3 dark:!bg-n-alpha-2 !text-n-slate-12 text-xl"
+        class="!rounded-full !bg-slate-300 dark:!bg-slate-900/10 !text-slate-900 text-xl"
         lg
         @click="toggleSidebar"
       />

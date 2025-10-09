@@ -62,7 +62,7 @@ const confirmDeletion = () => {
 
 <template>
   <div
-    class="flex flex-col items-start justify-between lg:flex-row lg:items-center p-6 outline outline-n-container outline-1 bg-n-alpha-3 rounded-md shadow gap-6"
+    class="flex flex-col items-start justify-between lg:flex-row lg:items-center p-6 outline outline-slate-300 outline-1 bg-slate-900/15 rounded-md shadow gap-6"
   >
     <div
       class="flex items-start lg:items-center justify-start flex-1 m-0 gap-6 flex-col lg:flex-row"
@@ -70,18 +70,18 @@ const confirmDeletion = () => {
       <div class="flex h-16 w-16 items-center justify-center flex-shrink-0">
         <img
           :src="`/dashboard/images/integrations/${integrationId}.png`"
-          class="max-w-full rounded-md border border-n-weak shadow-sm block dark:hidden bg-n-alpha-3 dark:bg-n-alpha-2"
+          class="max-w-full rounded-md border border-slate-300 shadow-sm block dark:hidden bg-slate-900/15 dark:bg-slate-900/10"
         />
         <img
           :src="`/dashboard/images/integrations/${integrationId}-dark.png`"
-          class="max-w-full rounded-md border border-n-weak shadow-sm hidden dark:block bg-n-alpha-3 dark:bg-n-alpha-2"
+          class="max-w-full rounded-md border border-slate-300 shadow-sm hidden dark:block bg-slate-900/15 dark:bg-slate-900/10"
         />
       </div>
       <div>
-        <h3 class="mb-1 text-xl font-medium text-n-slate-12">
+        <h3 class="mb-1 text-xl font-medium text-slate-900">
           {{ integrationName }}
         </h3>
-        <p class="text-n-slate-11 text-sm leading-6">
+        <p class="text-slate-900 text-sm leading-6">
           {{ replaceInstallationName(integrationDescription) }}
         </p>
       </div>

@@ -90,7 +90,7 @@ onMounted(() => {
             slate
             faded
             :label="selectedDayFilter.label"
-            class="rounded-md group-hover:bg-n-alpha-2"
+            class="rounded-md group-hover:bg-slate-900/10"
             @click="toggleDropdown()"
           />
           <DropdownMenu
@@ -105,7 +105,7 @@ onMounted(() => {
           slate
           faded
           :label="t('OVERVIEW_REPORTS.CONVERSATION_HEATMAP.DOWNLOAD_REPORT')"
-          class="rounded-md group-hover:bg-n-alpha-2"
+          class="rounded-md group-hover:bg-slate-900/10"
           @click="downloadHeatmapData"
         />
       </template>

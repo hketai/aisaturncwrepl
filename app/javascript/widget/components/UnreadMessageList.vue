@@ -87,7 +87,7 @@ export default {
         <span
           class="flex items-center"
           :class="{
-            '!text-n-slate-12': isBackgroundLighter,
+            '!text-slate-900': isBackgroundLighter,
           }"
           :style="{
             color: widgetColor,
@@ -119,12 +119,12 @@ export default {
 
   .clear-button {
     transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-    @apply bg-transparent text-n-brand border-none border-0 font-semibold text-base ml-1 py-0 pl-0 pr-2.5 hover:brightness-75 hover:translate-x-1;
+    @apply bg-transparent text-indigo-600 border-none border-0 font-semibold text-base ml-1 py-0 pl-0 pr-2.5 hover:brightness-75 hover:translate-x-1;
   }
 
   .close-unread-button {
     transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-    @apply bg-n-slate-3 dark:bg-n-slate-12 text-n-slate-12 dark:text-n-slate-1 hover:brightness-95 border-none border-0 font-medium text-xxs rounded-2xl mb-3;
+    @apply bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-50 hover:brightness-95 border-none border-0 font-medium text-xxs rounded-2xl mb-3;
   }
 }
 </style>

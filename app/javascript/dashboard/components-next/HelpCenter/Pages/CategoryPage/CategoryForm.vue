@@ -157,24 +157,24 @@ defineExpose({ state, isSubmitDisabled });
 <template>
   <div class="flex flex-col gap-4">
     <div
-      class="flex items-center justify-start gap-8 px-4 py-2 border rounded-lg border-n-strong"
+      class="flex items-center justify-start gap-8 px-4 py-2 border rounded-lg border-slate-400"
     >
       <div class="flex flex-col items-start w-full gap-2 py-2">
-        <span class="text-sm font-medium text-n-slate-11">
+        <span class="text-sm font-medium text-slate-900">
           {{ t('HELP_CENTER.CATEGORY_PAGE.CATEGORY_DIALOG.HEADER.PORTAL') }}
         </span>
-        <span class="text-sm text-n-slate-12">
+        <span class="text-sm text-slate-900">
           {{ portalName }}
         </span>
       </div>
-      <div class="justify-start w-px h-10 bg-n-strong" />
+      <div class="justify-start w-px h-10 bg-slate-400" />
       <div class="flex flex-col w-full gap-2 py-2">
-        <span class="text-sm font-medium text-n-slate-11">
+        <span class="text-sm font-medium text-slate-900">
           {{ t('HELP_CENTER.CATEGORY_PAGE.CATEGORY_DIALOG.HEADER.LOCALE') }}
         </span>
         <span
           :title="`${activeLocaleName} (${activeLocaleCode})`"
-          class="text-sm line-clamp-1 text-n-slate-12"
+          class="text-sm line-clamp-1 text-slate-900"
         >
           {{ `${activeLocaleName} (${activeLocaleCode})` }}
         </span>
@@ -246,7 +246,7 @@ defineExpose({ state, isSubmitDisabled });
           variant="faded"
           color="slate"
           :label="t('HELP_CENTER.CATEGORY_PAGE.CATEGORY_DIALOG.BUTTONS.CANCEL')"
-          class="w-full bg-n-alpha-2 text-n-blue-text hover:bg-n-alpha-3"
+          class="w-full bg-slate-900/10 text-indigo-700 hover:bg-slate-900/15"
           @click="handleCancel"
         />
         <Button

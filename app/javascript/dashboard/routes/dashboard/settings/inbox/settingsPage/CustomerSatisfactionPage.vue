@@ -180,7 +180,7 @@ const saveSettings = async () => {
         >
           <div class="mb-4">
             <span
-              class="inline-flex flex-wrap items-center gap-1.5 text-sm text-n-slate-12"
+              class="inline-flex flex-wrap items-center gap-1.5 text-sm text-slate-900"
             >
               {{ $t('INBOX_MGMT.CSAT.SURVEY_RULE.DESCRIPTION_PREFIX') }}
               <FilterSelect
@@ -216,7 +216,7 @@ const saveSettings = async () => {
             </span>
           </div>
         </WithLabel>
-        <p class="text-sm italic text-n-slate-11">
+        <p class="text-sm italic text-slate-900">
           {{ $t('INBOX_MGMT.CSAT.NOTE') }}
         </p>
         <div>

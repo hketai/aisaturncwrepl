@@ -195,7 +195,7 @@ export default {
       <div class="flex flex-col items-start gap-1.5 min-w-0 w-full">
         <div v-if="showAvatar" class="flex items-center w-full min-w-0 gap-3">
           <h3
-            class="flex-shrink max-w-full min-w-0 my-0 text-base capitalize break-words text-n-slate-12"
+            class="flex-shrink max-w-full min-w-0 my-0 text-base capitalize break-words text-slate-900"
           >
             {{ contact.name }}
           </h3>
@@ -207,7 +207,7 @@ export default {
                   contact.created_at
                 )}`
               "
-              class="i-lucide-info text-sm text-n-slate-10"
+              class="i-lucide-info text-sm text-slate-900"
             />
             <a
               :href="contactProfileLink"
@@ -215,7 +215,7 @@ export default {
               rel="noopener nofollow noreferrer"
               class="leading-3"
             >
-              <span class="i-lucide-external-link text-sm text-n-slate-10" />
+              <span class="i-lucide-external-link text-sm text-slate-900" />
             </a>
           </div>
         </div>

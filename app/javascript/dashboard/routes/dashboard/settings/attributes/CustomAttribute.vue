@@ -95,12 +95,12 @@ const tableHeaders = computed(() => {
         <th
           v-for="tableHeader in tableHeaders"
           :key="tableHeader"
-          class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-n-slate-11"
+          class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-slate-900"
         >
           {{ tableHeader }}
         </th>
       </thead>
-      <tbody class="divide-y divide-n-weak flex-1 text-n-slate-12">
+      <tbody class="divide-y divide-slate-300 flex-1 text-slate-900">
         <tr v-for="attribute in attributes" :key="attribute.attribute_key">
           <td
             class="py-4 ltr:pr-4 rtl:pl-4 overflow-hidden whitespace-nowrap text-ellipsis"

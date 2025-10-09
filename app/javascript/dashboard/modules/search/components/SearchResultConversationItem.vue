@@ -80,7 +80,7 @@ const visibleInfoItems = computed(() =>
 <template>
   <router-link
     :to="navigateTo"
-    class="flex p-2 rounded-xl cursor-pointer hover:bg-n-slate-2"
+    class="flex p-2 rounded-xl cursor-pointer hover:bg-slate-100"
   >
     <Avatar
       name="chats"
@@ -92,22 +92,22 @@ const visibleInfoItems = computed(() =>
       <div class="flex items-center min-w-0 justify-between gap-1 mb-1">
         <div class="flex">
           <woot-label
-            class="!bg-n-slate-3 dark:!bg-n-solid-3 !border-n-weak dark:!border-n-strong m-0"
+            class="!bg-slate-200 dark:!bg-slate-300 !border-slate-300 dark:!border-slate-400 m-0"
             :title="`#${id}`"
             :show-close="false"
             small
           />
           <div
-            class="flex items-center justify-center h-5 ml-1 rounded bg-n-slate-3 dark:bg-n-solid-3 w-fit rtl:ml-0 rtl:mr-1"
+            class="flex items-center justify-center h-5 ml-1 rounded bg-slate-200 dark:bg-slate-300 w-fit rtl:ml-0 rtl:mr-1"
           >
             <InboxName
               :inbox="inbox"
-              class="mx-2 bg-n-slate-3 dark:bg-n-solid-3 text-n-slate-11 dark:text-n-slate-11"
+              class="mx-2 bg-slate-200 dark:bg-slate-300 text-slate-900 dark:text-slate-900"
             />
           </div>
         </div>
         <span
-          class="text-xs font-normal min-w-0 truncate text-n-slate-11 dark:text-n-slate-11"
+          class="text-xs font-normal min-w-0 truncate text-slate-900 dark:text-slate-900"
         >
           {{ createdAtTime }}
         </span>
@@ -116,10 +116,10 @@ const visibleInfoItems = computed(() =>
         <h5
           v-for="item in visibleInfoItems"
           :key="item.label"
-          class="m-0 text-sm min-w-0 text-n-slate-12 dark:text-n-slate-12 truncate"
+          class="m-0 text-sm min-w-0 text-slate-900 dark:text-slate-900 truncate"
         >
           <span
-            class="text-xs font-normal text-n-slate-11 dark:text-n-slate-11"
+            class="text-xs font-normal text-slate-900 dark:text-slate-900"
           >
             {{ $t(item.label) }}:
           </span>

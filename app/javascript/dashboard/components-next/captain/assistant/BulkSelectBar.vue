@@ -61,7 +61,7 @@ const bulkCheckboxState = computed({
   >
     <div
       v-if="hasSelected"
-      class="flex items-center gap-3 py-1 ltr:pl-3 rtl:pr-3 ltr:pr-4 rtl:pl-4 rounded-lg bg-n-solid-2 outline outline-1 outline-n-container shadow"
+      class="flex items-center gap-3 py-1 ltr:pl-3 rtl:pr-3 ltr:pr-4 rtl:pl-4 rounded-lg bg-slate-200 outline outline-1 outline-slate-300 shadow"
     >
       <div class="flex items-center gap-3">
         <div class="flex items-center gap-1.5">
@@ -69,15 +69,15 @@ const bulkCheckboxState = computed({
             v-model="bulkCheckboxState"
             :indeterminate="isIndeterminate"
           />
-          <span class="text-sm font-medium text-n-slate-12 tabular-nums">
+          <span class="text-sm font-medium text-slate-900 tabular-nums">
             {{ selectAllLabel }}
           </span>
         </div>
-        <span class="text-sm text-n-slate-10 tabular-nums">
+        <span class="text-sm text-slate-900 tabular-nums">
           {{ selectedCountLabel }}
         </span>
       </div>
-      <div class="h-4 w-px bg-n-strong" />
+      <div class="h-4 w-px bg-slate-400" />
       <div class="flex items-center gap-3">
         <slot name="actions" :selected-count="selectedCount">
           <Button

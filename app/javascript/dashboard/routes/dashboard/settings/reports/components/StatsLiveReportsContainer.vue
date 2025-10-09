@@ -96,7 +96,7 @@ onMounted(() => {
               slate
               faded
               :label="selectedTeamLabel"
-              class="capitalize rounded-md group-hover:bg-n-alpha-2"
+              class="capitalize rounded-md group-hover:bg-slate-900/10"
               @click="toggleDropdown()"
             />
             <DropdownMenu
@@ -113,10 +113,10 @@ onMounted(() => {
           :key="index"
           class="flex-1 min-w-0 pb-2"
         >
-          <h3 class="text-base text-n-slate-11">
+          <h3 class="text-base text-slate-900">
             {{ name }}
           </h3>
-          <p class="text-n-slate-12 text-3xl mb-0 mt-1">
+          <p class="text-slate-900 text-3xl mb-0 mt-1">
             {{ metric }}
           </p>
         </div>
@@ -129,10 +129,10 @@ onMounted(() => {
           :key="index"
           class="flex-1 min-w-0 pb-2"
         >
-          <h3 class="text-base text-n-slate-11">
+          <h3 class="text-base text-slate-900">
             {{ name }}
           </h3>
-          <p class="text-n-slate-12 text-3xl mb-0 mt-1">
+          <p class="text-slate-900 text-3xl mb-0 mt-1">
             {{ metric }}
           </p>
         </div>

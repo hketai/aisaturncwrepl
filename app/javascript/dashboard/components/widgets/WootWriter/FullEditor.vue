@@ -328,10 +328,10 @@ export default {
 }
 
 .ProseMirror-prompt {
-  @apply z-[9999] bg-n-alpha-3 min-w-80 backdrop-blur-[100px] border border-n-strong p-6 shadow-xl rounded-xl;
+  @apply z-[9999] bg-slate-900/15 min-w-80 backdrop-blur-[100px] border border-slate-400 p-6 shadow-xl rounded-xl;
 
   h5 {
-    @apply text-n-slate-12 mb-1.5;
+    @apply text-slate-900 mb-1.5;
   }
 
   .ProseMirror-prompt-buttons {
@@ -339,11 +339,11 @@ export default {
       @apply h-8 px-3;
 
       &[type='submit'] {
-        @apply bg-n-brand text-white hover:bg-n-brand/90;
+        @apply bg-indigo-600 text-white hover:bg-indigo-600/90;
       }
 
       &[type='button'] {
-        @apply bg-n-slate-9/10 text-n-slate-12 hover:bg-n-slate-9/20;
+        @apply bg-slate-800/10 text-slate-900 hover:bg-slate-800/20;
       }
     }
   }

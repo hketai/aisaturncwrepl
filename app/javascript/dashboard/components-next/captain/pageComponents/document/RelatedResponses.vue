@@ -47,7 +47,7 @@ defineExpose({ dialogRef });
   >
     <div
       v-if="isFetching"
-      class="flex items-center justify-center py-10 text-n-slate-11"
+      class="flex items-center justify-center py-10 text-slate-900"
     >
       <Spinner />
     </div>

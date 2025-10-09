@@ -54,7 +54,7 @@ const handleBack = () => {
 </script>
 
 <template>
-  <section class="flex flex-col w-full h-full overflow-hidden bg-n-background">
+  <section class="flex flex-col w-full h-full overflow-hidden bg-white">
     <header class="sticky top-0 z-10 px-6">
       <div class="w-full max-w-[60rem] mx-auto">
         <div
@@ -69,7 +69,7 @@ const handleBack = () => {
               @click="handleBack"
             />
             <slot name="headerTitle">
-              <span class="text-xl font-medium text-n-slate-12">
+              <span class="text-xl font-medium text-slate-900">
                 {{ headerTitle }}
               </span>
             </slot>
@@ -94,7 +94,7 @@ const handleBack = () => {
       <div class="w-full max-w-[60rem] h-full mx-auto py-4">
         <div
           v-if="isFetching"
-          class="flex items-center justify-center py-10 text-n-slate-11"
+          class="flex items-center justify-center py-10 text-slate-900"
         >
           <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
         </div>

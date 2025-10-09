@@ -1,5 +1,5 @@
 <template>
-  <div class="reports--wrapper overflow-auto bg-n-background w-full px-6">
+  <div class="reports--wrapper overflow-auto bg-white w-full px-6">
     <div class="max-w-[60rem] mx-auto pb-12">
       <router-view />
     </div>
@@ -10,23 +10,23 @@
 .reports--wrapper {
   :deep() {
     .multiselect--disabled {
-      @apply opacity-50 border border-n-weak rounded-md cursor-not-allowed;
+      @apply opacity-50 border border-slate-300 rounded-md cursor-not-allowed;
     }
 
     .multiselect__content-wrapper {
-      @apply bg-n-solid-2 border border-n-weak text-n-slate-12;
+      @apply bg-slate-200 border border-slate-300 text-slate-900;
     }
 
     .multiselect__tags {
-      @apply bg-n-slate-1 border border-n-weak m-0 min-h-[2.875rem] pt-0;
+      @apply bg-slate-50 border border-slate-300 m-0 min-h-[2.875rem] pt-0;
 
       input[type='text'] {
-        @apply bg-n-alpha-3 border-n-weak placeholder:text-n-slate-11 min-h-[2.375rem] h-[2.375rem] px-0.5 py-0 text-sm;
+        @apply bg-slate-900/15 border-slate-300 placeholder:text-slate-900 min-h-[2.375rem] h-[2.375rem] px-0.5 py-0 text-sm;
       }
     }
 
     .multiselect__placeholder {
-      @apply text-n-slate-11;
+      @apply text-slate-900;
     }
 
     .multiselect__select {
@@ -34,7 +34,7 @@
     }
 
     .multiselect__single {
-      @apply bg-n-alpha-3 text-n-slate-11;
+      @apply bg-slate-900/15 text-slate-900;
     }
 
     .multiselect__input {
@@ -44,14 +44,14 @@
     .multiselect__tags,
     .multiselect__input,
     .multiselect {
-      @apply bg-n-alpha-3 !border-n-weak text-n-slate-12 rounded-lg text-sm min-h-[2.5rem];
+      @apply bg-slate-900/15 !border-slate-300 text-slate-900 rounded-lg text-sm min-h-[2.5rem];
     }
 
     .mx-input-wrapper {
-      @apply bg-n-alpha-3 border-n-weak text-n-slate-12 rounded-lg text-sm;
+      @apply bg-slate-900/15 border-slate-300 text-slate-900 rounded-lg text-sm;
 
       input {
-        @apply border-n-weak text-sm;
+        @apply border-slate-300 text-sm;
       }
     }
 
@@ -65,11 +65,11 @@
       }
 
       .mx-input-wrapper input::placeholder {
-        @apply text-n-slate-11;
+        @apply text-slate-900;
       }
 
       .mx-input-wrapper input {
-        @apply text-n-slate-11;
+        @apply text-slate-900;
       }
     }
 

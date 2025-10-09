@@ -210,7 +210,7 @@ const variants = [
         :reply-time="variant.props.replyTime"
         :is-online="variant.props.isOnline"
         :is-in-working-hours="variant.props.isInWorkingHours"
-        class="text-n-slate-11"
+        class="text-slate-900"
       />
     </Variant>
   </Story>

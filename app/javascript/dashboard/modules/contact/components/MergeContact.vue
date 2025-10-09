@@ -130,7 +130,7 @@ export default {
       </div>
       <div class="flex multiselect-wrap--medium">
         <div
-          class="w-8 relative text-base text-n-strong after:content-[''] after:h-12 after:w-0 ltr:after:left-4 rtl:after:right-4 after:absolute after:border-l after:border-solid after:border-n-strong before:content-[''] before:h-0 before:w-4 ltr:before:left-4 rtl:before:right-4 before:top-12 before:absolute before:border-b before:border-solid before:border-n-strong"
+          class="w-8 relative text-base text-slate-400 after:content-[''] after:h-12 after:w-0 ltr:after:left-4 rtl:after:right-4 after:absolute after:border-l after:border-solid after:border-slate-400 before:content-[''] before:h-0 before:w-4 ltr:before:left-4 rtl:before:right-4 before:top-12 before:absolute before:border-b before:border-solid before:border-slate-400"
         >
           <fluent-icon
             icon="arrow-up"

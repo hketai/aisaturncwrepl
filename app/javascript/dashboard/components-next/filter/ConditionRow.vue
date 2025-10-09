@@ -77,12 +77,12 @@ const queryOperatorOptions = computed(() => {
     {
       label: t(`FILTER.QUERY_DROPDOWN_LABELS.AND`),
       value: 'and',
-      icon: h('span', { class: 'i-lucide-ampersands !text-n-blue-text' }),
+      icon: h('span', { class: 'i-lucide-ampersands !text-indigo-700' }),
     },
     {
       label: t(`FILTER.QUERY_DROPDOWN_LABELS.OR`),
       value: 'or',
-      icon: h('span', { class: 'i-woot-logic-or !text-n-blue-text' }),
+      icon: h('span', { class: 'i-woot-logic-or !text-indigo-700' }),
     },
   ];
 });
@@ -202,7 +202,7 @@ defineExpose({ validate });
         @click.stop="emit('remove')"
       />
     </div>
-    <span v-if="showErrors && validationError" class="text-sm text-n-ruby-11">
+    <span v-if="showErrors && validationError" class="text-sm text-red-900">
       {{ t(`FILTER.ERRORS.${validationError}`) }}
     </span>
   </li>

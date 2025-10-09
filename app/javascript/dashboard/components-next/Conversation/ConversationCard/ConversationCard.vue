@@ -99,21 +99,21 @@ const onCardClick = e => {
     />
     <div class="flex flex-col w-full gap-1 min-w-0">
       <div class="flex items-center justify-between h-6 gap-2">
-        <h4 class="text-base font-medium truncate text-n-slate-12">
+        <h4 class="text-base font-medium truncate text-slate-900">
           {{ currentContactName }}
         </h4>
         <div class="flex items-center gap-2">
           <CardPriorityIcon :priority="conversation.priority || null" />
           <div
             v-tooltip.left="inboxName"
-            class="flex items-center justify-center flex-shrink-0 rounded-full bg-n-alpha-2 size-5"
+            class="flex items-center justify-center flex-shrink-0 rounded-full bg-slate-900/10 size-5"
           >
             <Icon
               :icon="inboxIcon"
-              class="flex-shrink-0 text-n-slate-11 size-3"
+              class="flex-shrink-0 text-slate-900 size-3"
             />
           </div>
-          <span class="text-sm text-n-slate-10">
+          <span class="text-sm text-slate-900">
             {{ lastActivityAt }}
           </span>
         </div>

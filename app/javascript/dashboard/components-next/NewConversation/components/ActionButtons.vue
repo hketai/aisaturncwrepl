@@ -268,7 +268,7 @@ useKeyboardEvents(keyboardEvents);
     }
 
     &:hover button {
-      @apply dark:bg-n-solid-2 bg-n-alpha-2;
+      @apply dark:bg-slate-200 bg-slate-900/10;
     }
   }
 }

@@ -146,7 +146,7 @@ const previewArticle = () => {
 <style lang="scss" scoped>
 ::v-deep {
   .ProseMirror .empty-node::before {
-    @apply text-n-slate-10 text-base;
+    @apply text-slate-900 text-base;
   }
 
   .ProseMirror-menubar-wrapper {
@@ -161,7 +161,7 @@ const previewArticle = () => {
 
   .editor-root .has-selection {
     .ProseMirror-menubar {
-      @apply h-8 rounded-lg !px-2 z-50 bg-n-solid-3 items-center gap-4 ml-0 mb-0 shadow-md outline outline-1 outline-n-weak;
+      @apply h-8 rounded-lg !px-2 z-50 bg-slate-300 items-center gap-4 ml-0 mb-0 shadow-md outline outline-1 outline-slate-300;
       display: flex;
       top: var(--selection-top, auto) !important;
       left: var(--selection-left, 0) !important;
@@ -182,7 +182,7 @@ const previewArticle = () => {
       }
 
       .ProseMirror-menu-active {
-        @apply bg-n-slate-3;
+        @apply bg-slate-200;
       }
     }
   }

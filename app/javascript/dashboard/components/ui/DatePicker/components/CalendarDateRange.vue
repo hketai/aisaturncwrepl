@@ -18,7 +18,7 @@ const setDateRange = range => {
 <template>
   <div class="w-[200px] flex flex-col items-start">
     <h4
-      class="w-full px-5 py-4 text-sm font-medium capitalize text-start text-n-slate-12"
+      class="w-full px-5 py-4 text-sm font-medium capitalize text-start text-slate-900"
     >
       {{ $t('DATE_PICKER.DATE_RANGE_OPTIONS.TITLE') }}
     </h4>
@@ -26,11 +26,11 @@ const setDateRange = range => {
       <button
         v-for="range in dateRanges"
         :key="range.label"
-        class="w-full px-5 py-3 text-sm font-medium truncate border-none rounded-none text-start hover:bg-n-alpha-2 dark:hover:bg-n-solid-3"
+        class="w-full px-5 py-3 text-sm font-medium truncate border-none rounded-none text-start hover:bg-slate-900/10 dark:hover:bg-slate-300"
         :class="
           range.value === selectedRange
-            ? 'text-n-slate-12 bg-n-alpha-1 dark:bg-n-solid-active'
-            : 'text-n-slate-12'
+            ? 'text-slate-900 bg-slate-900/5 dark:bg-slate-200'
+            : 'text-slate-900'
         "
         @click="setDateRange(range)"
       >

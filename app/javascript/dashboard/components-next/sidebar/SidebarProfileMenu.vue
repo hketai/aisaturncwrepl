@@ -126,8 +126,8 @@ const allowedMenuItems = computed(() => {
     <template #trigger="{ toggle, isOpen }">
       <button
         ref="triggerRef"
-        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-n-alpha-1"
-        :class="{ 'bg-n-alpha-1': isOpen }"
+        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-slate-900/5"
+        :class="{ 'bg-slate-900/5': isOpen }"
         @click="() => { updateDropdownPosition(); toggle(); }"
       >
         <Avatar
@@ -139,10 +139,10 @@ const allowedMenuItems = computed(() => {
           rounded-full
         />
         <div class="min-w-0">
-          <div class="text-sm font-medium leading-4 truncate text-n-slate-12">
+          <div class="text-sm font-medium leading-4 truncate text-slate-900">
             {{ currentUser.available_name }}
           </div>
-          <div class="text-xs truncate text-n-slate-11">
+          <div class="text-xs truncate text-slate-900">
             {{ currentUser.email }}
           </div>
         </div>
@@ -158,7 +158,7 @@ const allowedMenuItems = computed(() => {
         }"
       >
         <ul
-          class="text-sm bg-n-alpha-3 backdrop-blur-[100px] border border-n-weak rounded-xl shadow-sm py-2 n-dropdown-body gap-2 grid list-none px-2 reset-base relative"
+          class="text-sm bg-slate-900/15 backdrop-blur-[100px] border border-slate-300 rounded-xl shadow-sm py-2 n-dropdown-body gap-2 grid list-none px-2 reset-base relative"
         >
           <SidebarProfileMenuStatus />
           <DropdownSeparator />

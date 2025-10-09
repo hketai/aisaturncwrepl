@@ -118,37 +118,37 @@ export default {
 <style lang="scss" scoped>
 .banner {
   &.primary {
-    @apply bg-n-brand;
+    @apply bg-indigo-600;
   }
 
   &.secondary {
-    @apply bg-n-slate-3 dark:bg-n-solid-3 text-n-slate-12;
+    @apply bg-slate-200 dark:bg-slate-300 text-slate-900;
     a {
-      @apply text-n-slate-12;
+      @apply text-slate-900;
     }
   }
 
   &.alert {
-    @apply bg-n-ruby-3 text-n-ruby-12;
+    @apply bg-red-200 text-red-900;
 
     a {
-      @apply text-n-ruby-12;
+      @apply text-red-900;
     }
   }
 
   &.warning {
-    @apply bg-n-amber-5 text-n-amber-12;
+    @apply bg-amber-400 text-amber-900;
     a {
-      @apply text-n-amber-12;
+      @apply text-amber-900;
     }
   }
 
   &.gray {
-    @apply text-n-gray-10 dark:text-n-gray-10;
+    @apply text-gray-900 dark:text-gray-900;
   }
 
   a {
-    @apply ml-1 underline text-n-amber-12 text-xs;
+    @apply ml-1 underline text-amber-900 text-xs;
   }
 
   .banner-message {

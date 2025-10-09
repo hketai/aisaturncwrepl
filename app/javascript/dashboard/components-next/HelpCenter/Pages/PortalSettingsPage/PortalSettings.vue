@@ -79,7 +79,7 @@ const handleDeletePortal = () => {
     <template #content>
       <div
         v-if="isLoading"
-        class="flex items-center justify-center py-10 pt-2 pb-8 text-n-slate-11"
+        class="flex items-center justify-center py-10 pt-2 pb-8 text-slate-900"
       >
         <Spinner />
       </div>
@@ -92,7 +92,7 @@ const handleDeletePortal = () => {
           :is-fetching="isFetching"
           @update-portal="handleUpdatePortal"
         />
-        <div class="w-full h-px bg-n-weak" />
+        <div class="w-full h-px bg-slate-300" />
         <PortalConfigurationSettings
           :active-portal="activePortal"
           :is-fetching="isFetching"
@@ -101,17 +101,17 @@ const handleDeletePortal = () => {
           @refresh-status="fetchSSLStatus"
           @send-cname-instructions="handleSendCnameInstructions"
         />
-        <div class="w-full h-px bg-n-weak" />
+        <div class="w-full h-px bg-slate-300" />
         <div class="flex items-end justify-between w-full gap-4">
           <div class="flex flex-col gap-2">
-            <h6 class="text-base font-medium text-n-slate-12">
+            <h6 class="text-base font-medium text-slate-900">
               {{
                 t(
                   'HELP_CENTER.PORTAL_SETTINGS.CONFIGURATION_FORM.DELETE_PORTAL.HEADER'
                 )
               }}
             </h6>
-            <span class="text-sm text-n-slate-11">
+            <span class="text-sm text-slate-900">
               {{
                 t(
                   'HELP_CENTER.PORTAL_SETTINGS.CONFIGURATION_FORM.DELETE_PORTAL.DESCRIPTION'

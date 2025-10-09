@@ -24,19 +24,19 @@ export default {
 
 <template>
   <div
-    class="flex items-center gap-2 p-2 text-lg font-bold mb-6 relative before:absolute before:h-10 before:w-[1px] before:bg-n-slate-3 before:-bottom-8 before:left-[24px] hide-before-of-last"
+    class="flex items-center gap-2 p-2 text-lg font-bold mb-6 relative before:absolute before:h-10 before:w-[1px] before:bg-slate-200 before:-bottom-8 before:left-[24px] hide-before-of-last"
     :class="{
-      'text-n-brand ': isActive,
-      'text-n-slate-6': !isActive || isComplete,
-      'before:bg-n-brand': !isActive && isComplete,
+      'text-indigo-600 ': isActive,
+      'text-slate-500': !isActive || isComplete,
+      'before:bg-indigo-600': !isActive && isComplete,
     }"
   >
     <div
       class="grid w-8 h-8 border border-solid rounded-full place-content-center"
       :class="{
-        'border-n-brand': !isActive || isComplete,
-        'border-n-weak': !isActive && !isComplete,
-        'text-n-brand': isComplete,
+        'border-indigo-600': !isActive || isComplete,
+        'border-slate-300': !isActive && !isComplete,
+        'text-indigo-600': isComplete,
       }"
     >
       <fluent-icon v-if="isComplete" size="20" icon="checkmark" />

@@ -88,7 +88,7 @@
       @apply flex items-end flex-row-reverse;
 
       .chat-bubble.user {
-        @apply bg-n-ruby-9 dark:bg-n-ruby-9 #{!important};
+        @apply bg-red-800 dark:bg-red-800 #{!important};
       }
     }
   }
@@ -133,7 +133,7 @@
     }
 
     .chat-bubble {
-      @apply border border-solid border-n-slate-5 dark:border-n-slate-11/50 text-n-black;
+      @apply border border-solid border-slate-400 dark:border-slate-900/50 text-slate-900;
     }
 
     + .chat-bubble-wrap {
@@ -182,7 +182,7 @@
   }
 
   > a {
-    @apply text-n-brand;
+    @apply text-indigo-600;
     word-break: break-all;
   }
 
@@ -199,10 +199,10 @@
   }
 
   &.agent {
-    @apply ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] text-n-slate-12;
+    @apply ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] text-slate-900;
 
     .link {
-      @apply text-n-brand;
+      @apply text-indigo-600;
       word-break: break-word;
     }
   }
