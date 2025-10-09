@@ -159,8 +159,8 @@ module Saturn
     def process_agent_result(message, result, agent_profile, account, api_key, depth = 0)
       # Check transfer depth to prevent infinite loops
       if depth >= MAX_TRANSFER_DEPTH
-        Rails.logger.error("Saturn: Max transfer depth (#{MAX_TRANSFER_DEPTH}) reached. Preventing infinite loop.")
-        create_info_message(message, "Üzgünüm, teknik bir sorun oluştu. Lütfen bir temsilciyle görüşün.", :error)
+        Rails.logger.error("Saturn: Max transfer depth (#{MAX_TRANSFER_DEPTH}) reached. Handing off to human agent.")
+        handle_depth_limit_handoff(message, agent_profile)
         return
       end
       
@@ -176,6 +176,30 @@ module Saturn
           account.increment_ai_conversation_count!
         end
       end
+    end
+    
+    def handle_depth_limit_handoff(message, agent_profile)
+      conversation = message.conversation
+      
+      # Use agent's handoff team if configured, otherwise just set to pending
+      team_id = agent_profile.handoff_team_id
+      
+      # Set conversation to pending (waiting for human)
+      if team_id.present?
+        conversation.update!(status: :pending, team_id: team_id)
+      else
+        conversation.update!(status: :pending)
+      end
+      
+      # Send handoff message to customer
+      handoff_message = "Sizi bir temsilcimize aktarıyorum. En kısa sürede size dönüş yapılacaktır."
+      create_info_message(message, handoff_message, :handoff)
+      
+      # Create internal note for team
+      internal_note = "AI ajan transfer limiti aşıldı (maksimum #{MAX_TRANSFER_DEPTH} transfer). Konuşma insan ekibe yönlendirildi."
+      create_internal_note(message, internal_note)
+      
+      Rails.logger.info("Saturn: Max transfer depth reached. Handed off conversation #{conversation.id} to human team#{team_id ? " #{team_id}" : ''}.")
     end
     
     def create_info_message(original_message, content, message_type)
