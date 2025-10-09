@@ -173,12 +173,12 @@ onBeforeUnmount(() => {
       <div class="flex flex-col items-center justify-center h-full py-16">
         <div class="max-w-md text-center">
           <div class="mb-6 flex justify-center">
-            <div class="i-lucide-book-open text-6xl text-slate-300" />
+            <div class="i-lucide-book-open text-6xl text-n-weak" />
           </div>
           
           <h2 class="text-2xl font-semibold mb-3">{{ $t('SATURN.KNOWLEDGE.EMPTY_TITLE') }}</h2>
           
-          <p class="text-slate-300 mb-8">
+          <p class="text-n-weak mb-8">
             {{ $t('SATURN.KNOWLEDGE.EMPTY_STATE') }}
           </p>
           
@@ -202,19 +202,19 @@ onBeforeUnmount(() => {
         >
           <div class="flex justify-between w-full">
             <div class="flex items-start gap-3 flex-1">
-              <i :class="getSourceTypeIcon(knowledge.source_type)" class="text-xl text-slate-300 mt-0.5" />
+              <i :class="getSourceTypeIcon(knowledge.source_type)" class="text-xl text-n-weak mt-0.5" />
               <div class="flex-1 min-w-0">
-                <h3 class="font-medium text-slate-900 truncate">
+                <h3 class="font-medium text-n-slate-12 truncate">
                   {{ knowledge.title || 'Untitled' }}
                 </h3>
-                <p class="text-sm text-slate-900 line-clamp-2 mt-1">
+                <p class="text-sm text-n-slate-11 line-clamp-2 mt-1">
                   {{ knowledge.content_preview || knowledge.content_text || '' }}
                 </p>
                 <div class="flex items-center gap-2 mt-2">
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-900/10 text-slate-900">
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-n-alpha-2 text-n-slate-11">
                     {{ knowledge.source_type }}
                   </span>
-                  <span v-if="knowledge.source_url" class="text-xs text-slate-900 truncate">
+                  <span v-if="knowledge.source_url" class="text-xs text-n-slate-11 truncate">
                     {{ knowledge.source_url }}
                   </span>
                 </div>
@@ -226,7 +226,7 @@ onBeforeUnmount(() => {
                 icon="i-lucide-pencil"
                 color="slate"
                 size="xs"
-                class="rounded-md hover:bg-slate-900/10"
+                class="rounded-md hover:bg-n-alpha-2"
                 @click="handleEdit(knowledge)"
               />
               <Button

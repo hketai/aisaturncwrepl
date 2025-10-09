@@ -50,17 +50,14 @@ jobs:
             echo "📦 Installing Node packages (pnpm install)..."
             pnpm install --frozen-lockfile
             
-            # Clean ALL caches to force fresh build
-            echo "🧹 Cleaning all caches..."
+            # Clean Vite cache to force fresh build
+            echo "🧹 Cleaning Vite cache..."
             rm -rf tmp/vite-cache
-            rm -rf tmp/cache
-            rm -rf public/vite*
-            rm -rf public/packs
-            rm -rf public/assets
+            rm -rf public/vite-dev
+            rm -rf public/packs/.vite
             
-            # Precompile assets for production (with complete clean)
+            # Precompile assets for production
             echo "🎨 Precompiling Vite and Rails assets..."
-            RAILS_ENV=production bundle exec rails assets:clobber || true
             RAILS_ENV=production BUILD_MODE=library bin/vite build --force
             RAILS_ENV=production bin/vite build --force
             RAILS_ENV=production bundle exec rails assets:precompile
@@ -68,27 +65,6 @@ jobs:
             # Run database migrations
             echo "🗄️ Running database migrations..."
             RAILS_ENV=production bundle exec rails db:migrate
-            
-            # Configure AISATURN branding in database
-            echo "🎨 Setting up AISATURN branding..."
-            RAILS_ENV=production bundle exec rails runner "
-              # Helper to set config with proper YAML format
-              def set_config(name, value)
-                config = InstallationConfig.find_or_initialize_by(name: name)
-                config.locked = false
-                config.value = value
-                config.save!
-              end
-              
-              set_config('LOGO', '/brand-assets/new_logo.png')
-              set_config('LOGO_DARK', '/brand-assets/new_logo_dark.png')
-              set_config('LOGO_THUMBNAIL', '/brand-assets/new_logo.png')
-              set_config('BRAND_NAME', 'AISATURN')
-              set_config('BRAND_URL', 'https://app.aisaturn.co')
-              set_config('INSTALLATION_NAME', 'AISATURN')
-              GlobalConfig.clear_cache
-              puts '✅ AISATURN branding configured!'
-            "
             
             # Restart Chatwoot services
             echo "🔄 Restarting Chatwoot web and worker services..."

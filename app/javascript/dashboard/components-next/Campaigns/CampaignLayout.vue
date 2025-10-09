@@ -20,11 +20,11 @@ const handleButtonClick = () => {
 </script>
 
 <template>
-  <section class="flex flex-col w-full h-full overflow-hidden bg-white">
+  <section class="flex flex-col w-full h-full overflow-hidden bg-n-background">
     <header class="sticky top-0 z-10 px-6 lg:px-0">
       <div class="w-full max-w-[60rem] mx-auto">
         <div class="flex items-center justify-between w-full h-20 gap-2">
-          <span class="text-xl font-medium text-slate-900">
+          <span class="text-xl font-medium text-n-slate-12">
             {{ headerTitle }}
           </span>
           <div

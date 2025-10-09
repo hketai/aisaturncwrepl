@@ -35,10 +35,7 @@ class AccountDashboard < Administrate::BaseDashboard
     status: Field::Select.with_options(collection: [%w[Active active], %w[Suspended suspended]]),
     account_users: Field::HasMany,
     custom_attributes: Field::String,
-    openai_api_key: Field::String,
-    ai_conversation_limit: Field::Number.with_options(prefix: 'conversations/month', help: 'Leave blank for unlimited'),
-    ai_conversation_count: Field::Number.with_options(prefix: 'conversations used'),
-    ai_limit_reset_at: Field::DateTime
+    openai_api_key: Field::String
   }.merge(enterprise_attribute_types).freeze
 
   # COLLECTION_ATTRIBUTES
@@ -74,9 +71,6 @@ class AccountDashboard < Administrate::BaseDashboard
     status
     conversations
     account_users
-    ai_conversation_limit
-    ai_conversation_count
-    ai_limit_reset_at
   ] + enterprise_show_page_attributes).freeze
 
   # FORM_ATTRIBUTES
@@ -95,7 +89,6 @@ class AccountDashboard < Administrate::BaseDashboard
     locale
     status
     openai_api_key
-    ai_conversation_limit
   ] + enterprise_form_attributes).freeze
 
   # COLLECTION_FILTERS
@@ -126,7 +119,7 @@ class AccountDashboard < Administrate::BaseDashboard
   # to prevent an error from being raised (wrong number of arguments)
   # Reference: https://github.com/thoughtbot/administrate/pull/2356/files#diff-4e220b661b88f9a19ac527c50d6f1577ef6ab7b0bed2bfdf048e22e6bfa74a05R204
   def permitted_attributes(action)
-    attrs = super + [:openai_api_key, :ai_conversation_limit, limits: {}]
+    attrs = super + [:openai_api_key, limits: {}]
 
     # Add manually_managed_features to permitted attributes only for Chatwoot Cloud
     attrs << { manually_managed_features: [] } if ChatwootApp.chatwoot_cloud?

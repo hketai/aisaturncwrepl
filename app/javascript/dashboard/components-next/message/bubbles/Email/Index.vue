@@ -99,16 +99,16 @@ const handleSeeOriginal = () => {
   <BaseBubble
     class="w-full"
     :class="{
-      'bg-slate-300': isIncoming,
-      'bg-indigo-100': isOutgoing,
+      'bg-n-slate-4': isIncoming,
+      'bg-n-solid-blue': isOutgoing,
     }"
     data-bubble-name="email"
   >
     <EmailMeta
       class="p-3"
       :class="{
-        'border-b border-slate-400': isIncoming,
-        'border-b border-slate-700/20': isOutgoing,
+        'border-b border-n-strong': isIncoming,
+        'border-b border-n-slate-8/20': isOutgoing,
       }"
     />
     <section ref="contentContainer" class="p-3">
@@ -122,14 +122,14 @@ const handleSeeOriginal = () => {
           v-if="isExpandable && !isExpanded"
           class="absolute left-0 right-0 bottom-0 h-40 px-8 flex items-end"
           :class="{
-            'bg-gradient-to-t from-slate-300 via-slate-300 via-20% to-transparent':
+            'bg-gradient-to-t from-n-slate-4 via-n-slate-4 via-20% to-transparent':
               isIncoming,
-            'bg-gradient-to-t from-indigo-100 via-indigo-100 via-20% to-transparent':
+            'bg-gradient-to-t from-n-solid-blue via-n-solid-blue via-20% to-transparent':
               isOutgoing,
           }"
         >
           <button
-            class="text-slate-900 py-2 px-8 mx-auto text-center flex items-center gap-2"
+            class="text-n-slate-12 py-2 px-8 mx-auto text-center flex items-center gap-2"
             @click="isExpanded = true"
           >
             <Icon icon="i-lucide-maximize-2" />
@@ -138,7 +138,7 @@ const handleSeeOriginal = () => {
         </div>
         <FormattedContent
           v-if="isOutgoing && content"
-          class="text-slate-900"
+          class="text-n-slate-12"
           :content="messageContent"
         />
         <template v-else>
@@ -169,7 +169,7 @@ const handleSeeOriginal = () => {
         </template>
         <button
           v-if="hasQuotedMessage"
-          class="text-slate-900 px-1 leading-none text-sm bg-slate-900/10 text-center flex items-center gap-1 mt-2"
+          class="text-n-slate-11 px-1 leading-none text-sm bg-n-alpha-black2 text-center flex items-center gap-1 mt-2"
           @click="showQuotedMessage = !showQuotedMessage"
         >
           <template v-if="showQuotedMessage">
@@ -209,10 +209,10 @@ const handleSeeOriginal = () => {
 
 .letter-render [class*='gmail_drive_chip'] {
   box-sizing: initial;
-  @apply bg-slate-300 border-slate-500 rounded-md !important;
+  @apply bg-n-slate-4 border-n-slate-6 rounded-md !important;
 
   a {
-    @apply text-slate-900 !important;
+    @apply text-n-slate-12 !important;
 
     img {
       display: inline-block;

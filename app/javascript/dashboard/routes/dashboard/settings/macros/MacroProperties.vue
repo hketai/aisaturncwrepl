@@ -20,8 +20,8 @@ export default {
   methods: {
     isActive(key) {
       return this.macroVisibility === key
-        ? 'bg-indigo-100 dark:bg-indigo-50 border-indigo-200 dark:border-indigo-300'
-        : 'bg-white dark:bg-slate-200 border-slate-300 dark:border-slate-400';
+        ? 'bg-n-blue-2 dark:bg-n-blue-1 border-n-blue-3 dark:border-n-blue-4'
+        : 'bg-white dark:bg-n-solid-2 border-n-weak dark:border-n-strong';
     },
     onUpdateName(value) {
       this.$emit('update:name', value);
@@ -35,7 +35,7 @@ export default {
 
 <template>
   <div
-    class="p-4 bg-slate-200 border border-slate-300 rounded-lg shadow-sm h-full flex flex-col"
+    class="p-4 bg-n-solid-2 border border-n-weak rounded-lg shadow-sm h-full flex flex-col"
   >
     <div>
       <woot-input
@@ -48,7 +48,7 @@ export default {
       />
     </div>
     <div class="mt-2">
-      <p class="block m-0 text-sm font-medium leading-[1.8] text-slate-900">
+      <p class="block m-0 text-sm font-medium leading-[1.8] text-n-slate-12">
         {{ $t('MACROS.EDITOR.VISIBILITY.LABEL') }}
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -61,14 +61,14 @@ export default {
             v-if="macroVisibility === 'global'"
             icon="checkmark-circle"
             type="solid"
-            class="absolute text-indigo-600 top-2 right-2"
+            class="absolute text-n-brand top-2 right-2"
           />
           <p
-            class="block m-0 text-sm font-medium leading-[1.8] text-slate-900"
+            class="block m-0 text-sm font-medium leading-[1.8] text-n-slate-12"
           >
             {{ $t('MACROS.EDITOR.VISIBILITY.GLOBAL.LABEL') }}
           </p>
-          <p class="text-xs text-slate-900">
+          <p class="text-xs text-n-slate-11">
             {{ $t('MACROS.EDITOR.VISIBILITY.GLOBAL.DESCRIPTION') }}
           </p>
         </button>
@@ -81,23 +81,23 @@ export default {
             v-if="macroVisibility === 'personal'"
             icon="checkmark-circle"
             type="solid"
-            class="absolute text-indigo-600 top-2 right-2"
+            class="absolute text-n-brand top-2 right-2"
           />
           <p
-            class="block m-0 text-sm font-medium leading-[1.8] text-slate-900"
+            class="block m-0 text-sm font-medium leading-[1.8] text-n-slate-12"
           >
             {{ $t('MACROS.EDITOR.VISIBILITY.PERSONAL.LABEL') }}
           </p>
-          <p class="text-xs text-slate-900">
+          <p class="text-xs text-n-slate-11">
             {{ $t('MACROS.EDITOR.VISIBILITY.PERSONAL.DESCRIPTION') }}
           </p>
         </button>
       </div>
       <div
-        class="mt-2 flex items-start p-2 bg-slate-200 dark:bg-slate-300 rounded-md"
+        class="mt-2 flex items-start p-2 bg-n-slate-3 dark:bg-n-solid-3 rounded-md"
       >
         <fluent-icon icon="info" size="16" class="flex-shrink-0 mt-0.5" />
-        <p class="ml-2 rtl:ml-0 rtl:mr-2 mb-0 text-slate-900">
+        <p class="ml-2 rtl:ml-0 rtl:mr-2 mb-0 text-n-slate-11">
           {{ $t('MACROS.ORDER_INFO') }}
         </p>
       </div>

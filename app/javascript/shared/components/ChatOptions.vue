@@ -44,12 +44,12 @@ export default {
 
 <template>
   <div
-    class="chat-bubble agent max-w-64 !py-2 !px-4 rounded-lg overflow-hidden mt-1 bg-white dark:bg-slate-300"
+    class="chat-bubble agent max-w-64 !py-2 !px-4 rounded-lg overflow-hidden mt-1 bg-n-background dark:bg-n-solid-3"
   >
-    <h4 class="text-slate-900 text-sm font-normal my-1 leading-[1.5]">
+    <h4 class="text-n-slate-12 text-sm font-normal my-1 leading-[1.5]">
       <div
         v-dompurify-html="formatMessage(title, false)"
-        class="text-slate-900"
+        class="text-n-slate-12"
       />
     </h4>
     <ul v-if="!hideFields" class="w-full">

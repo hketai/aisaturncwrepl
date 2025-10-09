@@ -37,10 +37,10 @@ const subscribedEvents = computed(() => {
 <template>
   <tr>
     <td class="py-4 ltr:pr-4 rtl:pl-4">
-      <div class="font-medium break-words text-slate-900">
+      <div class="font-medium break-words text-n-slate-12">
         {{ webhook.url }}
       </div>
-      <div class="block mt-1 text-sm text-slate-900">
+      <div class="block mt-1 text-sm text-n-slate-11">
         <span class="font-medium">
           {{ $t('INTEGRATION_SETTINGS.WEBHOOK.SUBSCRIBED_EVENTS') }}:
         </span>

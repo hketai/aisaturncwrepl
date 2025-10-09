@@ -304,7 +304,7 @@ onMounted(() => {
         v-if="shouldShowDropdown"
         class="mb-4 -mt-3 flex justify-between items-center py-1"
         :class="{
-          'ltr:pl-3 rtl:pr-3 ltr:pr-1 rtl:pl-1 rounded-lg outline outline-1 outline-slate-300 bg-slate-300 w-fit':
+          'ltr:pl-3 rtl:pr-3 ltr:pr-1 rtl:pl-1 rounded-lg outline outline-1 outline-n-weak bg-n-solid-3 w-fit':
             bulkSelectionState.hasSelected,
         }"
       >
@@ -363,11 +363,11 @@ onMounted(() => {
                   v-model="bulkCheckbox"
                   :indeterminate="bulkSelectionState.isIndeterminate"
                 />
-                <span class="text-sm text-slate-900 font-medium tabular-nums">
+                <span class="text-sm text-n-slate-12 font-medium tabular-nums">
                   {{ buildSelectedCountLabel }}
                 </span>
               </div>
-              <span class="text-sm text-slate-900 tabular-nums">
+              <span class="text-sm text-n-slate-10 tabular-nums">
                 {{
                   $t('CAPTAIN.RESPONSES.SELECTED', {
                     count: bulkSelectedIds.size,
@@ -375,7 +375,7 @@ onMounted(() => {
                 }}
               </span>
             </div>
-            <div class="h-4 w-px bg-slate-400" />
+            <div class="h-4 w-px bg-n-strong" />
             <div class="flex gap-3 items-center">
               <Button
                 :label="$t('CAPTAIN.RESPONSES.BULK_APPROVE_BUTTON')"
@@ -385,7 +385,7 @@ onMounted(() => {
                 class="!px-1.5"
                 @click="handleBulkApprove"
               />
-              <div class="h-4 w-px bg-slate-400" />
+              <div class="h-4 w-px bg-n-strong" />
               <Button
                 :label="$t('CAPTAIN.RESPONSES.BULK_DELETE_BUTTON')"
                 sm

@@ -276,7 +276,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full h-full bg-white">
+  <div class="flex flex-col w-full h-full bg-n-background">
     <div class="flex w-full p-4">
       <NextButton
         :label="t('GENERAL_SETTINGS.BACK')"
@@ -408,8 +408,8 @@ onUnmounted(() => {
             v-else-if="showEmptySearchResults"
             class="flex flex-col items-center justify-center px-4 py-6 mt-8 rounded-md"
           >
-            <fluent-icon icon="info" size="16px" class="text-slate-900" />
-            <p class="m-2 text-center text-slate-900">
+            <fluent-icon icon="info" size="16px" class="text-n-slate-11" />
+            <p class="m-2 text-center text-n-slate-11">
               {{ t('SEARCH.EMPTY_STATE_FULL', { query }) }}
             </p>
           </div>
@@ -418,9 +418,9 @@ onUnmounted(() => {
             class="flex flex-col items-center justify-center px-4 py-6 mt-8 text-center rounded-md"
           >
             <p class="text-center margin-bottom-0">
-              <fluent-icon icon="search" size="24px" class="text-slate-900" />
+              <fluent-icon icon="search" size="24px" class="text-n-slate-11" />
             </p>
-            <p class="m-2 text-center text-slate-900">
+            <p class="m-2 text-center text-n-slate-11">
               {{ t('SEARCH.EMPTY_STATE_DEFAULT') }}
             </p>
           </div>

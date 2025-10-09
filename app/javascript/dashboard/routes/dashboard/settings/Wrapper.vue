@@ -19,7 +19,7 @@ const showSettingsHeader = computed(
 </script>
 
 <template>
-  <div class="flex flex-1 flex-col m-0 bg-white overflow-auto">
+  <div class="flex flex-1 flex-col m-0 bg-n-background overflow-auto">
     <div
       class="mx-auto w-full flex flex-col flex-1"
       :class="{ 'max-w-6xl': !fullWidth }"

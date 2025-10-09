@@ -117,7 +117,7 @@ watch(
       >
         <div class="flex items-center gap-2">
           <Switch v-model="enabled" />
-          <span class="text-sm text-slate-900">
+          <span class="text-sm text-n-slate-11">
             {{ statusPlaceholder }}
           </span>
         </div>

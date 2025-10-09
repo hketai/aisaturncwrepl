@@ -138,7 +138,7 @@ const handleSubmit = async () => {
     <div class="flex flex-col gap-1">
       <label
         for="documentType"
-        class="mb-0.5 text-sm font-medium text-slate-900"
+        class="mb-0.5 text-sm font-medium text-n-slate-12"
       >
         {{ t('CAPTAIN.DOCUMENTS.FORM.TYPE.LABEL') }}
       </label>
@@ -146,7 +146,7 @@ const handleSubmit = async () => {
         id="documentType"
         v-model="state.documentType"
         :options="documentTypeOptions"
-        class="[&>div>button]:bg-slate-900/10"
+        class="[&>div>button]:bg-n-alpha-black2"
       />
     </div>
 
@@ -160,7 +160,7 @@ const handleSubmit = async () => {
     />
 
     <div v-if="state.documentType === 'pdf'" class="flex flex-col gap-2">
-      <label class="text-sm font-medium text-slate-900">
+      <label class="text-sm font-medium text-n-slate-12">
         {{ t('CAPTAIN.DOCUMENTS.FORM.PDF_FILE.LABEL') }}
       </label>
       <div class="relative">
@@ -181,19 +181,19 @@ const handleSubmit = async () => {
           <template #default>
             <div class="flex gap-2 items-center">
               <div
-                class="flex justify-center items-center w-10 h-10 rounded-lg bg-slate-200"
+                class="flex justify-center items-center w-10 h-10 rounded-lg bg-n-slate-3"
               >
-                <i class="text-xl i-ph-file-pdf text-slate-900" />
+                <i class="text-xl i-ph-file-pdf text-n-slate-11" />
               </div>
               <div class="flex flex-col flex-1 gap-1 items-start">
-                <p class="m-0 text-sm font-medium text-slate-900">
+                <p class="m-0 text-sm font-medium text-n-slate-12">
                   {{
                     state.pdfFile
                       ? state.pdfFile.name
                       : t('CAPTAIN.DOCUMENTS.FORM.PDF_FILE.CHOOSE_FILE')
                   }}
                 </p>
-                <p class="m-0 text-xs text-slate-900">
+                <p class="m-0 text-xs text-n-slate-11">
                   {{
                     state.pdfFile
                       ? `${(state.pdfFile.size / 1024 / 1024).toFixed(2)} MB`
@@ -203,11 +203,11 @@ const handleSubmit = async () => {
               </div>
             </div>
 
-            <i class="i-lucide-upload text-slate-900" />
+            <i class="i-lucide-upload text-n-slate-11" />
           </template>
         </Button>
       </div>
-      <p v-if="formErrors.pdfFile" class="text-xs text-red-800">
+      <p v-if="formErrors.pdfFile" class="text-xs text-n-ruby-9">
         {{ formErrors.pdfFile }}
       </p>
     </div>
@@ -219,7 +219,7 @@ const handleSubmit = async () => {
     />
 
     <div class="flex flex-col gap-1">
-      <label for="assistant" class="mb-0.5 text-sm font-medium text-slate-900">
+      <label for="assistant" class="mb-0.5 text-sm font-medium text-n-slate-12">
         {{ t('CAPTAIN.DOCUMENTS.FORM.ASSISTANT.LABEL') }}
       </label>
       <ComboBox
@@ -228,7 +228,7 @@ const handleSubmit = async () => {
         :options="assistantList"
         :has-error="!!formErrors.assistantId"
         :placeholder="t('CAPTAIN.DOCUMENTS.FORM.ASSISTANT.PLACEHOLDER')"
-        class="[&>div>button]:bg-slate-900/10"
+        class="[&>div>button]:bg-n-alpha-black2"
         :message="formErrors.assistantId"
       />
     </div>
@@ -239,7 +239,7 @@ const handleSubmit = async () => {
         variant="faded"
         color="slate"
         :label="t('CAPTAIN.FORM.CANCEL')"
-        class="w-full bg-slate-900/10 text-indigo-700 hover:bg-slate-900/15"
+        class="w-full bg-n-alpha-2 text-n-blue-text hover:bg-n-alpha-3"
         @click="handleCancel"
       />
       <Button

@@ -11,16 +11,16 @@ defineProps({
   <section
     class="grid grid-cols-1 pt-8 gap-5 [interpolate-size:allow-keywords]"
     :class="{
-      'border-t border-slate-300': withBorder,
+      'border-t border-n-weak': withBorder,
       'pb-8': !hideContent,
     }"
   >
     <header class="grid grid-cols-4">
       <div class="col-span-3">
-        <h4 class="text-lg font-medium text-slate-900">
+        <h4 class="text-lg font-medium text-n-slate-12">
           <slot name="title">{{ title }}</slot>
         </h4>
-        <p class="text-slate-900 text-sm mt-2">
+        <p class="text-n-slate-11 text-sm mt-2">
           <slot name="description">{{ description }}</slot>
         </p>
       </div>
@@ -29,7 +29,7 @@ defineProps({
       </div>
     </header>
     <div
-      class="transition-[height] duration-300 ease-in-out text-slate-900"
+      class="transition-[height] duration-300 ease-in-out text-n-slate-12"
       :class="{ 'overflow-hidden h-0': hideContent, 'h-auto': !hideContent }"
     >
       <slot />

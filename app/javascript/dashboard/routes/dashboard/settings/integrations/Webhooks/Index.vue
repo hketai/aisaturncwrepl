@@ -120,17 +120,17 @@ export default {
       </BaseSettingsHeader>
     </template>
     <template #body>
-      <table class="min-w-full divide-y divide-slate-300">
+      <table class="min-w-full divide-y divide-n-weak">
         <thead>
           <th
             v-for="thHeader in tableHeaders"
             :key="thHeader"
-            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-slate-900 last:text-right last:pr-4"
+            class="py-4 ltr:pr-4 rtl:pl-4 text-left font-semibold text-n-slate-11 last:text-right last:pr-4"
           >
             {{ thHeader }}
           </th>
         </thead>
-        <tbody class="divide-y divide-slate-300 flex-1 text-slate-900">
+        <tbody class="divide-y divide-n-weak flex-1 text-n-slate-12">
           <WebhookRow
             v-for="(webHookItem, index) in records"
             :key="webHookItem.id"

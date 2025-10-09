@@ -39,28 +39,28 @@ const truncatedContent = computed(() => {
 <template>
   <router-link
     :to="navigateTo"
-    class="flex items-start p-2 rounded-xl cursor-pointer hover:bg-slate-100"
+    class="flex items-start p-2 rounded-xl cursor-pointer hover:bg-n-slate-2"
   >
     <div
-      class="flex items-center justify-center w-6 h-6 mt-0.5 rounded bg-slate-200"
+      class="flex items-center justify-center w-6 h-6 mt-0.5 rounded bg-n-slate-3"
     >
-      <Icon icon="i-lucide-library-big" class="text-slate-900" />
+      <Icon icon="i-lucide-library-big" class="text-n-slate-10" />
     </div>
     <div class="ltr:ml-2 rtl:mr-2 min-w-0 flex-1">
       <div class="flex items-center gap-2">
-        <h5 class="text-sm font-medium truncate min-w-0 text-slate-900">
+        <h5 class="text-sm font-medium truncate min-w-0 text-n-slate-12">
           {{ title }}
         </h5>
         <span
           v-if="category"
-          class="text-xs font-medium whitespace-nowrap capitalize bg-slate-200 px-1 py-0.5 rounded text-slate-900"
+          class="text-xs font-medium whitespace-nowrap capitalize bg-n-slate-3 px-1 py-0.5 rounded text-n-slate-10"
         >
           {{ category }}
         </span>
       </div>
       <p
         v-if="truncatedContent"
-        class="mt-1 text-sm text-slate-900 line-clamp-2"
+        class="mt-1 text-sm text-n-slate-11 line-clamp-2"
       >
         {{ truncatedContent }}
       </p>

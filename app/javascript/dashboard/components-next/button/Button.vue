@@ -100,57 +100,57 @@ const STYLE_CONFIG = {
   colors: {
     blue: {
       solid:
-        'bg-indigo-600 text-white hover:enabled:shadow-md hover:enabled:-translate-y-0.5 focus-visible:shadow-md focus-visible:-translate-y-0.5 outline-transparent active:translate-y-0',
+        'bg-n-brand text-white hover:enabled:brightness-110 focus-visible:brightness-110 outline-transparent',
       faded:
-        'bg-indigo-600/10 text-indigo-700 hover:enabled:bg-indigo-600/20 hover:enabled:shadow focus-visible:bg-indigo-600/20 outline-transparent',
-      outline: 'text-indigo-700 outline-indigo-600 hover:enabled:bg-indigo-600/5',
+        'bg-n-brand/10 text-n-blue-text hover:enabled:bg-n-brand/20 focus-visible:bg-n-brand/20 outline-transparent',
+      outline: 'text-n-blue-text outline-n-brand',
       ghost:
-        'text-indigo-700 hover:enabled:bg-slate-900/10 focus-visible:bg-slate-900/10 outline-transparent',
-      link: 'text-indigo-700 hover:enabled:underline focus-visible:underline outline-transparent',
+        'text-n-blue-text hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 outline-transparent',
+      link: 'text-n-blue-text hover:enabled:underline focus-visible:underline outline-transparent',
     },
     ruby: {
       solid:
-        'bg-red-800 text-white hover:enabled:shadow-md hover:enabled:-translate-y-0.5 focus-visible:shadow-md focus-visible:-translate-y-0.5 outline-transparent active:translate-y-0',
+        'bg-n-ruby-9 text-white hover:enabled:bg-n-ruby-10 focus-visible:bg-n-ruby-10 outline-transparent',
       faded:
-        'bg-red-800/10 text-red-900 hover:enabled:bg-red-800/20 hover:enabled:shadow focus-visible:bg-red-800/20 outline-transparent',
+        'bg-n-ruby-9/10 text-n-ruby-11 hover:enabled:bg-n-ruby-9/20 focus-visible:bg-n-ruby-9/20 outline-transparent',
       outline:
-        'text-red-900 hover:enabled:bg-red-800/10 focus-visible:bg-red-800/10 outline-red-700',
+        'text-n-ruby-11 hover:enabled:bg-n-ruby-9/10 focus-visible:bg-n-ruby-9/10 outline-n-ruby-8',
       ghost:
-        'text-red-900 hover:enabled:bg-slate-900/10 focus-visible:bg-slate-900/10 outline-transparent',
-      link: 'text-red-800 dark:text-red-900 hover:enabled:underline focus-visible:underline outline-transparent',
+        'text-n-ruby-11 hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 outline-transparent',
+      link: 'text-n-ruby-9 dark:text-n-ruby-11 hover:enabled:underline focus-visible:underline outline-transparent',
     },
     amber: {
       solid:
-        'bg-amber-800 text-white hover:enabled:shadow-md hover:enabled:-translate-y-0.5 focus-visible:shadow-md focus-visible:-translate-y-0.5 outline-transparent active:translate-y-0',
+        'bg-n-amber-9 text-white hover:enabled:bg-n-amber-10 focus-visible:bg-n-amber-10 outline-transparent',
       faded:
-        'bg-amber-800/10 text-slate-900 hover:enabled:bg-amber-800/20 hover:enabled:shadow focus-visible:bg-amber-800/20 outline-transparent',
+        'bg-n-amber-9/10 text-n-slate-12 hover:enabled:bg-n-amber-9/20 focus-visible:bg-n-amber-9/20 outline-transparent',
       outline:
-        'text-amber-900 hover:enabled:bg-amber-800/10 focus-visible:bg-amber-800/10 outline-amber-800',
-      link: 'text-amber-800 hover:enabled:underline focus-visible:underline outline-transparent',
+        'text-n-amber-11 hover:enabled:bg-n-amber-9/10 focus-visible:bg-n-amber-9/10 outline-n-amber-9',
+      link: 'text-n-amber-9 hover:enabled:underline focus-visible:underline outline-transparent',
       ghost:
-        'text-amber-800 hover:enabled:bg-slate-900/10 focus-visible:bg-slate-900/10 outline-transparent',
+        'text-n-amber-9 hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 outline-transparent',
     },
     slate: {
       solid:
-        'bg-slate-300 dark:hover:enabled:bg-slate-200 dark:focus-visible:bg-slate-200 hover:enabled:bg-slate-900/10 hover:enabled:shadow-md hover:enabled:-translate-y-0.5 focus-visible:bg-slate-900/10 focus-visible:shadow-md focus-visible:-translate-y-0.5 text-slate-900 outline-slate-300 active:translate-y-0',
+        'bg-n-solid-3 dark:hover:enabled:bg-n-solid-2 dark:focus-visible:bg-n-solid-2 hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 text-n-slate-12 outline-n-container',
       faded:
-        'bg-slate-800/10 text-slate-900 hover:enabled:bg-slate-800/20 hover:enabled:shadow focus-visible:bg-slate-800/20 outline-transparent',
+        'bg-n-slate-9/10 text-n-slate-12 hover:enabled:bg-n-slate-9/20 focus-visible:bg-n-slate-9/20 outline-transparent',
       outline:
-        'text-slate-900 outline-slate-400 hover:enabled:bg-slate-800/10 focus-visible:bg-slate-800/10',
-      link: 'text-slate-900 hover:enabled:text-slate-900 focus-visible:text-slate-900 hover:enabled:underline focus-visible:underline outline-transparent',
+        'text-n-slate-11 outline-n-strong hover:enabled:bg-n-slate-9/10 focus-visible:bg-n-slate-9/10',
+      link: 'text-n-slate-11 hover:enabled:text-n-slate-12 focus-visible:text-n-slate-12 hover:enabled:underline focus-visible:underline outline-transparent',
       ghost:
-        'text-slate-900 hover:enabled:bg-slate-900/10 focus-visible:bg-slate-900/10 outline-transparent',
+        'text-n-slate-12 hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 outline-transparent',
     },
     teal: {
       solid:
-        'bg-teal-800 text-white hover:enabled:shadow-md hover:enabled:-translate-y-0.5 focus-visible:shadow-md focus-visible:-translate-y-0.5 outline-transparent active:translate-y-0',
+        'bg-n-teal-9 text-white hover:enabled:bg-n-teal-10 focus-visible:bg-n-teal-10 outline-transparent',
       faded:
-        'bg-teal-800/10 text-slate-900 hover:enabled:bg-teal-800/20 hover:enabled:shadow focus-visible:bg-teal-800/20 outline-transparent',
+        'bg-n-teal-9/10 text-n-slate-12 hover:enabled:bg-n-teal-9/20 focus-visible:bg-n-teal-9/20 outline-transparent',
       outline:
-        'text-teal-900 hover:enabled:bg-teal-800/10 focus-visible:bg-teal-800/10 outline-teal-800',
-      link: 'text-teal-800 hover:enabled:underline focus-visible:underline outline-transparent',
+        'text-n-teal-11 hover:enabled:bg-n-teal-9/10 focus-visible:bg-n-teal-9/10 outline-n-teal-9',
+      link: 'text-n-teal-9 hover:enabled:underline focus-visible:underline outline-transparent',
       ghost:
-        'text-teal-800 hover:enabled:bg-slate-900/10 focus-visible:bg-slate-900/10 outline-transparent',
+        'text-n-teal-9 hover:enabled:bg-n-alpha-2 focus-visible:bg-n-alpha-2 outline-transparent',
     },
   },
   sizes: {
@@ -184,7 +184,7 @@ const STYLE_CONFIG = {
     center: 'justify-center',
     end: 'justify-end',
   },
-  base: 'inline-flex items-center min-w-0 gap-2 transition-all duration-200 ease-in-out border-0 rounded-md outline-1 outline disabled:opacity-50 font-medium shadow-sm',
+  base: 'inline-flex items-center min-w-0 gap-2 transition-all duration-200 ease-in-out border-0 rounded-lg outline-1 outline disabled:opacity-50',
 };
 
 const variantClasses = computed(() => {

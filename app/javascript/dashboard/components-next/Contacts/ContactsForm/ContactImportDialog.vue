@@ -66,14 +66,14 @@ defineExpose({ dialogRef });
     @confirm="uploadFile"
   >
     <template #description>
-      <p class="mb-0 text-sm text-slate-900">
+      <p class="mb-0 text-sm text-n-slate-11">
         {{ t('CONTACTS_LAYOUT.HEADER.ACTIONS.IMPORT_CONTACT.DESCRIPTION') }}
         <a
           :href="csvUrl"
           target="_blank"
           rel="noopener noreferrer"
           download="import-contacts-sample.csv"
-          class="text-indigo-700"
+          class="text-n-blue-text"
         >
           {{
             t('CONTACTS_LAYOUT.HEADER.ACTIONS.IMPORT_CONTACT.DOWNLOAD_LABEL')
@@ -84,11 +84,11 @@ defineExpose({ dialogRef });
 
     <div class="flex flex-col gap-2">
       <div class="flex items-center gap-2">
-        <label class="text-sm text-slate-900 whitespace-nowrap">
+        <label class="text-sm text-n-slate-12 whitespace-nowrap">
           {{ t('CONTACTS_LAYOUT.HEADER.ACTIONS.IMPORT_CONTACT.LABEL') }}
         </label>
         <div class="flex items-center justify-between w-full gap-2">
-          <span v-if="hasSelectedFile" class="text-sm text-slate-900">
+          <span v-if="hasSelectedFile" class="text-sm text-n-slate-12">
             {{ selectedFileName }}
           </span>
           <Button
@@ -111,7 +111,7 @@ defineExpose({ dialogRef });
               size="sm"
               @click="handleFileClick"
             />
-            <div class="w-px h-3 bg-slate-400" />
+            <div class="w-px h-3 bg-n-strong" />
             <Button
               icon="i-lucide-trash"
               color="slate"

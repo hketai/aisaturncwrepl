@@ -24,19 +24,19 @@ const guidelinesExample = [
     :layout="{ type: 'grid', width: '800px' }"
   >
     <Variant title="Suggested Rules List">
-      <div class="px-20 py-4 bg-white">
+      <div class="px-20 py-4 bg-n-background">
         <SuggestedRules
           title="Example response guidelines"
           :items="guidelinesExample"
         >
           <template #default="{ item }">
-            <span class="text-sm text-slate-900">{{ item.content }}</span>
+            <span class="text-sm text-n-slate-12">{{ item.content }}</span>
             <Button
               label="Add this"
               ghost
               xs
               slate
-              class="!text-sm !text-slate-900 flex-shrink-0"
+              class="!text-sm !text-n-slate-11 flex-shrink-0"
             />
           </template>
         </SuggestedRules>

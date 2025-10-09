@@ -87,7 +87,7 @@ export default {
 <template>
   <div
     role="dialog"
-    class="emoji-dialog bg-white shadow-lg rounded-md outline outline-1 outline-slate-300 box-content h-[18.75rem] absolute right-0 -top-[95px] w-80 z-20"
+    class="emoji-dialog bg-n-background shadow-lg rounded-md outline outline-1 outline-n-weak box-content h-[18.75rem] absolute right-0 -top-[95px] w-80 z-20"
   >
     <div class="flex flex-col">
       <div class="flex gap-2 m-2 sticky top-2">
@@ -110,7 +110,7 @@ export default {
       </div>
       <div v-if="hasNoSearch" ref="emojiItem" class="emoji-item">
         <h5
-          class="text-sm text-slate-900 font-medium leading-normal m-0 py-1 px-2 capitalize"
+          class="text-sm text-n-slate-12 font-medium leading-normal m-0 py-1 px-2 capitalize"
         >
           {{ selectedKey }}
         </h5>
@@ -129,7 +129,7 @@ export default {
         <div v-for="category in filterAllEmojisBySearch" :key="category.slug">
           <h5
             v-if="category.emojis.length > 0"
-            class="text-sm text-slate-900 font-medium leading-normal m-0 py-1 px-2 capitalize"
+            class="text-sm text-n-slate-12 font-medium leading-normal m-0 py-1 px-2 capitalize"
           >
             {{ category.name }}
           </h5>
@@ -148,17 +148,17 @@ export default {
           v-if="hasEmptySearchResult"
           class="items-center flex flex-col h-[13.25rem] justify-center"
         >
-          <div class="text-slate-900 mb-2">
+          <div class="text-n-slate-11 mb-2">
             <FluentIcon icon="emoji" size="48" />
           </div>
-          <span class="text-slate-900 text-sm font-medium">
+          <span class="text-n-slate-11 text-sm font-medium">
             {{ $t('EMOJI.NOT_FOUND') }}
           </span>
         </div>
       </div>
 
       <div
-        class="emoji-dialog--footer relative w-full py-0 rounded-b-[0.34rem] px-1 bg-slate-200"
+        class="emoji-dialog--footer relative w-full py-0 rounded-b-[0.34rem] px-1 bg-n-slate-3"
         role="menu"
       >
         <ul
@@ -170,7 +170,7 @@ export default {
               :class="{ active: selectedKey === 'Search' }"
               @click="changeCategory('Search')"
             >
-              <FluentIcon icon="search" size="16" class="text-slate-900" />
+              <FluentIcon icon="search" size="16" class="text-n-slate-11" />
             </button>
           </li>
           <li
@@ -212,13 +212,13 @@ export default {
 <style lang="scss">
 .emoji-dialog {
   &::before {
-    @apply absolute -bottom-3 h-3 w-6 bg-slate-200 content-[""];
+    @apply absolute -bottom-3 h-3 w-6 bg-n-slate-3 content-[""];
     clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
   }
 }
 
 .emoji--item {
-  @apply bg-transparent border-0 rounded cursor-pointer text-lg h-6 m-0 py-0 px-1 hover:bg-slate-300;
+  @apply bg-transparent border-0 rounded cursor-pointer text-lg h-6 m-0 py-0 px-1 hover:bg-n-slate-4;
 }
 
 .emoji--row {
@@ -240,14 +240,14 @@ export default {
     }
 
     li .active {
-      @apply bg-white;
+      @apply bg-n-background;
     }
 
     .emoji--item {
       @apply items-center flex text-sm;
 
       &:hover {
-        @apply bg-slate-100;
+        @apply bg-n-slate-2;
       }
     }
   }

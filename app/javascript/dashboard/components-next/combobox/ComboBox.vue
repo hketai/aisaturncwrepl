@@ -96,10 +96,10 @@ watch(
         :label="selectedLabel"
         trailing-icon
         :disabled="disabled"
-        class="justify-between w-full !px-3 !py-2.5 text-slate-900 font-normal group-hover/combobox:border-slate-500 focus:outline-indigo-600"
+        class="justify-between w-full !px-3 !py-2.5 text-n-slate-12 font-normal group-hover/combobox:border-n-slate-6 focus:outline-n-brand"
         :class="{
           focused: open,
-          '[&:not(.focused)]:dark:outline-slate-300 [&:not(.focused)]:hover:enabled:outline-slate-500 [&:not(.focused)]:dark:hover:enabled:outline-slate-500':
+          '[&:not(.focused)]:dark:outline-n-weak [&:not(.focused)]:hover:enabled:outline-n-slate-6 [&:not(.focused)]:dark:hover:enabled:outline-n-slate-6':
             !hasError,
         }"
         :icon="open ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
@@ -122,8 +122,8 @@ watch(
         v-if="message"
         class="mt-2 mb-0 text-xs truncate transition-all duration-500 ease-in-out"
         :class="{
-          'text-red-800': hasError,
-          'text-slate-900': !hasError,
+          'text-n-ruby-9': hasError,
+          'text-n-slate-11': !hasError,
         }"
       >
         {{ message }}

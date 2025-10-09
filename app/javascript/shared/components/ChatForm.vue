@@ -74,7 +74,7 @@ export default {
 
 <template>
   <div
-    class="form chat-bubble agent w-full p-4 bg-white dark:bg-slate-300"
+    class="form chat-bubble agent w-full p-4 bg-n-background dark:bg-n-solid-3"
   >
     <form @submit.prevent="onSubmit">
       <div
@@ -85,7 +85,7 @@ export default {
           'has-submitted': hasSubmitted,
         }"
       >
-        <label class="text-slate-900">
+        <label class="text-n-slate-12">
           {{ item.label }}
         </label>
         <input
@@ -164,19 +164,19 @@ export default {
   }
 
   .error-message {
-    @apply text-red-800 mt-1 hidden;
+    @apply text-n-ruby-9 mt-1 hidden;
   }
 
   input,
   textarea,
   select {
-    @apply dark:bg-slate-900/5;
+    @apply dark:bg-n-alpha-black1;
   }
 
   .has-submitted {
     input:invalid,
     textarea:invalid {
-      @apply outline-red-700 dark:outline-red-700 hover:outline-red-800 dark:hover:outline-red-800;
+      @apply outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9;
     }
     input:invalid + .error-message,
     textarea:invalid + .error-message {

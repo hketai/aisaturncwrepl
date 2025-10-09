@@ -55,7 +55,7 @@ defineProps({
   @apply flex items-center;
 }
 .user-identifier {
-  @apply text-xs ml-0.5 text-slate-900;
+  @apply text-xs ml-0.5 text-n-slate-12;
 }
 .option__user-data {
   @apply flex flex-col flex-grow ml-2 mr-2;
@@ -68,10 +68,10 @@ defineProps({
   @apply relative top-px mr-0.5 rtl:mr-0 rtl:ml-0.5;
 }
 .option__title {
-  @apply text-slate-900 font-medium mb-0.5;
+  @apply text-n-slate-12 font-medium mb-0.5;
 }
 .option__body {
-  @apply text-xs text-slate-900 mt-1;
+  @apply text-xs text-n-slate-12 mt-1;
 }
 
 .option__user-data .option__body {

@@ -118,7 +118,7 @@ onMounted(() => {
             @submit="handleSubmit"
           />
         </div>
-        <span class="h-px w-full bg-slate-300 mt-2" />
+        <span class="h-px w-full bg-n-weak mt-2" />
         <div class="flex flex-col gap-6">
           <SettingsHeader
             :heading="t('CAPTAIN.ASSISTANTS.SETTINGS.SYSTEM_SETTINGS.TITLE')"

@@ -131,7 +131,7 @@ const handleDocumentableClick = () => {
       <Checkbox v-model="modelValue" />
     </div>
     <div class="flex relative justify-between w-full gap-1">
-      <span class="text-base text-slate-900 line-clamp-1">
+      <span class="text-base text-n-slate-12 line-clamp-1">
         {{ question }}
       </span>
       <div v-if="!compact && showMenu" class="flex items-center gap-2">
@@ -144,7 +144,7 @@ const handleDocumentableClick = () => {
             icon="i-lucide-ellipsis-vertical"
             color="slate"
             size="xs"
-            class="rounded-md group-hover:bg-slate-900/10"
+            class="rounded-md group-hover:bg-n-alpha-2"
             @click="toggleDropdown()"
           />
           <DropdownMenu
@@ -156,20 +156,20 @@ const handleDocumentableClick = () => {
         </Policy>
       </div>
     </div>
-    <span class="text-slate-900 text-sm line-clamp-5">
+    <span class="text-n-slate-11 text-sm line-clamp-5">
       {{ answer }}
     </span>
     <div v-if="!compact" class="items-center justify-between hidden lg:flex">
       <div class="inline-flex items-center">
         <span
-          class="text-sm shrink-0 truncate text-slate-900 inline-flex items-center gap-1"
+          class="text-sm shrink-0 truncate text-n-slate-11 inline-flex items-center gap-1"
         >
           <i class="i-woot-captain" />
           {{ assistant?.name || '' }}
         </span>
         <div
           v-if="documentable"
-          class="shrink-0 text-sm text-slate-900 inline-flex line-clamp-1 gap-1 ml-3"
+          class="shrink-0 text-sm text-n-slate-11 inline-flex line-clamp-1 gap-1 ml-3"
         >
           <span
             v-if="documentable.type === 'Captain::Document'"
@@ -211,7 +211,7 @@ const handleDocumentableClick = () => {
         </div>
         <div
           v-if="status !== 'approved'"
-          class="shrink-0 text-sm text-slate-900 line-clamp-1 inline-flex items-center gap-1 ml-3"
+          class="shrink-0 text-sm text-n-slate-11 line-clamp-1 inline-flex items-center gap-1 ml-3"
         >
           <i
             class="i-ph-stack text-base"
@@ -221,7 +221,7 @@ const handleDocumentableClick = () => {
         </div>
       </div>
       <div
-        class="shrink-0 text-sm text-slate-900 line-clamp-1 inline-flex items-center gap-1 ml-3"
+        class="shrink-0 text-sm text-n-slate-11 line-clamp-1 inline-flex items-center gap-1 ml-3"
       >
         <i class="i-ph-calendar-dot" />
         {{ timestamp }}

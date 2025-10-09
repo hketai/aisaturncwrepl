@@ -32,7 +32,7 @@ const labelOptions = computed(() =>
         id: label.title,
         name: label.title,
         icon: h('span', {
-          class: `size-[12px] ring-1 ring-slate-900/5 dark:ring-white/20 ring-inset rounded-sm`,
+          class: `size-[12px] ring-1 ring-n-alpha-1 dark:ring-white/20 ring-inset rounded-sm`,
           style: { backgroundColor: label.color },
         }),
       }))
@@ -167,7 +167,7 @@ const toggleAutoResolve = async () => {
       </WithLabel>
       <WithLabel :label="t('GENERAL_SETTINGS.FORM.AUTO_RESOLVE.PREFERENCES')">
         <div
-          class="rounded-xl border border-slate-300 bg-slate-100 w-full text-sm text-slate-900 divide-y divide-slate-300"
+          class="rounded-xl border border-n-weak bg-n-solid-1 w-full text-sm text-n-slate-12 divide-y divide-n-weak"
         >
           <div class="p-3 h-12 flex items-center justify-between">
             <span>

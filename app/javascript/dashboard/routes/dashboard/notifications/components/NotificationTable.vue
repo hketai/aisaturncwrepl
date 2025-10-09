@@ -51,10 +51,10 @@ export default {
 
 <template>
   <section
-    class="flex-grow flex-shrink h-full px-4 py-8 overflow-hidden bg-white"
+    class="flex-grow flex-shrink h-full px-4 py-8 overflow-hidden bg-n-background"
   >
     <div class="flex w-full items-center justify-between gap-2 mb-4">
-      <h6 class="text-xl font-medium text-slate-900">
+      <h6 class="text-xl font-medium text-n-slate-12">
         {{ $t('NOTIFICATIONS_PAGE.HEADER') }}
       </h6>
       <NextButton
@@ -74,10 +74,10 @@ export default {
           :class="{
             'is-unread': notificationItem.read_at === null,
           }"
-          class="border-b border-slate-300"
+          class="border-b border-n-weak"
           @click="() => onClickNotification(notificationItem)"
         >
-          <td class="p-2.5 text-slate-900">
+          <td class="p-2.5 text-n-slate-12">
             <div
               class="overflow-hidden flex-view notification-contant--wrap whitespace-nowrap text-ellipsis"
             >
@@ -144,7 +144,7 @@ export default {
 
 <style lang="scss" scoped>
 .notification--title {
-  @apply text-sm m-0 text-slate-900;
+  @apply text-sm m-0 text-n-slate-12;
 }
 
 .notifications-table {
@@ -153,11 +153,11 @@ export default {
       @apply cursor-pointer;
 
       &:hover {
-        @apply bg-slate-200;
+        @apply bg-n-slate-3;
       }
 
       &.is-active {
-        @apply bg-slate-300 dark:bg-slate-500;
+        @apply bg-n-slate-4 dark:bg-n-slate-6;
       }
 
       > td {
@@ -182,11 +182,11 @@ export default {
 }
 
 .notification--unread-indicator {
-  @apply w-2.5 h-2.5 rounded-full bg-indigo-600;
+  @apply w-2.5 h-2.5 rounded-full bg-n-brand;
 }
 
 .notification--created-at {
-  @apply text-slate-900 text-xs;
+  @apply text-n-slate-11 text-xs;
 }
 
 .notification--type {
@@ -206,6 +206,6 @@ export default {
 }
 
 .notification--message-title {
-  @apply text-slate-900;
+  @apply text-n-slate-12;
 }
 </style>

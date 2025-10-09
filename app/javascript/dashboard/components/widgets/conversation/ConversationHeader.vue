@@ -95,7 +95,7 @@ const hasSlaPolicyId = computed(() => props.chat?.sla_policy_id);
 <template>
   <div
     ref="conversationHeader"
-    class="flex flex-col gap-3 items-center justify-between flex-1 w-full min-w-0 xl:flex-row px-3 py-2 border-b bg-white border-slate-300 h-24 xl:h-12"
+    class="flex flex-col gap-3 items-center justify-between flex-1 w-full min-w-0 xl:flex-row px-3 py-2 border-b bg-n-background border-n-weak h-24 xl:h-12"
   >
     <div
       class="flex items-center justify-start w-full xl:w-auto max-w-full min-w-0 xl:flex-1"
@@ -118,7 +118,7 @@ const hasSlaPolicyId = computed(() => props.chat?.sla_policy_id);
       >
         <div class="flex flex-row items-center max-w-full gap-1 p-0 m-0">
           <span
-            class="text-sm font-medium truncate leading-tight text-slate-900"
+            class="text-sm font-medium truncate leading-tight text-n-slate-12"
           >
             {{ currentContact.name }}
           </span>
@@ -126,7 +126,7 @@ const hasSlaPolicyId = computed(() => props.chat?.sla_policy_id);
             v-if="!isHMACVerified"
             v-tooltip="$t('CONVERSATION.UNVERIFIED_SESSION')"
             size="14"
-            class="text-amber-900 my-0 mx-0 min-w-[14px] flex-shrink-0"
+            class="text-n-amber-10 my-0 mx-0 min-w-[14px] flex-shrink-0"
             icon="warning"
           />
         </div>
@@ -135,7 +135,7 @@ const hasSlaPolicyId = computed(() => props.chat?.sla_policy_id);
           class="flex items-center gap-2 overflow-hidden text-xs conversation--header--actions text-ellipsis whitespace-nowrap"
         >
           <InboxName v-if="hasMultipleInboxes" :inbox="inbox" class="!mx-0" />
-          <span v-if="isSnoozed" class="font-medium text-amber-900">
+          <span v-if="isSnoozed" class="font-medium text-n-amber-10">
             {{ snoozedDisplayText }}
           </span>
         </div>

@@ -97,13 +97,13 @@ const openDelete = inbox => {
     </template>
     <template #body>
       <table class="min-w-full overflow-x-auto">
-        <tbody class="divide-y divide-slate-300 flex-1 text-slate-900">
+        <tbody class="divide-y divide-n-weak flex-1 text-n-slate-12">
           <tr v-for="inbox in inboxesList" :key="inbox.id">
             <td class="py-4 ltr:pr-4 rtl:pl-4">
               <div class="flex items-center flex-row gap-4">
                 <div
                   v-if="inbox.avatar_url"
-                  class="bg-slate-900/15 rounded-full size-12 p-2 ring ring-slate-100 border border-slate-400 shadow-sm"
+                  class="bg-n-alpha-3 rounded-full size-12 p-2 ring ring-n-solid-1 border border-n-strong shadow-sm"
                 >
                   <Avatar
                     :src="inbox.avatar_url"
@@ -114,9 +114,9 @@ const openDelete = inbox => {
                 </div>
                 <div
                   v-else
-                  class="size-12 flex justify-center items-center bg-slate-900/15 rounded-full p-2 ring ring-slate-100 border border-slate-400 shadow-sm"
+                  class="size-12 flex justify-center items-center bg-n-alpha-3 rounded-full p-2 ring ring-n-solid-1 border border-n-strong shadow-sm"
                 >
-                  <ChannelIcon class="size-5 text-slate-900" :inbox="inbox" />
+                  <ChannelIcon class="size-5 text-n-slate-10" :inbox="inbox" />
                 </div>
                 <div>
                   <span class="block font-medium capitalize">

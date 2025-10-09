@@ -68,7 +68,7 @@ const actionLabel = key => {
 <template>
   <div
     v-on-clickaway="onClose"
-    class="absolute z-20 w-auto origin-top-right border border-solid rounded-lg shadow-md ltr:right-2 rtl:left-2 top-12 bg-slate-900/15 backdrop-blur-[100px] border-slate-300"
+    class="absolute z-20 w-auto origin-top-right border border-solid rounded-lg shadow-md ltr:right-2 rtl:left-2 top-12 bg-n-alpha-3 backdrop-blur-[100px] border-n-weak"
   >
     <div
       class="right-[var(--triangle-position)] block z-10 absolute text-left -top-3"
@@ -78,12 +78,12 @@ const actionLabel = key => {
           d="M20 12l-8-8-12 12"
           fill-rule="evenodd"
           stroke-width="1px"
-          class="fill-slate-900/15 backdrop-blur-[100px] stroke-slate-300"
+          class="fill-n-alpha-3 backdrop-blur-[100px] stroke-n-weak"
         />
       </svg>
     </div>
     <div class="p-2.5 flex gap-1 items-center justify-between">
-      <span class="text-sm font-medium text-slate-900">
+      <span class="text-sm font-medium text-n-slate-12">
         {{ $t('BULK_ACTION.UPDATE.CHANGE_STATUS') }}
       </span>
       <Button ghost xs slate icon="i-lucide-x" @click="onClose" />

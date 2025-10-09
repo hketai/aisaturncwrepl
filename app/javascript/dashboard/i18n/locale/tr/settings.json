@@ -37,7 +37,7 @@
       },
       "INTERFACE_SECTION": {
         "TITLE": "Interface",
-        "NOTE": "Customize the look and feel of your AISATURN dashboard.",
+        "NOTE": "Customize the look and feel of your Chatwoot dashboard.",
         "FONT_SIZE": {
           "TITLE": "Font size",
           "NOTE": "Adjust the text size across the dashboard based on your preference.",
@@ -392,7 +392,7 @@
     "NO_BILLING_USER": "Fatura hesabınız yapılandırılıyor. Lütfen sayfayı yenileyip tekrar deneyin."
   },
   "CREATE_ACCOUNT": {
-    "NO_ACCOUNT_WARNING": "Eyvah! Hiçbir AISATURN hesabı bulunamadı. Devam etmek için yeni bir hesap oluşturun.",
+    "NO_ACCOUNT_WARNING": "Eyvah! Hiçbir Chatwoot hesabı bulunamadı. Devam etmek için yeni bir hesap oluşturun.",
     "NEW_ACCOUNT": "Yeni hesap",
     "SELECTOR_SUBTITLE": "Yeni bir hesap oluştur",
     "API": {
@@ -702,11 +702,6 @@
       "SELECT_INDUSTRY": "Bir sektör seçin...",
       "DESCRIPTION_PLACEHOLDER": "Bu ajanın ne yaptığını açıklayın...",
       "ACTIVATE_IMMEDIATELY": "Ajanı hemen etkinleştir",
-      "ACTIVE": "Aktif",
-      "PASSIVE": "Pasif",
-      "STATUS_LABEL": "Durum",
-      "STATUS_DESCRIPTION": "Ajanın aktif veya pasif olma durumunu belirleyin",
-      "ACTIVE_INFO": "Ajan aktif olarak oluşturulacak ve hemen kullanıma hazır olacaktır.",
       "SUCCESS_UPDATE": "Ajan başarıyla güncellendi",
       "SUCCESS_CREATE": "Ajan başarıyla oluşturuldu",
       "SUCCESS_DELETE": "Ajan başarıyla silindi",

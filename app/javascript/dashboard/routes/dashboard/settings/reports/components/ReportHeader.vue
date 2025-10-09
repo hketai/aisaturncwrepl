@@ -25,10 +25,10 @@ defineProps({
     <div class="flex justify-between w-full gap-5">
       <div class="flex flex-col gap-2">
         <div>
-          <span class="text-xl font-medium text-slate-900">
+          <span class="text-xl font-medium text-n-slate-12">
             {{ headerTitle }}
           </span>
-          <p v-if="headerDescription" class="text-slate-900 mt-2">
+          <p v-if="headerDescription" class="text-n-slate-12 mt-2">
             {{ headerDescription }}
           </p>
         </div>

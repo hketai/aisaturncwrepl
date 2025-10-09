@@ -32,7 +32,7 @@ const onTabChange = index => {
 </script>
 
 <template>
-  <div class="mt-1 border-b border-slate-300">
+  <div class="mt-1 border-b border-n-weak">
     <woot-tabs :index="activeTab" :border="false" @change="onTabChange">
       <woot-tabs-item
         v-for="(item, index) in tabs"

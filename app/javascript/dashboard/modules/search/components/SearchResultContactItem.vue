@@ -39,7 +39,7 @@ const navigateTo = computed(() => {
 <template>
   <router-link
     :to="navigateTo"
-    class="flex items-start p-2 rounded-xl cursor-pointer hover:bg-slate-100"
+    class="flex items-start p-2 rounded-xl cursor-pointer hover:bg-n-slate-2"
   >
     <Avatar
       :name="name"
@@ -49,17 +49,17 @@ const navigateTo = computed(() => {
       class="mt-0.5"
     />
     <div class="ml-2 rtl:mr-2 min-w-0 rtl:ml-0">
-      <h5 class="text-sm name truncate min-w-0 text-slate-900">
+      <h5 class="text-sm name truncate min-w-0 text-n-slate-12">
         {{ name }}
       </h5>
       <p
         class="grid items-center m-0 gap-1 text-sm grid-cols-[minmax(0,1fr)_auto_auto]"
       >
-        <span v-if="email" class="truncate text-slate-900" :title="email">
+        <span v-if="email" class="truncate text-n-slate-12" :title="email">
           {{ email }}
         </span>
-        <span v-if="phone" class="text-slate-900">•</span>
-        <span v-if="phone" class="text-slate-900">{{ phone }}</span>
+        <span v-if="phone" class="text-n-slate-10">•</span>
+        <span v-if="phone" class="text-n-slate-12">{{ phone }}</span>
       </p>
     </div>
   </router-link>

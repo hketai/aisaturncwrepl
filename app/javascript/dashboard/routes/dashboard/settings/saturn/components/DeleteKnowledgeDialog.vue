@@ -72,7 +72,7 @@ defineExpose({ dialogRef });
     @close="handleClose"
   >
     <template #description>
-      <p class="mb-0 text-sm text-slate-900">
+      <p class="mb-0 text-sm text-n-slate-11">
         {{ $t('SATURN.KNOWLEDGE.DELETE_CONFIRM') }}
       </p>
     </template>

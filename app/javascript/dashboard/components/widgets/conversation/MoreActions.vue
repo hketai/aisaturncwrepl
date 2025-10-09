@@ -106,7 +106,7 @@ onUnmounted(() => {
         variant="ghost"
         color="slate"
         icon="i-lucide-more-vertical"
-        class="rounded-md group-hover:bg-slate-900/10"
+        class="rounded-md group-hover:bg-n-alpha-2"
         @click="toggleDropdown()"
       />
       <DropdownMenu

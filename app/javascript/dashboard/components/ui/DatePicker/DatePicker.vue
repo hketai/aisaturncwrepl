@@ -218,14 +218,14 @@ const emitDateRange = () => {
     />
     <div
       v-if="showDatePicker"
-      class="flex absolute top-9 ltr:left-0 rtl:right-0 z-30 shadow-md select-none w-[880px] h-[490px] rounded-2xl bg-slate-900/15 backdrop-blur-[100px] border-0 outline outline-1 outline-slate-300"
+      class="flex absolute top-9 ltr:left-0 rtl:right-0 z-30 shadow-md select-none w-[880px] h-[490px] rounded-2xl bg-n-alpha-3 backdrop-blur-[100px] border-0 outline outline-1 outline-n-container"
     >
       <CalendarDateRange
         :selected-range="selectedRange"
         @set-range="setDateRange"
       />
       <div
-        class="flex flex-col w-[680px] ltr:border-l rtl:border-r border-slate-400"
+        class="flex flex-col w-[680px] ltr:border-l rtl:border-r border-n-strong"
       >
         <div class="flex justify-around h-fit">
           <!-- Calendars for Start and End Dates -->
@@ -251,12 +251,12 @@ const emitDateRange = () => {
               @validate="updateManualInput($event, calendar)"
               @error="handleManualInputError($event)"
             />
-            <div class="py-5 border-b border-slate-400">
+            <div class="py-5 border-b border-n-strong">
               <div
                 class="flex flex-col items-center gap-2 px-5 min-w-[340px] max-h-[352px]"
                 :class="
                   calendar === START_CALENDAR &&
-                  'ltr:border-r rtl:border-l border-slate-400'
+                  'ltr:border-r rtl:border-l border-n-strong'
                 "
               >
                 <CalendarYear

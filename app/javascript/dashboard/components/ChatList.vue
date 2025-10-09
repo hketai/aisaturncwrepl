@@ -842,7 +842,7 @@ watch(conversationFilters, (newVal, oldVal) => {
 
 <template>
   <div
-    class="flex flex-col flex-shrink-0 bg-slate-100 conversations-list-wrap"
+    class="flex flex-col flex-shrink-0 bg-n-solid-1 conversations-list-wrap"
     :class="[
       { hidden: !showConversationList },
       isOnExpandedLayout ? 'basis-full' : 'w-[340px] 2xl:w-[412px]',
@@ -955,11 +955,11 @@ watch(conversationFilters, (newVal, oldVal) => {
         </template>
         <template #after>
           <div v-if="chatListLoading" class="flex justify-center my-4">
-            <Spinner class="text-indigo-600" />
+            <Spinner class="text-n-brand" />
           </div>
           <p
             v-else-if="showEndOfListMessage"
-            class="p-4 text-center text-slate-900"
+            class="p-4 text-center text-n-slate-11"
           >
             {{ $t('CHAT_LIST.EOF') }}
           </p>

@@ -28,7 +28,7 @@ const buttonStyleClass = props.compact ? 'text-sm' : 'text-base';
 
 <template>
   <button
-    class="flex items-center p-0 font-normal cursor-pointer text-slate-900"
+    class="flex items-center p-0 font-normal cursor-pointer text-n-slate-11"
     :class="buttonStyleClass"
     @click.capture="goBack"
   >

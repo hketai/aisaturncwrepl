@@ -119,10 +119,10 @@ export default {
 
 <template>
   <div
-    class="customer-satisfaction w-full bg-white dark:bg-slate-300 shadow-[0_0.25rem_6px_rgba(50,50,93,0.08),0_1px_3px_rgba(0,0,0,0.05)] ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] rounded-lg inline-block leading-[1.5] mt-1 border-t-2 border-t-indigo-600 border-solid"
+    class="customer-satisfaction w-full bg-n-background dark:bg-n-solid-3 shadow-[0_0.25rem_6px_rgba(50,50,93,0.08),0_1px_3px_rgba(0,0,0,0.05)] ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] rounded-lg inline-block leading-[1.5] mt-1 border-t-2 border-t-n-brand border-solid"
     :style="{ borderColor: widgetColor }"
   >
-    <h6 class="text-slate-900 text-sm font-medium pt-5 px-2.5 text-center">
+    <h6 class="text-n-slate-12 text-sm font-medium pt-5 px-2.5 text-center">
       {{ title }}
     </h6>
     <div v-if="isEmojiType" class="ratings flex justify-around py-5 px-4">
@@ -188,10 +188,10 @@ export default {
 
   .feedback-form {
     input {
-      @apply h-10 dark:bg-slate-900/5 rtl:rounded-tl-[0] rtl:rounded-tr-[0] ltr:rounded-tr-[0] ltr:rounded-tl-[0] rtl:rounded-bl-[0] ltr:rounded-br-[0] ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] rounded-lg p-2.5 w-full focus:ring-0 focus:outline-indigo-600;
+      @apply h-10 dark:bg-n-alpha-black1 rtl:rounded-tl-[0] rtl:rounded-tr-[0] ltr:rounded-tr-[0] ltr:rounded-tl-[0] rtl:rounded-bl-[0] ltr:rounded-br-[0] ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] rounded-lg p-2.5 w-full focus:ring-0 focus:outline-n-brand;
 
       &::placeholder {
-        @apply text-slate-900;
+        @apply text-n-slate-10;
       }
     }
 

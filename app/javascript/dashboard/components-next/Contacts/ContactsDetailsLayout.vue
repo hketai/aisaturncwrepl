@@ -73,7 +73,7 @@ const closeMobileSidebar = () => {
 
 <template>
   <section
-    class="flex w-full h-full overflow-hidden justify-evenly bg-white"
+    class="flex w-full h-full overflow-hidden justify-evenly bg-n-background"
   >
     <div
       class="flex flex-col w-full h-full transition-all duration-300 ltr:2xl:ml-56 rtl:2xl:mr-56"
@@ -128,7 +128,7 @@ const closeMobileSidebar = () => {
     <!-- Desktop sidebar -->
     <div
       v-if="slots.sidebar"
-      class="hidden lg:block overflow-y-auto justify-end min-w-52 w-full py-6 max-w-md border-l border-slate-300 bg-slate-200"
+      class="hidden lg:block overflow-y-auto justify-end min-w-52 w-full py-6 max-w-md border-l border-n-weak bg-n-solid-2"
     >
       <slot name="sidebar" />
     </div>
@@ -145,7 +145,7 @@ const closeMobileSidebar = () => {
           closeMobileSidebar,
           { ignore: ['#contact-sidebar-content'] },
         ]"
-        class="flex items-start p-1 w-fit h-fit relative order-1 xs:top-24 top-28 transition-all bg-slate-200 border border-slate-300 duration-500 ease-in-out"
+        class="flex items-start p-1 w-fit h-fit relative order-1 xs:top-24 top-28 transition-all bg-n-solid-2 border border-n-weak duration-500 ease-in-out"
         :class="[
           isContactSidebarOpen
             ? 'justify-end ltr:rounded-l-full rtl:rounded-r-full ltr:rounded-r-none rtl:rounded-l-none'
@@ -157,7 +157,7 @@ const closeMobileSidebar = () => {
           slate
           sm
           class="!rounded-full rtl:rotate-180"
-          :class="{ 'bg-slate-900/10': isContactSidebarOpen }"
+          :class="{ 'bg-n-alpha-2': isContactSidebarOpen }"
           :icon="
             isContactSidebarOpen
               ? 'i-lucide-panel-right-close'
@@ -179,7 +179,7 @@ const closeMobileSidebar = () => {
         <div
           v-if="isContactSidebarOpen"
           id="contact-sidebar-content"
-          class="order-2 w-[85%] sm:w-[50%] bg-slate-200 ltr:border-l rtl:border-r border-slate-300 overflow-y-auto py-6 shadow-lg"
+          class="order-2 w-[85%] sm:w-[50%] bg-n-solid-2 ltr:border-l rtl:border-r border-n-weak overflow-y-auto py-6 shadow-lg"
         >
           <slot name="sidebar" />
         </div>

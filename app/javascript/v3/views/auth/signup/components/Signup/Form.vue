@@ -193,7 +193,7 @@ export default {
         />
         <span
           v-if="!hasAValidCaptcha && didCaptchaReset"
-          class="text-xs text-red-800"
+          class="text-xs text-n-ruby-9"
         >
           {{ $t('SET_NEW_PASSWORD.CAPTCHA.ERROR') }}
         </span>
@@ -214,7 +214,7 @@ export default {
       {{ $t('REGISTER.OAUTH.GOOGLE_SIGNUP') }}
     </GoogleOAuthButton>
     <p
-      class="text-sm mb-1 mt-5 text-slate-900 [&>a]:text-indigo-600 [&>a]:font-medium [&>a]:hover:brightness-110"
+      class="text-sm mb-1 mt-5 text-n-slate-12 [&>a]:text-n-brand [&>a]:font-medium [&>a]:hover:brightness-110"
       v-html="termsLink"
     />
   </div>
@@ -224,7 +224,7 @@ export default {
 .h-captcha--box {
   &::v-deep .error {
     iframe {
-      @apply rounded-md border border-red-700 dark:border-red-700;
+      @apply rounded-md border border-n-ruby-8 dark:border-n-ruby-8;
     }
   }
 }

@@ -158,33 +158,33 @@ const handleTryAnotherMethod = () => {
 <template>
   <div class="w-full max-w-md mx-auto">
     <div
-      class="bg-white shadow sm:mx-auto sm:w-full sm:max-w-lg dark:bg-slate-200 p-11 sm:shadow-lg sm:rounded-lg"
+      class="bg-white shadow sm:mx-auto sm:w-full sm:max-w-lg dark:bg-n-solid-2 p-11 sm:shadow-lg sm:rounded-lg"
     >
       <!-- Header -->
       <div class="text-center mb-6">
         <div
-          class="inline-flex items-center justify-center size-14 bg-slate-100 outline outline-slate-300 rounded-full mb-4"
+          class="inline-flex items-center justify-center size-14 bg-n-solid-1 outline outline-n-weak rounded-full mb-4"
         >
-          <Icon icon="i-lucide-lock-keyhole" class="size-6 text-slate-900" />
+          <Icon icon="i-lucide-lock-keyhole" class="size-6 text-n-slate-10" />
         </div>
-        <h2 class="text-2xl font-semibold text-slate-900">
+        <h2 class="text-2xl font-semibold text-n-slate-12">
           {{ $t('MFA_VERIFICATION.TITLE') }}
         </h2>
-        <p class="text-sm text-slate-900 mt-2">
+        <p class="text-sm text-n-slate-11 mt-2">
           {{ $t('MFA_VERIFICATION.DESCRIPTION') }}
         </p>
       </div>
 
       <!-- Tab Selection -->
-      <div class="flex rounded-lg bg-slate-900/10 p-1 mb-6">
+      <div class="flex rounded-lg bg-n-alpha-black2 p-1 mb-6">
         <button
           v-for="method in [OTP, BACKUP]"
           :key="method"
           class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-colors"
           :class="
             verificationMethod === method
-              ? 'bg-slate-200 text-slate-900 shadow-sm'
-              : 'text-slate-900'
+              ? 'bg-n-solid-active text-n-slate-12 shadow-sm'
+              : 'text-n-slate-12'
           "
           @click="verificationMethod = method"
         >
@@ -200,7 +200,7 @@ const handleTryAnotherMethod = () => {
       <form class="space-y-4" @submit.prevent="handleVerification">
         <!-- OTP Code Input -->
         <div v-if="verificationMethod === OTP">
-          <label class="block text-sm font-medium text-slate-900 mb-2">
+          <label class="block text-sm font-medium text-n-slate-12 mb-2">
             {{ $t('MFA_VERIFICATION.ENTER_OTP_CODE') }}
           </label>
           <div class="flex justify-between gap-2">
@@ -213,7 +213,7 @@ const handleTryAnotherMethod = () => {
               maxlength="1"
               pattern="[0-9]"
               inputmode="numeric"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-slate-300 hover:border-slate-400 rounded-lg focus:border-indigo-600 bg-slate-900/10 text-slate-900 placeholder:text-slate-900"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-n-weak hover:border-n-strong rounded-lg focus:border-n-brand bg-n-alpha-black2 text-n-slate-12 placeholder:text-n-slate-10"
               @input="handleOtpInput(i)"
               @keydown.left.prevent="focusInput(i - 1)"
               @keydown.right.prevent="focusInput(i + 1)"
@@ -243,9 +243,9 @@ const handleTryAnotherMethod = () => {
         <!-- Error Message -->
         <div
           v-if="errorMessage"
-          class="p-3 bg-red-200 outline outline-red-400 outline-1 rounded-lg"
+          class="p-3 bg-n-ruby-3 outline outline-n-ruby-5 outline-1 rounded-lg"
         >
-          <p class="text-sm text-red-800">{{ errorMessage }}</p>
+          <p class="text-sm text-n-ruby-9">{{ errorMessage }}</p>
         </div>
 
         <!-- Submit Button -->
@@ -287,7 +287,7 @@ const handleTryAnotherMethod = () => {
 
     <!-- Help Text -->
     <div class="mt-6 text-center">
-      <p class="text-sm text-slate-900">
+      <p class="text-sm text-n-slate-11">
         {{ $t('MFA_VERIFICATION.HELP_TEXT') }}
       </p>
       <NextButton
@@ -306,18 +306,18 @@ const handleTryAnotherMethod = () => {
       ref="helpModalRef"
       :title="$t('MFA_VERIFICATION.HELP_MODAL.TITLE')"
       :show-confirm-button="false"
-      class="[&>dialog>div]:bg-slate-900/15 [&>dialog>div]:rounded-lg"
+      class="[&>dialog>div]:bg-n-alpha-3 [&>dialog>div]:rounded-lg"
       @confirm="helpModalRef?.close()"
     >
-      <div class="space-y-4 text-sm text-slate-900">
+      <div class="space-y-4 text-sm text-n-slate-11">
         <div v-for="section in ['AUTHENTICATOR', 'BACKUP']" :key="section">
-          <h4 class="font-medium text-slate-900 mb-2">
+          <h4 class="font-medium text-n-slate-12 mb-2">
             {{ $t(`MFA_VERIFICATION.HELP_MODAL.${section}_TITLE`) }}
           </h4>
           <p>{{ $t(`MFA_VERIFICATION.HELP_MODAL.${section}_DESC`) }}</p>
         </div>
         <div>
-          <h4 class="font-medium text-slate-900 mb-2">
+          <h4 class="font-medium text-n-slate-12 mb-2">
             {{ $t('MFA_VERIFICATION.HELP_MODAL.CONTACT_TITLE') }}
           </h4>
           <p>{{ $t(`MFA_VERIFICATION.HELP_MODAL.${contactDescKey}`) }}</p>

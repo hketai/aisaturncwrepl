@@ -496,7 +496,7 @@ provideMessageContext({
       flexOrientationClass,
       {
         'group-with-next': shouldGroupWithNext,
-        'bg-slate-900/5': showBackgroundHighlight,
+        'bg-n-alpha-1': showBackgroundHighlight,
       },
     ]"
   >

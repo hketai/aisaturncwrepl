@@ -126,7 +126,7 @@ export default {
   }
 
   .company--name {
-    @apply text-slate-900 dark:text-slate-900 ml-1;
+    @apply text-n-slate-11 dark:text-n-slate-10 ml-1;
   }
 }
 </style>

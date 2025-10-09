@@ -254,8 +254,8 @@ onMounted(() => {
 });
 
 const evenClass = [
-  '[&>*:nth-child(odd)]:!bg-white [&>*:nth-child(even)]:!bg-slate-100',
-  'dark:[&>*:nth-child(odd)]:!bg-white dark:[&>*:nth-child(even)]:!bg-slate-100',
+  '[&>*:nth-child(odd)]:!bg-n-background [&>*:nth-child(even)]:!bg-n-slate-2',
+  'dark:[&>*:nth-child(odd)]:!bg-n-background dark:[&>*:nth-child(even)]:!bg-n-solid-1',
 ];
 </script>
 
@@ -275,7 +275,7 @@ const evenClass = [
     >
       <template #item="{ element }">
         <div
-          class="drag-handle relative border-b border-slate-300/50 dark:border-slate-300/90"
+          class="drag-handle relative border-b border-n-weak/50 dark:border-n-weak/90"
           :class="{
             'cursor-grab': showAllAttributes,
             'last:border-transparent dark:last:border-transparent':
@@ -331,6 +331,6 @@ const evenClass = [
 
 <style lang="scss" scoped>
 .ghost {
-  @apply opacity-50 bg-slate-200 dark:bg-slate-800;
+  @apply opacity-50 bg-n-slate-3 dark:bg-n-slate-9;
 }
 </style>

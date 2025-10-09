@@ -22,10 +22,6 @@ const props = defineProps({
     type: [String, Number],
     required: true,
   },
-  active: {
-    type: Boolean,
-    default: true,
-  },
 });
 
 const emit = defineEmits(['action']);
@@ -45,39 +41,21 @@ const handleAction = (action) => {
 <template>
   <CardLayout>
     <div class="flex flex-col gap-3 w-full">
-      <div class="flex justify-between items-start w-full gap-4">
+      <div class="flex justify-between w-full gap-2">
         <div class="flex-1 min-w-0">
-          <h3 class="text-base text-slate-900 line-clamp-1 font-medium mb-1">
+          <h3 class="text-base text-n-slate-12 line-clamp-1 font-medium mb-1">
             {{ name }}
           </h3>
-          <p class="text-sm text-slate-900 line-clamp-2 mb-1">
+          <p class="text-sm text-n-slate-11 line-clamp-2">
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
-          <span class="text-xs text-slate-900">
-            {{ lastUpdatedAt }}
-          </span>
         </div>
-        
-        <div class="flex items-center gap-2 shrink-0">
-          <span class="text-xs font-semibold" :class="active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'">
-            {{ active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE') }}
-          </span>
-          <button
-            type="button"
-            :class="[
-              'inline-flex items-center h-6 w-11 p-0.5 shrink-0 cursor-pointer rounded-full transition-all duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ring-1 ring-inset',
-              active ? 'bg-indigo-600 justify-end ring-indigo-400/50' : 'bg-slate-300 dark:bg-slate-600 justify-start ring-slate-400/30 dark:ring-slate-500/30'
-            ]"
-            :aria-pressed="active"
-            :aria-label="active ? $t('SATURN.AGENTS.ACTIVE') : $t('SATURN.AGENTS.PASSIVE')"
-            @click.stop="handleAction('toggleActive')"
-          >
-            <span class="h-5 w-5 rounded-full bg-white shadow-lg ring-1 ring-black/5 transition-all duration-200 ease-in-out" />
-          </button>
-        </div>
+        <span class="text-xs text-n-slate-11 shrink-0">
+          {{ lastUpdatedAt }}
+        </span>
       </div>
       
-      <div class="flex items-center gap-2 pt-4 mt-2 border-t border-slate-300">
+      <div class="flex items-center gap-2 pt-4 mt-2 border-t border-n-weak">
         <Button
           icon="i-lucide-book-open"
           color="blue"

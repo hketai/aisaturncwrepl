@@ -68,7 +68,7 @@ export default {
         :on-mark-all-done-click="onMarkAllDoneClick"
       />
       <TableFooter
-        class="border-t border-slate-300"
+        class="border-t border-n-weak"
         :current-page="Number(meta.currentPage)"
         :total-count="meta.count"
         :page-size="15"

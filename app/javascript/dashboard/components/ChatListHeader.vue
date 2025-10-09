@@ -59,12 +59,12 @@ const toggleConversationLayout = () => {
   <div
     class="flex items-center justify-between gap-2 px-3 h-12"
     :class="{
-      'border-b border-slate-400': hasAppliedFiltersOrActiveFolders,
+      'border-b border-n-strong': hasAppliedFiltersOrActiveFolders,
     }"
   >
     <div class="flex items-center justify-center min-w-0">
       <h1
-        class="text-base font-medium truncate text-slate-900"
+        class="text-base font-medium truncate text-n-slate-12"
         :title="pageTitle"
       >
         {{ pageTitle }}
@@ -73,14 +73,14 @@ const toggleConversationLayout = () => {
         v-if="
           allCount > 0 && hasAppliedFiltersOrActiveFolders && !isListLoading
         "
-        class="px-2 py-1 my-0.5 mx-1 rounded-md capitalize bg-slate-200 text-xxs text-slate-900 shrink-0"
+        class="px-2 py-1 my-0.5 mx-1 rounded-md capitalize bg-n-slate-3 text-xxs text-n-slate-12 shrink-0"
         :title="allCount"
       >
         {{ formattedAllCount }}
       </span>
       <span
         v-if="!hasAppliedFiltersOrActiveFolders"
-        class="px-2 py-1 my-0.5 mx-1 rounded-md capitalize bg-slate-200 text-xxs text-slate-900 shrink-0"
+        class="px-2 py-1 my-0.5 mx-1 rounded-md capitalize bg-n-slate-3 text-xxs text-n-slate-12 shrink-0"
       >
         {{ $t(`CHAT_LIST.CHAT_STATUS_FILTER_ITEMS.${activeStatus}.TEXT`) }}
       </span>

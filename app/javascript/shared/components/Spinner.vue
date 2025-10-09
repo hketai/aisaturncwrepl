@@ -13,15 +13,15 @@ export default {
   computed: {
     colorSchemeClasses() {
       if (this.colorScheme === 'primary') {
-        return 'before:!border-t-indigo-600';
+        return 'before:!border-t-n-brand';
       }
 
       if (this.colorScheme === 'warning') {
-        return 'before:!border-t-amber-500';
+        return 'before:!border-t-n-amber-6';
       }
 
       if (this.colorScheme === 'success') {
-        return 'before:!border-t-teal-800';
+        return 'before:!border-t-n-teal-9';
       }
 
       return this.colorScheme;
@@ -45,11 +45,11 @@ export default {
   @apply relative inline-block w-6 h-6 align-middle;
 
   &:before {
-    @apply border-slate-900 border-2 border-solid content-[''] box-border absolute top-[50%] left-[50%] rounded-full border-t-slate-400 -ml-2.5 -mt-2.5 w-6 h-6 animate-[spinner_0.9s_linear_infinite];
+    @apply border-n-slate-10 border-2 border-solid content-[''] box-border absolute top-[50%] left-[50%] rounded-full border-t-n-strong -ml-2.5 -mt-2.5 w-6 h-6 animate-[spinner_0.9s_linear_infinite];
   }
 
   &.message {
-    @apply p-2.5 top-0 left-0 mx-auto my-0 mt-3 bg-white rounded-[2rem];
+    @apply p-2.5 top-0 left-0 mx-auto my-0 mt-3 bg-n-background rounded-[2rem];
 
     &:before {
       @apply -mt-3 -ml-3;

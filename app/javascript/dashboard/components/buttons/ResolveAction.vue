@@ -135,7 +135,7 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
   <div class="relative flex items-center justify-end resolve-actions">
     <div
       class="rounded-lg shadow outline-1 outline flex-shrink-0"
-      :class="!showOpenButton ? 'outline-slate-300' : 'outline-transparent'"
+      :class="!showOpenButton ? 'outline-n-container' : 'outline-transparent'"
     >
       <Button
         v-if="isOpen"
@@ -178,7 +178,7 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
     <div
       v-if="showActionsDropdown"
       v-on-clickaway="closeDropdown"
-      class="border rounded-lg shadow-lg border-slate-400 dark:border-slate-400 box-content p-2 w-fit z-10 bg-slate-900/15 backdrop-blur-[100px] absolute block left-auto top-full mt-0.5 start-0 xl:start-auto xl:end-0 max-w-[12.5rem] min-w-[9.75rem] [&_ul>li]:mb-0"
+      class="border rounded-lg shadow-lg border-n-strong dark:border-n-strong box-content p-2 w-fit z-10 bg-n-alpha-3 backdrop-blur-[100px] absolute block left-auto top-full mt-0.5 start-0 xl:start-auto xl:end-0 max-w-[12.5rem] min-w-[9.75rem] [&_ul>li]:mb-0"
     >
       <WootDropdownMenu class="mb-0">
         <WootDropdownItem v-if="!isPending">

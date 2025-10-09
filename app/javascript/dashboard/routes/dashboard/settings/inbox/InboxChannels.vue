@@ -84,14 +84,14 @@ const items = computed(() => {
         <div
           v-for="icon in ALL_CHANNEL_ICONS"
           :key="icon"
-          class="size-8 bg-slate-900/10 flex items-center flex-shrink-0 justify-center rounded-full"
+          class="size-8 bg-n-alpha-2 flex items-center flex-shrink-0 justify-center rounded-full"
         >
-          <Icon :icon="icon" class="size-4 text-slate-900" />
+          <Icon :icon="icon" class="size-4 text-n-slate-10" />
         </div>
       </div>
     </div>
     <div
-      class="grid grid-cols-1 lg:grid-cols-8 lg:divide-x lg:divide-slate-300 rounded-xl border border-slate-300 min-h-[52rem]"
+      class="grid grid-cols-1 lg:grid-cols-8 lg:divide-x lg:divide-n-weak rounded-xl border border-n-weak min-h-[52rem]"
     >
       <woot-wizard
         class="hidden lg:block col-span-2 h-fit py-8 px-6"

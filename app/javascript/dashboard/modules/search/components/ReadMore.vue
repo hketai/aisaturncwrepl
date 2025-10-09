@@ -21,7 +21,7 @@ defineEmits(['expand']);
       <slot />
       <div
         v-if="shrink"
-        class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t to-transparent from-white flex items-end justify-center pb-2"
+        class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t to-transparent from-n-background flex items-end justify-center pb-2"
       >
         <NextButton
           :label="$t('SEARCH.READ_MORE')"

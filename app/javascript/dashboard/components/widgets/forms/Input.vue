@@ -81,7 +81,7 @@ export default {
 
 <style scoped lang="scss">
 .help-text {
-  @apply mt-0.5 text-xs not-italic text-slate-900;
+  @apply mt-0.5 text-xs not-italic text-n-slate-11;
 }
 
 .message {

@@ -16,7 +16,7 @@ const BasicTemplate = {
     },
   },
   template: `
-    <div class="flex items-center gap-4 p-4 border rounded border-slate-300">
+    <div class="flex items-center gap-4 p-4 border rounded border-n-weak">
       <Flag :country="country" :squared="squared" />
     </div>
   `,
@@ -34,7 +34,7 @@ const SizeVariants = {
         <input type="checkbox" v-model="isSquared">
         Squared flags
       </label>
-      <div class="flex items-center gap-4 p-4 border rounded border-slate-300">
+      <div class="flex items-center gap-4 p-4 border rounded border-n-weak">
         <Flag country="in" class="!size-4" :squared="isSquared" />
         <Flag country="in" class="!size-6" :squared="isSquared" />
         <Flag country="in" class="!size-8" :squared="isSquared" />
@@ -57,11 +57,11 @@ const AllFlags = {
         Squared flags
       </label>
 
-      <div class="grid grid-cols-2 gap-4 p-4 border rounded border-slate-400 md:grid-cols-3 lg:grid-cols-4">
+      <div class="grid grid-cols-2 gap-4 p-4 border rounded border-n-strong md:grid-cols-3 lg:grid-cols-4">
         <div 
           v-for="country in countries" 
           :key="country.id"
-          class="flex items-center gap-2 px-4 py-2 border rounded border-slate-400"
+          class="flex items-center gap-2 px-4 py-2 border rounded border-n-strong"
         >
           <Flag 
             :country="country.id" 

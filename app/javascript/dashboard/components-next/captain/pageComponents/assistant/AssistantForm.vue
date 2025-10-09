@@ -137,27 +137,27 @@ watch(
     />
 
     <fieldset class="flex flex-col gap-2.5">
-      <legend class="mb-3 text-sm font-medium text-slate-900">
+      <legend class="mb-3 text-sm font-medium text-n-slate-12">
         {{ t('CAPTAIN.ASSISTANTS.FORM.FEATURES.TITLE') }}
       </legend>
 
       <label class="flex items-center gap-2">
         <input v-model="state.featureFaq" type="checkbox" />
-        <span class="text-sm font-medium text-slate-900">
+        <span class="text-sm font-medium text-n-slate-12">
           {{ t('CAPTAIN.ASSISTANTS.FORM.FEATURES.ALLOW_CONVERSATION_FAQS') }}
         </span>
       </label>
 
       <label class="flex items-center gap-2">
         <input v-model="state.featureMemory" type="checkbox" />
-        <span class="text-sm font-medium text-slate-900">
+        <span class="text-sm font-medium text-n-slate-12">
           {{ t('CAPTAIN.ASSISTANTS.FORM.FEATURES.ALLOW_MEMORIES') }}
         </span>
       </label>
 
       <label class="flex items-center gap-2">
         <input v-model="state.featureCitation" type="checkbox" />
-        <span class="text-sm font-medium text-slate-900">
+        <span class="text-sm font-medium text-n-slate-12">
           {{ t('CAPTAIN.ASSISTANTS.FORM.FEATURES.ALLOW_CITATIONS') }}
         </span>
       </label>
@@ -169,7 +169,7 @@ watch(
         variant="faded"
         color="slate"
         :label="t('CAPTAIN.FORM.CANCEL')"
-        class="w-full bg-slate-900/10 text-indigo-700 hover:bg-slate-900/15"
+        class="w-full bg-n-alpha-2 text-n-blue-text hover:bg-n-alpha-3"
         @click="handleCancel"
       />
       <Button

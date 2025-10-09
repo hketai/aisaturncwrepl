@@ -143,7 +143,7 @@ export default {
     labelClass(input) {
       const { state } = input.context;
       const hasErrors = state.invalid;
-      return !hasErrors ? 'text-slate-900' : 'text-red-900';
+      return !hasErrors ? 'text-n-slate-12' : 'text-n-ruby-10';
     },
     inputClass(input) {
       const { state, family: classification, type } = input.context;
@@ -263,7 +263,7 @@ export default {
     <div
       v-if="shouldShowHeaderMessage"
       v-dompurify-html="formatMessage(headerMessage, false)"
-      class="mb-4 text-base leading-5 text-slate-900 [&>p>.link]:text-indigo-700 [&>p>.link]:hover:underline"
+      class="mb-4 text-base leading-5 text-n-slate-12 [&>p>.link]:text-n-blue-text [&>p>.link]:hover:underline"
     />
     <!-- Why do the v-bind shenanigan? Because Formkit API is really bad.
     If we just pass the options as is even with null or undefined or false,
@@ -333,7 +333,7 @@ export default {
     input.error,
     textarea.error,
     select.error {
-      @apply outline-red-700 dark:outline-red-700 hover:outline-red-800 dark:hover:outline-red-800 focus:outline-red-800 dark:focus:outline-red-800;
+      @apply outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9 focus:outline-n-ruby-9 dark:focus:outline-n-ruby-9;
     }
 
     input[type='checkbox'] {
@@ -343,7 +343,7 @@ export default {
 }
 
 [data-invalid] .formkit-message {
-  @apply text-red-900 block text-xs font-normal my-0.5 w-full;
+  @apply text-n-ruby-10 block text-xs font-normal my-0.5 w-full;
 }
 
 .formkit-outer[data-type='checkbox'] .formkit-wrapper {

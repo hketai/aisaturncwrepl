@@ -233,16 +233,16 @@ onBeforeUnmount(() => {
       <div class="flex flex-col items-start mb-6 text-start">
         <div class="flex justify-start mb-6">
           <div
-            class="flex size-11 items-center justify-center rounded-full bg-slate-900/10"
+            class="flex size-11 items-center justify-center rounded-full bg-n-alpha-2"
           >
-            <Icon icon="i-woot-whatsapp" class="text-slate-900 size-6" />
+            <Icon icon="i-woot-whatsapp" class="text-n-slate-10 size-6" />
           </div>
         </div>
 
-        <h3 class="mb-2 text-base font-medium text-slate-900">
+        <h3 class="mb-2 text-base font-medium text-n-slate-12">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.EMBEDDED_SIGNUP.TITLE') }}
         </h3>
-        <p class="text-sm leading-[24px] text-slate-900">
+        <p class="text-sm leading-[24px] text-n-slate-12">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.EMBEDDED_SIGNUP.DESC') }}
         </p>
       </div>
@@ -251,9 +251,9 @@ onBeforeUnmount(() => {
         <div
           v-for="benefit in benefits"
           :key="benefit.key"
-          class="flex gap-2 items-center text-sm text-slate-900"
+          class="flex gap-2 items-center text-sm text-n-slate-11"
         >
-          <Icon icon="i-lucide-check" class="text-slate-900 size-4" />
+          <Icon icon="i-lucide-check" class="text-n-slate-11 size-4" />
           {{ benefit.text }}
         </div>
       </div>
@@ -262,14 +262,14 @@ onBeforeUnmount(() => {
         <I18nT
           keypath="INBOX_MGMT.ADD.WHATSAPP.EMBEDDED_SIGNUP.LEARN_MORE.TEXT"
           tag="span"
-          class="text-sm text-slate-900"
+          class="text-sm text-n-slate-11"
         >
           <template #link>
             <a
               :href="globalConstants.WHATSAPP_EMBEDDED_SIGNUP_DOCS_URL"
               target="_blank"
               rel="noopener noreferrer"
-              class="underline text-indigo-600"
+              class="underline text-n-brand"
             >
               {{
                 $t(

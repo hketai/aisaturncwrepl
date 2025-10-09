@@ -21,25 +21,25 @@ const percent = computed(() =>
 
 const colorClass = computed(() => {
   if (percent.value < 50) {
-    return 'bg-teal-900';
+    return 'bg-n-teal-10';
   }
   if (percent.value < 80) {
-    return 'bg-amber-900';
+    return 'bg-n-amber-10';
   }
-  return 'bg-red-900';
+  return 'bg-n-ruby-10';
 });
 </script>
 
 <template>
   <div
-    class="flex gap-5 items-center justify-between text-xs uppercase text-slate-900"
+    class="flex gap-5 items-center justify-between text-xs uppercase text-n-slate-10"
   >
     <div class="font-medium tracking-wider">
       {{ title }}
     </div>
     <div class="tabular-nums">{{ consumed }} / {{ totalCount }}</div>
   </div>
-  <div class="rounded-full overflow-hidden h-2 w-full bg-slate-300 mt-2">
+  <div class="rounded-full overflow-hidden h-2 w-full bg-n-slate-4 mt-2">
     <div class="h-2" :class="colorClass" :style="{ width: `${percent}%` }" />
   </div>
 </template>

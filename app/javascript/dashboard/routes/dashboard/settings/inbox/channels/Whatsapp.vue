@@ -94,7 +94,7 @@ const handleManualLinkClick = () => {
     </div>
 
     <div v-else-if="showConfiguration">
-      <div class="px-6 py-5 rounded-2xl border border-slate-300">
+      <div class="px-6 py-5 rounded-2xl border border-n-weak">
         <!-- Show embedded signup if app ID is configured -->
         <div
           v-if="
@@ -104,16 +104,16 @@ const handleManualLinkClick = () => {
           <WhatsappEmbeddedSignup />
 
           <!-- Manual setup fallback option -->
-          <div class="pt-6 mt-6 border-t border-slate-300">
+          <div class="pt-6 mt-6 border-t border-n-weak">
             <I18nT
               keypath="INBOX_MGMT.ADD.WHATSAPP.EMBEDDED_SIGNUP.MANUAL_FALLBACK"
               tag="p"
-              class="text-sm text-slate-900"
+              class="text-sm text-n-slate-11"
             >
               <template #link>
                 <a
                   href="#"
-                  class="underline text-indigo-600"
+                  class="underline text-n-brand"
                   @click.prevent="handleManualLinkClick"
                 >
                   {{

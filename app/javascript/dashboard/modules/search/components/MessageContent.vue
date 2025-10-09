@@ -76,9 +76,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <blockquote ref="messageContainer" class="message border-l-2 border-slate-300">
+  <blockquote ref="messageContainer" class="message border-l-2 border-n-weak">
     <p class="header">
-      <strong class="text-slate-900">
+      <strong class="text-n-slate-11">
         {{ author }}
       </strong>
       {{ $t('SEARCH.WROTE') }}
@@ -96,18 +96,18 @@ onMounted(() => {
 
 .message-content::v-deep p,
 .message-content::v-deep li::marker {
-  @apply text-slate-900 mb-1;
+  @apply text-n-slate-11 mb-1;
 }
 
 .header {
-  @apply text-slate-900 mb-1;
+  @apply text-n-slate-11 mb-1;
 }
 
 .message-content {
-  @apply break-words text-slate-900;
+  @apply break-words text-n-slate-11;
 }
 
 .message-content::v-deep .searchkey--highlight {
-  @apply text-slate-900 text-sm font-semibold;
+  @apply text-n-slate-12 text-sm font-semibold;
 }
 </style>

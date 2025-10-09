@@ -258,7 +258,7 @@ export default {
             />
             <label
               v-show="isMultiselectInvalid"
-              class="text-red-800 dark:text-red-800 text-sm font-normal mt-1"
+              class="text-n-ruby-9 dark:text-n-ruby-9 text-sm font-normal mt-1"
             >
               {{ $t('ATTRIBUTES_MGMT.ADD.FORM.TYPE.LIST.ERROR') }}
             </label>

@@ -73,6 +73,6 @@ export default {
 
 <style lang="scss" scoped>
 .no-label-message {
-  @apply text-slate-900 mb-4;
+  @apply text-n-slate-11 mb-4;
 }
 </style>

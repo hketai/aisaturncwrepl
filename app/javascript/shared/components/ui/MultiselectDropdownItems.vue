@@ -119,7 +119,7 @@ export default {
         </WootDropdownMenu>
         <h4
           v-if="noResult"
-          class="w-full justify-center items-center flex text-slate-900 py-2 px-2.5 overflow-hidden whitespace-nowrap text-ellipsis text-sm"
+          class="w-full justify-center items-center flex text-n-slate-10 py-2 px-2.5 overflow-hidden whitespace-nowrap text-ellipsis text-sm"
         >
           {{ noSearchResult }}
         </h4>
@@ -134,18 +134,18 @@ export default {
 }
 
 .search-input {
-  @apply m-0 w-full border border-solid border-transparent h-8 text-sm text-slate-900 rounded-md focus:border-indigo-600 bg-white dark:bg-white;
+  @apply m-0 w-full border border-solid border-transparent h-8 text-sm text-n-slate-12 rounded-md focus:border-n-brand bg-n-background dark:bg-n-background;
 }
 
 .multiselect-dropdown--item {
   @apply justify-between w-full;
 
   &.active {
-    @apply bg-slate-100 dark:bg-slate-300 border-slate-300/50 dark:border-slate-300 font-medium;
+    @apply bg-n-slate-2 dark:bg-n-solid-3 border-n-weak/50 dark:border-n-weak font-medium;
   }
 
   &:hover {
-    @apply bg-slate-100 dark:bg-slate-300 text-slate-900;
+    @apply bg-n-slate-2 dark:bg-n-solid-3 text-n-slate-12;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import Auth from 'dashboard/api/auth';
 import { useMapGetter } from 'dashboard/composables/store';
 import { useI18n } from 'vue-i18n';
@@ -15,27 +15,7 @@ import {
 } from 'next/dropdown-menu/base';
 import CustomBrandPolicyWrapper from '../../components/CustomBrandPolicyWrapper.vue';
 
-const props = defineProps({
-  topNav: {
-    type: Boolean,
-    default: false,
-  },
-});
-
 const emit = defineEmits(['close', 'openKeyShortcutModal']);
-
-const triggerRef = ref(null);
-const dropdownPosition = ref({ top: 0, right: 0 });
-
-const updateDropdownPosition = () => {
-  if (props.topNav && triggerRef.value) {
-    const rect = triggerRef.value.getBoundingClientRect();
-    dropdownPosition.value = {
-      top: rect.bottom + 8,
-      right: window.innerWidth - rect.right,
-    };
-  }
-};
 
 defineOptions({
   inheritAttrs: false,
@@ -66,7 +46,7 @@ const menuItems = computed(() => {
       show: showChatSupport.value,
       showOnCustomBrandedInstance: false,
       label: t('SIDEBAR_ITEMS.CONTACT_SUPPORT'),
-      icon: 'i-ph-lifebuoy-thin',
+      icon: 'i-lucide-life-buoy',
       click: () => {
         window.$chatwoot.toggle();
       },
@@ -75,7 +55,7 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.KEYBOARD_SHORTCUTS'),
-      icon: 'i-ph-keyboard-thin',
+      icon: 'i-lucide-keyboard',
       click: () => {
         emit('openKeyShortcutModal');
       },
@@ -84,24 +64,42 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.PROFILE_SETTINGS'),
-      icon: 'i-ph-user-thin',
+      icon: 'i-lucide-user-pen',
       link: { name: 'profile_settings_index' },
     },
     {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.APPEARANCE'),
-      icon: 'i-ph-palette-thin',
+      icon: 'i-lucide-palette',
       click: () => {
         const ninja = document.querySelector('ninja-keys');
         ninja.open({ parent: 'appearance_settings' });
       },
     },
     {
+      show: true,
+      showOnCustomBrandedInstance: false,
+      label: t('SIDEBAR_ITEMS.DOCS'),
+      icon: 'i-lucide-book',
+      link: 'https://www.chatwoot.com/hc/user-guide/en',
+      nativeLink: true,
+      target: '_blank',
+    },
+    {
+      show: true,
+      showOnCustomBrandedInstance: false,
+      label: t('SIDEBAR_ITEMS.CHANGELOG'),
+      icon: 'i-lucide-scroll-text',
+      link: 'https://www.chatwoot.com/changelog/',
+      nativeLink: true,
+      target: '_blank',
+    },
+    {
       show: currentUser.value.type === 'SuperAdmin',
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.SUPER_ADMIN_CONSOLE'),
-      icon: 'i-ph-castle-turret-thin',
+      icon: 'i-lucide-castle',
       link: '/super_admin',
       nativeLink: true,
       target: '_blank',
@@ -110,7 +108,7 @@ const menuItems = computed(() => {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.LOGOUT'),
-      icon: 'i-ph-power-thin',
+      icon: 'i-lucide-power',
       click: Auth.logout,
     },
   ];
@@ -125,10 +123,9 @@ const allowedMenuItems = computed(() => {
   <DropdownContainer class="relative w-full min-w-0" @close="emit('close')">
     <template #trigger="{ toggle, isOpen }">
       <button
-        ref="triggerRef"
-        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-slate-900/5"
-        :class="{ 'bg-slate-900/5': isOpen }"
-        @click="() => { updateDropdownPosition(); toggle(); }"
+        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-n-alpha-1"
+        :class="{ 'bg-n-alpha-1': isOpen }"
+        @click="toggle"
       >
         <Avatar
           :size="32"
@@ -139,43 +136,16 @@ const allowedMenuItems = computed(() => {
           rounded-full
         />
         <div class="min-w-0">
-          <div class="text-sm font-medium leading-4 truncate text-slate-900">
+          <div class="text-sm font-medium leading-4 truncate text-n-slate-12">
             {{ currentUser.available_name }}
           </div>
-          <div class="text-xs truncate text-slate-900">
+          <div class="text-xs truncate text-n-slate-11">
             {{ currentUser.email }}
           </div>
         </div>
       </button>
     </template>
-    <Teleport v-if="props.topNav" to="body">
-      <div
-        v-if="triggerRef"
-        class="fixed z-[9999] w-80"
-        :style="{
-          top: dropdownPosition.top + 'px',
-          right: dropdownPosition.right + 'px'
-        }"
-      >
-        <ul
-          class="text-sm bg-slate-900/15 backdrop-blur-[100px] border border-slate-300 rounded-xl shadow-sm py-2 n-dropdown-body gap-2 grid list-none px-2 reset-base relative"
-        >
-          <SidebarProfileMenuStatus />
-          <DropdownSeparator />
-          <template v-for="item in allowedMenuItems" :key="item.label">
-            <CustomBrandPolicyWrapper
-              :show-on-custom-branded-instance="item.showOnCustomBrandedInstance"
-            >
-              <DropdownItem v-if="item.show" v-bind="item" />
-            </CustomBrandPolicyWrapper>
-          </template>
-        </ul>
-      </div>
-    </Teleport>
-    <DropdownBody 
-      v-else
-      class="bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0"
-    >
+    <DropdownBody class="bottom-12 z-50 mb-2 w-80 ltr:left-0 rtl:right-0">
       <SidebarProfileMenuStatus />
       <DropdownSeparator />
       <template v-for="item in allowedMenuItems" :key="item.label">

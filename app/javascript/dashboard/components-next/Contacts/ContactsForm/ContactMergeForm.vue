@@ -39,11 +39,11 @@ const { t } = useI18n();
   <div class="flex flex-col">
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between h-5 gap-2">
-        <label class="text-sm text-slate-900">
+        <label class="text-sm text-n-slate-12">
           {{ t('CONTACTS_LAYOUT.SIDEBAR.MERGE.PRIMARY') }}
         </label>
         <span
-          class="flex items-center justify-center w-24 h-5 text-xs rounded-md text-teal-900 bg-slate-900/10"
+          class="flex items-center justify-center w-24 h-5 text-xs rounded-md text-n-teal-11 bg-n-alpha-2"
         >
           {{ t('CONTACTS_LAYOUT.SIDEBAR.MERGE.PRIMARY_HELP_LABEL') }}
         </span>
@@ -64,7 +64,7 @@ const { t } = useI18n();
         :placeholder="t('CONTACTS_LAYOUT.SIDEBAR.MERGE.PLACEHOLDER')"
         :has-error="hasError"
         :message="errorMessage"
-        class="[&>div>button]:bg-slate-900/10"
+        class="[&>div>button]:bg-n-alpha-black2"
         @update:model-value="value => emit('update:primaryContactId', value)"
         @search="query => emit('search', query)"
       />
@@ -72,26 +72,26 @@ const { t } = useI18n();
     <div class="relative flex justify-center gap-2 top-4">
       <div v-for="i in 3" :key="i" class="relative w-4 h-8">
         <div
-          class="absolute w-0 h-0 border-l-[4px] border-r-[4px] border-b-[6px] border-l-transparent border-r-transparent border-slate-400 ltr:translate-x-[4px] rtl:-translate-x-[4px] -translate-y-[4px]"
+          class="absolute w-0 h-0 border-l-[4px] border-r-[4px] border-b-[6px] border-l-transparent border-r-transparent border-n-strong ltr:translate-x-[4px] rtl:-translate-x-[4px] -translate-y-[4px]"
         />
         <div
-          class="absolute w-[1px] h-full bg-slate-400 left-1/2 transform -translate-x-1/2"
+          class="absolute w-[1px] h-full bg-n-strong left-1/2 transform -translate-x-1/2"
         />
       </div>
     </div>
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between h-5 gap-2">
-        <label class="text-sm text-slate-900">
+        <label class="text-sm text-n-slate-12">
           {{ t('CONTACTS_LAYOUT.SIDEBAR.MERGE.PARENT') }}
         </label>
         <span
-          class="flex items-center justify-center w-24 h-5 text-xs rounded-md text-red-900 bg-slate-900/10"
+          class="flex items-center justify-center w-24 h-5 text-xs rounded-md text-n-ruby-11 bg-n-alpha-2"
         >
           {{ t('CONTACTS_LAYOUT.SIDEBAR.MERGE.PARENT_HELP_LABEL') }}
         </span>
       </div>
       <div
-        class="border border-slate-400 h-[60px] gap-2 flex items-center rounded-xl p-3"
+        class="border border-n-strong h-[60px] gap-2 flex items-center rounded-xl p-3"
       >
         <Avatar
           :name="selectedContact.name || ''"
@@ -100,10 +100,10 @@ const { t } = useI18n();
           rounded-full
         />
         <div class="flex flex-col w-full min-w-0 gap-1">
-          <span class="text-sm leading-4 truncate text-slate-900">
+          <span class="text-sm leading-4 truncate text-n-slate-11">
             {{ selectedContact.name }}
           </span>
-          <span class="text-sm leading-4 truncate text-slate-900">
+          <span class="text-sm leading-4 truncate text-n-slate-11">
             {{ selectedContact.email }}
           </span>
         </div>

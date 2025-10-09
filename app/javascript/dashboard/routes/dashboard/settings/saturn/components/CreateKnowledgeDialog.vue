@@ -142,7 +142,7 @@ defineExpose({ dialogRef });
               'flex flex-col items-center gap-2 p-3 border-2 rounded-lg transition-all',
               form.source_type === type.value
                 ? 'border-woot-500 bg-woot-50 dark:bg-woot-900/20'
-                : 'border-slate-300 hover:border-slate-400 hover:bg-slate-200'
+                : 'border-n-weak hover:border-n-strong hover:bg-n-solid-2'
             ]"
           >
             <i :class="type.icon" class="text-2xl"></i>
@@ -156,7 +156,7 @@ defineExpose({ dialogRef });
         <input
           v-model="form.title"
           type="text"
-          class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
           :placeholder="$t('SATURN.KNOWLEDGE.TITLE_PLACEHOLDER')"
           required
         />
@@ -166,7 +166,7 @@ defineExpose({ dialogRef });
         <label class="block text-sm font-medium mb-1">{{ $t('SATURN.KNOWLEDGE.CONTENT_LABEL') }}</label>
         <textarea
           v-model="form.content_text"
-          class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
           :placeholder="$t('SATURN.KNOWLEDGE.CONTENT_PLACEHOLDER')"
           rows="6"
           required
@@ -178,7 +178,7 @@ defineExpose({ dialogRef });
         <input
           v-model="form.source_url"
           type="url"
-          class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
+          class="w-full px-3 py-2 border border-n-weak rounded-lg focus:ring-2 focus:ring-woot-500 focus:border-woot-500"
           placeholder="https://example.com/docs"
         />
       </div>
@@ -187,7 +187,7 @@ defineExpose({ dialogRef });
         <button
           type="button"
           @click="handleClose"
-          class="flex-1 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-200"
+          class="flex-1 px-4 py-2 border border-n-weak rounded-lg hover:bg-n-solid-2"
         >
           {{ $t('SATURN.KNOWLEDGE.CANCEL_BUTTON') }}
         </button>

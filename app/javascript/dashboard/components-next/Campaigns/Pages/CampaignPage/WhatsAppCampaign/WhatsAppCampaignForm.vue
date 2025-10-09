@@ -181,7 +181,7 @@ watch(
     />
 
     <div class="flex flex-col gap-1">
-      <label for="inbox" class="mb-0.5 text-sm font-medium text-slate-900">
+      <label for="inbox" class="mb-0.5 text-sm font-medium text-n-slate-12">
         {{ t('CAMPAIGN.WHATSAPP.CREATE.FORM.INBOX.LABEL') }}
       </label>
       <ComboBox
@@ -191,12 +191,12 @@ watch(
         :has-error="!!formErrors.inbox"
         :placeholder="t('CAMPAIGN.WHATSAPP.CREATE.FORM.INBOX.PLACEHOLDER')"
         :message="formErrors.inbox"
-        class="[&>div>button]:bg-slate-900/10 [&>div>button:not(.focused)]:dark:outline-slate-300 [&>div>button:not(.focused)]:hover:!outline-slate-500"
+        class="[&>div>button]:bg-n-alpha-black2 [&>div>button:not(.focused)]:dark:outline-n-weak [&>div>button:not(.focused)]:hover:!outline-n-slate-6"
       />
     </div>
 
     <div class="flex flex-col gap-1">
-      <label for="template" class="mb-0.5 text-sm font-medium text-slate-900">
+      <label for="template" class="mb-0.5 text-sm font-medium text-n-slate-12">
         {{ t('CAMPAIGN.WHATSAPP.CREATE.FORM.TEMPLATE.LABEL') }}
       </label>
       <ComboBox
@@ -206,9 +206,9 @@ watch(
         :has-error="!!formErrors.template"
         :placeholder="t('CAMPAIGN.WHATSAPP.CREATE.FORM.TEMPLATE.PLACEHOLDER')"
         :message="formErrors.template"
-        class="[&>div>button]:bg-slate-900/10 [&>div>button:not(.focused)]:dark:outline-slate-300 [&>div>button:not(.focused)]:hover:!outline-slate-500"
+        class="[&>div>button]:bg-n-alpha-black2 [&>div>button:not(.focused)]:dark:outline-n-weak [&>div>button:not(.focused)]:hover:!outline-n-slate-6"
       />
-      <p class="mt-1 text-xs text-slate-900">
+      <p class="mt-1 text-xs text-n-slate-11">
         {{ t('CAMPAIGN.WHATSAPP.CREATE.FORM.TEMPLATE.INFO') }}
       </p>
     </div>
@@ -221,7 +221,7 @@ watch(
     />
 
     <div class="flex flex-col gap-1">
-      <label for="audience" class="mb-0.5 text-sm font-medium text-slate-900">
+      <label for="audience" class="mb-0.5 text-sm font-medium text-n-slate-12">
         {{ t('CAMPAIGN.WHATSAPP.CREATE.FORM.AUDIENCE.LABEL') }}
       </label>
       <TagMultiSelectComboBox
@@ -231,7 +231,7 @@ watch(
         :placeholder="t('CAMPAIGN.WHATSAPP.CREATE.FORM.AUDIENCE.PLACEHOLDER')"
         :has-error="!!formErrors.audience"
         :message="formErrors.audience"
-        class="[&>div>button]:bg-slate-900/10"
+        class="[&>div>button]:bg-n-alpha-black2"
       />
     </div>
 
@@ -251,7 +251,7 @@ watch(
         color="slate"
         type="button"
         :label="t('CAMPAIGN.WHATSAPP.CREATE.FORM.BUTTONS.CANCEL')"
-        class="w-full bg-slate-900/10 text-indigo-700 hover:bg-slate-900/15"
+        class="w-full bg-n-alpha-2 text-n-blue-text hover:bg-n-alpha-3"
         @click="handleCancel"
       />
       <Button

@@ -56,11 +56,11 @@ const model = defineModel({
       v-bind="$attrs"
       v-model="model"
       :type="type"
-      class="block w-full border-none rounded-md shadow-sm bg-slate-900/10 appearance-none outline outline-1 focus:outline focus:outline-1 text-slate-900 placeholder:text-slate-900 sm:text-sm sm:leading-6 px-3 py-3"
+      class="block w-full border-none rounded-md shadow-sm bg-n-alpha-black2 appearance-none outline outline-1 focus:outline focus:outline-1 text-n-slate-12 placeholder:text-n-slate-10 sm:text-sm sm:leading-6 px-3 py-3"
       :class="{
-        'error outline-red-700 dark:outline-red-700 hover:outline-red-800 dark:hover:outline-red-800 disabled:outline-red-700 dark:disabled:outline-red-700':
+        'error outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9 disabled:outline-n-ruby-8 dark:disabled:outline-n-ruby-8':
           hasError,
-        'outline-slate-300 dark:outline-slate-300 hover:outline-slate-500 dark:hover:outline-slate-500 focus:outline-indigo-600 dark:focus:outline-indigo-600':
+        'outline-n-weak dark:outline-n-weak hover:outline-n-slate-6 dark:hover:outline-n-slate-6 focus:outline-n-brand dark:focus:outline-n-brand':
           !hasError,
         'px-3 py-3': spacing === 'base',
         'px-3 py-2 mb-0': spacing === 'compact',

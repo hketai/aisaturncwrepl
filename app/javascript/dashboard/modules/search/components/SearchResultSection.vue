@@ -29,8 +29,8 @@ const titleCase = computed(() => props.title.toLowerCase());
 
 <template>
   <section class="mx-0 my-2">
-    <div v-if="showTitle" class="sticky top-0 p-2 z-50 mb-0.5 bg-white">
-      <h3 class="text-sm text-slate-900">{{ title }}</h3>
+    <div v-if="showTitle" class="sticky top-0 p-2 z-50 mb-0.5 bg-n-background">
+      <h3 class="text-sm text-n-slate-12">{{ title }}</h3>
     </div>
     <slot />
     <woot-loading-state
@@ -39,10 +39,10 @@ const titleCase = computed(() => props.title.toLowerCase());
     />
     <div
       v-if="empty && !isFetching"
-      class="flex items-center justify-center px-4 py-6 m-2 rounded-xl bg-slate-100 dark:bg-slate-100"
+      class="flex items-center justify-center px-4 py-6 m-2 rounded-xl bg-n-slate-2 dark:bg-n-solid-1"
     >
-      <fluent-icon icon="info" size="16px" class="text-slate-900" />
-      <p class="mx-2 my-0 text-center text-slate-900">
+      <fluent-icon icon="info" size="16px" class="text-n-slate-11" />
+      <p class="mx-2 my-0 text-center text-n-slate-11">
         {{ $t('SEARCH.EMPTY_STATE', { item: titleCase, query }) }}
       </p>
     </div>

@@ -193,7 +193,7 @@ onMounted(() => {
             :size="20"
             rounded-full
           />
-          <span class="text-sm text-slate-900 hover:text-slate-900">
+          <span class="text-sm text-n-slate-12 hover:text-n-slate-11">
             {{ authorName || '-' }}
           </span>
         </Button>
@@ -206,7 +206,7 @@ onMounted(() => {
         />
       </OnClickOutside>
     </div>
-    <div class="w-px h-3 bg-slate-300" />
+    <div class="w-px h-3 bg-n-weak" />
     <div class="relative">
       <OnClickOutside @trigger="openCategoryList = false">
         <Button
@@ -222,7 +222,7 @@ onMounted(() => {
         >
           <span
             v-if="selectedCategory"
-            class="text-sm text-slate-900 hover:text-slate-900"
+            class="text-sm text-n-slate-12 hover:text-n-slate-11"
           >
             {{
               `${selectedCategory.icon || ''} ${selectedCategory.name || t('HELP_CENTER.EDIT_ARTICLE_PAGE.EDIT_ARTICLE.UNCATEGORIZED')}`
@@ -239,7 +239,7 @@ onMounted(() => {
       </OnClickOutside>
     </div>
 
-    <div class="w-px h-3 bg-slate-300" />
+    <div class="w-px h-3 bg-n-weak" />
     <div class="relative">
       <OnClickOutside @trigger="openProperties = false">
         <Button
@@ -250,7 +250,7 @@ onMounted(() => {
           variant="ghost"
           color="slate"
           :disabled="isNewArticle"
-          class="!px-2 font-normal hover:!bg-transparent hover:!text-slate-900"
+          class="!px-2 font-normal hover:!bg-transparent hover:!text-n-slate-11"
           @click="openProperties = !openProperties"
         />
         <ArticleEditorProperties

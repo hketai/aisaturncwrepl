@@ -117,37 +117,37 @@ export function useVoiceCallStatus(statusRef, directionRef) {
     const s = status.value;
 
     if (s === CALL_STATUSES.IN_PROGRESS) {
-      return 'bg-teal-800';
+      return 'bg-n-teal-9';
     }
 
     if (isFailedStatus.value) {
-      return 'bg-red-800';
+      return 'bg-n-ruby-9';
     }
 
     if (isEndedStatus.value) {
-      return 'bg-slate-900';
+      return 'bg-n-slate-11';
     }
 
     // default (e.g., ringing)
-    return 'bg-teal-800 animate-pulse';
+    return 'bg-n-teal-9 animate-pulse';
   });
 
   const listIconColor = computed(() => {
     const s = status.value;
 
     if (s === CALL_STATUSES.IN_PROGRESS || s === CALL_STATUSES.RINGING) {
-      return 'text-teal-800';
+      return 'text-n-teal-9';
     }
 
     if (isFailedStatus.value) {
-      return 'text-red-800';
+      return 'text-n-ruby-9';
     }
 
     if (isEndedStatus.value) {
-      return 'text-slate-900';
+      return 'text-n-slate-11';
     }
 
-    return 'text-teal-800';
+    return 'text-n-teal-9';
   });
 
   return {

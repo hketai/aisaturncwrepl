@@ -94,7 +94,7 @@ defineExpose({ open, close });
   <TeleportWithDirection to="body">
     <dialog
       ref="dialogRef"
-      class="w-full transition-all duration-300 ease-in-out shadow-2xl rounded-2xl border border-slate-200 dark:border-slate-800"
+      class="w-full transition-all duration-300 ease-in-out shadow-xl rounded-xl"
       :class="[
         maxWidthClass,
         overflowYAuto ? 'overflow-y-auto' : 'overflow-visible',
@@ -104,15 +104,15 @@ defineExpose({ open, close });
     >
       <form
         ref="dialogContentRef"
-        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-white dark:bg-slate-200 backdrop-blur-xl shadow-2xl rounded-2xl"
+        class="flex flex-col w-full h-auto gap-6 p-6 overflow-visible text-left align-middle transition-all duration-300 ease-in-out transform bg-n-alpha-3 backdrop-blur-[100px] shadow-xl rounded-xl"
         @submit.prevent="confirm"
       >
           <div v-if="title || description" class="flex flex-col gap-2">
-            <h3 class="text-base font-medium leading-6 text-slate-900">
+            <h3 class="text-base font-medium leading-6 text-n-slate-12">
               {{ title }}
             </h3>
             <slot name="description">
-              <p v-if="description" class="mb-0 text-sm text-slate-900">
+              <p v-if="description" class="mb-0 text-sm text-n-slate-11">
                 {{ description }}
               </p>
             </slot>
@@ -151,11 +151,6 @@ defineExpose({ open, close });
 
 <style scoped>
 dialog::backdrop {
-  background-color: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.dark dialog::backdrop {
-  background-color: rgba(2, 6, 23, 0.7);
+  @apply bg-n-alpha-black1 backdrop-blur-[4px];
 }
 </style>

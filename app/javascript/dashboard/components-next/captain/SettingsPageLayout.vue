@@ -52,10 +52,10 @@ const handleBreadcrumbClick = item => {
 
 <template>
   <section
-    class="px-6 flex flex-col w-full h-screen overflow-y-auto bg-white"
+    class="px-6 flex flex-col w-full h-screen overflow-y-auto bg-n-background"
   >
     <div class="max-w-[60rem] mx-auto flex flex-col w-full h-full mb-4">
-      <header class="mb-7 sticky top-0 bg-white pt-4 z-20">
+      <header class="mb-7 sticky top-0 bg-n-background pt-4 z-20">
         <Breadcrumb :items="breadcrumbItems" @click="handleBreadcrumbClick" />
       </header>
       <main class="flex gap-16 w-full flex-1 pb-16">
@@ -65,7 +65,7 @@ const handleBreadcrumbClick = item => {
         >
           <div
             v-if="isFetching"
-            class="flex items-center justify-center py-10 text-slate-900"
+            class="flex items-center justify-center py-10 text-n-slate-11"
           >
             <Spinner />
           </div>

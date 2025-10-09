@@ -71,12 +71,12 @@ const hasValue = computed(() => {
         "
       >
         <div class="flex items-center justify-between w-full min-w-0">
-          <h4 v-if="!hasValue" class="text-sm text-ellipsis text-slate-900">
+          <h4 v-if="!hasValue" class="text-sm text-ellipsis text-n-slate-12">
             {{ multiselectorPlaceholder }}
           </h4>
           <h4
             v-else
-            class="items-center overflow-hidden text-sm leading-tight whitespace-nowrap text-ellipsis text-slate-900"
+            class="items-center overflow-hidden text-sm leading-tight whitespace-nowrap text-ellipsis text-n-slate-12"
             :title="selectedItem.name"
           >
             {{ selectedItem.name }}
@@ -97,11 +97,11 @@ const hasValue = computed(() => {
           'block visible': showSearchDropdown,
           'hidden invisible': !showSearchDropdown,
         }"
-        class="box-border top-[2.625rem] w-full border rounded-lg bg-slate-900/15 backdrop-blur-[100px] absolute shadow-lg border-slate-400 dark:border-slate-400 p-2 z-[9999]"
+        class="box-border top-[2.625rem] w-full border rounded-lg bg-n-alpha-3 backdrop-blur-[100px] absolute shadow-lg border-n-strong dark:border-n-strong p-2 z-[9999]"
       >
         <div class="flex items-center justify-between mb-1">
           <h4
-            class="m-0 overflow-hidden text-sm text-slate-900 whitespace-nowrap text-ellipsis"
+            class="m-0 overflow-hidden text-sm text-n-slate-11 whitespace-nowrap text-ellipsis"
           >
             {{ multiselectorTitle }}
           </h4>

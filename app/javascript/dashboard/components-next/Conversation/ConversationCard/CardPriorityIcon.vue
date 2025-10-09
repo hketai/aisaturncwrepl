@@ -39,7 +39,7 @@ defineProps({
           width="3.33333"
           height="6.66667"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
         <rect
           x="8.33301"
@@ -47,7 +47,7 @@ defineProps({
           width="3.33333"
           height="10"
           rx="1.66667"
-          class="fill-slate-500"
+          class="fill-n-slate-6"
         />
         <rect
           x="13.333"
@@ -55,7 +55,7 @@ defineProps({
           width="3.33333"
           height="13.3333"
           rx="1.66667"
-          class="fill-slate-500"
+          class="fill-n-slate-6"
         />
       </g>
     </svg>
@@ -87,7 +87,7 @@ defineProps({
           width="3.33333"
           height="6.66667"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
         <rect
           x="8.33301"
@@ -95,7 +95,7 @@ defineProps({
           width="3.33333"
           height="10"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
         <rect
           x="13.333"
@@ -103,7 +103,7 @@ defineProps({
           width="3.33333"
           height="13.3333"
           rx="1.66667"
-          class="fill-slate-500"
+          class="fill-n-slate-6"
         />
       </g>
     </svg>
@@ -135,7 +135,7 @@ defineProps({
           width="3.33333"
           height="6.66667"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
         <rect
           x="8.33301"
@@ -143,7 +143,7 @@ defineProps({
           width="3.33333"
           height="10"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
         <rect
           x="13.333"
@@ -151,7 +151,7 @@ defineProps({
           width="3.33333"
           height="13.3333"
           rx="1.66667"
-          class="fill-amber-800"
+          class="fill-n-amber-9"
         />
       </g>
     </svg>
@@ -183,7 +183,7 @@ defineProps({
           width="3.33333"
           height="6.66667"
           rx="1.66667"
-          class="fill-red-800"
+          class="fill-n-ruby-9"
         />
         <rect
           x="8.33301"
@@ -191,7 +191,7 @@ defineProps({
           width="3.33333"
           height="10"
           rx="1.66667"
-          class="fill-red-800"
+          class="fill-n-ruby-9"
         />
         <rect
           x="13.333"
@@ -199,7 +199,7 @@ defineProps({
           width="3.33333"
           height="13.3333"
           rx="1.66667"
-          class="fill-red-800"
+          class="fill-n-ruby-9"
         />
       </g>
     </svg>

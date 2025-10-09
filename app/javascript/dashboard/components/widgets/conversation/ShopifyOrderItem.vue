@@ -25,9 +25,9 @@ const formatCurrency = (amount, currency) => {
 
 const getStatusClass = status => {
   const classes = {
-    paid: 'bg-teal-400 text-teal-900',
+    paid: 'bg-n-teal-5 text-n-teal-12',
   };
-  return classes[status] || 'bg-slate-300 text-slate-900';
+  return classes[status] || 'bg-n-solid-3 text-n-slate-12';
 };
 
 const getStatusI18nKey = (type, status = '') => {
@@ -52,17 +52,17 @@ const financialStatus = computed(() => {
 
 const getFulfillmentClass = status => {
   const classes = {
-    fulfilled: 'text-teal-800',
-    partial: 'text-amber-800',
-    unfulfilled: 'text-red-800',
+    fulfilled: 'text-n-teal-9',
+    partial: 'text-n-amber-9',
+    unfulfilled: 'text-n-ruby-9',
   };
-  return classes[status] || 'text-slate-900';
+  return classes[status] || 'text-n-slate-11';
 };
 </script>
 
 <template>
   <div
-    class="py-3 border-b border-slate-300 last:border-b-0 flex flex-col gap-1.5"
+    class="py-3 border-b border-n-weak last:border-b-0 flex flex-col gap-1.5"
   >
     <div class="flex justify-between items-center">
       <div class="font-medium flex">
@@ -70,7 +70,7 @@ const getFulfillmentClass = status => {
           :href="order.admin_url"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:underline text-slate-900 cursor-pointer truncate"
+          class="hover:underline text-n-slate-12 cursor-pointer truncate"
         >
           {{ $t('CONVERSATION_SIDEBAR.SHOPIFY.ORDER_ID', { id: order.id }) }}
           <i class="i-lucide-external-link pl-5" />
@@ -84,11 +84,11 @@ const getFulfillmentClass = status => {
         {{ financialStatus }}
       </div>
     </div>
-    <div class="text-sm text-slate-900">
-      <span class="text-slate-900 border-r border-slate-300 pr-2">
+    <div class="text-sm text-n-slate-12">
+      <span class="text-n-slate-11 border-r border-n-weak pr-2">
         {{ formatDate(order.created_at) }}
       </span>
-      <span class="text-slate-900 pl-2">
+      <span class="text-n-slate-11 pl-2">
         {{ formatCurrency(order.total_price, order.currency) }}
       </span>
     </div>

@@ -18,7 +18,7 @@ const onClick = () => {
 
 <template>
   <div
-    class="flex items-center justify-between rounded cursor-pointer text-slate-900 hover:text-slate-900 gap-2"
+    class="flex items-center justify-between rounded cursor-pointer text-n-slate-11 hover:text-n-slate-12 gap-2"
     role="button"
     @click="onClick"
   >

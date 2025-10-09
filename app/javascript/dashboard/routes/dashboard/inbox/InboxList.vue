@@ -222,9 +222,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="flex w-full h-full bg-slate-100">
+  <section class="flex w-full h-full bg-n-solid-1">
     <div
-      class="flex flex-col h-full w-full lg:min-w-[340px] lg:max-w-[340px] ltr:border-r rtl:border-l border-slate-300"
+      class="flex flex-col h-full w-full lg:min-w-[340px] lg:max-w-[340px] ltr:border-r rtl:border-l border-n-weak"
       :class="!currentConversationId ? 'flex' : 'hidden xl:flex'"
     >
       <InboxListHeader
@@ -234,17 +234,17 @@ onMounted(() => {
       />
       <div
         ref="notificationList"
-        class="flex flex-col gap-0.5 w-full h-[calc(100%-56px)] pb-4 overflow-x-hidden px-2 overflow-y-auto divide-y divide-slate-300 [&>*:hover]:!border-y-transparent [&>*.active]:!border-y-transparent [&>*:hover+*]:!border-t-transparent [&>*.active+*]:!border-t-transparent"
+        class="flex flex-col gap-0.5 w-full h-[calc(100%-56px)] pb-4 overflow-x-hidden px-2 overflow-y-auto divide-y divide-n-weak [&>*:hover]:!border-y-transparent [&>*.active]:!border-y-transparent [&>*:hover+*]:!border-t-transparent [&>*.active+*]:!border-t-transparent"
       >
         <InboxCard
           v-for="notificationItem in notifications"
           :key="notificationItem.id"
           :inbox-item="notificationItem"
           :state-inbox="stateInbox(notificationItem.primaryActor?.inboxId)"
-          class="inbox-card rounded-none hover:rounded-lg hover:bg-slate-900/5 dark:hover:bg-slate-900/15"
+          class="inbox-card rounded-none hover:rounded-lg hover:bg-n-alpha-1 dark:hover:bg-n-alpha-3"
           :class="
             currentConversationId === notificationItem.primaryActor?.id
-              ? 'bg-slate-900/5 dark:bg-slate-900/15 rounded-lg active'
+              ? 'bg-n-alpha-1 dark:bg-n-alpha-3 rounded-lg active'
               : ''
           "
           @mark-notification-as-read="markNotificationAsRead"
@@ -255,11 +255,11 @@ onMounted(() => {
           @click="openConversation(notificationItem)"
         />
         <div v-if="uiFlags.isFetching" class="flex justify-center my-4">
-          <Spinner class="text-indigo-600" />
+          <Spinner class="text-n-brand" />
         </div>
         <p
           v-if="showEmptyState"
-          class="p-4 text-sm font-medium text-center text-slate-900"
+          class="p-4 text-sm font-medium text-center text-n-slate-10"
         >
           {{ $t('INBOX.LIST.NO_NOTIFICATIONS') }}
         </p>

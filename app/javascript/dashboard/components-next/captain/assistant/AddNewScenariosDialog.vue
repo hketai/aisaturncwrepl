@@ -88,9 +88,9 @@ const onClickCancel = () => {
 
     <div
       v-if="showPopover"
-      class="w-[31.25rem] absolute top-10 ltr:left-0 rtl:right-0 bg-slate-900/15 backdrop-blur-[100px] p-6 rounded-xl border border-slate-300 shadow-md flex flex-col gap-6 z-50"
+      class="w-[31.25rem] absolute top-10 ltr:left-0 rtl:right-0 bg-n-alpha-3 backdrop-blur-[100px] p-6 rounded-xl border border-n-weak shadow-md flex flex-col gap-6 z-50"
     >
-      <h3 class="text-base font-medium text-slate-900">
+      <h3 class="text-base font-medium text-n-slate-12">
         {{ t(`CAPTAIN.ASSISTANTS.SCENARIOS.ADD.NEW.TITLE`) }}
       </h3>
 
@@ -141,7 +141,7 @@ const onClickCancel = () => {
           variant="faded"
           color="slate"
           :label="t('CAPTAIN.ASSISTANTS.SCENARIOS.ADD.NEW.FORM.CANCEL')"
-          class="w-full bg-slate-900/10 !text-indigo-700 hover:bg-slate-900/15"
+          class="w-full bg-n-alpha-2 !text-n-blue-text hover:bg-n-alpha-3"
           @click="onClickCancel"
         />
         <Button

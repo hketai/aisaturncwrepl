@@ -25,15 +25,15 @@ defineProps({
 
 <template>
   <button
-    class="flex flex-col gap-4 w-full h-fit p-4 rounded-md border border-slate-300 dark:border-slate-300"
+    class="flex flex-col gap-4 w-full h-fit p-4 rounded-md border border-n-weak dark:border-n-weak"
     :class="{
-      'border-indigo-600 ': active,
+      'border-n-brand ': active,
     }"
   >
     <div class="flex flex-col gap-2 items-center w-full rounded-t-[5px]">
       <div class="grid grid-cols-[1fr_auto] items-center w-full gap-1">
         <div
-          class="overflow-hidden text-base font-medium text-slate-900 text-left"
+          class="overflow-hidden text-base font-medium text-n-slate-12 text-left"
         >
           <span class="block truncate">{{ title }}</span>
         </div>
@@ -41,11 +41,11 @@ defineProps({
           :checked="active"
           type="radio"
           :name="`hotkey-${title}`"
-          class="shadow cursor-pointer grid place-items-center border-2 border-slate-400 appearance-none rounded-full w-5 h-5 checked:bg-indigo-600 before:content-[''] before:bg-indigo-600 before:border-4 before:rounded-full before:border-slate-400 checked:before:w-[18px] checked:before:h-[18px] checked:border checked:border-indigo-600"
+          class="shadow cursor-pointer grid place-items-center border-2 border-n-strong appearance-none rounded-full w-5 h-5 checked:bg-n-brand before:content-[''] before:bg-n-brand before:border-4 before:rounded-full before:border-n-strong checked:before:w-[18px] checked:before:h-[18px] checked:border checked:border-n-brand"
         />
       </div>
       <span
-        class="text-slate-900 text-sm line-clamp-2 leading-[1.4] text-start"
+        class="text-n-slate-12 text-sm line-clamp-2 leading-[1.4] text-start"
       >
         {{ description }}
       </span>

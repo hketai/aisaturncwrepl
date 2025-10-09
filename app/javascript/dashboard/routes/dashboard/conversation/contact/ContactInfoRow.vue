@@ -46,7 +46,7 @@ export default {
     <a
       v-if="href"
       :href="href"
-      class="flex items-center gap-2 text-slate-900 hover:underline"
+      class="flex items-center gap-2 text-n-slate-11 hover:underline"
     >
       <EmojiOrIcon
         :icon="icon"
@@ -61,7 +61,7 @@ export default {
       >
         {{ value }}
       </span>
-      <span v-else class="text-sm text-slate-900">
+      <span v-else class="text-sm text-n-slate-11">
         {{ $t('CONTACT_PANEL.NOT_AVAILABLE') }}
       </span>
       <NextButton
@@ -75,7 +75,7 @@ export default {
       />
     </a>
 
-    <div v-else class="flex items-center gap-2 text-slate-900">
+    <div v-else class="flex items-center gap-2 text-n-slate-11">
       <EmojiOrIcon
         :icon="icon"
         :emoji="emoji"
@@ -87,7 +87,7 @@ export default {
         v-dompurify-html="value"
         class="overflow-hidden text-sm whitespace-nowrap text-ellipsis"
       />
-      <span v-else class="text-sm text-slate-900">
+      <span v-else class="text-sm text-n-slate-11">
         {{ $t('CONTACT_PANEL.NOT_AVAILABLE') }}
       </span>
     </div>

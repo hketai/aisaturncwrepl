@@ -6,6 +6,9 @@
 @import 'shared/assets/fonts/InterDisplay/inter-display';
 @import 'shared/assets/fonts/inter';
 
+// Next Colors
+@import 'next-colors';
+
 // Base styles for elements
 @import 'base';
 
@@ -35,7 +38,7 @@ body {
 }
 
 .tooltip {
-  @apply bg-slate-200 text-slate-900 py-1 px-2 z-40 text-xs rounded-md max-w-96;
+  @apply bg-n-solid-2 text-n-slate-12 py-1 px-2 z-40 text-xs rounded-md max-w-96;
 }
 
 #app {

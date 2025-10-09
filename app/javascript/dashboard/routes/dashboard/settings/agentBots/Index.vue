@@ -101,17 +101,17 @@ onMounted(() => {
       </BaseSettingsHeader>
     </template>
     <template #body>
-      <table class="min-w-full overflow-x-auto divide-y divide-slate-400">
+      <table class="min-w-full overflow-x-auto divide-y divide-n-strong">
         <thead>
           <th
             v-for="thHeader in tableHeaders"
             :key="thHeader"
-            class="py-4 font-semibold text-left ltr:pr-4 rtl:pl-4 text-slate-900"
+            class="py-4 font-semibold text-left ltr:pr-4 rtl:pl-4 text-n-slate-11"
           >
             {{ thHeader }}
           </th>
         </thead>
-        <tbody class="flex-1 divide-y divide-slate-300 text-slate-900">
+        <tbody class="flex-1 divide-y divide-n-weak text-n-slate-12">
           <tr v-for="bot in agentBots" :key="bot.id">
             <td class="py-4 ltr:pr-4 rtl:pl-4">
               <div class="flex flex-row items-center gap-4">
@@ -126,12 +126,12 @@ onMounted(() => {
                     {{ bot.name }}
                     <span
                       v-if="bot.system_bot"
-                      class="text-xs text-slate-900 bg-indigo-400 inline-block rounded-md py-0.5 px-1 ltr:ml-1 rtl:mr-1"
+                      class="text-xs text-n-slate-12 bg-n-blue-5 inline-block rounded-md py-0.5 px-1 ltr:ml-1 rtl:mr-1"
                     >
                       {{ $t('AGENT_BOTS.GLOBAL_BOT_BADGE') }}
                     </span>
                   </span>
-                  <span class="text-sm text-slate-900">
+                  <span class="text-sm text-n-slate-11">
                     {{ bot.description }}
                   </span>
                 </div>

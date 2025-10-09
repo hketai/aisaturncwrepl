@@ -15,7 +15,7 @@ const enabled = ref(true);
     :layout="{ type: 'grid', width: '600px' }"
   >
     <Variant title="Basic Usage">
-      <div class="p-8 bg-white">
+      <div class="p-8 bg-n-background">
         <BaseInfo
           v-model:policy-name="policyName"
           v-model:description="description"

@@ -113,7 +113,7 @@ export default {
 
 <style scoped lang="scss">
 .label {
-  @apply items-center font-medium text-xs rounded-[4px] gap-1 p-1 bg-slate-200 text-slate-900 border border-solid border-slate-400 h-6;
+  @apply items-center font-medium text-xs rounded-[4px] gap-1 p-1 bg-n-slate-3 text-n-slate-12 border border-solid border-n-strong h-6;
 
   &.small {
     @apply text-xs py-0.5 px-1 leading-tight h-5;
@@ -133,70 +133,70 @@ export default {
 
   /* Color Schemes */
   &.primary {
-    @apply bg-indigo-400 text-indigo-900 border border-solid border-indigo-600;
+    @apply bg-n-blue-5 text-n-blue-12 border border-solid border-n-blue-7;
 
     a {
-      @apply text-indigo-900;
+      @apply text-n-blue-12;
     }
     .label-color-dot {
-      @apply bg-indigo-800;
+      @apply bg-n-blue-9;
     }
   }
   &.secondary {
-    @apply bg-slate-400 text-slate-900 border border-solid border-slate-600;
+    @apply bg-n-slate-5 text-n-slate-12 border border-solid border-n-slate-7;
 
     a {
-      @apply text-slate-900;
+      @apply text-n-slate-12;
     }
     .label-color-dot {
-      @apply bg-slate-800;
+      @apply bg-n-slate-9;
     }
   }
   &.success {
-    @apply bg-teal-400 text-teal-900 border border-solid border-teal-600;
+    @apply bg-n-teal-5 text-n-teal-12 border border-solid border-n-teal-7;
 
     a {
-      @apply text-teal-900;
+      @apply text-n-teal-12;
     }
     .label-color-dot {
-      @apply bg-teal-800;
+      @apply bg-n-teal-9;
     }
   }
   &.alert {
-    @apply bg-red-400 text-red-900 border border-solid border-red-600;
+    @apply bg-n-ruby-5 text-n-ruby-12 border border-solid border-n-ruby-7;
 
     a {
-      @apply text-red-900;
+      @apply text-n-ruby-12;
     }
     .label-color-dot {
-      @apply bg-red-800;
+      @apply bg-n-ruby-9;
     }
   }
   &.warning {
-    @apply bg-amber-400 text-amber-900 border border-solid border-amber-600;
+    @apply bg-n-amber-5 text-n-amber-12 border border-solid border-n-amber-7;
 
     a {
-      @apply text-amber-900;
+      @apply text-n-amber-12;
     }
     .label-color-dot {
-      @apply bg-amber-800;
+      @apply bg-n-amber-9;
     }
   }
 
   &.smooth {
-    @apply bg-transparent text-slate-900 dark:text-slate-900 border border-solid border-slate-400;
+    @apply bg-transparent text-n-slate-11 dark:text-n-slate-12 border border-solid border-n-strong;
   }
 
   &.dashed {
-    @apply bg-transparent text-slate-900 dark:text-slate-900 border border-dashed border-slate-400;
+    @apply bg-transparent text-n-slate-11 dark:text-n-slate-12 border border-dashed border-n-strong;
   }
 }
 
 .label-close--button {
-  @apply text-slate-900 -mb-0.5 rounded-sm cursor-pointer flex items-center justify-center hover:bg-slate-200;
+  @apply text-n-slate-11 -mb-0.5 rounded-sm cursor-pointer flex items-center justify-center hover:bg-n-slate-3;
 
   svg {
-    @apply text-slate-900;
+    @apply text-n-slate-11;
   }
 }
 

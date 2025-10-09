@@ -70,7 +70,7 @@ const variableKey = (item = {}) => {
 <template>
   <div
     ref="mentionsListContainerRef"
-    class="bg-slate-100 p-1 rounded-xl overflow-auto absolute w-full z-20 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-slate-400 mention--box"
+    class="bg-n-solid-1 p-1 rounded-xl overflow-auto absolute w-full z-20 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-n-strong mention--box"
   >
     <ul class="mb-0 vertical dropdown menu">
       <woot-dropdown-item
@@ -81,25 +81,25 @@ const variableKey = (item = {}) => {
         @mouseover="onHover(index)"
       >
         <button
-          class="flex rounded-lg group flex-col gap-0.5 overflow-hidden cursor-pointer items-start px-3 py-2 justify-center w-full h-full text-left hover:bg-slate-900/10"
+          class="flex rounded-lg group flex-col gap-0.5 overflow-hidden cursor-pointer items-start px-3 py-2 justify-center w-full h-full text-left hover:bg-n-alpha-black2"
           :class="{
-            'bg-slate-900/10': index === selectedIndex,
+            'bg-n-alpha-black2': index === selectedIndex,
           }"
           @click="onListItemSelection(index)"
         >
           <slot :item="item" :index="index" :selected="index === selectedIndex">
             <p
-              class="max-w-full min-w-0 mb-0 overflow-hidden text-sm font-medium text-slate-900 group-hover:text-slate-900 text-ellipsis whitespace-nowrap"
+              class="max-w-full min-w-0 mb-0 overflow-hidden text-sm font-medium text-n-slate-11 group-hover:text-n-slate-12 text-ellipsis whitespace-nowrap"
               :class="{
-                'text-slate-900': index === selectedIndex,
+                'text-n-slate-12': index === selectedIndex,
               }"
             >
               {{ item.description }}
             </p>
             <p
-              class="max-w-full min-w-0 mb-0 overflow-hidden text-xs text-slate-900 group-hover:text-slate-900 text-ellipsis whitespace-nowrap"
+              class="max-w-full min-w-0 mb-0 overflow-hidden text-xs text-n-slate-11 group-hover:text-n-slate-12 text-ellipsis whitespace-nowrap"
               :class="{
-                'text-slate-900': index === selectedIndex,
+                'text-n-slate-12': index === selectedIndex,
               }"
             >
               {{ variableKey(item) }}

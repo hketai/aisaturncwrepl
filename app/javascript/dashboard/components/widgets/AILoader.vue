@@ -22,15 +22,15 @@
     gap: 4px;
 
     .ai-typing--icon {
-      @apply text-indigo-900;
+      @apply text-n-iris-11;
     }
   }
   label {
-    @apply text-indigo-900 ltr:mr-1 rtl:ml-1 inline-block;
+    @apply text-n-iris-11 ltr:mr-1 rtl:ml-1 inline-block;
   }
   .loader {
     animation: bubble-scale 1.2s infinite;
-    @apply bg-indigo-900 inline-block size-1.5 ltr:mr-1 rtl:ml-1 mt-3 rounded-full;
+    @apply bg-n-iris-11 inline-block size-1.5 ltr:mr-1 rtl:ml-1 mt-3 rounded-full;
   }
 
   .loader:nth-child(2) {

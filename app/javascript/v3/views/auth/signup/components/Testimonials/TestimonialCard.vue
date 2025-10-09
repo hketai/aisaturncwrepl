@@ -23,12 +23,12 @@ export default {
 
 <template>
   <div
-    class="flex flex-col items-start justify-center p-6 w-80 bg-white rounded-lg drop-shadow-md"
+    class="flex flex-col items-start justify-center p-6 w-80 bg-n-background rounded-lg drop-shadow-md"
   >
-    <p class="text-sm text-slate-900 tracking-normal">
+    <p class="text-sm text-n-slate-12 tracking-normal">
       {{ reviewContent }}
     </p>
-    <div class="flex items-center mt-4 text-slate-900">
+    <div class="flex items-center mt-4 text-n-slate-12">
       <div class="bg-white rounded-full p-1">
         <img :src="authorImage" class="h-8 w-8 rounded-full" />
       </div>

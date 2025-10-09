@@ -8,33 +8,8 @@ class GlobalConfig
       config_keys = *args
       config = {}
 
-      # Batch fetch from Redis using mget
-      cache_keys = config_keys.map { |k| "#{VERSION}:#{KEY_PREFIX}:#{k}" }
-      cached_values = $alfred.with { |conn| conn.mget(cache_keys) }
-
-      # Identify missing keys
-      missing_keys = []
-      config_keys.each_with_index do |config_key, index|
-        if cached_values[index].present?
-          config[config_key] = JSON.parse(cached_values[index])['value']
-        else
-          missing_keys << config_key
-        end
-      end
-
-      # Batch fetch missing keys from database
-      if missing_keys.any?
-        db_configs = InstallationConfig.where(name: missing_keys).index_by(&:name)
-        
-        missing_keys.each do |config_key|
-          value_from_db = db_configs[config_key]&.value
-          config[config_key] = value_from_db
-          
-          # Cache the value
-          cache_key = "#{VERSION}:#{KEY_PREFIX}:#{config_key}"
-          cached_value = { value: value_from_db }.to_json
-          $alfred.with { |conn| conn.set(cache_key, cached_value, { ex: DEFAULT_EXPIRY }) }
-        end
+      config_keys.each do |config_key|
+        config[config_key] = load_from_cache(config_key)
       end
 
       typecast_config(config)
