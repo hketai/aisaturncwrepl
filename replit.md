@@ -31,13 +31,14 @@
 - ✅ Turkish i18n: Full translation support for all handoff features
 
 **AI-to-AI Agent Transfer:**
-- ✅ Database: transfer_enabled, transfer_agent_id columns in saturn_agent_profiles
+- ✅ Database: transfer_enabled, transfer_agent_id, intent_agent_mappings columns in saturn_agent_profiles
 - ✅ Backend: AgentTransfer tool switches conversation to different AI agent
 - ✅ Conversation persistence: current_saturn_agent_id stored in custom_attributes
 - ✅ Infinite loop protection: MAX_TRANSFER_DEPTH=3 prevents cyclic transfers
 - ✅ Depth tracking: transfer_depth persists across messages via SaturnListener
-- ✅ Frontend: Toggle and agent selector in edit dialog
+- ✅ Frontend: Intent-based routing in HandoffDialog (removed from edit dialog)
 - ✅ Turkish i18n: Full translation support
+- ✅ UI: Dark/light theme compatibility with proper text colors
 
 **Recursion Safety:**
 - ✅ Cross-message depth persistence: Prevents A→B→A loops across multiple messages
@@ -45,9 +46,12 @@
 - ✅ Logging: Full audit trail with depth tracking
 
 **UI Organization:**
-- Handoff settings moved to dedicated dialog (button on agent card)
-- Agent transfer settings remain in edit dialog
-- Cleaner separation of concerns for better UX
+- ✅ Handoff settings in dedicated dialog with radio button type selection
+- ✅ Human handoff: Default team + optional intent→team mappings
+- ✅ AI agent handoff: Intent-based routing only (intent→agent mappings)
+- ✅ Agent transfer settings completely removed from edit dialog
+- ✅ Dark/light theme support for all components
+- ✅ Enhanced "Create Team" button visibility in both themes
 
 ### 🔧 Critical Bug Fixes & Production Deployment Fix
 

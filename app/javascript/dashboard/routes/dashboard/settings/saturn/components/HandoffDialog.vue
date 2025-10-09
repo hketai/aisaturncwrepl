@@ -207,8 +207,8 @@ defineExpose({ dialogRef });
             <div class="flex items-center gap-3">
               <i class="i-lucide-user-round-search text-2xl" :class="handoffType === 'human' ? 'text-woot-500' : 'text-n-slate-11'"></i>
               <div>
-                <div class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
-                <div class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
+                <div class="text-sm font-medium text-n-slate-12 dark:text-n-slate-1">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
+                <div class="text-xs text-n-slate-11 dark:text-n-slate-4">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
               </div>
             </div>
           </label>
@@ -228,8 +228,8 @@ defineExpose({ dialogRef });
             <div class="flex items-center gap-3">
               <i class="i-lucide-bot text-2xl" :class="handoffType === 'agent' ? 'text-woot-500' : 'text-n-slate-11'"></i>
               <div>
-                <div class="text-sm font-medium text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
-                <div class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
+                <div class="text-sm font-medium text-n-slate-12 dark:text-n-slate-1">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
+                <div class="text-xs text-n-slate-11 dark:text-n-slate-4">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
               </div>
             </div>
           </label>
@@ -239,16 +239,16 @@ defineExpose({ dialogRef });
       <!-- Human Handoff Settings -->
       <div v-if="handoffType === 'human'" class="space-y-4 border-t border-n-weak pt-4">
         <!-- No Teams Warning -->
-        <div v-if="hasNoTeams" class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <div v-if="hasNoTeams" class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
           <div class="flex items-start gap-3">
-            <i class="i-lucide-alert-triangle text-amber-600 text-xl mt-0.5"></i>
+            <i class="i-lucide-alert-triangle text-amber-600 dark:text-amber-400 text-xl mt-0.5"></i>
             <div class="flex-1">
-              <h4 class="text-sm font-semibold text-amber-900 mb-1">{{ $t('SATURN.AGENTS.NO_TEAMS_WARNING') }}</h4>
-              <p class="text-xs text-amber-800">{{ $t('SATURN.AGENTS.NO_TEAMS_MESSAGE') }}</p>
+              <h4 class="text-sm font-semibold text-amber-900 dark:text-amber-100 mb-1">{{ $t('SATURN.AGENTS.NO_TEAMS_WARNING') }}</h4>
+              <p class="text-xs text-amber-800 dark:text-amber-200">{{ $t('SATURN.AGENTS.NO_TEAMS_MESSAGE') }}</p>
               <button
                 type="button"
                 @click="navigateToTeams"
-                class="inline-block mt-2 px-3 py-1 text-xs font-medium text-white bg-amber-600 hover:bg-amber-700 rounded"
+                class="inline-flex items-center gap-1 mt-2 px-4 py-2 text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 rounded-md shadow-sm transition-colors"
               >
                 {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
               </button>
