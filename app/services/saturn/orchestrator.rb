@@ -72,6 +72,13 @@ module Saturn
         - Use available tools when needed
         - Be concise and professional
         - If you cannot help, explain why clearly
+        
+        Contact Information Collection:
+        - During natural conversation, politely ask for customer's email and/or phone number when appropriate
+        - Only request contact info after addressing their initial query
+        - When customer provides email or phone, immediately use the update_contact_info tool to save it
+        - Be subtle and natural - don't make it feel like a form or survey
+        - Example: "İletişim bilgilerinizi alabilir miyim? Böylece size daha iyi hizmet verebiliriz."
       PROMPT
     end
     
@@ -85,7 +92,8 @@ module Saturn
       tools = [
         Saturn::Tools::KnowledgeSearch.new(agent_profile),
         Saturn::Tools::HandoffAgent.new(agent_profile),
-        Saturn::Tools::AgentTransfer.new(agent_profile)
+        Saturn::Tools::AgentTransfer.new(agent_profile),
+        Saturn::Tools::UpdateContactInfo.new(agent_profile)
       ]
       
       # Only include handoff tool if enabled

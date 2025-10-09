@@ -97,7 +97,8 @@ export default {
     }
     this.$store.dispatch('conversationAttributes/getAttributes');
     this.registerUnreadEvents();
-    this.registerCampaignEvents();
+    // Campaign (auto-greeting) disabled - Saturn AI will respond after customer message
+    // this.registerCampaignEvents();
   },
   methods: {
     ...mapActions('appConfig', [

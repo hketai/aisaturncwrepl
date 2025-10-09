@@ -169,6 +169,8 @@ module Saturn
         handle_handoff(message, result)
       when 'agent_transfer_requested'
         handle_agent_transfer(message, result, account, api_key, depth + 1)
+      when 'update_contact_info_requested'
+        handle_contact_info_update(message, result, agent_profile, account)
       else
         # Normal response
         if result[:response].present?
@@ -176,6 +178,27 @@ module Saturn
           account.increment_ai_conversation_count!
         end
       end
+    end
+    
+    def handle_contact_info_update(message, result, agent_profile, account)
+      conversation = message.conversation
+      contact = conversation.contact
+      
+      email = result[:email]
+      phone_number = result[:phone_number]
+      
+      updates = {}
+      updates[:email] = email if email.present? && contact.email.blank?
+      updates[:phone_number] = phone_number if phone_number.present? && contact.phone_number.blank?
+      
+      if updates.any?
+        contact.update!(updates)
+        Rails.logger.info("Saturn: Updated contact #{contact.id} with #{updates.keys.join(', ')}")
+      end
+      
+      # Send confirmation message to customer
+      create_response_message(message, result[:message], agent_profile)
+      account.increment_ai_conversation_count!
     end
     
     def handle_depth_limit_handoff(message, agent_profile)
