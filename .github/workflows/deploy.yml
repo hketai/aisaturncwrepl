@@ -70,11 +70,9 @@ jobs:
             echo "🧹 Cleaning up old YAML installation configs..."
             PGPASSWORD=chatwoot_password_2025 psql -h localhost -U chatwoot -d chatwoot_production -c "DELETE FROM installation_configs WHERE value::text LIKE '---%%';" || true
             
-            # Seed database (if seed file exists and has content)
-            if [ -f db/seeds.rb ] && [ -s db/seeds.rb ]; then
-              echo "🌱 Seeding database with initial data..."
-              RAILS_ENV=production bundle exec rails db:seed || echo "⚠️ Seed skipped (idempotent or already seeded)"
-            fi
+            # NOTE: db:seed is DISABLED in production because it sets Redis onboarding flag
+            # which forces the app into installation wizard mode!
+            # Seeds should ONLY run in development/staging environments.
             
             # Clear Rails cache
             echo "🧹 Clearing Rails cache..."
