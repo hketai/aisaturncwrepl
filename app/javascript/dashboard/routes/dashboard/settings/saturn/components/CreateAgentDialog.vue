@@ -2,11 +2,9 @@
 import { ref, watch, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAlert } from 'dashboard/composables';
-import { useStore, useMapGetter } from 'dashboard/composables/store';
 import SaturnAPI from 'dashboard/api/saturn';
 
 const { t } = useI18n();
-const store = useStore();
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
 import Input from 'dashboard/components-next/input/Input.vue';
@@ -29,17 +27,12 @@ const form = ref({
   industry_type: '',
   behavior_rules: [],
   safety_guidelines: [],
-  handoff_enabled: false,
-  handoff_team_id: null,
   transfer_enabled: false,
   transfer_agent_id: null,
 });
 
 const isEdit = ref(false);
 const allAgents = ref([]);
-
-// Get teams from store
-const teams = useMapGetter('teams/getTeams');
 
 // Available agents for transfer (excluding current agent)
 const availableAgents = computed(() => {
@@ -313,8 +306,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: agent.industry_type || '',
       behavior_rules: agent.behavior_rules || [],
       safety_guidelines: agent.safety_guidelines || [],
-      handoff_enabled: agent.handoff_enabled || false,
-      handoff_team_id: agent.handoff_team_id || null,
       transfer_enabled: agent.transfer_enabled || false,
       transfer_agent_id: agent.transfer_agent_id || null,
     };
@@ -327,8 +318,6 @@ watch(() => props.selectedAgent, (agent) => {
       industry_type: '',
       behavior_rules: [],
       safety_guidelines: [],
-      handoff_enabled: false,
-      handoff_team_id: null,
       transfer_enabled: false,
       transfer_agent_id: null,
     };
@@ -431,41 +420,6 @@ defineExpose({ dialogRef });
         :label="$t('SATURN.AGENTS.PRODUCT_CONTEXT_LABEL')"
         placeholder="e.g., SaaS product support, E-commerce store"
       />
-
-      <!-- Handoff Settings -->
-      <div class="border-t border-n-weak pt-4 space-y-3">
-        <h4 class="text-sm font-semibold text-n-slate-12">{{ $t('SATURN.AGENTS.HANDOFF_SETTINGS') }}</h4>
-        
-        <div class="flex items-center gap-2">
-          <input
-            v-model="form.handoff_enabled"
-            type="checkbox"
-            id="handoff-enabled"
-            class="rounded"
-          />
-          <label for="handoff-enabled" class="text-sm">{{ $t('SATURN.AGENTS.ENABLE_HANDOFF') }}</label>
-        </div>
-
-        <div v-if="form.handoff_enabled" class="space-y-2 pl-6">
-          <label class="block text-sm font-medium text-n-slate-12">
-            {{ $t('SATURN.AGENTS.HANDOFF_TEAM_LABEL') }}
-          </label>
-          <select
-            v-model="form.handoff_team_id"
-            class="w-full px-3 py-2 border border-n-weak rounded-lg focus:outline-none focus:ring-2 focus:ring-woot-500"
-          >
-            <option :value="null">{{ $t('SATURN.AGENTS.SELECT_TEAM') }}</option>
-            <option
-              v-for="team in teams"
-              :key="team.id"
-              :value="team.id"
-            >
-              {{ team.name }}
-            </option>
-          </select>
-          <p class="text-xs text-n-slate-11">{{ $t('SATURN.AGENTS.HANDOFF_TEAM_HINT') }}</p>
-        </div>
-      </div>
 
       <!-- Agent Transfer Settings -->
       <div class="border-t border-n-weak pt-4 space-y-3">
