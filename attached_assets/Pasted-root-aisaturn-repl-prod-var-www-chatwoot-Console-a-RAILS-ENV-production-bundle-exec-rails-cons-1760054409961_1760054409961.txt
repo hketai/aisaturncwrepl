@@ -1,0 +1,50 @@
+root@aisaturn-repl-prod:/var/www/chatwoot# # Console aç
+RAILS_ENV=production bundle exec rails console
+I, [2025-10-09T23:58:32.406932 #178974]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T23:58:32.407025 #178974]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-09T23:58:34.726122 #178974]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> # Column var mı kontrol et
+=> nil
+irb(main):002:0> Saturn::AgentProfile.reset_column_information
+=> {true=>#<Concurrent::Map:0x000072b456b00bd0 entries=0 default_proc=nil>, false=>#<Concurrent::Map:0x000072b456b00a90 entries=0 default_proc=nil>}
+irb(main):003:0> has_enabled = Saturn::AgentProfile.column_names.include?('enabled')
+=> true
+irb(main):004:0> puts "Has 'enabled' column: #{has_enabled}"
+Has 'enabled' column: true
+=> nil
+irb(main):005:0>
+irb(main):006:0> # Agent'ı test et
+=> nil
+irb(main):007:0> agent = Saturn::AgentProfile.first
+irb(main):008:0> puts "Agent: #{agent.name}, Enabled: #{agent.enabled}"
+Agent: Ayşe, Enabled: true
+=> nil
+irb(main):009:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot# # Web ve worker servislerini restart et
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# Durum kontrolü
+sudo systemctl status chatwoot-web --no-pager | head -15
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-10-09 23:59:28 UTC; 2s ago
+ Invocation: 931f3e8507514452b01e689291c573d8
+   Main PID: 179006 (ruby)
+      Tasks: 1 (limit: 19140)
+     Memory: 105.9M (peak: 105.9M)
+        CPU: 2.172s
+     CGroup: /system.slice/chatwoot-web.service
+             └─179006 /root/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+
+Oct 09 23:59:28 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+root@aisaturn-repl-prod:/var/www/chatwoot# # Log kontrol (hata var mı?)
+tail -n 50 /var/www/chatwoot/log/production.log
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# # Log kontrol (hata var mı?)
+tail -n 50 /var/www/chatwoot/log/production.log
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -n 50 /var/www/chatwoot/log/production.log
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot#

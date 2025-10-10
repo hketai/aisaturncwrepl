@@ -88,12 +88,13 @@
 - ✅ **Full CI/CD Pipeline:** GitHub Actions auto-deploy on push to main branch
 - ✅ **Dependency Management:** Bundle install (Ruby gems) + pnpm install (Node packages)
 - ✅ **Database Migration:** Automatic db:migrate on every deployment
-- ✅ **Database Seeding:** Smart db:seed (runs only if seed file exists and has content)
+- ⚠️ **Database Seeding:** DISABLED (sets onboarding flag, causes installation screen)
 - ✅ **Cache Clearing:** Vite cache + Rails cache cleared on each deploy
 - ✅ **Asset Compilation:** Vite builds (library + app) + Rails asset precompile
 - ✅ **Service Restart:** Chatwoot web server + Sidekiq worker + Nginx restart
 - ✅ **YAML Cleanup:** Automatic removal of old YAML configs that cause production errors
 - ✅ **Health Checks:** Service status verification after deployment
+- ✅ **Production Recovery:** Manual InstallationConfig + enabled column fixes applied
 - File: `.github/workflows/deploy.yml`
 
 **AI Conversation Limits - Restored:**
