@@ -1,5 +1,31 @@
 # Chatwoot - Customer Support Platform
 
+## Recent Changes (October 10, 2025)
+
+### 🤖 Intent-Based Routing for Chat - COMPLETE
+
+**Token-Optimized Intent Detection:**
+- ✅ Service: `Saturn::IntentDetector` uses gpt-3.5-turbo for fast, cost-effective intent analysis
+- ✅ Token optimization: Max 500 chars context, 50 token response, temperature 0.3
+- ✅ Smart matching: Collects available intents from both team and agent mappings
+- ✅ Fallback logic: Returns nil if no intent matches, allowing default routing
+
+**Chat Handoff & Transfer Logic (3 Scenarios):**
+1. ✅ **No Answer Fallback**: Agent can't help → Routes to default `handoff_team_id`
+2. ✅ **Intent → Team Routing**: Detects intent → Matches `intent_team_mappings` → Routes to specific team
+3. ✅ **Intent → Agent Routing**: Detects intent → Matches `intent_agent_mappings` → Transfers to specific agent
+
+**Updated Tools:**
+- ✅ `HandoffAgent`: Accepts `detected_intent` param, checks mappings, falls back to default team
+- ✅ `AgentTransfer`: Accepts `detected_intent` param, checks mappings, falls back to default agent
+- ✅ `Orchestrator`: Auto-detects intent when handoff/transfer tools called, injects into arguments
+
+**Technical Implementation:**
+- Files: `app/services/saturn/intent_detector.rb`, `app/services/saturn/tools/handoff_agent.rb`, `app/services/saturn/tools/agent_transfer.rb`, `app/services/saturn/orchestrator.rb`
+- Intent detection only runs for handoff/transfer tools (performance optimization)
+- Lightweight context: Last 3 user messages only (token efficiency)
+- Database: `intent_agent_mappings` column added via migration
+
 ## Recent Changes (October 9, 2025)
 
 ### 🎨 UI/UX Improvements - COMPLETE

@@ -55,7 +55,8 @@ module Saturn
     
     def build_intent_prompt(user_message, available_intents, context)
       # Token-optimized: Only last 500 chars of context
-      short_context = context&.last(MAX_CONTEXT_LENGTH) || ""
+      context_str = context.to_s
+      short_context = context_str.length > MAX_CONTEXT_LENGTH ? context_str[-MAX_CONTEXT_LENGTH..-1] : context_str
       
       <<~PROMPT
         Analyze this customer message and identify the PRIMARY intent from the list below.
