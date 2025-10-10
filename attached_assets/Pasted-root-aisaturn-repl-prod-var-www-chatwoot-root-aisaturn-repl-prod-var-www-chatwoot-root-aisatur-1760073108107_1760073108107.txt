@@ -1,0 +1,82 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 100 --no-pager | grep -A 20 "whatsapp_web_channels"
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.287847 #191119]  INFO -- : [00042fa9-9756-4c07-9e52-942f22ca36fe] Started POST "/api/v1/accounts/1/channels/whatsapp_web_channels/10/connect" for 46.154.237.68 at 2025-10-10 05:10:40 +0000
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.292866 #191119]  INFO -- : [00042fa9-9756-4c07-9e52-942f22ca36fe] Processing by Api::V1::Accounts::Channels::WhatsappWebChannelsController#connect as JSON
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.293015 #191119]  INFO -- : [00042fa9-9756-4c07-9e52-942f22ca36fe]   Parameters: {"account_id"=>"1", "id"=>"10"}
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.303016 #191119]  INFO -- : [8e252018-0143-4968-9229-02ddcb7c83ac] Completed 200 OK in 52ms (Views: 30.2ms | ActiveRecord: 14.4ms | Allocations: 22733)
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.306201 #191119]  INFO -- : [00042fa9-9756-4c07-9e52-942f22ca36fe] Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.3ms | Allocations: 3876)
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: F, [2025-10-10T05:10:40.307920 #191119] FATAL -- : [00042fa9-9756-4c07-9e52-942f22ca36fe]
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] NoMethodError (undefined method `whatsapp' for #<Account id: 1, name: "Saturn", created_at: "2025-10-06 00:50:38.249367000 +0000", updated_at: "2025-10-08 20:55:49.771611000 +0000", locale: "tr", domain: nil, support_email: nil, feature_flags: 294806688890839, auto_resolve_duration: nil, limits: {"agents"=>"10", "inboxes"=>"10"}, custom_attributes: {}, status: "active", internal_attributes: {}, settings: {}, openai_api_key: "sk-proj-978ABKWoMm8qk8X5SqzPGqs7BRqfb3slNJZXjhxYoj...", ai_conversation_limit: nil, ai_conversation_count: 0, ai_limit_reset_at: nil>):
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe]
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/api/v1/accounts/channels/whatsapp_web_channels_controller.rb:59:in `set_channel'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:29:in `switch_locale_using_account_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/request_exception_handler.rb:11:in `handle_with_exception'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:19:in `switch_locale'
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -100 /var/www/chatwoot/log/production.log | grep -A 15 "ERROR\|FATAL\|whatsapp"
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo tail -50 /var/log/chatwoot/whatsapp-web.log
+    error: "Request failed with status code 404"
+{"level":30,"time":"2025-10-10T04:49:35.001Z","pid":189554,"hostname":"aisaturn-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"7UI5xs7ddeuxE42u5goBMSQApUNw74Nwq8r1nC0IiB4="}},"msg":"connected to WA"}
+{"level":30,"time":"2025-10-10T04:49:35.033Z","pid":189554,"hostname":"aisaturn-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"tertiary":1023223821},"mcc":"000","mnc":"000","osVersion":"0.1","device":"Desktop","osBuildNumber":"0.1","releaseChannel":"RELEASE","localeLanguageIso6391":"en","localeCountryIso31661Alpha2":"US"},"webInfo":{"webSubPlatform":"WEB_BROWSER"},"connectType":"WIFI_UNKNOWN","connectReason":"USER_ACTIVATED","devicePairingData":{"eRegid":"AAAAmg==","eKeytype":"BQ==","eIdent":"21zOjW2fKkoW6wlpw2OT4cmMvrbLqFaGPzL09DCEFgA=","eSkeyId":"AAAB","eSkeyVal":"ZTI9VwyevaYw+QQm4LMNEZgR+SjbUvg5pEVW3om2tDM=","eSkeySig":"d7VZ0Q42afLj01Uol/Wd5sAQVmLvakpB7vtfliOfk6j+N7u8PXWTIsU5UoMEggfZzrXKlOYWDg1GE3p8i/6Wiw==","buildHash":"c9lQeUMlTdrMrIi/+YcPiA==","deviceProps":"CgZVYnVudHUYASAA"},"pull":false},"msg":"not logged in, attempting registration..."}
+[04:49:35.202] INFO (189554): QR code generated
+    channelId: "test123"
+[04:49:35.210] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:50:35.211] INFO (189554): QR code generated
+    channelId: "test123"
+[04:50:35.222] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:50:55.234] INFO (189554): QR code generated
+    channelId: "test123"
+[04:50:55.246] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:51:15.250] INFO (189554): QR code generated
+    channelId: "test123"
+[04:51:15.282] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:51:35.254] INFO (189554): QR code generated
+    channelId: "test123"
+[04:51:35.268] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:51:55.276] INFO (189554): QR code generated
+    channelId: "test123"
+[04:51:55.290] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+{"level":30,"time":"2025-10-10T04:52:15.273Z","pid":189554,"hostname":"aisaturn-repl-prod","class":"baileys","trace":"Error: QR refs attempts ended\n    at Timeout.genPairQR [as _onTimeout] (file:///var/www/chatwoot/lib/whatsapp_web/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:471:21)\n    at listOnTimeout (node:internal/timers:608:17)\n    at process.processTimers (node:internal/timers:543:7)","msg":"connection errored"}
+[04:52:15.274] WARN (189554): Connection closed
+    channelId: "test123"
+    shouldReconnect: true
+[04:52:15.288] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+{"level":30,"time":"2025-10-10T04:52:18.504Z","pid":189554,"hostname":"aisaturn-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"VT6lZEXsLjJkL0hH5b3IbUgSysHy/3mkBXI0da/PfXE="}},"msg":"connected to WA"}
+{"level":30,"time":"2025-10-10T04:52:18.645Z","pid":189554,"hostname":"aisaturn-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"tertiary":1023223821},"mcc":"000","mnc":"000","osVersion":"0.1","device":"Desktop","osBuildNumber":"0.1","releaseChannel":"RELEASE","localeLanguageIso6391":"en","localeCountryIso31661Alpha2":"US"},"webInfo":{"webSubPlatform":"WEB_BROWSER"},"connectType":"WIFI_UNKNOWN","connectReason":"USER_ACTIVATED","devicePairingData":{"eRegid":"AAAAAw==","eKeytype":"BQ==","eIdent":"dlT6YVmGErB9Q0RwsFy2Jd5+fxWusF0SeKYYqz5JWVM=","eSkeyId":"AAAB","eSkeyVal":"sBobkJkgVAiNCDQsZzbg82wloL6x2+8molB6x+Bwqxk=","eSkeySig":"git17WnWZD9nal4PQNX2U4/W79siGOALYS1wc/knT3AXdv/1pU8jRNPjLfeHwH6TfKyC6ozg1N45R/hGxdJzjA==","buildHash":"c9lQeUMlTdrMrIi/+YcPiA==","deviceProps":"CgZVYnVudHUYASAA"},"pull":false},"msg":"not logged in, attempting registration..."}
+[04:52:18.943] INFO (189554): QR code generated
+    channelId: "test123"
+[04:52:18.958] ERROR (189554): Webhook delivery failed
+    url: "https://app.aisaturn.co/webhooks/test"
+    error: "Request failed with status code 404"
+[04:52:44.792] INFO (189554): SIGTERM received, shutting down gracefully
+[04:52:46.030] INFO (190392): WhatsApp Web service started
+    port: "3001"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -f
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: I, [2025-10-10T05:10:40.306201 #191119]  INFO -- : [00042fa9-9756-4c07-9e52-942f22ca36fe] Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.3ms | Allocations: 3876)
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: F, [2025-10-10T05:10:40.307920 #191119] FATAL -- : [00042fa9-9756-4c07-9e52-942f22ca36fe]
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] NoMethodError (undefined method `whatsapp' for #<Account id: 1, name: "Saturn", created_at: "2025-10-06 00:50:38.249367000 +0000", updated_at: "2025-10-08 20:55:49.771611000 +0000", locale: "tr", domain: nil, support_email: nil, feature_flags: 294806688890839, auto_resolve_duration: nil, limits: {"agents"=>"10", "inboxes"=>"10"}, custom_attributes: {}, status: "active", internal_attributes: {}, settings: {}, openai_api_key: "sk-proj-978ABKWoMm8qk8X5SqzPGqs7BRqfb3slNJZXjhxYoj...", ai_conversation_limit: nil, ai_conversation_count: 0, ai_limit_reset_at: nil>):
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe]
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/api/v1/accounts/channels/whatsapp_web_channels_controller.rb:59:in `set_channel'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:29:in `switch_locale_using_account_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/request_exception_handler.rb:11:in `handle_with_exception'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+Oct 10 05:10:40 aisaturn-repl-prod bundle[191119]: [00042fa9-9756-4c07-9e52-942f22ca36fe] app/controllers/concerns/switch_locale.rb:19:in `switch_locale'
