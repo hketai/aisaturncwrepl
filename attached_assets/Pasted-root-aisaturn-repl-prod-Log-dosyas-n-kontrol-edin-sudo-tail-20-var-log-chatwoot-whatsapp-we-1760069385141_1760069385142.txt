@@ -1,0 +1,102 @@
+root@aisaturn-repl-prod:~# # Log dosyasını kontrol edin
+sudo tail -20 /var/log/chatwoot/whatsapp-web.log
+
+# Eğer log yoksa, journalctl ile sistem loglarına bakın
+sudo journalctl -u whatsapp-web -n 50 --no-pager
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+[04:03:28.155] INFO (185217): WhatsApp Web service started
+    port: "3001"
+[04:06:26.358] INFO (185217): SIGTERM received, shutting down gracefully
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+[04:06:27.387] INFO (185964): WhatsApp Web service started
+    port: "3001"
+Oct 10 04:01:46 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:01:46 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:01:46 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.345s CPU time, 114.4M memory peak.
+Oct 10 04:01:57 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 25.
+Oct 10 04:01:57 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:01:58 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:01:58 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:01:58 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.418s CPU time, 120M memory peak.
+Oct 10 04:02:08 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 26.
+Oct 10 04:02:08 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:02:09 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:02:09 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:02:09 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.453s CPU time, 123.9M memory peak.
+Oct 10 04:02:19 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 27.
+Oct 10 04:02:19 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:02:20 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:02:20 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:02:20 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.433s CPU time, 123.5M memory peak.
+Oct 10 04:02:30 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 28.
+Oct 10 04:02:30 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:02:31 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:02:31 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:02:31 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.452s CPU time, 112.8M memory peak.
+Oct 10 04:02:42 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 29.
+Oct 10 04:02:42 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:02:43 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:02:43 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:02:43 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.388s CPU time, 114.3M memory peak.
+Oct 10 04:02:53 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 30.
+Oct 10 04:02:53 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:02:54 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:02:54 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:02:54 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.427s CPU time, 115.4M memory peak.
+Oct 10 04:03:04 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 31.
+Oct 10 04:03:04 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:03:05 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:03:05 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:03:05 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.423s CPU time, 115.4M memory peak.
+Oct 10 04:03:16 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 32.
+Oct 10 04:03:16 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:03:17 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:03:17 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 04:03:17 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.261s CPU time, 118.7M memory peak.
+Oct 10 04:03:27 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Scheduled restart job, restart counter is at 33.
+Oct 10 04:03:27 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:06:26 aisaturn-repl-prod systemd[1]: Stopping whatsapp-web.service - WhatsApp Web Microservice for Chatwoot...
+Oct 10 04:06:26 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Deactivated successfully.
+Oct 10 04:06:26 aisaturn-repl-prod systemd[1]: Stopped whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+Oct 10 04:06:26 aisaturn-repl-prod systemd[1]: whatsapp-web.service: Consumed 1.728s CPU time, 123.9M memory peak.
+Oct 10 04:06:26 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+
+
+root@aisaturn-repl-prod:~# # Systemd'yi yeniden yükleyin
+sudo systemctl daemon-reload
+
+# Servisi restart edin
+sudo systemctl restart whatsapp-web
+
+# 2-3 saniye bekleyin
+sleep 3
+
+# Durumu kontrol edin
+sudo systemctl status whatsapp-web
+curl http://localhost:3001/health
+● whatsapp-web.service - WhatsApp Web Microservice for Chatwoot
+     Loaded: loaded (/etc/systemd/system/whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:09:20 UTC; 3s ago
+ Invocation: 3e0c1feb6ba045aaafcdb198bf05c5ae
+   Main PID: 186520 (MainThread)
+      Tasks: 12 (limit: 19140)
+     Memory: 70.1M (peak: 73.2M)
+        CPU: 940ms
+     CGroup: /system.slice/whatsapp-web.service
+             └─186520 /usr/bin/node src/server.js
+
+Oct 10 04:09:20 aisaturn-repl-prod systemd[1]: Started whatsapp-web.service - WhatsApp Web Microservice for Chatwoot.
+{"status":"ok","timestamp":"2025-10-10T04:09:23.807Z"}root@aisaturn-repl-prod:~#
