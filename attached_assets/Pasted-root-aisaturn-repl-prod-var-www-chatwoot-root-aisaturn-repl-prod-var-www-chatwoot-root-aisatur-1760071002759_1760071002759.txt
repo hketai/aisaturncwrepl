@@ -1,0 +1,52 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# # Rails console'dan environment variable'ı kontrol edelim
+cd /var/www/chatwoot && sudo -u root RAILS_ENV=production bundle exec rails runner "puts ENV['WHATSAPP_WEB_URL']"
+
+# Chatwoot web loglarında hata var mı bakalım
+sudo journalctl -u chatwoot-web -n 50 --no-pager | grep -i error
+
+# Nginx loglarını da kontrol edelim
+sudo tail -30 /var/log/nginx/error.log
+sudo: bundle: command not found
+Oct 10 04:36:03 aisaturn-repl-prod bundle[189572]: I, [2025-10-10T04:36:03.354261 #189572]  INFO -- : [09ebcf62-1393-4f91-9b7e-5e0520d362e8] Handled error: #<ActiveRecord::RecordNotFound: Couldn't find Account with 'id'="undefined">
+Oct 10 04:36:07 aisaturn-repl-prod bundle[189572]: I, [2025-10-10T04:36:07.844260 #189572]  INFO -- : [17f0a809-37c6-434d-9fe7-668b6623cb0e] Handled error: #<ActiveRecord::RecordInvalid: Validation failed: Phone number has already been taken>
+Oct 10 04:36:24 aisaturn-repl-prod bundle[189572]: I, [2025-10-10T04:36:24.919833 #189572]  INFO -- : [55fa8a4d-bcb7-44c5-845b-a98d2cd7d5f6] Handled error: #<ActiveRecord::RecordNotFound: Couldn't find Account with 'id'="undefined">
+2025/10/10 03:57:34 [error] 183426#183426: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 03:57:35 [error] 183426#183426: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 03:59:01 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 03:59:01 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 03:59:03 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 03:59:47 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 03:59:47 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 03:59:48 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 03:59:48 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 03:59:49 [error] 183427#183427: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 04:04:18 [error] 183426#183426: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:04:19 [error] 183426#183426: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:04:20 [error] 183426#183426: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 04:06:41 [error] 183426#183426: *23 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:06:41 [error] 183426#183426: *23 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:06:42 [error] 183426#183426: *23 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:06:42 [error] 183426#183426: *23 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:06:43 [error] 183426#183426: *23 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 04:09:49 [error] 183426#183426: *30 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:09:49 [error] 183426#183426: *30 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:09:49 [error] 183426#183426: *30 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:09:49 [error] 183426#183426: *30 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:09:50 [error] 183426#183426: *30 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 04:15:24 [error] 183426#183426: *40 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:15:24 [error] 183426#183426: *40 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:15:26 [error] 183426#183426: *40 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+2025/10/10 04:19:12 [error] 188571#188571: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:19:12 [error] 188571#188571: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "app.aisaturn.co"
+2025/10/10 04:19:13 [error] 188571#188571: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/"
+2025/10/10 04:19:14 [error] 188571#188571: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 46.154.237.68, server: app.aisaturn.co, request: "GET /sw.js HTTP/1.1", upstream: "http://127.0.0.1:3000/sw.js", host: "app.aisaturn.co", referrer: "https://app.aisaturn.co/sw.js"
+root@aisaturn-repl-prod:/var/www/chatwoot# # Rails console'dan environment variable'ı kontrol edelim
+cd /var/www/chatwoot && sudo -u root RAILS_ENV=production bundle exec rails runner "puts ENV['WHATSAPP_WEB_URL']"
+
+# Chatwoot web loglarında hata var mı bakalım
+sudo journalctl -u chatwoot-web -n 50 --no-pager | grep -i error
+
+# Nginx loglarını da kontrol edelim
+sudo tail -30 /var/log/nginx/error.log
