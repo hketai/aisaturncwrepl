@@ -1,0 +1,39 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot/lib/whatsapp_web && \
+  WHATSAPP_WEB_PORT=3001 \
+  RAILS_BASE_URL=https://app.aisaturn.co \
+  WHATSAPP_WEB_SECRET=your_secret_here \
+  nohup npm start > /var/log/whatsapp-web.log 2>&1 &
+[1] 211811
+root@aisaturn-repl-prod:/var/www/chatwoot# echo $! > /tmp/whatsapp-web.pid
+[1]+  Exit 1                  cd /var/www/chatwoot/lib/whatsapp_web && WHATSAPP_WEB_PORT=3001 RAILS_BASE_URL=https://app.aisaturn.co WHATSAPP_WEB_SECRET=your_secret_here nohup npm start > /var/log/whatsapp-web.log 2>&1
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -f /var/log/whatsapp-web.log
+    at emitErrorNT (node:net:1975:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v23.11.1
+
+
+
+^C
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo lsof -i :3001
+COMMAND      PID     USER FD   TYPE  DEVICE SIZE/OFF NODE NAME
+MainThrea 210251 chatwoot 26u  IPv6 1064077      0t0  TCP *:3001 (LISTEN)
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep whatsapp
+root      211861  0.0  0.0   7304  2292 pts/0    S+   21:12   0:00 grep --color=auto whatsapp
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails console
+I, [2025-10-10T21:12:58.742720 #211862]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:12:58.742810 #211862]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:13:01.625181 #211862]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> InstallationConfig.sync_with_yaml
+irb(main):002:0> exit
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/dynamic_matchers.rb:22:in `method_missing': undefined method `sync_with_yaml' for InstallationConfig:Class (NoMethodError)
+irb(main):003:0>
