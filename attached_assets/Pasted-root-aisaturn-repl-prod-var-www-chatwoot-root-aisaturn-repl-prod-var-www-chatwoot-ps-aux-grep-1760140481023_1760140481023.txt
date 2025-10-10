@@ -1,0 +1,75 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep puma | head -1
+root      230808  5.5  1.9 1794380 312176 ?      Ssl  23:50   0:11 puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]
+root@aisaturn-repl-prod:/var/www/chatwoot# kill -9 230808
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec puma -C config/puma.rb -d
+bundler: failed to load command: puma (/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:45:in `initialize': ambiguous option: -d (OptionParser::AmbiguousOption)
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `new'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `<top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+        from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+        from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/lib/puma/cli.rb:45:in `initialize': invalid option: d (OptionParser::InvalidOption)
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `new'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/puma-6.4.3/bin/puma:8:in `<top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/puma:25:in `<top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:58:in `kernel_load'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli/exec.rb:23:in `run'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:455:in `exec'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:35:in `dispatch'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/cli.rb:29:in `start'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:28:in `block in <top (required)>'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+        from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bundler-2.5.16/exe/bundle:20:in `<top (required)>'
+        from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+        from /root/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+root@aisaturn-repl-prod:/var/www/chatwoot# sleep 3
+ps aux | grep puma
+root      231594  0.0  0.0   7300  2292 pts/0    S+   23:54   0:00 grep --color=auto puma
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# ls -la /var/www/chatwoot/bin/
+ls -la /var/www/chatwoot/scripts/
+total 48
+drwxr-xr-x  2 chatwoot chatwoot 4096 Oct 10 22:09 .
+drwxr-xr-x 35 chatwoot chatwoot 4096 Oct 10 23:50 ..
+-rwxr-xr-x  1 root     root     2794 Oct 10 22:09 bundle
+-rwxr-xr-x  1 root     root      141 Oct 10 22:09 rails
+-rwxr-xr-x  1 root     root       90 Oct 10 22:09 rake
+-rwxr-xr-x  1 root     root     1068 Oct 10 22:09 setup
+-rwxr-xr-x  1 root     root      498 Oct 10 22:09 spring
+-rwxr-xr-x  1 root     root     1534 Oct 10 22:09 sync_i18n_file_change
+-rwxr-xr-x  1 root     root      851 Oct 10 22:09 update
+-rwxr-xr-x  1 root     root      309 Oct 10 22:09 validate_push
+-rwxr-xr-x  1 root     root      747 Oct 10 22:09 vite
+-rwxr-xr-x  1 root     root      263 Oct 10 22:09 yarn
+ls: cannot access '/var/www/chatwoot/scripts/': No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot# systemctl list-units | grep -i chat
+systemctl list-units | grep -i rails
+  chatwoot-web.service                                                         loaded active     running      Chatwoot web server
+● chatwoot-whatsapp-web.service                                                loaded activating auto-restart Chatwoot WhatsApp Web Microservice
+  chatwoot-worker.service                                                      loaded active     running      Chatwoot worker
+  whatsapp-web.service                                                         loaded active     running      WhatsApp Web Microservice for Chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot#
