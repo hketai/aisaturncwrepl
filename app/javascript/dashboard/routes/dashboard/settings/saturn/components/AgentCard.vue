@@ -109,7 +109,6 @@ const handleToggle = () => {
         
         <Button
           icon="i-lucide-user-round-search"
-          variant="faded"
           color="slate"
           size="sm"
           class="flex-1"
