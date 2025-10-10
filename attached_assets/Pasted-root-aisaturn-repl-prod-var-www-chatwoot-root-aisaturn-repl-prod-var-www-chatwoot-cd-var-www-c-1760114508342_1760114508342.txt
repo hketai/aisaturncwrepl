@@ -1,0 +1,22 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+  channels = Channel::Whatsapp.where(phone_number: '+905334096453', provider: 'whatsapp_web')
+  puts \"Bulunan kanal sayısı: #{channels.count}\"
+  channels.each do |ch|
+    puts \"Siliniyor - ID: #{ch.id}, Phone: #{ch.phone_number}\"
+  end
+  channels.destroy_all
+  puts 'Tüm WhatsApp Web kanalları silindi!'
+"
+I, [2025-10-10T16:41:41.502341 #204480]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T16:41:41.502440 #204480]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T16:41:44.143296 #204480]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Bulunan kanal sayısı: 1
+Siliniyor - ID: 18, Phone: +905334096453
+2025-10-10T16:41:44.549Z pid=204480 tid=48sc INFO: Sidekiq 7.3.1 connecting to Redis with options {:size=>10, :pool_name=>"internal", :url=>"redis://localhost:6379", :password=>nil, :reconnect_attempts=>2, :timeout=>1}
+I, [2025-10-10T16:41:44.551091 #204480]  INFO -- : [ActiveJob] Enqueued ActiveRecord::DestroyAssociationAsyncJob (Job ID: 57ad0ff5-f163-471f-9c5a-51961b9b7ef8) to Sidekiq(default) with arguments: {:owner_model_name=>"Channel::Whatsapp", :owner_id=>18, :association_class=>"Inbox", :association_ids=>[19], :association_primary_key_column=>"id", :ensuring_owner_was_method=>nil}
+I, [2025-10-10T16:41:44.592615 #204480]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 62d977ee-9e2d-46f6-b9e3-148c85ba94f5) to Sidekiq(critical) with arguments: ["m2hgANHZb7NDVdpGftgj7K6J"], "account.cache_invalidated", {:cache_keys=>{:label=>"0000000000", :inbox=>"1760114504", :team=>"1759984966"}, :account_id=>1}
+I, [2025-10-10T16:41:44.594638 #204480]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 770c38f8-39d5-4819-a37f-31c49ab0cc02) to Sidekiq(critical) with arguments: "account.cache_invalidated", Fri, 10 Oct 2025 16:41:44.573242602 UTC +00:00, {:cache_keys=>{:label=>"0000000000", :inbox=>"1760114504", :team=>"1759984966"}, :account=>#<GlobalID:0x0000746fe1179998 @uri=#<URI::GID gid://chatwoot/Account/1>>}
+Tüm WhatsApp Web kanalları silindi!
+root@aisaturn-repl-prod:/var/www/chatwoot#
