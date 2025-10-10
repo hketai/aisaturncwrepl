@@ -40,7 +40,14 @@ bundle exec sidekiq -C config/sidekiq.yml > log/sidekiq.log 2>&1 &
 SIDEKIQ_PID=$!
 echo "Sidekiq started (PID: $SIDEKIQ_PID)"
 
-# Wait a moment for Sidekiq to initialize
+# Start WhatsApp Web microservice in background
+echo "Starting WhatsApp Web microservice on port 3001..."
+cd lib/whatsapp_web && WHATSAPP_WEB_PORT=3001 RAILS_BASE_URL=https://$REPL_SLUG.$REPL_OWNER.repl.co npm start > ../../log/whatsapp_web.log 2>&1 &
+WHATSAPP_PID=$!
+cd ../..
+echo "WhatsApp Web service started (PID: $WHATSAPP_PID)"
+
+# Wait a moment for services to initialize
 sleep 2
 
 # Start Puma
