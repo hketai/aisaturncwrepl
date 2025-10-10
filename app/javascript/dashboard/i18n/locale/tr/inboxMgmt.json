@@ -225,8 +225,10 @@
           "WHATSAPP_EMBEDDED": "WhatsApp Business",
           "TWILIO": "Twilio",
           "WHATSAPP_CLOUD": "WhatsApp Bulut",
-          "WHATSAPP_CLOUD_DESC": "Quick setup through Meta",
-          "TWILIO_DESC": "Connect via Twilio credentials",
+          "WHATSAPP_CLOUD_DESC": "Meta üzerinden hızlı kurulum",
+          "WHATSAPP_WEB": "WhatsApp Web (QR Kod)",
+          "WHATSAPP_WEB_DESC": "QR kod ile bağlan - kişisel WhatsApp numaraları için ideal",
+          "TWILIO_DESC": "Twilio kimlik bilgileri ile bağlan",
           "360_DIALOG": "360Dialog"
         },
         "SELECT_PROVIDER": {
@@ -301,6 +303,14 @@
         "API": {
           "ERROR_MESSAGE": "WhatsApp kanalını kaydedemedik"
         }
+      },
+      "WHATSAPP_WEB": {
+        "DESCRIPTION": "QR kod tarayarak kişisel WhatsApp numaranızı bağlayın. Kişisel WhatsApp kullanan küçük işletmeler için idealdir.",
+        "QR_INSTRUCTIONS": "Telefonunuzda WhatsApp'ı açın ve bağlanmak için bu QR kodu tarayın:",
+        "CONNECTED": "WhatsApp başarıyla bağlandı! Yönlendiriliyor...",
+        "CONNECTING": "Bağlanıyor...",
+        "SUBMIT": "WhatsApp'ı Bağla",
+        "CONNECTION_ERROR": "WhatsApp'a bağlanılamadı. Lütfen tekrar deneyin."
       },
       "VOICE": {
         "TITLE": "Voice Channel",

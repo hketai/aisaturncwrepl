@@ -226,6 +226,8 @@
           "TWILIO": "Twilio",
           "WHATSAPP_CLOUD": "WhatsApp Cloud",
           "WHATSAPP_CLOUD_DESC": "Quick setup through Meta",
+          "WHATSAPP_WEB": "WhatsApp Web (QR Code)",
+          "WHATSAPP_WEB_DESC": "Connect using QR code - perfect for personal WhatsApp numbers",
           "TWILIO_DESC": "Connect via Twilio credentials",
           "360_DIALOG": "360Dialog"
         },
@@ -302,6 +304,14 @@
         "API": {
           "ERROR_MESSAGE": "We were not able to save the WhatsApp channel"
         }
+      },
+      "WHATSAPP_WEB": {
+        "DESCRIPTION": "Connect your personal WhatsApp number by scanning a QR code. Perfect for small businesses using personal WhatsApp.",
+        "QR_INSTRUCTIONS": "Open WhatsApp on your phone and scan this QR code to connect:",
+        "CONNECTED": "WhatsApp successfully connected! Redirecting...",
+        "CONNECTING": "Connecting...",
+        "SUBMIT": "Connect WhatsApp",
+        "CONNECTION_ERROR": "Failed to connect to WhatsApp. Please try again."
       },
       "VOICE": {
         "TITLE": "Voice Channel",
