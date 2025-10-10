@@ -1,0 +1,80 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl stop chatwoot-whatsapp-web
+sudo pkill -9 -f "whatsapp"
+sudo lsof -i :3001 | grep LISTEN | awk '{print $2}' | xargs -r sudo kill -9
+Killed
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo lsof -i :3001
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+git pull origin main
+From github.com:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+Already up to date.
+root@aisaturn-repl-prod:/var/www/chatwoot# cd lib/whatsapp_web
+npm install
+
+up to date, audited 214 packages in 775ms
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web# sudo systemctl start chatwoot-whatsapp-web
+sudo systemctl status chatwoot-whatsapp-web
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 23:13:15 UTC; 21ms ago
+ Invocation: 948199e088d44871a47c1eaab9758cba
+   Main PID: 223259 (node)
+      Tasks: 1 (limit: 19140)
+     Memory: 1.4M (peak: 1.5M)
+        CPU: 5ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─223259 node /usr/bin/npm start
+
+Oct 10 23:13:15 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web# sleep 3
+curl http://localhost:3001/health
+{"status":"ok","timestamp":"2025-10-10T23:13:27.023Z"}root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web#
+root@aisaturn-repl-prod:/var/www/chatwoot/lib/whatsapp_web# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+require 'faraday'
+conn = Faraday.new(url: 'http://localhost:3001')
+conn.headers['X-Whatsapp-Secret'] = ENV['WHATSAPP_WEB_SECRET']
+# Yeni channel test
+response = conn.post('/channels/test456/connect',
+  { webhookUrl: 'https://app.aisaturn.co/webhooks/whatsapp_web/test456' }.to_json,
+  'Content-Type' => 'application/json'
+)
+puts \"Connect: #{response.body}\"
+sleep 5
+qr = conn.get('/channels/test456/qr')
+puts \"QR Status: #{qr.status}\"
+puts \"QR Body: #{qr.body}\"
+"
+I, [2025-10-10T23:13:43.140365 #223350]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T23:13:43.140467 #223350]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T23:13:45.577242 #223350]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Connect: {"status":"connecting","qr":null}
+QR Status: 404
+QR Body: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /channels/test456/qr</pre>
+</body>
+</html>
+root@aisaturn-repl-prod:/var/www/chatwoot#
