@@ -19,6 +19,7 @@ const phoneNumber = ref('');
 const qrCode = ref('');
 const connectionStatus = ref('idle');
 const channelId = ref(null);
+const inboxId = ref(null);
 const isConnecting = ref(false);
 const pollingInterval = ref(null);
 
@@ -55,11 +56,12 @@ const createChannelAndConnect = async () => {
       },
     });
 
-    channelId.value = whatsappChannel.id;
+    channelId.value = whatsappChannel.channel_id;
+    inboxId.value = whatsappChannel.id;
     
-    await connectToWhatsApp(whatsappChannel.id);
+    await connectToWhatsApp(whatsappChannel.channel_id);
     
-    startQRPolling(whatsappChannel.id);
+    startQRPolling(whatsappChannel.channel_id);
   } catch (error) {
     useAlert(error.message || t('INBOX_MGMT.ADD.WHATSAPP.API.ERROR_MESSAGE'));
     isConnecting.value = false;
@@ -98,7 +100,7 @@ const startQRPolling = (channelId) => {
           name: 'settings_inboxes_add_agents',
           params: {
             page: 'new',
-            inbox_id: channelId,
+            inbox_id: inboxId.value,
           },
         });
       }

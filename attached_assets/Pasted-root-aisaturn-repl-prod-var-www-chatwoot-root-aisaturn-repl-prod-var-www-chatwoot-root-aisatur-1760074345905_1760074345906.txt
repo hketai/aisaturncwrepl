@@ -1,0 +1,42 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+  channel = Channel::Whatsapp.find_by(id: 14)
+  if channel
+    puts 'Channel found:'
+    puts channel.inspect
+  else
+    puts 'Channel NOT found - checking inbox...'
+    inbox = Inbox.find_by(id: 14)
+    if inbox
+      puts 'Inbox exists:'
+      puts inbox.inspect
+      puts 'Channel info:'
+      puts inbox.channel.inspect
+    else
+      puts 'Inbox also not found!'
+    end
+  end
+"
+I, [2025-10-10T05:31:13.914693 #192306]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:31:13.914791 #192306]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:31:16.482205 #192306]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Channel NOT found - checking inbox...
+Inbox exists:
+#<Inbox id: 14, channel_id: 13, account_id: 1, name: "qwe", created_at: "2025-10-10 05:26:43.678439000 +0000", updated_at: "2025-10-10 05:26:43.678439000 +0000", channel_type: "Channel::Whatsapp", enable_auto_assignment: true, greeting_enabled: false, greeting_message: nil, email_address: nil, working_hours_enabled: false, out_of_office_message: nil, timezone: "UTC", enable_email_collect: true, csat_survey_enabled: false, allow_messages_after_resolved: true, auto_assignment_config: {}, lock_to_single_conversation: false, portal_id: nil, sender_name_type: "friendly", business_name: nil, csat_config: {}>
+Channel info:
+#<Channel::Whatsapp id: 13, account_id: 1, phone_number: "+905334096453", provider: "whatsapp_web", provider_config: {}, created_at: "2025-10-10 05:26:43.675693000 +0000", updated_at: "2025-10-10 05:26:43.675693000 +0000", message_templates: {}, message_templates_last_updated: nil>
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+  Inbox.where(account_id: 1).order(created_at: :desc).limit(5).each do |inbox|
+    puts \"ID: #{inbox.id}, Name: #{inbox.name}, Channel: #{inbox.channel_type}, Created: #{inbox.created_at}\"
+  end
+"
+I, [2025-10-10T05:31:22.725051 #192324]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:31:22.725142 #192324]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:31:25.435621 #192324]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+ID: 14, Name: qwe, Channel: Channel::Whatsapp, Created: 2025-10-10 05:26:43 UTC
+ID: 2, Name: Kadriye Baştürk, Channel: Channel::Whatsapp, Created: 2025-10-07 16:16:10 UTC
+ID: 1, Name: Web, Channel: Channel::WebWidget, Created: 2025-10-07 01:02:48 UTC
+root@aisaturn-repl-prod:/var/www/chatwoot#
