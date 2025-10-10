@@ -1,0 +1,65 @@
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~# # 1. WhatsApp Web servisi health check
+curl -s http://localhost:3001/health
+
+# 2. Rails production log'unda son WhatsApp hatasını görelim
+tail -100 /var/www/chatwoot/log/production.log | grep -A 10 -B 5 -i whatsapp
+
+# 3. WhatsApp Web mikroservis logları
+tail -50 /var/log/chatwoot/whatsapp-web.log
+
+# 4. Rails environment'taki WhatsApp Web URL'ini görelim
+cd /var/www/chatwoot && grep -i whatsapp .env
+{"status":"ok","timestamp":"2025-10-10T04:28:03.155Z"}tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+[04:03:28.155] INFO (185217): WhatsApp Web service started
+    port: "3001"
+[04:06:26.358] INFO (185217): SIGTERM received, shutting down gracefully
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+[04:06:27.387] INFO (185964): WhatsApp Web service started
+    port: "3001"
+[04:09:20.356] INFO (185964): SIGTERM received, shutting down gracefully
+[04:09:21.300] INFO (186520): WhatsApp Web service started
+    port: "3001"
+[04:11:40.296] INFO (186520): SIGTERM received, shutting down gracefully
+[04:11:41.145] INFO (186952): WhatsApp Web service started
+    port: "3001"
+[04:17:30.982] INFO (186952): SIGTERM received, shutting down gracefully
+[04:17:32.281] INFO (188551): WhatsApp Web service started
+    port: "3001"
+grep: .env: No such file or directory
+root@aisaturn-repl-prod:/var/www/chatwoot#
