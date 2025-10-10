@@ -1,0 +1,40 @@
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~# # Dosyanın güncellendiğini kontrol edin
+head -5 /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb
+
+# Sonra servisleri restart edin
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+
+# 5 saniye bekleyin
+sleep 5
+
+# Durumu kontrol edin
+sudo systemctl status chatwoot-web --no-pager | head -20
+class Webhooks::WhatsappWebController < ApplicationController
+  skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :authenticate_user!, raise: false
+  before_action :verify_signature
+
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:20:19 UTC; 7s ago
+ Invocation: 8604d3729e464cb7ab89ef079d44d9bf
+   Main PID: 188993 (ruby)
+      Tasks: 19 (limit: 19140)
+     Memory: 276.3M (peak: 276.8M)
+        CPU: 6.366s
+     CGroup: /system.slice/chatwoot-web.service
+             └─188993 "puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]"
+
+Oct 10 04:20:25 aisaturn-repl-prod bundle[188993]: *          PID: 188993
+Oct 10 04:20:25 aisaturn-repl-prod bundle[188993]: * Listening on http://0.0.0.0:3000
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: Use Ctrl-C to stop
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: I, [2025-10-10T04:20:26.541051 #188993]  INFO -- : [e1922dda-a603-4810-985b-e9b4aab394a2] Started GET "/cable" for 46.154.237.68 at 2025-10-10 04:20:26 +0000
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: Passing 'info' command to redis as is; administrative commands cannot be effectively namespaced and should be called on the redis connection directly; passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:474:in `block in supports_expire_nx?')
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: I, [2025-10-10T04:20:26.549467 #188993]  INFO -- : [e1922dda-a603-4810-985b-e9b4aab394a2] Started GET "/cable" [WebSocket] for 46.154.237.68 at 2025-10-10 04:20:26 +0000
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: I, [2025-10-10T04:20:26.549574 #188993]  INFO -- : [e1922dda-a603-4810-985b-e9b4aab394a2] Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+Oct 10 04:20:26 aisaturn-repl-prod bundle[188993]: I, [2025-10-10T04:20:26.754138 #188993]  INFO -- : RoomChannel is streaming from m2hgANHZb7NDVdpGftgj7K6J
+root@aisaturn-repl-prod:~#
