@@ -12,6 +12,8 @@ class Webhooks::WhatsappWebController < ApplicationController
       handle_connection_open(channel)
     when 'connection.closed'
       handle_connection_closed(channel, webhook_params[:should_reconnect])
+    when 'qr.generated'
+      handle_qr_generated(channel, webhook_params[:qr_code])
     end
 
     head :ok
@@ -26,7 +28,7 @@ class Webhooks::WhatsappWebController < ApplicationController
   private
 
   def webhook_params
-    params.permit(:event, :channel_id, :should_reconnect, message: [:id, :from, :timestamp, :text, :media_type])
+    params.permit(:event, :channel_id, :should_reconnect, :qr_code, message: [:id, :from, :timestamp, :text, :media_type])
   end
 
   def handle_incoming_message(channel, message_data)
@@ -55,6 +57,14 @@ class Webhooks::WhatsappWebController < ApplicationController
     channel.save!
 
     Rails.logger.warn("WhatsApp Web disconnected: channel_#{channel.id}, reconnect: #{should_reconnect}")
+  end
+
+  def handle_qr_generated(channel, qr_code)
+    channel.provider_config['qr_code'] = qr_code
+    channel.provider_config['status'] = 'connecting'
+    channel.save!
+
+    Rails.logger.info("WhatsApp Web QR generated: channel_#{channel.id}")
   end
 
   def create_or_update_contact_inbox(inbox, jid)

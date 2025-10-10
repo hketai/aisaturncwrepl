@@ -117,6 +117,14 @@ Rails.application.routes.draw do
           resources :dashboard_apps, only: [:index, :show, :create, :update, :destroy]
           namespace :channels do
             resource :twilio_channel, only: [:create]
+            resources :whatsapp_web_channels, only: [] do
+              member do
+                post :connect
+                post :disconnect
+                get :status
+                get :qr_code
+              end
+            end
           end
           resources :conversations, only: [:index, :create, :show, :update, :destroy] do
             collection do
