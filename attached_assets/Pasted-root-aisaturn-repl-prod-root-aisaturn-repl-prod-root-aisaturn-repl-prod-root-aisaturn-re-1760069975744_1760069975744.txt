@@ -1,0 +1,174 @@
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~# # Daha fazla log satırı görüntüleyin (son 100 satır)
+sudo journalctl -u chatwoot-web -n 100 --no-pager | head -50
+
+# Eğer hata mesajı başında ise
+sudo journalctl -u chatwoot-web --no-pager | grep -i error | head -20
+Oct 10 04:15:51 aisaturn-repl-prod bundle[187823]:         from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+Oct 10 04:15:51 aisaturn-repl-prod bundle[187823]:         from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+Oct 10 04:15:51 aisaturn-repl-prod bundle[187823]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+Oct 10 04:15:51 aisaturn-repl-prod bundle[187823]:         from bin/rails:4:in `<main>'
+Oct 10 04:15:51 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 04:15:51 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Failed with result 'exit-code'.
+Oct 10 04:15:51 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Consumed 4.065s CPU time, 198.6M memory peak.
+Oct 10 04:16:01 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Scheduled restart job, restart counter is at 80.
+Oct 10 04:16:01 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 10 04:16:04 aisaturn-repl-prod bundle[187956]: => Booting Puma
+Oct 10 04:16:04 aisaturn-repl-prod bundle[187956]: => Rails 7.1.5.2 application starting in production
+Oct 10 04:16:04 aisaturn-repl-prod bundle[187956]: => Run `bin/rails server --help` for more startup options
+Oct 10 04:16:04 aisaturn-repl-prod bundle[187956]: I, [2025-10-10T04:16:04.789252 #187956]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 04:16:04 aisaturn-repl-prod bundle[187956]: I, [2025-10-10T04:16:04.789310 #187956]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]: Exiting
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:835:in `block (2 levels) in skip_callback': Before process_action callback :verify_authenticity_token has not been defined (ArgumentError)
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:                 raise ArgumentError, "#{type.to_s.capitalize} #{name} callback #{filter.inspect} has not been defined"
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:831:in `each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:831:in `block in skip_callback'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:728:in `block in __update_callbacks'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:726:in `reverse_each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:726:in `__update_callbacks'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:830:in `skip_callback'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:245:in `block (3 levels) in <module:ClassMethods>'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:126:in `block in _insert_callbacks'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:125:in `each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:125:in `_insert_callbacks'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:244:in `block (2 levels) in <module:ClassMethods>'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:2:in `<class:WhatsappWebController>'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:1:in `<main>'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from <internal:/root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:26:in `require'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `const_get'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/cref.rb:91:in `get'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:413:in `block in eager_load_all'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `each'
+Oct 10 04:16:05 aisaturn-repl-prod bundle[187956]:         from /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/zeitwerk-2.6.17/lib/zeitwerk/loader.rb:411:in `eager_load_all'
+Oct 05 21:40:22 aisaturn-repl-prod bundle[58738]: ! Unable to load application: ActiveRecord::StatementInvalid: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+Oct 05 21:40:22 aisaturn-repl-prod bundle[58738]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist (ActiveRecord::StatementInvalid)
+Oct 05 21:40:22 aisaturn-repl-prod bundle[58738]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:40:22 aisaturn-repl-prod bundle[58738]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': ERROR:  relation "installation_configs" does not exist (PG::UndefinedTable)
+Oct 05 21:40:22 aisaturn-repl-prod bundle[58738]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:40:36 aisaturn-repl-prod bundle[58818]: ! Unable to load application: ActiveRecord::StatementInvalid: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+Oct 05 21:40:36 aisaturn-repl-prod bundle[58818]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist (ActiveRecord::StatementInvalid)
+Oct 05 21:40:36 aisaturn-repl-prod bundle[58818]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:40:36 aisaturn-repl-prod bundle[58818]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': ERROR:  relation "installation_configs" does not exist (PG::UndefinedTable)
+Oct 05 21:40:36 aisaturn-repl-prod bundle[58818]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:40:50 aisaturn-repl-prod bundle[58885]: ! Unable to load application: ActiveRecord::StatementInvalid: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+Oct 05 21:40:50 aisaturn-repl-prod bundle[58885]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist (ActiveRecord::StatementInvalid)
+Oct 05 21:40:50 aisaturn-repl-prod bundle[58885]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:40:50 aisaturn-repl-prod bundle[58885]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': ERROR:  relation "installation_configs" does not exist (PG::UndefinedTable)
+Oct 05 21:40:50 aisaturn-repl-prod bundle[58885]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:41:04 aisaturn-repl-prod bundle[58956]: ! Unable to load application: ActiveRecord::StatementInvalid: PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+Oct 05 21:41:04 aisaturn-repl-prod bundle[58956]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist (ActiveRecord::StatementInvalid)
+Oct 05 21:41:04 aisaturn-repl-prod bundle[58956]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+Oct 05 21:41:04 aisaturn-repl-prod bundle[58956]: /var/www/chatwoot/vendor/bundle/ruby/3.4.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in 'PG::Connection#exec': ERROR:  relation "installation_configs" does not exist (PG::UndefinedTable)
+Oct 05 21:41:04 aisaturn-repl-prod bundle[58956]:         from /root/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/bundler-2.5.16/lib/bundler/friendly_errors.rb:117:in 'Bundler.with_friendly_errors'
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~# # WhatsApp controller'ı düzeltin
+cat > /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb << 'EOF'
+class Webhooks::WhatsappWebController < ApplicationController
+  skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :authenticate_user!, raise: false
+  before_action :verify_signature
+
+  def create
+    channel = Channel::Whatsapp.find(params[:channel_id])
+
+    case webhook_params[:event]
+    when 'message.received'
+      handle_incoming_message(channel, webhook_params[:message])
+    when 'connection.open'
+      handle_connection_open(channel)
+    when 'connection.closed'
+      handle_connection_closed(channel, webhook_params[:should_reconnect])
+    when 'qr.generated'
+      handle_qr_generated(channel, webhook_params[:qr_code])
+    end
+
+    head :ok
+  rescue ActiveRecord::RecordNotFound
+    head :not_found
+  rescue StandardError => e
+    Rails.logger.error("WhatsApp Web webhook error: #{e.message}")
+    Rails.logger.error(e.backtrace.join("\n"))
+    head :internal_server_error
+  end
+
+sudo systemctl status chatwoot-worker --no-pager)stamp].to_i)e_data[:id])ne_number) do |c|ld_reconnect}")xt, :media_type
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:19:19 UTC; 5s ago
+ Invocation: 8f357e510c714d2db26ff81386cee9f7
+   Main PID: 188875 (ruby)
+      Tasks: 2 (limit: 19140)
+     Memory: 230.4M (peak: 230.4M)
+        CPU: 5.029s
+     CGroup: /system.slice/chatwoot-web.service
+             └─188875 /root/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+
+Oct 10 04:19:19 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188875]: => Booting Puma
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188875]: => Rails 7.1.5.2 application starting in production
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188875]: => Run `bin/rails server --help` for more startup options
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188875]: I, [2025-10-10T04:19:22.385333 #188875]  INFO -- : [dotenv] L…duction
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188875]: I, [2025-10-10T04:19:22.385396 #188875]  INFO -- : [dotenv] L…duction
+Hint: Some lines were ellipsized, use -l to show in full.
+● chatwoot-worker.service - Chatwoot worker
+     Loaded: loaded (/etc/systemd/system/chatwoot-worker.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:19:19 UTC; 5s ago
+ Invocation: 7e218a82e41f426594a571b449eef155
+   Main PID: 188885 (bundle)
+      Tasks: 2 (limit: 19140)
+     Memory: 216.5M (peak: 216.6M)
+        CPU: 5.045s
+     CGroup: /system.slice/chatwoot-worker.service
+             └─188885 "/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/sidekiq -C config/sidekiq.yml"
+
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.840Z","pid":188885,"tid":"4715","l…t=>1}"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.864Z","pid":188885,"tid":"4715","l…s_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.866Z","pid":188885,"tid":"4715","l…s_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.869Z","pid":188885,"tid":"4715","l…s_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.871Z","pid":188885,"tid":"4715","l…ob.rb"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.872Z","pid":188885,"tid":"4715","l…ob.rb"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.874Z","pid":188885,"tid":"4715","l…s_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.876Z","pid":188885,"tid":"4715","l…s_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.878Z","pid":188885,"tid":"4715","l…t_job"}
+Oct 10 04:19:22 aisaturn-repl-prod bundle[188885]: {"ts":"2025-10-10T04:19:22.882Z","pid":188885,"tid":"4715","l…c_job"}
+Hint: Some lines were ellipsized, use -l to show in full.
+root@aisaturn-repl-prod:~#
