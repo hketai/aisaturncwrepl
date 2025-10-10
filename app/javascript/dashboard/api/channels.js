@@ -11,27 +11,27 @@ export default {
     return axios.post(urlData.url(accountId), urlData.params);
   },
 
-  whatsappWebConnect(channelId) {
+  whatsappWebConnect(accountId, channelId) {
     return axios.post(
-      `/api/v1/accounts/${window.ACCOUNT_ID}/channels/whatsapp_web_channels/${channelId}/connect`
+      `/api/v1/accounts/${accountId}/channels/whatsapp_web_channels/${channelId}/connect`
     );
   },
 
-  whatsappWebDisconnect(channelId) {
+  whatsappWebDisconnect(accountId, channelId) {
     return axios.post(
-      `/api/v1/accounts/${window.ACCOUNT_ID}/channels/whatsapp_web_channels/${channelId}/disconnect`
+      `/api/v1/accounts/${accountId}/channels/whatsapp_web_channels/${channelId}/disconnect`
     );
   },
 
-  whatsappWebStatus(channelId) {
+  whatsappWebStatus(accountId, channelId) {
     return axios.get(
-      `/api/v1/accounts/${window.ACCOUNT_ID}/channels/whatsapp_web_channels/${channelId}/status`
+      `/api/v1/accounts/${accountId}/channels/whatsapp_web_channels/${channelId}/status`
     );
   },
 
-  whatsappWebQRCode(channelId) {
+  whatsappWebQRCode(accountId, channelId) {
     return axios.get(
-      `/api/v1/accounts/${window.ACCOUNT_ID}/channels/whatsapp_web_channels/${channelId}/qr_code`
+      `/api/v1/accounts/${accountId}/channels/whatsapp_web_channels/${channelId}/qr_code`
     );
   },
 };

@@ -33,6 +33,7 @@ const rules = {
 const v$ = useVuelidate(rules, { inboxName, phoneNumber });
 
 const uiFlags = computed(() => store.getters['inboxes/getUIFlags']);
+const accountId = computed(() => store.getters.getCurrentAccountId);
 
 const showQRCode = computed(() => qrCode.value && connectionStatus.value === 'connecting');
 const isConnected = computed(() => connectionStatus.value === 'connected');
@@ -67,7 +68,7 @@ const createChannelAndConnect = async () => {
 
 const connectToWhatsApp = async (channelId) => {
   try {
-    const { data } = await ChannelsAPI.whatsappWebConnect(channelId);
+    const { data } = await ChannelsAPI.whatsappWebConnect(accountId.value, channelId);
     connectionStatus.value = data.status || 'connecting';
     if (data.qr_code) {
       qrCode.value = data.qr_code;
@@ -81,13 +82,13 @@ const connectToWhatsApp = async (channelId) => {
 const startQRPolling = (channelId) => {
   pollingInterval.value = setInterval(async () => {
     try {
-      const { data: qrData } = await ChannelsAPI.whatsappWebQRCode(channelId);
+      const { data: qrData } = await ChannelsAPI.whatsappWebQRCode(accountId.value, channelId);
       
       if (qrData.qr_code && qrData.qr_code !== qrCode.value) {
         qrCode.value = qrData.qr_code;
       }
       
-      const { data: statusData } = await ChannelsAPI.whatsappWebStatus(channelId);
+      const { data: statusData } = await ChannelsAPI.whatsappWebStatus(accountId.value, channelId);
       
       if (statusData.connected && statusData.authenticated) {
         connectionStatus.value = 'connected';
