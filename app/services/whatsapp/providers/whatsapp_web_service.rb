@@ -1,5 +1,5 @@
 class Whatsapp::Providers::WhatsappWebService
-  MICROSERVICE_BASE_URL = ENV.fetch('WHATSAPP_WEB_SERVICE_URL', 'http://localhost:3030')
+  MICROSERVICE_BASE_URL = ENV.fetch('WHATSAPP_WEB_SERVICE_URL', 'http://localhost:3001')
 
   def initialize(whatsapp_channel)
     @whatsapp_channel = whatsapp_channel
@@ -88,6 +88,7 @@ class Whatsapp::Providers::WhatsappWebService
         faraday.adapter Faraday.default_adapter
         faraday.options.timeout = 30
         faraday.options.open_timeout = 10
+        faraday.headers['X-Whatsapp-Secret'] = ENV.fetch('WHATSAPP_WEB_SECRET', 'development-secret-change-in-production')
       end
       conn
     end

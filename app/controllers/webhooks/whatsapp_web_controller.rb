@@ -1,6 +1,7 @@
 class Webhooks::WhatsappWebController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
+  before_action :verify_signature
 
   def create
     channel = Channel::Whatsapp.find(params[:channel_id])
@@ -26,6 +27,34 @@ class Webhooks::WhatsappWebController < ApplicationController
   end
 
   private
+
+  def verify_signature
+    signature = request.headers['X-Whatsapp-Signature']
+    
+    # Reject missing or empty signature immediately
+    if signature.blank?
+      Rails.logger.warn("Missing WhatsApp webhook signature from #{request.remote_ip}")
+      head :unauthorized
+      return
+    end
+    
+    shared_secret = ENV.fetch('WHATSAPP_WEB_SECRET', 'development-secret-change-in-production')
+    payload = request.raw_post
+    expected_signature = OpenSSL::HMAC.hexdigest('SHA256', shared_secret, payload)
+    
+    # Verify length matches before secure_compare to prevent ArgumentError (DoS risk)
+    if signature.length != expected_signature.length
+      Rails.logger.warn("Invalid WhatsApp webhook signature length from #{request.remote_ip}")
+      head :unauthorized
+      return
+    end
+    
+    unless ActiveSupport::SecurityUtils.secure_compare(signature, expected_signature)
+      Rails.logger.warn("Invalid WhatsApp webhook signature from #{request.remote_ip}")
+      head :unauthorized
+      return
+    end
+  end
 
   def webhook_params
     params.permit(:event, :channel_id, :should_reconnect, :qr_code, message: [:id, :from, :timestamp, :text, :media_type])

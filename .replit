@@ -18,6 +18,10 @@ author = "agent"
 task = "workflow.run"
 args = "Chatwoot"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "WhatsApp Web Service"
+
 [[workflows.workflow]]
 name = "Chatwoot"
 author = "agent"
@@ -29,6 +33,22 @@ outputType = "webview"
 task = "shell.exec"
 args = "bash start_app.sh"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "WhatsApp Web Service"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd lib/whatsapp_web && WHATSAPP_WEB_PORT=3001 RAILS_BASE_URL=https://$REPL_SLUG.$REPL_OWNER.repl.co npm start"
+waitForPort = 3001
+
+[[ports]]
+localPort = 3001
+externalPort = 3001
 
 [[ports]]
 localPort = 5000
