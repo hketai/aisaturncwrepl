@@ -98,7 +98,8 @@ class Api::V1::Accounts::Saturn::AgentsController < Api::V1::Accounts::Saturn::B
       behavior_rules: [],
       safety_guidelines: [],
       configuration: {},
-      intent_team_mappings: [:intent, :team_id, :team_name]
+      intent_team_mappings: [:intent, :team_id, :team_name],
+      intent_agent_mappings: [:intent, :agent_id, :agent_name]
     )
   end
 end

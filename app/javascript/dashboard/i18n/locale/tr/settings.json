@@ -744,7 +744,9 @@
       "ADD_INTENT_MAPPING": "Yeni Intent Eşleştirmesi Ekle",
       "INTENT_PLACEHOLDER": "örn., Ödeme sorunu, Teknik destek, İptal talebi",
       "ADD_MAPPING_BUTTON": "Eşleştirme Ekle",
-      "SAVE_BUTTON": "Kaydet"
+      "SAVE_BUTTON": "Kaydet",
+      "AGENT_TRANSFERS": "AI Ajan Devretmeleri",
+      "TEAM_HANDOFFS": "Ekip Devretmeleri"
     },
     "KNOWLEDGE": {
       "TITLE": "Bilgi Kaynakları",

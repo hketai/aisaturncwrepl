@@ -26,6 +26,22 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  transferEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  intentAgentMappings: {
+    type: Array,
+    default: () => [],
+  },
+  handoffEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  intentTeamMappings: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 const emit = defineEmits(['action', 'toggle-status']);
@@ -57,6 +73,21 @@ const handleToggle = () => {
           <p class="text-sm text-n-slate-11 line-clamp-2">
             {{ description || $t('SATURN.AGENTS.NO_DESCRIPTION') }}
           </p>
+          
+          <!-- Transfer/Handoff Info -->
+          <div v-if="transferEnabled && intentAgentMappings.length > 0" class="mt-2 space-y-1">
+            <div class="text-xs font-medium text-n-slate-11">{{ $t('SATURN.AGENTS.AGENT_TRANSFERS') }}:</div>
+            <div v-for="(mapping, index) in intentAgentMappings" :key="index" class="text-xs text-n-slate-10">
+              {{ mapping.intent }} → {{ mapping.agent_name }}
+            </div>
+          </div>
+          
+          <div v-if="handoffEnabled && intentTeamMappings.length > 0" class="mt-2 space-y-1">
+            <div class="text-xs font-medium text-n-slate-11">{{ $t('SATURN.AGENTS.TEAM_HANDOFFS') }}:</div>
+            <div v-for="(mapping, index) in intentTeamMappings" :key="index" class="text-xs text-n-slate-10">
+              {{ mapping.intent }} → {{ mapping.team_name }}
+            </div>
+          </div>
         </div>
         <div class="flex items-center gap-3 shrink-0">
           <button

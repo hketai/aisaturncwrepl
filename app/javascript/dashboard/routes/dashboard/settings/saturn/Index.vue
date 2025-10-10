@@ -219,6 +219,10 @@ const limitWarningMessage = computed(() => {
           :description="agent.description || $t('SATURN.AGENTS.NO_DESCRIPTION')"
           :updated-at="agent.updated_at || agent.created_at"
           :enabled="agent.enabled !== false"
+          :transfer-enabled="agent.transfer_enabled"
+          :intent-agent-mappings="agent.intent_agent_mappings || []"
+          :handoff-enabled="agent.handoff_enabled"
+          :intent-team-mappings="agent.intent_team_mappings || []"
           @action="handleAction"
           @toggle-status="handleToggleStatus"
         />
