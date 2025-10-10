@@ -14,6 +14,7 @@ json.transfer_enabled @agent_profile.transfer_enabled
 json.transfer_agent_id @agent_profile.transfer_agent_id
 json.intent_routing_enabled @agent_profile.intent_routing_enabled
 json.intent_team_mappings @agent_profile.intent_team_mappings
+json.intent_agent_mappings @agent_profile.intent_agent_mappings
 json.avatar_url @agent_profile.push_event_data[:avatar_url]
 json.created_at @agent_profile.created_at
 json.updated_at @agent_profile.updated_at
