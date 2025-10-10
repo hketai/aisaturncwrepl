@@ -209,8 +209,8 @@ defineExpose({ dialogRef });
             <div class="flex items-center gap-3">
               <i class="i-lucide-user-round-search text-2xl" :class="handoffType === 'human' ? 'text-woot-500' : 'text-n-slate-11 dark:text-n-slate-5'"></i>
               <div>
-                <div class="text-sm font-medium" :class="handoffType === 'human' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-n-slate-1'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
-                <div class="text-xs" :class="handoffType === 'human' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-4'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
+                <div class="text-sm font-medium" :class="handoffType === 'human' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
+                <div class="text-xs" :class="handoffType === 'human' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-3'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
               </div>
             </div>
           </label>
@@ -232,8 +232,8 @@ defineExpose({ dialogRef });
             <div class="flex items-center gap-3">
               <i class="i-lucide-bot text-2xl" :class="handoffType === 'agent' ? 'text-woot-500' : 'text-n-slate-11 dark:text-n-slate-5'"></i>
               <div>
-                <div class="text-sm font-medium" :class="handoffType === 'agent' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-n-slate-1'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
-                <div class="text-xs" :class="handoffType === 'agent' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-4'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
+                <div class="text-sm font-medium" :class="handoffType === 'agent' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
+                <div class="text-xs" :class="handoffType === 'agent' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-3'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
               </div>
             </div>
           </label>
@@ -252,7 +252,7 @@ defineExpose({ dialogRef });
               <button
                 type="button"
                 @click="navigateToTeams"
-                class="inline-flex items-center gap-1 mt-3 px-5 py-2.5 text-sm font-bold bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-white dark:hover:bg-amber-600 rounded-lg shadow-md hover:shadow-lg transition-all"
+                class="inline-flex items-center gap-1 mt-3 px-5 py-2.5 text-sm font-bold bg-amber-500 text-amber-950 hover:bg-amber-600 hover:text-white dark:bg-amber-500 dark:text-white dark:hover:bg-amber-600 rounded-lg shadow-md hover:shadow-lg transition-all"
               >
                 {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
               </button>
