@@ -302,7 +302,7 @@
     "HOME": "Anasayfa",
     "AGENTS": "Kullanıcılar",
     "AGENT_BOTS": "Botlar",
-    "SATURN": "Saturn AI",
+    "SATURN": "Yapay Zeka",
     "AUDIT_LOGS": "Denetim Kayıtları",
     "INBOXES": "Gelen kutuları",
     "NOTIFICATIONS": "Bildirimler",
@@ -680,8 +680,8 @@
   },
   "SATURN": {
     "AGENTS": {
-      "TITLE": "Saturn AI Ajanları",
-      "CREATE_BUTTON": "Ajan Oluştur",
+      "TITLE": "Yapay Zeka Temsilcileri",
+      "CREATE_BUTTON": "Yapay Zeka Temsilci Ekle",
       "EDIT_AGENT": "Ajanı Düzenle",
       "CREATE_AGENT": "Yeni Ajan Oluştur",
       "AGENT_NAME_LABEL": "Ajan Adı",
