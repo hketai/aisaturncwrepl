@@ -1,0 +1,34 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+Account.find(1).inboxes.each do |inbox|
+  puts \"Inbox ID: #{inbox.id}, Channel Type: #{inbox.channel_type}, Channel ID: #{inbox.channel_id}\"
+end
+"
+I, [2025-10-10T21:52:28.665473 #213311]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:28.665624 #213311]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:31.365685 #213311]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Inbox ID: 2, Channel Type: Channel::Whatsapp, Channel ID: 1
+Inbox ID: 1, Channel Type: Channel::WebWidget, Channel ID: 1
+Inbox ID: 29, Channel Type: Channel::Whatsapp, Channel ID: 28
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+Channel::Whatsapp.where(provider: 'whatsapp_web').each do |c|
+  puts \"Channel ID: #{c.id}, Phone: #{c.phone_number}, Account ID: #{c.account_id}, Inbox ID: #{c.inbox&.id}\"
+end
+"
+I, [2025-10-10T21:52:40.105949 #213331]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:40.106037 #213331]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:42.947672 #213331]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Channel ID: 28, Phone: +905334096453, Account ID: 1, Inbox ID: 29
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+begin
+  c = Channel::Whatsapp.find(26)
+  puts \"Channel 26 BULUNDU: Provider=#{c.provider}, Phone=#{c.phone_number}\"
+rescue => e
+  puts \"Channel 26 YOK: #{e.message}\"
+end
+"
+I, [2025-10-10T21:52:48.657740 #213350]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:48.657828 #213350]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:52:51.416343 #213350]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Channel 26 YOK: Couldn't find Channel::Whatsapp with 'id'=26
+root@aisaturn-repl-prod:/var/www/chatwoot#
