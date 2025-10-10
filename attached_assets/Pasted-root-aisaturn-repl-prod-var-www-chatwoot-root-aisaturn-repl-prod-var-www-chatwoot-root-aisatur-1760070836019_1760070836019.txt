@@ -1,0 +1,41 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /etc/systemd/system/whatsapp-web.service | grep -i secret
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo sed -i '/WHATSAPP_WEB_SECRET=your_whatsapp_web_secret_here/d' /var/www/chatwoot/.env.production
+root@aisaturn-repl-prod:/var/www/chatwoot# grep WHATSAPP_WEB_SECRET /var/www/chatwoot/.env.production
+WHATSAPP_WEB_SECRET=08f1d0fa9600389c66ad6a2b0d855e9aaa2bef3765bd0e330d36cee441281292
+root@aisaturn-repl-prod:/var/www/chatwoot# cat /etc/systemd/system/whatsapp-web.service | grep Environment
+Environment="NODE_ENV=production"
+Environment="WHATSAPP_WEB_PORT=3001"
+Environment="RAILS_BASE_URL=https://app.aisaturn.co"
+EnvironmentFile=/var/www/chatwoot/.env.production
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart whatsapp-web
+sudo systemctl restart chatwoot-web
+root@aisaturn-repl-prod:/var/www/chatwoot# sleep 3
+echo "=== CHATWOOT WEB ==="
+sudo systemctl status chatwoot-web --no-pager | head -10
+echo "=== WHATSAPP WEB ==="
+sudo systemctl status whatsapp-web --no-pager | head -10
+=== CHATWOOT WEB ===
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:33:40 UTC; 10s ago
+ Invocation: c32b2e78237c43fcb77d4358abfb663d
+   Main PID: 189572 (ruby)
+      Tasks: 12 (limit: 19140)
+     Memory: 259.8M (peak: 260.4M)
+        CPU: 6.263s
+     CGroup: /system.slice/chatwoot-web.service
+             └─189572 "puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]"
+=== WHATSAPP WEB ===
+● whatsapp-web.service - WhatsApp Web Microservice for Chatwoot
+     Loaded: loaded (/etc/systemd/system/whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:33:40 UTC; 10s ago
+ Invocation: 17fd549f230643b290b8ccb02ef184a7
+   Main PID: 189554 (MainThread)
+      Tasks: 12 (limit: 19140)
+     Memory: 54.9M (peak: 74.4M)
+        CPU: 1.088s
+     CGroup: /system.slice/whatsapp-web.service
+             └─189554 /usr/bin/node src/server.js
+root@aisaturn-repl-prod:/var/www/chatwoot#
