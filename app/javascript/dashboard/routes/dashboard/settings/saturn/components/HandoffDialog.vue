@@ -210,7 +210,7 @@ defineExpose({ dialogRef });
               <i class="i-lucide-user-round-search text-2xl" :class="handoffType === 'human' ? 'text-woot-500' : 'text-n-slate-11 dark:text-n-slate-5'"></i>
               <div>
                 <div class="text-sm font-medium" :class="handoffType === 'human' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN') }}</div>
-                <div class="text-xs" :class="handoffType === 'human' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-3'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
+                <div class="text-xs" :class="handoffType === 'human' ? 'text-woot-600 dark:text-white' : 'text-n-slate-11 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_HUMAN_DESC') }}</div>
               </div>
             </div>
           </label>
@@ -233,7 +233,7 @@ defineExpose({ dialogRef });
               <i class="i-lucide-bot text-2xl" :class="handoffType === 'agent' ? 'text-woot-500' : 'text-n-slate-11 dark:text-n-slate-5'"></i>
               <div>
                 <div class="text-sm font-medium" :class="handoffType === 'agent' ? 'text-woot-700 dark:text-white' : 'text-n-slate-12 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT') }}</div>
-                <div class="text-xs" :class="handoffType === 'agent' ? 'text-woot-600 dark:text-n-slate-2' : 'text-n-slate-11 dark:text-n-slate-3'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
+                <div class="text-xs" :class="handoffType === 'agent' ? 'text-woot-600 dark:text-white' : 'text-n-slate-11 dark:text-white'">{{ $t('SATURN.AGENTS.HANDOFF_TO_AGENT_DESC') }}</div>
               </div>
             </div>
           </label>
