@@ -1,0 +1,149 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web -f
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]:   code: 'EADDRINUSE',
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]:   errno: -98,
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]:   syscall: 'listen',
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]:   address: '::',
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]:   port: 3001
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]: }
+Oct 10 22:49:02 aisaturn-repl-prod whatsapp-web[219475]: Node.js v23.11.1
+Oct 10 22:49:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 22:49:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 22:49:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 1.106s CPU time, 98.9M memory peak.
+Oct 10 22:49:12 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 126.
+Oct 10 22:49:12 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 22:49:12 aisaturn-repl-prod whatsapp-web[219493]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 22:49:12 aisaturn-repl-prod whatsapp-web[219493]: > node src/server.js
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]: node:events:485
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:       throw er; // Unhandled 'error' event
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:       ^
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at listenInCluster (node:net:1996:12)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at Server.listen (node:net:2101:7)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:145:5
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]: Emitted 'error' event on Server instance at:
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at emitErrorNT (node:net:1975:8)
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:   code: 'EADDRINUSE',
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:   errno: -98,
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:   syscall: 'listen',
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:   address: '::',
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]:   port: 3001
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]: }
+Oct 10 22:49:13 aisaturn-repl-prod whatsapp-web[219505]: Node.js v23.11.1
+Oct 10 22:49:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 22:49:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 22:49:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 1.011s CPU time, 94.1M memory peak.
+Oct 10 22:49:23 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 127.
+Oct 10 22:49:23 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 22:49:23 aisaturn-repl-prod whatsapp-web[219523]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 22:49:23 aisaturn-repl-prod whatsapp-web[219523]: > node src/server.js
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]: node:events:485
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:       throw er; // Unhandled 'error' event
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:       ^
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at listenInCluster (node:net:1996:12)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at Server.listen (node:net:2101:7)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:145:5
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]: Emitted 'error' event on Server instance at:
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at emitErrorNT (node:net:1975:8)
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:   code: 'EADDRINUSE',
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:   errno: -98,
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:   syscall: 'listen',
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:   address: '::',
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]:   port: 3001
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]: }
+Oct 10 22:49:24 aisaturn-repl-prod whatsapp-web[219535]: Node.js v23.11.1
+Oct 10 22:49:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 22:49:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 22:49:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 995ms CPU time, 94.5M memory peak.
+^C
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+require 'faraday'
+conn = Faraday.new(url: 'http://localhost:3001')
+conn.headers['X-Whatsapp-Secret'] = ENV['WHATSAPP_WEB_SECRET']
+# Connect isteği
+response = conn.post('/channels/test123/connect',
+  { webhookUrl: 'https://app.aisaturn.co/webhooks/whatsapp_web/test123' }.to_json,
+  'Content-Type' => 'application/json'
+)
+puts \"Connect Status: #{response.status}\"
+puts \"Connect Body: #{response.body}\"
+# Biraz bekle
+sleep 3
+# QR kodu al
+qr_response = conn.get('/channels/test123/qr')
+puts \"QR Status: #{qr_response.status}\"
+puts \"QR Body: #{qr_response.body}\"
+"
+I, [2025-10-10T22:49:33.535449 #219552]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:49:33.535545 #219552]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:49:36.559882 #219552]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Connect Status: 200
+Connect Body: {"status":"connecting","qr":null}
+QR Status: 404
+QR Body: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /channels/test123/qr</pre>
+</body>
+</html>
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+require 'faraday'
+conn = Faraday.new(url: 'http://localhost:3001')
+conn.headers['X-Whatsapp-Secret'] = ENV['WHATSAPP_WEB_SECRET']
+# Connect isteği
+response = conn.post('/channels/test123/connect',
+  { webhookUrl: 'https://app.aisaturn.co/webhooks/whatsapp_web/test123' }.to_json,
+  'Content-Type' => 'application/json'
+)
+puts \"Connect Status: #{response.status}\"
+puts \"Connect Body: #{response.body}\"
+# Biraz bekle
+sleep 3
+# QR kodu al
+qr_response = conn.get('/channels/test123/qr')
+puts \"QR Status: #{qr_response.status}\"
+puts \"QR Body: #{qr_response.body}\"
+"cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+require 'faraday'
+conn = Faraday.new(url: 'http://localhost:3001')
+conn.headers['X-Whatsapp-Secret'] = ENV['WHATSAPP_WEB_SECRET']
+# Connect isteği
+response = conn.post('/channels/test123/connect',
+  { webhookUrl: 'https://app.aisaturn.co/webhooks/whatsapp_web/test123' }.to_json,
+  'Content-Type' => 'application/json'
+)
+puts \"Connect Status: #{response.status}\"
+puts \"Connect Body: #{response.body}\"
+# Biraz bekle
+sleep 3
+# QR kodu al
+qr_response = conn.get('/channels/test123/qr')
+puts \"QR Status: #{qr_response.status}\"
+puts \"QR Body: #{qr_response.body}\"
+"
+I, [2025-10-10T22:49:56.911915 #219626]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:49:56.912015 #219626]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:49:59.656422 #219626]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Connect Status: 200
+Connect Body: {"status":"already_connected","qr":null}
