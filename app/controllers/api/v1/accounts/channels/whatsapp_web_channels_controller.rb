@@ -56,7 +56,7 @@ class Api::V1::Accounts::Channels::WhatsappWebChannelsController < Api::V1::Acco
   private
 
   def set_channel
-    @channel = Current.account.whatsapp.find(params[:id])
+    @channel = Current.account.whatsapp_channels.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'WhatsApp channel not found' }, status: :not_found
   end
