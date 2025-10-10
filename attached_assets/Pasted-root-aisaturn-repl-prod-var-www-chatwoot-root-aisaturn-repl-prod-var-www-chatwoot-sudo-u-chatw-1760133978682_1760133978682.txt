@@ -1,0 +1,47 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo -u chatwoot git pull origin main
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "1 minute ago" -f
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.013529 #213917]  INFO -- : [cf95e074-d13e-4172-91f6-65bedec5553b] Started GET "/api/v1/widget/messages?website_token=yFey668ELAKERFz78vv9yYY7&cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiI0M2ZjZDZlMS1jZDQ4LTRiYjktODVlYi1jZjljZTdmNGM0NjgiLCJpbmJveF9pZCI6MSwiZXhwIjoxNzc1NDA1OTQ4LCJpYXQiOjE3NTk4NTM5NDh9.N2cRjluHuhFfDv-OHCGVYDaG5pyZ9-LtRuON5T03Cm0&after=118" for 88.226.105.179 at 2025-10-10 22:05:22 +0000
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.018343 #213917]  INFO -- : [cf95e074-d13e-4172-91f6-65bedec5553b] Processing by Api::V1::Widget::MessagesController#index as JSON
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.018450 #213917]  INFO -- : [cf95e074-d13e-4172-91f6-65bedec5553b]   Parameters: {"website_token"=>"yFey668ELAKERFz78vv9yYY7", "cw_conversation"=>"eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiI0M2ZjZDZlMS1jZDQ4LTRiYjktODVlYi1jZjljZTdmNGM0NjgiLCJpbmJveF9pZCI6MSwiZXhwIjoxNzc1NDA1OTQ4LCJpYXQiOjE3NTk4NTM5NDh9.N2cRjluHuhFfDv-OHCGVYDaG5pyZ9-LtRuON5T03Cm0", "after"=>"118"}
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.113484 #213917]  INFO -- : [8a07fe25-a635-488d-a583-98a2ca7c629d] Started GET "/api/v1/accounts/1/cache_keys" for 88.226.105.179 at 2025-10-10 22:05:22 +0000
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.117228 #213917]  INFO -- : [8a07fe25-a635-488d-a583-98a2ca7c629d] Processing by Api::V1::AccountsController#cache_keys as JSON
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.117306 #213917]  INFO -- : [8a07fe25-a635-488d-a583-98a2ca7c629d]   Parameters: {"id"=>"1"}
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.130378 #213917]  INFO -- : [cf95e074-d13e-4172-91f6-65bedec5553b] Completed 200 OK in 112ms (Views: 8.3ms | ActiveRecord: 27.7ms | Allocations: 47847)
+Oct 10 22:05:22 aisaturn-repl-prod bundle[213917]: I, [2025-10-10T22:05:22.200357 #213917]  INFO -- : [8a07fe25-a635-488d-a583-98a2ca7c629d] Completed 200 OK in 83ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 12818)
+Oct 10 22:06:04 aisaturn-repl-prod systemd[1]: Stopping chatwoot-web.service - Chatwoot web server...
+Oct 10 22:06:04 aisaturn-repl-prod bundle[213917]: - Gracefully stopping, waiting for requests to finish
+Oct 10 22:06:04 aisaturn-repl-prod bundle[213917]: Exiting
+Oct 10 22:06:04 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Deactivated successfully.
+Oct 10 22:06:04 aisaturn-repl-prod systemd[1]: Stopped chatwoot-web.service - Chatwoot web server.
+Oct 10 22:06:04 aisaturn-repl-prod systemd[1]: chatwoot-web.service: Consumed 6.557s CPU time, 277.9M memory peak.
+Oct 10 22:06:04 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 10 22:06:07 aisaturn-repl-prod bundle[214089]: => Booting Puma
+Oct 10 22:06:07 aisaturn-repl-prod bundle[214089]: => Rails 7.1.5.2 application starting in production
+Oct 10 22:06:07 aisaturn-repl-prod bundle[214089]: => Run `bin/rails server --help` for more startup options
+Oct 10 22:06:07 aisaturn-repl-prod bundle[214089]: I, [2025-10-10T22:06:07.730613 #214089]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 22:06:07 aisaturn-repl-prod bundle[214089]: I, [2025-10-10T22:06:07.730687 #214089]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: I, [2025-10-10T22:06:10.576657 #214089]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: Puma starting in single mode...
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: * Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: *  Min threads: 5
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: *  Max threads: 5
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: *  Environment: production
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: *          PID: 214089
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: * Listening on http://0.0.0.0:3000
+Oct 10 22:06:10 aisaturn-repl-prod bundle[214089]: Use Ctrl-C to stop
+^C
+root@aisaturn-repl-prod:/var/www/chatwoot#
