@@ -29,7 +29,6 @@ class Api::V1::Accounts::InboxesController < Api::V1::Accounts::BaseController
   def create
     ActiveRecord::Base.transaction do
       channel = create_channel
-      Rails.logger.info "==== DEBUG: channel class = #{channel.class.name}, channel = #{channel.inspect}"
       @inbox = Current.account.inboxes.build(
         {
           name: inbox_name(channel),
@@ -38,9 +37,7 @@ class Api::V1::Accounts::InboxesController < Api::V1::Accounts::BaseController
           permitted_params.except(:channel)
         )
       )
-      Rails.logger.info "==== DEBUG: @inbox = #{@inbox.inspect}"
       @inbox.save!
-      Rails.logger.info "==== DEBUG: @inbox saved, id = #{@inbox.id}"
     end
   end
 
