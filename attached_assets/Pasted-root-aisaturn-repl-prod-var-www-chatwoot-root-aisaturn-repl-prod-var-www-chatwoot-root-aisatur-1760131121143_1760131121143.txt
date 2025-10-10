@@ -1,0 +1,46 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# InstallationConfig.where(name: 'INSTALLATION_NAME').first
+-bash: syntax error near unexpected token `name:'
+root@aisaturn-repl-prod:/var/www/chatwoot# InstallationConfig.delete_all
+InstallationConfig.delete_all: command not found
+root@aisaturn-repl-prod:/var/www/chatwoot# InstallationConfig.create_or_update_from_hash(YAML.safe_load(File.read(Rails.root.join('config/installation_config.yml')), permitted_classes: [Symbol]))
+-bash: syntax error near unexpected token `YAML.safe_load'
+root@aisaturn-repl-prod:/var/www/chatwoot# # aisaturn-repl-prod sunucusunda
+cd /var/www/chatwoot
+I, [2025-10-10T21:17:54.960065 #211939]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:17:54.960205 #211939]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T21:17:57.699937 #211939]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Loading production environment (Rails 7.1.5.2)
+irb(main):001:0> InstallationConfig.where(name: 'INSTALLATION_NAME').first
+=>
+#<InstallationConfig:0x000074bca8839260
+ id: 85,
+ name: "INSTALLATION_NAME",
+ serialized_value: {"value"=>"Chatwoot"},
+ created_at: Thu, 09 Oct 2025 03:37:59.890069000 UTC +00:00,
+ updated_at: Fri, 10 Oct 2025 12:00:28.696505000 UTC +00:00,
+ locked: true>
+irb(main):002:0> config = InstallationConfig.find_or_create_by(name: 'INSTALLATION_NAME')
+irb(main):003:0> config.update(value: 'AISATURN')
+=> true
+irb(main):004:0> config = InstallationConfig.find_or_create_by(name: 'LOGO')
+irb(main):005:0> config.update(value: '/brand-assets/new_logo.png')
+=> true
+irb(main):006:0> config = InstallationConfig.find_or_create_by(name: 'LOGO_DARK')
+irb(main):007:0> config.update(value: '/brand-assets/new_logo_dark.png')
+=> true
+irb(main):008:0> config = InstallationConfig.find_or_create_by(name: 'BRAND_NAME')
+irb(main):009:0> config.update(value: 'AISATURN')
+=> true
+irb(main):010:0> InstallationConfig.where(name: ['INSTALLATION_NAME', 'LOGO', 'LOGO_DARK', 'BRAND_NAME']).pluck(:name, :value)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql_adapter.rb:894:in `exec_params': PG::UndefinedColumn: ERROR:  column "value" does not exist (ActiveRecord::StatementInvalid)
+LINE 1: SELECT "installation_configs"."name", "value" FROM "installa...
+                                              ^
+
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/postgresql_adapter.rb:894:in `exec_params': ERROR:  column "value" does not exist (PG::UndefinedColumn)
+LINE 1: SELECT "installation_configs"."name", "value" FROM "installa...
+                                              ^
+
+irb(main):011:0> exit
+root@aisaturn-repl-prod:/var/www/chatwoot#
