@@ -1,0 +1,33 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo bash -c 'cat >> /var/www/chatwoot/.env.production << "EOF"
+# WhatsApp Web Integration
+WHATSAPP_WEB_URL=http://localhost:3001
+WHATSAPP_WEB_SECRET=your_whatsapp_web_secret_here
+EOF'
+root@aisaturn-repl-prod:/var/www/chatwoot# grep WHATSAPP_WEB_SECRET /var/www/chatwoot/.env.production
+WHATSAPP_WEB_SECRET=08f1d0fa9600389c66ad6a2b0d855e9aaa2bef3765bd0e330d36cee441281292
+WHATSAPP_WEB_SECRET=your_whatsapp_web_secret_here
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl show whatsapp-web | grep WHATSAPP_WEB_SECRET
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot# sleep 3
+sudo systemctl show chatwoot-web | grep -i "whatsapp"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-web --no-pager | head -15
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:31:47 UTC; 11s ago
+ Invocation: 9f590e0e010a49d1be416c3edb7476d6
+   Main PID: 189436 (ruby)
+      Tasks: 12 (limit: 19140)
+     Memory: 265.7M (peak: 266.2M)
+        CPU: 5.712s
+     CGroup: /system.slice/chatwoot-web.service
+             └─189436 "puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]"
+
+Oct 10 04:31:49 aisaturn-repl-prod bundle[189436]: I, [2025-10-10T04:31:49.826055 #189436]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 04:31:52 aisaturn-repl-prod bundle[189436]: I, [2025-10-10T04:31:52.610521 #189436]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Oct 10 04:31:52 aisaturn-repl-prod bundle[189436]: Puma starting in single mode...
+Oct 10 04:31:52 aisaturn-repl-prod bundle[189436]: * Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+root@aisaturn-repl-prod:/var/www/chatwoot#

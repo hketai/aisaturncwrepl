@@ -1,0 +1,81 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# # 1. Önce .env.production içeriğini görelim
+cat /var/www/chatwoot/.env.production
+
+# 2. Systemd service dosyasını güncelleyelim
+sudo nano /etc/systemd/system/chatwoot-web.service
+# Rails Environment
+RAILS_ENV=production
+NODE_ENV=production
+
+# Secret Keys
+SECRET_KEY_BASE=dd5eb24b604e37bb887b543043b1482d104b9dc7106f959db2aecaa280eae060e9507b8a1c673dd9b50ac5af5f5b205657cce9504797628f1e3107ccdf55fe18
+DEVISE_SECRET_KEY=abd6a87990eaf0f49e9b85e662b3a5747d4fae0d7e3ff9dfe93169e119f0fdeba90008f1b568e9150521ae9930661f833fabbe241763474625dba7885fedcc5d
+
+# Database
+DATABASE_URL=postgresql://chatwoot:chatwoot_password_2025@localhost:5432/chatwoot_production
+
+# Redis
+REDIS_URL=redis://localhost:6379
+
+# Frontend URL
+FRONTEND_URL=https://app.aisaturn.co
+
+# Force SSL
+FORCE_SSL=true
+
+# Rails Settings
+RAILS_LOG_TO_STDOUT=true
+RAILS_MAX_THREADS=5
+
+# Mailer (opsiyonel - daha sonra yapılandırılabilir)
+MAILER_SENDER_EMAIL=notifications@app.aisaturn.co
+SMTP_ADDRESS=
+SMTP_PORT=587
+SMTP_DOMAIN=app.aisaturn.co
+SMTP_USERNAME=
+SMTP_PASSWORD=
+SMTP_AUTHENTICATION=plain
+SMTP_ENABLE_STARTTLS_AUTO=true
+
+# Active Storage
+ACTIVE_STORAGE_SERVICE=local
+
+# Installation Config
+INSTALLATION_NAME=AISaturn
+
+
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# # 3. Systemd daemon'ı reload et
+sudo systemctl daemon-reload
+
+# 4. Servisi restart et
+sudo systemctl restart chatwoot-web
+
+# 5. Environment'ı kontrol et
+sudo systemctl show chatwoot-web | grep -i "whatsapp"
+
+# 6. Servis durumunu kontrol et
+sudo systemctl status chatwoot-web --no-pager | head -20
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:30:33 UTC; 67ms ago
+ Invocation: 88d0b60aeebf417a91a5aa9f57885c1e
+   Main PID: 189371 (bundle)
+      Tasks: 1 (limit: 19140)
+     Memory: 2.6M (peak: 2.8M)
+        CPU: 61ms
+     CGroup: /system.slice/chatwoot-web.service
+             └─189371 /root/.rbenv/versions/3.2.2/bin/ruby /root/.rbenv/versions/3.2.2/bin/bundle exec rails server -b 0.0.0.0 -p 3000
+
+Oct 10 04:30:33 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+root@aisaturn-repl-prod:/var/www/chatwoot#
