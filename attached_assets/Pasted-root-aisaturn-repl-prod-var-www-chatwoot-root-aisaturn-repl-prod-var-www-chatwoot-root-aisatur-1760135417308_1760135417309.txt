@@ -1,0 +1,183 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep node
+chatwoot  215876  0.5  0.6 10068636 111596 ?     Ssl  22:26   0:01 /usr/bin/node src/server.js
+root      216398  0.0  0.0   7300  2200 pts/0    S+   22:29   0:00 grep --color=auto node
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo netstat -tulpn | grep 3001
+sudo: netstat: command not found
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo ss -tulpn | grep 3001
+tcp   LISTEN 0      511                *:3001            *:*    users:(("MainThread",pid=215876,fd=26))                                
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo pkill -9 node
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo lsof -i :3001
+COMMAND      PID     USER FD   TYPE  DEVICE SIZE/OFF NODE NAME
+MainThrea 215876 chatwoot 26u  IPv6 1105763      0t0  TCP *:3001 (LISTEN)
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl start chatwoot-whatsapp-web
+sudo systemctl status chatwoot-whatsapp-web
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 22:29:46 UTC; 25ms ago
+ Invocation: 9ed40aa3edce40cbb0e6746f00083f1a
+   Main PID: 216476 (node)
+      Tasks: 1 (limit: 19140)
+     Memory: 496K (peak: 1.6M)
+        CPU: 7ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─216476 node /usr/bin/npm start
+
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job immediately on client request, res>
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+...skipping...
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 22:29:46 UTC; 25ms ago
+ Invocation: 9ed40aa3edce40cbb0e6746f00083f1a
+   Main PID: 216476 (node)
+      Tasks: 1 (limit: 19140)
+     Memory: 496K (peak: 1.6M)
+        CPU: 7ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─216476 node /usr/bin/npm start
+
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job immediately on client request, res>
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 22:29:46 UTC; 25ms ago
+ Invocation: 9ed40aa3edce40cbb0e6746f00083f1a
+   Main PID: 216476 (node)
+      Tasks: 1 (limit: 19140)
+     Memory: 496K (peak: 1.6M)
+        CPU: 7ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─216476 node /usr/bin/npm start
+
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job immediately on client request, res>
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+HELP -- Press RETURN for more, or q when done...skipping...
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 22:29:46 UTC; 25ms ago
+ Invocation: 9ed40aa3edce40cbb0e6746f00083f1a
+   Main PID: 216476 (node)
+      Tasks: 1 (limit: 19140)
+     Memory: 496K (peak: 1.6M)
+        CPU: 7ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─216476 node /usr/bin/npm start
+
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job immediately on client request, res>
+Oct 10 22:29:46 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
+root@aisaturn-repl-prod:/var/www/chatwoot# curl http://localhost:3001/health
+{"status":"ok","timestamp":"2025-10-10T22:30:08.463Z"}root@aisaturn-repl-prod:/var/www/chatwoot#
