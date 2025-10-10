@@ -1,0 +1,51 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# grep WHATSAPP_WEB_SECRET /var/www/chatwoot/.env.production
+WHATSAPP_WEB_SECRET=08f1d0fa9600389c66ad6a2b0d855e9aaa2bef3765bd0e330d36cee441281292
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web --since "10 minutes ago" | grep -i "connect\|error\|unauthorized"
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep node | grep whatsapp
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -50 /var/log/whatsapp-web.log
+nohup: ignoring input
+
+> chatwoot-whatsapp-web-service@1.0.0 start
+> node src/server.js
+
+node:events:485
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+    at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:145:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1975:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v23.11.1
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+require 'faraday'
+conn = Faraday.new(url: 'http://localhost:3001')
+conn.headers['X-Whatsapp-Secret'] = ENV.fetch('WHATSAPP_WEB_SECRET', 'development-secret-change-in-production')
+response = conn.post('/channels/999/connect', { webhookUrl: 'http://test' }.to_json, 'Content-Type' => 'application/json')
+puts \"Status: #{response.status}\"
+puts \"Body: #{response.body}\"
+"
+I, [2025-10-10T22:21:05.082341 #215149]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:21:05.082438 #215149]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T22:21:07.778836 #215149]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Status: 200
+Body: {"status":"connecting","qr":null}
+root@aisaturn-repl-prod:/var/www/chatwoot#
