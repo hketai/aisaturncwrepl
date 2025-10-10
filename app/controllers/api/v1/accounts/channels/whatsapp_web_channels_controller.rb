@@ -41,11 +41,11 @@ class Api::V1::Accounts::Channels::WhatsappWebChannelsController < Api::V1::Acco
   end
 
   def qr_code
-    provider_config = @channel.provider_config || {}
-    qr_code = provider_config['qr_code']
+    result = @channel.provider_service.qr_code
     
-    if qr_code.present?
-      render json: { qr_code: qr_code }
+    if result[:qr_code].present?
+      @channel.update(provider_config: @channel.provider_config.merge('qr_code' => result[:qr_code]))
+      render json: { qr_code: result[:qr_code] }
     else
       render json: { error: 'QR code not available. Please initiate connection first.' }, status: :not_found
     end

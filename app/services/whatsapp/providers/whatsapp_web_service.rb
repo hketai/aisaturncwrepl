@@ -67,6 +67,11 @@ class Whatsapp::Providers::WhatsappWebService
     handle_response(response)
   end
 
+  def qr_code
+    response = http_client.get("/channels/#{@whatsapp_channel.id}/qr")
+    handle_response(response)
+  end
+
   def sync_templates
     []
   end
