@@ -1,0 +1,68 @@
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~#
+root@aisaturn-repl-prod:~# # Worker servis durumunu kontrol edin
+sudo systemctl status chatwoot-worker --no-pager | head -20
+
+# Tüm servisleri kontrol edin
+echo "=== CHATWOOT WEB ==="
+sudo systemctl status chatwoot-web --no-pager | grep -E "Active:|Main PID:" | head -2
+
+echo "=== CHATWOOT WORKER ==="
+sudo systemctl status chatwoot-worker --no-pager | grep -E "Active:|Main PID:" | head -2
+
+echo "=== WHATSAPP WEB ==="
+sudo systemctl status whatsapp-web --no-pager | grep -E "Active:|Main PID:" | head -2
+
+# Application'a erişim testi
+curl -I https://app.aisaturn.co
+● chatwoot-worker.service - Chatwoot worker
+     Loaded: loaded (/etc/systemd/system/chatwoot-worker.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 04:20:21 UTC; 2min 11s ago
+ Invocation: 327ad94c2699459b92d3257ba0cb95b8
+   Main PID: 189017 (bundle)
+      Tasks: 19 (limit: 19140)
+     Memory: 320.2M (peak: 320.9M)
+        CPU: 6.614s
+     CGroup: /system.slice/chatwoot-worker.service
+             ├─189017 "sidekiq 7.3.1 chatwoot [0 of 12 busy]"
+             └─189063 "/var/www/chatwoot/vendor/bundle/ruby/3.2.0/bin/sidekiq -C config/sidekiq.yml"
+
+Oct 10 04:20:28 aisaturn-repl-prod bundle[189017]: {"ts":"2025-10-10T04:20:28.070Z","pid":189017,"tid":"47it","lvl":"INFO","msg":"Sidekiq 7.3.1 connecting to Redis with options {:size=>2, :pool_name=>\"sidekiq-alive\", :url=>\"redis://localhost:6379\", :password=>nil, :reconnect_attempts=>2, :timeout=>1}"}
+Oct 10 04:20:28 aisaturn-repl-prod bundle[189017]: {"ts":"2025-10-10T04:20:28.071Z","pid":189017,"tid":"47it","lvl":"INFO","msg":"[SidekiqAlive] Starting default healthcheck server on 0.0.0.0:7433"}
+Oct 10 04:20:28 aisaturn-repl-prod bundle[189017]: {"ts":"2025-10-10T04:20:28.086Z","pid":189017,"tid":"47it","lvl":"INFO","msg":"[SidekiqAlive] Web server started in subprocess with pid 189063"}
+Oct 10 04:20:28 aisaturn-repl-prod bundle[189017]: {"ts":"2025-10-10T04:20:28.086Z","pid":189017,"tid":"47it","lvl":"INFO","msg":"[SidekiqAlive] Successfully started sidekiq-alive, registered with key: SIDEKIQ_REGISTERED_INSTANCE::HOSTNAME_NOT_SET on set sidekiq-alive-hostnames"}
+Oct 10 04:21:03 aisaturn-repl-prod bundle[189017]: I, [2025-10-10T04:21:03.217384 #189017]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [c94589ef-0803-49e5-b516-0ca6ce025998] Performing Inboxes::FetchImapEmailInboxesJob (Job ID: c94589ef-0803-49e5-b516-0ca6ce025998) from Sidekiq(scheduled_jobs) enqueued at 2025-10-10T04:21:03.214785100Z
+Oct 10 04:21:03 aisaturn-repl-prod bundle[189017]: I, [2025-10-10T04:21:03.217809 #189017]  INFO -- : [ActiveJob] Enqueued Inboxes::FetchImapEmailInboxesJob (Job ID: c94589ef-0803-49e5-b516-0ca6ce025998) to Sidekiq(scheduled_jobs)
+Oct 10 04:21:03 aisaturn-repl-prod bundle[189017]: I, [2025-10-10T04:21:03.260334 #189017]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [c94589ef-0803-49e5-b516-0ca6ce025998] Performed Inboxes::FetchImapEmailInboxesJob (Job ID: c94589ef-0803-49e5-b516-0ca6ce025998) from Sidekiq(scheduled_jobs) in 43.14ms
+Oct 10 04:22:08 aisaturn-repl-prod bundle[189017]: I, [2025-10-10T04:22:08.234802 #189017]  INFO -- : [ActiveJob] [Inboxes::FetchImapEmailInboxesJob] [dc9e41b0-8db0-4de6-8252-8a28c495743e] Performing Inboxes::FetchImapEmailInboxesJob (Job ID: dc9e41b0-8db0-4de6-8252-8a28c495743e) from Sidekiq(scheduled_jobs) enqueued at 2025-10-10T04:22:08.233897128Z
+=== CHATWOOT WEB ===
+     Active: active (running) since Fri 2025-10-10 04:20:19 UTC; 2min 13s ago
+   Main PID: 188993 (ruby)
+=== CHATWOOT WORKER ===
+     Active: active (running) since Fri 2025-10-10 04:20:21 UTC; 2min 11s ago
+   Main PID: 189017 (bundle)
+=== WHATSAPP WEB ===
+     Active: active (running) since Fri 2025-10-10 04:17:31 UTC; 5min ago
+   Main PID: 188551 (MainThread)
+HTTP/1.1 200 OK
+Server: nginx/1.26.3 (Ubuntu)
+Date: Fri, 10 Oct 2025 04:22:33 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+link: </vite/assets/dashboard-DoNvH8YY.js>; rel=modulepreload; as=script; crossorigin=anonymous; nopush,</vite/assets/dashboard-CTpNIaPy.css>; rel=preload; as=style; nopush,</vite/assets/useBranding-aTKfDg_G.css>; rel=preload; as=style; nopush,</vite/assets/DashboardIcon-D_JMBKPC.css>; rel=preload; as=style; nopush
+vary: Accept
+etag: W/"8377cd07fb6491e26c376b760ee80ae3"
+cache-control: max-age=0, private, must-revalidate
+set-cookie: _chatwoot_session=BOm73h%2FhbsgZVWRGdVgE7BxDrn9Or53HcTxMMypcVgRjRak70nlwET2kwGeeGtceuG9bOmYLb1tfQfGpdvO5Kk29Y6aKBFbUs6t5zFhF2NGdmzxP62%2B8Bhd4vZ%2BUEzI1T5iNelYYPu4XvFoKLnuDNOb97hxbeksq921HWQohRZpb8Ao5rueOalX%2FwitC0cS6II56U3ZwsB4Dxdt3mqECxT8Lq2dBdMJPZvX%2BdIMDbS15lHI0w3Ndws7CESMiYDFWV%2BwPtg38Kx9k8yl2coDOgLHV4KREeMdpKQ%3D%3D--yhkeMr1ftzjSAITP--Du7U%2F8IV6IfovWF%2Bp2MyhA%3D%3D; path=/; secure; httponly; samesite=lax
+x-request-id: 24f71373-cf34-4e35-b4ed-522539271873
+x-runtime: 0.078125
+strict-transport-security: max-age=63072000; includeSubDomains
+
+root@aisaturn-repl-prod:~#
