@@ -1,0 +1,72 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# which node
+which npm
+/usr/bin/node
+/usr/bin/npm
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+npm run build
+npm error Missing script: "build"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-10T04_59_55_455Z-debug-0.log
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rake assets:precompile
+This project is configured to use pnpm because /var/www/chatwoot/package.json has a "packageManager" field
+I, [2025-10-10T05:00:08.566615 #190608]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:00:08.566762 #190608]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-10T05:00:08.926282 #190608]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.2s
+-------------- Bulding SDK for Production --------------
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 1.35s
+-------------- Bulding App for Production --------------
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.1s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-10 04:52:23
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+root@aisaturn-repl-prod:/var/www/chatwoot# sleep 3
+sudo systemctl status chatwoot-web --no-pager | head -15
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 05:00:16 UTC; 7s ago
+ Invocation: 313331b89a2e430fb157f1fdd22d7376
+   Main PID: 190751 (ruby)
+      Tasks: 12 (limit: 19140)
+     Memory: 259.7M (peak: 260.3M)
+        CPU: 6.525s
+     CGroup: /system.slice/chatwoot-web.service
+             └─190751 "puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]"
+
+Oct 10 05:00:19 aisaturn-repl-prod bundle[190751]: I, [2025-10-10T05:00:19.413988 #190751]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 05:00:22 aisaturn-repl-prod bundle[190751]: I, [2025-10-10T05:00:22.640128 #190751]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Oct 10 05:00:22 aisaturn-repl-prod bundle[190751]: Puma starting in single mode...
+Oct 10 05:00:22 aisaturn-repl-prod bundle[190751]: * Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+root@aisaturn-repl-prod:/var/www/chatwoot#
