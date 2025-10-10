@@ -121,13 +121,14 @@
 - ✅ **Dependency Management:** Bundle install (Ruby gems) + pnpm install (Node packages)
 - ✅ **Database Migration:** Automatic db:migrate on every deployment
 - ⚠️ **Database Seeding:** DISABLED (sets onboarding flag, causes installation screen)
+- ✅ **Branding Protection:** AISATURN configs auto-updated from YAML (no onboarding trigger)
 - ✅ **Cache Clearing:** Vite cache + Rails cache cleared on each deploy
 - ✅ **Asset Compilation:** Vite builds (library + app) + Rails asset precompile
 - ✅ **Service Restart:** Chatwoot web server + Sidekiq worker + Nginx restart
 - ✅ **YAML Cleanup:** Automatic removal of old YAML configs that cause production errors
 - ✅ **Health Checks:** Service status verification after deployment
 - ✅ **Production Recovery:** Manual InstallationConfig + enabled column fixes applied
-- File: `.github/workflows/deploy.yml`
+- File: `.github/workflows/deploy.yml`, `lib/tasks/update_installation_configs.rake`
 
 **AI Conversation Limits - Restored:**
 - ✅ Database columns: ai_conversation_limit, ai_conversation_count, ai_limit_reset_at

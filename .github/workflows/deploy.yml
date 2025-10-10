@@ -70,6 +70,10 @@ jobs:
             echo "🧹 Cleaning up old YAML installation configs..."
             PGPASSWORD=chatwoot_password_2025 psql -h localhost -U chatwoot -d chatwoot_production -c "DELETE FROM installation_configs WHERE value::text LIKE '---%%';" || true
             
+            # Update installation configs (branding) from YAML without triggering onboarding
+            echo "🎨 Updating AISATURN branding configs..."
+            RAILS_ENV=production bundle exec rails installation:update_configs
+            
             # NOTE: db:seed is DISABLED in production because it sets Redis onboarding flag
             # which forces the app into installation wizard mode!
             # Seeds should ONLY run in development/staging environments.
