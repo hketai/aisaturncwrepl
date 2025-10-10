@@ -35,7 +35,7 @@ Chatwoot, rebranded as AISATURN, is an open-source customer support platform bui
 - **URL Auto-Scraping:** `Saturn::UrlScraperService` with Nokogiri for HTML content extraction from URLs, triggered on knowledge source creation and daily sync.
     - **Security:** Implements robust security measures against SSRF/LFI/MITM, including IP filtering, DNS rebinding prevention, and strict SSL/TLS verification.
 - **InstallationConfig JSONB Fix:** Migrated `InstallationConfig` model from YAML serialization to native JSONB handling for improved production stability.
-- **CI/CD:** GitHub Actions for automated deployment, including dependency management, database migrations, asset compilation, and service restarts.
+- **CI/CD:** GitHub Actions for automated deployment, including dependency management, database migrations, asset compilation, and service restarts. WhatsApp Web microservice is automatically deployed and restarted via systemd service on production server.
 - **Agent Enable/Disable:** Functionality to toggle AI agent status, affecting auto-response behavior.
 
 ### System Design Choices

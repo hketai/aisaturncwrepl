@@ -50,6 +50,10 @@ jobs:
             echo "📦 Installing Node packages (pnpm install)..."
             pnpm install --frozen-lockfile
             
+            # Install WhatsApp Web microservice dependencies
+            echo "📦 Installing WhatsApp Web microservice dependencies..."
+            cd lib/whatsapp_web && npm install && cd ../..
+            
             # Clean Vite cache to force fresh build
             echo "🧹 Cleaning Vite cache..."
             rm -rf tmp/vite-cache
@@ -92,6 +96,15 @@ jobs:
             sudo systemctl restart chatwoot-web
             sudo systemctl restart chatwoot-worker
             
+            # Restart WhatsApp Web microservice (only if systemd unit exists)
+            if sudo systemctl list-unit-files | grep -q whatsapp-web.service; then
+              echo "🔄 Restarting WhatsApp Web microservice..."
+              sudo systemctl restart whatsapp-web
+            else
+              echo "⚠️ WhatsApp Web service not configured - skipping restart"
+              echo "📝 Run: sudo cp deployment/systemd/whatsapp-web.service /etc/systemd/system/ && sudo systemctl enable whatsapp-web"
+            fi
+            
             # Restart Nginx to clear any stuck connections
             echo "🔄 Restarting Nginx..."
             sudo systemctl restart nginx
@@ -103,6 +116,20 @@ jobs:
             echo "✅ Checking service status..."
             sudo systemctl status chatwoot-web --no-pager || true
             sudo systemctl status chatwoot-worker --no-pager || true
+            
+            # Verify WhatsApp Web microservice (if configured)
+            if sudo systemctl list-unit-files | grep -q whatsapp-web.service; then
+              echo "🔍 Checking WhatsApp Web service status..."
+              sudo systemctl status whatsapp-web --no-pager
+              
+              echo "🔍 Testing WhatsApp Web health endpoint..."
+              if curl -f http://localhost:3001/health; then
+                echo "✅ WhatsApp Web health check passed"
+              else
+                echo "❌ WhatsApp Web health check failed - deployment aborted"
+                exit 1
+              fi
+            fi
             
             echo "✅ Deployment completed successfully!"
             echo "🌐 Application is now live at https://app.aisaturn.co"

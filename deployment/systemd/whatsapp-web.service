@@ -1,0 +1,20 @@
+[Unit]
+Description=WhatsApp Web Microservice for Chatwoot
+After=network.target redis.service postgresql.service
+
+[Service]
+Type=simple
+User=chatwoot
+WorkingDirectory=/var/www/chatwoot/lib/whatsapp_web
+Environment="NODE_ENV=production"
+Environment="WHATSAPP_WEB_PORT=3001"
+Environment="RAILS_BASE_URL=https://app.aisaturn.co"
+EnvironmentFile=/var/www/chatwoot/.env.production
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/chatwoot/whatsapp-web.log
+StandardError=append:/var/log/chatwoot/whatsapp-web-error.log
+
+[Install]
+WantedBy=multi-user.target
