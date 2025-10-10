@@ -65,7 +65,10 @@ onMounted(() => {
   fetchAgents();
 });
 
-watch(() => props.selectedAgent, (agent) => {
+watch(() => props.selectedAgent, async (agent) => {
+  // Refresh agent list when dialog opens
+  await fetchAgents();
+  
   if (agent) {
     form.value = {
       handoff_enabled: agent.handoff_enabled || false,
