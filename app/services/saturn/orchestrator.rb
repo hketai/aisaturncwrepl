@@ -8,12 +8,17 @@ module Saturn
       @agent_profile = agent_profile
       @conversation_history = []
       @last_tool_action = nil
+      @api_key = api_key
       @llm_service = Saturn::LlmService.new(
         api_key: api_key,
         model: agent_profile.model_name || 'gpt-4o-mini',
         temperature: agent_profile.ai_temperature || 0.7
       )
       @available_tools = build_tool_registry
+      @intent_detector = Saturn::IntentDetector.new(
+        api_key: api_key,
+        agent_profile: agent_profile
+      )
     end
     
     def process(user_input, context: {})
@@ -116,6 +121,12 @@ module Saturn
       tool = @available_tools.find { |t| t.name == function_name }
       return "Tool not found: #{function_name}" unless tool
       
+      # Detect intent for handoff/transfer tools (token-optimized)
+      if should_detect_intent?(function_name)
+        detected_intent = detect_user_intent
+        arguments['detected_intent'] = detected_intent if detected_intent.present?
+      end
+      
       result_string = tool.execute(arguments)
       
       # Parse result to check for special actions (handoff/transfer)
@@ -129,6 +140,31 @@ module Saturn
       result_string
     rescue StandardError => e
       "Tool execution failed: #{e.message}"
+    end
+    
+    def should_detect_intent?(function_name)
+      ['handoff_to_human', 'transfer_to_agent'].include?(function_name)
+    end
+    
+    def detect_user_intent
+      return nil unless @intent_detector
+      
+      # Get last user message
+      user_messages = @conversation_history.select { |msg| msg[:role] == 'user' }
+      last_user_message = user_messages.last&.dig(:content)
+      
+      return nil unless last_user_message
+      
+      # Build lightweight context (token-optimized: only recent messages)
+      recent_context = user_messages.last(3).map { |msg| msg[:content] }.join(" | ")
+      
+      @intent_detector.detect_intent(
+        user_message: last_user_message,
+        conversation_context: recent_context
+      )
+    rescue => e
+      Rails.logger.error("Intent detection failed in orchestrator: #{e.message}")
+      nil
     end
     
     def append_message(role, content)
