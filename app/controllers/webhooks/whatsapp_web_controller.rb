@@ -1,6 +1,6 @@
 class Webhooks::WhatsappWebController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :authenticate_user!, raise: false
   before_action :verify_signature
 
   def create
