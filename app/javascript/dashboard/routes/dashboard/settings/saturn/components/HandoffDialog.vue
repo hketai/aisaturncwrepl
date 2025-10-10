@@ -195,7 +195,9 @@ defineExpose({ dialogRef });
           <label 
             :class="[
               'flex-1 p-4 border-2 rounded-lg cursor-pointer transition-all',
-              handoffType === 'human' ? 'border-woot-500 bg-woot-50' : 'border-n-weak hover:border-n-slate-7'
+              handoffType === 'human' 
+                ? 'border-woot-500 bg-woot-50 dark:bg-woot-900/20' 
+                : 'border-n-slate-7 dark:border-n-slate-6 bg-n-slate-2 dark:bg-n-slate-3 hover:border-n-slate-8 dark:hover:border-n-slate-5'
             ]"
           >
             <input
@@ -216,7 +218,9 @@ defineExpose({ dialogRef });
           <label 
             :class="[
               'flex-1 p-4 border-2 rounded-lg cursor-pointer transition-all',
-              handoffType === 'agent' ? 'border-woot-500 bg-woot-50' : 'border-n-weak hover:border-n-slate-7'
+              handoffType === 'agent' 
+                ? 'border-woot-500 bg-woot-50 dark:bg-woot-900/20' 
+                : 'border-n-slate-7 dark:border-n-slate-6 bg-n-slate-2 dark:bg-n-slate-3 hover:border-n-slate-8 dark:hover:border-n-slate-5'
             ]"
           >
             <input
@@ -248,7 +252,7 @@ defineExpose({ dialogRef });
               <button
                 type="button"
                 @click="navigateToTeams"
-                class="inline-flex items-center gap-1 mt-2 px-4 py-2 text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 rounded-md shadow-sm transition-colors"
+                class="inline-flex items-center gap-1 mt-2 px-4 py-2 text-xs font-semibold bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-white dark:hover:bg-amber-600 rounded-md shadow-sm transition-colors"
               >
                 {{ $t('SATURN.AGENTS.CREATE_TEAM_LINK') }} →
               </button>
