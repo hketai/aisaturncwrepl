@@ -1,0 +1,110 @@
+channels.js:33  GET https://app.aisaturn.co/api/v1/accounts/1/channels/whatsapp_web_channels/31/qr_code 404 (Not Found)
+(anonymous) @ xhr.js:195
+xhr @ xhr.js:15
+Oe @ dispatchRequest.js:49
+_request @ Axios.js:187
+request @ Axios.js:40
+L.<computed> @ Axios.js:213
+(anonymous) @ bind.js:5
+whatsappWebQRCode @ channels.js:33
+(anonymous) @ WhatsappWeb.vue:87
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+WhatsappWeb.vue:108 QR polling error: m {message: 'Request failed with status code 404', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+(anonymous) @ WhatsappWeb.vue:108
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+channels.js:33  GET https://app.aisaturn.co/api/v1/accounts/1/channels/whatsapp_web_channels/31/qr_code 404 (Not Found)
+(anonymous) @ xhr.js:195
+xhr @ xhr.js:15
+Oe @ dispatchRequest.js:49
+_request @ Axios.js:187
+request @ Axios.js:40
+L.<computed> @ Axios.js:213
+(anonymous) @ bind.js:5
+whatsappWebQRCode @ channels.js:33
+(anonymous) @ WhatsappWeb.vue:87
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+WhatsappWeb.vue:108 QR polling error: m {message: 'Request failed with status code 404', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+(anonymous) @ WhatsappWeb.vue:108
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+channels.js:33  GET https://app.aisaturn.co/api/v1/accounts/1/channels/whatsapp_web_channels/31/qr_code 404 (Not Found)
+(anonymous) @ xhr.js:195
+xhr @ xhr.js:15
+Oe @ dispatchRequest.js:49
+_request @ Axios.js:187
+request @ Axios.js:40
+L.<computed> @ Axios.js:213
+(anonymous) @ bind.js:5
+whatsappWebQRCode @ channels.js:33
+(anonymous) @ WhatsappWeb.vue:87
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+WhatsappWeb.vue:108 QR polling error: m {message: 'Request failed with status code 404', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+(anonymous) @ WhatsappWeb.vue:108
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+channels.js:33  GET https://app.aisaturn.co/api/v1/accounts/1/channels/whatsapp_web_channels/31/qr_code 404 (Not Found)
+(anonymous) @ xhr.js:195
+xhr @ xhr.js:15
+Oe @ dispatchRequest.js:49
+_request @ Axios.js:187
+request @ Axios.js:40
+L.<computed> @ Axios.js:213
+(anonymous) @ bind.js:5
+whatsappWebQRCode @ channels.js:33
+(anonymous) @ WhatsappWeb.vue:87
+setInterval
+N @ WhatsappWeb.vue:85
+T @ WhatsappWeb.vue:64
+await in T
+(anonymous) @ WhatsappWeb.vue:122
+s.<computed>.s.<computed> @ runtime-dom.esm-bundler.js:1695
+fs @ runtime-core.esm-bundler.js:199
+Xe @ runtime-core.esm-bundler.js:206
+s @ runtime-dom.esm-bundler.js:722Understand this error
+WhatsappWeb.vue:108 QR polling e

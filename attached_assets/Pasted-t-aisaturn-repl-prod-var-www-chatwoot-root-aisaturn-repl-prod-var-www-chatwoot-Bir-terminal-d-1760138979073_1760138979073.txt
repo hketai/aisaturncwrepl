@@ -1,0 +1,129 @@
+t@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# # Bir terminal'de log'u izle
+sudo journalctl -u chatwoot-whatsapp-web -f
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]:   code: 'EADDRINUSE',
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]:   errno: -98,
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]:   syscall: 'listen',
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]:   address: '::',
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]:   port: 3001
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]: }
+Oct 10 23:28:40 aisaturn-repl-prod whatsapp-web[226469]: Node.js v23.11.1
+Oct 10 23:28:40 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 23:28:40 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 23:28:40 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 1.014s CPU time, 96.3M memory peak.
+Oct 10 23:28:51 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 17.
+Oct 10 23:28:51 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226485]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226485]: > node src/server.js
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]: node:events:485
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:       throw er; // Unhandled 'error' event
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:       ^
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at listenInCluster (node:net:1996:12)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at Server.listen (node:net:2101:7)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:165:5
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]: Emitted 'error' event on Server instance at:
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at emitErrorNT (node:net:1975:8)
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:   code: 'EADDRINUSE',
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:   errno: -98,
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:   syscall: 'listen',
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:   address: '::',
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]:   port: 3001
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]: }
+Oct 10 23:28:51 aisaturn-repl-prod whatsapp-web[226497]: Node.js v23.11.1
+Oct 10 23:28:51 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 23:28:51 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 23:28:51 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 976ms CPU time, 96.5M memory peak.
+Oct 10 23:29:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 18.
+Oct 10 23:29:02 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226517]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226517]: > node src/server.js
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]: node:events:485
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:       throw er; // Unhandled 'error' event
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:       ^
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at listenInCluster (node:net:1996:12)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at Server.listen (node:net:2101:7)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:165:5
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]: Emitted 'error' event on Server instance at:
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at emitErrorNT (node:net:1975:8)
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:   code: 'EADDRINUSE',
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:   errno: -98,
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:   syscall: 'listen',
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:   address: '::',
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]:   port: 3001
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]: }
+Oct 10 23:29:02 aisaturn-repl-prod whatsapp-web[226529]: Node.js v23.11.1
+Oct 10 23:29:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 23:29:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 23:29:02 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 948ms CPU time, 89.8M memory peak.
+Oct 10 23:29:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 19.
+Oct 10 23:29:13 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226545]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226545]: > node src/server.js
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]: node:events:485
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:       throw er; // Unhandled 'error' event
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:       ^
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at listenInCluster (node:net:1996:12)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at Server.listen (node:net:2101:7)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:165:5
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]: Emitted 'error' event on Server instance at:
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at emitErrorNT (node:net:1975:8)
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:   code: 'EADDRINUSE',
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:   errno: -98,
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:   syscall: 'listen',
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:   address: '::',
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]:   port: 3001
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]: }
+Oct 10 23:29:13 aisaturn-repl-prod whatsapp-web[226557]: Node.js v23.11.1
+Oct 10 23:29:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 23:29:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 23:29:13 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 990ms CPU time, 90.9M memory peak.
+Oct 10 23:29:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Scheduled restart job, restart counter is at 20.
+Oct 10 23:29:24 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226574]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226574]: > node src/server.js
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]: node:events:485
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:       throw er; // Unhandled 'error' event
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:       ^
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]: Error: listen EADDRINUSE: address already in use :::3001
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at listenInCluster (node:net:1996:12)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at Server.listen (node:net:2101:7)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at Function.listen (/var/www/chatwoot/lib/whatsapp_web/node_modules/express/lib/application.js:635:24)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at file:///var/www/chatwoot/lib/whatsapp_web/src/server.js:165:5
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]: Emitted 'error' event on Server instance at:
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at emitErrorNT (node:net:1975:8)
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:   code: 'EADDRINUSE',
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:   errno: -98,
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:   syscall: 'listen',
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:   address: '::',
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]:   port: 3001
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]: }
+Oct 10 23:29:24 aisaturn-repl-prod whatsapp-web[226586]: Node.js v23.11.1
+Oct 10 23:29:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Main process exited, code=exited, status=1/FAILURE
+Oct 10 23:29:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Failed with result 'exit-code'.
+Oct 10 23:29:24 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 1.005s CPU time, 88.6M memory peak.
