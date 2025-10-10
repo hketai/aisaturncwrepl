@@ -12,6 +12,10 @@ module Saturn
             reason: {
               type: 'string',
               description: 'The reason for handing off to a human agent'
+            },
+            detected_intent: {
+              type: 'string',
+              description: 'Optional: The detected customer intent (e.g., "refund request", "technical support")'
             }
           },
           required: ['reason']
@@ -22,6 +26,7 @@ module Saturn
       
       def execute(arguments)
         reason = arguments['reason'] || 'User requested human assistance'
+        detected_intent = arguments['detected_intent']&.strip&.downcase
         
         # Check if handoff is enabled for this agent
         unless @agent_profile.handoff_enabled?
@@ -32,8 +37,10 @@ module Saturn
           }.to_json
         end
         
-        # Check if handoff team is configured
-        unless @agent_profile.handoff_team_id.present?
+        # Determine target team based on intent routing
+        target_team_id = determine_target_team(detected_intent)
+        
+        unless target_team_id.present?
           return {
             success: false,
             error: 'No handoff team configured',
@@ -41,15 +48,37 @@ module Saturn
           }.to_json
         end
         
+        # Get team name for response
+        team = Team.find_by(id: target_team_id)
+        team_name = team&.name || 'support team'
+        
         {
           success: true,
           action: 'handoff_requested',
           reason: reason,
-          team_id: @agent_profile.handoff_team_id,
-          message: 'Bu konuşma bir temsilciye aktarılıyor...',
-          note_for_agent: "AI tarafından transfer edildi. Sebep: #{reason}",
+          detected_intent: detected_intent,
+          team_id: target_team_id,
+          team_name: team_name,
+          message: "#{team_name} ekibine bağlanıyorsunuz...",
+          note_for_agent: "AI tarafından transfer edildi. Sebep: #{reason}#{detected_intent.present? ? " | Intent: #{detected_intent}" : ""}",
           timestamp: Time.current.iso8601
         }.to_json
+      end
+      
+      private
+      
+      def determine_target_team(detected_intent)
+        # Scenario 2: Intent-based routing to team
+        if detected_intent.present? && @agent_profile.intent_routing_enabled? && @agent_profile.intent_team_mappings.present?
+          mapping = @agent_profile.intent_team_mappings.find do |m|
+            m['intent']&.downcase == detected_intent
+          end
+          
+          return mapping['team_id'] if mapping && mapping['team_id'].present?
+        end
+        
+        # Scenario 1: Fallback to default team (when agent can't answer)
+        @agent_profile.handoff_team_id
       end
     end
   end
