@@ -51,6 +51,7 @@ class Whatsapp::Providers::WhatsappWebService
     result = handle_response(response)
     
     @whatsapp_channel.provider_config['status'] = 'initiating'
+    @whatsapp_channel.provider_config['qr_code'] = result[:qr] if result[:qr].present?
     @whatsapp_channel.save!
 
     result
