@@ -61,4 +61,20 @@ class InboxPolicy < ApplicationPolicy
   def sync_templates?
     @account_user.administrator?
   end
+
+  def connect?
+    @account_user.administrator?
+  end
+
+  def disconnect?
+    @account_user.administrator?
+  end
+
+  def status?
+    @account_user.administrator?
+  end
+
+  def qr_code?
+    @account_user.administrator?
+  end
 end
