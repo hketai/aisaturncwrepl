@@ -27,7 +27,11 @@ Chatwoot, rebranded as AISATURN, is an open-source customer support platform bui
     - **Manual Handoff:** Agents can transfer conversations to human teams with intent-based routing.
     - **AI Agent Transfer:** Agents can transfer conversations to other AI agents with infinite loop protection (`MAX_TRANSFER_DEPTH=3`).
     - **Silent Transfers:** Customer sees no transfer messages; operators see internal notes.
-- **WhatsApp Web Integration:** Standalone Node.js microservice (`lib/whatsapp_web/`) using Baileys for QR code-based WhatsApp Web protocol integration, handling session management, real-time communication via webhooks, and message flow.
+- **WhatsApp Web Integration:** Production-ready standalone Node.js microservice (`lib/whatsapp_web/`) using Baileys library for QR code-based WhatsApp Web protocol integration.
+    - **Architecture:** Express HTTP API (port 3001) with ConnectionManager for session persistence, health checks, and auto-reconnect logic.
+    - **Security:** Multi-layer authentication with shared secret headers (`X-Whatsapp-Secret`) and HMAC SHA256 webhook signatures (`X-Whatsapp-Signature`), using constant-time comparison (`crypto.timingSafeEqual` / `ActiveSupport::SecurityUtils.secure_compare`) to prevent timing attacks and DoS via malformed signatures.
+    - **Communication:** Webhook-based event delivery (QR code, connection status, incoming messages) with signature verification; Rails HTTP client for outbound API calls (connect, disconnect, send messages).
+    - **Deployment:** Configured via `WHATSAPP_WEB_SECRET` environment variable; microservice runs as separate workflow alongside Rails application.
 - **URL Auto-Scraping:** `Saturn::UrlScraperService` with Nokogiri for HTML content extraction from URLs, triggered on knowledge source creation and daily sync.
     - **Security:** Implements robust security measures against SSRF/LFI/MITM, including IP filtering, DNS rebinding prevention, and strict SSL/TLS verification.
 - **InstallationConfig JSONB Fix:** Migrated `InstallationConfig` model from YAML serialization to native JSONB handling for improved production stability.
