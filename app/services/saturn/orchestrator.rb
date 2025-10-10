@@ -201,7 +201,7 @@ module Saturn
       
       # Include action data if tool triggered special action (handoff/transfer)
       if @last_tool_action
-        response.merge!(@last_tool_action.symbolize_keys)
+        response.merge!(@last_tool_action.deep_symbolize_keys)
       end
       
       response

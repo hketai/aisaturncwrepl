@@ -55,8 +55,7 @@ module Saturn
           detected_intent: detected_intent,
           transfer_to_agent_id: target_agent.id,
           transfer_to_agent_name: target_agent.name,
-          message: "#{target_agent.name} adlı AI asistanına bağlanıyorsunuz...",
-          note: "#{@agent_profile.name} tarafından transfer edildi. Sebep: #{reason}#{detected_intent.present? ? " | Intent: #{detected_intent}" : ""}",
+          note: "#{@agent_profile.name} tarafından #{target_agent.name} ajanına transfer edildi. Sebep: #{reason}#{detected_intent.present? ? " | Intent: #{detected_intent}" : ""}",
           timestamp: Time.current.iso8601
         }.to_json
       end

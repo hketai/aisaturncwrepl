@@ -59,8 +59,7 @@ module Saturn
           detected_intent: detected_intent,
           team_id: target_team_id,
           team_name: team_name,
-          message: "#{team_name} ekibine bağlanıyorsunuz...",
-          note_for_agent: "AI tarafından transfer edildi. Sebep: #{reason}#{detected_intent.present? ? " | Intent: #{detected_intent}" : ""}",
+          note_for_agent: "AI tarafından #{team_name} ekibine transfer edildi. Sebep: #{reason}#{detected_intent.present? ? " | Intent: #{detected_intent}" : ""}",
           timestamp: Time.current.iso8601
         }.to_json
       end

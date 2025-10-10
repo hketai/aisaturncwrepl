@@ -21,10 +21,16 @@
 - ✅ `Orchestrator`: Auto-detects intent when handoff/transfer tools called, injects into arguments
 
 **Technical Implementation:**
-- Files: `app/services/saturn/intent_detector.rb`, `app/services/saturn/tools/handoff_agent.rb`, `app/services/saturn/tools/agent_transfer.rb`, `app/services/saturn/orchestrator.rb`
+- Files: `app/services/saturn/intent_detector.rb`, `app/services/saturn/tools/handoff_agent.rb`, `app/services/saturn/tools/agent_transfer.rb`, `app/services/saturn/orchestrator.rb`, `app/jobs/saturn/auto_respond_job.rb`
 - Intent detection only runs for handoff/transfer tools (performance optimization)
 - Lightweight context: Last 3 user messages only (token efficiency)
 - Database: `intent_agent_mappings` column added via migration
+
+**UX Decision - Silent Transfers:**
+- ✅ Customer sees NO transfer messages in chat (clean UX)
+- ✅ Operators see internal notes in dashboard (full visibility)
+- ✅ Conversation status changes automatically (pending for human handoff)
+- ✅ Agent transfer happens seamlessly without customer notification
 
 ## Recent Changes (October 9, 2025)
 

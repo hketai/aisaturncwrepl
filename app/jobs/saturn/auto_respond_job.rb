@@ -106,10 +106,7 @@ module Saturn
       # Set conversation to pending status (waiting for human)
       conversation.update!(status: :pending, team_id: team_id)
       
-      # Send handoff message to customer
-      create_info_message(message, result[:message], :handoff)
-      
-      # Create internal note for team
+      # Create internal note for team (only visible to operators on dashboard)
       create_internal_note(message, result[:note_for_agent])
       
       Rails.logger.info("Saturn: Handed off conversation #{conversation.id} to team #{team_id}. Reason: #{result[:reason]}")
@@ -124,10 +121,7 @@ module Saturn
         return
       end
       
-      # Send transfer message to customer
-      create_info_message(message, result[:message], :transfer)
-      
-      # Create internal note
+      # Create internal note (only visible to operators on dashboard)
       create_internal_note(message, result[:note])
       
       # Update conversation to track current agent
@@ -214,11 +208,7 @@ module Saturn
         conversation.update!(status: :pending)
       end
       
-      # Send handoff message to customer
-      handoff_message = "Sizi bir temsilcimize aktarıyorum. En kısa sürede size dönüş yapılacaktır."
-      create_info_message(message, handoff_message, :handoff)
-      
-      # Create internal note for team
+      # Create internal note for team (only visible to operators on dashboard)
       internal_note = "AI ajan transfer limiti aşıldı (maksimum #{MAX_TRANSFER_DEPTH} transfer). Konuşma insan ekibe yönlendirildi."
       create_internal_note(message, internal_note)
       
