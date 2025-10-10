@@ -1,0 +1,42 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+root@aisaturn-repl-prod:/var/www/chatwoot# ^C
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-web
+● chatwoot-web.service - Chatwoot web server
+     Loaded: loaded (/etc/systemd/system/chatwoot-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 23:56:28 UTC; 5s ago
+ Invocation: d7d0a923a2644af5b50870aa19f38da8
+   Main PID: 231986 (ruby)
+      Tasks: 2 (limit: 19140)
+     Memory: 242.3M (peak: 242.5M)
+        CPU: 5.309s
+     CGroup: /system.slice/chatwoot-web.service
+             └─231986 /root/.rbenv/versions/3.2.2/bin/ruby bin/rails server -b 0.0.0.0 -p 3000
+
+Oct 10 23:56:28 aisaturn-repl-prod systemd[1]: Started chatwoot-web.service - Chatwoot web server.
+Oct 10 23:56:31 aisaturn-repl-prod bundle[231986]: => Booting Puma
+Oct 10 23:56:31 aisaturn-repl-prod bundle[231986]: => Rails 7.1.5.2 application starting in production
+Oct 10 23:56:31 aisaturn-repl-prod bundle[231986]: => Run `bin/rails server --help` for more startup options
+Oct 10 23:56:31 aisaturn-repl-prod bundle[231986]: I, [2025-10-10T23:56:31.402814 #231986]  INFO -- : [dotenv] Loaded .env.production
+Oct 10 23:56:31 aisaturn-repl-prod bundle[231986]: I, [2025-10-10T23:56:31.402870 #231986]  INFO -- : [dotenv] Loaded .env.production
+root@aisaturn-repl-prod:/var/www/chatwoot# ps aux | grep puma
+root      231986 54.9  1.7 1112760 290736 ?      Ssl  23:56   0:05 puma 6.4.3 (tcp://0.0.0.0:3000) [chatwoot]
+root      232048  0.0  0.0   7300  2292 pts/0    S+   23:56   0:00 grep --color=auto puma
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl stop chatwoot-whatsapp-web
+sudo fuser -k 3001/tcp
+sudo systemctl start chatwoot-whatsapp-web
+sudo systemctl status chatwoot-whatsapp-web
+3001/tcp:            230850
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-10-10 23:56:47 UTC; 25ms ago
+ Invocation: ca5402152f9241a0b6a709f9b20c957e
+   Main PID: 232089 (MainThread)
+      Tasks: 1 (limit: 19140)
+     Memory: 1.2M (peak: 1.6M)
+        CPU: 13ms
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             └─232089 node /usr/bin/npm start
+
+Oct 10 23:56:47 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+root@aisaturn-repl-prod:/var/www/chatwoot#
