@@ -1,0 +1,15 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web --since "5 minutes ago" | grep -i "message\|webhook\|error"
+Oct 11 01:04:41 aisaturn-repl-prod whatsapp-web[237452]: [01:04:40.641] INFO (237452): Incoming message
+Oct 11 01:04:41 aisaturn-repl-prod whatsapp-web[237452]:     messageId: "3AEA1572FF3929811CC1"
+Oct 11 01:04:41 aisaturn-repl-prod whatsapp-web[237452]: [01:04:40.688] ERROR (237452): Webhook delivery failed
+Oct 11 01:04:41 aisaturn-repl-prod whatsapp-web[237452]:     url: "https://app.aisaturn.co/webhooks/whatsapp_web/35"
+Oct 11 01:04:41 aisaturn-repl-prod whatsapp-web[237452]:     error: "Request failed with status code 500"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "5 minutes ago" | grep -i "whatsapp_web" | tail -20
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.649148 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] Started POST "/webhooks/whatsapp_web/35" for 167.71.54.139 at 2025-10-11 01:04:40 +0000
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.652382 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8]   Parameters: {"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AEA1572FF3929811CC1", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760144680, "text"=>"njdcd", "media_type"=>"text"}, "whatsapp_web"=>{"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AEA1572FF3929811CC1", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760144680, "text"=>"njdcd", "media_type"=>"text"}}}
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:106:in `create_or_update_contact_inbox'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:65:in `handle_incoming_message'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:11:in `create'
+root@aisaturn-repl-prod:/var/www/chatwoot#
