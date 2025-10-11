@@ -1,0 +1,54 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# set -e
+echo "🚀 Starting deployment to production..."
+🚀 Starting deployment to production...
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📥 Pulling latest code from GitHub main branch..."
+git fetch origin main
+git reset --hard origin/main
+📥 Pulling latest code from GitHub main branch...
+From github.com:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+HEAD is now at d98419ca4 Ensure phone numbers are formatted correctly for WhatsApp integration
+root@aisaturn-repl-prod:/var/www/chatwoot# export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+rbenv install 3.2.2 --skip-existing
+rbenv local 3.2.2
+root@aisaturn-repl-prod:/var/www/chatwoot# source /var/www/chatwoot/.env.production || true
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📦 Installing Ruby gems..."
+bundle install --deployment --without development test
+📦 Installing Ruby gems...
+[DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+[DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+Don't run Bundler as root. Installing your bundle as root will break this application for all non-root users on this machine.
+Bundle complete! 140 Gemfile dependencies, 277 gems now installed.
+Gems in the groups 'development' and 'test' were not installed.
+Bundled gems are installed into `./vendor/bundle`
+1 installed gem you directly depend on is looking for funding.
+  Run `bundle fund` for details
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📦 Installing WhatsApp Web dependencies..."
+cd lib/whatsapp_web
+npm install
+cd ../..
+📦 Installing WhatsApp Web dependencies...
+
+up to date, audited 214 packages in 738ms
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "🔄 Restarting services..."
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-whatsapp-web
+sudo systemctl restart chatwoot-worker
+echo "✅ Deployment complete!"
+echo "🔗 Application: https://app.aisaturn.co"
+🔄 Restarting services...
+✅ Deployment complete!
+🔗 Application: https://app.aisaturn.co
+root@aisaturn-repl-prod:/var/www/chatwoot#
