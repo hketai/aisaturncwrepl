@@ -1,0 +1,32 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# git fetch origin main
+git reset --hard origin/main
+From github.com:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+HEAD is now at 3d80c5c16 Add webhook URL to WhatsApp provider configuration
+root@aisaturn-repl-prod:/var/www/chatwoot# git pull
+Already up to date.
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(35)
+service = Whatsapp::Providers::WhatsappWebService.new(channel)
+service.connect
+puts '✅ Channel reconnected with webhook URL'
+"
+I, [2025-10-11T01:00:22.753341 #239892]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:00:22.753440 #239892]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:00:25.577887 #239892]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+2025-10-11T01:00:26.101Z pid=239892 tid=56zs INFO: Sidekiq 7.3.1 connecting to Redis with options {:size=>10, :pool_name=>"internal", :url=>"redis://localhost:6379", :password=>nil, :reconnect_attempts=>2, :timeout=>1}
+I, [2025-10-11T01:00:26.102649 #239892]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: b7780dc4-4701-4d98-b768-5ce70d49ce75) to Sidekiq(critical) with arguments: ["m2hgANHZb7NDVdpGftgj7K6J"], "account.cache_invalidated", {:cache_keys=>{:label=>"0000000000", :inbox=>"1760144426", :team=>"1759984966"}, :account_id=>1}
+I, [2025-10-11T01:00:26.103932 #239892]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: 351ee2a9-d976-4403-99ef-a3d51e460bb8) to Sidekiq(critical) with arguments: "account.cache_invalidated", Sat, 11 Oct 2025 01:00:26.085113625 UTC +00:00, {:cache_keys=>{:label=>"0000000000", :inbox=>"1760144426", :team=>"1759984966"}, :account=>#<GlobalID:0x00007507ac3a1988 @uri=#<URI::GID gid://chatwoot/Account/1>>}
+✅ Channel reconnected with webhook URL
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(35)
+puts 'Webhook URL: ' + channel.provider_config['webhook_url'].to_s
+"
+I, [2025-10-11T01:00:30.698361 #239951]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:00:30.698466 #239951]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:00:33.406330 #239951]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Webhook URL: https://app.aisaturn.co/webhooks/whatsapp_web/35
+root@aisaturn-repl-prod:/var/www/chatwoot#
