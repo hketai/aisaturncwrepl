@@ -98,13 +98,14 @@ class Webhooks::WhatsappWebController < ApplicationController
 
   def create_or_update_contact_inbox(inbox, jid)
     phone_number = extract_phone_number(jid)
+    source_id = jid.split('@').first
     
     contact = inbox.account.contacts.find_or_create_by!(phone_number: phone_number) do |c|
       c.name = phone_number
     end
 
     inbox.contact_inboxes.find_or_create_by!(contact: contact) do |ci|
-      ci.source_id = jid
+      ci.source_id = source_id
     end
   end
 

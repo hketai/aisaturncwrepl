@@ -1,0 +1,40 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "10 minutes ago" | grep -B 5 "ERROR\|Exception\|ActiveRecord::" | tail -40
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.652292 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] Processing by Webhooks::WhatsappWebController#create as HTML
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.652382 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8]   Parameters: {"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AEA1572FF3929811CC1", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760144680, "text"=>"njdcd", "media_type"=>"text"}, "whatsapp_web"=>{"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AEA1572FF3929811CC1", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760144680, "text"=>"njdcd", "media_type"=>"text"}}}
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.678169 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] [ActiveJob] Enqueued ContactIpLookupJob (Job ID: fc653685-5200-4442-8170-d7f8840a8f67) to Sidekiq(default) with arguments: #<GlobalID:0x000078b67efcd7f0 @uri=#<URI::GID gid://chatwoot/Contact/7>>
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.679243 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 81a81f33-a9c8-4deb-b062-f0114ab912da) to Sidekiq(critical) with arguments: ["account_1"], "contact.created", {:additional_attributes=>{}, :custom_attributes=>{}, :email=>nil, :id=>7, :identifier=>nil, :name=>"+905432634483", :phone_number=>"+905432634483", :thumbnail=>"", :blocked=>false, :type=>"contact", :account_id=>1}
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: I, [2025-10-11T01:04:40.680406 #239861]  INFO -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] [ActiveJob] Enqueued EventDispatcherJob (Job ID: 0e8c8271-ce12-413b-90de-e7a80102ddf5) to Sidekiq(critical) with arguments: "contact.created", Sat, 11 Oct 2025 01:04:40.678288411 UTC +00:00, {:contact=>#<GlobalID:0x000078b67efe7100 @uri=#<URI::GID gid://chatwoot/Contact/7>>}
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: E, [2025-10-11T01:04:40.685638 #239861] ERROR -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] WhatsApp Web webhook error: Validation failed: Source invalid source id for whatsapp inbox. valid Regex (?-mix:^\d{1,15}\z)
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: E, [2025-10-11T01:04:40.685743 #239861] ERROR -- : [6cc2db21-5bfe-4dd6-a7c4-71c4a99657a8] /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:84:in `raise_validation_error'
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+inbox = Inbox.find(36)
+jid = '905432634483@s.whatsapp.net'
+phone_number = '+905432634483'
+begin
+  contact = inbox.account.contacts.find_or_create_by!(phone_number: phone_number) do |c|
+    c.name = phone_number
+  end
+  puts '✅ Contact created: ' + contact.id.to_s
+
+  contact_inbox = inbox.contact_inboxes.find_or_create_by!(contact: contact) do |ci|
+    ci.source_id = jid
+  end
+  puts '✅ ContactInbox created: ' + contact_inbox.id.to_s
+rescue => e
+  puts '❌ ERROR: ' + e.message
+  puts e.backtrace.first(5).join(\"\n\")
+end
+"
+I, [2025-10-11T01:10:04.086795 #240919]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:10:04.086887 #240919]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T01:10:06.710150 #240919]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+✅ Contact created: 7
+❌ ERROR: Validation failed: Source invalid source id for whatsapp inbox. valid Regex (?-mix:^\d{1,15}\z)
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:84:in `raise_validation_error'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:55:in `save!'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:313:in `block in save!'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:365:in `block in with_transaction_returning_status'
+/var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/database_statements.rb:342:in `transaction'
+root@aisaturn-repl-prod:/var/www/chatwoot#
