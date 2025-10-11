@@ -1,0 +1,42 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web --since "5 minutes ago" | grep -i "message\|webhook\|error"
+Connection to app.aisaturn.co closed.
+PS C:\Users\hkete> sudo journalctl -u chatwoot-web --since "5 minutes ago" | grep -i "whatsapp\|webhook" | tail -20
+grep : The term 'grep' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of th
+e name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:59
++ ... udo journalctl -u chatwoot-web --since "5 minutes ago" | grep -i "wha ...
++                                                              ~~~~
+    + CategoryInfo          : ObjectNotFound: (grep:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\hkete> RAILS_ENV=production bundle exec rails runner "
+>> channel = Channel::Whatsapp.last
+>> puts \"Channel ID: #{channel.id}\"
+RAILS_ENV=production : The term 'RAILS_ENV=production' is not recognized as the name of a cmdlet, function, script file, or operable p
+rogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ RAILS_ENV=production bundle exec rails runner "
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (RAILS_ENV=production:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\hkete> puts \"Inbox ID: #{channel.inbox.id}\"
+puts : The term 'puts' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of th
+e name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ puts \"Inbox ID: #{channel.inbox.id}\"
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (puts:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\hkete> puts \"Status: #{channel.provider_config['status']}\"
+puts : The term 'puts' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of th
+e name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ puts \"Status: #{channel.provider_config['status']}\"
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (puts:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\hkete> "
