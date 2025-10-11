@@ -1,0 +1,32 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "5 minutes ago" | grep -A 20 "whatsapp_web/35"
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: I, [2025-10-11T00:33:15.535581 #234649]  INFO -- : [504baaad-e893-4da3-8108-5348265e10e9] Started POST "/webhooks/whatsapp_web/35" for 167.71.54.139 at 2025-10-11 00:33:15 +0000
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: I, [2025-10-11T00:33:15.538814 #234649]  INFO -- : [504baaad-e893-4da3-8108-5348265e10e9] Processing by Webhooks::WhatsappWebController#create as HTML
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: I, [2025-10-11T00:33:15.538918 #234649]  INFO -- : [504baaad-e893-4da3-8108-5348265e10e9]   Parameters: {"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3A098CD16A08A8F1413A", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760142795, "text"=>"selam", "media_type"=>"text"}, "whatsapp_web"=>{"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3A098CD16A08A8F1413A", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760142795, "text"=>"selam", "media_type"=>"text"}}}
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: E, [2025-10-11T00:33:15.554043 #234649] ERROR -- : [504baaad-e893-4da3-8108-5348265e10e9] WhatsApp Web webhook error: Validation failed: Phone number should be in e164 format
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: E, [2025-10-11T00:33:15.554143 #234649] ERROR -- : [504baaad-e893-4da3-8108-5348265e10e9] /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:84:in `raise_validation_error'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:55:in `save!'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:313:in `block in save!'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:365:in `block in with_transaction_returning_status'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/database_statements.rb:342:in `transaction'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:361:in `with_transaction_returning_status'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:313:in `save!'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/suppressor.rb:56:in `save!'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:371:in `insert_record'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/has_many_association.rb:63:in `insert_record'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:358:in `block (2 levels) in _create_record'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:462:in `replace_on_target'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:278:in `add_to_target'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:357:in `block in _create_record'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/connection_adapters/abstract/database_statements.rb:342:in `transaction'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/transactions.rb:212:in `transaction'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/associations/collection_association.rb:314:in `transaction'
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "5 minutes ago" | grep -i "error\|exception" | tail -30
+Oct 11 00:33:09 aisaturn-repl-prod bundle[234649]: [a83b52e5-2c33-4452-84ae-00bcb0f824b3] ActionController::RoutingError (No route matches [GET] "/geoserver/web"):
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: E, [2025-10-11T00:33:15.554043 #234649] ERROR -- : [504baaad-e893-4da3-8108-5348265e10e9] WhatsApp Web webhook error: Validation failed: Phone number should be in e164 format
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: E, [2025-10-11T00:33:15.554143 #234649] ERROR -- : [504baaad-e893-4da3-8108-5348265e10e9] /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/validations.rb:84:in `raise_validation_error'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/app/controllers/concerns/request_exception_handler.rb:11:in `handle_with_exception'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+Oct 11 00:33:15 aisaturn-repl-prod bundle[234649]: I, [2025-10-11T00:33:15.554457 #234649]  INFO -- : [504baaad-e893-4da3-8108-5348265e10e9] Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.2ms | Allocations: 3194)
+root@aisaturn-repl-prod:/var/www/chatwoot#

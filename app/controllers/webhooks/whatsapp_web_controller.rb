@@ -138,6 +138,7 @@ class Webhooks::WhatsappWebController < ApplicationController
   end
 
   def extract_phone_number(jid)
-    jid.split('@').first
+    number = jid.split('@').first
+    number.start_with?('+') ? number : "+#{number}"
   end
 end
