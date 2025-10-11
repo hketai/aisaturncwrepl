@@ -1,0 +1,106 @@
+
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-worker --since "5 minutes ago" -n 100
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/app/listeners/saturn_listener.rb:35:in `message_created'
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/wisper-2.0.0/lib/wisper/broadcaster>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/wisper-2.0.0/lib/wisper/broadcaster>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/wisper-2.0.0/lib/wisper/registratio>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/wisper-2.0.0/lib/wisper/publisher.r>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/set.rb:511:in `each_key'
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /root/.rbenv/versions/3.2.2/lib/ruby/3.2.0/set.rb:511:in `each'
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/wisper-2.0.0/lib/wisper/publisher.r>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/app/dispatchers/async_dispatcher.rb:8:in `publish_event'
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/app/jobs/event_dispatcher_job.rb:5:in `perform'
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/ex>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/i18n-1.14.7/lib/i18n.rb:353:in `wit>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/tr>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/ti>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/ex>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/in>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/ex>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/in>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/in>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/in>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_rec>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/in>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activejob-7.1.5.2/lib/active_job/lo>
+Oct 11 02:03:04 aisaturn-repl-prod bundle[248455]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_su>
+
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# tail -f /var/www/chatwoot/log/production.log | grep -i "saturn\|message.*created\|auto.*respond"
+tail: cannot open '/var/www/chatwoot/log/production.log' for reading: No such file or directory
+tail: no files remaining
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+# Son mesajı kontrol et
+msg = Message.last
+puts '=== SON MESAJ ==='
+puts \"ID: #{msg.id}\"
+puts \"Content: #{msg.content}\"
+puts \"Message Type: #{msg.message_type}\"
+puts \"Outgoing?: #{msg.outgoing?}\"
+puts \"Sender Type: #{msg.sender_type}\"
+puts \"Sender ID: #{msg.sender_id}\"
+puts \"Inbox ID: #{msg.inbox_id}\"
+puts \"Created: #{msg.created_at}\"
+puts ''
+
+# OpenAI API key var mı?
+account = Account.first
+puts '=== ACCOUNT ==='
+puts \"OpenAI API Key: #{account.openai_api_key.present? ? 'SET ✓' : 'MISSING ✗'}\"
+puts ''
+
+# Agent enabled mı?
+agent = Saturn::AgentProfile.find(1)
+puts '=== AGENT ==='
+puts \"Name: #{agent.name}\"
+puts \"Active: #{agent.active}\"
+puts \"Enabled: #{agent.enabled}\"
+"
+I, [2025-10-11T02:03:31.937373 #248768]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T02:03:31.937465 #248768]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T02:03:34.573709 #248768]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+=== SON MESAJ ===
+ID: 135
+Content: kargo fiyatı
+Message Type: incoming
+Outgoing?: false
+Sender Type: Contact
+Sender ID: 7
+Inbox ID: 36
+Created: 2025-10-11 02:03:04 UTC
+
+=== ACCOUNT ===
+OpenAI API Key: SET ✓
+
+=== AGENT ===
+Name: Ayşe
+Please specify a valid ruby command or the path of a script to run.
+Run 'bin/rails runner -h' for help.
+
+undefined method `active' for #<Saturn::AgentProfile id: 1, name: "Ayşe", description: "Online mağazalar ve e-ticaret platformları için AI...", account_id: 1, configuration: {}, behavior_rules: ["Her zaman yardımcı ve ürün odaklı ol", "Ürünler, kargo ve iadeler hakkında net bilgi ver", "Müşterilere satın alma sürecinde rehberlik et", "Sipariş durumu sorgularını profesyonelce ele al", "Uygun olduğunda ek satış ve çapraz satış yap", "Şikayetleri empati ve çözümlerle karşıla"], safety_guidelines: ["Asla müşteri ödeme bilgilerini paylaşma", "İadeleri doğrudan işleme koyma - insan temsilciye aktar", "Hassas hesap değişiklikleri için müşteri kimliğini doğrula", "Şirket iade ve geri ödeme politikalarını kesinlikle takip et", "Dolandırıcılık veya şüpheli aktiviteyi hemen bildir"], ai_temperature: 0.7, product_context: "E-ticaret müşteri desteği", created_at: "2025-10-07 01:00:06.456718000 +0000", updated_at: "2025-10-10 21:33:53.910621000 +0000", industry_type: "ecommerce", handoff_enabled: true, handoff_team_id: 1, transfer_enabled: false, transfer_agent_id: nil, intent_routing_enabled: false, intent_team_mappings: [], intent_agent_mappings: [], enabled: true>
+root@aisaturn-repl-prod:/var/www/chatwoot#

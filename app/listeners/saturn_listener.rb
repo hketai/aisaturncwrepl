@@ -13,7 +13,7 @@ class SaturnListener < BaseListener
     
     if current_agent_id.present?
       # Use the transferred agent
-      agent_profile = Saturn::AgentProfile.find_by(id: current_agent_id, active: true)
+      agent_profile = Saturn::AgentProfile.find_by(id: current_agent_id, enabled: true)
       
       if agent_profile
         Saturn::AutoRespondJob.perform_later(
@@ -31,7 +31,7 @@ class SaturnListener < BaseListener
     connection = Saturn::InboxConnection
       .joins(:agent_profile)
       .where(inbox_id: inbox.id, auto_respond: true)
-      .where(saturn_agent_profiles: { active: true })
+      .where(saturn_agent_profiles: { enabled: true })
       .first
     
     return unless connection
