@@ -1,0 +1,481 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl status chatwoot-whatsapp-web
+● chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice
+     Loaded: loaded (/etc/systemd/system/chatwoot-whatsapp-web.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2025-10-11 00:41:19 UTC; 5min ago
+ Invocation: 189aa46b50924a92a8273e05b5ce2f27
+   Main PID: 237435 (npm start)
+      Tasks: 24 (limit: 19140)
+     Memory: 71.8M (peak: 90.1M)
+        CPU: 1.250s
+     CGroup: /system.slice/chatwoot-whatsapp-web.service
+             ├─237435 "npm start"
+             ├─237451 sh -c "node src/server.js"
+             └─237452 node src/server.js
+
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[237435]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[237435]: > node src/server.js
+Oct 11 00:41:20 aisaturn-repl-prod whatsapp-web[237452]: [00:41:20.434] INFO (237452): WhatsApp Web service started
+Oct 11 00:41:20 aisaturn-repl-prod whatsapp-web[237452]:     port: "3001"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web -n 50
+Oct 11 00:25:32 aisaturn-repl-prod whatsapp-web[235413]: [00:25:32.306] INFO (235413): WhatsApp Web service started
+Oct 11 00:25:32 aisaturn-repl-prod whatsapp-web[235413]:     port: "3001"
+Oct 11 00:27:20 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:20.574Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:20 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:20.624Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:21 aisaturn-repl-prod whatsapp-web[235413]: [00:27:20.867] INFO (235413): QR code generated
+Oct 11 00:27:21 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:28.065Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]: {"level":50,"time":"2025-10-11T00:27:28.439Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:28.440Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]: [00:27:28.440] WARN (235413): Connection closed
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:27:28 aisaturn-repl-prod whatsapp-web[235413]:     shouldReconnect: true
+Oct 11 00:27:31 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:31.595Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:31 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:31.709Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.152Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.152Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.153Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.419Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.531Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":40,"time":"2025-10-11T00:27:32.533Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: [00:27:32.533] INFO (235413): Connection established
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:27:33 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:33.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:34 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:34.016Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:39 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:39.635Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:40 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:40.714Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:41 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:41.673Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:48 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:48.584Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:56 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:56.247Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:02 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:02.110Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:03 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:03.159Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:03 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:03.468Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]: [00:33:15.525] INFO (235413): Incoming message
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     messageId: "3A098CD16A08A8F1413A"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]: [00:33:15.557] ERROR (235413): Webhook delivery failed
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     url: "https://app.aisaturn.co/webhooks/whatsapp_web/35"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     error: "Request failed with status code 500"
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Stopping chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice...
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[235413]: [00:41:19.436] INFO (235413): SIGTERM received, shutting down gracefully
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Deactivated successfully.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Stopped chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 2.301s CPU time, 85.7M memory peak.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[237435]: > chatwoot-whatsapp-web-service@1.0.0 start
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[237435]: > node src/server.js
+Oct 11 00:41:20 aisaturn-repl-prod whatsapp-web[237452]: [00:41:20.434] INFO (237452): WhatsApp Web service started
+Oct 11 00:41:20 aisaturn-repl-prod whatsapp-web[237452]:     port: "3001"
+...skipping...
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+Oct 11 00:27:31 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:31.709Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.152Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.152Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.153Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.419Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:32.531Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: {"level":40,"time":"2025-10-11T00:27:32.533Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]: [00:27:32.533] INFO (235413): Connection established
+Oct 11 00:27:32 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:27:33 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:33.158Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:34 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:34.016Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:39 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:39.635Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:40 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:40.714Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:41 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:41.673Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:48 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:48.584Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:27:56 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:27:56.247Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:02 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:02.110Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:03 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:03.159Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:28:03 aisaturn-repl-prod whatsapp-web[235413]: {"level":30,"time":"2025-10-11T00:28:03.468Z","pid":235413,"hostname":"aisatu>
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]: [00:33:15.525] INFO (235413): Incoming message
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     channelId: "35"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     messageId: "3A098CD16A08A8F1413A"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]: [00:33:15.557] ERROR (235413): Webhook delivery failed
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     url: "https://app.aisaturn.co/webhooks/whatsapp_web/35"
+Oct 11 00:33:16 aisaturn-repl-prod whatsapp-web[235413]:     error: "Request failed with status code 500"
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Stopping chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice...
+Oct 11 00:41:19 aisaturn-repl-prod whatsapp-web[235413]: [00:41:19.436] INFO (235413): SIGTERM received, shutting down gracefully
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Deactivated successfully.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Stopped chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: chatwoot-whatsapp-web.service: Consumed 2.301s CPU time, 85.7M memory peak.
+Oct 11 00:41:19 aisaturn-repl-prod systemd[1]: Started chatwoot-whatsapp-web.service - Chatwoot WhatsApp Web Microservice.
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"7Vmt4VothFV/WbZgg0J61Ub>
+n-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"terti>
+
+
+n-repl-prod","class":"baileys","me":{"id":"905334096453:65@s.whatsapp.net"},"platform":"iphone","msg":"pairing configured successfully>
+n-repl-prod","class":"baileys","node":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+n-repl-prod","class":"baileys","node":{"username":"905334096453","passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary">
+n-repl-prod","class":"baileys","msg":"handled 0 offline messages/notifications"}
+n-repl-prod","class":"baileys","msg":"Connection is now AwaitingInitialSync, buffering events"}
+n-repl-prod","class":"baileys","msg":"History sync is disabled by config, not waiting for notification. Transitioning to Online."}
+n-repl-prod","class":"baileys","msg":"0 pre-keys found on server"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploading pre-keys"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploaded pre-keys"}
+n-repl-prod","class":"baileys","msg":"opened connection to WA"}
+n-repl-prod","class":"baileys","msg":"no name present, ignoring presence update request..."}
+
+
+n-repl-prod","class":"baileys","newAppStateSyncKeyId":"AAAAAEb3","newKeys":["AAAAAEZV","ADUAAEaS","AAAAAEZt","ADUAAEaM","AAAAAEZ3","AA>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"eGk6ah8ujlM100N8nePMaxL5j1IN53qfWZXOIBjVe04=","fileLength":"6160","me>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"1CJAeTVf3z9mR0yiLZqJ7P6tmhpkH6/MLLpYw6GYdPs=","fileLength":"379885",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"FogHJGs2BsgBSKePcT6nqFeu46thCk8k3Cz7EJD+U20=","fileLength":"18030","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x0gj8nTOjb72YkN0XXDY1NWf60DtBA+KliDzCgRIYX8=","fileLength":"19352","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x+Xq/QyTQ1N0EXcoa2cFM0KE464mVnrLVm85eQip25c=","fileLength":"734548",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"nTNRkn3+4AlEFo57W/O1zuUin//t0Ofl6wVqcVUhhCo=","fileLength":"858757",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"QNndjtWXt+JcmZsIukcukbHidXRDccLzrPda52uSq/k=","fileLength":"795833",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"lvP6We97U73ooHVhXjvBhvYZf3XSdfl/pEeloKIQy3k=","fileLength":"16746","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"HY0f35KNknDnp9+PLFprUXbpGrR5oyFeKVjS///S1iI=","fileLength":"821513",">
+
+
+
+...skipping...
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"7Vmt4VothFV/WbZgg0J61Ub>
+n-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"terti>
+
+
+n-repl-prod","class":"baileys","me":{"id":"905334096453:65@s.whatsapp.net"},"platform":"iphone","msg":"pairing configured successfully>
+n-repl-prod","class":"baileys","node":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"7Vmt4VothFV/WbZgg0J61Ub>
+n-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"terti>
+
+
+n-repl-prod","class":"baileys","me":{"id":"905334096453:65@s.whatsapp.net"},"platform":"iphone","msg":"pairing configured successfully>
+n-repl-prod","class":"baileys","node":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+n-repl-prod","class":"baileys","node":{"username":"905334096453","passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary">
+n-repl-prod","class":"baileys","msg":"handled 0 offline messages/notifications"}
+n-repl-prod","class":"baileys","msg":"Connection is now AwaitingInitialSync, buffering events"}
+n-repl-prod","class":"baileys","msg":"History sync is disabled by config, not waiting for notification. Transitioning to Online."}
+n-repl-prod","class":"baileys","msg":"0 pre-keys found on server"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploading pre-keys"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploaded pre-keys"}
+n-repl-prod","class":"baileys","msg":"opened connection to WA"}
+n-repl-prod","class":"baileys","msg":"no name present, ignoring presence update request..."}
+
+
+n-repl-prod","class":"baileys","newAppStateSyncKeyId":"AAAAAEb3","newKeys":["AAAAAEZV","ADUAAEaS","AAAAAEZt","ADUAAEaM","AAAAAEZ3","AA>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"eGk6ah8ujlM100N8nePMaxL5j1IN53qfWZXOIBjVe04=","fileLength":"6160","me>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"1CJAeTVf3z9mR0yiLZqJ7P6tmhpkH6/MLLpYw6GYdPs=","fileLength":"379885",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"FogHJGs2BsgBSKePcT6nqFeu46thCk8k3Cz7EJD+U20=","fileLength":"18030","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x0gj8nTOjb72YkN0XXDY1NWf60DtBA+KliDzCgRIYX8=","fileLength":"19352","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x+Xq/QyTQ1N0EXcoa2cFM0KE464mVnrLVm85eQip25c=","fileLength":"734548",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"nTNRkn3+4AlEFo57W/O1zuUin//t0Ofl6wVqcVUhhCo=","fileLength":"858757",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"QNndjtWXt+JcmZsIukcukbHidXRDccLzrPda52uSq/k=","fileLength":"795833",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"lvP6We97U73ooHVhXjvBhvYZf3XSdfl/pEeloKIQy3k=","fileLength":"16746","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"HY0f35KNknDnp9+PLFprUXbpGrR5oyFeKVjS///S1iI=","fileLength":"821513",">
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"7Vmt4VothFV/WbZgg0J61Ub>
+n-repl-prod","class":"baileys","node":{"passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary":2,"secondary":3000,"terti>
+
+
+n-repl-prod","class":"baileys","me":{"id":"905334096453:65@s.whatsapp.net"},"platform":"iphone","msg":"pairing configured successfully>
+n-repl-prod","class":"baileys","node":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+n-repl-prod","class":"baileys","node":{"username":"905334096453","passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary">
+n-repl-prod","class":"baileys","msg":"handled 0 offline messages/notifications"}
+n-repl-prod","class":"baileys","msg":"Connection is now AwaitingInitialSync, buffering events"}
+n-repl-prod","class":"baileys","msg":"History sync is disabled by config, not waiting for notification. Transitioning to Online."}
+n-repl-prod","class":"baileys","msg":"0 pre-keys found on server"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploading pre-keys"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploaded pre-keys"}
+n-repl-prod","class":"baileys","msg":"opened connection to WA"}
+n-repl-prod","class":"baileys","msg":"no name present, ignoring presence update request..."}
+
+
+n-repl-prod","class":"baileys","newAppStateSyncKeyId":"AAAAAEb3","newKeys":["AAAAAEZV","ADUAAEaS","AAAAAEZt","ADUAAEaM","AAAAAEZ3","AA>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"eGk6ah8ujlM100N8nePMaxL5j1IN53qfWZXOIBjVe04=","fileLength":"6160","me>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"1CJAeTVf3z9mR0yiLZqJ7P6tmhpkH6/MLLpYw6GYdPs=","fileLength":"379885",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"FogHJGs2BsgBSKePcT6nqFeu46thCk8k3Cz7EJD+U20=","fileLength":"18030","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x0gj8nTOjb72YkN0XXDY1NWf60DtBA+KliDzCgRIYX8=","fileLength":"19352","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x+Xq/QyTQ1N0EXcoa2cFM0KE464mVnrLVm85eQip25c=","fileLength":"734548",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"nTNRkn3+4AlEFo57W/O1zuUin//t0Ofl6wVqcVUhhCo=","fileLength":"858757",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"QNndjtWXt+JcmZsIukcukbHidXRDccLzrPda52uSq/k=","fileLength":"795833",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"lvP6We97U73ooHVhXjvBhvYZf3XSdfl/pEeloKIQy3k=","fileLength":"16746","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"HY0f35KNknDnp9+PLFprUXbpGrR5oyFeKVjS///S1iI=","fileLength":"821513",">
+n-repl-prod","class":"baileys","trace":"Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (file:///var/www/>
+
+
+
+n-repl-prod","class":"baileys","browser":["Ubuntu","Chrome","22.04.4"],"helloMsg":{"clientHello":{"ephemeral":"AuSjhdbHqRe+nKxd6ZmqnpX>
+n-repl-prod","class":"baileys","node":{"username":"905334096453","passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary">
+n-repl-prod","class":"baileys","msg":"handled 0 offline messages/notifications"}
+n-repl-prod","class":"baileys","msg":"Connection is now AwaitingInitialSync, buffering events"}
+n-repl-prod","class":"baileys","msg":"History sync is disabled by config, not waiting for notification. Transitioning to Online."}
+n-repl-prod","class":"baileys","msg":"0 pre-keys found on server"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploading pre-keys"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploaded pre-keys"}
+n-repl-prod","class":"baileys","msg":"opened connection to WA"}
+n-repl-prod","class":"baileys","msg":"no name present, ignoring presence update request..."}
+
+
+n-repl-prod","class":"baileys","newAppStateSyncKeyId":"AAAAAEb3","newKeys":["AAAAAEZV","ADUAAEaS","AAAAAEZt","ADUAAEaM","AAAAAEZ3","AA>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"eGk6ah8ujlM100N8nePMaxL5j1IN53qfWZXOIBjVe04=","fileLength":"6160","me>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"1CJAeTVf3z9mR0yiLZqJ7P6tmhpkH6/MLLpYw6GYdPs=","fileLength":"379885",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"FogHJGs2BsgBSKePcT6nqFeu46thCk8k3Cz7EJD+U20=","fileLength":"18030","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x0gj8nTOjb72YkN0XXDY1NWf60DtBA+KliDzCgRIYX8=","fileLength":"19352","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x+Xq/QyTQ1N0EXcoa2cFM0KE464mVnrLVm85eQip25c=","fileLength":"734548",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"nTNRkn3+4AlEFo57W/O1zuUin//t0Ofl6wVqcVUhhCo=","fileLength":"858757",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"QNndjtWXt+JcmZsIukcukbHidXRDccLzrPda52uSq/k=","fileLength":"795833",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"lvP6We97U73ooHVhXjvBhvYZf3XSdfl/pEeloKIQy3k=","fileLength":"16746","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"HY0f35KNknDnp9+PLFprUXbpGrR5oyFeKVjS///S1iI=","fileLength":"821513",">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...skipping...
+n-repl-prod","class":"baileys","node":{"username":"905334096453","passive":false,"userAgent":{"platform":"WEB","appVersion":{"primary">
+n-repl-prod","class":"baileys","msg":"handled 0 offline messages/notifications"}
+n-repl-prod","class":"baileys","msg":"Connection is now AwaitingInitialSync, buffering events"}
+n-repl-prod","class":"baileys","msg":"History sync is disabled by config, not waiting for notification. Transitioning to Online."}
+n-repl-prod","class":"baileys","msg":"0 pre-keys found on server"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploading pre-keys"}
+n-repl-prod","class":"baileys","count":30,"msg":"uploaded pre-keys"}
+n-repl-prod","class":"baileys","msg":"opened connection to WA"}
+n-repl-prod","class":"baileys","msg":"no name present, ignoring presence update request..."}
+
+
+n-repl-prod","class":"baileys","newAppStateSyncKeyId":"AAAAAEb3","newKeys":["AAAAAEZV","ADUAAEaS","AAAAAEZt","ADUAAEaM","AAAAAEZ3","AA>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"eGk6ah8ujlM100N8nePMaxL5j1IN53qfWZXOIBjVe04=","fileLength":"6160","me>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"1CJAeTVf3z9mR0yiLZqJ7P6tmhpkH6/MLLpYw6GYdPs=","fileLength":"379885",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"FogHJGs2BsgBSKePcT6nqFeu46thCk8k3Cz7EJD+U20=","fileLength":"18030","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x0gj8nTOjb72YkN0XXDY1NWf60DtBA+KliDzCgRIYX8=","fileLength":"19352","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"x+Xq/QyTQ1N0EXcoa2cFM0KE464mVnrLVm85eQip25c=","fileLength":"734548",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"nTNRkn3+4AlEFo57W/O1zuUin//t0Ofl6wVqcVUhhCo=","fileLength":"858757",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"QNndjtWXt+JcmZsIukcukbHidXRDccLzrPda52uSq/k=","fileLength":"795833",">
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"lvP6We97U73ooHVhXjvBhvYZf3XSdfl/pEeloKIQy3k=","fileLength":"16746","m>
+n-repl-prod","class":"baileys","histNotification":{"fileSha256":"HY0f35KNknDnp9+PLFprUXbpGrR5oyFeKVjS///S1iI=","fileLength":"821513",">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/bin/bash: -c: line 1: unexpected EOF while looking for matching `"'
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  ESC-U                Clear search highlighting.
+  &pattern          *  Display only matching lines.
+        ---------------------------------------------------
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+        ^S n     Search for match in n-th parenthesized subpattern.
+        ^W       WRAP search if no match found.
+ ---------------------------------------------------------------------------
+
+                           JUMPING
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F <c1> <c2>  *  Find close bracket <c2>.
+  ESC-^B <c1> <c2>  *  Find open bracket <c1>.
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket
+          matching the (N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket
+          matching the (N-th) close bracket in the bottom line.
+
+  m<letter>            Mark the current top line with <letter>.
+  M<letter>            Mark the current bottom line with <letter>.
+  '<letter>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-m<letter>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CHANGING FILES
+
+  :e [file]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (N-th) next file from the command line.
+  :p                *  Examine the (N-th) previous file from the command line.
+  :x                *  Examine the first (or N-th) file from the command line.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MISCELLANEOUS COMMANDS
+
+  -<flag>              Toggle a command line option [see OPTIONS below].
+  --<name>             Toggle a command line option, by name.
+  _<flag>              Display the setting of a command line option.
+  __<name>             Display the setting of an option, by name.
+  +cmd                 Execute the less cmd each time a new file is examined.
+
+  !command             Execute the shell command with $SHELL.
+  #command             Execute the shell command, expanded like a prompt.
+  |Xcommand            Pipe file between current pos & mark X to shell command.
+  s file               Save input to a file.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+/bin/bash: -c: line 1: syntax error near unexpected token `('
+/bin/bash: -c: line 1: `lessecho -p0x22 -d0x22 -e\\ -n0x3b -n0x20 -n0x2a -n0x3f -n0x9 -n0xa -n0x27 -n0x22 -n0x28 -n0x29 -n0x3c -n0x3e -n0x5b -n0x5d -n0x7c -n0x26 -n0x5e -n0x60 -n0x23 -n0x5c -n0x24 -n0x25 -n0x3d -n0x7e -n0x7b -n0x7d -n0x2c -- app.find(35)'
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+Finishing logfile... (interrupt to abort)
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(35)
+puts channel.provider_config.inspect
+"
+I, [2025-10-11T00:47:34.005377 #238220]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:47:34.005474 #238220]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:47:36.596994 #238220]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+{"status"=>"connected", "connected_at"=>"2025-10-11T00:27:32.543Z", "disconnected_at"=>"2025-10-11T00:27:28.451Z"}
+root@aisaturn-repl-prod:/var/www/chatwoot#
