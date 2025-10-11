@@ -41,7 +41,8 @@ class Whatsapp::Providers::WhatsappWebService
   end
 
   def connect
-    webhook_url = "#{ENV.fetch('RAILS_BASE_URL', 'http://localhost:5000')}/webhooks/whatsapp_web/#{@whatsapp_channel.id}"
+    base_url = ENV.fetch('FRONTEND_URL', 'http://localhost:5000')
+    webhook_url = "#{base_url}/webhooks/whatsapp_web/#{@whatsapp_channel.id}"
     
     response = http_client.post(
       "/channels/#{@whatsapp_channel.id}/connect",
