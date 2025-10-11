@@ -122,13 +122,18 @@ class Webhooks::WhatsappWebController < ApplicationController
 
   def create_message(conversation, message_data)
     return if conversation.messages.exists?(source_id: message_data[:id])
+    
+    unless conversation.contact
+      Rails.logger.error("WhatsApp Web: Cannot create message - conversation #{conversation.id} has no contact")
+      return
+    end
 
     message_params = {
       account: conversation.account,
       inbox: conversation.inbox,
       conversation: conversation,
-      contact: conversation.contact,
-      sender: conversation.contact,
+      sender_type: 'Contact',
+      sender_id: conversation.contact.id,
       message_type: :incoming,
       content: message_data[:text],
       source_id: message_data[:id],

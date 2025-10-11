@@ -1,0 +1,19 @@
+@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web --since "3 minutes ago" | tail -30
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]: [01:16:59.188] INFO (237452): Incoming message
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]:     channelId: "35"
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]:     messageId: "3AE26C2DD65A19ABF65D"
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]: [01:16:59.355] ERROR (237452): Webhook delivery failed
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]:     url: "https://app.aisaturn.co/webhooks/whatsapp_web/35"
+Oct 11 01:17:00 aisaturn-repl-prod whatsapp-web[237452]:     error: "Request failed with status code 500"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "3 minutes ago" | grep -i "whatsapp" | tail -20
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: I, [2025-10-11T01:16:59.199041 #242004]  INFO -- : [515c6984-1628-42c3-bdbe-59156ebb3c7f] Started POST "/webhooks/whatsapp_web/35" for 167.71.54.139 at 2025-10-11 01:16:59 +0000
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: I, [2025-10-11T01:16:59.201954 #242004]  INFO -- : [515c6984-1628-42c3-bdbe-59156ebb3c7f] Processing by Webhooks::WhatsappWebController#create as HTML
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: I, [2025-10-11T01:16:59.202064 #242004]  INFO -- : [515c6984-1628-42c3-bdbe-59156ebb3c7f]   Parameters: {"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AE26C2DD65A19ABF65D", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760145419, "text"=>"jvj", "media_type"=>"text"}, "whatsapp_web"=>{"event"=>"message.received", "channel_id"=>"35", "message"=>{"id"=>"3AE26C2DD65A19ABF65D", "from"=>"905432634483@s.whatsapp.net", "timestamp"=>1760145419, "text"=>"jvj", "media_type"=>"text"}}}
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: I, [2025-10-11T01:16:59.338394 #242004]  INFO -- : [515c6984-1628-42c3-bdbe-59156ebb3c7f] [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 872535c6-cbb7-42f7-afac-a34be828635b) to Sidekiq(critical) with arguments: ["m2hgANHZb7NDVdpGftgj7K6J", "QVr3uLjg1JjMUESmBigvbaBV"], "conversation.created", {:additional_attributes=>{}, :can_reply=>false, :channel=>"Channel::Whatsapp", :contact_inbox=>#<GlobalID:0x00007b80f8b6e4b0 @uri=#<URI::GID gid://chatwoot/ContactInbox/7>>, :id=>6, :inbox_id=>36, :messages=>[], :labels=>[], :meta=>{:sender=>{:additional_attributes=>{}, :custom_attributes=>{}, :email=>nil, :id=>7, :identifier=>nil, :name=>"+905432634483", :phone_number=>"+905432634483", :thumbnail=>"", :blocked=>false, :type=>"contact"}, :assignee=>nil, :team=>nil, :hmac_verified=>false}, :status=>"pending", :custom_attributes=>{}, :snoozed_until=>nil, :unread_count=>0, :first_reply_created_at=>nil, :priority=>nil, :waiting_since=>1760145419, :agent_last_seen_at=>0, :contact_last_seen_at=>0, :last_activity_at=>1760145419, :timestamp=>1760145419, :created_at=>1760145419, :updated_at=>1760145419.267897, :account_id=>1}
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: E, [2025-10-11T01:16:59.351833 #242004] ERROR -- : [515c6984-1628-42c3-bdbe-59156ebb3c7f] WhatsApp Web webhook error: unknown attribute 'contact' for Message.
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:138:in `create_message'
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:69:in `handle_incoming_message'
+Oct 11 01:16:59 aisaturn-repl-prod bundle[242004]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:11:in `create'
+root@aisaturn-repl-prod:/var/www/chatwoot#
