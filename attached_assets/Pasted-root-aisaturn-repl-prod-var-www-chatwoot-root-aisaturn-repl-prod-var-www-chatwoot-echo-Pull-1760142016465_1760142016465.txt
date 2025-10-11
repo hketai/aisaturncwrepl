@@ -1,0 +1,73 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📥 Pulling latest code..."
+git fetch origin main
+git reset --hard origin/main
+📥 Pulling latest code...
+From github.com:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+HEAD is now at aa3d24a51 Update the webhook URL to use the frontend URL variable
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📦 Installing gems..."
+bundle install --deployment --without development test
+📦 Installing gems...
+[DEPRECATED] The `--deployment` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set deployment true`, and stop using this flag
+[DEPRECATED] The `--without` flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use `bundle config set without 'development test'`, and stop using this flag
+Don't run Bundler as root. Installing your bundle as root will break this application for all non-root users on this machine.
+Bundle complete! 140 Gemfile dependencies, 277 gems now installed.
+Gems in the groups 'development' and 'test' were not installed.
+Bundled gems are installed into `./vendor/bundle`
+1 installed gem you directly depend on is looking for funding.
+  Run `bundle fund` for details
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📦 Installing WhatsApp Web dependencies..."
+cd lib/whatsapp_web
+npm install
+cd ../..
+📦 Installing WhatsApp Web dependencies...
+
+up to date, audited 214 packages in 780ms
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "📦 Installing WhatsApp Web dependencies..."
+cd lib/whatsapp_web
+npm install
+cd ../..
+📦 Installing WhatsApp Web dependencies...
+
+up to date, audited 214 packages in 727ms
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "🔄 Restarting services..."
+sudo systemctl restart chatwoot-web
+sudo systemctl restart chatwoot-whatsapp-web
+🔄 Restarting services...
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "🔗 Reconnecting WhatsApp channel..."
+RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(33)
+channel.provider_service.disconnect rescue nil
+sleep 2
+result = channel.provider_service.connect
+puts '✅ Webhook URL: ' + ENV['FRONTEND_URL'] + '/webhooks/whatsapp_web/33'
+🔗 Reconnecting WhatsApp channel...
+> "
+I, [2025-10-11T00:19:59.079527 #234734]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:19:59.079635 #234734]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:20:01.750701 #234734]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+✅ Webhook URL: https://app.aisaturn.co/webhooks/whatsapp_web/33
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "✅ Deployment complete!"
+✅ Deployment complete!
+root@aisaturn-repl-prod:/var/www/chatwoot#
