@@ -1,0 +1,77 @@
+
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+agent = Saturn::AgentProfile.find(1)
+sources = Saturn::KnowledgeSource.where(agent_profile_id: agent.id)
+puts '=== AYŞE - BİLGİ KAYNAKLARI ==='
+puts \"Toplam: #{sources.count}\"
+puts ''
+sources.each do |source|
+  puts \"📚 #{source.title}\"
+  puts \"   Tip: #{source.source_type}\"
+  puts \"   URL: #{source.source_url}\" if source.source_url.present?
+  puts \"   İçerik: #{source.content_text&.truncate(100)}\"
+  puts ''
+end
+"
+I, [2025-10-11T02:15:19.312783 #250500]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T02:15:19.312921 #250500]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T02:15:21.862485 #250500]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+=== AYŞE - BİLGİ KAYNAKLARI ===
+Toplam: 13
+
+📚 Siparişim ne zaman elime ulaşır?
+   Tip: faq
+   İçerik: Kargo çıkışlarınız genellikle aynı gün içinde yapılmaktadır. Nadiren de olsa 3 iş günü içinde gön...
+
+📚 Hediye paketi yapıyor musunuz?
+   Tip: faq
+   İçerik: Siparişinizin hediye paketi olarak gönderilmesi için kargo ekibine bilgi verilmektedir. Bu nedenl...
+
+📚 Yurtdışına gönderim sağlıyor musunuz?
+   Tip: faq
+   İçerik: https://int.kadriyebasturk.com/ adresinden yurt dışı siparişlerinizi oluşturabilirsiniz.
+
+📚 Hangi kargo firmasıyla çalışıyorsunuz?
+   Tip: faq
+   İçerik: Siparişleriniz genel olarak HepsiJet ile gönderilmektedir. Kargo firması kaynaklı adres kabul edi...
+
+📚 Kapıda ödeme sisteminiz var mı?
+   Tip: faq
+   İçerik: Maalesef kapıda ödeme seçeneğimiz bulunmamaktadır. Ancak kredi kartına vade farksız taksit kampan...
+
+📚 MNG - DHL iade takip numaramı  kaybettim/yok nasıl temin edebilirim?
+   Tip: faq
+   İçerik: Dilerseniz MNG-DHL kargo ile görüşme sağlayarak MNG-DHL iade takip numaranıza ulaşabilirsiniz. Pa...
+
+📚 İade durumumu öğrenebilir miyim?
+   Tip: faq
+   İçerik: İade durumunuzu https://www.kadriyebasturk.com/pages/iade-degisim adresinden takip edebilirsiniz.
+
+📚 Sipariş numaramı nasıl bulabilirim?
+   Tip: faq
+   İçerik: Sipariş numaranız, siparişi verdiğiniz e-posta adresinize gönderilmiştir. Eğer bu e-postaya ulaşa...
+
+📚 Merhabalar faturamı kaybettim iade göndermek istiyorum.
+   Tip: faq
+   İçerik: Merhabalar, web sitesinde en altta iade talebi oluştur butonundan talebinizi oluşturabilirsiniz. ...
+
+📚 Merhabalar, iade talebi oluşturmak istiyorum, nasıl oluşturabilirim?
+   Tip: faq
+   İçerik: https://www.kadriyebasturk.com/pages/iade-degisim Sayfasından iade veya değişim işlemlerinizi yap...
+
+📚 Aynı gün teslimat ücreti ne kadar?
+   Tip: faq
+   İçerik: “İstanbul İçi Aynı Gün Teslimat” seçeneği ile gönderilen kargolar için ücret 174.90 TL'dir.
+
+📚 Aynı gün teslimat yapıyor msunuz?
+   Tip: faq
+   İçerik: İstanbul içinde aynı gün teslimat seçeneğimiz mevcuttur.
+
+📚 Gizlilik Politikası
+   Tip: url
+   URL: https://www.kadriyebasturk.com/policies/privacy-policy
+   İçerik: Gizlilik Politikası Sözleşmesi
+
+root@aisaturn-repl-prod:/var/www/chatwoot#

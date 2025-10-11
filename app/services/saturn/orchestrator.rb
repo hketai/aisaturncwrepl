@@ -73,8 +73,10 @@ module Saturn
         Context: #{context.to_json}
         
         Instructions:
-        - Provide helpful, accurate responses
-        - Use available tools when needed
+        - ALWAYS search the knowledge base FIRST before answering questions (use search_knowledge_base tool)
+        - Use the most relevant information from knowledge sources to provide accurate answers
+        - If knowledge base has the answer, use it; if not, use your general knowledge
+        - Provide helpful, accurate responses based on verified information
         - Be concise and professional
         - If you cannot help, explain why clearly
         
