@@ -1,0 +1,29 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web --since "5 minutes ago" | grep -B 2 -A 20 "create_or_update_contact_inbox"
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/relation.rb:229:in `create_or_find_by!'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activerecord-7.1.5.2/lib/active_record/relation.rb:183:in `find_or_create_by!'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:106:in `create_or_update_contact_inbox'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:65:in `handle_incoming_message'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/webhooks/whatsapp_web_controller.rb:11:in `create'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/base.rb:224:in `process_action'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/action_controller/metal/rendering.rb:165:in `process_action'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actionpack-7.1.5.2/lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/concerns/request_exception_handler.rb:11:in `handle_with_exception'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/i18n-1.14.7/lib/i18n.rb:353:in `with_locale'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/concerns/switch_locale.rb:56:in `set_locale'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/app/controllers/concerns/switch_locale.rb:19:in `switch_locale'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/audited-5.4.1/lib/audited/sweeper.rb:16:in `around'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/audited-5.4.1/lib/audited/sweeper.rb:16:in `around'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actiontext-7.1.5.2/lib/action_text/rendering.rb:23:in `with_renderer'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/actiontext-7.1.5.2/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+Oct 11 01:04:40 aisaturn-repl-prod bundle[239861]: /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/callbacks.rb:130:in `instance_exec'
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 50 | grep -A 30 "whatsapp_web/35"
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -n 50 | grep -A 30 "whatsapp_web/35"
+root@aisaturn-repl-prod:/var/www/chatwoot#
