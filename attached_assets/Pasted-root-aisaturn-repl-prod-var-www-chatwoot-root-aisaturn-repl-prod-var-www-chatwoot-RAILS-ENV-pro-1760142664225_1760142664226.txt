@@ -1,0 +1,59 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channels = Channel::Whatsapp.all
+channels.each do |ch|
+  puts \"ID: #{ch.id}, Name: #{ch.name}, Provider: #{ch.provider}\"
+end
+"
+I, [2025-10-11T00:25:17.492421 #235327]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:25:17.492507 #235327]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:25:19.969191 #235327]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+ID: 34, Name: Whatsapp, Provider: whatsapp_web
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(34)
+puts 'Disconnecting old connection...'
+channel.provider_service.disconnect rescue nil
+sleep 3
+puts 'Connecting channel 34...'
+result = channel.provider_service.connect
+puts 'Connect result: ' + result.inspect
+puts 'Webhook URL: ' + ENV['FRONTEND_URL'] + '/webhooks/whatsapp_web/34'
+"
+I, [2025-10-11T00:25:24.384774 #235358]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:25:24.384859 #235358]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:25:26.969770 #235358]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Disconnecting old connection...
+Connecting channel 34...
+2025-10-11T00:25:30.408Z pid=235358 tid=4zj6 INFO: Sidekiq 7.3.1 connecting to Redis with options {:size=>10, :pool_name=>"internal", :url=>"redis://localhost:6379", :password=>nil, :reconnect_attempts=>2, :timeout=>1}
+I, [2025-10-11T00:25:30.410048 #235358]  INFO -- : [ActiveJob] Enqueued ActionCableBroadcastJob (Job ID: 61c271aa-a6e2-46ae-80a6-04282b471f4e) to Sidekiq(critical) with arguments: ["m2hgANHZb7NDVdpGftgj7K6J"], "account.cache_invalidated", {:cache_keys=>{:label=>"0000000000", :inbox=>"1760142330", :team=>"1759984966"}, :account_id=>1}
+I, [2025-10-11T00:25:30.411545 #235358]  INFO -- : [ActiveJob] Enqueued EventDispatcherJob (Job ID: ed609e99-29ee-410e-acb8-33230fe71087) to Sidekiq(critical) with arguments: "account.cache_invalidated", Sat, 11 Oct 2025 00:25:30.393522726 UTC +00:00, {:cache_keys=>{:label=>"0000000000", :inbox=>"1760142330", :team=>"1759984966"}, :account=>#<GlobalID:0x00007e6dfa0d2c80 @uri=#<URI::GID gid://chatwoot/Account/1>>}
+Connect result: {"status"=>"connecting", "qr"=>nil}
+Webhook URL: https://app.aisaturn.co/webhooks/whatsapp_web/34
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-whatsapp-web
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-whatsapp-web --since "2 minutes ago" | grep -i "connect\|status\|ready"
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.last
+puts \"Latest Channel ID: #{channel.id}\"
+puts \"Provider Config: #{channel.provider_config.inspect}\"
+"
+I, [2025-10-11T00:30:47.845005 #235826]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:30:47.845108 #235826]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:30:50.347420 #235826]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Latest Channel ID: 35
+Provider Config: {"status"=>"connected", "connected_at"=>"2025-10-11T00:27:32.543Z", "disconnected_at"=>"2025-10-11T00:27:28.451Z"}
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.last
+status = channel.provider_service.status rescue nil
+puts \"Status: #{status.inspect}\"
+"
+I, [2025-10-11T00:30:54.680821 #235844]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:30:54.680925 #235844]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:30:57.369928 #235844]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Status: {"connected"=>true, "authenticated"=>true}
+root@aisaturn-repl-prod:/var/www/chatwoot#
