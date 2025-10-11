@@ -82,9 +82,10 @@ jobs:
             # which forces the app into installation wizard mode!
             # Seeds should ONLY run in development/staging environments.
             
-            # Clear Rails cache
-            echo "🧹 Clearing Rails cache..."
+            # Clear Rails cache and Redis GlobalConfig cache
+            echo "🧹 Clearing Rails and GlobalConfig cache..."
             RAILS_ENV=production bundle exec rails cache:clear || true
+            RAILS_ENV=production bundle exec rails runner "GlobalConfig.clear_cache; puts '✅ GlobalConfig cache cleared'" || true
             
             # Clear Sidekiq queues (optional, use with caution)
             # Uncomment if you want to clear pending jobs on each deploy
