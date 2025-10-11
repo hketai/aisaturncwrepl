@@ -116,7 +116,7 @@ class Webhooks::WhatsappWebController < ApplicationController
       contact: contact_inbox.contact
     ) do |conversation|
       conversation.contact_inbox = contact_inbox
-      conversation.status = :pending
+      conversation.status = :open
     end
   end
 
