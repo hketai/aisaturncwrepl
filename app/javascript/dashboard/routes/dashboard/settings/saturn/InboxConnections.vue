@@ -110,7 +110,7 @@ const handleWebSocketConnectionUpdated = (data) => {
 
 const handleWebSocketConnectionDeleted = (data) => {
   if (data.agent_profile_id === parseInt(agentId.value)) {
-    connectedInboxes.value = connectedInboxes.value.filter(c => c.inbox_id !== data.inbox_id);
+    connectedInboxes.value = connectedInboxes.value.filter(c => c.inbox.id !== data.inbox_id);
   }
 };
 
