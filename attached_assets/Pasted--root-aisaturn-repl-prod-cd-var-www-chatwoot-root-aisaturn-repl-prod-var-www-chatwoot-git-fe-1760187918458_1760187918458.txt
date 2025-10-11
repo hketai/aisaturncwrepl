@@ -1,0 +1,66 @@
+
+root@aisaturn-repl-prod:~# cd /var/www/chatwoot
+root@aisaturn-repl-prod:/var/www/chatwoot# git fetch origin main
+git reset --hard origin/main
+From github.com:hketai/aisaturncwrepl
+ * branch                main       -> FETCH_HEAD
+HEAD is now at 3e6222bde Prioritize knowledge base search for accurate and relevant responses
+root@aisaturn-repl-prod:/var/www/chatwoot# RAILS_ENV=production bundle exec rake assets:precompile
+This project is configured to use pnpm because /var/www/chatwoot/package.json has a "packageManager" field
+I, [2025-10-11T13:03:12.295898 #302093]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T13:03:12.296015 #302093]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T13:03:12.757320 #302093]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+   ╭───────────────────────────────────────────────────────────────────╮
+   │                                                                   │
+   │                Update available! 10.2.0 → 10.18.2.                │
+   │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v10.18.2   │
+   │         Run "corepack install -g pnpm@10.18.2" to update.         │
+   │                                                                   │
+   ╰───────────────────────────────────────────────────────────────────╯
+
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1.2s
+-------------- Bulding SDK for Production --------------
+
+> @chatwoot/chatwoot@4.6.0 build:sdk /var/www/chatwoot
+> BUILD_MODE=library vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.20 building for production...
+transforming (1) app/javascript/entrypoints/sdk.jsBrowserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 33 modules transformed.
+
+(!) The public directory feature may not work correctly. outDir /var/www/chatwoot/public/packs and publicDir /var/www/chatwoot/public are not separate folders.
+
+public/packs/js/sdk.js  28.77 kB │ gzip: 9.57 kB
+✓ built in 868ms
+-------------- Bulding App for Production --------------
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+> @chatwoot/chatwoot@4.6.0 prepare /var/www/chatwoot
+> husky install
+
+husky - Git hooks installed
+Done in 1s
+Skipping vite build. Watched files have not changed since the last build at 2025-10-11 02:18:41
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-web
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo systemctl restart chatwoot-worker
+root@aisaturn-repl-prod:/var/www/chatwoot# echo "✅ AISATURN branding geri yüklendi"
+echo "✅ Saturn AI bilgi kaynakları kullanıyor"
+echo ""
+echo "Tarayıcıda Ctrl+F5 ile hard refresh yapın (cache temizleme)"
+✅ AISATURN branding geri yüklendi
+✅ Saturn AI bilgi kaynakları kullanıyor
+
+Tarayıcıda Ctrl+F5 ile hard refresh yapın (cache temizleme)
+root@aisaturn-repl-prod:/var/www/chatwoot#
