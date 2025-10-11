@@ -336,6 +336,24 @@ const menuItems = computed(() => {
       ],
     },
     {
+      name: 'Agents',
+      label: t('SIDEBAR.AGENTS'),
+      icon: 'i-ph-user-thin',
+      to: accountScopedRoute('agent_list'),
+    },
+    {
+      name: 'Teams',
+      label: t('SIDEBAR.TEAMS'),
+      icon: 'i-ph-users-three-thin',
+      to: accountScopedRoute('settings_teams_list'),
+    },
+    {
+      name: 'Inboxes',
+      label: t('SIDEBAR.INBOXES'),
+      icon: 'i-ph-tray-thin',
+      to: accountScopedRoute('settings_inbox_list'),
+    },
+    {
       name: 'Settings',
       label: t('SIDEBAR.SETTINGS'),
       icon: 'i-ph-gear-thin',
@@ -347,28 +365,10 @@ const menuItems = computed(() => {
           to: accountScopedRoute('general_settings_index'),
         },
         {
-          name: 'Settings Agents',
-          label: t('SIDEBAR.AGENTS'),
-          icon: 'i-ph-user-thin',
-          to: accountScopedRoute('agent_list'),
-        },
-        {
-          name: 'Settings Teams',
-          label: t('SIDEBAR.TEAMS'),
-          icon: 'i-ph-users-three-thin',
-          to: accountScopedRoute('settings_teams_list'),
-        },
-        {
           name: 'Settings Agent Assignment',
           label: t('SIDEBAR.AGENT_ASSIGNMENT'),
           icon: 'i-ph-user-gear-thin',
           to: accountScopedRoute('assignment_policy_index'),
-        },
-        {
-          name: 'Settings Inboxes',
-          label: t('SIDEBAR.INBOXES'),
-          icon: 'i-ph-tray-thin',
-          to: accountScopedRoute('settings_inbox_list'),
         },
         {
           name: 'Settings Labels',
