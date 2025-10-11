@@ -1,0 +1,29 @@
+root@aisaturn-repl-prod:/var/www/chatwoot#
+root@aisaturn-repl-prod:/var/www/chatwoot# sudo journalctl -u chatwoot-web -f
+Oct 11 00:42:07 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:42:07.995266 #237415]  INFO -- : [9c72c5c6-7c6c-4d85-95af-dda13932308a] Completed 200 OK in 63ms (Views: 17.0ms | ActiveRecord: 18.7ms | Allocations: 23406)
+Oct 11 00:42:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:42:21.771964 #237415]  INFO -- : [69f6c4a3-2a43-4eca-898d-e3465a889276] Started GET "/cable" for 88.226.105.179 at 2025-10-11 00:42:21 +0000
+Oct 11 00:42:21 aisaturn-repl-prod bundle[237415]: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /var/www/chatwoot/vendor/bundle/ruby/3.2.0/gems/activesupport-7.1.5.2/lib/active_support/cache/redis_cache_store.rb:454:in `block (2 levels) in change_counter')
+Oct 11 00:42:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:42:21.774351 #237415]  INFO -- : [69f6c4a3-2a43-4eca-898d-e3465a889276] Started GET "/cable" [WebSocket] for 88.226.105.179 at 2025-10-11 00:42:21 +0000
+Oct 11 00:42:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:42:21.774405 #237415]  INFO -- : [69f6c4a3-2a43-4eca-898d-e3465a889276] Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+Oct 11 00:42:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:42:21.847252 #237415]  INFO -- : RoomChannel is streaming from RrTaZ9BYT8w4ov3Rh1bTgwKx
+Oct 11 00:43:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:43:21.775619 #237415]  INFO -- : [71a1cbbe-df05-4ea9-80e5-2b58a8658053] Started GET "/api/v1/widget/messages?website_token=yFey668ELAKERFz78vv9yYY7&cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiI0M2ZjZDZlMS1jZDQ4LTRiYjktODVlYi1jZjljZTdmNGM0NjgiLCJpbmJveF9pZCI6MSwiZXhwIjoxNzc1NDA1OTQ4LCJpYXQiOjE3NTk4NTM5NDh9.N2cRjluHuhFfDv-OHCGVYDaG5pyZ9-LtRuON5T03Cm0&after=118" for 88.226.105.179 at 2025-10-11 00:43:21 +0000
+Oct 11 00:43:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:43:21.779461 #237415]  INFO -- : [71a1cbbe-df05-4ea9-80e5-2b58a8658053] Processing by Api::V1::Widget::MessagesController#index as JSON
+Oct 11 00:43:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:43:21.779547 #237415]  INFO -- : [71a1cbbe-df05-4ea9-80e5-2b58a8658053]   Parameters: {"website_token"=>"yFey668ELAKERFz78vv9yYY7", "cw_conversation"=>"eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiI0M2ZjZDZlMS1jZDQ4LTRiYjktODVlYi1jZjljZTdmNGM0NjgiLCJpbmJveF9pZCI6MSwiZXhwIjoxNzc1NDA1OTQ4LCJpYXQiOjE3NTk4NTM5NDh9.N2cRjluHuhFfDv-OHCGVYDaG5pyZ9-LtRuON5T03Cm0", "after"=>"118"}
+Oct 11 00:43:21 aisaturn-repl-prod bundle[237415]: I, [2025-10-11T00:43:21.886920 #237415]  INFO -- : [71a1cbbe-df05-4ea9-80e5-2b58a8658053] Completed 200 OK in 107ms (Views: 2.2ms | ActiveRecord: 15.2ms | Allocations: 38364)
+^C
+root@aisaturn-repl-prod:/var/www/chatwoot# cd /var/www/chatwoot
+RAILS_ENV=production bundle exec rails runner "
+channel = Channel::Whatsapp.find(35)
+puts '=== CHANNEL CONFIG ==='
+puts channel.provider_config.inspect
+puts '\n=== WEBHOOK URL ==='
+puts channel.provider_config['webhook_url']
+"
+I, [2025-10-11T00:51:43.367391 #238566]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:51:43.367480 #238566]  INFO -- : [dotenv] Loaded .env.production
+I, [2025-10-11T00:51:45.827826 #238566]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+=== CHANNEL CONFIG ===
+{"status"=>"connected", "connected_at"=>"2025-10-11T00:27:32.543Z", "disconnected_at"=>"2025-10-11T00:27:28.451Z"}
+\n=== WEBHOOK URL ===
+
+root@aisaturn-repl-prod:/var/www/chatwoot#
